@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import Sidebar from "./Sidebar";
+import HeaderBar from "./HeaderBar";
+import FooterBar from "./FooterBar";
+import styled from "styled-components";
+
+const Wrapper = styled.div`
+  display: grid;
+  grid-template-rows: 3% auto 3%;
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+  text-align: center;
+`;
+
+const BodyContainer = styled.div`
+  display: grid;
+  grid-template-columns: 20% 80%;
+  background-color: #1E1E1E;
+  text-align: center;
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Wrapper>
+      <HeaderBar />
+      <BodyContainer>
+        <Sidebar />
+        <div>Body</div>
+      </BodyContainer>
+      <FooterBar />
+    </Wrapper>
   );
 }
 
