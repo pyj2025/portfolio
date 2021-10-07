@@ -20,7 +20,16 @@ const BodyContainer = styled.div`
   text-align: center;
 `;
 
+const MaintenanceMessage = styled.div`
+  color: white;
+  font-weight: bold;
+  justify-content: center;
+  text-align: center;
+`;
+
 function App() {
+  const [inMaintenance, setMaintenance] = useState(true);
+
   const [isAboutOpen, setAboutOpen] = useState(false);
   const [isSkillsOpen, setSkillsOpen] = useState(false);
   const [isProjectsOpen, setProjectsOpen] = useState(false);
@@ -39,23 +48,31 @@ function App() {
 
   return (
     <Wrapper>
-      <HeaderBar />
-      <BodyContainer>
-        <MenuContainer
-          toggleAboutOpen={toggleAboutOpen}
-          toggleSkillsOpen={toggleSkillsOpen}
-          toggleProjectsOpen={toggleProjectsOpen}
-        />
-        <BodyContent
-          isAboutOpen={isAboutOpen}
-          isSkillsOpen={isSkillsOpen}
-          isProjectsOpen={isProjectsOpen}
-          toggleAboutOpen={toggleAboutOpen}
-          toggleSkillsOpen={toggleSkillsOpen}
-          toggleProjectsOpen={toggleProjectsOpen}
-        />
-      </BodyContainer>
-      <FooterBar />
+      {inMaintenance ? (
+        <MaintenanceMessage>
+          Site is in maintenance now. Please come back later...
+        </MaintenanceMessage>
+      ) : (
+        <>
+          <HeaderBar />
+          <BodyContainer>
+            <MenuContainer
+              toggleAboutOpen={toggleAboutOpen}
+              toggleSkillsOpen={toggleSkillsOpen}
+              toggleProjectsOpen={toggleProjectsOpen}
+            />
+            <BodyContent
+              isAboutOpen={isAboutOpen}
+              isSkillsOpen={isSkillsOpen}
+              isProjectsOpen={isProjectsOpen}
+              toggleAboutOpen={toggleAboutOpen}
+              toggleSkillsOpen={toggleSkillsOpen}
+              toggleProjectsOpen={toggleProjectsOpen}
+            />
+          </BodyContainer>
+          <FooterBar />
+        </>
+      )}
     </Wrapper>
   );
 }
