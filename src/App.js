@@ -1,11 +1,13 @@
-import Sidebar from "./Sidebar";
+import MenuContainer from "./MenuContainer";
 import HeaderBar from "./HeaderBar";
 import FooterBar from "./FooterBar";
+import BodyContent from "./BodyContent";
 import styled from "styled-components";
+import React, { useState } from "react";
 
 const Wrapper = styled.div`
   display: grid;
-  grid-template-rows: 3% auto 3%;
+  grid-template-rows: 3% auto 10%;
   height: 100vh;
   width: 100vw;
   background-color: black;
@@ -13,19 +15,45 @@ const Wrapper = styled.div`
 `;
 
 const BodyContainer = styled.div`
-  display: grid;
-  grid-template-columns: 20% 80%;
-  background-color: #1E1E1E;
+  background-color: #1e1e1e;
+  justify-content: center;
   text-align: center;
 `;
 
 function App() {
+  const [isAboutOpen, setAboutOpen] = useState(false);
+  const [isSkillsOpen, setSkillsOpen] = useState(false);
+  const [isProjectsOpen, setProjectsOpen] = useState(false);
+
+  const toggleAboutOpen = () => {
+    setAboutOpen((state) => !state);
+  };
+
+  const toggleSkillsOpen = () => {
+    setSkillsOpen((state) => !state);
+  };
+
+  const toggleProjectsOpen = () => {
+    setProjectsOpen((state) => !state);
+  };
+
   return (
     <Wrapper>
       <HeaderBar />
       <BodyContainer>
-        <Sidebar />
-        <div>Body</div>
+        <MenuContainer
+          toggleAboutOpen={toggleAboutOpen}
+          toggleSkillsOpen={toggleSkillsOpen}
+          toggleProjectsOpen={toggleProjectsOpen}
+        />
+        <BodyContent
+          isAboutOpen={isAboutOpen}
+          isSkillsOpen={isSkillsOpen}
+          isProjectsOpen={isProjectsOpen}
+          toggleAboutOpen={toggleAboutOpen}
+          toggleSkillsOpen={toggleSkillsOpen}
+          toggleProjectsOpen={toggleProjectsOpen}
+        />
       </BodyContainer>
       <FooterBar />
     </Wrapper>
