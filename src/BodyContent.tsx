@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { Rnd } from "react-rnd";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Container = styled.div`
   background-color: #3c3c3c;
@@ -8,12 +10,27 @@ const Container = styled.div`
 `;
 
 const MenuItemWindow = styled(Rnd)`
-  display: flex;
+  display: grid;
   align-items: center;
   justify-content: center;
   border: solid 1px #ddd;
-  background-color: white;
-  color: red;
+  background-color: #1e232a;
+  color: white;
+`;
+
+const MenuItemTopbar = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0 auto;
+  background-color: #333436;
+`;
+
+const TopbarContainer = styled.div`
+  margin-right: auto;
+`;
+
+const TopbarTitle = styled.div`
+  text-align: center;
 `;
 
 export type BodyContentProps = {
@@ -44,16 +61,18 @@ const BodyContent: React.FC<BodyContentProps> = ({
             height: 500,
           }}
         >
-          <div>
-          <div>
-          <button onClick={toggleAboutOpen}>Close</button>
-          About
-          </div>
-          <div>
-            Body
-          </div>
-          </div>
-          
+          <MenuItemTopbar>
+            <TopbarContainer>
+              <button onClick={toggleAboutOpen}>Close</button>
+              <button onClick={toggleAboutOpen}>Close</button>
+              <button onClick={toggleAboutOpen}>Close</button>
+            </TopbarContainer>
+            <TopbarTitle>
+              <FontAwesomeIcon icon={faUser} />
+              About
+            </TopbarTitle>
+          </MenuItemTopbar>
+          <div>Body</div>
         </MenuItemWindow>
       ) : null}
       {isSkillsOpen ? (

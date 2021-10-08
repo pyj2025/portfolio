@@ -28,7 +28,7 @@ const MaintenanceMessage = styled.div`
 `;
 
 function App() {
-  const [inMaintenance, setMaintenance] = useState(true);
+  const [inMaintenance, setMaintenance] = useState(false);
 
   const [isAboutOpen, setAboutOpen] = useState(false);
   const [isSkillsOpen, setSkillsOpen] = useState(false);

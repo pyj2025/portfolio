@@ -1,5 +1,5 @@
-import { faFolderOpen, faUser } from "@fortawesome/free-regular-svg-icons";
-import { faCode } from "@fortawesome/free-solid-svg-icons";
+import { faFolderOpen } from "@fortawesome/free-regular-svg-icons";
+import { faCode, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import styled from "styled-components";
