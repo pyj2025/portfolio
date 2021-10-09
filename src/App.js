@@ -57,6 +57,7 @@ function App() {
           <HeaderBar />
           <BodyContainer>
             <MenuContainer
+              isProjectsOpen={isProjectsOpen}
               toggleAboutOpen={toggleAboutOpen}
               toggleSkillsOpen={toggleSkillsOpen}
               toggleProjectsOpen={toggleProjectsOpen}

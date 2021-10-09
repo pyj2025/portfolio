@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Rnd } from "react-rnd";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faCode, faFolder, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Container = styled.div`
@@ -60,6 +60,8 @@ const BodyContent: React.FC<BodyContentProps> = ({
             width: 800,
             height: 500,
           }}
+          minWidth={500}
+          minHeight={300}
         >
           <MenuItemTopbar>
             <TopbarContainer>
@@ -80,12 +82,24 @@ const BodyContent: React.FC<BodyContentProps> = ({
           default={{
             x: 0,
             y: 0,
-            width: 200,
-            height: 200,
+            width: 500,
+            height: 300,
           }}
+          minWidth={500}
+          minHeight={300}
         >
-          Skills
-          <button onClick={toggleSkillsOpen}>Close</button>
+          <MenuItemTopbar>
+            <TopbarContainer>
+              <button onClick={toggleSkillsOpen}>Close</button>
+              <button onClick={toggleSkillsOpen}>Close</button>
+              <button onClick={toggleSkillsOpen}>Close</button>
+            </TopbarContainer>
+            <TopbarTitle>
+              <FontAwesomeIcon icon={faCode} />
+              Skills
+            </TopbarTitle>
+          </MenuItemTopbar>
+          <div>Body</div>
         </MenuItemWindow>
       ) : null}
       {isProjectsOpen ? (
@@ -93,12 +107,24 @@ const BodyContent: React.FC<BodyContentProps> = ({
           default={{
             x: 0,
             y: 0,
-            width: 200,
-            height: 200,
+            width: 700,
+            height: 500,
           }}
+          minWidth={500}
+          minHeight={300}
         >
-          Projects
-          <button onClick={toggleProjectsOpen}>Close</button>
+          <MenuItemTopbar>
+            <TopbarContainer>
+              <button onClick={toggleProjectsOpen}>Close</button>
+              <button onClick={toggleProjectsOpen}>Close</button>
+              <button onClick={toggleProjectsOpen}>Close</button>
+            </TopbarContainer>
+            <TopbarTitle>
+              <FontAwesomeIcon icon={faFolder} />
+              Projects
+            </TopbarTitle>
+          </MenuItemTopbar>
+          <div>Body</div>
         </MenuItemWindow>
       ) : null}
     </Container>

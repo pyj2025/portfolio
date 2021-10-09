@@ -1,5 +1,11 @@
-import { faFolderOpen } from "@fortawesome/free-regular-svg-icons";
-import { faCode, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import {
+  faCode,
+  faFile,
+  faFolderOpen,
+  faFolder,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import styled from "styled-components";
@@ -33,6 +39,8 @@ const ListItem = styled.a`
   padding: 1rem;
   border-radius: 0.2rem;
   cursor: pointer;
+  text-decoration: none;
+  color: white;
 
   :hover {
     background-color: #3c3c3c;
@@ -40,12 +48,14 @@ const ListItem = styled.a`
 `;
 
 export type MenuContainerProps = {
+  isProjectsOpen: boolean;
   toggleAboutOpen: () => void;
   toggleSkillsOpen: () => void;
   toggleProjectsOpen: () => void;
 };
 
 const MenuContainer: React.FC<MenuContainerProps> = ({
+  isProjectsOpen,
   toggleAboutOpen,
   toggleSkillsOpen,
   toggleProjectsOpen,
@@ -63,12 +73,23 @@ const MenuContainer: React.FC<MenuContainerProps> = ({
         Skills
       </ListItem>
       <ListItem onClick={toggleProjectsOpen}>
-        <FontAwesomeIcon icon={faFolderOpen} />
+        <FontAwesomeIcon icon={isProjectsOpen ? faFolderOpen : faFolder} />
         Projects
       </ListItem>
-     
+      <ListItem onClick={toggleProjectsOpen}>
+        <FontAwesomeIcon icon={faFile} />
+        Resume
+      </ListItem>
+      <ListItem href="https://github.com/pyj2025">
+        <FontAwesomeIcon icon={faGithub} />
+        Github
+      </ListItem>
+      <ListItem href="https://www.linkedin.com/in/devjoon/">
+        <FontAwesomeIcon icon={faLinkedin} />
+        Linkedin
+      </ListItem>
     </SidebarContainer>
   );
-}
+};
 
 export default MenuContainer;
