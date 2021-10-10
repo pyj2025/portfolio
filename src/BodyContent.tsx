@@ -1,7 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import { Rnd } from "react-rnd";
-import { faCode, faFolder, faUser } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCode,
+  faFolder,
+  faTimes,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Container = styled.div`
@@ -27,6 +32,14 @@ const MenuItemTopbar = styled.div`
 
 const TopbarContainer = styled.div`
   margin-right: auto;
+`;
+
+const CloseBtn = styled.button`
+  padding: 0;
+  border: none;
+  background: none;
+  color: white;
+  margin-left: 10px;
 `;
 
 const TopbarTitle = styled.div`
@@ -65,9 +78,9 @@ const BodyContent: React.FC<BodyContentProps> = ({
         >
           <MenuItemTopbar>
             <TopbarContainer>
-              <button onClick={toggleAboutOpen}>Close</button>
-              <button onClick={toggleAboutOpen}>Close</button>
-              <button onClick={toggleAboutOpen}>Close</button>
+              <CloseBtn onClick={toggleAboutOpen}>
+                <FontAwesomeIcon icon={faTimes} />
+              </CloseBtn>
             </TopbarContainer>
             <TopbarTitle>
               <FontAwesomeIcon icon={faUser} />
