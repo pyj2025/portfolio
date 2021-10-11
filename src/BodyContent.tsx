@@ -3,7 +3,9 @@ import styled from "styled-components";
 import { Rnd } from "react-rnd";
 import {
   faCode,
+  faExpandAlt,
   faFolder,
+  faMinus,
   faTimes,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
@@ -51,8 +53,11 @@ export type BodyContentProps = {
   isSkillsOpen: boolean;
   isProjectsOpen: boolean;
   toggleAboutOpen: () => void;
+  setAboutMinimized: (flag: boolean) => void;
   toggleSkillsOpen: () => void;
+  setSkillsMinimized: (flag: boolean) => void;
   toggleProjectsOpen: () => void;
+  setProjectsMinimized: (flag: boolean) => void;
 };
 
 const BodyContent: React.FC<BodyContentProps> = ({
@@ -60,9 +65,27 @@ const BodyContent: React.FC<BodyContentProps> = ({
   isSkillsOpen,
   isProjectsOpen,
   toggleAboutOpen,
+  setAboutMinimized,
   toggleSkillsOpen,
+  setSkillsMinimized,
   toggleProjectsOpen,
+  setProjectsMinimized,
 }) => {
+  const handleAboutMinimized = () => {
+    setAboutMinimized(true);
+    toggleAboutOpen();
+  };
+
+  const handleSkillsMinimized = () => {
+    setSkillsMinimized(true);
+    toggleSkillsOpen();
+  };
+
+  const handleProjectsMinimized = () => {
+    setProjectsMinimized(true);
+    toggleProjectsOpen();
+  };
+
   return (
     <Container>
       {isAboutOpen ? (
@@ -70,8 +93,8 @@ const BodyContent: React.FC<BodyContentProps> = ({
           default={{
             x: -100,
             y: -100,
-            width: 800,
-            height: 500,
+            width: 500,
+            height: 300,
           }}
           minWidth={500}
           minHeight={300}
@@ -80,6 +103,12 @@ const BodyContent: React.FC<BodyContentProps> = ({
             <TopbarContainer>
               <CloseBtn onClick={toggleAboutOpen}>
                 <FontAwesomeIcon icon={faTimes} />
+              </CloseBtn>
+              <CloseBtn onClick={handleAboutMinimized}>
+                <FontAwesomeIcon icon={faMinus} />
+              </CloseBtn>
+              <CloseBtn onClick={toggleAboutOpen}>
+                <FontAwesomeIcon icon={faExpandAlt} />
               </CloseBtn>
             </TopbarContainer>
             <TopbarTitle>
@@ -103,9 +132,15 @@ const BodyContent: React.FC<BodyContentProps> = ({
         >
           <MenuItemTopbar>
             <TopbarContainer>
-              <button onClick={toggleSkillsOpen}>Close</button>
-              <button onClick={toggleSkillsOpen}>Close</button>
-              <button onClick={toggleSkillsOpen}>Close</button>
+              <CloseBtn onClick={toggleSkillsOpen}>
+                <FontAwesomeIcon icon={faTimes} />
+              </CloseBtn>
+              <CloseBtn onClick={handleSkillsMinimized}>
+                <FontAwesomeIcon icon={faMinus} />
+              </CloseBtn>
+              <CloseBtn onClick={toggleSkillsOpen}>
+                <FontAwesomeIcon icon={faExpandAlt} />
+              </CloseBtn>
             </TopbarContainer>
             <TopbarTitle>
               <FontAwesomeIcon icon={faCode} />
@@ -120,17 +155,23 @@ const BodyContent: React.FC<BodyContentProps> = ({
           default={{
             x: 0,
             y: 0,
-            width: 700,
-            height: 500,
+            width: 500,
+            height: 300,
           }}
           minWidth={500}
           minHeight={300}
         >
           <MenuItemTopbar>
             <TopbarContainer>
-              <button onClick={toggleProjectsOpen}>Close</button>
-              <button onClick={toggleProjectsOpen}>Close</button>
-              <button onClick={toggleProjectsOpen}>Close</button>
+              <CloseBtn onClick={toggleProjectsOpen}>
+                <FontAwesomeIcon icon={faTimes} />
+              </CloseBtn>
+              <CloseBtn onClick={handleProjectsMinimized}>
+                <FontAwesomeIcon icon={faMinus} />
+              </CloseBtn>
+              <CloseBtn onClick={toggleProjectsOpen}>
+                <FontAwesomeIcon icon={faExpandAlt} />
+              </CloseBtn>
             </TopbarContainer>
             <TopbarTitle>
               <FontAwesomeIcon icon={faFolder} />

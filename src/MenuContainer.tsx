@@ -15,18 +15,18 @@ const SidebarContainer = styled.div`
   width: 100%;
   background-color: #333333;
   color: white;
-  display: flex;
+  /* display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   flex-wrap: wrap;
   flex-shrink: 1;
   overflow-y: auto;
-  padding: 1rem;
+  padding: 1rem; */
 `;
 
 const ListItem = styled.a`
-  font-size: 1.5em;
+  /* font-size: 1.5em;
   text-align: center;
   transition: background-color 0.2s;
   display: flex;
@@ -37,11 +37,13 @@ const ListItem = styled.a`
   flex-direction: column;
   justify-content: center;
   padding: 1rem;
-  border-radius: 0.2rem;
-  cursor: pointer;
-  text-decoration: none;
-  color: white;
+  border-radius: 0.2rem; */
 
+  width: 8rem;
+  height: 8rem;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
   :hover {
     background-color: #3c3c3c;
   }
