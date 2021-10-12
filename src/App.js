@@ -28,7 +28,7 @@ const MaintenanceMessage = styled.div`
 `;
 
 function App() {
-  const [inMaintenance, setMaintenance] = useState(false);
+  const [inMaintenance, setMaintenance] = useState(true);
 
   const [isAboutOpen, setAboutOpen] = useState(false);
   const [isAboutMinimized, setAboutMinimized] = useState(false);
