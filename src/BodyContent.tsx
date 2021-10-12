@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Rnd } from "react-rnd";
+import {
+  faCode,
+  faExpandAlt,
+  faFolder,
+  faMinus,
+  faTimes,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Container = styled.div`
   background-color: #3c3c3c;
@@ -8,12 +17,43 @@ const Container = styled.div`
 `;
 
 const MenuItemWindow = styled(Rnd)`
-  display: flex;
+  display: grid;
   align-items: center;
   justify-content: center;
-  border: solid 1px #ddd;
+  border: solid 1px black;
   background-color: white;
-  color: red;
+  color: black;
+`;
+
+const MenuItemTopbar = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  height: 35px;
+  margin: 0 auto;
+  background-color: #333436;
+  align-items: center;
+  color: white;
+`;
+
+const TopbarContainer = styled.div`
+  margin-right: auto;
+`;
+
+const CloseBtn = styled.button`
+  padding: 0;
+  border: none;
+  background: none;
+  color: white;
+  margin-left: 10px;
+`;
+
+const TopbarTitle = styled.div`
+  text-align: center;
+`;
+
+const TopbarTitleText = styled.span`
+  margin-left: 6px;
+  pointer-events: none;
 `;
 
 export type BodyContentProps = {
@@ -21,8 +61,11 @@ export type BodyContentProps = {
   isSkillsOpen: boolean;
   isProjectsOpen: boolean;
   toggleAboutOpen: () => void;
+  setAboutMinimized: (flag: boolean) => void;
   toggleSkillsOpen: () => void;
+  setSkillsMinimized: (flag: boolean) => void;
   toggleProjectsOpen: () => void;
+  setProjectsMinimized: (flag: boolean) => void;
 };
 
 const BodyContent: React.FC<BodyContentProps> = ({
@@ -30,30 +73,78 @@ const BodyContent: React.FC<BodyContentProps> = ({
   isSkillsOpen,
   isProjectsOpen,
   toggleAboutOpen,
+  setAboutMinimized,
   toggleSkillsOpen,
+  setSkillsMinimized,
   toggleProjectsOpen,
+  setProjectsMinimized,
 }) => {
+  const windowRef = React.useRef({
+    newZIndex: "10",
+    prevNode: null as unknown as HTMLElement,
+    prevZIndex: null as unknown as string,
+  });
+
+  const handleAboutMinimized = () => {
+    setAboutMinimized(true);
+    toggleAboutOpen();
+  };
+
+  const handleSkillsMinimized = () => {
+    setSkillsMinimized(true);
+    toggleSkillsOpen();
+  };
+
+  const handleProjectsMinimized = () => {
+    setProjectsMinimized(true);
+    toggleProjectsOpen();
+  };
+
+  const handleFocus = (_e: any, node: { node: HTMLElement }) => {
+    const ref = windowRef.current;
+
+    if (windowRef.current.prevNode) {
+      ref.prevNode.style.zIndex = ref.prevZIndex;
+    }
+
+    ref.prevNode = node.node;
+    ref.prevZIndex = ref.prevNode.style.zIndex;
+    ref.prevNode.style.zIndex = ref.newZIndex;
+  };
+
   return (
     <Container>
       {isAboutOpen ? (
         <MenuItemWindow
           default={{
-            x: -100,
-            y: -100,
-            width: 800,
-            height: 500,
+            x: 40,
+            y: -550,
+            width: 500,
+            height: 300,
           }}
+          dragHandleClassName="topbar"
+          minWidth={500}
+          minHeight={300}
+          onDragStart={handleFocus}
         >
-          <div>
-          <div>
-          <button onClick={toggleAboutOpen}>Close</button>
-          About
-          </div>
-          <div>
-            Body
-          </div>
-          </div>
-          
+          <MenuItemTopbar className="topbar">
+            <TopbarContainer>
+              <CloseBtn title="Close" onClick={toggleAboutOpen}>
+                <FontAwesomeIcon icon={faTimes} />
+              </CloseBtn>
+              <CloseBtn title="Minimize" onClick={handleAboutMinimized}>
+                <FontAwesomeIcon icon={faMinus} />
+              </CloseBtn>
+              <CloseBtn title="Expand" onClick={toggleAboutOpen}>
+                <FontAwesomeIcon icon={faExpandAlt} />
+              </CloseBtn>
+            </TopbarContainer>
+            <TopbarTitle>
+              <FontAwesomeIcon icon={faUser} />
+              <TopbarTitleText>About</TopbarTitleText>
+            </TopbarTitle>
+          </MenuItemTopbar>
+          <div>Body</div>
         </MenuItemWindow>
       ) : null}
       {isSkillsOpen ? (
@@ -61,25 +152,65 @@ const BodyContent: React.FC<BodyContentProps> = ({
           default={{
             x: 0,
             y: 0,
-            width: 200,
-            height: 200,
+            width: 500,
+            height: 300,
           }}
+          dragHandleClassName="topbar"
+          minWidth={500}
+          minHeight={300}
+          onDragStart={handleFocus}
         >
-          Skills
-          <button onClick={toggleSkillsOpen}>Close</button>
+          <MenuItemTopbar className="topbar">
+            <TopbarContainer>
+              <CloseBtn title="Close" onClick={toggleSkillsOpen}>
+                <FontAwesomeIcon icon={faTimes} />
+              </CloseBtn>
+              <CloseBtn title="Minimize" onClick={handleSkillsMinimized}>
+                <FontAwesomeIcon icon={faMinus} />
+              </CloseBtn>
+              <CloseBtn title="Expand" onClick={toggleSkillsOpen}>
+                <FontAwesomeIcon icon={faExpandAlt} />
+              </CloseBtn>
+            </TopbarContainer>
+            <TopbarTitle>
+              <FontAwesomeIcon icon={faCode} />
+              <TopbarTitleText>Skills</TopbarTitleText>
+            </TopbarTitle>
+          </MenuItemTopbar>
+          <div>Body</div>
         </MenuItemWindow>
       ) : null}
       {isProjectsOpen ? (
         <MenuItemWindow
           default={{
             x: 0,
-            y: 0,
-            width: 200,
-            height: 200,
+            y: -200,
+            width: 500,
+            height: 300,
           }}
+          dragHandleClassName="topbar"
+          minWidth={500}
+          minHeight={300}
+          onDragStart={handleFocus}
         >
-          Projects
-          <button onClick={toggleProjectsOpen}>Close</button>
+          <MenuItemTopbar title="Close" className="topbar">
+            <TopbarContainer>
+              <CloseBtn onClick={toggleProjectsOpen}>
+                <FontAwesomeIcon icon={faTimes} />
+              </CloseBtn>
+              <CloseBtn title="Minimize" onClick={handleProjectsMinimized}>
+                <FontAwesomeIcon icon={faMinus} />
+              </CloseBtn>
+              <CloseBtn title="Expand" onClick={toggleProjectsOpen}>
+                <FontAwesomeIcon icon={faExpandAlt} />
+              </CloseBtn>
+            </TopbarContainer>
+            <TopbarTitle>
+              <FontAwesomeIcon icon={faFolder} />
+              <TopbarTitleText>Projects</TopbarTitleText>
+            </TopbarTitle>
+          </MenuItemTopbar>
+          <div>Body</div>
         </MenuItemWindow>
       ) : null}
     </Container>

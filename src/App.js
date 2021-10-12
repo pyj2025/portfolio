@@ -28,11 +28,14 @@ const MaintenanceMessage = styled.div`
 `;
 
 function App() {
-  const [inMaintenance, setMaintenance] = useState(true);
+  const [inMaintenance, setMaintenance] = useState(false);
 
   const [isAboutOpen, setAboutOpen] = useState(false);
+  const [isAboutMinimized, setAboutMinimized] = useState(false);
   const [isSkillsOpen, setSkillsOpen] = useState(false);
+  const [isSkillsMinimized, setSkillsMinimized] = useState(false);
   const [isProjectsOpen, setProjectsOpen] = useState(false);
+  const [isProjectsMinimized, setProjectsMinimized] = useState(false);
 
   const toggleAboutOpen = () => {
     setAboutOpen((state) => !state);
@@ -57,6 +60,7 @@ function App() {
           <HeaderBar />
           <BodyContainer>
             <MenuContainer
+              isProjectsOpen={isProjectsOpen}
               toggleAboutOpen={toggleAboutOpen}
               toggleSkillsOpen={toggleSkillsOpen}
               toggleProjectsOpen={toggleProjectsOpen}
@@ -66,11 +70,24 @@ function App() {
               isSkillsOpen={isSkillsOpen}
               isProjectsOpen={isProjectsOpen}
               toggleAboutOpen={toggleAboutOpen}
+              setAboutMinimized={setAboutMinimized}
               toggleSkillsOpen={toggleSkillsOpen}
+              setSkillsMinimized={setSkillsMinimized}
               toggleProjectsOpen={toggleProjectsOpen}
+              setProjectsMinimized={setProjectsMinimized}
             />
           </BodyContainer>
-          <FooterBar />
+          <FooterBar
+            isAboutMinimized={isAboutMinimized}
+            isSkillsMinimized={isSkillsMinimized}
+            isProjectsMinimized={isProjectsMinimized}
+            toggleAboutOpen={toggleAboutOpen}
+            setAboutMinimized={setAboutMinimized}
+            toggleSkillsOpen={toggleSkillsOpen}
+            setSkillsMinimized={setSkillsMinimized}
+            toggleProjectsOpen={toggleProjectsOpen}
+            setProjectsMinimized={setProjectsMinimized}
+          />
         </>
       )}
     </Wrapper>
