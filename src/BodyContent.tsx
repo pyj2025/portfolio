@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Rnd } from "react-rnd";
 import {
@@ -20,16 +20,19 @@ const MenuItemWindow = styled(Rnd)`
   display: grid;
   align-items: center;
   justify-content: center;
-  border: solid 1px #ddd;
-  background-color: #1e232a;
-  color: white;
+  border: solid 1px black;
+  background-color: white;
+  color: black;
 `;
 
 const MenuItemTopbar = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  height: 35px;
   margin: 0 auto;
   background-color: #333436;
+  align-items: center;
+  color: white;
 `;
 
 const TopbarContainer = styled.div`
@@ -46,6 +49,11 @@ const CloseBtn = styled.button`
 
 const TopbarTitle = styled.div`
   text-align: center;
+`;
+
+const TopbarTitleText = styled.span`
+  margin-left: 6px;
+  pointer-events: none;
 `;
 
 export type BodyContentProps = {
@@ -71,6 +79,12 @@ const BodyContent: React.FC<BodyContentProps> = ({
   toggleProjectsOpen,
   setProjectsMinimized,
 }) => {
+  const windowRef = React.useRef({
+    newZIndex: "10",
+    prevNode: null as unknown as HTMLElement,
+    prevZIndex: null as unknown as string,
+  });
+
   const handleAboutMinimized = () => {
     setAboutMinimized(true);
     toggleAboutOpen();
@@ -86,34 +100,48 @@ const BodyContent: React.FC<BodyContentProps> = ({
     toggleProjectsOpen();
   };
 
+  const handleFocus = (_e: any, node: { node: HTMLElement }) => {
+    const ref = windowRef.current;
+
+    if (windowRef.current.prevNode) {
+      ref.prevNode.style.zIndex = ref.prevZIndex;
+    }
+
+    ref.prevNode = node.node;
+    ref.prevZIndex = ref.prevNode.style.zIndex;
+    ref.prevNode.style.zIndex = ref.newZIndex;
+  };
+
   return (
     <Container>
       {isAboutOpen ? (
         <MenuItemWindow
           default={{
-            x: -100,
-            y: -100,
+            x: 40,
+            y: -550,
             width: 500,
             height: 300,
           }}
+          dragHandleClassName="topbar"
           minWidth={500}
           minHeight={300}
+          onDragStart={handleFocus}
         >
-          <MenuItemTopbar>
+          <MenuItemTopbar className="topbar">
             <TopbarContainer>
-              <CloseBtn onClick={toggleAboutOpen}>
+              <CloseBtn title="Close" onClick={toggleAboutOpen}>
                 <FontAwesomeIcon icon={faTimes} />
               </CloseBtn>
-              <CloseBtn onClick={handleAboutMinimized}>
+              <CloseBtn title="Minimize" onClick={handleAboutMinimized}>
                 <FontAwesomeIcon icon={faMinus} />
               </CloseBtn>
-              <CloseBtn onClick={toggleAboutOpen}>
+              <CloseBtn title="Expand" onClick={toggleAboutOpen}>
                 <FontAwesomeIcon icon={faExpandAlt} />
               </CloseBtn>
             </TopbarContainer>
             <TopbarTitle>
               <FontAwesomeIcon icon={faUser} />
-              About
+              <TopbarTitleText>About</TopbarTitleText>
             </TopbarTitle>
           </MenuItemTopbar>
           <div>Body</div>
@@ -127,24 +155,26 @@ const BodyContent: React.FC<BodyContentProps> = ({
             width: 500,
             height: 300,
           }}
+          dragHandleClassName="topbar"
           minWidth={500}
           minHeight={300}
+          onDragStart={handleFocus}
         >
-          <MenuItemTopbar>
+          <MenuItemTopbar className="topbar">
             <TopbarContainer>
-              <CloseBtn onClick={toggleSkillsOpen}>
+              <CloseBtn title="Close" onClick={toggleSkillsOpen}>
                 <FontAwesomeIcon icon={faTimes} />
               </CloseBtn>
-              <CloseBtn onClick={handleSkillsMinimized}>
+              <CloseBtn title="Minimize" onClick={handleSkillsMinimized}>
                 <FontAwesomeIcon icon={faMinus} />
               </CloseBtn>
-              <CloseBtn onClick={toggleSkillsOpen}>
+              <CloseBtn title="Expand" onClick={toggleSkillsOpen}>
                 <FontAwesomeIcon icon={faExpandAlt} />
               </CloseBtn>
             </TopbarContainer>
             <TopbarTitle>
               <FontAwesomeIcon icon={faCode} />
-              Skills
+              <TopbarTitleText>Skills</TopbarTitleText>
             </TopbarTitle>
           </MenuItemTopbar>
           <div>Body</div>
@@ -154,28 +184,30 @@ const BodyContent: React.FC<BodyContentProps> = ({
         <MenuItemWindow
           default={{
             x: 0,
-            y: 0,
+            y: -200,
             width: 500,
             height: 300,
           }}
+          dragHandleClassName="topbar"
           minWidth={500}
           minHeight={300}
+          onDragStart={handleFocus}
         >
-          <MenuItemTopbar>
+          <MenuItemTopbar title="Close" className="topbar">
             <TopbarContainer>
               <CloseBtn onClick={toggleProjectsOpen}>
                 <FontAwesomeIcon icon={faTimes} />
               </CloseBtn>
-              <CloseBtn onClick={handleProjectsMinimized}>
+              <CloseBtn title="Minimize" onClick={handleProjectsMinimized}>
                 <FontAwesomeIcon icon={faMinus} />
               </CloseBtn>
-              <CloseBtn onClick={toggleProjectsOpen}>
+              <CloseBtn title="Expand" onClick={toggleProjectsOpen}>
                 <FontAwesomeIcon icon={faExpandAlt} />
               </CloseBtn>
             </TopbarContainer>
             <TopbarTitle>
               <FontAwesomeIcon icon={faFolder} />
-              Projects
+              <TopbarTitleText>Projects</TopbarTitleText>
             </TopbarTitle>
           </MenuItemTopbar>
           <div>Body</div>
