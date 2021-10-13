@@ -2,11 +2,15 @@ import React from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: center;
+  align-items: center;
   background-color: #3c3c3c;
   color: white;
 `;
 
-function HeaderBar() {
+function TopBar() {
   return (
     <Container>
       <span>Joon Park</span>
@@ -14,4 +18,4 @@ function HeaderBar() {
   );
 }
 
-export default HeaderBar;
+export default TopBar;

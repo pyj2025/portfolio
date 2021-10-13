@@ -20,7 +20,8 @@ const MenuItemWindow = styled(Rnd)`
   display: grid;
   align-items: center;
   justify-content: center;
-  border: solid 1px black;
+  border: solid 1px #3c3c3c;
+  box-shadow: 1px 1px #333333;
   background-color: white;
   color: black;
 `;
@@ -150,8 +151,8 @@ const BodyContent: React.FC<BodyContentProps> = ({
       {isSkillsOpen ? (
         <MenuItemWindow
           default={{
-            x: 0,
-            y: 0,
+            x: 100,
+            y: -600,
             width: 500,
             height: 300,
           }}

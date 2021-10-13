@@ -9,41 +9,43 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import styled from "styled-components";
+import TopBar from "./TopBar";
 
 const SidebarContainer = styled.div`
-  height: 100vh;
-  width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   justify-content: center;
   align-items: center;
+  height: 100vh;
   background-color: #333333;
   color: white;
 `;
 
 const MenuWrapper = styled.div`
-  display: flex;
-  position: relative;
-  flex-wrap: wrap;
-  flex-shrink: 1;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   justify-content: center;
   align-items: center;
-  overflow-y: auto;
+  border: solid 1px #3c3c3c;
+  box-shadow: 1px 1px #333333;
+  border-radius: 0.2rem;
 `;
 
 const ListItem = styled.a`
+  /* font-size: 1rem; */
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-size: 1.5em;
   color: white;
-  width: 8rem;
-  height: 8rem;
   margin: 0 auto;
   box-sizing: border-box;
   transition: background-color 0.2s;
   border-radius: 0.2rem;
-  padding: 1rem;
+  padding: 1.5rem;
 
   text-decoration: none;
   cursor: pointer;
@@ -67,34 +69,39 @@ const MenuContainer: React.FC<MenuContainerProps> = ({
   toggleProjectsOpen,
 }) => {
   return (
-    <SidebarContainer>
-      <MenuWrapper>
-        <ListItem onClick={toggleAboutOpen}>
-          <FontAwesomeIcon icon={faUser} />
-          About
-        </ListItem>
-        <ListItem onClick={toggleSkillsOpen}>
-          <FontAwesomeIcon icon={faCode} />
-          Skills
-        </ListItem>
-        <ListItem onClick={toggleProjectsOpen}>
-          <FontAwesomeIcon icon={isProjectsOpen ? faFolderOpen : faFolder} />
-          Projects
-        </ListItem>
-        <ListItem onClick={toggleProjectsOpen}>
-          <FontAwesomeIcon icon={faFile} />
-          Resume
-        </ListItem>
-        <ListItem href="https://github.com/pyj2025">
-          <FontAwesomeIcon icon={faGithub} />
-          Github
-        </ListItem>
-        <ListItem href="https://www.linkedin.com/in/devjoon/">
-          <FontAwesomeIcon icon={faLinkedin} />
-          Linkedin
-        </ListItem>
-      </MenuWrapper>
-    </SidebarContainer>
+    <>
+      <TopBar />
+      <SidebarContainer>
+        <div></div>
+        <MenuWrapper>
+          <ListItem onClick={toggleAboutOpen}>
+            <FontAwesomeIcon icon={faUser} />
+            About
+          </ListItem>
+          <ListItem onClick={toggleSkillsOpen}>
+            <FontAwesomeIcon icon={faCode} />
+            Skills
+          </ListItem>
+          <ListItem onClick={toggleProjectsOpen}>
+            <FontAwesomeIcon icon={isProjectsOpen ? faFolderOpen : faFolder} />
+            Projects
+          </ListItem>
+          <ListItem onClick={toggleProjectsOpen}>
+            <FontAwesomeIcon icon={faFile} />
+            Resume
+          </ListItem>
+          <ListItem href="https://github.com/pyj2025">
+            <FontAwesomeIcon icon={faGithub} />
+            Github
+          </ListItem>
+          <ListItem href="https://www.linkedin.com/in/devjoon/">
+            <FontAwesomeIcon icon={faLinkedin} />
+            Linkedin
+          </ListItem>
+        </MenuWrapper>
+        <div></div>
+      </SidebarContainer>
+    </>
   );
 };
 
