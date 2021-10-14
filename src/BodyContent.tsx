@@ -194,9 +194,9 @@ const BodyContent: React.FC<BodyContentProps> = ({
           minHeight={300}
           onDragStart={handleFocus}
         >
-          <MenuItemTopbar title="Close" className="topbar">
+          <MenuItemTopbar className="topbar">
             <TopbarContainer>
-              <CloseBtn onClick={toggleProjectsOpen}>
+              <CloseBtn title="Close" onClick={toggleProjectsOpen}>
                 <FontAwesomeIcon icon={faTimes} />
               </CloseBtn>
               <CloseBtn title="Minimize" onClick={handleProjectsMinimized}>

@@ -5,6 +5,7 @@ import {
   faFolderOpen,
   faFolder,
   faUser,
+  faCog,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
@@ -12,19 +13,16 @@ import styled from "styled-components";
 import TopBar from "./TopBar";
 
 const SidebarContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   height: 100vh;
   background-color: #333333;
   color: white;
 `;
 
 const MenuWrapper = styled.div`
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
   justify-content: center;
   align-items: center;
   border: solid 1px #3c3c3c;
@@ -33,8 +31,6 @@ const MenuWrapper = styled.div`
 `;
 
 const ListItem = styled.a`
-  /* font-size: 1rem; */
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -46,7 +42,6 @@ const ListItem = styled.a`
   transition: background-color 0.2s;
   border-radius: 0.2rem;
   padding: 1.5rem;
-
   text-decoration: none;
   cursor: pointer;
 
@@ -72,7 +67,6 @@ const MenuContainer: React.FC<MenuContainerProps> = ({
     <>
       <TopBar />
       <SidebarContainer>
-        <div></div>
         <MenuWrapper>
           <ListItem onClick={toggleAboutOpen}>
             <FontAwesomeIcon icon={faUser} />
@@ -87,6 +81,11 @@ const MenuContainer: React.FC<MenuContainerProps> = ({
             Projects
           </ListItem>
           <ListItem onClick={toggleProjectsOpen}>
+            <FontAwesomeIcon icon={faCog} />
+            Settings
+          </ListItem>
+
+          <ListItem onClick={toggleProjectsOpen}>
             <FontAwesomeIcon icon={faFile} />
             Resume
           </ListItem>
@@ -99,7 +98,6 @@ const MenuContainer: React.FC<MenuContainerProps> = ({
             Linkedin
           </ListItem>
         </MenuWrapper>
-        <div></div>
       </SidebarContainer>
     </>
   );
