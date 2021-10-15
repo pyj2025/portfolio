@@ -84,7 +84,6 @@ const MenuContainer: React.FC<MenuContainerProps> = ({
             <FontAwesomeIcon icon={faCog} />
             Settings
           </ListItem>
-
           <ListItem onClick={toggleProjectsOpen}>
             <FontAwesomeIcon icon={faFile} />
             Resume

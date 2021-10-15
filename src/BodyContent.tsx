@@ -20,32 +20,130 @@ const MenuItemWindow = styled(Rnd)`
   display: grid;
   align-items: center;
   justify-content: center;
-  border: solid 1px #3c3c3c;
-  box-shadow: 1px 1px #333333;
+  border: 1px solid #acacac;
+  box-shadow: 0px 0px 20px #acacac;
+  border-radius: 6px;
   background-color: white;
   color: black;
 `;
 
 const MenuItemTopbar = styled.div`
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, #ebebeb, color-stop(1, #d5d5d5))
+  );
+  background: -webkit-linear-gradient(top, #ebebeb, #d5d5d5);
+  background: -moz-linear-gradient(top, #ebebeb, #d5d5d5);
+  background: -ms-linear-gradient(top, #ebebeb, #d5d5d5);
+  background: -o-linear-gradient(top, #ebebeb, #d5d5d5);
+  background: linear-gradient(top, #ebebeb, #d5d5d5);
+  color: #4d494d;
+  font-size: 11pt;
+  line-height: 20px;
+  text-align: center;
+  width: 100%;
+  height: 20px;
+  border-top: 1px solid #f3f1f3;
+  border-bottom: 1px solid #b1aeb1;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  cursor: default;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  height: 35px;
   margin: 0 auto;
-  background-color: #333436;
   align-items: center;
-  color: white;
 `;
 
 const TopbarContainer = styled.div`
+  padding-left: 8px;
+  padding-top: 3px;
+  float: left;
+  line-height: 0px;
   margin-right: auto;
+
+  :hover a {
+    visibility: visible;
+  }
 `;
 
-const CloseBtn = styled.button`
-  padding: 0;
-  border: none;
-  background: none;
-  color: white;
-  margin-left: 10px;
+const TopbarBtn = styled.div`
+  background: #ff5c5c;
+  font-size: 9pt;
+  width: 11px;
+  height: 11px;
+  border: 1px solid #e33e41;
+  border-radius: 50%;
+  display: inline-block;
+
+  :active {
+    background: #c14645;
+    border: 1px solid #b03537;
+  }
+`;
+
+const CloseBtn = styled.a`
+  color: #820005;
+  visibility: hidden;
+  cursor: default;
+  line-height: 9px;
+  vertical-align: 50%;
+`;
+
+const Minimize = styled.div`
+  background: #ffbd4c;
+  font-size: 9pt;
+  line-height: 11px;
+  margin-left: 4px;
+  width: 11px;
+  height: 11px;
+  border: 1px solid #e09e3e;
+  border-radius: 50%;
+  display: inline-block;
+
+  :active {
+    background: #c08e38;
+    border: 1px solid #af7c33;
+  }
+`;
+
+const Minimizebutton = styled.a`
+  color: #9a5518;
+  visibility: hidden;
+  cursor: default;
+  line-height: 9px;
+  vertical-align: 50%;
+`;
+
+const Expand = styled.a`
+  background: #00ca56;
+  font-size: 9pt;
+  line-height: 11px;
+  margin-left: 6px;
+  width: 11px;
+  height: 11px;
+  border: 1px solid #14ae46;
+  border-radius: 50%;
+  display: inline-block;
+
+  :active {
+    background: #029740;
+    border: 1px solid #128435;
+  }
+`;
+
+const Expandbutton = styled.a`
+  color: #006519;
+  visibility: hidden;
+  cursor: default;
+  line-height: 9px;
+  vertical-align: 50%;
 `;
 
 const TopbarTitle = styled.div`
@@ -130,15 +228,21 @@ const BodyContent: React.FC<BodyContentProps> = ({
         >
           <MenuItemTopbar className="topbar">
             <TopbarContainer>
-              <CloseBtn title="Close" onClick={toggleAboutOpen}>
-                <FontAwesomeIcon icon={faTimes} />
-              </CloseBtn>
-              <CloseBtn title="Minimize" onClick={handleAboutMinimized}>
-                <FontAwesomeIcon icon={faMinus} />
-              </CloseBtn>
-              <CloseBtn title="Expand" onClick={toggleAboutOpen}>
-                <FontAwesomeIcon icon={faExpandAlt} />
-              </CloseBtn>
+              <TopbarBtn>
+                <CloseBtn title="Close" onClick={toggleAboutOpen}>
+                  <FontAwesomeIcon icon={faTimes} />
+                </CloseBtn>
+              </TopbarBtn>
+              <Minimize>
+                <Minimizebutton title="Minimize" onClick={handleAboutMinimized}>
+                  <FontAwesomeIcon icon={faMinus} />
+                </Minimizebutton>
+              </Minimize>
+              <Expand>
+                <Expandbutton title="Expand" onClick={toggleAboutOpen}>
+                  <FontAwesomeIcon icon={faExpandAlt} />
+                </Expandbutton>
+              </Expand>
             </TopbarContainer>
             <TopbarTitle>
               <FontAwesomeIcon icon={faUser} />
