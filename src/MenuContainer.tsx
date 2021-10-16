@@ -6,6 +6,7 @@ import {
   faFolder,
   faUser,
   faCog,
+  faEnvelope,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
@@ -95,6 +96,10 @@ const MenuContainer: React.FC<MenuContainerProps> = ({
           <ListItem href="https://www.linkedin.com/in/devjoon/">
             <FontAwesomeIcon icon={faLinkedin} />
             Linkedin
+          </ListItem>
+          <ListItem onClick={toggleProjectsOpen}>
+            <FontAwesomeIcon icon={faEnvelope} />
+            Email
           </ListItem>
         </MenuWrapper>
       </SidebarContainer>

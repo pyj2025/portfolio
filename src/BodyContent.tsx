@@ -21,7 +21,7 @@ const MenuItemWindow = styled(Rnd)`
   align-items: center;
   justify-content: center;
   border: 1px solid #acacac;
-  box-shadow: 0px 0px 20px #acacac;
+  box-shadow: 0px 0px 8px #acacac;
   border-radius: 6px;
   background-color: white;
   color: black;
@@ -47,8 +47,8 @@ const MenuItemTopbar = styled.div`
   height: 20px;
   border-top: 1px solid #f3f1f3;
   border-bottom: 1px solid #b1aeb1;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -67,6 +67,7 @@ const TopbarContainer = styled.div`
   float: left;
   line-height: 0px;
   margin-right: auto;
+  align-items: center;
 
   :hover a {
     visibility: visible;
