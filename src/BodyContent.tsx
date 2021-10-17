@@ -27,6 +27,46 @@ const MenuItemWindow = styled(Rnd)`
   color: black;
 `;
 
+const MacWindow = styled(Rnd)`
+  width: 100%;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0px 0px 8px black;
+`;
+
+const TerminalTopbar = styled.div`
+  width: 100%;
+  height: 28px;
+  background-color: rgb(51, 52, 54);
+  border-top: 1px rgb(70, 75, 80) solid;
+
+  padding: 0px 10px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  cursor: default;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0 auto;
+  align-items: center;
+  box-sizing: border-box;
+`;
+
+const TerminalBtn = styled.div`
+  width: 12px;
+  height: 12px;
+  margin: 8px 1px 0px 1px;
+  display: inline-block;
+
+  border-radius: 8px;
+  align-items: center;
+
+  vertical-align: middle;
+  background-color: rgb(237, 105, 94);
+`;
+
 const MenuItemTopbar = styled.div`
   background: -webkit-gradient(
     linear,
@@ -254,7 +294,7 @@ const BodyContent: React.FC<BodyContentProps> = ({
         </MenuItemWindow>
       ) : null}
       {isSkillsOpen ? (
-        <MenuItemWindow
+        <MacWindow
           default={{
             x: 100,
             y: -600,
@@ -266,25 +306,28 @@ const BodyContent: React.FC<BodyContentProps> = ({
           minHeight={300}
           onDragStart={handleFocus}
         >
-          <MenuItemTopbar className="topbar">
-            <TopbarContainer>
-              <CloseBtn title="Close" onClick={toggleSkillsOpen}>
-                <FontAwesomeIcon icon={faTimes} />
-              </CloseBtn>
-              <CloseBtn title="Minimize" onClick={handleSkillsMinimized}>
-                <FontAwesomeIcon icon={faMinus} />
-              </CloseBtn>
-              <CloseBtn title="Expand" onClick={toggleSkillsOpen}>
-                <FontAwesomeIcon icon={faExpandAlt} />
-              </CloseBtn>
-            </TopbarContainer>
+          <TerminalTopbar className="topbar">
+            <div>
+              <TerminalBtn
+                title="Close"
+                onClick={toggleSkillsOpen}
+              ></TerminalBtn>
+              <TerminalBtn
+                title="Minimize"
+                onClick={handleSkillsMinimized}
+              ></TerminalBtn>
+              <TerminalBtn
+                title="Expand"
+                onClick={toggleSkillsOpen}
+              ></TerminalBtn>
+            </div>
             <TopbarTitle>
               <FontAwesomeIcon icon={faCode} />
               <TopbarTitleText>Skills</TopbarTitleText>
             </TopbarTitle>
-          </MenuItemTopbar>
+          </TerminalTopbar>
           <div>Body</div>
-        </MenuItemWindow>
+        </MacWindow>
       ) : null}
       {isProjectsOpen ? (
         <MenuItemWindow
