@@ -1,30 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Rnd } from "react-rnd";
-import {
-  faCode,
-  faExpandAlt,
-  faFolder,
-  faMinus,
-  faTimes,
-  faUser,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCode, faFolder, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Container = styled.div`
   background-color: #3c3c3c;
   color: white;
-`;
-
-const MenuItemWindow = styled(Rnd)`
-  display: grid;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #acacac;
-  box-shadow: 0px 0px 8px #acacac;
-  border-radius: 6px;
-  background-color: white;
-  color: black;
 `;
 
 const MacWindow = styled(Rnd)`
@@ -54,137 +36,30 @@ const TerminalTopbar = styled.div`
   box-sizing: border-box;
 `;
 
-const TerminalBtn = styled.div`
+const TerminalBtnContainer = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+const TerminalBtn = styled.div<{ color: string }>`
   width: 12px;
   height: 12px;
-  margin: 8px 1px 0px 1px;
+  font-size: 9px;
+  color: #62574c;
   display: inline-block;
-
+  margin-left: ${({ color }: { color: string }) =>
+    color === "close" ? "0px" : "8px"};
   border-radius: 8px;
   align-items: center;
-
   vertical-align: middle;
-  background-color: rgb(237, 105, 94);
-`;
-
-const MenuItemTopbar = styled.div`
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    color-stop(0, #ebebeb, color-stop(1, #d5d5d5))
-  );
-  background: -webkit-linear-gradient(top, #ebebeb, #d5d5d5);
-  background: -moz-linear-gradient(top, #ebebeb, #d5d5d5);
-  background: -ms-linear-gradient(top, #ebebeb, #d5d5d5);
-  background: -o-linear-gradient(top, #ebebeb, #d5d5d5);
-  background: linear-gradient(top, #ebebeb, #d5d5d5);
-  color: #4d494d;
-  font-size: 11pt;
-  line-height: 20px;
-  text-align: center;
-  width: 100%;
-  height: 20px;
-  border-top: 1px solid #f3f1f3;
-  border-bottom: 1px solid #b1aeb1;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  cursor: default;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  margin: 0 auto;
-  align-items: center;
-`;
-
-const TopbarContainer = styled.div`
-  padding-left: 8px;
-  padding-top: 3px;
-  float: left;
-  line-height: 0px;
-  margin-right: auto;
-  align-items: center;
-
-  :hover a {
-    visibility: visible;
-  }
-`;
-
-const TopbarBtn = styled.div`
-  background: #ff5c5c;
-  font-size: 9pt;
-  width: 11px;
-  height: 11px;
-  border: 1px solid #e33e41;
-  border-radius: 50%;
-  display: inline-block;
-
-  :active {
-    background: #c14645;
-    border: 1px solid #b03537;
-  }
-`;
-
-const CloseBtn = styled.a`
-  color: #820005;
-  visibility: hidden;
-  cursor: default;
-  line-height: 9px;
-  vertical-align: 50%;
-`;
-
-const Minimize = styled.div`
-  background: #ffbd4c;
-  font-size: 9pt;
-  line-height: 11px;
-  margin-left: 4px;
-  width: 11px;
-  height: 11px;
-  border: 1px solid #e09e3e;
-  border-radius: 50%;
-  display: inline-block;
-
-  :active {
-    background: #c08e38;
-    border: 1px solid #af7c33;
-  }
-`;
-
-const Minimizebutton = styled.a`
-  color: #9a5518;
-  visibility: hidden;
-  cursor: default;
-  line-height: 9px;
-  vertical-align: 50%;
-`;
-
-const Expand = styled.a`
-  background: #00ca56;
-  font-size: 9pt;
-  line-height: 11px;
-  margin-left: 6px;
-  width: 11px;
-  height: 11px;
-  border: 1px solid #14ae46;
-  border-radius: 50%;
-  display: inline-block;
-
-  :active {
-    background: #029740;
-    border: 1px solid #128435;
-  }
-`;
-
-const Expandbutton = styled.a`
-  color: #006519;
-  visibility: hidden;
-  cursor: default;
-  line-height: 9px;
-  vertical-align: 50%;
+  background-color: ${({ color }: { color: string }) =>
+    color === "minimize"
+      ? "#F7BD45"
+      : color === "expand"
+      ? "#5FCB43"
+      : "#ee514a"};
+  cursor: pointer;
 `;
 
 const TopbarTitle = styled.div`
@@ -255,7 +130,7 @@ const BodyContent: React.FC<BodyContentProps> = ({
   return (
     <Container>
       {isAboutOpen ? (
-        <MenuItemWindow
+        <MacWindow
           default={{
             x: 40,
             y: -550,
@@ -267,31 +142,31 @@ const BodyContent: React.FC<BodyContentProps> = ({
           minHeight={300}
           onDragStart={handleFocus}
         >
-          <MenuItemTopbar className="topbar">
-            <TopbarContainer>
-              <TopbarBtn>
-                <CloseBtn title="Close" onClick={toggleAboutOpen}>
-                  <FontAwesomeIcon icon={faTimes} />
-                </CloseBtn>
-              </TopbarBtn>
-              <Minimize>
-                <Minimizebutton title="Minimize" onClick={handleAboutMinimized}>
-                  <FontAwesomeIcon icon={faMinus} />
-                </Minimizebutton>
-              </Minimize>
-              <Expand>
-                <Expandbutton title="Expand" onClick={toggleAboutOpen}>
-                  <FontAwesomeIcon icon={faExpandAlt} />
-                </Expandbutton>
-              </Expand>
-            </TopbarContainer>
+          <TerminalTopbar className="topbar">
+            <TerminalBtnContainer>
+              <TerminalBtn
+                color="close"
+                title="Close"
+                onClick={toggleAboutOpen}
+              ></TerminalBtn>
+              <TerminalBtn
+                color="minimize"
+                title="Minimize"
+                onClick={handleAboutMinimized}
+              ></TerminalBtn>
+              <TerminalBtn
+                color="expand"
+                title="Expand"
+                onClick={toggleAboutOpen}
+              ></TerminalBtn>
+            </TerminalBtnContainer>
             <TopbarTitle>
               <FontAwesomeIcon icon={faUser} />
               <TopbarTitleText>About</TopbarTitleText>
             </TopbarTitle>
-          </MenuItemTopbar>
+          </TerminalTopbar>
           <div>Body</div>
-        </MenuItemWindow>
+        </MacWindow>
       ) : null}
       {isSkillsOpen ? (
         <MacWindow
@@ -307,20 +182,23 @@ const BodyContent: React.FC<BodyContentProps> = ({
           onDragStart={handleFocus}
         >
           <TerminalTopbar className="topbar">
-            <div>
+            <TerminalBtnContainer>
               <TerminalBtn
+                color="close"
                 title="Close"
                 onClick={toggleSkillsOpen}
               ></TerminalBtn>
               <TerminalBtn
+                color="minimize"
                 title="Minimize"
                 onClick={handleSkillsMinimized}
               ></TerminalBtn>
               <TerminalBtn
+                color="expand"
                 title="Expand"
                 onClick={toggleSkillsOpen}
               ></TerminalBtn>
-            </div>
+            </TerminalBtnContainer>
             <TopbarTitle>
               <FontAwesomeIcon icon={faCode} />
               <TopbarTitleText>Skills</TopbarTitleText>
@@ -330,7 +208,7 @@ const BodyContent: React.FC<BodyContentProps> = ({
         </MacWindow>
       ) : null}
       {isProjectsOpen ? (
-        <MenuItemWindow
+        <MacWindow
           default={{
             x: 0,
             y: -200,
@@ -342,25 +220,31 @@ const BodyContent: React.FC<BodyContentProps> = ({
           minHeight={300}
           onDragStart={handleFocus}
         >
-          <MenuItemTopbar className="topbar">
-            <TopbarContainer>
-              <CloseBtn title="Close" onClick={toggleProjectsOpen}>
-                <FontAwesomeIcon icon={faTimes} />
-              </CloseBtn>
-              <CloseBtn title="Minimize" onClick={handleProjectsMinimized}>
-                <FontAwesomeIcon icon={faMinus} />
-              </CloseBtn>
-              <CloseBtn title="Expand" onClick={toggleProjectsOpen}>
-                <FontAwesomeIcon icon={faExpandAlt} />
-              </CloseBtn>
-            </TopbarContainer>
+          <TerminalTopbar className="topbar">
+            <TerminalBtnContainer>
+              <TerminalBtn
+                color="close"
+                title="Close"
+                onClick={toggleProjectsOpen}
+              ></TerminalBtn>
+              <TerminalBtn
+                color="minimize"
+                title="Minimize"
+                onClick={handleProjectsMinimized}
+              ></TerminalBtn>
+              <TerminalBtn
+                color="expand"
+                title="Expand"
+                onClick={toggleProjectsOpen}
+              ></TerminalBtn>
+            </TerminalBtnContainer>
             <TopbarTitle>
               <FontAwesomeIcon icon={faFolder} />
               <TopbarTitleText>Projects</TopbarTitleText>
             </TopbarTitle>
-          </MenuItemTopbar>
+          </TerminalTopbar>
           <div>Body</div>
-        </MenuItemWindow>
+        </MacWindow>
       ) : null}
     </Container>
   );
