@@ -28,6 +28,8 @@ const BodyContainer = styled.div`
 function App() {
   const [inMaintenance, setMaintenance] = useState(false);
 
+  const [focusedWindow, setFocusedWindow] = useState("");
+
   const [isAboutOpen, setAboutOpen] = useState(false);
   const [isAboutMinimized, setAboutMinimized] = useState(false);
   const [isSkillsOpen, setSkillsOpen] = useState(false);
@@ -37,14 +39,32 @@ function App() {
 
   const toggleAboutOpen = () => {
     setAboutOpen((state) => !state);
+
+    if (!isAboutOpen) {
+      setFocusedWindow("About");
+    } else {
+      setFocusedWindow("");
+    }
   };
 
   const toggleSkillsOpen = () => {
     setSkillsOpen((state) => !state);
+
+    if (!isSkillsOpen) {
+      setFocusedWindow("Skills");
+    } else {
+      setFocusedWindow("");
+    }
   };
 
   const toggleProjectsOpen = () => {
     setProjectsOpen((state) => !state);
+
+    if (!isProjectsOpen) {
+      setFocusedWindow("Projects");
+    } else {
+      setFocusedWindow("");
+    }
   };
 
   return (
@@ -66,12 +86,14 @@ function App() {
               isAboutOpen={isAboutOpen}
               isSkillsOpen={isSkillsOpen}
               isProjectsOpen={isProjectsOpen}
+              focusedWindow={focusedWindow}
               toggleAboutOpen={toggleAboutOpen}
               setAboutMinimized={setAboutMinimized}
               toggleSkillsOpen={toggleSkillsOpen}
               setSkillsMinimized={setSkillsMinimized}
               toggleProjectsOpen={toggleProjectsOpen}
               setProjectsMinimized={setProjectsMinimized}
+              setFocusedWindow={setFocusedWindow}
             />
           </BodyContainer>
           <FooterBar

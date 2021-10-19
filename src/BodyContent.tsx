@@ -42,10 +42,9 @@ const TerminalBtnContainer = styled.div`
   align-items: center;
 `;
 
-const TerminalBtn = styled.div<{ color: string }>`
+const TerminalBtn = styled.div<{ color: string; disabled: boolean }>`
   width: 12px;
   height: 12px;
-  font-size: 9px;
   color: #62574c;
   display: inline-block;
   margin-left: ${({ color }: { color: string }) =>
@@ -53,17 +52,27 @@ const TerminalBtn = styled.div<{ color: string }>`
   border-radius: 8px;
   align-items: center;
   vertical-align: middle;
-  background-color: ${({ color }: { color: string }) =>
-    color === "minimize"
+  background-color: ${({
+    color,
+    disabled,
+  }: {
+    color: string;
+    disabled: boolean;
+  }) =>
+    disabled
+      ? "#686B6D"
+      : color === "minimize"
       ? "#F7BD45"
       : color === "expand"
       ? "#5FCB43"
       : "#ee514a"};
-  cursor: pointer;
+  cursor: ${({ disabled }: { disabled: boolean }) =>
+    disabled ? undefined : "pointer"};
 `;
 
 const TopbarTitle = styled.div`
   text-align: center;
+  font-size: 12px;
 `;
 
 const TopbarTitleText = styled.span`
@@ -75,24 +84,28 @@ export type BodyContentProps = {
   isAboutOpen: boolean;
   isSkillsOpen: boolean;
   isProjectsOpen: boolean;
+  focusedWindow: string;
   toggleAboutOpen: () => void;
   setAboutMinimized: (flag: boolean) => void;
   toggleSkillsOpen: () => void;
   setSkillsMinimized: (flag: boolean) => void;
   toggleProjectsOpen: () => void;
   setProjectsMinimized: (flag: boolean) => void;
+  setFocusedWindow: (name: string) => void;
 };
 
 const BodyContent: React.FC<BodyContentProps> = ({
   isAboutOpen,
   isSkillsOpen,
   isProjectsOpen,
+  focusedWindow,
   toggleAboutOpen,
   setAboutMinimized,
   toggleSkillsOpen,
   setSkillsMinimized,
   toggleProjectsOpen,
   setProjectsMinimized,
+  setFocusedWindow,
 }) => {
   const windowRef = React.useRef({
     newZIndex: "10",
@@ -100,31 +113,50 @@ const BodyContent: React.FC<BodyContentProps> = ({
     prevZIndex: null as unknown as string,
   });
 
+  const handleAboutClose = () => {
+    if (focusedWindow === "About") toggleAboutOpen();
+  };
+
   const handleAboutMinimized = () => {
-    setAboutMinimized(true);
-    toggleAboutOpen();
+    if (focusedWindow === "About") {
+      setAboutMinimized(true);
+      toggleAboutOpen();
+    }
+  };
+
+  const handleSkillsClose = () => {
+    if (focusedWindow === "Skills") toggleSkillsOpen();
   };
 
   const handleSkillsMinimized = () => {
-    setSkillsMinimized(true);
-    toggleSkillsOpen();
+    if (focusedWindow === "Skills") {
+      setSkillsMinimized(true);
+      toggleSkillsOpen();
+    }
+  };
+
+  const handleProjectsClose = () => {
+    if (focusedWindow === "Projects") toggleProjectsOpen();
   };
 
   const handleProjectsMinimized = () => {
-    setProjectsMinimized(true);
-    toggleProjectsOpen();
+    if (focusedWindow === "Projects") {
+      setProjectsMinimized(true);
+      toggleProjectsOpen();
+    }
   };
 
   const handleFocus = (_e: any, node: { node: HTMLElement }) => {
     const ref = windowRef.current;
 
-    if (windowRef.current.prevNode) {
+    if (ref.prevNode) {
       ref.prevNode.style.zIndex = ref.prevZIndex;
     }
 
     ref.prevNode = node.node;
     ref.prevZIndex = ref.prevNode.style.zIndex;
     ref.prevNode.style.zIndex = ref.newZIndex;
+    setFocusedWindow(node.node.id);
   };
 
   return (
@@ -137,6 +169,7 @@ const BodyContent: React.FC<BodyContentProps> = ({
             width: 500,
             height: 300,
           }}
+          id="About"
           dragHandleClassName="topbar"
           minWidth={500}
           minHeight={300}
@@ -146,19 +179,22 @@ const BodyContent: React.FC<BodyContentProps> = ({
             <TerminalBtnContainer>
               <TerminalBtn
                 color="close"
-                title="Close"
-                onClick={toggleAboutOpen}
-              ></TerminalBtn>
+                title={focusedWindow === "About" ? "Close" : undefined}
+                onClick={handleAboutClose}
+                disabled={focusedWindow !== "About"}
+              />
               <TerminalBtn
                 color="minimize"
-                title="Minimize"
+                title={focusedWindow === "About" ? "Minimize" : undefined}
                 onClick={handleAboutMinimized}
-              ></TerminalBtn>
+                disabled={focusedWindow !== "About"}
+              />
               <TerminalBtn
                 color="expand"
-                title="Expand"
+                title={focusedWindow === "About" ? "Expand" : undefined}
                 onClick={toggleAboutOpen}
-              ></TerminalBtn>
+                disabled={focusedWindow !== "About"}
+              />
             </TerminalBtnContainer>
             <TopbarTitle>
               <FontAwesomeIcon icon={faUser} />
@@ -176,6 +212,7 @@ const BodyContent: React.FC<BodyContentProps> = ({
             width: 500,
             height: 300,
           }}
+          id="Skills"
           dragHandleClassName="topbar"
           minWidth={500}
           minHeight={300}
@@ -185,19 +222,22 @@ const BodyContent: React.FC<BodyContentProps> = ({
             <TerminalBtnContainer>
               <TerminalBtn
                 color="close"
-                title="Close"
-                onClick={toggleSkillsOpen}
-              ></TerminalBtn>
+                title={focusedWindow === "Skills" ? "Close" : undefined}
+                onClick={handleSkillsClose}
+                disabled={focusedWindow !== "Skills"}
+              />
               <TerminalBtn
                 color="minimize"
-                title="Minimize"
+                title={focusedWindow === "Skills" ? "Minimize" : undefined}
                 onClick={handleSkillsMinimized}
-              ></TerminalBtn>
+                disabled={focusedWindow !== "Skills"}
+              />
               <TerminalBtn
                 color="expand"
-                title="Expand"
+                title={focusedWindow === "Skills" ? "Expand" : undefined}
                 onClick={toggleSkillsOpen}
-              ></TerminalBtn>
+                disabled={focusedWindow !== "Skills"}
+              />
             </TerminalBtnContainer>
             <TopbarTitle>
               <FontAwesomeIcon icon={faCode} />
@@ -215,6 +255,7 @@ const BodyContent: React.FC<BodyContentProps> = ({
             width: 500,
             height: 300,
           }}
+          id="Projects"
           dragHandleClassName="topbar"
           minWidth={500}
           minHeight={300}
@@ -224,19 +265,22 @@ const BodyContent: React.FC<BodyContentProps> = ({
             <TerminalBtnContainer>
               <TerminalBtn
                 color="close"
-                title="Close"
-                onClick={toggleProjectsOpen}
-              ></TerminalBtn>
+                title={focusedWindow === "Projects" ? "Close" : undefined}
+                onClick={handleProjectsClose}
+                disabled={focusedWindow !== "Projects"}
+              />
               <TerminalBtn
                 color="minimize"
-                title="Minimize"
+                title={focusedWindow === "Projects" ? "Minimize" : undefined}
                 onClick={handleProjectsMinimized}
-              ></TerminalBtn>
+                disabled={focusedWindow !== "Projects"}
+              />
               <TerminalBtn
                 color="expand"
-                title="Expand"
+                title={focusedWindow === "Projects" ? "Expand" : undefined}
                 onClick={toggleProjectsOpen}
-              ></TerminalBtn>
+                disabled={focusedWindow !== "Projects"}
+              />
             </TerminalBtnContainer>
             <TopbarTitle>
               <FontAwesomeIcon icon={faFolder} />
