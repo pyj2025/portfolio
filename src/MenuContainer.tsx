@@ -17,6 +17,7 @@ const SidebarContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  width: 100vw;
   height: 100vh;
   background-color: #333333;
   color: white;

@@ -8,6 +8,7 @@ const Container = styled.div`
   align-items: center;
   background-color: #3c3c3c;
   color: white;
+  height: 20px;
 `;
 
 function TopBar() {
