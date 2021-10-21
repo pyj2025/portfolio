@@ -2,7 +2,7 @@ import MenuContainer from "./MenuContainer";
 import FooterBar from "./FooterBar";
 import BodyContent from "./BodyContent";
 import styled from "styled-components";
-import React, { useState } from "react";
+import { useState } from "react";
 
 const Wrapper = styled.div`
   background-color: black;
@@ -36,6 +36,8 @@ function App() {
   const [isSkillsMinimized, setSkillsMinimized] = useState(false);
   const [isProjectsOpen, setProjectsOpen] = useState(false);
   const [isProjectsMinimized, setProjectsMinimized] = useState(false);
+  const [isEmailOpen, setEmailOpen] = useState(false);
+  const [isEmailMinimized, setEmailMinimized] = useState(false);
 
   const toggleAboutOpen = () => {
     setAboutOpen((state) => !state);
@@ -67,6 +69,16 @@ function App() {
     }
   };
 
+  const toggleEmailOpen = () => {
+    setEmailOpen((state) => !state);
+
+    if (!isEmailOpen) {
+      setFocusedWindow("Email");
+    } else {
+      setFocusedWindow("");
+    }
+  };
+
   return (
     <Wrapper>
       {inMaintenance ? (
@@ -77,22 +89,24 @@ function App() {
         <>
           <BodyContainer>
             <MenuContainer
-              isProjectsOpen={isProjectsOpen}
               toggleAboutOpen={toggleAboutOpen}
               toggleSkillsOpen={toggleSkillsOpen}
               toggleProjectsOpen={toggleProjectsOpen}
+              toggleEmailOpen={toggleEmailOpen}
             />
             <BodyContent
+              focusedWindow={focusedWindow}
               isAboutOpen={isAboutOpen}
               isSkillsOpen={isSkillsOpen}
               isProjectsOpen={isProjectsOpen}
-              focusedWindow={focusedWindow}
               toggleAboutOpen={toggleAboutOpen}
               setAboutMinimized={setAboutMinimized}
               toggleSkillsOpen={toggleSkillsOpen}
               setSkillsMinimized={setSkillsMinimized}
               toggleProjectsOpen={toggleProjectsOpen}
               setProjectsMinimized={setProjectsMinimized}
+              toggleEmailOpen={toggleEmailOpen}
+              setEmailMinimized={setEmailMinimized}
               setFocusedWindow={setFocusedWindow}
             />
           </BodyContainer>
@@ -100,12 +114,15 @@ function App() {
             isAboutMinimized={isAboutMinimized}
             isSkillsMinimized={isSkillsMinimized}
             isProjectsMinimized={isProjectsMinimized}
+            isEmailMinimized={isEmailMinimized}
             toggleAboutOpen={toggleAboutOpen}
             setAboutMinimized={setAboutMinimized}
             toggleSkillsOpen={toggleSkillsOpen}
             setSkillsMinimized={setSkillsMinimized}
             toggleProjectsOpen={toggleProjectsOpen}
             setProjectsMinimized={setProjectsMinimized}
+            toggleEmailOpen={toggleEmailOpen}
+            setEmailMinimized={setEmailMinimized}
           />
         </>
       )}

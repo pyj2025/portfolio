@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { Rnd } from "react-rnd";
-import { faCode, faFolder, faUser } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Container = styled.div`
   background-color: #3c3c3c;
@@ -70,9 +68,17 @@ const TerminalBtn = styled.div<{ color: string; disabled: boolean }>`
     disabled ? undefined : "pointer"};
 `;
 
+const TopbarTitleImage = styled.img`
+  width: 16px;
+  height: 16px;
+`;
+
 const TopbarTitle = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  font-size: 12px;
+  font-size: 14px;
 `;
 
 const TopbarTitleText = styled.span`
@@ -81,10 +87,10 @@ const TopbarTitleText = styled.span`
 `;
 
 export type BodyContentProps = {
+  focusedWindow: string;
   isAboutOpen: boolean;
   isSkillsOpen: boolean;
   isProjectsOpen: boolean;
-  focusedWindow: string;
   toggleAboutOpen: () => void;
   setAboutMinimized: (flag: boolean) => void;
   toggleSkillsOpen: () => void;
@@ -95,10 +101,10 @@ export type BodyContentProps = {
 };
 
 const BodyContent: React.FC<BodyContentProps> = ({
+  focusedWindow,
   isAboutOpen,
   isSkillsOpen,
   isProjectsOpen,
-  focusedWindow,
   toggleAboutOpen,
   setAboutMinimized,
   toggleSkillsOpen,
@@ -197,7 +203,10 @@ const BodyContent: React.FC<BodyContentProps> = ({
               />
             </TerminalBtnContainer>
             <TopbarTitle>
-              <FontAwesomeIcon icon={faUser} />
+              <TopbarTitleImage
+                src="https://img.icons8.com/color/48/000000/mac-logo.png"
+                alt="About"
+              />
               <TopbarTitleText>About</TopbarTitleText>
             </TopbarTitle>
           </TerminalTopbar>
@@ -240,7 +249,10 @@ const BodyContent: React.FC<BodyContentProps> = ({
               />
             </TerminalBtnContainer>
             <TopbarTitle>
-              <FontAwesomeIcon icon={faCode} />
+              <TopbarTitleImage
+                src="https://img.icons8.com/color/48/000000/visual-studio-code-2019.png"
+                alt="Skills"
+              />
               <TopbarTitleText>Skills</TopbarTitleText>
             </TopbarTitle>
           </TerminalTopbar>
@@ -283,7 +295,10 @@ const BodyContent: React.FC<BodyContentProps> = ({
               />
             </TerminalBtnContainer>
             <TopbarTitle>
-              <FontAwesomeIcon icon={faFolder} />
+              <TopbarTitleImage
+                src="https://img.icons8.com/color/48/000000/mac-folder.png"
+                alt="Projects"
+              />
               <TopbarTitleText>Projects</TopbarTitleText>
             </TopbarTitle>
           </TerminalTopbar>

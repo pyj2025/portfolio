@@ -1,14 +1,3 @@
-import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import {
-  faCode,
-  faFile,
-  faFolderOpen,
-  faFolder,
-  faUser,
-  faCog,
-  faEnvelope,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import styled from "styled-components";
 import TopBar from "./TopBar";
@@ -53,54 +42,73 @@ const ListItem = styled.a`
 `;
 
 export type MenuContainerProps = {
-  isProjectsOpen: boolean;
   toggleAboutOpen: () => void;
   toggleSkillsOpen: () => void;
   toggleProjectsOpen: () => void;
+  toggleEmailOpen: () => void;
 };
 
 const MenuContainer: React.FC<MenuContainerProps> = ({
-  isProjectsOpen,
   toggleAboutOpen,
   toggleSkillsOpen,
   toggleProjectsOpen,
+  toggleEmailOpen,
 }) => {
   return (
     <>
       <TopBar />
       <SidebarContainer>
         <MenuWrapper>
-          <ListItem onClick={toggleAboutOpen}>
-            <FontAwesomeIcon icon={faUser} />
-            About
+          <ListItem title="About" onClick={toggleAboutOpen}>
+            <img
+              src="https://img.icons8.com/color/48/000000/mac-logo.png"
+              alt="About"
+            />
           </ListItem>
-          <ListItem onClick={toggleSkillsOpen}>
-            <FontAwesomeIcon icon={faCode} />
-            Skills
+          <ListItem title="Skills" onClick={toggleSkillsOpen}>
+            <img
+              src="https://img.icons8.com/color/48/000000/visual-studio-code-2019.png"
+              alt="Skills"
+            />
           </ListItem>
-          <ListItem onClick={toggleProjectsOpen}>
-            <FontAwesomeIcon icon={isProjectsOpen ? faFolderOpen : faFolder} />
-            Projects
+          <ListItem title="Projects" onClick={toggleProjectsOpen}>
+            <img
+              src="https://img.icons8.com/color/48/000000/mac-folder.png"
+              alt="Projects"
+            />
           </ListItem>
-          <ListItem onClick={toggleProjectsOpen}>
-            <FontAwesomeIcon icon={faCog} />
-            Settings
+          <ListItem title="Settings" onClick={toggleProjectsOpen}>
+            <img
+              src="https://img.icons8.com/color/48/000000/apple-settings.png"
+              alt="Settings"
+            />
           </ListItem>
-          <ListItem onClick={toggleProjectsOpen}>
-            <FontAwesomeIcon icon={faFile} />
-            Resume
+          <ListItem title="Resume" onClick={toggleProjectsOpen}>
+            <img
+              src="https://img.icons8.com/color/48/000000/google-docs--v1.png"
+              alt="Resume"
+            />
           </ListItem>
-          <ListItem href="https://github.com/pyj2025">
-            <FontAwesomeIcon icon={faGithub} />
-            Github
+          <ListItem title="Github" href="https://github.com/pyj2025">
+            <img
+              src="https://img.icons8.com/material-outlined/48/000000/github.png"
+              alt="Github"
+            />
           </ListItem>
-          <ListItem href="https://www.linkedin.com/in/devjoon/">
-            <FontAwesomeIcon icon={faLinkedin} />
-            Linkedin
+          <ListItem
+            title="Linkedin"
+            href="https://www.linkedin.com/in/devjoon/"
+          >
+            <img
+              src="https://img.icons8.com/fluency/48/000000/linkedin.png"
+              alt="Linkedin"
+            />
           </ListItem>
-          <ListItem onClick={toggleProjectsOpen}>
-            <FontAwesomeIcon icon={faEnvelope} />
-            Email
+          <ListItem title="Email" onClick={toggleEmailOpen}>
+            <img
+              src="https://img.icons8.com/color/48/000000/gmail-new.png"
+              alt="Email"
+            />
           </ListItem>
         </MenuWrapper>
       </SidebarContainer>
