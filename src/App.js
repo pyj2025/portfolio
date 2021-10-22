@@ -3,9 +3,9 @@ import FooterBar from "./FooterBar";
 import BodyContent from "./BodyContent";
 import styled from "styled-components";
 import { useState } from "react";
+import img from "./macos.jpg";
 
 const Wrapper = styled.div`
-  background-color: black;
   height: 100vh;
   width: 100vw;
 `;
@@ -19,7 +19,6 @@ const MaintenanceMessage = styled.div`
 `;
 
 const BodyContainer = styled.div`
-  background-color: #1e1e1e;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -87,7 +86,12 @@ function App() {
         </MaintenanceMessage>
       ) : (
         <>
-          <BodyContainer>
+          <BodyContainer
+            style={{
+              backgroundImage: `url(${img})`,
+              backgroundSize: "cover",
+            }}
+          >
             <MenuContainer
               toggleAboutOpen={toggleAboutOpen}
               toggleSkillsOpen={toggleSkillsOpen}
