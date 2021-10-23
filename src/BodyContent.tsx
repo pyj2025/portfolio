@@ -86,6 +86,13 @@ const TopbarTitleText = styled.span`
   pointer-events: none;
 `;
 
+type WindowSettings = {
+  width: number;
+  height: number;
+  x: number;
+  y: number;
+};
+
 export type BodyContentProps = {
   focusedWindow: string;
   isAboutOpen: boolean;
@@ -118,6 +125,13 @@ const BodyContent: React.FC<BodyContentProps> = ({
     prevNode: null as unknown as HTMLElement,
     prevZIndex: null as unknown as string,
   });
+  const [aboutSize, setAbout] = React.useState<WindowSettings>({
+    width: 500,
+    height: 300,
+    x: 40,
+    y: -600,
+  });
+  const rndRef = React.useRef<any>();
 
   const handleAboutClose = () => {
     if (focusedWindow === "About") toggleAboutOpen();
@@ -128,6 +142,13 @@ const BodyContent: React.FC<BodyContentProps> = ({
       setAboutMinimized(true);
       toggleAboutOpen();
     }
+  };
+
+  const handleAboutExpand = () => {
+    rndRef.current.updateSize({
+      width: 1000,
+      height: 500,
+    });
   };
 
   const handleSkillsClose = () => {
@@ -169,12 +190,8 @@ const BodyContent: React.FC<BodyContentProps> = ({
     <Container>
       {isAboutOpen ? (
         <MacWindow
-          default={{
-            x: 40,
-            y: -550,
-            width: 500,
-            height: 300,
-          }}
+          ref={rndRef}
+          default={aboutSize}
           id="About"
           dragHandleClassName="topbar"
           minWidth={500}
@@ -198,7 +215,7 @@ const BodyContent: React.FC<BodyContentProps> = ({
               <TerminalBtn
                 color="expand"
                 title={focusedWindow === "About" ? "Expand" : undefined}
-                onClick={toggleAboutOpen}
+                onClick={handleAboutExpand}
                 disabled={focusedWindow !== "About"}
               />
             </TerminalBtnContainer>
