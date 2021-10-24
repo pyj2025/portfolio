@@ -86,9 +86,12 @@ const TopbarTitleText = styled.span`
   pointer-events: none;
 `;
 
-type WindowSettings = {
+type WindowSizeSetting = {
   width: number;
   height: number;
+};
+
+type WindowPositionSetting = {
   x: number;
   y: number;
 };
@@ -96,10 +99,12 @@ type WindowSettings = {
 export type BodyContentProps = {
   focusedWindow: string;
   isAboutOpen: boolean;
+  isAboutExpanded: boolean;
   isSkillsOpen: boolean;
   isProjectsOpen: boolean;
   toggleAboutOpen: () => void;
   setAboutMinimized: (flag: boolean) => void;
+  toggleAboutExpanded: () => void;
   toggleSkillsOpen: () => void;
   setSkillsMinimized: (flag: boolean) => void;
   toggleProjectsOpen: () => void;
@@ -110,10 +115,12 @@ export type BodyContentProps = {
 const BodyContent: React.FC<BodyContentProps> = ({
   focusedWindow,
   isAboutOpen,
+  isAboutExpanded,
   isSkillsOpen,
   isProjectsOpen,
   toggleAboutOpen,
   setAboutMinimized,
+  toggleAboutExpanded,
   toggleSkillsOpen,
   setSkillsMinimized,
   toggleProjectsOpen,
@@ -125,13 +132,16 @@ const BodyContent: React.FC<BodyContentProps> = ({
     prevNode: null as unknown as HTMLElement,
     prevZIndex: null as unknown as string,
   });
-  const [aboutSize, setAbout] = React.useState<WindowSettings>({
+  const [aboutSize, setAboutSize] = React.useState<WindowSizeSetting>({
     width: 500,
     height: 300,
-    x: 40,
-    y: -600,
   });
-  const rndRef = React.useRef<any>();
+  const [aboutPosition, setAboutPosition] =
+    React.useState<WindowPositionSetting>({
+      x: 40,
+      y: -600,
+    });
+  const aboutRef = React.useRef<any>();
 
   const handleAboutClose = () => {
     if (focusedWindow === "About") toggleAboutOpen();
@@ -145,10 +155,24 @@ const BodyContent: React.FC<BodyContentProps> = ({
   };
 
   const handleAboutExpand = () => {
-    rndRef.current.updateSize({
-      width: 1000,
-      height: 500,
-    });
+    if (focusedWindow === "About") {
+      if (isAboutExpanded) {
+        aboutRef.current.updateSize({
+          width: 500,
+          height: 300,
+        });
+      } else {
+        aboutRef.current.updatePosition({
+          x: 0,
+          y: 20,
+        });
+        aboutRef.current.updateSize({
+          width: 1000,
+          height: 600,
+        });
+      }
+      toggleAboutExpanded();
+    }
   };
 
   const handleSkillsClose = () => {
@@ -190,8 +214,13 @@ const BodyContent: React.FC<BodyContentProps> = ({
     <Container>
       {isAboutOpen ? (
         <MacWindow
-          ref={rndRef}
-          default={aboutSize}
+          ref={aboutRef}
+          default={{
+            width: aboutSize.width,
+            height: aboutSize.height,
+            x: aboutPosition.x,
+            y: aboutPosition.y,
+          }}
           id="About"
           dragHandleClassName="topbar"
           minWidth={500}

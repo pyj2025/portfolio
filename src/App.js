@@ -30,6 +30,8 @@ function App() {
 
   const [isAboutOpen, setAboutOpen] = useState(false);
   const [isAboutMinimized, setAboutMinimized] = useState(false);
+  const [isAboutExpanded, setAboutExpanded] = useState(false);
+
   const [isSkillsOpen, setSkillsOpen] = useState(false);
   const [isSkillsMinimized, setSkillsMinimized] = useState(false);
   const [isProjectsOpen, setProjectsOpen] = useState(false);
@@ -45,6 +47,10 @@ function App() {
     } else {
       setFocusedWindow("");
     }
+  };
+
+  const toggleAboutExpanded = () => {
+    setAboutExpanded((state) => !state);
   };
 
   const toggleSkillsOpen = () => {
@@ -100,10 +106,12 @@ function App() {
             <BodyContent
               focusedWindow={focusedWindow}
               isAboutOpen={isAboutOpen}
+              isAboutExpanded={isAboutExpanded}
               isSkillsOpen={isSkillsOpen}
               isProjectsOpen={isProjectsOpen}
               toggleAboutOpen={toggleAboutOpen}
               setAboutMinimized={setAboutMinimized}
+              toggleAboutExpanded={toggleAboutExpanded}
               toggleSkillsOpen={toggleSkillsOpen}
               setSkillsMinimized={setSkillsMinimized}
               toggleProjectsOpen={toggleProjectsOpen}
