@@ -161,6 +161,10 @@ const BodyContent: React.FC<BodyContentProps> = ({
           width: 500,
           height: 300,
         });
+        setAboutPosition({
+          x: 40,
+          y: -600,
+        });
       } else {
         setAboutSize({
           width: 1000,
