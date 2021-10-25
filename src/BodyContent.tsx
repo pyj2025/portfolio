@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Rnd } from "react-rnd";
+import { DraggableData, Position, ResizableDelta, Rnd } from "react-rnd";
 
 const Container = styled.div`
   background-color: #3c3c3c;
@@ -157,20 +157,23 @@ const BodyContent: React.FC<BodyContentProps> = ({
   const handleAboutExpand = () => {
     if (focusedWindow === "About") {
       if (isAboutExpanded) {
-        aboutRef.current.updateSize({
+        setAboutSize({
           width: 500,
           height: 300,
         });
       } else {
-        aboutRef.current.updatePosition({
-          x: 0,
-          y: 20,
-        });
-        aboutRef.current.updateSize({
+        setAboutSize({
           width: 1000,
           height: 600,
         });
+        setAboutPosition({
+          x: 0,
+          y: -690,
+        });
       }
+      aboutRef.current.updateSize(aboutSize);
+      aboutRef.current.updatePosition(aboutPosition);
+
       toggleAboutExpanded();
     }
   };
@@ -197,35 +200,47 @@ const BodyContent: React.FC<BodyContentProps> = ({
     }
   };
 
-  const handleFocus = (_e: any, node: { node: HTMLElement }) => {
+  const handleFocus = (_e: any, data: DraggableData) => {
     const ref = windowRef.current;
 
     if (ref.prevNode) {
       ref.prevNode.style.zIndex = ref.prevZIndex;
     }
 
-    ref.prevNode = node.node;
+    ref.prevNode = data.node;
     ref.prevZIndex = ref.prevNode.style.zIndex;
     ref.prevNode.style.zIndex = ref.newZIndex;
-    setFocusedWindow(node.node.id);
+    setFocusedWindow(data.node.id);
   };
 
   return (
     <Container>
       {isAboutOpen ? (
         <MacWindow
-          ref={aboutRef}
-          default={{
-            width: aboutSize.width,
-            height: aboutSize.height,
-            x: aboutPosition.x,
-            y: aboutPosition.y,
-          }}
           id="About"
+          ref={aboutRef}
+          size={{ width: aboutSize.width, height: aboutSize.height }}
+          position={{ x: aboutPosition.x, y: aboutPosition.y }}
           dragHandleClassName="topbar"
           minWidth={500}
           minHeight={300}
           onDragStart={handleFocus}
+          onDragStop={(_e: any, data: DraggableData) => {
+            setAboutPosition({ x: data.x, y: data.y });
+          }}
+          onResizeStop={(
+            _e: MouseEvent | TouchEvent,
+            _dir: any,
+            ref: any,
+            _delta: ResizableDelta,
+            position: Position
+          ) => {
+            setAboutSize({
+              width: ref.style.width,
+              height: ref.style.height,
+            });
+            setAboutPosition({ x: position.x, y: position.y });
+          }}
         >
           <TerminalTopbar className="topbar">
             <TerminalBtnContainer>
