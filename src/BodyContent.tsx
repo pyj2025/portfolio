@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { DraggableData, Position, ResizableDelta, Rnd } from "react-rnd";
+import useWindowDimensions from "./useWindowDimensions";
 
 const Container = styled.div`
   background-color: #3c3c3c;
@@ -142,6 +143,12 @@ const BodyContent: React.FC<BodyContentProps> = ({
       y: -600,
     });
   const aboutRef = React.useRef<any>();
+  const { height, width } = useWindowDimensions();
+
+  React.useEffect(() => {
+    console.log("height = ", height);
+    console.log("width = ", width);
+  }, [height, width]);
 
   const handleAboutClose = () => {
     if (focusedWindow === "About") toggleAboutOpen();
