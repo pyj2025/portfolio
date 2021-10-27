@@ -142,6 +142,11 @@ const BodyContent: React.FC<BodyContentProps> = ({
       x: 40,
       y: -600,
     });
+
+  const [aboutPrevSetting, setAboutPrevSetting] = React.useState<
+    (WindowSizeSetting & WindowPositionSetting) | null
+  >(null);
+
   const aboutRef = React.useRef<any>();
   const { height, width } = useWindowDimensions();
 
@@ -164,22 +169,40 @@ const BodyContent: React.FC<BodyContentProps> = ({
   const handleAboutExpand = () => {
     if (focusedWindow === "About") {
       if (isAboutExpanded) {
-        setAboutSize({
-          width: 500,
-          height: 300,
-        });
-        setAboutPosition({
-          x: 40,
-          y: -600,
-        });
+        if (aboutPrevSetting === null) {
+          setAboutSize({
+            width: 500,
+            height: 300,
+          });
+          setAboutPosition({
+            x: 40,
+            y: -600,
+          });
+        } else {
+          setAboutSize({
+            width: aboutPrevSetting.width,
+            height: aboutPrevSetting.height,
+          });
+          setAboutPosition({
+            x: aboutPrevSetting.x,
+            y: aboutPrevSetting.y,
+          });
+        }
       } else {
+        setAboutPrevSetting({
+          width: aboutSize.width,
+          height: aboutSize.height,
+          x: aboutPosition.x,
+          y: aboutPosition.y,
+        });
+
         setAboutSize({
-          width: 1000,
-          height: 600,
+          width: width,
+          height: height,
         });
         setAboutPosition({
           x: 0,
-          y: -690,
+          y: -1 * height,
         });
       }
       aboutRef.current.updateSize(aboutSize);
