@@ -4,6 +4,8 @@ import BodyContent from "./BodyContent";
 import styled from "styled-components";
 import { useState } from "react";
 import img from "./macos.jpg";
+import TopBar from "./TopBar";
+import useWindowDimensions from "./useWindowDimensions";
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -24,6 +26,8 @@ const BodyContainer = styled.div`
 `;
 
 function App() {
+  const { height, width } = useWindowDimensions();
+
   const [inMaintenance, setMaintenance] = useState(false);
 
   const [focusedWindow, setFocusedWindow] = useState("");
@@ -97,6 +101,7 @@ function App() {
               backgroundSize: "cover",
             }}
           >
+            <TopBar />
             <MenuContainer
               toggleAboutOpen={toggleAboutOpen}
               toggleSkillsOpen={toggleSkillsOpen}
@@ -104,6 +109,8 @@ function App() {
               toggleEmailOpen={toggleEmailOpen}
             />
             <BodyContent
+              width={width}
+              height={height}
               focusedWindow={focusedWindow}
               isAboutOpen={isAboutOpen}
               isAboutExpanded={isAboutExpanded}

@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { DraggableData, Position, ResizableDelta, Rnd } from "react-rnd";
-import useWindowDimensions from "./useWindowDimensions";
 
 const Container = styled.div`
   background-color: #3c3c3c;
@@ -98,6 +97,8 @@ type WindowPositionSetting = {
 };
 
 export type BodyContentProps = {
+  width: number;
+  height: number;
   focusedWindow: string;
   isAboutOpen: boolean;
   isAboutExpanded: boolean;
@@ -114,6 +115,8 @@ export type BodyContentProps = {
 };
 
 const BodyContent: React.FC<BodyContentProps> = ({
+  width,
+  height,
   focusedWindow,
   isAboutOpen,
   isAboutExpanded,
@@ -148,7 +151,6 @@ const BodyContent: React.FC<BodyContentProps> = ({
   >(null);
 
   const aboutRef = React.useRef<any>();
-  const { height, width } = useWindowDimensions();
 
   React.useEffect(() => {
     console.log("height = ", height);
