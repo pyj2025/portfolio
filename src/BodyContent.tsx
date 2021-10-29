@@ -1,54 +1,84 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import { Rnd } from "react-rnd";
-import {
-  faCode,
-  faExpandAlt,
-  faFolder,
-  faMinus,
-  faTimes,
-  faUser,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { DraggableData, Position, ResizableDelta, Rnd } from "react-rnd";
 
 const Container = styled.div`
   background-color: #3c3c3c;
   color: white;
 `;
 
-const MenuItemWindow = styled(Rnd)`
+const MacWindow = styled(Rnd)`
+  width: 100%;
   display: grid;
   align-items: center;
   justify-content: center;
-  border: solid 1px black;
   background-color: white;
-  color: black;
+  border-radius: 6px;
+  box-shadow: 0px 0px 8px black;
 `;
 
-const MenuItemTopbar = styled.div`
+const TerminalTopbar = styled.div`
+  width: 100%;
+  height: 28px;
+  background-color: rgb(51, 52, 54);
+  border-top: 1px rgb(70, 75, 80) solid;
+
+  padding: 0px 10px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  cursor: default;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  height: 35px;
   margin: 0 auto;
-  background-color: #333436;
   align-items: center;
-  color: white;
+  box-sizing: border-box;
 `;
 
-const TopbarContainer = styled.div`
-  margin-right: auto;
+const TerminalBtnContainer = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 `;
 
-const CloseBtn = styled.button`
-  padding: 0;
-  border: none;
-  background: none;
-  color: white;
-  margin-left: 10px;
+const TerminalBtn = styled.div<{ color: string; disabled: boolean }>`
+  width: 12px;
+  height: 12px;
+  color: #62574c;
+  display: inline-block;
+  margin-left: ${({ color }: { color: string }) =>
+    color === "close" ? "0px" : "8px"};
+  border-radius: 8px;
+  align-items: center;
+  vertical-align: middle;
+  background-color: ${({
+    color,
+    disabled,
+  }: {
+    color: string;
+    disabled: boolean;
+  }) =>
+    disabled
+      ? "#686B6D"
+      : color === "minimize"
+      ? "#F7BD45"
+      : color === "expand"
+      ? "#5FCB43"
+      : "#ee514a"};
+  cursor: ${({ disabled }: { disabled: boolean }) =>
+    disabled ? undefined : "pointer"};
+`;
+
+const TopbarTitleImage = styled.img`
+  width: 16px;
+  height: 16px;
 `;
 
 const TopbarTitle = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  font-size: 14px;
 `;
 
 const TopbarTitleText = styled.span`
@@ -56,162 +86,321 @@ const TopbarTitleText = styled.span`
   pointer-events: none;
 `;
 
+type WindowSizeSetting = {
+  width: number;
+  height: number;
+};
+
+type WindowPositionSetting = {
+  x: number;
+  y: number;
+};
+
 export type BodyContentProps = {
+  width: number;
+  height: number;
+  focusedWindow: string;
   isAboutOpen: boolean;
+  isAboutExpanded: boolean;
   isSkillsOpen: boolean;
   isProjectsOpen: boolean;
   toggleAboutOpen: () => void;
   setAboutMinimized: (flag: boolean) => void;
+  toggleAboutExpanded: () => void;
   toggleSkillsOpen: () => void;
   setSkillsMinimized: (flag: boolean) => void;
   toggleProjectsOpen: () => void;
   setProjectsMinimized: (flag: boolean) => void;
+  setFocusedWindow: (name: string) => void;
 };
 
 const BodyContent: React.FC<BodyContentProps> = ({
+  width,
+  height,
+  focusedWindow,
   isAboutOpen,
+  isAboutExpanded,
   isSkillsOpen,
   isProjectsOpen,
   toggleAboutOpen,
   setAboutMinimized,
+  toggleAboutExpanded,
   toggleSkillsOpen,
   setSkillsMinimized,
   toggleProjectsOpen,
   setProjectsMinimized,
+  setFocusedWindow,
 }) => {
   const windowRef = React.useRef({
     newZIndex: "10",
     prevNode: null as unknown as HTMLElement,
     prevZIndex: null as unknown as string,
   });
+  const [aboutSize, setAboutSize] = React.useState<WindowSizeSetting>({
+    width: 500,
+    height: 300,
+  });
+  const [aboutPosition, setAboutPosition] =
+    React.useState<WindowPositionSetting>({
+      x: 40,
+      y: -600,
+    });
+
+  const [aboutPrevSetting, setAboutPrevSetting] = React.useState<
+    (WindowSizeSetting & WindowPositionSetting) | null
+  >(null);
+
+  const aboutRef = React.useRef<any>();
+
+  React.useEffect(() => {
+    console.log("height = ", height);
+    console.log("width = ", width);
+  }, [height, width]);
+
+  const handleAboutClose = () => {
+    if (focusedWindow === "About") toggleAboutOpen();
+  };
 
   const handleAboutMinimized = () => {
-    setAboutMinimized(true);
-    toggleAboutOpen();
+    if (focusedWindow === "About") {
+      setAboutMinimized(true);
+      toggleAboutOpen();
+    }
+  };
+
+  const handleAboutExpand = () => {
+    if (focusedWindow === "About") {
+      if (isAboutExpanded) {
+        if (aboutPrevSetting === null) {
+          setAboutSize({
+            width: 500,
+            height: 300,
+          });
+          setAboutPosition({
+            x: 40,
+            y: -600,
+          });
+        } else {
+          setAboutSize({
+            width: aboutPrevSetting.width,
+            height: aboutPrevSetting.height,
+          });
+          setAboutPosition({
+            x: aboutPrevSetting.x,
+            y: aboutPrevSetting.y,
+          });
+        }
+      } else {
+        setAboutPrevSetting({
+          width: aboutSize.width,
+          height: aboutSize.height,
+          x: aboutPosition.x,
+          y: aboutPosition.y,
+        });
+
+        setAboutSize({
+          width: width,
+          height: height,
+        });
+        setAboutPosition({
+          x: 0,
+          y: -1 * height,
+        });
+      }
+      aboutRef.current.updateSize(aboutSize);
+      aboutRef.current.updatePosition(aboutPosition);
+
+      toggleAboutExpanded();
+    }
+  };
+
+  const handleSkillsClose = () => {
+    if (focusedWindow === "Skills") toggleSkillsOpen();
   };
 
   const handleSkillsMinimized = () => {
-    setSkillsMinimized(true);
-    toggleSkillsOpen();
+    if (focusedWindow === "Skills") {
+      setSkillsMinimized(true);
+      toggleSkillsOpen();
+    }
+  };
+
+  const handleProjectsClose = () => {
+    if (focusedWindow === "Projects") toggleProjectsOpen();
   };
 
   const handleProjectsMinimized = () => {
-    setProjectsMinimized(true);
-    toggleProjectsOpen();
+    if (focusedWindow === "Projects") {
+      setProjectsMinimized(true);
+      toggleProjectsOpen();
+    }
   };
 
-  const handleFocus = (_e: any, node: { node: HTMLElement }) => {
+  const handleFocus = (_e: any, data: DraggableData) => {
     const ref = windowRef.current;
 
-    if (windowRef.current.prevNode) {
+    if (ref.prevNode) {
       ref.prevNode.style.zIndex = ref.prevZIndex;
     }
 
-    ref.prevNode = node.node;
+    ref.prevNode = data.node;
     ref.prevZIndex = ref.prevNode.style.zIndex;
     ref.prevNode.style.zIndex = ref.newZIndex;
+    setFocusedWindow(data.node.id);
   };
 
   return (
     <Container>
       {isAboutOpen ? (
-        <MenuItemWindow
-          default={{
-            x: 40,
-            y: -550,
-            width: 500,
-            height: 300,
-          }}
+        <MacWindow
+          id="About"
+          ref={aboutRef}
+          size={{ width: aboutSize.width, height: aboutSize.height }}
+          position={{ x: aboutPosition.x, y: aboutPosition.y }}
           dragHandleClassName="topbar"
           minWidth={500}
           minHeight={300}
           onDragStart={handleFocus}
+          onDragStop={(_e: any, data: DraggableData) => {
+            setAboutPosition({ x: data.x, y: data.y });
+          }}
+          onResizeStop={(
+            _e: MouseEvent | TouchEvent,
+            _dir: any,
+            ref: any,
+            _delta: ResizableDelta,
+            position: Position
+          ) => {
+            setAboutSize({
+              width: ref.style.width,
+              height: ref.style.height,
+            });
+            setAboutPosition({ x: position.x, y: position.y });
+          }}
         >
-          <MenuItemTopbar className="topbar">
-            <TopbarContainer>
-              <CloseBtn title="Close" onClick={toggleAboutOpen}>
-                <FontAwesomeIcon icon={faTimes} />
-              </CloseBtn>
-              <CloseBtn title="Minimize" onClick={handleAboutMinimized}>
-                <FontAwesomeIcon icon={faMinus} />
-              </CloseBtn>
-              <CloseBtn title="Expand" onClick={toggleAboutOpen}>
-                <FontAwesomeIcon icon={faExpandAlt} />
-              </CloseBtn>
-            </TopbarContainer>
+          <TerminalTopbar className="topbar">
+            <TerminalBtnContainer>
+              <TerminalBtn
+                color="close"
+                title={focusedWindow === "About" ? "Close" : undefined}
+                onClick={handleAboutClose}
+                disabled={focusedWindow !== "About"}
+              />
+              <TerminalBtn
+                color="minimize"
+                title={focusedWindow === "About" ? "Minimize" : undefined}
+                onClick={handleAboutMinimized}
+                disabled={focusedWindow !== "About"}
+              />
+              <TerminalBtn
+                color="expand"
+                title={focusedWindow === "About" ? "Expand" : undefined}
+                onClick={handleAboutExpand}
+                disabled={focusedWindow !== "About"}
+              />
+            </TerminalBtnContainer>
             <TopbarTitle>
-              <FontAwesomeIcon icon={faUser} />
+              <TopbarTitleImage
+                src="https://img.icons8.com/color/48/000000/mac-logo.png"
+                alt="About"
+              />
               <TopbarTitleText>About</TopbarTitleText>
             </TopbarTitle>
-          </MenuItemTopbar>
+          </TerminalTopbar>
           <div>Body</div>
-        </MenuItemWindow>
+        </MacWindow>
       ) : null}
       {isSkillsOpen ? (
-        <MenuItemWindow
+        <MacWindow
           default={{
-            x: 0,
-            y: 0,
+            x: 100,
+            y: -600,
             width: 500,
             height: 300,
           }}
+          id="Skills"
           dragHandleClassName="topbar"
           minWidth={500}
           minHeight={300}
           onDragStart={handleFocus}
         >
-          <MenuItemTopbar className="topbar">
-            <TopbarContainer>
-              <CloseBtn title="Close" onClick={toggleSkillsOpen}>
-                <FontAwesomeIcon icon={faTimes} />
-              </CloseBtn>
-              <CloseBtn title="Minimize" onClick={handleSkillsMinimized}>
-                <FontAwesomeIcon icon={faMinus} />
-              </CloseBtn>
-              <CloseBtn title="Expand" onClick={toggleSkillsOpen}>
-                <FontAwesomeIcon icon={faExpandAlt} />
-              </CloseBtn>
-            </TopbarContainer>
+          <TerminalTopbar className="topbar">
+            <TerminalBtnContainer>
+              <TerminalBtn
+                color="close"
+                title={focusedWindow === "Skills" ? "Close" : undefined}
+                onClick={handleSkillsClose}
+                disabled={focusedWindow !== "Skills"}
+              />
+              <TerminalBtn
+                color="minimize"
+                title={focusedWindow === "Skills" ? "Minimize" : undefined}
+                onClick={handleSkillsMinimized}
+                disabled={focusedWindow !== "Skills"}
+              />
+              <TerminalBtn
+                color="expand"
+                title={focusedWindow === "Skills" ? "Expand" : undefined}
+                onClick={toggleSkillsOpen}
+                disabled={focusedWindow !== "Skills"}
+              />
+            </TerminalBtnContainer>
             <TopbarTitle>
-              <FontAwesomeIcon icon={faCode} />
+              <TopbarTitleImage
+                src="https://img.icons8.com/color/48/000000/visual-studio-code-2019.png"
+                alt="Skills"
+              />
               <TopbarTitleText>Skills</TopbarTitleText>
             </TopbarTitle>
-          </MenuItemTopbar>
+          </TerminalTopbar>
           <div>Body</div>
-        </MenuItemWindow>
+        </MacWindow>
       ) : null}
       {isProjectsOpen ? (
-        <MenuItemWindow
+        <MacWindow
           default={{
             x: 0,
             y: -200,
             width: 500,
             height: 300,
           }}
+          id="Projects"
           dragHandleClassName="topbar"
           minWidth={500}
           minHeight={300}
           onDragStart={handleFocus}
         >
-          <MenuItemTopbar title="Close" className="topbar">
-            <TopbarContainer>
-              <CloseBtn onClick={toggleProjectsOpen}>
-                <FontAwesomeIcon icon={faTimes} />
-              </CloseBtn>
-              <CloseBtn title="Minimize" onClick={handleProjectsMinimized}>
-                <FontAwesomeIcon icon={faMinus} />
-              </CloseBtn>
-              <CloseBtn title="Expand" onClick={toggleProjectsOpen}>
-                <FontAwesomeIcon icon={faExpandAlt} />
-              </CloseBtn>
-            </TopbarContainer>
+          <TerminalTopbar className="topbar">
+            <TerminalBtnContainer>
+              <TerminalBtn
+                color="close"
+                title={focusedWindow === "Projects" ? "Close" : undefined}
+                onClick={handleProjectsClose}
+                disabled={focusedWindow !== "Projects"}
+              />
+              <TerminalBtn
+                color="minimize"
+                title={focusedWindow === "Projects" ? "Minimize" : undefined}
+                onClick={handleProjectsMinimized}
+                disabled={focusedWindow !== "Projects"}
+              />
+              <TerminalBtn
+                color="expand"
+                title={focusedWindow === "Projects" ? "Expand" : undefined}
+                onClick={toggleProjectsOpen}
+                disabled={focusedWindow !== "Projects"}
+              />
+            </TerminalBtnContainer>
             <TopbarTitle>
-              <FontAwesomeIcon icon={faFolder} />
+              <TopbarTitleImage
+                src="https://img.icons8.com/color/48/000000/mac-folder.png"
+                alt="Projects"
+              />
               <TopbarTitleText>Projects</TopbarTitleText>
             </TopbarTitle>
-          </MenuItemTopbar>
+          </TerminalTopbar>
           <div>Body</div>
-        </MenuItemWindow>
+        </MacWindow>
       ) : null}
     </Container>
   );
