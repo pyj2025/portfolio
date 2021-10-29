@@ -2,10 +2,11 @@ import MenuContainer from "./MenuContainer";
 import FooterBar from "./FooterBar";
 import BodyContent from "./BodyContent";
 import styled from "styled-components";
-import { useState } from "react";
+import React, { useState } from "react";
 import img from "./macos.jpg";
 import TopBar from "./TopBar";
-import useWindowDimensions from "./useWindowDimensions";
+import { useResizeDetector } from "react-resize-detector";
+import { isBrowser, isMobile, browserName } from "react-device-detect";
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -26,7 +27,7 @@ const BodyContainer = styled.div`
 `;
 
 function App() {
-  const { height, width } = useWindowDimensions();
+  const { width, height, ref } = useResizeDetector();
 
   const [inMaintenance, setMaintenance] = useState(false);
 
@@ -42,6 +43,15 @@ function App() {
   const [isProjectsMinimized, setProjectsMinimized] = useState(false);
   const [isEmailOpen, setEmailOpen] = useState(false);
   const [isEmailMinimized, setEmailMinimized] = useState(false);
+
+  React.useEffect(() => {
+    console.log("width = ", width);
+    console.log("height = ", height);
+
+    console.log("browserName = ", browserName);
+    console.log("isBrowser = ", isBrowser);
+    console.log("isMobile = ", isMobile);
+  }, [width, height]);
 
   const toggleAboutOpen = () => {
     setAboutOpen((state) => !state);
@@ -96,6 +106,7 @@ function App() {
       ) : (
         <>
           <BodyContainer
+            ref={ref}
             style={{
               backgroundImage: `url(${img})`,
               backgroundSize: "cover",

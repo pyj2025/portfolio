@@ -101,6 +101,15 @@ const MenuContainer: React.FC<MenuContainerProps> = ({
               alt="Linkedin"
             />
           </ListItem>
+          <ListItem
+            title="Facebook"
+            href="https://www.linkedin.com/in/devjoon/"
+          >
+            <img
+              src="https://img.icons8.com/color/48/000000/facebook-new.png"
+              alt="Facebook"
+            />
+          </ListItem>
           <ListItem title="Email" onClick={toggleEmailOpen}>
             <img
               src="https://img.icons8.com/color/48/000000/gmail-new.png"
