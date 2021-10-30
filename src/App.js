@@ -6,7 +6,12 @@ import React, { useState } from "react";
 import img from "./macos.jpg";
 import TopBar from "./TopBar";
 import { useResizeDetector } from "react-resize-detector";
-import { isBrowser, isMobile, browserName } from "react-device-detect";
+import { isMobile, browserName, isBrowser } from "react-device-detect";
+import { ToastContainer, toast, Slide } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+const TABLET_MAX_WIDTH = 900;
+const MOBILE_MAX_WIDTH = 768;
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -36,7 +41,6 @@ function App() {
   const [isAboutOpen, setAboutOpen] = useState(false);
   const [isAboutMinimized, setAboutMinimized] = useState(false);
   const [isAboutExpanded, setAboutExpanded] = useState(false);
-
   const [isSkillsOpen, setSkillsOpen] = useState(false);
   const [isSkillsMinimized, setSkillsMinimized] = useState(false);
   const [isProjectsOpen, setProjectsOpen] = useState(false);
@@ -45,13 +49,17 @@ function App() {
   const [isEmailMinimized, setEmailMinimized] = useState(false);
 
   React.useEffect(() => {
-    console.log("width = ", width);
-    console.log("height = ", height);
+    const message =
+      "You've accessed via " +
+      (isBrowser ? "desktop " : isMobile ? "mobile " : "tablet") +
+      browserName.toLowerCase();
 
-    console.log("browserName = ", browserName);
-    console.log("isBrowser = ", isBrowser);
-    console.log("isMobile = ", isMobile);
-  }, [width, height]);
+    toast(message, {
+      transition: Slide,
+      type: "info",
+      // theme: "colored",
+    });
+  }, []);
 
   const toggleAboutOpen = () => {
     setAboutOpen((state) => !state);
@@ -113,6 +121,19 @@ function App() {
             }}
           >
             <TopBar />
+            <ToastContainer
+              position="top-right"
+              autoClose={false}
+              newestOnTop
+              hideProgressBar
+              closeOnClick
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              limit={1}
+              draggablePercent={60}
+            />
+
             <MenuContainer
               toggleAboutOpen={toggleAboutOpen}
               toggleSkillsOpen={toggleSkillsOpen}
@@ -138,21 +159,21 @@ function App() {
               setEmailMinimized={setEmailMinimized}
               setFocusedWindow={setFocusedWindow}
             />
+            <FooterBar
+              isAboutMinimized={isAboutMinimized}
+              isSkillsMinimized={isSkillsMinimized}
+              isProjectsMinimized={isProjectsMinimized}
+              isEmailMinimized={isEmailMinimized}
+              toggleAboutOpen={toggleAboutOpen}
+              setAboutMinimized={setAboutMinimized}
+              toggleSkillsOpen={toggleSkillsOpen}
+              setSkillsMinimized={setSkillsMinimized}
+              toggleProjectsOpen={toggleProjectsOpen}
+              setProjectsMinimized={setProjectsMinimized}
+              toggleEmailOpen={toggleEmailOpen}
+              setEmailMinimized={setEmailMinimized}
+            />
           </BodyContainer>
-          <FooterBar
-            isAboutMinimized={isAboutMinimized}
-            isSkillsMinimized={isSkillsMinimized}
-            isProjectsMinimized={isProjectsMinimized}
-            isEmailMinimized={isEmailMinimized}
-            toggleAboutOpen={toggleAboutOpen}
-            setAboutMinimized={setAboutMinimized}
-            toggleSkillsOpen={toggleSkillsOpen}
-            setSkillsMinimized={setSkillsMinimized}
-            toggleProjectsOpen={toggleProjectsOpen}
-            setProjectsMinimized={setProjectsMinimized}
-            toggleEmailOpen={toggleEmailOpen}
-            setEmailMinimized={setEmailMinimized}
-          />
         </>
       )}
     </Wrapper>
