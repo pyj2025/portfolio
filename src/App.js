@@ -4,9 +4,10 @@ import BodyContent from "./BodyContent";
 import styled from "styled-components";
 import React, { useState } from "react";
 import img from "./macos.jpg";
-import TopBar from "./TopBar";
+import MobileTopBar from "./MobileTopBar";
+import DesktopTopBar from "./DesktopTopBar";
 import { useResizeDetector } from "react-resize-detector";
-import { isMobile, browserName, isBrowser } from "react-device-detect";
+import { isMobile, browserName, isBrowser, isIE } from "react-device-detect";
 import { ToastContainer, toast, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -111,7 +112,13 @@ function App() {
         <MaintenanceMessage>
           Site is in maintenance now. Please come back later...
         </MaintenanceMessage>
-      ) : (
+      ) : null}
+      {isIE ? (
+        <MaintenanceMessage>
+          Sorry, we do not support IE. You can come via other browsers.
+        </MaintenanceMessage>
+      ) : null}
+      {!inMaintenance && !isIE ? (
         <>
           <BodyContainer
             ref={ref}
@@ -120,9 +127,9 @@ function App() {
               backgroundSize: "cover",
             }}
           >
-            <TopBar />
+            {isMobile ? <MobileTopBar /> : <DesktopTopBar />}
             <ToastContainer
-              position="top-right"
+              position={isMobile ? "top-center" : "top-right"}
               autoClose={false}
               newestOnTop
               hideProgressBar
@@ -175,7 +182,7 @@ function App() {
             />
           </BodyContainer>
         </>
-      )}
+      ) : null}
     </Wrapper>
   );
 }

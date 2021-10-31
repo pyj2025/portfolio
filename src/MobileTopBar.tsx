@@ -11,7 +11,7 @@ const Container = styled.div`
   height: 20px;
 `;
 
-function TopBar() {
+function MobileTopBar() {
   return (
     <Container>
       <span>Joon Park</span>
@@ -19,4 +19,4 @@ function TopBar() {
   );
 }
 
-export default TopBar;
+export default MobileTopBar;
