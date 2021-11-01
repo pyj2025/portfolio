@@ -59,7 +59,6 @@ function App() {
     toast(message, {
       transition: Slide,
       type: "info",
-      // theme: "colored",
     });
   }, []);
 
@@ -138,14 +137,14 @@ function App() {
               backgroundSize: "cover",
             }}
           >
-            {isMobile ? (
+            {isMobile || width < MOBILE_MAX_WIDTH ? (
               <MobileTopBar />
             ) : (
               <DesktopTopBar toggleDesktopAboutOpen={toggleDesktopAboutOpen} />
             )}
             <ToastContainer
               position={isMobile ? "top-center" : "top-right"}
-              autoClose={false}
+              autoClose={5000}
               newestOnTop
               hideProgressBar
               closeOnClick

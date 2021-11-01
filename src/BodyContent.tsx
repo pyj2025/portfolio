@@ -86,6 +86,10 @@ const TopbarTitleText = styled.span`
   pointer-events: none;
 `;
 
+const MacWindowBody = styled.div`
+  color: black;
+`;
+
 type WindowSizeSetting = {
   width: number;
   height: number;
@@ -288,7 +292,19 @@ const BodyContent: React.FC<BodyContentProps> = ({
             </TerminalBtnContainer>
             <TopbarTitle />
           </TerminalTopbar>
-          <div>Body</div>
+          <MacWindowBody>
+            <div></div>
+            <div>
+              <ul>
+                <li>Youngjoon Park</li>
+                <li>Junior Frontend Developer</li>
+                <li>MBTI</li>
+                <li>Jan.17.1994</li>
+                <li>+1 312-937-4435</li>
+                <li>25 W Randolph St Apt 903, Chicago, IL, 60601</li>
+              </ul>
+            </div>
+          </MacWindowBody>
         </MacWindow>
       ) : null}
 

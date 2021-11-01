@@ -6,17 +6,18 @@ const Container = styled.div`
   grid-template-columns: auto;
   justify-content: center;
   align-items: center;
-  background-color: #3c3c3c;
+  background-color: rgba(0, 0, 0, 0.4);
   color: white;
-  height: 20px;
+  height: 25px;
+  font-weight: bold;
 `;
 
-function MobileTopBar() {
+const MobileTopBar: React.FC<unknown> = () => {
   return (
     <Container>
       <span>Joon Park</span>
     </Container>
   );
-}
+};
 
 export default MobileTopBar;
