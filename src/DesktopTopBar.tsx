@@ -9,14 +9,13 @@ const Container = styled.div`
   grid-template-columns: auto;
   justify-content: flex-start;
   align-items: center;
-  background-color: #3c3c3c;
+  background-color: rgba(0, 0, 0, 0.4);
   color: white;
   height: 25px;
 `;
 
 const MenuContainer = styled(Menu)`
   position: absolute;
-  background-color: #3c3c3c;
   margin: 2px;
 `;
 
@@ -38,13 +37,20 @@ const MenuItemTitle = styled.div`
   height: 20px;
 `;
 
-const DesktopTopBar: React.FC<unknown> = () => {
+type DesktopTopBarProps = {
+  toggleDesktopAboutOpen: () => void;
+};
+
+const DesktopTopBar: React.FC<DesktopTopBarProps> = ({
+  toggleDesktopAboutOpen,
+}) => {
   const [menuOpen, setMenuOpen] = React.useState(false);
 
   const handleClick = () => setMenuOpen(!menuOpen);
 
   const handleAbout = () => {
     console.log("about");
+    toggleDesktopAboutOpen();
     setMenuOpen(false);
   };
 
@@ -68,7 +74,7 @@ const DesktopTopBar: React.FC<unknown> = () => {
               }}
               onClick={handleAbout}
             >
-              <MenuItemTitle>About</MenuItemTitle>
+              <MenuItemTitle>About Joon</MenuItemTitle>
             </MenuItem>
           </MenuContainer>
         ) : null}

@@ -104,6 +104,7 @@ export type BodyContentProps = {
   isAboutExpanded: boolean;
   isSkillsOpen: boolean;
   isProjectsOpen: boolean;
+  isDesktopAboutOpen: boolean;
   toggleAboutOpen: () => void;
   setAboutMinimized: (flag: boolean) => void;
   toggleAboutExpanded: () => void;
@@ -112,6 +113,7 @@ export type BodyContentProps = {
   toggleProjectsOpen: () => void;
   setProjectsMinimized: (flag: boolean) => void;
   setFocusedWindow: (name: string) => void;
+  toggleDesktopAboutOpen: () => void;
 };
 
 const BodyContent: React.FC<BodyContentProps> = ({
@@ -122,6 +124,7 @@ const BodyContent: React.FC<BodyContentProps> = ({
   isAboutExpanded,
   isSkillsOpen,
   isProjectsOpen,
+  isDesktopAboutOpen,
   toggleAboutOpen,
   setAboutMinimized,
   toggleAboutExpanded,
@@ -130,12 +133,16 @@ const BodyContent: React.FC<BodyContentProps> = ({
   toggleProjectsOpen,
   setProjectsMinimized,
   setFocusedWindow,
+  toggleDesktopAboutOpen,
 }) => {
   const windowRef = React.useRef({
     newZIndex: "10",
     prevNode: null as unknown as HTMLElement,
     prevZIndex: null as unknown as string,
   });
+  const desktopAboutRef = React.useRef<any>();
+  const aboutRef = React.useRef<any>();
+
   const [aboutSize, setAboutSize] = React.useState<WindowSizeSetting>({
     width: 500,
     height: 300,
@@ -150,12 +157,15 @@ const BodyContent: React.FC<BodyContentProps> = ({
     (WindowSizeSetting & WindowPositionSetting) | null
   >(null);
 
-  const aboutRef = React.useRef<any>();
-
   React.useEffect(() => {
     console.log("height = ", height);
     console.log("width = ", width);
+    console.log("toggleDesktopAboutOpen = ", isDesktopAboutOpen);
   }, [height, width]);
+
+  const handleDesktopAboutClose = () => {
+    if (focusedWindow === "DesktopAbout") toggleDesktopAboutOpen();
+  };
 
   const handleAboutClose = () => {
     if (focusedWindow === "About") toggleAboutOpen();
@@ -251,6 +261,37 @@ const BodyContent: React.FC<BodyContentProps> = ({
 
   return (
     <Container>
+      {isDesktopAboutOpen ? (
+        <MacWindow
+          id="DesktopAbout"
+          ref={desktopAboutRef}
+          default={{
+            x: 40,
+            y: -600,
+            width: 500,
+            height: 300,
+          }}
+          dragHandleClassName="topbar"
+          onDragStart={handleFocus}
+          enableResizing={false}
+        >
+          <TerminalTopbar className="topbar">
+            <TerminalBtnContainer>
+              <TerminalBtn
+                color="close"
+                title={focusedWindow === "DesktopAbout" ? "Close" : undefined}
+                onClick={handleDesktopAboutClose}
+                disabled={focusedWindow !== "DesktopAbout"}
+              />
+              <TerminalBtn color="disabled" disabled={true} />
+              <TerminalBtn color="disabled" disabled={true} />
+            </TerminalBtnContainer>
+            <TopbarTitle />
+          </TerminalTopbar>
+          <div>Body</div>
+        </MacWindow>
+      ) : null}
+
       {isAboutOpen ? (
         <MacWindow
           id="About"

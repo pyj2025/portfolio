@@ -48,6 +48,7 @@ function App() {
   const [isProjectsMinimized, setProjectsMinimized] = useState(false);
   const [isEmailOpen, setEmailOpen] = useState(false);
   const [isEmailMinimized, setEmailMinimized] = useState(false);
+  const [isDesktopAboutOpen, setDesktopAboutOpen] = useState(false);
 
   React.useEffect(() => {
     const message =
@@ -61,6 +62,16 @@ function App() {
       // theme: "colored",
     });
   }, []);
+
+  const toggleDesktopAboutOpen = () => {
+    setDesktopAboutOpen((state) => !state);
+
+    if (!isDesktopAboutOpen) {
+      setFocusedWindow("DesktopAbout");
+    } else {
+      setFocusedWindow("");
+    }
+  };
 
   const toggleAboutOpen = () => {
     setAboutOpen((state) => !state);
@@ -127,7 +138,11 @@ function App() {
               backgroundSize: "cover",
             }}
           >
-            {isMobile ? <MobileTopBar /> : <DesktopTopBar />}
+            {isMobile ? (
+              <MobileTopBar />
+            ) : (
+              <DesktopTopBar toggleDesktopAboutOpen={toggleDesktopAboutOpen} />
+            )}
             <ToastContainer
               position={isMobile ? "top-center" : "top-right"}
               autoClose={false}
@@ -155,6 +170,7 @@ function App() {
               isAboutExpanded={isAboutExpanded}
               isSkillsOpen={isSkillsOpen}
               isProjectsOpen={isProjectsOpen}
+              isDesktopAboutOpen={isDesktopAboutOpen}
               toggleAboutOpen={toggleAboutOpen}
               setAboutMinimized={setAboutMinimized}
               toggleAboutExpanded={toggleAboutExpanded}
@@ -164,6 +180,7 @@ function App() {
               setProjectsMinimized={setProjectsMinimized}
               toggleEmailOpen={toggleEmailOpen}
               setEmailMinimized={setEmailMinimized}
+              toggleDesktopAboutOpen={toggleDesktopAboutOpen}
               setFocusedWindow={setFocusedWindow}
             />
             <FooterBar
