@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { DraggableData, Position, ResizableDelta, Rnd } from "react-rnd";
+import img from "./Logo.png";
 
 const Container = styled.div`
   background-color: #3c3c3c;
@@ -87,7 +88,17 @@ const TopbarTitleText = styled.span`
 `;
 
 const MacWindowBody = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
   color: black;
+`;
+
+const LogoContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 type WindowSizeSetting = {
@@ -270,8 +281,8 @@ const BodyContent: React.FC<BodyContentProps> = ({
           id="DesktopAbout"
           ref={desktopAboutRef}
           default={{
-            x: 40,
-            y: -600,
+            x: width / 3,
+            y: -1 * ((height * 2) / 3),
             width: 500,
             height: 300,
           }}
@@ -293,12 +304,13 @@ const BodyContent: React.FC<BodyContentProps> = ({
             <TopbarTitle />
           </TerminalTopbar>
           <MacWindowBody>
-            <div></div>
+            <LogoContainer>
+              <img src={img} width="200" height="200" alt="Logo" />
+            </LogoContainer>
             <div>
+              <h1>Youngjoon Park</h1>
+              <h4>Junior Frontend Developer</h4>
               <ul>
-                <li>Youngjoon Park</li>
-                <li>Junior Frontend Developer</li>
-                <li>MBTI</li>
                 <li>Jan.17.1994</li>
                 <li>+1 312-937-4435</li>
                 <li>25 W Randolph St Apt 903, Chicago, IL, 60601</li>

@@ -62,6 +62,12 @@ function App() {
     });
   }, []);
 
+  React.useEffect(() => {
+    if (width < MOBILE_MAX_WIDTH) {
+      if (isDesktopAboutOpen) setDesktopAboutOpen(false);
+    }
+  }, [width]);
+
   const toggleDesktopAboutOpen = () => {
     setDesktopAboutOpen((state) => !state);
 
