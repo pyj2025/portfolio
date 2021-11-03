@@ -2,6 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import { DraggableData, Position, ResizableDelta, Rnd } from "react-rnd";
 import img from "./Logo.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBirthdayCake,
+  faLocationArrow,
+  faPhone,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Container = styled.div`
   background-color: #3c3c3c;
@@ -18,7 +24,7 @@ const MacWindow = styled(Rnd)`
   box-shadow: 0px 0px 8px black;
 `;
 
-const TerminalTopbar = styled.div`
+const MacWindowTopbar = styled.div`
   width: 100%;
   height: 28px;
   background-color: rgb(51, 52, 54);
@@ -89,9 +95,11 @@ const TopbarTitleText = styled.span`
 
 const MacWindowBody = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 45% 55%;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: 272px;
   color: black;
 `;
 
@@ -99,6 +107,20 @@ const LogoContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+const InfoList = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const InfoListItem = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const InfoListItemLabel = styled.div`
+  margin-left: 8px;
 `;
 
 type WindowSizeSetting = {
@@ -290,7 +312,7 @@ const BodyContent: React.FC<BodyContentProps> = ({
           onDragStart={handleFocus}
           enableResizing={false}
         >
-          <TerminalTopbar className="topbar">
+          <MacWindowTopbar className="topbar">
             <TerminalBtnContainer>
               <TerminalBtn
                 color="close"
@@ -302,7 +324,7 @@ const BodyContent: React.FC<BodyContentProps> = ({
               <TerminalBtn color="disabled" disabled={true} />
             </TerminalBtnContainer>
             <TopbarTitle />
-          </TerminalTopbar>
+          </MacWindowTopbar>
           <MacWindowBody>
             <LogoContainer>
               <img src={img} width="200" height="200" alt="Logo" />
@@ -310,16 +332,26 @@ const BodyContent: React.FC<BodyContentProps> = ({
             <div>
               <h1>Youngjoon Park</h1>
               <h4>Junior Frontend Developer</h4>
-              <ul>
-                <li>Jan.17.1994</li>
-                <li>+1 312-937-4435</li>
-                <li>25 W Randolph St Apt 903, Chicago, IL, 60601</li>
-              </ul>
+              <InfoList>
+                <InfoListItem>
+                  <FontAwesomeIcon icon={faBirthdayCake} />
+                  <InfoListItemLabel>Jan.17.1994</InfoListItemLabel>
+                </InfoListItem>
+                <InfoListItem>
+                  <FontAwesomeIcon icon={faPhone} />
+                  <InfoListItemLabel>+1 312-937-4435</InfoListItemLabel>
+                </InfoListItem>
+                <InfoListItem>
+                  <FontAwesomeIcon icon={faLocationArrow} />
+                  <InfoListItemLabel>
+                    25 W Randolph St Apt 903, Chicago, IL, 60601
+                  </InfoListItemLabel>
+                </InfoListItem>
+              </InfoList>
             </div>
           </MacWindowBody>
         </MacWindow>
       ) : null}
-
       {isAboutOpen ? (
         <MacWindow
           id="About"
@@ -347,7 +379,7 @@ const BodyContent: React.FC<BodyContentProps> = ({
             setAboutPosition({ x: position.x, y: position.y });
           }}
         >
-          <TerminalTopbar className="topbar">
+          <MacWindowTopbar className="topbar">
             <TerminalBtnContainer>
               <TerminalBtn
                 color="close"
@@ -375,7 +407,7 @@ const BodyContent: React.FC<BodyContentProps> = ({
               />
               <TopbarTitleText>About</TopbarTitleText>
             </TopbarTitle>
-          </TerminalTopbar>
+          </MacWindowTopbar>
           <div>Body</div>
         </MacWindow>
       ) : null}
@@ -393,7 +425,7 @@ const BodyContent: React.FC<BodyContentProps> = ({
           minHeight={300}
           onDragStart={handleFocus}
         >
-          <TerminalTopbar className="topbar">
+          <MacWindowTopbar className="topbar">
             <TerminalBtnContainer>
               <TerminalBtn
                 color="close"
@@ -421,7 +453,7 @@ const BodyContent: React.FC<BodyContentProps> = ({
               />
               <TopbarTitleText>Skills</TopbarTitleText>
             </TopbarTitle>
-          </TerminalTopbar>
+          </MacWindowTopbar>
           <div>Body</div>
         </MacWindow>
       ) : null}
@@ -439,7 +471,7 @@ const BodyContent: React.FC<BodyContentProps> = ({
           minHeight={300}
           onDragStart={handleFocus}
         >
-          <TerminalTopbar className="topbar">
+          <MacWindowTopbar className="topbar">
             <TerminalBtnContainer>
               <TerminalBtn
                 color="close"
@@ -467,7 +499,7 @@ const BodyContent: React.FC<BodyContentProps> = ({
               />
               <TopbarTitleText>Projects</TopbarTitleText>
             </TopbarTitle>
-          </TerminalTopbar>
+          </MacWindowTopbar>
           <div>Body</div>
         </MacWindow>
       ) : null}
