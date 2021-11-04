@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import { DraggableData, Position, ResizableDelta, Rnd } from "react-rnd";
-import img from "./Logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBirthdayCake,
   faLocationArrow,
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
+import img from "./image/Logo.png";
 
 const Container = styled.div`
   background-color: #3c3c3c;

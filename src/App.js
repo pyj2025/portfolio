@@ -3,7 +3,7 @@ import FooterBar from "./FooterBar";
 import BodyContent from "./BodyContent";
 import styled from "styled-components";
 import React, { useState } from "react";
-import img from "./macos.jpg";
+import img from "./image/macos.jpg";
 import MobileTopBar from "./MobileTopBar";
 import DesktopTopBar from "./DesktopTopBar";
 import { useResizeDetector } from "react-resize-detector";
