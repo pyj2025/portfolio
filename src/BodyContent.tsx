@@ -8,13 +8,16 @@ import {
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
 import img from "./image/Logo.png";
+import ProjectsWindow from "./views/ProjectsWindow";
+import SkillsWindow from "./views/SkillsWindow";
+import AboutWindow from "./views/AboutWindow";
 
 const Container = styled.div`
   background-color: #3c3c3c;
   color: white;
 `;
 
-const MacWindow = styled(Rnd)`
+const Window = styled(Rnd)`
   width: 100%;
   display: grid;
   align-items: center;
@@ -123,16 +126,6 @@ const InfoListItemLabel = styled.div`
   margin-left: 8px;
 `;
 
-type WindowSizeSetting = {
-  width: number;
-  height: number;
-};
-
-type WindowPositionSetting = {
-  x: number;
-  y: number;
-};
-
 export type BodyContentProps = {
   width: number;
   height: number;
@@ -178,21 +171,6 @@ const BodyContent: React.FC<BodyContentProps> = ({
     prevZIndex: null as unknown as string,
   });
   const desktopAboutRef = React.useRef<any>();
-  const aboutRef = React.useRef<any>();
-
-  const [aboutSize, setAboutSize] = React.useState<WindowSizeSetting>({
-    width: 500,
-    height: 300,
-  });
-  const [aboutPosition, setAboutPosition] =
-    React.useState<WindowPositionSetting>({
-      x: 40,
-      y: -600,
-    });
-
-  const [aboutPrevSetting, setAboutPrevSetting] = React.useState<
-    (WindowSizeSetting & WindowPositionSetting) | null
-  >(null);
 
   React.useEffect(() => {
     console.log("height = ", height);
@@ -202,85 +180,6 @@ const BodyContent: React.FC<BodyContentProps> = ({
 
   const handleDesktopAboutClose = () => {
     if (focusedWindow === "DesktopAbout") toggleDesktopAboutOpen();
-  };
-
-  const handleAboutClose = () => {
-    if (focusedWindow === "About") toggleAboutOpen();
-  };
-
-  const handleAboutMinimized = () => {
-    if (focusedWindow === "About") {
-      setAboutMinimized(true);
-      toggleAboutOpen();
-    }
-  };
-
-  const handleAboutExpand = () => {
-    if (focusedWindow === "About") {
-      if (isAboutExpanded) {
-        if (aboutPrevSetting === null) {
-          setAboutSize({
-            width: 500,
-            height: 300,
-          });
-          setAboutPosition({
-            x: 40,
-            y: -600,
-          });
-        } else {
-          setAboutSize({
-            width: aboutPrevSetting.width,
-            height: aboutPrevSetting.height,
-          });
-          setAboutPosition({
-            x: aboutPrevSetting.x,
-            y: aboutPrevSetting.y,
-          });
-        }
-      } else {
-        setAboutPrevSetting({
-          width: aboutSize.width,
-          height: aboutSize.height,
-          x: aboutPosition.x,
-          y: aboutPosition.y,
-        });
-
-        setAboutSize({
-          width: width,
-          height: height,
-        });
-        setAboutPosition({
-          x: 0,
-          y: -1 * height,
-        });
-      }
-      aboutRef.current.updateSize(aboutSize);
-      aboutRef.current.updatePosition(aboutPosition);
-
-      toggleAboutExpanded();
-    }
-  };
-
-  const handleSkillsClose = () => {
-    if (focusedWindow === "Skills") toggleSkillsOpen();
-  };
-
-  const handleSkillsMinimized = () => {
-    if (focusedWindow === "Skills") {
-      setSkillsMinimized(true);
-      toggleSkillsOpen();
-    }
-  };
-
-  const handleProjectsClose = () => {
-    if (focusedWindow === "Projects") toggleProjectsOpen();
-  };
-
-  const handleProjectsMinimized = () => {
-    if (focusedWindow === "Projects") {
-      setProjectsMinimized(true);
-      toggleProjectsOpen();
-    }
   };
 
   const handleFocus = (_e: any, data: DraggableData) => {
@@ -299,7 +198,7 @@ const BodyContent: React.FC<BodyContentProps> = ({
   return (
     <Container>
       {isDesktopAboutOpen ? (
-        <MacWindow
+        <Window
           id="DesktopAbout"
           ref={desktopAboutRef}
           default={{
@@ -350,158 +249,35 @@ const BodyContent: React.FC<BodyContentProps> = ({
               </InfoList>
             </div>
           </MacWindowBody>
-        </MacWindow>
+        </Window>
       ) : null}
       {isAboutOpen ? (
-        <MacWindow
-          id="About"
-          ref={aboutRef}
-          size={{ width: aboutSize.width, height: aboutSize.height }}
-          position={{ x: aboutPosition.x, y: aboutPosition.y }}
-          dragHandleClassName="topbar"
-          minWidth={500}
-          minHeight={300}
-          onDragStart={handleFocus}
-          onDragStop={(_e: any, data: DraggableData) => {
-            setAboutPosition({ x: data.x, y: data.y });
-          }}
-          onResizeStop={(
-            _e: MouseEvent | TouchEvent,
-            _dir: any,
-            ref: any,
-            _delta: ResizableDelta,
-            position: Position
-          ) => {
-            setAboutSize({
-              width: ref.style.width,
-              height: ref.style.height,
-            });
-            setAboutPosition({ x: position.x, y: position.y });
-          }}
-        >
-          <MacWindowTopbar className="topbar">
-            <TerminalBtnContainer>
-              <TerminalBtn
-                color="close"
-                title={focusedWindow === "About" ? "Close" : undefined}
-                onClick={handleAboutClose}
-                disabled={focusedWindow !== "About"}
-              />
-              <TerminalBtn
-                color="minimize"
-                title={focusedWindow === "About" ? "Minimize" : undefined}
-                onClick={handleAboutMinimized}
-                disabled={focusedWindow !== "About"}
-              />
-              <TerminalBtn
-                color="expand"
-                title={focusedWindow === "About" ? "Expand" : undefined}
-                onClick={handleAboutExpand}
-                disabled={focusedWindow !== "About"}
-              />
-            </TerminalBtnContainer>
-            <TopbarTitle>
-              <TopbarTitleImage
-                src="https://img.icons8.com/color/48/000000/mac-logo.png"
-                alt="About"
-              />
-              <TopbarTitleText>About</TopbarTitleText>
-            </TopbarTitle>
-          </MacWindowTopbar>
-          <div>Body</div>
-        </MacWindow>
+        <AboutWindow
+          width={width}
+          height={height}
+          focusedWindow={focusedWindow}
+          handleFocus={handleFocus}
+          isAboutExpanded={isAboutExpanded}
+          setAboutMinimized={setAboutMinimized}
+          toggleAboutOpen={toggleAboutOpen}
+          toggleAboutExpanded={toggleAboutExpanded}
+        />
       ) : null}
       {isSkillsOpen ? (
-        <MacWindow
-          default={{
-            x: 100,
-            y: -600,
-            width: 500,
-            height: 300,
-          }}
-          id="Skills"
-          dragHandleClassName="topbar"
-          minWidth={500}
-          minHeight={300}
-          onDragStart={handleFocus}
-        >
-          <MacWindowTopbar className="topbar">
-            <TerminalBtnContainer>
-              <TerminalBtn
-                color="close"
-                title={focusedWindow === "Skills" ? "Close" : undefined}
-                onClick={handleSkillsClose}
-                disabled={focusedWindow !== "Skills"}
-              />
-              <TerminalBtn
-                color="minimize"
-                title={focusedWindow === "Skills" ? "Minimize" : undefined}
-                onClick={handleSkillsMinimized}
-                disabled={focusedWindow !== "Skills"}
-              />
-              <TerminalBtn
-                color="expand"
-                title={focusedWindow === "Skills" ? "Expand" : undefined}
-                onClick={toggleSkillsOpen}
-                disabled={focusedWindow !== "Skills"}
-              />
-            </TerminalBtnContainer>
-            <TopbarTitle>
-              <TopbarTitleImage
-                src="https://img.icons8.com/color/48/000000/visual-studio-code-2019.png"
-                alt="Skills"
-              />
-              <TopbarTitleText>Skills</TopbarTitleText>
-            </TopbarTitle>
-          </MacWindowTopbar>
-          <div>Body</div>
-        </MacWindow>
+        <SkillsWindow
+          focusedWindow={focusedWindow}
+          handleFocus={handleFocus}
+          setSkillsMinimized={setSkillsMinimized}
+          toggleSkillsOpen={toggleSkillsOpen}
+        />
       ) : null}
       {isProjectsOpen ? (
-        <MacWindow
-          default={{
-            x: 0,
-            y: -200,
-            width: 500,
-            height: 300,
-          }}
-          id="Projects"
-          dragHandleClassName="topbar"
-          minWidth={500}
-          minHeight={300}
-          onDragStart={handleFocus}
-        >
-          <MacWindowTopbar className="topbar">
-            <TerminalBtnContainer>
-              <TerminalBtn
-                color="close"
-                title={focusedWindow === "Projects" ? "Close" : undefined}
-                onClick={handleProjectsClose}
-                disabled={focusedWindow !== "Projects"}
-              />
-              <TerminalBtn
-                color="minimize"
-                title={focusedWindow === "Projects" ? "Minimize" : undefined}
-                onClick={handleProjectsMinimized}
-                disabled={focusedWindow !== "Projects"}
-              />
-              <TerminalBtn
-                color="expand"
-                title={focusedWindow === "Projects" ? "Expand" : undefined}
-                onClick={toggleProjectsOpen}
-                disabled={focusedWindow !== "Projects"}
-              />
-            </TerminalBtnContainer>
-            <TopbarTitle>
-              <TopbarTitleImage
-                src="https://img.icons8.com/color/48/000000/mac-folder.png"
-                alt="Projects"
-              />
-              <TopbarTitleText>Projects</TopbarTitleText>
-            </TopbarTitle>
-          </MacWindowTopbar>
-          <div>Body</div>
-        </MacWindow>
+        <ProjectsWindow
+          focusedWindow={focusedWindow}
+          handleFocus={handleFocus}
+          setProjectsMinimized={setProjectsMinimized}
+          toggleProjectsOpen={toggleProjectsOpen}
+        />
       ) : null}
     </Container>
   );
