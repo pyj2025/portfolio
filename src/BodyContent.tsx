@@ -19,6 +19,7 @@ export type BodyContentProps = {
   isAboutOpen: boolean;
   isAboutExpanded: boolean;
   isSkillsOpen: boolean;
+  isSkillsExpanded: boolean;
   isProjectsOpen: boolean;
   isDesktopAboutOpen: boolean;
   toggleAboutOpen: () => void;
@@ -26,6 +27,7 @@ export type BodyContentProps = {
   toggleAboutExpanded: () => void;
   toggleSkillsOpen: () => void;
   setSkillsMinimized: (flag: boolean) => void;
+  toggleSkillsExpanded: () => void;
   toggleProjectsOpen: () => void;
   setProjectsMinimized: (flag: boolean) => void;
   setFocusedWindow: (name: string) => void;
@@ -39,6 +41,7 @@ const BodyContent: React.FC<BodyContentProps> = ({
   isAboutOpen,
   isAboutExpanded,
   isSkillsOpen,
+  isSkillsExpanded,
   isProjectsOpen,
   isDesktopAboutOpen,
   toggleAboutOpen,
@@ -46,6 +49,7 @@ const BodyContent: React.FC<BodyContentProps> = ({
   toggleAboutExpanded,
   toggleSkillsOpen,
   setSkillsMinimized,
+  toggleSkillsExpanded,
   toggleProjectsOpen,
   setProjectsMinimized,
   setFocusedWindow,
@@ -101,10 +105,14 @@ const BodyContent: React.FC<BodyContentProps> = ({
       ) : null}
       {isSkillsOpen ? (
         <SkillsWindow
+          width={width}
+          height={height}
           focusedWindow={focusedWindow}
           handleFocus={handleFocus}
+          isSkillsExpanded={isSkillsExpanded}
           setSkillsMinimized={setSkillsMinimized}
           toggleSkillsOpen={toggleSkillsOpen}
+          toggleSkillsExpanded={toggleSkillsExpanded}
         />
       ) : null}
       {isProjectsOpen ? (

@@ -81,12 +81,12 @@ const TopbarTitleText = styled.span`
   pointer-events: none;
 `;
 
-type WindowSizeSetting = {
+export type WindowSizeSetting = {
   width: number;
   height: number;
 };
 
-type WindowPositionSetting = {
+export type WindowPositionSetting = {
   x: number;
   y: number;
 };

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { DraggableData, Rnd } from "react-rnd";
+import { DraggableData, Position, ResizableDelta, Rnd } from "react-rnd";
+import { WindowPositionSetting, WindowSizeSetting } from "./AboutWindow";
 
 const Window = styled(Rnd)`
   width: 100%;
@@ -82,18 +83,42 @@ const TopbarTitleText = styled.span`
 `;
 
 type SkillsWindowProps = {
+  width: number;
+  height: number;
   focusedWindow: string;
   handleFocus: (_e: any, data: DraggableData) => void;
+  isSkillsExpanded: boolean;
   setSkillsMinimized: (flag: boolean) => void;
   toggleSkillsOpen: () => void;
+  toggleSkillsExpanded: () => void;
 };
 
 const SkillsWindow: React.FC<SkillsWindowProps> = ({
+  width,
+  height,
   focusedWindow,
   handleFocus,
+  isSkillsExpanded,
   setSkillsMinimized,
   toggleSkillsOpen,
+  toggleSkillsExpanded,
 }) => {
+  const skillsRef = React.useRef<any>();
+
+  const [skillsSize, setSkillsSize] = React.useState<WindowSizeSetting>({
+    width: 500,
+    height: 300,
+  });
+  const [skillsPosition, setSkillsPosition] =
+    React.useState<WindowPositionSetting>({
+      x: 40,
+      y: -600,
+    });
+
+  const [skillsPrevSetting, setSkillsPrevSetting] = React.useState<
+    (WindowSizeSetting & WindowPositionSetting) | null
+  >(null);
+
   const handleSkillsClose = () => {
     if (focusedWindow === "Skills") toggleSkillsOpen();
   };
@@ -105,19 +130,78 @@ const SkillsWindow: React.FC<SkillsWindowProps> = ({
     }
   };
 
+  const handleSkillsExpand = () => {
+    if (focusedWindow === "Skills") {
+      if (isSkillsExpanded) {
+        if (skillsPrevSetting === null) {
+          setSkillsSize({
+            width: 500,
+            height: 300,
+          });
+          setSkillsPosition({
+            x: 40,
+            y: -600,
+          });
+        } else {
+          setSkillsSize({
+            width: skillsPrevSetting.width,
+            height: skillsPrevSetting.height,
+          });
+          setSkillsPosition({
+            x: skillsPrevSetting.x,
+            y: skillsPrevSetting.y,
+          });
+        }
+      } else {
+        setSkillsPrevSetting({
+          width: skillsSize.width,
+          height: skillsSize.height,
+          x: skillsPosition.x,
+          y: skillsPosition.y,
+        });
+
+        setSkillsSize({
+          width: width,
+          height: height,
+        });
+        setSkillsPosition({
+          x: 0,
+          y: -1 * height,
+        });
+      }
+      skillsRef.current.updateSize(skillsSize);
+      skillsRef.current.updatePosition(skillsPosition);
+
+      toggleSkillsExpanded();
+    }
+  };
+
   return (
     <Window
-      default={{
-        x: 100,
-        y: -600,
-        width: 500,
-        height: 300,
-      }}
       id="Skills"
+      ref={skillsRef}
+      size={{ width: skillsSize.width, height: skillsSize.height }}
+      position={{ x: skillsPosition.x, y: skillsPosition.y }}
       dragHandleClassName="topbar"
       minWidth={500}
       minHeight={300}
       onDragStart={handleFocus}
+      onDragStop={(_e: any, data: DraggableData) => {
+        setSkillsPosition({ x: data.x, y: data.y });
+      }}
+      onResizeStop={(
+        _e: MouseEvent | TouchEvent,
+        _dir: any,
+        ref: any,
+        _delta: ResizableDelta,
+        position: Position
+      ) => {
+        setSkillsSize({
+          width: ref.style.width,
+          height: ref.style.height,
+        });
+        setSkillsPosition({ x: position.x, y: position.y });
+      }}
     >
       <WindowTopbar className="topbar">
         <TopbarBtnContainer>
@@ -136,7 +220,7 @@ const SkillsWindow: React.FC<SkillsWindowProps> = ({
           <TopbarBtn
             color="expand"
             title={focusedWindow === "Skills" ? "Expand" : undefined}
-            onClick={toggleSkillsOpen}
+            onClick={handleSkillsExpand}
             disabled={focusedWindow !== "Skills"}
           />
         </TopbarBtnContainer>

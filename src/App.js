@@ -44,6 +44,7 @@ function App() {
   const [isAboutExpanded, setAboutExpanded] = useState(false);
   const [isSkillsOpen, setSkillsOpen] = useState(false);
   const [isSkillsMinimized, setSkillsMinimized] = useState(false);
+  const [isSkillsExpanded, setSkillsExpanded] = useState(false);
   const [isProjectsOpen, setProjectsOpen] = useState(false);
   const [isProjectsMinimized, setProjectsMinimized] = useState(false);
   const [isEmailOpen, setEmailOpen] = useState(false);
@@ -100,6 +101,10 @@ function App() {
     } else {
       setFocusedWindow("");
     }
+  };
+
+  const toggleSkillsExpanded = () => {
+    setSkillsExpanded((state) => !state);
   };
 
   const toggleProjectsOpen = () => {
@@ -174,6 +179,7 @@ function App() {
               isAboutOpen={isAboutOpen}
               isAboutExpanded={isAboutExpanded}
               isSkillsOpen={isSkillsOpen}
+              isSkillsExpanded={isSkillsExpanded}
               isProjectsOpen={isProjectsOpen}
               isDesktopAboutOpen={isDesktopAboutOpen}
               toggleAboutOpen={toggleAboutOpen}
@@ -181,6 +187,7 @@ function App() {
               toggleAboutExpanded={toggleAboutExpanded}
               toggleSkillsOpen={toggleSkillsOpen}
               setSkillsMinimized={setSkillsMinimized}
+              toggleSkillsExpanded={toggleSkillsExpanded}
               toggleProjectsOpen={toggleProjectsOpen}
               setProjectsMinimized={setProjectsMinimized}
               toggleEmailOpen={toggleEmailOpen}
