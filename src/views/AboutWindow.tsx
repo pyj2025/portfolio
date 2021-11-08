@@ -81,6 +81,23 @@ const TopbarTitleText = styled.span`
   pointer-events: none;
 `;
 
+const WindowBody = styled.div<{ height: number }>`
+  display: grid;
+  grid-template-columns: 150px auto;
+  width: 100%;
+  height: ${({ height }: { height: number }) => `${height - 28}px`};
+  color: black;
+`;
+
+const WindowBodyNavbar = styled.div<{ height: number }>`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: ${({ height }: { height: number }) => `${height}px`};
+  color: black;
+  border-right: 1px solid black;
+`;
+
 export type WindowSizeSetting = {
   width: number;
   height: number;
@@ -127,6 +144,14 @@ const AboutWindow: React.FC<AboutWindowProps> = ({
   const [aboutPrevSetting, setAboutPrevSetting] = React.useState<
     (WindowSizeSetting & WindowPositionSetting) | null
   >(null);
+
+  const [widowHeight, setWidowHeight] = React.useState<number>(
+    aboutSize.height
+  );
+
+  React.useEffect(() => {
+    setWidowHeight(aboutSize.height - 28);
+  }, [aboutSize.height]);
 
   const handleAboutClose = () => {
     if (focusedWindow === "About") toggleAboutOpen();
@@ -241,7 +266,14 @@ const AboutWindow: React.FC<AboutWindowProps> = ({
           <TopbarTitleText>About</TopbarTitleText>
         </TopbarTitle>
       </WindowTopbar>
-      <div>Body</div>
+      <WindowBody height={aboutSize.height}>
+        <WindowBodyNavbar height={widowHeight}>
+          <div>Personal Info</div>
+          <div>Experience</div>
+          <div>Education</div>
+        </WindowBodyNavbar>
+        <div>windowbody</div>
+      </WindowBody>
     </Window>
   );
 };
