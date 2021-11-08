@@ -3,10 +3,10 @@ import styled from "styled-components";
 import { DraggableData, Position, ResizableDelta, Rnd } from "react-rnd";
 
 const Window = styled(Rnd)`
-  width: 100%;
-  display: grid;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   background-color: white;
   border-radius: 6px;
   box-shadow: 0px 0px 8px black;
@@ -17,7 +17,6 @@ const WindowTopbar = styled.div`
   height: 28px;
   background-color: rgb(51, 52, 54);
   border-top: 1px rgb(70, 75, 80) solid;
-
   padding: 0px 10px;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
@@ -81,19 +80,19 @@ const TopbarTitleText = styled.span`
   pointer-events: none;
 `;
 
-const WindowBody = styled.div<{ height: number }>`
+const WindowBody = styled.div`
   display: grid;
   grid-template-columns: 150px auto;
   width: 100%;
-  height: ${({ height }: { height: number }) => `${height - 28}px`};
+  height: calc(100% - 28px);
   color: black;
 `;
 
-const WindowBodyNavbar = styled.div<{ height: number }>`
+const WindowBodyNavbar = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  height: ${({ height }: { height: number }) => `${height}px`};
+  height: 100%;
   color: black;
   border-right: 1px solid black;
 `;
@@ -144,14 +143,6 @@ const AboutWindow: React.FC<AboutWindowProps> = ({
   const [aboutPrevSetting, setAboutPrevSetting] = React.useState<
     (WindowSizeSetting & WindowPositionSetting) | null
   >(null);
-
-  const [widowHeight, setWidowHeight] = React.useState<number>(
-    aboutSize.height
-  );
-
-  React.useEffect(() => {
-    setWidowHeight(aboutSize.height - 28);
-  }, [aboutSize.height]);
 
   const handleAboutClose = () => {
     if (focusedWindow === "About") toggleAboutOpen();
@@ -266,8 +257,8 @@ const AboutWindow: React.FC<AboutWindowProps> = ({
           <TopbarTitleText>About</TopbarTitleText>
         </TopbarTitle>
       </WindowTopbar>
-      <WindowBody height={aboutSize.height}>
-        <WindowBodyNavbar height={widowHeight}>
+      <WindowBody>
+        <WindowBodyNavbar>
           <div>Personal Info</div>
           <div>Experience</div>
           <div>Education</div>
