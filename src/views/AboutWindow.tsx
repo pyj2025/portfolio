@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { DraggableData, Position, ResizableDelta, Rnd } from "react-rnd";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCode, faSchool, faUser } from "@fortawesome/free-solid-svg-icons";
 
 const Window = styled(Rnd)`
   display: flex;
@@ -93,8 +95,30 @@ const WindowBodyNavbar = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   height: 100%;
-  color: black;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
   border-right: 1px solid black;
+`;
+
+const WindowBodyNavItm = styled.div<{ first?: boolean }>`
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  justify-content: flex-start;
+  background-color: transparent;
+  color: white;
+  margin-top: ${({ first }) => (first ? "8px" : "2px")};
+`;
+
+const NavItmIcon = styled(FontAwesomeIcon)`
+  margin-left: 8px;
+  justify-content: center;
+`;
+
+const NavItmLabel = styled.span`
+  font-weight: bold;
+  justify-content: center;
+
+  margin-left: 4px;
 `;
 
 export type WindowSizeSetting = {
@@ -106,6 +130,8 @@ export type WindowPositionSetting = {
   x: number;
   y: number;
 };
+
+type IndexType = "Info" | "Experience" | "Education";
 
 type AboutWindowProps = {
   width: number;
@@ -143,6 +169,8 @@ const AboutWindow: React.FC<AboutWindowProps> = ({
   const [aboutPrevSetting, setAboutPrevSetting] = React.useState<
     (WindowSizeSetting & WindowPositionSetting) | null
   >(null);
+
+  const [index, setIndex] = React.useState<IndexType>("Info");
 
   const handleAboutClose = () => {
     if (focusedWindow === "About") toggleAboutOpen();
@@ -198,6 +226,16 @@ const AboutWindow: React.FC<AboutWindowProps> = ({
       aboutRef.current.updatePosition(aboutPosition);
 
       toggleAboutExpanded();
+    }
+  };
+
+  const handleClick = (name: IndexType) => {
+    if (name === "Experience") {
+      setIndex("Experience");
+    } else if (name === "Education") {
+      setIndex("Education");
+    } else {
+      setIndex("Info");
     }
   };
 
@@ -259,11 +297,20 @@ const AboutWindow: React.FC<AboutWindowProps> = ({
       </WindowTopbar>
       <WindowBody>
         <WindowBodyNavbar>
-          <div>Personal Info</div>
-          <div>Experience</div>
-          <div>Education</div>
+          <WindowBodyNavItm first onClick={() => handleClick("Info")}>
+            <NavItmIcon icon={faUser} />
+            <NavItmLabel>Personal Info</NavItmLabel>
+          </WindowBodyNavItm>
+          <WindowBodyNavItm onClick={() => handleClick("Experience")}>
+            <NavItmIcon icon={faCode} />
+            <NavItmLabel>Experience</NavItmLabel>
+          </WindowBodyNavItm>
+          <WindowBodyNavItm onClick={() => handleClick("Education")}>
+            <NavItmIcon icon={faSchool} />
+            <NavItmLabel>Education</NavItmLabel>
+          </WindowBodyNavItm>
         </WindowBodyNavbar>
-        <div>windowbody</div>
+        <div>{index}</div>
       </WindowBody>
     </Window>
   );
