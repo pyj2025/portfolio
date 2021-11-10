@@ -2,14 +2,21 @@ import React from "react";
 import styled from "styled-components";
 import { DraggableData, Position, ResizableDelta, Rnd } from "react-rnd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCode, faSchool, faUser } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBirthdayCake,
+  faCode,
+  faLocationArrow,
+  faPhone,
+  faSchool,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Window = styled(Rnd)`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: white;
+  background-color: rgba(0, 0, 0, 0.6);
   border-radius: 6px;
   box-shadow: 0px 0px 8px black;
 `;
@@ -107,6 +114,7 @@ const WindowBodyNavItm = styled.div<{ first?: boolean }>`
   background-color: transparent;
   color: white;
   margin-top: ${({ first }) => (first ? "8px" : "2px")};
+  cursor: pointer;
 `;
 
 const NavItmIcon = styled(FontAwesomeIcon)`
@@ -117,8 +125,13 @@ const NavItmIcon = styled(FontAwesomeIcon)`
 const NavItmLabel = styled.span`
   font-weight: bold;
   justify-content: center;
-
   margin-left: 4px;
+`;
+
+const WindowBodyContent = styled.div`
+  height: 100%;
+  color: white;
+  margin: 8px;
 `;
 
 export type WindowSizeSetting = {
@@ -310,7 +323,67 @@ const AboutWindow: React.FC<AboutWindowProps> = ({
             <NavItmLabel>Education</NavItmLabel>
           </WindowBodyNavItm>
         </WindowBodyNavbar>
-        <div>{index}</div>
+        <WindowBodyContent>
+          {index === "Info" ? (
+            <>
+              <div>Personal {index}</div>
+              <div>
+                <div>Youngjoon Park</div>
+                <div>
+                  <FontAwesomeIcon icon={faBirthdayCake} />
+                  <div>Jan.17.1994</div>
+                </div>
+                <div>
+                  <FontAwesomeIcon icon={faPhone} />
+                  <div>+1 312-937-4435</div>
+                </div>
+                <div>
+                  <FontAwesomeIcon icon={faLocationArrow} />
+                  <div>25 W Randolph St Apt 903, Chicago, IL, 60601</div>
+                </div>
+              </div>
+            </>
+          ) : null}
+          {index === "Education" ? (
+            <>
+              <div>{index}</div>
+              <div>
+                <div>Purdue University</div>
+                <div>
+                  Bachelor of Science in Computer Science (Software Engineering)
+                </div>
+                <div>Graduated : December / 2019</div>
+              </div>
+            </>
+          ) : null}
+          {index === "Experience" ? (
+            <>
+              <div>{index}</div>
+              <div>
+                <div>
+                  <div>Junior Frontend Developer</div>
+                  <div>Enfusion, Chicago, IL, USA</div>
+                  <div>January 2020 - Present</div>
+                </div>
+                <div>
+                  <div>Undergraduate Teaching Assistant</div>
+                  <div>Purdue University, West Lafayette, IN, USA</div>
+                  <div>Aug 2018 - Dec 2019</div>
+                </div>
+                <div>
+                  <div>Technical Consultant Intern</div>
+                  <div>Dotis Corp, Seoul, South Korea</div>
+                  <div>Jun 2017 - Jul 2017</div>
+                </div>
+                <div>
+                  <div>Software Engineering Intern</div>
+                  <div>Hyop Woon, Seoul, South Korea</div>
+                  <div>Jul 2015 - Aug 2015</div>
+                </div>
+              </div>
+            </>
+          ) : null}
+        </WindowBodyContent>
       </WindowBody>
     </Window>
   );
