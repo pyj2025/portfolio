@@ -16,7 +16,6 @@ const Window = styled(Rnd)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.6);
   border-radius: 6px;
   box-shadow: 0px 0px 8px black;
 `;
@@ -25,7 +24,7 @@ const WindowTopbar = styled.div`
   width: 100%;
   height: 28px;
   background-color: rgb(51, 52, 54);
-  border-top: 1px rgb(70, 75, 80) solid;
+  border-top: 1px solid rgb(70, 75, 80);
   padding: 0px 10px;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
@@ -35,6 +34,7 @@ const WindowTopbar = styled.div`
   margin: 0 auto;
   align-items: center;
   box-sizing: border-box;
+  border-bottom: 0.2px solid #141516;
 `;
 
 const TopbarBtnContainer = styled.div`
@@ -94,7 +94,6 @@ const WindowBody = styled.div`
   grid-template-columns: 150px auto;
   width: 100%;
   height: calc(100% - 28px);
-  color: black;
 `;
 
 const WindowBodyNavbar = styled.div`
@@ -102,9 +101,9 @@ const WindowBodyNavbar = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(51, 49, 51, 0.9);
   color: white;
-  border-right: 1px solid black;
+  border-right: 0.2px solid #141516;
 `;
 
 const WindowBodyNavItm = styled.div<{ first?: boolean }>`
@@ -130,8 +129,9 @@ const NavItmLabel = styled.span`
 
 const WindowBodyContent = styled.div`
   height: 100%;
+  background-color: #1d1f21;
+
   color: white;
-  margin: 8px;
 `;
 
 export type WindowSizeSetting = {
@@ -184,6 +184,12 @@ const AboutWindow: React.FC<AboutWindowProps> = ({
   >(null);
 
   const [index, setIndex] = React.useState<IndexType>("Info");
+
+  React.useEffect(() => {
+    if (width < aboutSize.width) {
+      handleAboutExpand();
+    }
+  }, [width, aboutSize.width]);
 
   const handleAboutClose = () => {
     if (focusedWindow === "About") toggleAboutOpen();

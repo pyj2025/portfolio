@@ -61,11 +61,11 @@ const BodyContent: React.FC<BodyContentProps> = ({
     prevZIndex: null as unknown as string,
   });
 
-  React.useEffect(() => {
-    console.log("height = ", height);
-    console.log("width = ", width);
-    console.log("toggleDesktopAboutOpen = ", isDesktopAboutOpen);
-  }, [height, width]);
+  // React.useEffect(() => {
+  //   console.log("height = ", height);
+  //   console.log("width = ", width);
+  //   console.log("toggleDesktopAboutOpen = ", isDesktopAboutOpen);
+  // }, [height, width]);
 
   const handleFocus = (_e: any, data: DraggableData) => {
     const ref = windowRef.current;
