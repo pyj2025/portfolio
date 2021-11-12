@@ -4,12 +4,14 @@ import { DraggableData, Position, ResizableDelta, Rnd } from "react-rnd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBirthdayCake,
+  faCheck,
   faCode,
   faLocationArrow,
   faPhone,
   faSchool,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
+import PurdueLogo from "../image/PurdueLogo.png";
 
 const Window = styled(Rnd)`
   display: flex;
@@ -106,13 +108,19 @@ const WindowBodyNavbar = styled.div`
   border-right: 0.2px solid #141516;
 `;
 
+const WindowBodyNavHeader = styled.div`
+  margin-top: 8px;
+  margin-left: 8px;
+  cursor: none;
+`;
+
 const WindowBodyNavItm = styled.div<{ first?: boolean }>`
   display: grid;
   grid-template-columns: 1fr 4fr;
   justify-content: flex-start;
   background-color: transparent;
   color: white;
-  margin-top: ${({ first }) => (first ? "8px" : "2px")};
+  margin-top: ${({ first }) => (first ? "4px" : "2px")};
   cursor: pointer;
 `;
 
@@ -130,8 +138,11 @@ const NavItmLabel = styled.span`
 const WindowBodyContent = styled.div`
   height: 100%;
   background-color: #1d1f21;
-
   color: white;
+`;
+
+const PurdueLogoImage = styled.img`
+  background-color: white;
 `;
 
 export type WindowSizeSetting = {
@@ -316,6 +327,7 @@ const AboutWindow: React.FC<AboutWindowProps> = ({
       </WindowTopbar>
       <WindowBody>
         <WindowBodyNavbar>
+          <WindowBodyNavHeader>About</WindowBodyNavHeader>
           <WindowBodyNavItm first onClick={() => handleClick("Info")}>
             <NavItmIcon icon={faUser} />
             <NavItmLabel>Personal Info</NavItmLabel>
@@ -354,11 +366,27 @@ const AboutWindow: React.FC<AboutWindowProps> = ({
             <>
               <div>{index}</div>
               <div>
-                <div>Purdue University</div>
                 <div>
-                  Bachelor of Science in Computer Science (Software Engineering)
+                  <PurdueLogoImage src={PurdueLogo} alt="PurdueLogo" />
                 </div>
-                <div>Graduated : December / 2019</div>
+                <div>
+                  <div>Name</div>
+                  <div>Purdue University</div>
+                </div>
+                <div>
+                  <div>Details</div>
+                  <div>
+                    <FontAwesomeIcon icon={faCheck} />
+                    <div>
+                      Bachelor of Science in Computer Science (Software
+                      Engineering)
+                    </div>
+                  </div>
+                  <div>
+                    <FontAwesomeIcon icon={faCheck} />
+                    <div>Graduated : December / 2019</div>
+                  </div>
+                </div>
               </div>
             </>
           ) : null}
