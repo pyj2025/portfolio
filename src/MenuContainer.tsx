@@ -43,14 +43,14 @@ export type MenuContainerProps = {
   toggleAboutOpen: () => void;
   toggleSkillsOpen: () => void;
   toggleProjectsOpen: () => void;
-  toggleEmailOpen: () => void;
+  emailClick: () => void;
 };
 
 const MenuContainer: React.FC<MenuContainerProps> = ({
   toggleAboutOpen,
   toggleSkillsOpen,
   toggleProjectsOpen,
-  toggleEmailOpen,
+  emailClick,
 }) => {
   return (
     <>
@@ -128,7 +128,7 @@ const MenuContainer: React.FC<MenuContainerProps> = ({
               alt="Facebook"
             />
           </ListItem>
-          <ListItem title="Email" onClick={toggleEmailOpen}>
+          <ListItem title="Email" onClick={emailClick}>
             <img
               src="https://img.icons8.com/color/48/000000/gmail-new.png"
               alt="Email"

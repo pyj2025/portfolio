@@ -47,7 +47,6 @@ function App() {
   const [isSkillsExpanded, setSkillsExpanded] = useState(false);
   const [isProjectsOpen, setProjectsOpen] = useState(false);
   const [isProjectsMinimized, setProjectsMinimized] = useState(false);
-  const [isEmailOpen, setEmailOpen] = useState(false);
   const [isEmailMinimized, setEmailMinimized] = useState(false);
   const [isDesktopAboutOpen, setDesktopAboutOpen] = useState(false);
 
@@ -117,14 +116,8 @@ function App() {
     }
   };
 
-  const toggleEmailOpen = () => {
-    setEmailOpen((state) => !state);
-
-    if (!isEmailOpen) {
-      setFocusedWindow("Email");
-    } else {
-      setFocusedWindow("");
-    }
+  const handleEmailClick = () => {
+    window.open("mailto:pyj2025@gmail.com");
   };
 
   return (
@@ -165,12 +158,11 @@ function App() {
               limit={1}
               draggablePercent={60}
             />
-
             <MenuContainer
               toggleAboutOpen={toggleAboutOpen}
               toggleSkillsOpen={toggleSkillsOpen}
               toggleProjectsOpen={toggleProjectsOpen}
-              toggleEmailOpen={toggleEmailOpen}
+              emailClick={handleEmailClick}
             />
             <BodyContent
               width={width}
@@ -190,8 +182,6 @@ function App() {
               toggleSkillsExpanded={toggleSkillsExpanded}
               toggleProjectsOpen={toggleProjectsOpen}
               setProjectsMinimized={setProjectsMinimized}
-              toggleEmailOpen={toggleEmailOpen}
-              setEmailMinimized={setEmailMinimized}
               toggleDesktopAboutOpen={toggleDesktopAboutOpen}
               setFocusedWindow={setFocusedWindow}
             />
@@ -206,8 +196,6 @@ function App() {
               setSkillsMinimized={setSkillsMinimized}
               toggleProjectsOpen={toggleProjectsOpen}
               setProjectsMinimized={setProjectsMinimized}
-              toggleEmailOpen={toggleEmailOpen}
-              setEmailMinimized={setEmailMinimized}
             />
           </BodyContainer>
         </>

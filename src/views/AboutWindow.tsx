@@ -3,11 +3,8 @@ import styled from "styled-components";
 import { DraggableData, Position, ResizableDelta, Rnd } from "react-rnd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faBirthdayCake,
   faCheck,
   faCode,
-  faLocationArrow,
-  faPhone,
   faSchool,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
@@ -141,8 +138,38 @@ const WindowBodyContent = styled.div`
   color: white;
 `;
 
+const PersonalInfoContainer = styled.div`
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-gap: 5px;
+  margin: 10px;
+`;
+
+const EducationContainer = styled.div`
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-gap: 5px;
+  margin: 10px;
+`;
+
+const LogoContainer = styled.div`
+  display: grid;
+  justify-content: center;
+  margin: 10px;
+`;
+
 const PurdueLogoImage = styled.img`
   background-color: white;
+`;
+
+const DataRowContainer = styled.div`
+  display: grid;
+  grid-template-columns: 25% auto;
+  grid-gap: 5px;
+`;
+
+const DataLabel = styled.div`
+  font-weight: bold;
 `;
 
 export type WindowSizeSetting = {
@@ -155,7 +182,7 @@ export type WindowPositionSetting = {
   y: number;
 };
 
-type IndexType = "Info" | "Experience" | "Education";
+type IndexType = "About" | "Experience" | "Education";
 
 type AboutWindowProps = {
   width: number;
@@ -194,7 +221,7 @@ const AboutWindow: React.FC<AboutWindowProps> = ({
     (WindowSizeSetting & WindowPositionSetting) | null
   >(null);
 
-  const [index, setIndex] = React.useState<IndexType>("Info");
+  const [index, setIndex] = React.useState<IndexType>("About");
 
   React.useEffect(() => {
     if (width < aboutSize.width) {
@@ -265,7 +292,7 @@ const AboutWindow: React.FC<AboutWindowProps> = ({
     } else if (name === "Education") {
       setIndex("Education");
     } else {
-      setIndex("Info");
+      setIndex("About");
     }
   };
 
@@ -328,7 +355,7 @@ const AboutWindow: React.FC<AboutWindowProps> = ({
       <WindowBody>
         <WindowBodyNavbar>
           <WindowBodyNavHeader>About</WindowBodyNavHeader>
-          <WindowBodyNavItm first onClick={() => handleClick("Info")}>
+          <WindowBodyNavItm first onClick={() => handleClick("About")}>
             <NavItmIcon icon={faUser} />
             <NavItmLabel>Personal Info</NavItmLabel>
           </WindowBodyNavItm>
@@ -342,52 +369,55 @@ const AboutWindow: React.FC<AboutWindowProps> = ({
           </WindowBodyNavItm>
         </WindowBodyNavbar>
         <WindowBodyContent>
-          {index === "Info" ? (
-            <>
-              <div>Personal {index}</div>
-              <div>
+          {index === "About" ? (
+            <PersonalInfoContainer>
+              <DataRowContainer>
+                <DataLabel>Name</DataLabel>
                 <div>Youngjoon Park</div>
-                <div>
-                  <FontAwesomeIcon icon={faBirthdayCake} />
-                  <div>Jan.17.1994</div>
-                </div>
-                <div>
-                  <FontAwesomeIcon icon={faPhone} />
-                  <div>+1 312-937-4435</div>
-                </div>
-                <div>
-                  <FontAwesomeIcon icon={faLocationArrow} />
-                  <div>25 W Randolph St Apt 903, Chicago, IL, 60601</div>
-                </div>
-              </div>
-            </>
+              </DataRowContainer>
+              <DataRowContainer>
+                <DataLabel>
+                  <div>Date of Birth</div>
+                </DataLabel>
+                <div>Jan.17.1994</div>
+              </DataRowContainer>
+              <DataRowContainer>
+                <DataLabel>
+                  <div>Phone</div>
+                </DataLabel>
+                <div>+1 312-937-4435</div>
+              </DataRowContainer>
+              <DataRowContainer>
+                <DataLabel>
+                  <div>Address</div>
+                </DataLabel>
+                <div>25 W Randolph St Apt 903, Chicago, IL, 60601</div>
+              </DataRowContainer>
+            </PersonalInfoContainer>
           ) : null}
           {index === "Education" ? (
             <>
-              <div>{index}</div>
-              <div>
-                <div>
-                  <PurdueLogoImage src={PurdueLogo} alt="PurdueLogo" />
-                </div>
-                <div>
-                  <div>Name</div>
+              <LogoContainer>
+                <PurdueLogoImage src={PurdueLogo} alt="PurdueLogo" />
+              </LogoContainer>
+              <EducationContainer>
+                <DataRowContainer>
+                  <DataLabel>Name</DataLabel>
                   <div>Purdue University</div>
-                </div>
-                <div>
-                  <div>Details</div>
-                  <div>
-                    <FontAwesomeIcon icon={faCheck} />
-                    <div>
-                      Bachelor of Science in Computer Science (Software
-                      Engineering)
-                    </div>
-                  </div>
-                  <div>
-                    <FontAwesomeIcon icon={faCheck} />
-                    <div>Graduated : December / 2019</div>
-                  </div>
-                </div>
-              </div>
+                </DataRowContainer>
+                <DataRowContainer>
+                  <DataLabel>Details</DataLabel>
+                  <div>Bachelor of Science in Computer Science</div>
+                </DataRowContainer>
+                <DataRowContainer>
+                  <DataLabel>Concentration</DataLabel>
+                  <div>Software Engineering</div>
+                </DataRowContainer>
+                <DataRowContainer>
+                  <DataLabel>Graduated </DataLabel>
+                  <div>Dec. 2019</div>
+                </DataRowContainer>
+              </EducationContainer>
             </>
           ) : null}
           {index === "Experience" ? (
