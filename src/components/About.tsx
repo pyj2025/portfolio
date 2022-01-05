@@ -5,14 +5,13 @@ import { BoldText } from "../GlobalStyle";
 const AboutContainer = styled.div`
   display: grid;
   grid-template-rows: 1fr 1fr 1fr 1fr;
-  grid-gap: 5px;
+  justify-content: center;
   margin: 10px;
 `;
 
 const DataRowContainer = styled.div`
   display: grid;
-  grid-template-columns: 100px auto;
-  grid-gap: 5px;
+  grid-template-columns: 120px auto;
 `;
 
 const About: React.FC = () => {
@@ -32,7 +31,10 @@ const About: React.FC = () => {
       </DataRowContainer>
       <DataRowContainer>
         <BoldText>Address</BoldText>
-        <div>25 W Randolph St Apt 903, Chicago, IL, 60601</div>
+        <div>
+          <div>25 W Randolph St Apt 903,</div>
+          <div>Chicago, IL, 60601</div>
+        </div>
       </DataRowContainer>
     </AboutContainer>
   );

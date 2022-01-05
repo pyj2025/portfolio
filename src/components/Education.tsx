@@ -6,7 +6,7 @@ import PurdueLogo from "../image/PurdueLogo.png";
 const EducationContainer = styled.div`
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
-  grid-gap: 5px;
+  justify-content: center;
   margin: 10px;
 `;
 
@@ -18,12 +18,13 @@ const LogoContainer = styled.div`
 
 const PurdueLogoImage = styled.img`
   background-color: white;
+  width: 95%;
+  height: 95%;
 `;
 
 const DataRowContainer = styled.div`
   display: grid;
   grid-template-columns: 130px auto;
-  grid-gap: 5px;
 `;
 
 const Education: React.FC = () => {
