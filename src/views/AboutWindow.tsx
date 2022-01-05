@@ -2,13 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { DraggableData, Position, ResizableDelta, Rnd } from "react-rnd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCheck,
-  faCode,
-  faSchool,
-  faUser,
-} from "@fortawesome/free-solid-svg-icons";
-import PurdueLogo from "../image/PurdueLogo.png";
+import { faCode, faSchool, faUser } from "@fortawesome/free-solid-svg-icons";
+import Education from "../components/Education";
+import About from "../components/About";
+import Experience from "../components/Experience";
 
 const Window = styled(Rnd)`
   display: flex;
@@ -105,12 +102,6 @@ const WindowBodyNavbar = styled.div`
   border-right: 0.2px solid #141516;
 `;
 
-const WindowBodyNavHeader = styled.div`
-  margin-top: 8px;
-  margin-left: 8px;
-  cursor: none;
-`;
-
 const WindowBodyNavItm = styled.div<{ first?: boolean }>`
   display: grid;
   grid-template-columns: 1fr 4fr;
@@ -136,40 +127,6 @@ const WindowBodyContent = styled.div`
   height: 100%;
   background-color: #1d1f21;
   color: white;
-`;
-
-const PersonalInfoContainer = styled.div`
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
-  grid-gap: 5px;
-  margin: 10px;
-`;
-
-const EducationContainer = styled.div`
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
-  grid-gap: 5px;
-  margin: 10px;
-`;
-
-const LogoContainer = styled.div`
-  display: grid;
-  justify-content: center;
-  margin: 10px;
-`;
-
-const PurdueLogoImage = styled.img`
-  background-color: white;
-`;
-
-const DataRowContainer = styled.div`
-  display: grid;
-  grid-template-columns: 25% auto;
-  grid-gap: 5px;
-`;
-
-const DataLabel = styled.div`
-  font-weight: bold;
 `;
 
 export type WindowSizeSetting = {
@@ -354,7 +311,6 @@ const AboutWindow: React.FC<AboutWindowProps> = ({
       </WindowTopbar>
       <WindowBody>
         <WindowBodyNavbar>
-          <WindowBodyNavHeader>About</WindowBodyNavHeader>
           <WindowBodyNavItm first onClick={() => handleClick("About")}>
             <NavItmIcon icon={faUser} />
             <NavItmLabel>Personal Info</NavItmLabel>
@@ -369,84 +325,9 @@ const AboutWindow: React.FC<AboutWindowProps> = ({
           </WindowBodyNavItm>
         </WindowBodyNavbar>
         <WindowBodyContent>
-          {index === "About" ? (
-            <PersonalInfoContainer>
-              <DataRowContainer>
-                <DataLabel>Name</DataLabel>
-                <div>Youngjoon Park</div>
-              </DataRowContainer>
-              <DataRowContainer>
-                <DataLabel>
-                  <div>Date of Birth</div>
-                </DataLabel>
-                <div>Jan.17.1994</div>
-              </DataRowContainer>
-              <DataRowContainer>
-                <DataLabel>
-                  <div>Phone</div>
-                </DataLabel>
-                <div>+1 312-937-4435</div>
-              </DataRowContainer>
-              <DataRowContainer>
-                <DataLabel>
-                  <div>Address</div>
-                </DataLabel>
-                <div>25 W Randolph St Apt 903, Chicago, IL, 60601</div>
-              </DataRowContainer>
-            </PersonalInfoContainer>
-          ) : null}
-          {index === "Education" ? (
-            <>
-              <LogoContainer>
-                <PurdueLogoImage src={PurdueLogo} alt="PurdueLogo" />
-              </LogoContainer>
-              <EducationContainer>
-                <DataRowContainer>
-                  <DataLabel>Name</DataLabel>
-                  <div>Purdue University</div>
-                </DataRowContainer>
-                <DataRowContainer>
-                  <DataLabel>Details</DataLabel>
-                  <div>Bachelor of Science in Computer Science</div>
-                </DataRowContainer>
-                <DataRowContainer>
-                  <DataLabel>Concentration</DataLabel>
-                  <div>Software Engineering</div>
-                </DataRowContainer>
-                <DataRowContainer>
-                  <DataLabel>Graduated </DataLabel>
-                  <div>Dec. 2019</div>
-                </DataRowContainer>
-              </EducationContainer>
-            </>
-          ) : null}
-          {index === "Experience" ? (
-            <>
-              <div>{index}</div>
-              <div>
-                <div>
-                  <div>Junior Frontend Developer</div>
-                  <div>Enfusion, Chicago, IL, USA</div>
-                  <div>January 2020 - Present</div>
-                </div>
-                <div>
-                  <div>Undergraduate Teaching Assistant</div>
-                  <div>Purdue University, West Lafayette, IN, USA</div>
-                  <div>Aug 2018 - Dec 2019</div>
-                </div>
-                <div>
-                  <div>Technical Consultant Intern</div>
-                  <div>Dotis Corp, Seoul, South Korea</div>
-                  <div>Jun 2017 - Jul 2017</div>
-                </div>
-                <div>
-                  <div>Software Engineering Intern</div>
-                  <div>Hyop Woon, Seoul, South Korea</div>
-                  <div>Jul 2015 - Aug 2015</div>
-                </div>
-              </div>
-            </>
-          ) : null}
+          {index === "About" ? <About /> : null}
+          {index === "Education" ? <Education /> : null}
+          {index === "Experience" ? <Experience /> : null}
         </WindowBodyContent>
       </WindowBody>
     </Window>
