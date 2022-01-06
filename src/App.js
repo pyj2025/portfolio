@@ -3,10 +3,16 @@ import FooterBar from "./FooterBar";
 import BodyContent from "./BodyContent";
 import styled from "styled-components";
 import React, { useState } from "react";
-import img from "./macos.jpg";
-import TopBar from "./TopBar";
+import img from "./image/macos.jpg";
+import MobileTopBar from "./MobileTopBar";
+import DesktopTopBar from "./DesktopTopBar";
 import { useResizeDetector } from "react-resize-detector";
-import { isBrowser, isMobile, browserName } from "react-device-detect";
+import { isMobile, browserName, isBrowser, isIE } from "react-device-detect";
+import { ToastContainer, toast, Slide } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+const TABLET_MAX_WIDTH = 900;
+const MOBILE_MAX_WIDTH = 768;
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -36,22 +42,41 @@ function App() {
   const [isAboutOpen, setAboutOpen] = useState(false);
   const [isAboutMinimized, setAboutMinimized] = useState(false);
   const [isAboutExpanded, setAboutExpanded] = useState(false);
-
   const [isSkillsOpen, setSkillsOpen] = useState(false);
   const [isSkillsMinimized, setSkillsMinimized] = useState(false);
+  const [isSkillsExpanded, setSkillsExpanded] = useState(false);
   const [isProjectsOpen, setProjectsOpen] = useState(false);
   const [isProjectsMinimized, setProjectsMinimized] = useState(false);
-  const [isEmailOpen, setEmailOpen] = useState(false);
   const [isEmailMinimized, setEmailMinimized] = useState(false);
+  const [isDesktopAboutOpen, setDesktopAboutOpen] = useState(false);
 
   React.useEffect(() => {
-    console.log("width = ", width);
-    console.log("height = ", height);
+    const message =
+      "You've accessed via " +
+      (isBrowser ? "desktop " : isMobile ? "mobile " : "tablet") +
+      browserName.toLowerCase();
 
-    console.log("browserName = ", browserName);
-    console.log("isBrowser = ", isBrowser);
-    console.log("isMobile = ", isMobile);
-  }, [width, height]);
+    toast(message, {
+      transition: Slide,
+      type: "info",
+    });
+  }, []);
+
+  React.useEffect(() => {
+    if (width < MOBILE_MAX_WIDTH) {
+      if (isDesktopAboutOpen) setDesktopAboutOpen(false);
+    }
+  }, [width]);
+
+  const toggleDesktopAboutOpen = () => {
+    setDesktopAboutOpen((state) => !state);
+
+    if (!isDesktopAboutOpen) {
+      setFocusedWindow("DesktopAbout");
+    } else {
+      setFocusedWindow("");
+    }
+  };
 
   const toggleAboutOpen = () => {
     setAboutOpen((state) => !state);
@@ -77,6 +102,10 @@ function App() {
     }
   };
 
+  const toggleSkillsExpanded = () => {
+    setSkillsExpanded((state) => !state);
+  };
+
   const toggleProjectsOpen = () => {
     setProjectsOpen((state) => !state);
 
@@ -87,14 +116,8 @@ function App() {
     }
   };
 
-  const toggleEmailOpen = () => {
-    setEmailOpen((state) => !state);
-
-    if (!isEmailOpen) {
-      setFocusedWindow("Email");
-    } else {
-      setFocusedWindow("");
-    }
+  const handleEmailClick = () => {
+    window.open("mailto:pyj2025@gmail.com");
   };
 
   return (
@@ -103,7 +126,13 @@ function App() {
         <MaintenanceMessage>
           Site is in maintenance now. Please come back later...
         </MaintenanceMessage>
-      ) : (
+      ) : null}
+      {isIE ? (
+        <MaintenanceMessage>
+          Sorry, we do not support IE. You can come via other browsers.
+        </MaintenanceMessage>
+      ) : null}
+      {!inMaintenance && !isIE ? (
         <>
           <BodyContainer
             ref={ref}
@@ -112,12 +141,28 @@ function App() {
               backgroundSize: "cover",
             }}
           >
-            <TopBar />
+            {isMobile || width < MOBILE_MAX_WIDTH ? (
+              <MobileTopBar />
+            ) : (
+              <DesktopTopBar toggleDesktopAboutOpen={toggleDesktopAboutOpen} />
+            )}
+            <ToastContainer
+              position={isMobile ? "top-center" : "top-right"}
+              autoClose={5000}
+              newestOnTop
+              hideProgressBar
+              closeOnClick
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              limit={1}
+              draggablePercent={60}
+            />
             <MenuContainer
               toggleAboutOpen={toggleAboutOpen}
               toggleSkillsOpen={toggleSkillsOpen}
               toggleProjectsOpen={toggleProjectsOpen}
-              toggleEmailOpen={toggleEmailOpen}
+              emailClick={handleEmailClick}
             />
             <BodyContent
               width={width}
@@ -126,35 +171,35 @@ function App() {
               isAboutOpen={isAboutOpen}
               isAboutExpanded={isAboutExpanded}
               isSkillsOpen={isSkillsOpen}
+              isSkillsExpanded={isSkillsExpanded}
               isProjectsOpen={isProjectsOpen}
+              isDesktopAboutOpen={isDesktopAboutOpen}
               toggleAboutOpen={toggleAboutOpen}
               setAboutMinimized={setAboutMinimized}
               toggleAboutExpanded={toggleAboutExpanded}
               toggleSkillsOpen={toggleSkillsOpen}
               setSkillsMinimized={setSkillsMinimized}
+              toggleSkillsExpanded={toggleSkillsExpanded}
               toggleProjectsOpen={toggleProjectsOpen}
               setProjectsMinimized={setProjectsMinimized}
-              toggleEmailOpen={toggleEmailOpen}
-              setEmailMinimized={setEmailMinimized}
+              toggleDesktopAboutOpen={toggleDesktopAboutOpen}
               setFocusedWindow={setFocusedWindow}
             />
+            <FooterBar
+              isAboutMinimized={isAboutMinimized}
+              isSkillsMinimized={isSkillsMinimized}
+              isProjectsMinimized={isProjectsMinimized}
+              isEmailMinimized={isEmailMinimized}
+              toggleAboutOpen={toggleAboutOpen}
+              setAboutMinimized={setAboutMinimized}
+              toggleSkillsOpen={toggleSkillsOpen}
+              setSkillsMinimized={setSkillsMinimized}
+              toggleProjectsOpen={toggleProjectsOpen}
+              setProjectsMinimized={setProjectsMinimized}
+            />
           </BodyContainer>
-          <FooterBar
-            isAboutMinimized={isAboutMinimized}
-            isSkillsMinimized={isSkillsMinimized}
-            isProjectsMinimized={isProjectsMinimized}
-            isEmailMinimized={isEmailMinimized}
-            toggleAboutOpen={toggleAboutOpen}
-            setAboutMinimized={setAboutMinimized}
-            toggleSkillsOpen={toggleSkillsOpen}
-            setSkillsMinimized={setSkillsMinimized}
-            toggleProjectsOpen={toggleProjectsOpen}
-            setProjectsMinimized={setProjectsMinimized}
-            toggleEmailOpen={toggleEmailOpen}
-            setEmailMinimized={setEmailMinimized}
-          />
         </>
-      )}
+      ) : null}
     </Wrapper>
   );
 }

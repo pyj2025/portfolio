@@ -1,13 +1,66 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.rc-menu {
+  margin-top: 0;
+}
+
+.rc-menu-vertical,
+.rc-menu-vertical-left,
+.rc-menu-vertical-right,
+.rc-menu-inline {
+  padding: 4px 0 !important;
+  max-width: 100vw;
+}
+
+.rc-menu,
+.rc-menu-submenu-popup,
+.rc-menu-submenu > .rc-menu {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  border-color: #3c3c3c !important;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2) !important;
+  min-width: 200px;
+}
+
+.rc-menu-item,
+.rc-menu-submenu-title {
+  padding: 0px 0.5rem 0px 8px !important;
+  display: flex !important;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.rc-menu-submenu-popup {
+  z-index: 100;
+}
+
+.rc-menu-item {
+  color: #3c3c3c;
+  cursor: pointer;
+}
+
+.rc-menu-item-selected,
+.rc-menu-submenu-selected {
+  background-color: #1468d2 !important;
+}
+
+.rc-menu-item-active,
+.rc-menu-submenu-active,
+.rc-menu-submenu-active > .rc-menu-submenu-title {
+  background-color: #1468d2 !important;
+}
+
+.rc-menu-item-divider {
+  background-color: #3c3c3c !important;
 }
