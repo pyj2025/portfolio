@@ -2,13 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import { DraggableData, Position, ResizableDelta, Rnd } from "react-rnd";
 import { WindowPositionSetting, WindowSizeSetting } from "./AboutWindow";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFileAlt } from "@fortawesome/free-solid-svg-icons";
 
 const Window = styled(Rnd)`
-  width: 100%;
-  display: grid;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  background-color: white;
+  align-items: center;
   border-radius: 6px;
   box-shadow: 0px 0px 8px black;
 `;
@@ -17,8 +18,7 @@ const WindowTopbar = styled.div`
   width: 100%;
   height: 28px;
   background-color: rgb(51, 52, 54);
-  border-top: 1px rgb(70, 75, 80) solid;
-
+  border-top: 1px solid rgb(70, 75, 80);
   padding: 0px 10px;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
@@ -28,6 +28,7 @@ const WindowTopbar = styled.div`
   margin: 0 auto;
   align-items: center;
   box-sizing: border-box;
+  border-bottom: 0.2px solid #141516;
 `;
 
 const TopbarBtnContainer = styled.div`
@@ -82,6 +83,52 @@ const TopbarTitleText = styled.span`
   pointer-events: none;
 `;
 
+const WindowBody = styled.div`
+  display: grid;
+  grid-template-columns: 150px auto;
+  width: 100%;
+  height: calc(100% - 28px);
+`;
+
+const WindowBodyNavbar = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  background-color: rgba(51, 49, 51, 0.9);
+  color: white;
+  border-right: 0.2px solid #141516;
+`;
+
+const WindowBodyNavItm = styled.div<{ first?: boolean }>`
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  justify-content: flex-start;
+  background-color: transparent;
+  color: white;
+  margin-top: ${({ first }) => (first ? "4px" : "2px")};
+  cursor: pointer;
+`;
+
+const NavItmIcon = styled(FontAwesomeIcon)`
+  margin-left: 8px;
+  justify-content: center;
+`;
+
+const NavItmLabel = styled.span`
+  font-weight: bold;
+  justify-content: center;
+  margin-left: 4px;
+`;
+
+const WindowBodyContent = styled.div`
+  height: 100%;
+  background-color: #1d1f21;
+  color: white;
+`;
+
+type IndexType = "Front" | "Back" | "Mobile";
+
 type SkillsWindowProps = {
   width: number;
   height: number;
@@ -118,6 +165,7 @@ const SkillsWindow: React.FC<SkillsWindowProps> = ({
   const [skillsPrevSetting, setSkillsPrevSetting] = React.useState<
     (WindowSizeSetting & WindowPositionSetting) | null
   >(null);
+  const [index, setIndex] = React.useState<IndexType>("Front");
 
   const handleSkillsClose = () => {
     if (focusedWindow === "Skills") toggleSkillsOpen();
@@ -176,6 +224,10 @@ const SkillsWindow: React.FC<SkillsWindowProps> = ({
     }
   };
 
+  const handleClick = (name: IndexType) => {
+    setIndex(name);
+  };
+
   return (
     <Window
       id="Skills"
@@ -232,7 +284,39 @@ const SkillsWindow: React.FC<SkillsWindowProps> = ({
           <TopbarTitleText>Skills</TopbarTitleText>
         </TopbarTitle>
       </WindowTopbar>
-      <div>Body</div>
+      <WindowBody>
+        <WindowBodyNavbar>
+          <WindowBodyNavItm first onClick={() => handleClick("Front")}>
+            <NavItmIcon icon={faFileAlt} />
+            <NavItmLabel>Front-End</NavItmLabel>
+          </WindowBodyNavItm>
+          <WindowBodyNavItm onClick={() => handleClick("Back")}>
+            <NavItmIcon icon={faFileAlt} />
+            <NavItmLabel>Back-End</NavItmLabel>
+          </WindowBodyNavItm>
+          <WindowBodyNavItm onClick={() => handleClick("Mobile")}>
+            <NavItmIcon icon={faFileAlt} />
+            <NavItmLabel>Mobile</NavItmLabel>
+          </WindowBodyNavItm>
+        </WindowBodyNavbar>
+        <WindowBodyContent>
+          {index === "Front" ? (
+            <>
+              <div>Front</div>
+            </>
+          ) : null}
+          {index === "Back" ? (
+            <>
+              <div>Back</div>
+            </>
+          ) : null}
+          {index === "Mobile" ? (
+            <>
+              <div>Mobile</div>
+            </>
+          ) : null}
+        </WindowBodyContent>
+      </WindowBody>
     </Window>
   );
 };

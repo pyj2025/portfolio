@@ -244,13 +244,7 @@ const AboutWindow: React.FC<AboutWindowProps> = ({
   };
 
   const handleClick = (name: IndexType) => {
-    if (name === "Experience") {
-      setIndex("Experience");
-    } else if (name === "Education") {
-      setIndex("Education");
-    } else {
-      setIndex("About");
-    }
+    setIndex(name);
   };
 
   return (
