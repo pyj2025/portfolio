@@ -102,17 +102,14 @@ const WindowBodyNavbar = styled.div`
 
 const WindowBodyNavItm = styled.div<{ first?: boolean }>`
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 20px auto;
   justify-content: flex-start;
+  align-items: center;
   background-color: transparent;
   color: white;
   margin-top: ${({ first }) => (first ? "4px" : "2px")};
-  cursor: pointer;
-`;
-
-const NavItmIcon = styled(FontAwesomeIcon)`
   margin-left: 8px;
-  justify-content: center;
+  cursor: pointer;
 `;
 
 const NavItmLabel = styled.span`
@@ -127,7 +124,7 @@ const WindowBodyContent = styled.div`
   color: white;
 `;
 
-type IndexType = "Front" | "Back" | "Mobile";
+type IndexType = "Front" | "Back" | "Mobile" | "Programming";
 
 type SkillsWindowProps = {
   width: number;
@@ -287,32 +284,62 @@ const SkillsWindow: React.FC<SkillsWindowProps> = ({
       <WindowBody>
         <WindowBodyNavbar>
           <WindowBodyNavItm first onClick={() => handleClick("Front")}>
-            <NavItmIcon icon={faFileAlt} />
+            <TopbarTitleImage
+              src="https://img.icons8.com/color/48/000000/mac-folder.png"
+              alt="folder"
+            />
             <NavItmLabel>Front-End</NavItmLabel>
           </WindowBodyNavItm>
           <WindowBodyNavItm onClick={() => handleClick("Back")}>
-            <NavItmIcon icon={faFileAlt} />
+            <TopbarTitleImage
+              src="https://img.icons8.com/color/48/000000/mac-folder.png"
+              alt="folder"
+            />
             <NavItmLabel>Back-End</NavItmLabel>
           </WindowBodyNavItm>
           <WindowBodyNavItm onClick={() => handleClick("Mobile")}>
-            <NavItmIcon icon={faFileAlt} />
+            <TopbarTitleImage
+              src="https://img.icons8.com/color/48/000000/code-file.png"
+              alt="folder"
+            />
             <NavItmLabel>Mobile</NavItmLabel>
+          </WindowBodyNavItm>
+          <WindowBodyNavItm onClick={() => handleClick("Programming")}>
+            <TopbarTitleImage
+              src="https://img.icons8.com/color/48/000000/google-code.png"
+              alt="folder"
+            />
+            <NavItmLabel>Language</NavItmLabel>
           </WindowBodyNavItm>
         </WindowBodyNavbar>
         <WindowBodyContent>
           {index === "Front" ? (
             <>
               <div>Front</div>
+              <div>React, Angular, Vue, jQuery, , Redux, SASS, Bootstrap</div>
             </>
           ) : null}
           {index === "Back" ? (
             <>
               <div>Back</div>
+              <div>
+                ASP.Net Core, Node.js, Laravel, Express, MongoDB, Spring Boot
+              </div>
             </>
           ) : null}
           {index === "Mobile" ? (
             <>
               <div>Mobile</div>
+              <div>React-Native, Swift</div>
+            </>
+          ) : null}
+          {index === "Programming" ? (
+            <>
+              <div>Programming Language</div>
+              <div>
+                JavaScript, Java, Python, C#, C/C++, SQL, PHP, MySQL, PL/SQL,
+                HTML5, CSS3, TypeScript, R
+              </div>
             </>
           ) : null}
         </WindowBodyContent>
