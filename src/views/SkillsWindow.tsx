@@ -2,8 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { DraggableData, Position, ResizableDelta, Rnd } from "react-rnd";
 import { WindowPositionSetting, WindowSizeSetting } from "./AboutWindow";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFileAlt } from "@fortawesome/free-solid-svg-icons";
 
 const Window = styled(Rnd)`
   display: flex;
@@ -135,6 +133,226 @@ type SkillsWindowProps = {
   setSkillsMinimized: (flag: boolean) => void;
   toggleSkillsOpen: () => void;
   toggleSkillsExpanded: () => void;
+};
+
+const FrontEnd = () => {
+  return (
+    <>
+      <div>Front-End Framework & Library</div>
+      <div>
+        <div>
+          <img
+            src="https://img.icons8.com/color/48/000000/react-native.png"
+            alt="React"
+          />
+          <div>React</div>
+        </div>
+        <div>
+          <img
+            src="https://img.icons8.com/color/48/000000/angularjs.png"
+            alt="Angular"
+          />
+          <div>Angular</div>
+        </div>
+        <div>
+          <img
+            src="https://img.icons8.com/color/48/000000/vue-js.png"
+            alt="Vue"
+          />
+          <div>Vue</div>
+        </div>
+        <div>
+          <img
+            src="https://img.icons8.com/color/48/000000/redux.png"
+            alt="Redux"
+          />
+          <div>Redux</div>
+        </div>
+        <div>
+          <img
+            src="https://img.icons8.com/ios-filled/50/000000/jquery.png"
+            alt="jQuery"
+          />
+          <div>jQuery</div>
+        </div>
+      </div>
+      <div>
+        <div>
+          <img
+            src="https://img.icons8.com/color/50/000000/sass.png"
+            alt="SASS"
+          />
+          <div>SASS</div>
+        </div>
+        <div>
+          <img
+            src="https://img.icons8.com/color/48/000000/bootstrap.png"
+            alt="Bootstrap"
+          />
+          <div>Bootstrap</div>
+        </div>
+        <div>
+          <div>styled-components</div>
+        </div>
+        <div>
+          <div>tailwind</div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+const BackEnd = () => {
+  return (
+    <>
+      <div>Back</div>
+      <div>
+        <img
+          src="https://img.icons8.com/color/48/000000/nodejs.png"
+          alt="Node.js"
+        />
+        <div>Node.js</div>
+      </div>
+      <div>
+        <div>Express</div>
+      </div>
+      <div>
+        <div>ASP.Net Core</div>
+      </div>
+      <div>
+        <img
+          src="https://img.icons8.com/ios-filled/50/000000/laravel.png"
+          alt="Laravel"
+        />
+        <div>Laravel</div>
+      </div>
+      <div>
+        <img
+          src="https://img.icons8.com/color/48/000000/mongodb.png"
+          alt="MongoDB"
+        />
+        <div>MongoDB</div>
+      </div>
+      <div>
+        <img
+          src="https://img.icons8.com/color/48/000000/spring-logo.png"
+          alt="Spring"
+        />
+        <div>Spring</div>
+      </div>
+    </>
+  );
+};
+
+const Mobile = () => {
+  return (
+    <>
+      <div>Mobile</div>
+      <div>
+        <img
+          src="https://img.icons8.com/color/48/000000/react-native.png"
+          alt="React-Native"
+        />
+        <div>React-Native</div>
+      </div>
+      <div>
+        <img
+          src="https://img.icons8.com/color/48/000000/swift.png"
+          alt="Swift"
+        />
+        <div>Swift</div>
+      </div>
+    </>
+  );
+};
+
+const ProgrammingLanguage = () => {
+  return (
+    <>
+      <div>Programming Language</div>
+      <div>
+        <div>
+          <img
+            src="https://img.icons8.com/color/48/000000/typescript.png"
+            alt="TypeScript"
+          />
+          <div>TypeScript</div>
+        </div>
+        <div>
+          <img
+            src="https://img.icons8.com/color/48/000000/javascript.png"
+            alt="JavaScript"
+          />
+          <div>JavaScript</div>
+        </div>
+        <div>
+          <img
+            src="https://img.icons8.com/color/48/000000/python.png"
+            alt="Python"
+          />
+          <div>Python</div>
+        </div>
+        <div>
+          <img
+            src="https://img.icons8.com/color/48/000000/java.png"
+            alt="Java"
+          />
+          <div>Java</div>
+        </div>
+        <div>
+          <img
+            src="https://img.icons8.com/color/48/000000/html.png"
+            alt="HTML5"
+          />
+          <div>HTML5</div>
+        </div>
+        <div>
+          <img src="https://img.icons8.com/color/48/000000/css.png" alt="css" />
+          <div>CSS3</div>
+        </div>
+        <div>
+          <img
+            src="https://img.icons8.com/color/48/000000/c-sharp-logo.png"
+            alt="C#"
+          />
+          <div>C#</div>
+        </div>
+        <div>
+          <img
+            src="https://img.icons8.com/color/48/000000/c-plus-plus-logo.png"
+            alt="C++"
+          />
+          <div>C/C++</div>
+        </div>
+        <div>
+          <img src="https://img.icons8.com/color/48/000000/sql.png" alt="SQL" />
+          <div>SQL</div>
+        </div>
+        <div>
+          <img src="https://img.icons8.com/color/48/000000/php.png" alt="PHP" />
+          <div>PHP</div>
+        </div>
+        <div>
+          <img
+            src="https://img.icons8.com/color/48/000000/mysql.png"
+            alt="MySQL"
+          />
+          <div>MySQL</div>
+        </div>
+        <div>
+          <img
+            src="https://img.icons8.com/color/48/000000/swift.png"
+            alt="PL/SQL"
+          />
+          <div>PL/SQL</div>
+        </div>
+        <div>
+          <img src="https://img.icons8.com/color/48/000000/r.png" alt="R" />
+          <div>R</div>
+        </div>
+      </div>
+    </>
+  );
 };
 
 const SkillsWindow: React.FC<SkillsWindowProps> = ({
@@ -313,35 +531,10 @@ const SkillsWindow: React.FC<SkillsWindowProps> = ({
           </WindowBodyNavItm>
         </WindowBodyNavbar>
         <WindowBodyContent>
-          {index === "Front" ? (
-            <>
-              <div>Front</div>
-              <div>React, Angular, Vue, jQuery, , Redux, SASS, Bootstrap</div>
-            </>
-          ) : null}
-          {index === "Back" ? (
-            <>
-              <div>Back</div>
-              <div>
-                ASP.Net Core, Node.js, Laravel, Express, MongoDB, Spring Boot
-              </div>
-            </>
-          ) : null}
-          {index === "Mobile" ? (
-            <>
-              <div>Mobile</div>
-              <div>React-Native, Swift</div>
-            </>
-          ) : null}
-          {index === "Programming" ? (
-            <>
-              <div>Programming Language</div>
-              <div>
-                JavaScript, Java, Python, C#, C/C++, SQL, PHP, MySQL, PL/SQL,
-                HTML5, CSS3, TypeScript, R
-              </div>
-            </>
-          ) : null}
+          {index === "Front" ? <FrontEnd /> : null}
+          {index === "Back" ? <BackEnd /> : null}
+          {index === "Mobile" ? <Mobile /> : null}
+          {index === "Programming" ? <ProgrammingLanguage /> : null}
         </WindowBodyContent>
       </WindowBody>
     </Window>
