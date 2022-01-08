@@ -49,7 +49,6 @@ const DesktopTopBar: React.FC<DesktopTopBarProps> = ({
   const handleClick = () => setMenuOpen(!menuOpen);
 
   const handleAbout = () => {
-    console.log("about");
     toggleDesktopAboutOpen();
     setMenuOpen(false);
   };

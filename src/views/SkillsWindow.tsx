@@ -122,6 +122,26 @@ const WindowBodyContent = styled.div`
   color: white;
 `;
 
+const ContentContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 10px;
+`;
+
+const SkillsIconContainer = styled.div<{ noWidth?: boolean }>`
+  display: flex;
+  flex-direction: column;
+  width: ${({ noWidth }) => (noWidth ? undefined : "60px")};
+  justify-content: center;
+  align-items: center;
+`;
+
+const IconLabel = styled.div`
+  font-size: 0.75rem;
+`;
+
 type IndexType = "Front" | "Back" | "Mobile" | "Programming";
 
 type SkillsWindowProps = {
@@ -139,65 +159,63 @@ const FrontEnd = () => {
   return (
     <>
       <div>Front-End Framework & Library</div>
-      <div>
-        <div>
+      <ContentContainer>
+        <SkillsIconContainer>
           <img
             src="https://img.icons8.com/color/48/000000/react-native.png"
             alt="React"
           />
           <div>React</div>
-        </div>
-        <div>
+        </SkillsIconContainer>
+        <SkillsIconContainer>
           <img
             src="https://img.icons8.com/color/48/000000/angularjs.png"
             alt="Angular"
           />
           <div>Angular</div>
-        </div>
-        <div>
+        </SkillsIconContainer>
+        <SkillsIconContainer>
           <img
             src="https://img.icons8.com/color/48/000000/vue-js.png"
             alt="Vue"
           />
           <div>Vue</div>
-        </div>
-        <div>
+        </SkillsIconContainer>
+        <SkillsIconContainer>
           <img
             src="https://img.icons8.com/color/48/000000/redux.png"
             alt="Redux"
           />
           <div>Redux</div>
-        </div>
-        <div>
+        </SkillsIconContainer>
+        <SkillsIconContainer>
           <img
             src="https://img.icons8.com/ios-filled/50/000000/jquery.png"
             alt="jQuery"
           />
           <div>jQuery</div>
-        </div>
-      </div>
-      <div>
-        <div>
+        </SkillsIconContainer>
+        <SkillsIconContainer>
           <img
             src="https://img.icons8.com/color/50/000000/sass.png"
             alt="SASS"
           />
           <div>SASS</div>
-        </div>
-        <div>
+        </SkillsIconContainer>
+        <SkillsIconContainer>
           <img
             src="https://img.icons8.com/color/48/000000/bootstrap.png"
             alt="Bootstrap"
           />
           <div>Bootstrap</div>
-        </div>
-        <div>
+        </SkillsIconContainer>
+        <SkillsIconContainer>
           <div>styled-components</div>
-        </div>
-        <div>
+        </SkillsIconContainer>
+        <SkillsIconContainer>
           <div>tailwind</div>
-        </div>
-      </div>
+        </SkillsIconContainer>
+      </ContentContainer>
     </>
   );
 };
@@ -206,40 +224,42 @@ const BackEnd = () => {
   return (
     <>
       <div>Back</div>
-      <div>
-        <img
-          src="https://img.icons8.com/color/48/000000/nodejs.png"
-          alt="Node.js"
-        />
-        <div>Node.js</div>
-      </div>
-      <div>
-        <div>Express</div>
-      </div>
-      <div>
-        <div>ASP.Net Core</div>
-      </div>
-      <div>
-        <img
-          src="https://img.icons8.com/ios-filled/50/000000/laravel.png"
-          alt="Laravel"
-        />
-        <div>Laravel</div>
-      </div>
-      <div>
-        <img
-          src="https://img.icons8.com/color/48/000000/mongodb.png"
-          alt="MongoDB"
-        />
-        <div>MongoDB</div>
-      </div>
-      <div>
-        <img
-          src="https://img.icons8.com/color/48/000000/spring-logo.png"
-          alt="Spring"
-        />
-        <div>Spring</div>
-      </div>
+      <ContentContainer>
+        <SkillsIconContainer>
+          <img
+            src="https://img.icons8.com/color/48/000000/nodejs.png"
+            alt="Node.js"
+          />
+          <div>Node.js</div>
+        </SkillsIconContainer>
+        <SkillsIconContainer>
+          <div>Express</div>
+        </SkillsIconContainer>
+        <SkillsIconContainer>
+          <img
+            src="https://img.icons8.com/color/48/000000/spring-logo.png"
+            alt="Spring"
+          />
+          <div>Spring</div>
+        </SkillsIconContainer>
+        <SkillsIconContainer>
+          <div>ASP.Net Core</div>
+        </SkillsIconContainer>
+        <SkillsIconContainer>
+          <img
+            src="https://img.icons8.com/ios-filled/50/000000/laravel.png"
+            alt="Laravel"
+          />
+          <div>Laravel</div>
+        </SkillsIconContainer>
+        <SkillsIconContainer>
+          <img
+            src="https://img.icons8.com/color/48/000000/mongodb.png"
+            alt="MongoDB"
+          />
+          <div>MongoDB</div>
+        </SkillsIconContainer>
+      </ContentContainer>
     </>
   );
 };
@@ -248,20 +268,22 @@ const Mobile = () => {
   return (
     <>
       <div>Mobile</div>
-      <div>
-        <img
-          src="https://img.icons8.com/color/48/000000/react-native.png"
-          alt="React-Native"
-        />
-        <div>React-Native</div>
-      </div>
-      <div>
-        <img
-          src="https://img.icons8.com/color/48/000000/swift.png"
-          alt="Swift"
-        />
-        <div>Swift</div>
-      </div>
+      <ContentContainer>
+        <SkillsIconContainer noWidth>
+          <img
+            src="https://img.icons8.com/color/48/000000/react-native.png"
+            alt="React-Native"
+          />
+          <IconLabel>React Native</IconLabel>
+        </SkillsIconContainer>
+        <SkillsIconContainer>
+          <img
+            src="https://img.icons8.com/color/48/000000/swift.png"
+            alt="Swift"
+          />
+          <IconLabel>Swift</IconLabel>
+        </SkillsIconContainer>
+      </ContentContainer>
     </>
   );
 };
@@ -270,87 +292,87 @@ const ProgrammingLanguage = () => {
   return (
     <>
       <div>Programming Language</div>
-      <div>
-        <div>
+      <ContentContainer>
+        <SkillsIconContainer>
           <img
             src="https://img.icons8.com/color/48/000000/typescript.png"
             alt="TypeScript"
           />
-          <div>TypeScript</div>
-        </div>
-        <div>
+          <IconLabel>TypeScript</IconLabel>
+        </SkillsIconContainer>
+        <SkillsIconContainer>
           <img
             src="https://img.icons8.com/color/48/000000/javascript.png"
             alt="JavaScript"
           />
-          <div>JavaScript</div>
-        </div>
-        <div>
+          <IconLabel>JavaScript</IconLabel>
+        </SkillsIconContainer>
+        <SkillsIconContainer>
           <img
             src="https://img.icons8.com/color/48/000000/python.png"
             alt="Python"
           />
-          <div>Python</div>
-        </div>
-        <div>
+          <IconLabel>Python</IconLabel>
+        </SkillsIconContainer>
+        <SkillsIconContainer>
           <img
             src="https://img.icons8.com/color/48/000000/java.png"
             alt="Java"
           />
-          <div>Java</div>
-        </div>
-        <div>
+          <IconLabel>Java</IconLabel>
+        </SkillsIconContainer>
+        <SkillsIconContainer>
           <img
             src="https://img.icons8.com/color/48/000000/html.png"
             alt="HTML5"
           />
-          <div>HTML5</div>
-        </div>
-        <div>
+          <IconLabel>HTML5</IconLabel>
+        </SkillsIconContainer>
+        <SkillsIconContainer>
           <img src="https://img.icons8.com/color/48/000000/css.png" alt="css" />
-          <div>CSS3</div>
-        </div>
-        <div>
+          <IconLabel>CSS3</IconLabel>
+        </SkillsIconContainer>
+        <SkillsIconContainer>
           <img
             src="https://img.icons8.com/color/48/000000/c-sharp-logo.png"
             alt="C#"
           />
-          <div>C#</div>
-        </div>
-        <div>
+          <IconLabel>C#</IconLabel>
+        </SkillsIconContainer>
+        <SkillsIconContainer>
           <img
             src="https://img.icons8.com/color/48/000000/c-plus-plus-logo.png"
             alt="C++"
           />
-          <div>C/C++</div>
-        </div>
-        <div>
+          <IconLabel>C/C++</IconLabel>
+        </SkillsIconContainer>
+        <SkillsIconContainer>
           <img src="https://img.icons8.com/color/48/000000/sql.png" alt="SQL" />
-          <div>SQL</div>
-        </div>
-        <div>
+          <IconLabel>SQL</IconLabel>
+        </SkillsIconContainer>
+        <SkillsIconContainer>
           <img src="https://img.icons8.com/color/48/000000/php.png" alt="PHP" />
-          <div>PHP</div>
-        </div>
-        <div>
+          <IconLabel>PHP</IconLabel>
+        </SkillsIconContainer>
+        <SkillsIconContainer>
           <img
             src="https://img.icons8.com/color/48/000000/mysql.png"
             alt="MySQL"
           />
-          <div>MySQL</div>
-        </div>
-        <div>
+          <IconLabel>MySQL</IconLabel>
+        </SkillsIconContainer>
+        <SkillsIconContainer>
           <img
             src="https://img.icons8.com/color/48/000000/swift.png"
             alt="PL/SQL"
           />
-          <div>PL/SQL</div>
-        </div>
-        <div>
+          <IconLabel>PL/SQL</IconLabel>
+        </SkillsIconContainer>
+        <SkillsIconContainer>
           <img src="https://img.icons8.com/color/48/000000/r.png" alt="R" />
-          <div>R</div>
-        </div>
-      </div>
+          <IconLabel>R</IconLabel>
+        </SkillsIconContainer>
+      </ContentContainer>
     </>
   );
 };
