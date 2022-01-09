@@ -472,7 +472,7 @@ const SkillsWindow: React.FC<SkillsWindowProps> = ({
       size={{ width: skillsSize.width, height: skillsSize.height }}
       position={{ x: skillsPosition.x, y: skillsPosition.y }}
       dragHandleClassName="topbar"
-      minWidth={500}
+      minWidth={525}
       minHeight={300}
       onDragStart={handleFocus}
       onDragStop={(_e: any, data: DraggableData) => {

@@ -104,17 +104,14 @@ const WindowBodyNavbar = styled.div`
 
 const WindowBodyNavItm = styled.div<{ first?: boolean }>`
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 20px auto;
   justify-content: flex-start;
+  align-items: center;
   background-color: transparent;
   color: white;
   margin-top: ${({ first }) => (first ? "4px" : "2px")};
-  cursor: pointer;
-`;
-
-const NavItmIcon = styled(FontAwesomeIcon)`
   margin-left: 8px;
-  justify-content: center;
+  cursor: pointer;
 `;
 
 const NavItmLabel = styled.span`
@@ -306,15 +303,24 @@ const AboutWindow: React.FC<AboutWindowProps> = ({
       <WindowBody>
         <WindowBodyNavbar>
           <WindowBodyNavItm first onClick={() => handleClick("About")}>
-            <NavItmIcon icon={faUser} />
+            <TopbarTitleImage
+              src="https://img.icons8.com/color/48/000000/file.png"
+              alt="folder"
+            />
             <NavItmLabel>Personal Info</NavItmLabel>
           </WindowBodyNavItm>
           <WindowBodyNavItm onClick={() => handleClick("Experience")}>
-            <NavItmIcon icon={faCode} />
+            <TopbarTitleImage
+              src="https://img.icons8.com/color/48/000000/file.png"
+              alt="folder"
+            />
             <NavItmLabel>Experience</NavItmLabel>
           </WindowBodyNavItm>
           <WindowBodyNavItm onClick={() => handleClick("Education")}>
-            <NavItmIcon icon={faSchool} />
+            <TopbarTitleImage
+              src="https://img.icons8.com/color/48/000000/file.png"
+              alt="folder"
+            />
             <NavItmLabel>Education</NavItmLabel>
           </WindowBodyNavItm>
         </WindowBodyNavbar>
