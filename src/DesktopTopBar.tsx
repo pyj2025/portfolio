@@ -3,10 +3,12 @@ import "rc-menu/assets/index.css";
 import React from "react";
 import styled from "styled-components";
 import Menu, { MenuItem } from "rc-menu";
+import Clock from "./components/Clock";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLocationArrow, faWifi } from "@fortawesome/free-solid-svg-icons";
 
 const Container = styled.div`
-  display: grid;
-  grid-template-columns: auto;
+  display: flex;
   justify-content: flex-start;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.4);
@@ -35,6 +37,13 @@ const MainMenuBtnTitle = styled.span`
 
 const MenuItemTitle = styled.div`
   height: 20px;
+`;
+
+const TopbarAppContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-left: auto;
+  margin-right: 10px;
 `;
 
 type DesktopTopBarProps = {
@@ -78,6 +87,17 @@ const DesktopTopBar: React.FC<DesktopTopBarProps> = ({
           </MenuContainer>
         ) : null}
       </MainMenuBtnContainer>
+      <TopbarAppContainer>
+        <div>
+          <FontAwesomeIcon icon={faLocationArrow} />
+        </div>
+        <div>
+          <FontAwesomeIcon icon={faWifi} />
+        </div>
+        <div>
+          <Clock />
+        </div>
+      </TopbarAppContainer>
     </Container>
   );
 };
