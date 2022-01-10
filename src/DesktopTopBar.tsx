@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Menu, { MenuItem } from "rc-menu";
 import Clock from "./components/Clock";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLocationArrow, faWifi } from "@fortawesome/free-solid-svg-icons";
+import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 
 const Container = styled.div`
   display: flex;
@@ -31,7 +31,7 @@ const MainMenuBtn = styled.button`
   color: white;
 `;
 
-const MainMenuBtnTitle = styled.span`
+const MainMenuBtnTitle = styled.div`
   font-weight: bold;
 `;
 
@@ -43,7 +43,16 @@ const TopbarAppContainer = styled.div`
   display: flex;
   flex-direction: row;
   margin-left: auto;
+`;
+
+const TopbarAppItemContainer = styled.div`
+  display: flex;
+  flex-direction: row;
   margin-right: 10px;
+`;
+
+const TopbarAppIcon = styled(FontAwesomeIcon)`
+  margin-right: 6px;
 `;
 
 type DesktopTopBarProps = {
@@ -88,15 +97,13 @@ const DesktopTopBar: React.FC<DesktopTopBarProps> = ({
         ) : null}
       </MainMenuBtnContainer>
       <TopbarAppContainer>
-        <div>
-          <FontAwesomeIcon icon={faLocationArrow} />
-        </div>
-        <div>
-          <FontAwesomeIcon icon={faWifi} />
-        </div>
-        <div>
+        <TopbarAppItemContainer>
+          <TopbarAppIcon icon={faMapMarkerAlt} />
+          <div>Chicago, IL, USA</div>
+        </TopbarAppItemContainer>
+        <TopbarAppItemContainer>
           <Clock />
-        </div>
+        </TopbarAppItemContainer>
       </TopbarAppContainer>
     </Container>
   );

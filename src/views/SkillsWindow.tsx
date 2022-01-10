@@ -165,55 +165,63 @@ const FrontEnd = () => {
             src="https://img.icons8.com/color/48/000000/react-native.png"
             alt="React"
           />
-          <div>React</div>
+          <IconLabel>React</IconLabel>
         </SkillsIconContainer>
         <SkillsIconContainer>
           <img
             src="https://img.icons8.com/color/48/000000/angularjs.png"
             alt="Angular"
           />
-          <div>Angular</div>
+          <IconLabel>Angular</IconLabel>
         </SkillsIconContainer>
         <SkillsIconContainer>
           <img
             src="https://img.icons8.com/color/48/000000/vue-js.png"
             alt="Vue"
           />
-          <div>Vue</div>
+          <IconLabel>Vue</IconLabel>
         </SkillsIconContainer>
         <SkillsIconContainer>
           <img
             src="https://img.icons8.com/color/48/000000/redux.png"
             alt="Redux"
           />
-          <div>Redux</div>
+          <IconLabel>Redux</IconLabel>
         </SkillsIconContainer>
         <SkillsIconContainer>
           <img
             src="https://img.icons8.com/ios-filled/50/000000/jquery.png"
             alt="jQuery"
           />
-          <div>jQuery</div>
+          <IconLabel>jQuery</IconLabel>
         </SkillsIconContainer>
         <SkillsIconContainer>
           <img
             src="https://img.icons8.com/color/50/000000/sass.png"
             alt="SASS"
           />
-          <div>SASS</div>
+          <IconLabel>SASS</IconLabel>
         </SkillsIconContainer>
         <SkillsIconContainer>
           <img
             src="https://img.icons8.com/color/48/000000/bootstrap.png"
             alt="Bootstrap"
           />
-          <div>Bootstrap</div>
+          <IconLabel>Bootstrap</IconLabel>
         </SkillsIconContainer>
         <SkillsIconContainer>
-          <div>styled-components</div>
+          <img
+            src="https://img.icons8.com/color/48/000000/code-file.png"
+            alt="Styled-components"
+          />
+          <IconLabel>Styled-components</IconLabel>
         </SkillsIconContainer>
         <SkillsIconContainer>
-          <div>tailwind</div>
+          <img
+            src="https://img.icons8.com/color/48/000000/code-file.png"
+            alt="Tailwind"
+          />
+          <IconLabel>Tailwind</IconLabel>
         </SkillsIconContainer>
       </ContentContainer>
     </>
@@ -230,34 +238,42 @@ const BackEnd = () => {
             src="https://img.icons8.com/color/48/000000/nodejs.png"
             alt="Node.js"
           />
-          <div>Node.js</div>
+          <IconLabel>Node.js</IconLabel>
         </SkillsIconContainer>
         <SkillsIconContainer>
-          <div>Express</div>
+          <img
+            src="https://img.icons8.com/color/48/000000/code-file.png"
+            alt="Express"
+          />
+          <IconLabel>Express</IconLabel>
         </SkillsIconContainer>
         <SkillsIconContainer>
           <img
             src="https://img.icons8.com/color/48/000000/spring-logo.png"
             alt="Spring"
           />
-          <div>Spring</div>
+          <IconLabel>Spring</IconLabel>
         </SkillsIconContainer>
         <SkillsIconContainer>
-          <div>ASP.Net Core</div>
+          <img
+            src="https://img.icons8.com/color/48/000000/code-file.png"
+            alt="ASP.Net Core"
+          />
+          <IconLabel>ASP.Net Core</IconLabel>
         </SkillsIconContainer>
         <SkillsIconContainer>
           <img
             src="https://img.icons8.com/ios-filled/50/000000/laravel.png"
             alt="Laravel"
           />
-          <div>Laravel</div>
+          <IconLabel>Laravel</IconLabel>
         </SkillsIconContainer>
         <SkillsIconContainer>
           <img
             src="https://img.icons8.com/color/48/000000/mongodb.png"
             alt="MongoDB"
           />
-          <div>MongoDB</div>
+          <IconLabel>MongoDB</IconLabel>
         </SkillsIconContainer>
       </ContentContainer>
     </>
