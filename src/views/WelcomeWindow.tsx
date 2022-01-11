@@ -1,13 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { DraggableData, Rnd } from "react-rnd";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faBirthdayCake,
-  faLocationArrow,
-  faPhone,
-} from "@fortawesome/free-solid-svg-icons";
-import img from "../image/Logo.png";
 
 const Window = styled(Rnd)`
   width: 100%;
@@ -88,27 +81,7 @@ const WindowBody = styled.div`
   color: black;
 `;
 
-const LogoContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const InfoList = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const InfoListItem = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-
-const InfoListItemLabel = styled.div`
-  margin-left: 8px;
-`;
-
-type TopbarAboutWindowProps = {
+type WelcomeWindowProps = {
   width: number;
   height: number;
   focusedWindow: string;
@@ -116,23 +89,23 @@ type TopbarAboutWindowProps = {
   toggleDesktopAboutOpen: () => void;
 };
 
-const TopbarAboutWindow: React.FC<TopbarAboutWindowProps> = ({
+const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
   width,
   height,
   focusedWindow,
   handleFocus,
   toggleDesktopAboutOpen,
 }) => {
-  const desktopAboutRef = React.useRef<any>();
+  const welcomeRef = React.useRef<any>();
 
-  const handleDesktopAboutClose = () => {
-    if (focusedWindow === "DesktopAbout") toggleDesktopAboutOpen();
+  const handleWelcomeClose = () => {
+    if (focusedWindow === "Welcome") toggleDesktopAboutOpen();
   };
 
   return (
     <Window
-      id="DesktopAbout"
-      ref={desktopAboutRef}
+      id="Welcome"
+      ref={welcomeRef}
       default={{
         x: width / 3,
         y: -1 * ((height * 2) / 3),
@@ -147,9 +120,9 @@ const TopbarAboutWindow: React.FC<TopbarAboutWindowProps> = ({
         <TopbarBtnContainer>
           <TopbarBtn
             color="close"
-            title={focusedWindow === "DesktopAbout" ? "Close" : undefined}
-            onClick={handleDesktopAboutClose}
-            disabled={focusedWindow !== "DesktopAbout"}
+            title={focusedWindow === "Welcome" ? "Close" : undefined}
+            onClick={handleWelcomeClose}
+            disabled={focusedWindow !== "Welcome"}
           />
           <TopbarBtn color="disabled" disabled={true} />
           <TopbarBtn color="disabled" disabled={true} />
@@ -157,32 +130,10 @@ const TopbarAboutWindow: React.FC<TopbarAboutWindowProps> = ({
         <TopbarTitle />
       </WindowTopbar>
       <WindowBody>
-        <LogoContainer>
-          <img src={img} width="200" height="200" alt="Logo" />
-        </LogoContainer>
-        <div>
-          <h1>Youngjoon Park</h1>
-          <h4>Junior Frontend Developer</h4>
-          <InfoList>
-            <InfoListItem>
-              <FontAwesomeIcon icon={faBirthdayCake} />
-              <InfoListItemLabel>Jan.17.1994</InfoListItemLabel>
-            </InfoListItem>
-            <InfoListItem>
-              <FontAwesomeIcon icon={faPhone} />
-              <InfoListItemLabel>+1 312-937-4435</InfoListItemLabel>
-            </InfoListItem>
-            <InfoListItem>
-              <FontAwesomeIcon icon={faLocationArrow} />
-              <InfoListItemLabel>
-                25 W Randolph St Apt 903, Chicago, IL, 60601
-              </InfoListItemLabel>
-            </InfoListItem>
-          </InfoList>
-        </div>
+        <div>###</div>
       </WindowBody>
     </Window>
   );
 };
 
-export default TopbarAboutWindow;
+export default WelcomeWindow;
