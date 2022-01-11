@@ -1,4 +1,5 @@
 import * as React from "react";
+import { MutedText } from "../GlobalStyle";
 
 const Clock: React.FC = () => {
   const [currentTime, setCurrentTime] = React.useState(new Date());
@@ -16,7 +17,7 @@ const Clock: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-  return <div>{time}</div>;
+  return <MutedText>{time}</MutedText>;
 };
 
 export default Clock;

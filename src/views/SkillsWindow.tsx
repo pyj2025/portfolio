@@ -98,15 +98,18 @@ const WindowBodyNavbar = styled.div`
   border-right: 0.2px solid #141516;
 `;
 
-const WindowBodyNavItm = styled.div<{ first?: boolean }>`
+const WindowBodyNavItm = styled.div<{ focus: boolean; first?: boolean }>`
   display: grid;
   grid-template-columns: 20px auto;
   justify-content: flex-start;
   align-items: center;
-  background-color: transparent;
+  background-color: ${({ focus }) =>
+    focus ? "rgba(120, 120, 120, 0.5)" : "transparent"};
   color: white;
-  margin-top: ${({ first }) => (first ? "4px" : "2px")};
-  margin-left: 8px;
+  margin-top: ${({ first }) => (first ? "4px" : undefined)};
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 8px;
   cursor: pointer;
 `;
 
@@ -539,28 +542,41 @@ const SkillsWindow: React.FC<SkillsWindowProps> = ({
       </WindowTopbar>
       <WindowBody>
         <WindowBodyNavbar>
-          <WindowBodyNavItm first onClick={() => handleClick("Front")}>
+          <WindowBodyNavItm
+            first
+            onClick={() => handleClick("Front")}
+            focus={index === "Front"}
+          >
             <TopbarTitleImage
               src="https://img.icons8.com/color/48/000000/mac-folder.png"
               alt="folder"
             />
             <NavItmLabel>Front-End</NavItmLabel>
           </WindowBodyNavItm>
-          <WindowBodyNavItm onClick={() => handleClick("Back")}>
+          <WindowBodyNavItm
+            onClick={() => handleClick("Back")}
+            focus={index === "Back"}
+          >
             <TopbarTitleImage
               src="https://img.icons8.com/color/48/000000/mac-folder.png"
               alt="folder"
             />
             <NavItmLabel>Back-End</NavItmLabel>
           </WindowBodyNavItm>
-          <WindowBodyNavItm onClick={() => handleClick("Mobile")}>
+          <WindowBodyNavItm
+            onClick={() => handleClick("Mobile")}
+            focus={index === "Mobile"}
+          >
             <TopbarTitleImage
               src="https://img.icons8.com/color/48/000000/code-file.png"
               alt="folder"
             />
             <NavItmLabel>Mobile</NavItmLabel>
           </WindowBodyNavItm>
-          <WindowBodyNavItm onClick={() => handleClick("Programming")}>
+          <WindowBodyNavItm
+            onClick={() => handleClick("Programming")}
+            focus={index === "Programming"}
+          >
             <TopbarTitleImage
               src="https://img.icons8.com/color/48/000000/google-code.png"
               alt="folder"

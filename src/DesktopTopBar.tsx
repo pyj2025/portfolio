@@ -6,6 +6,7 @@ import Menu, { MenuItem } from "rc-menu";
 import Clock from "./components/Clock";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import { MutedText } from "./GlobalStyle";
 
 const Container = styled.div`
   display: flex;
@@ -53,6 +54,7 @@ const TopbarAppItemContainer = styled.div`
 
 const TopbarAppIcon = styled(FontAwesomeIcon)`
   margin-right: 6px;
+  opacity: 0.5;
 `;
 
 type DesktopTopBarProps = {
@@ -99,7 +101,7 @@ const DesktopTopBar: React.FC<DesktopTopBarProps> = ({
       <TopbarAppContainer>
         <TopbarAppItemContainer>
           <TopbarAppIcon icon={faMapMarkerAlt} />
-          <div>Chicago, IL, USA</div>
+          <MutedText>Chicago, IL, USA</MutedText>
         </TopbarAppItemContainer>
         <TopbarAppItemContainer>
           <Clock />
