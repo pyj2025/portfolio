@@ -3,10 +3,13 @@ import "rc-menu/assets/index.css";
 import React from "react";
 import styled from "styled-components";
 import Menu, { MenuItem } from "rc-menu";
+import Clock from "./components/Clock";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import { MutedText } from "./GlobalStyle";
 
 const Container = styled.div`
-  display: grid;
-  grid-template-columns: auto;
+  display: flex;
   justify-content: flex-start;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.4);
@@ -29,12 +32,29 @@ const MainMenuBtn = styled.button`
   color: white;
 `;
 
-const MainMenuBtnTitle = styled.span`
+const MainMenuBtnTitle = styled.div`
   font-weight: bold;
 `;
 
 const MenuItemTitle = styled.div`
   height: 20px;
+`;
+
+const TopbarAppContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-left: auto;
+`;
+
+const TopbarAppItemContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-right: 10px;
+`;
+
+const TopbarAppIcon = styled(FontAwesomeIcon)`
+  margin-right: 6px;
+  opacity: 0.5;
 `;
 
 type DesktopTopBarProps = {
@@ -49,7 +69,6 @@ const DesktopTopBar: React.FC<DesktopTopBarProps> = ({
   const handleClick = () => setMenuOpen(!menuOpen);
 
   const handleAbout = () => {
-    console.log("about");
     toggleDesktopAboutOpen();
     setMenuOpen(false);
   };
@@ -79,6 +98,15 @@ const DesktopTopBar: React.FC<DesktopTopBarProps> = ({
           </MenuContainer>
         ) : null}
       </MainMenuBtnContainer>
+      <TopbarAppContainer>
+        <TopbarAppItemContainer>
+          <TopbarAppIcon icon={faMapMarkerAlt} />
+          <MutedText>Chicago, IL, USA</MutedText>
+        </TopbarAppItemContainer>
+        <TopbarAppItemContainer>
+          <Clock />
+        </TopbarAppItemContainer>
+      </TopbarAppContainer>
     </Container>
   );
 };

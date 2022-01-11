@@ -102,19 +102,19 @@ const WindowBodyNavbar = styled.div`
   border-right: 0.2px solid #141516;
 `;
 
-const WindowBodyNavItm = styled.div<{ first?: boolean }>`
+const WindowBodyNavItm = styled.div<{ focus: boolean; first?: boolean }>`
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 20px auto;
   justify-content: flex-start;
-  background-color: transparent;
+  align-items: center;
+  background-color: ${({ focus }) =>
+    focus ? "rgba(120, 120, 120, 0.5)" : "transparent"};
   color: white;
-  margin-top: ${({ first }) => (first ? "4px" : "2px")};
+  margin-top: ${({ first }) => (first ? "4px" : undefined)};
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 8px;
   cursor: pointer;
-`;
-
-const NavItmIcon = styled(FontAwesomeIcon)`
-  margin-left: 8px;
-  justify-content: center;
 `;
 
 const NavItmLabel = styled.span`
@@ -244,13 +244,7 @@ const AboutWindow: React.FC<AboutWindowProps> = ({
   };
 
   const handleClick = (name: IndexType) => {
-    if (name === "Experience") {
-      setIndex("Experience");
-    } else if (name === "Education") {
-      setIndex("Education");
-    } else {
-      setIndex("About");
-    }
+    setIndex(name);
   };
 
   return (
@@ -311,16 +305,35 @@ const AboutWindow: React.FC<AboutWindowProps> = ({
       </WindowTopbar>
       <WindowBody>
         <WindowBodyNavbar>
-          <WindowBodyNavItm first onClick={() => handleClick("About")}>
-            <NavItmIcon icon={faUser} />
+          <WindowBodyNavItm
+            first
+            onClick={() => handleClick("About")}
+            focus={index === "About"}
+          >
+            <TopbarTitleImage
+              src="https://img.icons8.com/color/48/000000/file.png"
+              alt="folder"
+            />
             <NavItmLabel>Personal Info</NavItmLabel>
           </WindowBodyNavItm>
-          <WindowBodyNavItm onClick={() => handleClick("Experience")}>
-            <NavItmIcon icon={faCode} />
+          <WindowBodyNavItm
+            onClick={() => handleClick("Experience")}
+            focus={index === "Experience"}
+          >
+            <TopbarTitleImage
+              src="https://img.icons8.com/color/48/000000/file.png"
+              alt="folder"
+            />
             <NavItmLabel>Experience</NavItmLabel>
           </WindowBodyNavItm>
-          <WindowBodyNavItm onClick={() => handleClick("Education")}>
-            <NavItmIcon icon={faSchool} />
+          <WindowBodyNavItm
+            onClick={() => handleClick("Education")}
+            focus={index === "Education"}
+          >
+            <TopbarTitleImage
+              src="https://img.icons8.com/color/48/000000/file.png"
+              alt="folder"
+            />
             <NavItmLabel>Education</NavItmLabel>
           </WindowBodyNavItm>
         </WindowBodyNavbar>
