@@ -82,33 +82,25 @@ const WindowBody = styled.div`
 `;
 
 type WelcomeWindowProps = {
-  width: number;
-  height: number;
   focusedWindow: string;
   handleFocus: (_e: any, data: DraggableData) => void;
-  toggleDesktopAboutOpen: () => void;
+  close: (flag: boolean) => void;
 };
 
 const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
-  width,
-  height,
   focusedWindow,
   handleFocus,
-  toggleDesktopAboutOpen,
+  close,
 }) => {
   const welcomeRef = React.useRef<any>();
-
-  const handleWelcomeClose = () => {
-    if (focusedWindow === "Welcome") toggleDesktopAboutOpen();
-  };
 
   return (
     <Window
       id="Welcome"
       ref={welcomeRef}
       default={{
-        x: width / 3,
-        y: -1 * ((height * 2) / 3),
+        x: window.innerWidth / 3,
+        y: -1 * ((window.innerHeight * 3) / 4),
         width: 500,
         height: 300,
       }}
@@ -121,7 +113,7 @@ const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
           <TopbarBtn
             color="close"
             title={focusedWindow === "Welcome" ? "Close" : undefined}
-            onClick={handleWelcomeClose}
+            onClick={() => close(false)}
             disabled={focusedWindow !== "Welcome"}
           />
           <TopbarBtn color="disabled" disabled={true} />

@@ -6,6 +6,7 @@ import ProjectsWindow from "./views/ProjectsWindow";
 import SkillsWindow from "./views/SkillsWindow";
 import AboutWindow from "./views/AboutWindow";
 import TopbarAboutWindow from "./views/TopbarAboutWindow";
+import WelcomeWindow from "./views/WelcomeWindow";
 
 const Container = styled.div`
   background-color: #3c3c3c;
@@ -16,12 +17,14 @@ export type BodyContentProps = {
   width: number;
   height: number;
   focusedWindow: string;
+  isWelcomeWindowOpen: boolean;
   isAboutOpen: boolean;
   isAboutExpanded: boolean;
   isSkillsOpen: boolean;
   isSkillsExpanded: boolean;
   isProjectsOpen: boolean;
   isDesktopAboutOpen: boolean;
+  closeWelcomeWindow: (flag: boolean) => void;
   toggleAboutOpen: () => void;
   setAboutMinimized: (flag: boolean) => void;
   toggleAboutExpanded: () => void;
@@ -38,12 +41,14 @@ const BodyContent: React.FC<BodyContentProps> = ({
   width,
   height,
   focusedWindow,
+  isWelcomeWindowOpen,
   isAboutOpen,
   isAboutExpanded,
   isSkillsOpen,
   isSkillsExpanded,
   isProjectsOpen,
   isDesktopAboutOpen,
+  closeWelcomeWindow,
   toggleAboutOpen,
   setAboutMinimized,
   toggleAboutExpanded,
@@ -61,12 +66,6 @@ const BodyContent: React.FC<BodyContentProps> = ({
     prevZIndex: null as unknown as string,
   });
 
-  // React.useEffect(() => {
-  //   console.log("height = ", height);
-  //   console.log("width = ", width);
-  //   console.log("toggleDesktopAboutOpen = ", isDesktopAboutOpen);
-  // }, [height, width]);
-
   const handleFocus = (_e: any, data: DraggableData) => {
     const ref = windowRef.current;
 
@@ -82,6 +81,14 @@ const BodyContent: React.FC<BodyContentProps> = ({
 
   return (
     <Container>
+      {isWelcomeWindowOpen ? (
+        <WelcomeWindow
+          focusedWindow={focusedWindow}
+          handleFocus={handleFocus}
+          close={closeWelcomeWindow}
+        />
+      ) : null}
+
       {isDesktopAboutOpen ? (
         <TopbarAboutWindow
           width={width}
