@@ -37,7 +37,7 @@ function App() {
 
   const [inMaintenance, setMaintenance] = useState(false);
 
-  const [focusedWindow, setFocusedWindow] = useState("");
+  const [focusedWindow, setFocusedWindow] = useState("Welcome");
 
   const [isWelcomeWindowOpen, setWelcomeWindowOpen] = useState(true);
 

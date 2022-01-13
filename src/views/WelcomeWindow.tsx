@@ -63,6 +63,11 @@ const TopbarBtn = styled.div<{ color: string; disabled: boolean }>`
     disabled ? undefined : "pointer"};
 `;
 
+const TopbarTitleImage = styled.img`
+  width: 16px;
+  height: 16px;
+`;
+
 const TopbarTitle = styled.div`
   display: flex;
   justify-content: center;
@@ -71,14 +76,24 @@ const TopbarTitle = styled.div`
   font-size: 14px;
 `;
 
+const TopbarTitleText = styled.span`
+  margin-left: 6px;
+  pointer-events: none;
+`;
+
 const WindowBody = styled.div`
-  display: grid;
-  grid-template-columns: 45% 55%;
-  justify-content: center;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   width: 100%;
   height: 272px;
-  color: black;
+  background-color: #1e232a;
+  color: #ffe9c2;
+  gap: 4px;
+`;
+
+const TerminalRow = styled.div`
+  margin-left: 8px;
 `;
 
 type WelcomeWindowProps = {
@@ -99,8 +114,8 @@ const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
       id="Welcome"
       ref={welcomeRef}
       default={{
-        x: window.innerWidth / 3,
-        y: -1 * ((window.innerHeight * 3) / 4),
+        x: window.innerWidth / 5,
+        y: -1 * ((window.innerHeight * 4) / 5),
         width: 500,
         height: 300,
       }}
@@ -119,10 +134,20 @@ const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
           <TopbarBtn color="disabled" disabled={true} />
           <TopbarBtn color="disabled" disabled={true} />
         </TopbarBtnContainer>
-        <TopbarTitle />
+        <TopbarTitle>
+          <TopbarTitleImage
+            src="https://img.icons8.com/office/40/000000/console.png"
+            alt="Welcome"
+          />
+          <TopbarTitleText>Welcome</TopbarTitleText>
+        </TopbarTitle>
       </WindowTopbar>
       <WindowBody>
-        <div>###</div>
+        <TerminalRow>Welcome!</TerminalRow>
+        <TerminalRow>###</TerminalRow>
+        <TerminalRow>###</TerminalRow>
+        <TerminalRow>###</TerminalRow>
+        <TerminalRow>###</TerminalRow>
       </WindowBody>
     </Window>
   );
