@@ -88,9 +88,11 @@ const WindowBody = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   width: 100%;
-  height: 272px;
-  background-color: #1e232a;
-  color: #ffe9c2;
+  height: 422px;
+  background-color: #282a36;
+  color: #ffffff;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
 `;
 
 const TerminalRow = styled.div`
@@ -105,18 +107,40 @@ const TerminalBadge = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  background-color: #303030;
-  border-radius: 99px;
+  align-items: center;
+`;
+
+const FirstBadge = styled.div`
+  background-color: #000000;
+  padding: 4px 10px;
+`;
+
+const SecondBadge = styled.div`
+  background-color: #caa9fa;
+  color: #000000;
+  margin-left: 8px;
   padding: 4px 10px;
 `;
 
 const TerminalBadgeArrow = styled(FontAwesomeIcon)`
   font-size: 18px;
-  margin-left: 8px;
 `;
 
 const TerminalLine = styled.div`
   margin-left: 8px;
+`;
+
+const ContentLine = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 2px;
+`;
+
+const ContentLineArrow = styled(FontAwesomeIcon)`
+  font-size: 18px;
+  margin-right: 8px;
 `;
 
 type WelcomeWindowProps = {
@@ -133,7 +157,6 @@ const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
   const welcomeRef = React.useRef<any>();
 
   const [firstLine, setFirstLine] = React.useState(false);
-  const [firstContent, setFirstContent] = React.useState(false);
   const [secondLine, setSecondLine] = React.useState(false);
   const [secondContent, setSecondContent] = React.useState(false);
   const [thirdLine, setThirdLine] = React.useState(false);
@@ -143,21 +166,19 @@ const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
     setTimeout(() => {
       setFirstLine(true);
     }, 1000);
-    setTimeout(() => {
-      setFirstContent(true);
-    }, 1500);
+
     setTimeout(() => {
       setSecondLine(true);
-    }, 2000);
+    }, 1500);
     setTimeout(() => {
       setSecondContent(true);
-    }, 2500);
+    }, 2000);
     setTimeout(() => {
       setThirdLine(true);
-    }, 3000);
+    }, 2500);
     setTimeout(() => {
       setThirdContent(true);
-    }, 3500);
+    }, 3000);
   }, []);
 
   return (
@@ -167,8 +188,8 @@ const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
       default={{
         x: window.innerWidth / 5,
         y: -1 * ((window.innerHeight * 4) / 5),
-        width: 500,
-        height: 300,
+        width: 700,
+        height: 450,
       }}
       dragHandleClassName="topbar"
       onDragStart={handleFocus}
@@ -198,23 +219,18 @@ const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
         {firstLine ? (
           <TerminalRow>
             <TerminalBadge>
-              <div>joon@MacBook-Air</div>
+              <FirstBadge>joon@MacBook-Air</FirstBadge>
               <TerminalBadgeArrow icon={faAngleRight} />
             </TerminalBadge>
             <TerminalLine>cd portfolio</TerminalLine>
           </TerminalRow>
         ) : null}
-        {firstContent ? (
-          <TerminalRow>
-            <TerminalLine>####</TerminalLine>
-          </TerminalRow>
-        ) : null}
         {secondLine ? (
           <TerminalRow>
             <TerminalBadge>
-              <div>joon@MacBook-Air</div>
+              <FirstBadge>joon@MacBook-Air</FirstBadge>
               <TerminalBadgeArrow icon={faAngleRight} />
-              <TerminalLine>~/portfolio</TerminalLine>
+              <SecondBadge>~/portfolio</SecondBadge>
               <TerminalBadgeArrow icon={faAngleRight} />
             </TerminalBadge>
             <TerminalLine>cat intro.md</TerminalLine>
@@ -228,17 +244,29 @@ const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
         {thirdLine ? (
           <TerminalRow>
             <TerminalBadge>
-              <div>joon@MacBook-Air</div>
+              <FirstBadge>joon@MacBook-Air</FirstBadge>
               <TerminalBadgeArrow icon={faAngleRight} />
-              <TerminalLine>~/portfolio</TerminalLine>
+              <SecondBadge>~/portfolio</SecondBadge>
               <TerminalBadgeArrow icon={faAngleRight} />
             </TerminalBadge>
-            <TerminalLine>cat info.md</TerminalLine>
+            <TerminalLine>cat contact.md</TerminalLine>
           </TerminalRow>
         ) : null}
         {thirdContent ? (
           <TerminalRow>
-            <TerminalLine>####</TerminalLine>
+            <TerminalLine>
+              <ContentLine># Info</ContentLine>
+              <ContentLine>## Email</ContentLine>
+              <ContentLine>
+                <ContentLineArrow icon={faAngleRight} />
+                <div> pyj2025@gmail.com</div>
+              </ContentLine>
+              <ContentLine>## Phone Number</ContentLine>
+              <ContentLine>
+                <ContentLineArrow icon={faAngleRight} />
+                <div>312-9374435</div>
+              </ContentLine>
+            </TerminalLine>
           </TerminalRow>
         ) : null}
       </WindowBody>
