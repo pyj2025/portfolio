@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { DraggableData, Rnd } from "react-rnd";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleRight, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 const Window = styled(Rnd)`
   width: 100%;
@@ -89,10 +91,31 @@ const WindowBody = styled.div`
   height: 272px;
   background-color: #1e232a;
   color: #ffe9c2;
-  gap: 4px;
 `;
 
 const TerminalRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 4px 8px;
+`;
+
+const TerminalBadge = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  background-color: #303030;
+  border-radius: 99px;
+  padding: 4px 10px;
+`;
+
+const TerminalBadgeArrow = styled(FontAwesomeIcon)`
+  font-size: 18px;
+  margin-left: 8px;
+`;
+
+const TerminalLine = styled.div`
   margin-left: 8px;
 `;
 
@@ -108,6 +131,34 @@ const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
   close,
 }) => {
   const welcomeRef = React.useRef<any>();
+
+  const [firstLine, setFirstLine] = React.useState(false);
+  const [firstContent, setFirstContent] = React.useState(false);
+  const [secondLine, setSecondLine] = React.useState(false);
+  const [secondContent, setSecondContent] = React.useState(false);
+  const [thirdLine, setThirdLine] = React.useState(false);
+  const [thirdContent, setThirdContent] = React.useState(false);
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      setFirstLine(true);
+    }, 1000);
+    setTimeout(() => {
+      setFirstContent(true);
+    }, 1500);
+    setTimeout(() => {
+      setSecondLine(true);
+    }, 2000);
+    setTimeout(() => {
+      setSecondContent(true);
+    }, 2500);
+    setTimeout(() => {
+      setThirdLine(true);
+    }, 3000);
+    setTimeout(() => {
+      setThirdContent(true);
+    }, 3500);
+  }, []);
 
   return (
     <Window
@@ -144,10 +195,52 @@ const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
       </WindowTopbar>
       <WindowBody>
         <TerminalRow>Welcome!</TerminalRow>
-        <TerminalRow>###</TerminalRow>
-        <TerminalRow>###</TerminalRow>
-        <TerminalRow>###</TerminalRow>
-        <TerminalRow>###</TerminalRow>
+        {firstLine ? (
+          <TerminalRow>
+            <TerminalBadge>
+              <div>joon@MacBook-Air</div>
+              <TerminalBadgeArrow icon={faAngleRight} />
+            </TerminalBadge>
+            <TerminalLine>cd portfolio</TerminalLine>
+          </TerminalRow>
+        ) : null}
+        {firstContent ? (
+          <TerminalRow>
+            <TerminalLine>####</TerminalLine>
+          </TerminalRow>
+        ) : null}
+        {secondLine ? (
+          <TerminalRow>
+            <TerminalBadge>
+              <div>joon@MacBook-Air</div>
+              <TerminalBadgeArrow icon={faAngleRight} />
+              <TerminalLine>~/portfolio</TerminalLine>
+              <TerminalBadgeArrow icon={faAngleRight} />
+            </TerminalBadge>
+            <TerminalLine>cat intro.md</TerminalLine>
+          </TerminalRow>
+        ) : null}
+        {secondContent ? (
+          <TerminalRow>
+            <TerminalLine>####</TerminalLine>
+          </TerminalRow>
+        ) : null}
+        {thirdLine ? (
+          <TerminalRow>
+            <TerminalBadge>
+              <div>joon@MacBook-Air</div>
+              <TerminalBadgeArrow icon={faAngleRight} />
+              <TerminalLine>~/portfolio</TerminalLine>
+              <TerminalBadgeArrow icon={faAngleRight} />
+            </TerminalBadge>
+            <TerminalLine>cat info.md</TerminalLine>
+          </TerminalRow>
+        ) : null}
+        {thirdContent ? (
+          <TerminalRow>
+            <TerminalLine>####</TerminalLine>
+          </TerminalRow>
+        ) : null}
       </WindowBody>
     </Window>
   );
