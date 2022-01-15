@@ -116,15 +116,24 @@ const FirstBadge = styled.div`
   padding: 4px 10px;
 `;
 
+const BadgeArrow = styled.div<{ first?: boolean }>`
+  background-color: ${({ first }) => (first ? "transparent" : "#caa9fa")};
+  width: 0;
+  height: 0;
+  border-top: 13px solid transparent;
+  border-bottom: 13px solid transparent;
+  border-left: 13px solid #000000;
+`;
+
 const SecondBadge = styled.div`
   background-color: #caa9fa;
   color: #000000;
-  margin-left: 8px;
   padding: 4px 10px;
 `;
 
-const TerminalBadgeArrow = styled(FontAwesomeIcon)`
-  font-size: 18px;
+const SecondBadgeArrow = styled(BadgeArrow)`
+  background-color: transparent;
+  border-left: 13px solid #caa9fa;
 `;
 
 const TerminalLine = styled.div`
@@ -167,7 +176,6 @@ const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
     setTimeout(() => {
       setFirstLine(true);
     }, 1000);
-
     setTimeout(() => {
       setSecondLine(true);
     }, 1500);
@@ -226,16 +234,16 @@ const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
               hideWhenDoneDelay: 100,
             }}
           >
-            Hello.
+            <div> Hello.</div>
+            <Typist.Delay ms={500} />
           </Typist>
         </TerminalRow>
         {firstLine ? (
           <TerminalRow>
             <TerminalBadge>
               <FirstBadge>joon@MacBook-Air</FirstBadge>
-              <TerminalBadgeArrow icon={faAngleRight} />
+              <BadgeArrow first />
             </TerminalBadge>
-
             <TerminalLine>
               <Typist
                 cursor={{
@@ -247,7 +255,7 @@ const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
                 }}
               >
                 cd portfolio
-                <Typist.Delay ms={1000} />
+                <Typist.Delay ms={500} />
               </Typist>
             </TerminalLine>
           </TerminalRow>
@@ -256,9 +264,9 @@ const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
           <TerminalRow>
             <TerminalBadge>
               <FirstBadge>joon@MacBook-Air</FirstBadge>
-              <TerminalBadgeArrow icon={faAngleRight} />
+              <BadgeArrow />
               <SecondBadge>~/portfolio</SecondBadge>
-              <TerminalBadgeArrow icon={faAngleRight} />
+              <SecondBadgeArrow />
             </TerminalBadge>
             <TerminalLine>
               <Typist
@@ -271,7 +279,7 @@ const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
                 }}
               >
                 cat intro.md
-                <Typist.Delay ms={2000} />
+                <Typist.Delay ms={500} />
               </Typist>
             </TerminalLine>
           </TerminalRow>
@@ -285,9 +293,9 @@ const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
           <TerminalRow>
             <TerminalBadge>
               <FirstBadge>joon@MacBook-Air</FirstBadge>
-              <TerminalBadgeArrow icon={faAngleRight} />
+              <BadgeArrow />
               <SecondBadge>~/portfolio</SecondBadge>
-              <TerminalBadgeArrow icon={faAngleRight} />
+              <SecondBadgeArrow />
             </TerminalBadge>
             <TerminalLine>
               <Typist
@@ -299,8 +307,8 @@ const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
                   hideWhenDoneDelay: 100,
                 }}
               >
-                <Typist.Delay ms={3000} />
                 cat contact.md
+                <Typist.Delay ms={500} />
               </Typist>
             </TerminalLine>
           </TerminalRow>
