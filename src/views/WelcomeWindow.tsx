@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { DraggableData, Rnd } from "react-rnd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleRight, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import Typist from "react-typist";
 
 const Window = styled(Rnd)`
   width: 100%;
@@ -215,14 +216,40 @@ const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
         </TopbarTitle>
       </WindowTopbar>
       <WindowBody>
-        <TerminalRow>Welcome!</TerminalRow>
+        <TerminalRow>
+          <Typist
+            cursor={{
+              show: true,
+              blink: true,
+              element: "|",
+              hideWhenDone: true,
+              hideWhenDoneDelay: 100,
+            }}
+          >
+            Hello.
+          </Typist>
+        </TerminalRow>
         {firstLine ? (
           <TerminalRow>
             <TerminalBadge>
               <FirstBadge>joon@MacBook-Air</FirstBadge>
               <TerminalBadgeArrow icon={faAngleRight} />
             </TerminalBadge>
-            <TerminalLine>cd portfolio</TerminalLine>
+
+            <TerminalLine>
+              <Typist
+                cursor={{
+                  show: true,
+                  blink: true,
+                  element: "|",
+                  hideWhenDone: true,
+                  hideWhenDoneDelay: 100,
+                }}
+              >
+                cd portfolio
+                <Typist.Delay ms={1000} />
+              </Typist>
+            </TerminalLine>
           </TerminalRow>
         ) : null}
         {secondLine ? (
@@ -233,7 +260,20 @@ const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
               <SecondBadge>~/portfolio</SecondBadge>
               <TerminalBadgeArrow icon={faAngleRight} />
             </TerminalBadge>
-            <TerminalLine>cat intro.md</TerminalLine>
+            <TerminalLine>
+              <Typist
+                cursor={{
+                  show: true,
+                  blink: true,
+                  element: "|",
+                  hideWhenDone: true,
+                  hideWhenDoneDelay: 100,
+                }}
+              >
+                cat intro.md
+                <Typist.Delay ms={2000} />
+              </Typist>
+            </TerminalLine>
           </TerminalRow>
         ) : null}
         {secondContent ? (
@@ -249,7 +289,20 @@ const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
               <SecondBadge>~/portfolio</SecondBadge>
               <TerminalBadgeArrow icon={faAngleRight} />
             </TerminalBadge>
-            <TerminalLine>cat contact.md</TerminalLine>
+            <TerminalLine>
+              <Typist
+                cursor={{
+                  show: true,
+                  blink: true,
+                  element: "|",
+                  hideWhenDone: true,
+                  hideWhenDoneDelay: 100,
+                }}
+              >
+                <Typist.Delay ms={3000} />
+                cat contact.md
+              </Typist>
+            </TerminalLine>
           </TerminalRow>
         ) : null}
         {thirdContent ? (
