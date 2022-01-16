@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from "react";
 import styled from "styled-components";
 import { DraggableData, Rnd } from "react-rnd";
@@ -103,6 +102,10 @@ const TerminalRow = styled.div`
   justify-content: flex-start;
   align-items: center;
   margin: 4px 8px;
+`;
+
+const LoadedCommandLine = styled(Typist)`
+  margin-top: 8px;
 `;
 
 const TerminalBadge = styled.div`
@@ -210,7 +213,7 @@ const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
       </WindowTopbar>
       <WindowBody>
         <TerminalRow>
-          <Typist
+          <LoadedCommandLine
             cursor={{
               show: true,
               blink: true,
@@ -220,8 +223,8 @@ const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
             }}
             onTypingDone={() => setFirstLine(true)}
           >
-            Hello
-          </Typist>
+            Loaded...
+          </LoadedCommandLine>
         </TerminalRow>
         {firstLine ? (
           <TerminalRow>
@@ -274,7 +277,20 @@ const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
         ) : null}
         {secondContent ? (
           <TerminalRow>
-            <TerminalLine>####</TerminalLine>
+            <TerminalLine>
+              <ContentLine># Hi, I'm Joon.</ContentLine>
+              <ContentLine>
+                <ContentLineArrow icon={faAngleRight} />
+                <div>I'm a front-end developer at Enfusion</div>
+              </ContentLine>
+              <ContentLine>
+                <ContentLineArrow icon={faAngleRight} />
+                <div>
+                  I'm an alumnus of Purdue University Computer Science (Software
+                  Engineering)
+                </div>
+              </ContentLine>
+            </TerminalLine>
           </TerminalRow>
         ) : null}
         {thirdLine ? (
