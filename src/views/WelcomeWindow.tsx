@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from "react";
 import styled from "styled-components";
 import { DraggableData, Rnd } from "react-rnd";
@@ -114,6 +115,7 @@ const TerminalBadge = styled.div`
 const FirstBadge = styled.div`
   background-color: #000000;
   padding: 4px 10px;
+  border: none;
 `;
 
 const BadgeArrow = styled.div<{ first?: boolean }>`
@@ -129,6 +131,7 @@ const SecondBadge = styled.div`
   background-color: #caa9fa;
   color: #000000;
   padding: 4px 10px;
+  border: none;
 `;
 
 const SecondBadgeArrow = styled(BadgeArrow)`
@@ -171,24 +174,6 @@ const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
   const [secondContent, setSecondContent] = React.useState(false);
   const [thirdLine, setThirdLine] = React.useState(false);
   const [thirdContent, setThirdContent] = React.useState(false);
-
-  React.useEffect(() => {
-    setTimeout(() => {
-      setFirstLine(true);
-    }, 1000);
-    setTimeout(() => {
-      setSecondLine(true);
-    }, 1500);
-    setTimeout(() => {
-      setSecondContent(true);
-    }, 2000);
-    setTimeout(() => {
-      setThirdLine(true);
-    }, 2500);
-    setTimeout(() => {
-      setThirdContent(true);
-    }, 3000);
-  }, []);
 
   return (
     <Window
@@ -233,9 +218,9 @@ const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
               hideWhenDone: true,
               hideWhenDoneDelay: 100,
             }}
+            onTypingDone={() => setFirstLine(true)}
           >
-            <div> Hello.</div>
-            <Typist.Delay ms={500} />
+            Hello
           </Typist>
         </TerminalRow>
         {firstLine ? (
@@ -253,9 +238,9 @@ const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
                   hideWhenDone: true,
                   hideWhenDoneDelay: 100,
                 }}
+                onTypingDone={() => setSecondLine(true)}
               >
                 cd portfolio
-                <Typist.Delay ms={500} />
               </Typist>
             </TerminalLine>
           </TerminalRow>
@@ -277,9 +262,12 @@ const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
                   hideWhenDone: true,
                   hideWhenDoneDelay: 100,
                 }}
+                onTypingDone={() => {
+                  setSecondContent(true);
+                  setThirdLine(true);
+                }}
               >
                 cat intro.md
-                <Typist.Delay ms={500} />
               </Typist>
             </TerminalLine>
           </TerminalRow>
@@ -306,9 +294,9 @@ const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
                   hideWhenDone: true,
                   hideWhenDoneDelay: 100,
                 }}
+                onTypingDone={() => setThirdContent(true)}
               >
                 cat contact.md
-                <Typist.Delay ms={500} />
               </Typist>
             </TerminalLine>
           </TerminalRow>
