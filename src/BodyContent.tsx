@@ -124,6 +124,8 @@ const BodyContent: React.FC<BodyContentProps> = ({
       ) : null}
       {isProjectsOpen ? (
         <ProjectsWindow
+          width={width}
+          height={height}
           focusedWindow={focusedWindow}
           handleFocus={handleFocus}
           setProjectsMinimized={setProjectsMinimized}
