@@ -108,7 +108,7 @@ const InfoListItemLabel = styled.div`
   margin-left: 8px;
 `;
 
-type SkillsWindowProps = {
+type TopbarAboutWindowProps = {
   width: number;
   height: number;
   focusedWindow: string;
@@ -116,7 +116,7 @@ type SkillsWindowProps = {
   toggleDesktopAboutOpen: () => void;
 };
 
-const TopbarAboutWindow: React.FC<SkillsWindowProps> = ({
+const TopbarAboutWindow: React.FC<TopbarAboutWindowProps> = ({
   width,
   height,
   focusedWindow,

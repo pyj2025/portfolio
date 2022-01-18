@@ -37,17 +37,21 @@ function App() {
 
   const [inMaintenance, setMaintenance] = useState(false);
 
-  const [focusedWindow, setFocusedWindow] = useState("");
+  const [focusedWindow, setFocusedWindow] = useState("Welcome");
+
+  const [isWelcomeWindowOpen, setWelcomeWindowOpen] = useState(true);
 
   const [isAboutOpen, setAboutOpen] = useState(false);
   const [isAboutMinimized, setAboutMinimized] = useState(false);
   const [isAboutExpanded, setAboutExpanded] = useState(false);
+
   const [isSkillsOpen, setSkillsOpen] = useState(false);
   const [isSkillsMinimized, setSkillsMinimized] = useState(false);
   const [isSkillsExpanded, setSkillsExpanded] = useState(false);
+
   const [isProjectsOpen, setProjectsOpen] = useState(false);
   const [isProjectsMinimized, setProjectsMinimized] = useState(false);
-  const [isEmailMinimized, setEmailMinimized] = useState(false);
+
   const [isDesktopAboutOpen, setDesktopAboutOpen] = useState(false);
 
   React.useEffect(() => {
@@ -168,12 +172,14 @@ function App() {
               width={width}
               height={height}
               focusedWindow={focusedWindow}
+              isWelcomeWindowOpen={isWelcomeWindowOpen}
               isAboutOpen={isAboutOpen}
               isAboutExpanded={isAboutExpanded}
               isSkillsOpen={isSkillsOpen}
               isSkillsExpanded={isSkillsExpanded}
               isProjectsOpen={isProjectsOpen}
               isDesktopAboutOpen={isDesktopAboutOpen}
+              closeWelcomeWindow={setWelcomeWindowOpen}
               toggleAboutOpen={toggleAboutOpen}
               setAboutMinimized={setAboutMinimized}
               toggleAboutExpanded={toggleAboutExpanded}
@@ -189,7 +195,6 @@ function App() {
               isAboutMinimized={isAboutMinimized}
               isSkillsMinimized={isSkillsMinimized}
               isProjectsMinimized={isProjectsMinimized}
-              isEmailMinimized={isEmailMinimized}
               toggleAboutOpen={toggleAboutOpen}
               setAboutMinimized={setAboutMinimized}
               toggleSkillsOpen={toggleSkillsOpen}
