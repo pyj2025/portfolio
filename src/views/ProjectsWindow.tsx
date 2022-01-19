@@ -88,13 +88,54 @@ const WindowBody = styled.div`
   height: calc(100% - 28px);
 `;
 
+const WindowBodyNavbar = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  background-color: rgba(51, 49, 51, 0.9);
+  color: white;
+  border-right: 0.2px solid #141516;
+`;
+
+const WindowBodyNavItm = styled.div<{ focus: boolean }>`
+  display: grid;
+  grid-template-columns: 20px auto;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: ${({ focus }) =>
+    focus ? "rgba(120, 120, 120, 0.5)" : "transparent"};
+  color: white;
+  margin-top: 4px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 8px;
+  cursor: pointer;
+`;
+
+const NavItmLabel = styled.span`
+  font-weight: bold;
+  justify-content: center;
+  margin-left: 4px;
+`;
+
+const WindowBodyContent = styled.div`
+  height: 100%;
+  background-color: #1d1f21;
+  color: white;
+`;
+
+type IndexType = "Projects";
+
 type ProjectsWindowProps = {
   width: number;
   height: number;
   focusedWindow: string;
   handleFocus: (_e: any, data: DraggableData) => void;
+  isProjectsExpanded: boolean;
   setProjectsMinimized: (flag: boolean) => void;
   toggleProjectsOpen: () => void;
+  toggleProjectsExpanded: () => void;
 };
 
 const ProjectsWindow: React.FC<ProjectsWindowProps> = ({
@@ -102,8 +143,10 @@ const ProjectsWindow: React.FC<ProjectsWindowProps> = ({
   height,
   focusedWindow,
   handleFocus,
+  isProjectsExpanded,
   setProjectsMinimized,
   toggleProjectsOpen,
+  toggleProjectsExpanded,
 }) => {
   const projectsRef = React.useRef<any>();
 
@@ -117,9 +160,10 @@ const ProjectsWindow: React.FC<ProjectsWindowProps> = ({
       y: -600,
     });
 
-  const [skillsPrevSetting, setSkillsPrevSetting] = React.useState<
+  const [projectsPrevSetting, setProjectsPrevSetting] = React.useState<
     (WindowSizeSetting & WindowPositionSetting) | null
   >(null);
+  const [index, setIndex] = React.useState<IndexType>("Projects");
 
   const handleProjectsClose = () => {
     if (focusedWindow === "Projects") toggleProjectsOpen();
@@ -134,8 +178,8 @@ const ProjectsWindow: React.FC<ProjectsWindowProps> = ({
 
   const handleProjectsExpand = () => {
     if (focusedWindow === "Projects") {
-      if (skillsPrevSetting) {
-        if (skillsPrevSetting === null) {
+      if (isProjectsExpanded) {
+        if (projectsPrevSetting === null) {
           setProjectsSize({
             width: 500,
             height: 300,
@@ -146,16 +190,16 @@ const ProjectsWindow: React.FC<ProjectsWindowProps> = ({
           });
         } else {
           setProjectsSize({
-            width: skillsPrevSetting.width,
-            height: skillsPrevSetting.height,
+            width: projectsPrevSetting.width,
+            height: projectsPrevSetting.height,
           });
           setProjectsPosition({
-            x: skillsPrevSetting.x,
-            y: skillsPrevSetting.y,
+            x: projectsPrevSetting.x,
+            y: projectsPrevSetting.y,
           });
         }
       } else {
-        setSkillsPrevSetting({
+        setProjectsPrevSetting({
           width: projectsSize.width,
           height: projectsSize.height,
           x: projectsPosition.x,
@@ -173,7 +217,13 @@ const ProjectsWindow: React.FC<ProjectsWindowProps> = ({
       }
       projectsRef.current.updateSize(projectsSize);
       projectsRef.current.updatePosition(projectsPosition);
+
+      toggleProjectsExpanded();
     }
+  };
+
+  const handleClick = (name: IndexType) => {
+    setIndex(name);
   };
 
   return (
@@ -232,7 +282,21 @@ const ProjectsWindow: React.FC<ProjectsWindowProps> = ({
           <TopbarTitleText>Projects</TopbarTitleText>
         </TopbarTitle>
       </WindowTopbar>
-      <WindowBody></WindowBody>
+      <WindowBody>
+        <WindowBodyNavbar>
+          <WindowBodyNavItm
+            onClick={() => handleClick("Projects")}
+            focus={index === "Projects"}
+          >
+            <TopbarTitleImage
+              src="https://img.icons8.com/color/48/000000/mac-folder.png"
+              alt="folder"
+            />
+            <NavItmLabel>Projects</NavItmLabel>
+          </WindowBodyNavItm>
+        </WindowBodyNavbar>
+        <WindowBodyContent>###</WindowBodyContent>
+      </WindowBody>
     </Window>
   );
 };
