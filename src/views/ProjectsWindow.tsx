@@ -98,7 +98,7 @@ const WindowBodyNavbar = styled.div`
   border-right: 0.2px solid #141516;
 `;
 
-const WindowBodyNavItm = styled.div<{ focus: boolean }>`
+const WindowBodyNavItm = styled.div<{ focus: boolean; isChild?: boolean }>`
   display: grid;
   grid-template-columns: 20px auto;
   justify-content: flex-start;
@@ -106,10 +106,10 @@ const WindowBodyNavItm = styled.div<{ focus: boolean }>`
   background-color: ${({ focus }) =>
     focus ? "rgba(120, 120, 120, 0.5)" : "transparent"};
   color: white;
-  margin-top: 4px;
+  margin-top: 1px;
   padding-top: 2px;
   padding-bottom: 2px;
-  padding-left: 8px;
+  padding-left: ${({ isChild }) => (isChild ? "24px" : "8px")};
   cursor: pointer;
 `;
 
@@ -125,7 +125,33 @@ const WindowBodyContent = styled.div`
   color: white;
 `;
 
-type IndexType = "Projects";
+const ContentContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 10px;
+`;
+
+const IconContainer = styled.div<{ noWidth?: boolean }>`
+  display: flex;
+  flex-direction: column;
+  width: ${({ noWidth }) => (noWidth ? undefined : "60px")};
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+`;
+
+const IconLabel = styled.div`
+  font-size: 0.75rem;
+`;
+
+type IndexType =
+  | "Projects"
+  | "WebProjects"
+  | "MobileProjects"
+  | "DatApex"
+  | "Foodie";
 
 type ProjectsWindowProps = {
   width: number;
@@ -136,6 +162,67 @@ type ProjectsWindowProps = {
   setProjectsMinimized: (flag: boolean) => void;
   toggleProjectsOpen: () => void;
   toggleProjectsExpanded: () => void;
+};
+
+const Projects: React.FC<{ click: (name: IndexType) => void }> = ({
+  click,
+}) => {
+  return (
+    <>
+      <ContentContainer>
+        <IconContainer onClick={() => click("WebProjects")}>
+          <img
+            src="https://img.icons8.com/color/48/000000/mac-folder.png"
+            alt="Folder"
+          />
+          <IconLabel>Web</IconLabel>
+        </IconContainer>
+        <IconContainer onClick={() => click("MobileProjects")}>
+          <img
+            src="https://img.icons8.com/color/48/000000/mac-folder.png"
+            alt="Folder"
+          />
+          <IconLabel>Mobile</IconLabel>
+        </IconContainer>
+      </ContentContainer>
+    </>
+  );
+};
+
+const WebProjects: React.FC<{ click: (name: IndexType) => void }> = ({
+  click,
+}) => {
+  return (
+    <>
+      <ContentContainer>
+        <IconContainer onClick={() => click("DatApex")}>
+          <img
+            src="https://img.icons8.com/color/48/000000/code-file.png"
+            alt="Folder"
+          />
+          <IconLabel>DatApex</IconLabel>
+        </IconContainer>
+      </ContentContainer>
+    </>
+  );
+};
+
+const MobileProjects: React.FC<{ click: (name: IndexType) => void }> = ({
+  click,
+}) => {
+  return (
+    <>
+      <ContentContainer>
+        <IconContainer onClick={() => click("Foodie")}>
+          <img
+            src="https://img.icons8.com/color/48/000000/code-file.png"
+            alt="Folder"
+          />
+          <IconLabel>Foodie</IconLabel>
+        </IconContainer>
+      </ContentContainer>
+    </>
+  );
 };
 
 const ProjectsWindow: React.FC<ProjectsWindowProps> = ({
@@ -286,7 +373,11 @@ const ProjectsWindow: React.FC<ProjectsWindowProps> = ({
         <WindowBodyNavbar>
           <WindowBodyNavItm
             onClick={() => handleClick("Projects")}
-            focus={index === "Projects"}
+            focus={
+              index === "Projects" ||
+              index === "WebProjects" ||
+              index === "MobileProjects"
+            }
           >
             <TopbarTitleImage
               src="https://img.icons8.com/color/48/000000/mac-folder.png"
@@ -294,8 +385,46 @@ const ProjectsWindow: React.FC<ProjectsWindowProps> = ({
             />
             <NavItmLabel>Projects</NavItmLabel>
           </WindowBodyNavItm>
+          <WindowBodyNavItm
+            onClick={() => handleClick("WebProjects")}
+            focus={index === "WebProjects"}
+            isChild
+          >
+            <TopbarTitleImage
+              src="https://img.icons8.com/color/48/000000/mac-folder.png"
+              alt="folder"
+            />
+            <NavItmLabel>Web</NavItmLabel>
+          </WindowBodyNavItm>
+          <WindowBodyNavItm
+            onClick={() => handleClick("MobileProjects")}
+            focus={index === "MobileProjects"}
+            isChild
+          >
+            <TopbarTitleImage
+              src="https://img.icons8.com/color/48/000000/mac-folder.png"
+              alt="folder"
+            />
+            <NavItmLabel>Mobile</NavItmLabel>
+          </WindowBodyNavItm>
         </WindowBodyNavbar>
-        <WindowBodyContent>###</WindowBodyContent>
+        <WindowBodyContent>
+          {index === "Projects" ? <Projects click={handleClick} /> : null}
+          {index === "WebProjects" ? <WebProjects click={handleClick} /> : null}
+          {index === "MobileProjects" ? (
+            <MobileProjects click={handleClick} />
+          ) : null}
+          {index === "DatApex" ? (
+            <>
+              <div>###DatApex###</div>
+            </>
+          ) : null}
+          {index === "Foodie" ? (
+            <>
+              <div>###Foodie###</div>
+            </>
+          ) : null}
+        </WindowBodyContent>
       </WindowBody>
     </Window>
   );
