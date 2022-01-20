@@ -71,19 +71,19 @@ const MenuContainer: React.FC<MenuContainerProps> = ({
           <ListItem title="Projects" onClick={toggleProjectsOpen}>
             <img
               src="https://img.icons8.com/color/48/000000/mac-folder.png"
-              alt="Projects"
+              alt="mac-folder"
             />
           </ListItem>
           <ListItem title="Settings" onClick={toggleProjectsOpen}>
             <img
               src="https://img.icons8.com/color/48/000000/apple-settings.png"
-              alt="Settings"
+              alt="apple-settings"
             />
           </ListItem>
           <ListItem title="Resume" onClick={toggleProjectsOpen}>
             <img
               src="https://img.icons8.com/color/48/000000/pdf.png"
-              alt="Resume"
+              alt="pdf"
             />
           </ListItem>
           <ListItem title="Github" href="https://github.com/pyj2025">
