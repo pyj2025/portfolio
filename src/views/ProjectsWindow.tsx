@@ -376,7 +376,9 @@ const ProjectsWindow: React.FC<ProjectsWindowProps> = ({
             focus={
               index === "Projects" ||
               index === "WebProjects" ||
-              index === "MobileProjects"
+              index === "DatApex" ||
+              index === "MobileProjects" ||
+              index === "Foodie"
             }
           >
             <TopbarTitleImage
@@ -387,7 +389,7 @@ const ProjectsWindow: React.FC<ProjectsWindowProps> = ({
           </WindowBodyNavItm>
           <WindowBodyNavItm
             onClick={() => handleClick("WebProjects")}
-            focus={index === "WebProjects"}
+            focus={index === "DatApex" || index === "WebProjects"}
             isChild
           >
             <TopbarTitleImage
@@ -398,7 +400,7 @@ const ProjectsWindow: React.FC<ProjectsWindowProps> = ({
           </WindowBodyNavItm>
           <WindowBodyNavItm
             onClick={() => handleClick("MobileProjects")}
-            focus={index === "MobileProjects"}
+            focus={index === "Foodie" || index === "MobileProjects"}
             isChild
           >
             <TopbarTitleImage
