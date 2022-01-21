@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import FoodieLogo from "../image/Foodie.png";
 
 import { IndexType } from "../views/ProjectsWindow";
 
@@ -20,6 +21,12 @@ const IconContainer = styled.div<{ noWidth?: boolean }>`
   cursor: pointer;
 `;
 
+const IconLogoImage = styled.img`
+  width: 90%;
+  height: 90%;
+  margin-bottom: 4px;
+`;
+
 const IconLabel = styled.div`
   font-size: 0.75rem;
 `;
@@ -28,6 +35,11 @@ const ContentContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin: 10px;
+`;
+
+const LogoImage = styled.img`
+  width: 95%;
+  height: 95%;
 `;
 
 type ProjectsProps = {
@@ -106,10 +118,7 @@ export const MobileProjects: React.FC<ProjectsProps> = ({ click }) => {
     <>
       <IconListContainer>
         <IconContainer onClick={() => click("Foodie")}>
-          <img
-            src="https://img.icons8.com/color/48/000000/code-file.png"
-            alt="Folder"
-          />
+          <IconLogoImage src={FoodieLogo} alt="Foodie" />
           <IconLabel>Foodie</IconLabel>
         </IconContainer>
       </IconListContainer>
@@ -121,7 +130,9 @@ export const Foodie = () => {
   return (
     <>
       <ContentContainer>
-        <div>Image</div>
+        <div>
+          <LogoImage src={FoodieLogo} alt="Foodie" />
+        </div>
         <div>
           <div>
             <div>
