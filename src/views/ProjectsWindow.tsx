@@ -2,6 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import { DraggableData, Position, ResizableDelta, Rnd } from "react-rnd";
 import { WindowPositionSetting, WindowSizeSetting } from "./AboutWindow";
+import {
+  DatApex,
+  Foodie,
+  MobileProjects,
+  Projects,
+  WebProjects,
+} from "../components/Projects";
 
 const Window = styled(Rnd)`
   display: flex;
@@ -125,28 +132,7 @@ const WindowBodyContent = styled.div`
   color: white;
 `;
 
-const ContentContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin: 10px;
-`;
-
-const IconContainer = styled.div<{ noWidth?: boolean }>`
-  display: flex;
-  flex-direction: column;
-  width: ${({ noWidth }) => (noWidth ? undefined : "60px")};
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-`;
-
-const IconLabel = styled.div`
-  font-size: 0.75rem;
-`;
-
-type IndexType =
+export type IndexType =
   | "Projects"
   | "WebProjects"
   | "MobileProjects"
@@ -162,67 +148,6 @@ type ProjectsWindowProps = {
   setProjectsMinimized: (flag: boolean) => void;
   toggleProjectsOpen: () => void;
   toggleProjectsExpanded: () => void;
-};
-
-const Projects: React.FC<{ click: (name: IndexType) => void }> = ({
-  click,
-}) => {
-  return (
-    <>
-      <ContentContainer>
-        <IconContainer onClick={() => click("WebProjects")}>
-          <img
-            src="https://img.icons8.com/color/48/000000/mac-folder.png"
-            alt="Folder"
-          />
-          <IconLabel>Web</IconLabel>
-        </IconContainer>
-        <IconContainer onClick={() => click("MobileProjects")}>
-          <img
-            src="https://img.icons8.com/color/48/000000/mac-folder.png"
-            alt="Folder"
-          />
-          <IconLabel>Mobile</IconLabel>
-        </IconContainer>
-      </ContentContainer>
-    </>
-  );
-};
-
-const WebProjects: React.FC<{ click: (name: IndexType) => void }> = ({
-  click,
-}) => {
-  return (
-    <>
-      <ContentContainer>
-        <IconContainer onClick={() => click("DatApex")}>
-          <img
-            src="https://img.icons8.com/color/48/000000/code-file.png"
-            alt="Folder"
-          />
-          <IconLabel>DatApex</IconLabel>
-        </IconContainer>
-      </ContentContainer>
-    </>
-  );
-};
-
-const MobileProjects: React.FC<{ click: (name: IndexType) => void }> = ({
-  click,
-}) => {
-  return (
-    <>
-      <ContentContainer>
-        <IconContainer onClick={() => click("Foodie")}>
-          <img
-            src="https://img.icons8.com/color/48/000000/code-file.png"
-            alt="Folder"
-          />
-          <IconLabel>Foodie</IconLabel>
-        </IconContainer>
-      </ContentContainer>
-    </>
-  );
 };
 
 const ProjectsWindow: React.FC<ProjectsWindowProps> = ({
@@ -416,16 +341,8 @@ const ProjectsWindow: React.FC<ProjectsWindowProps> = ({
           {index === "MobileProjects" ? (
             <MobileProjects click={handleClick} />
           ) : null}
-          {index === "DatApex" ? (
-            <>
-              <div>###DatApex###</div>
-            </>
-          ) : null}
-          {index === "Foodie" ? (
-            <>
-              <div>###Foodie###</div>
-            </>
-          ) : null}
+          {index === "DatApex" ? <DatApex /> : null}
+          {index === "Foodie" ? <Foodie /> : null}
         </WindowBodyContent>
       </WindowBody>
     </Window>
