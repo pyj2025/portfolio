@@ -80,6 +80,13 @@ export const WebProjects: React.FC<ProjectsProps> = ({ click }) => {
           />
           <IconLabel>DatApex</IconLabel>
         </IconContainer>
+        <IconContainer onClick={() => click("Portfolio")}>
+          <img
+            src="https://img.icons8.com/color/48/000000/code-file.png"
+            alt="Folder"
+          />
+          <IconLabel>Portfolio</IconLabel>
+        </IconContainer>
       </IconListContainer>
     </>
   );
@@ -107,6 +114,34 @@ export const DatApex = () => {
         <div>
           <div>Stack</div>
           <div>React, Django, Bootstrap</div>
+        </div>
+      </div>
+    </ContentContainer>
+  );
+};
+
+export const Portfolio = () => {
+  return (
+    <ContentContainer>
+      <div>Image</div>
+      <div>
+        <div>
+          <div>
+            <div>Name</div>
+          </div>
+          <div>Portfolio</div>
+        </div>
+        <div>
+          <div>Link</div>
+          <div>https://pyj2025.github.io/portfolio/</div>
+        </div>
+        <div>
+          <div>Detail</div>
+          <div>This site</div>
+        </div>
+        <div>
+          <div>Stack</div>
+          <div>React, Typescript, Styled-components</div>
         </div>
       </div>
     </ContentContainer>

@@ -6,6 +6,7 @@ import {
   DatApex,
   Foodie,
   MobileProjects,
+  Portfolio,
   Projects,
   WebProjects,
 } from "../components/Projects";
@@ -137,7 +138,8 @@ export type IndexType =
   | "WebProjects"
   | "MobileProjects"
   | "DatApex"
-  | "Foodie";
+  | "Foodie"
+  | "Portfolio";
 
 type ProjectsWindowProps = {
   width: number;
@@ -296,16 +298,7 @@ const ProjectsWindow: React.FC<ProjectsWindowProps> = ({
       </WindowTopbar>
       <WindowBody>
         <WindowBodyNavbar>
-          <WindowBodyNavItm
-            onClick={() => handleClick("Projects")}
-            focus={
-              index === "Projects" ||
-              index === "WebProjects" ||
-              index === "DatApex" ||
-              index === "MobileProjects" ||
-              index === "Foodie"
-            }
-          >
+          <WindowBodyNavItm onClick={() => handleClick("Projects")} focus>
             <TopbarTitleImage
               src="https://img.icons8.com/color/48/000000/mac-folder.png"
               alt="folder"
@@ -314,7 +307,11 @@ const ProjectsWindow: React.FC<ProjectsWindowProps> = ({
           </WindowBodyNavItm>
           <WindowBodyNavItm
             onClick={() => handleClick("WebProjects")}
-            focus={index === "DatApex" || index === "WebProjects"}
+            focus={
+              index === "DatApex" ||
+              index === "Portfolio" ||
+              index === "WebProjects"
+            }
             isChild
           >
             <TopbarTitleImage
@@ -342,6 +339,7 @@ const ProjectsWindow: React.FC<ProjectsWindowProps> = ({
             <MobileProjects click={handleClick} />
           ) : null}
           {index === "DatApex" ? <DatApex /> : null}
+          {index === "Portfolio" ? <Portfolio /> : null}
           {index === "Foodie" ? <Foodie /> : null}
         </WindowBodyContent>
       </WindowBody>
