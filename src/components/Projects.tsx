@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import FoodieLogo from "../image/Foodie.png";
+import DatApexLogo from "../image/DatApex.png";
 
 import { IndexType } from "../views/ProjectsWindow";
+import { MutedText } from "../GlobalStyle";
 
 const IconListContainer = styled.div`
   display: flex;
@@ -42,6 +44,16 @@ const LogoImage = styled.img`
   height: 95%;
 `;
 
+const DescriptionContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const DescriptionRow = styled.div`
+  display: grid;
+  grid-template-columns: 30% auto;
+`;
+
 type ProjectsProps = {
   click: (name: IndexType) => void;
 };
@@ -74,16 +86,13 @@ export const WebProjects: React.FC<ProjectsProps> = ({ click }) => {
     <>
       <IconListContainer>
         <IconContainer onClick={() => click("DatApex")}>
-          <img
-            src="https://img.icons8.com/color/48/000000/code-file.png"
-            alt="Folder"
-          />
+          <IconLogoImage src={DatApexLogo} alt="DatApex" />
           <IconLabel>DatApex</IconLabel>
         </IconContainer>
         <IconContainer onClick={() => click("Portfolio")}>
           <img
             src="https://img.icons8.com/color/48/000000/code-file.png"
-            alt="Folder"
+            alt="code-file"
           />
           <IconLabel>Portfolio</IconLabel>
         </IconContainer>
@@ -95,27 +104,27 @@ export const WebProjects: React.FC<ProjectsProps> = ({ click }) => {
 export const DatApex = () => {
   return (
     <ContentContainer>
-      <div>Image</div>
       <div>
-        <div>
-          <div>
-            <div>Name</div>
-          </div>
-          <div>DatApex</div>
-        </div>
-        <div>
-          <div>Link</div>
-          <div>###</div>
-        </div>
-        <div>
-          <div>Detail</div>
-          <div>###</div>
-        </div>
-        <div>
-          <div>Stack</div>
-          <div>React, Django, Bootstrap</div>
-        </div>
+        <LogoImage src={DatApexLogo} alt="DatApex" />
       </div>
+      <DescriptionContainer>
+        <DescriptionRow>
+          <MutedText>Name</MutedText>
+          <div>DatApex</div>
+        </DescriptionRow>
+        <DescriptionRow>
+          <MutedText>Link</MutedText>
+          <div>###</div>
+        </DescriptionRow>
+        <DescriptionRow>
+          <MutedText>Detail</MutedText>
+          <div>###</div>
+        </DescriptionRow>
+        <DescriptionRow>
+          <MutedText>Stack</MutedText>
+          <div>React, Django, Bootstrap</div>
+        </DescriptionRow>
+      </DescriptionContainer>
     </ContentContainer>
   );
 };
@@ -123,27 +132,30 @@ export const DatApex = () => {
 export const Portfolio = () => {
   return (
     <ContentContainer>
-      <div>Image</div>
       <div>
-        <div>
-          <div>
-            <div>Name</div>
-          </div>
-          <div>Portfolio</div>
-        </div>
-        <div>
-          <div>Link</div>
-          <div>https://pyj2025.github.io/portfolio/</div>
-        </div>
-        <div>
-          <div>Detail</div>
-          <div>This site</div>
-        </div>
-        <div>
-          <div>Stack</div>
-          <div>React, Typescript, Styled-components</div>
-        </div>
+        <img
+          src="https://img.icons8.com/color/96/000000/code-file.png"
+          alt="code-file"
+        />
       </div>
+      <DescriptionContainer>
+        <DescriptionRow>
+          <MutedText>Name</MutedText>
+          <div>Portfolio</div>
+        </DescriptionRow>
+        <DescriptionRow>
+          <MutedText>Name</MutedText>
+          <a href="https://pyj2025.github.io/portfolio/">Link</a>
+        </DescriptionRow>
+        <DescriptionRow>
+          <MutedText>Detail</MutedText>
+          <div>This site</div>
+        </DescriptionRow>
+        <DescriptionRow>
+          <MutedText>Stack</MutedText>
+          <div>React, Typescript, Styled-components</div>
+        </DescriptionRow>
+      </DescriptionContainer>
     </ContentContainer>
   );
 };
@@ -168,26 +180,24 @@ export const Foodie = () => {
         <div>
           <LogoImage src={FoodieLogo} alt="Foodie" />
         </div>
-        <div>
-          <div>
-            <div>
-              <div>Name</div>
-            </div>
+        <DescriptionContainer>
+          <DescriptionRow>
+            <MutedText>Name</MutedText>
             <div>Foodie</div>
-          </div>
-          <div>
-            <div>Link</div>
+          </DescriptionRow>
+          <DescriptionRow>
+            <MutedText>Link</MutedText>
             <div>###</div>
-          </div>
-          <div>
-            <div>Detail</div>
+          </DescriptionRow>
+          <DescriptionRow>
+            <MutedText>Detail</MutedText>
             <div>###</div>
-          </div>
-          <div>
-            <div>Stack</div>
+          </DescriptionRow>
+          <DescriptionRow>
+            <MutedText>Stack</MutedText>
             <div>Swift, Firebase</div>
-          </div>
-        </div>
+          </DescriptionRow>
+        </DescriptionContainer>
       </ContentContainer>
     </>
   );
