@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { DraggableData, Position, ResizableDelta, Rnd } from "react-rnd";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCode, faSchool, faUser } from "@fortawesome/free-solid-svg-icons";
 import Education from "../components/Education";
 import About from "../components/About";
 import Experience from "../components/Experience";

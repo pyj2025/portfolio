@@ -51,6 +51,7 @@ function App() {
 
   const [isProjectsOpen, setProjectsOpen] = useState(false);
   const [isProjectsMinimized, setProjectsMinimized] = useState(false);
+  const [isProjectsExpanded, setProjectsExpanded] = useState(false);
 
   const [isDesktopAboutOpen, setDesktopAboutOpen] = useState(false);
 
@@ -120,6 +121,10 @@ function App() {
     }
   };
 
+  const toggleProjectsExpanded = () => {
+    setProjectsExpanded((state) => !state);
+  };
+
   const handleEmailClick = () => {
     window.open("mailto:pyj2025@gmail.com");
   };
@@ -178,6 +183,7 @@ function App() {
               isSkillsOpen={isSkillsOpen}
               isSkillsExpanded={isSkillsExpanded}
               isProjectsOpen={isProjectsOpen}
+              isProjectsExpanded={isProjectsExpanded}
               isDesktopAboutOpen={isDesktopAboutOpen}
               closeWelcomeWindow={setWelcomeWindowOpen}
               toggleAboutOpen={toggleAboutOpen}
@@ -188,6 +194,7 @@ function App() {
               toggleSkillsExpanded={toggleSkillsExpanded}
               toggleProjectsOpen={toggleProjectsOpen}
               setProjectsMinimized={setProjectsMinimized}
+              toggleProjectsExpanded={toggleProjectsExpanded}
               toggleDesktopAboutOpen={toggleDesktopAboutOpen}
               setFocusedWindow={setFocusedWindow}
             />

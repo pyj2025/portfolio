@@ -56,52 +56,34 @@ const MenuContainer: React.FC<MenuContainerProps> = ({
     <>
       <SidebarContainer>
         <MenuWrapper>
-          <ListItem title="Finder" onClick={toggleAboutOpen}>
+          <ListItem title="About" onClick={toggleAboutOpen}>
             <img
               src="https://img.icons8.com/color/48/000000/mac-logo.png"
               alt="Finder"
             />
           </ListItem>
-          <ListItem title="About" onClick={toggleAboutOpen}>
-            <img
-              src="https://img.icons8.com/color/48/000000/google-slides.png"
-              alt="About"
-            />
-          </ListItem>
           <ListItem title="Skills" onClick={toggleSkillsOpen}>
             <img
               src="https://img.icons8.com/color/48/000000/visual-studio-code-2019.png"
-              alt="Skills"
-            />
-          </ListItem>
-          <ListItem title="Skills" onClick={toggleSkillsOpen}>
-            <img
-              src="https://img.icons8.com/color/48/000000/google-sheets.png"
-              alt="Skills"
+              alt="visual-studio-code"
             />
           </ListItem>
           <ListItem title="Projects" onClick={toggleProjectsOpen}>
             <img
               src="https://img.icons8.com/color/48/000000/mac-folder.png"
-              alt="Projects"
+              alt="mac-folder"
             />
           </ListItem>
           <ListItem title="Settings" onClick={toggleProjectsOpen}>
             <img
               src="https://img.icons8.com/color/48/000000/apple-settings.png"
-              alt="Settings"
-            />
-          </ListItem>
-          <ListItem title="Resume" onClick={toggleProjectsOpen}>
-            <img
-              src="https://img.icons8.com/color/48/000000/google-docs--v1.png"
-              alt="Resume"
+              alt="apple-settings"
             />
           </ListItem>
           <ListItem title="Resume" onClick={toggleProjectsOpen}>
             <img
               src="https://img.icons8.com/color/48/000000/pdf.png"
-              alt="Resume"
+              alt="pdf"
             />
           </ListItem>
           <ListItem title="Github" href="https://github.com/pyj2025">

@@ -21,8 +21,9 @@ export type BodyContentProps = {
   isAboutOpen: boolean;
   isAboutExpanded: boolean;
   isSkillsOpen: boolean;
-  isSkillsExpanded: boolean;
+  isProjectsExpanded: boolean;
   isProjectsOpen: boolean;
+  isSkillsExpanded: boolean;
   isDesktopAboutOpen: boolean;
   closeWelcomeWindow: (flag: boolean) => void;
   toggleAboutOpen: () => void;
@@ -33,6 +34,7 @@ export type BodyContentProps = {
   toggleSkillsExpanded: () => void;
   toggleProjectsOpen: () => void;
   setProjectsMinimized: (flag: boolean) => void;
+  toggleProjectsExpanded: () => void;
   setFocusedWindow: (name: string) => void;
   toggleDesktopAboutOpen: () => void;
 };
@@ -47,6 +49,7 @@ const BodyContent: React.FC<BodyContentProps> = ({
   isSkillsOpen,
   isSkillsExpanded,
   isProjectsOpen,
+  isProjectsExpanded,
   isDesktopAboutOpen,
   closeWelcomeWindow,
   toggleAboutOpen,
@@ -57,6 +60,7 @@ const BodyContent: React.FC<BodyContentProps> = ({
   toggleSkillsExpanded,
   toggleProjectsOpen,
   setProjectsMinimized,
+  toggleProjectsExpanded,
   setFocusedWindow,
   toggleDesktopAboutOpen,
 }) => {
@@ -124,10 +128,14 @@ const BodyContent: React.FC<BodyContentProps> = ({
       ) : null}
       {isProjectsOpen ? (
         <ProjectsWindow
+          width={width}
+          height={height}
           focusedWindow={focusedWindow}
           handleFocus={handleFocus}
+          isProjectsExpanded={isProjectsExpanded}
           setProjectsMinimized={setProjectsMinimized}
           toggleProjectsOpen={toggleProjectsOpen}
+          toggleProjectsExpanded={toggleProjectsExpanded}
         />
       ) : null}
     </Container>
