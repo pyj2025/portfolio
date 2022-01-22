@@ -114,7 +114,7 @@ export const DatApex = () => {
         </DescriptionRow>
         <DescriptionRow>
           <MutedText>Link</MutedText>
-          <div>###</div>
+          <a href="https://github.com/SeoHyunAhn/DatApex">Link</a>
         </DescriptionRow>
         <DescriptionRow>
           <MutedText>Detail</MutedText>
