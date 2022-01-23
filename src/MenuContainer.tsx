@@ -103,7 +103,7 @@ const MenuContainer: React.FC<MenuContainerProps> = ({
           </ListItem>
           <ListItem
             title="Facebook"
-            href="https://www.linkedin.com/in/devjoon/"
+            href="https://www.facebook.com/youngjoon.park.71"
           >
             <img
               src="https://img.icons8.com/color/48/000000/facebook-new.png"
