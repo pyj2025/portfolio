@@ -15,7 +15,7 @@ const Experience: React.FC = () => {
       <div>
         <BoldText>Junior Frontend Developer</BoldText>
         <div>Enfusion, Chicago, IL, USA</div>
-        <div>January 2020 - Present</div>
+        <div>Jan 2020 - Present</div>
       </div>
       <div>
         <BoldText>Undergraduate Teaching Assistant</BoldText>
@@ -24,7 +24,7 @@ const Experience: React.FC = () => {
       </div>
       <div>
         <BoldText>Technical Consultant Intern</BoldText>
-        <div>Dotis Corp, Seoul, South Korea</div>
+        <div>Dotis, Seoul, South Korea</div>
         <div>Jun 2017 - Jul 2017</div>
       </div>
       <div>

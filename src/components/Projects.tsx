@@ -20,6 +20,7 @@ const IconContainer = styled.div<{ noWidth?: boolean }>`
   width: ${({ noWidth }) => (noWidth ? undefined : "60px")};
   justify-content: center;
   align-items: center;
+  padding: 2px;
   cursor: pointer;
 `;
 
