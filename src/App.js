@@ -10,6 +10,8 @@ import { useResizeDetector } from "react-resize-detector";
 import { isMobile, browserName, isBrowser, isIE } from "react-device-detect";
 import { ToastContainer, toast, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Maintenance from "./components/Maintenance";
+import NotSupport from "./components/NotSupport";
 
 const TABLET_MAX_WIDTH = 900;
 const MOBILE_MAX_WIDTH = 768;
@@ -17,14 +19,6 @@ const MOBILE_MAX_WIDTH = 768;
 const Wrapper = styled.div`
   height: 100vh;
   width: 100vw;
-`;
-
-const MaintenanceMessage = styled.div`
-  color: white;
-  font-weight: bold;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
 `;
 
 const BodyContainer = styled.div`
@@ -131,16 +125,8 @@ function App() {
 
   return (
     <Wrapper>
-      {inMaintenance ? (
-        <MaintenanceMessage>
-          Site is in maintenance now. Please come back later...
-        </MaintenanceMessage>
-      ) : null}
-      {isIE ? (
-        <MaintenanceMessage>
-          Sorry, we do not support IE. You can come via other browsers.
-        </MaintenanceMessage>
-      ) : null}
+      {inMaintenance ? <Maintenance /> : null}
+      {isIE ? <NotSupport /> : null}
       {!inMaintenance && !isIE ? (
         <>
           <BodyContainer
