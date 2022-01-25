@@ -50,8 +50,8 @@ const AboutWindow: React.FC<AboutWindowProps> = ({
   });
   const [aboutPosition, setAboutPosition] =
     React.useState<WindowPositionSetting>({
-      x: 40,
-      y: -600,
+      x: -1,
+      y: -659,
     });
 
   const [aboutPrevSetting, setAboutPrevSetting] = React.useState<

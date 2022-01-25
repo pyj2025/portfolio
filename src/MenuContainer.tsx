@@ -13,10 +13,10 @@ const MenuWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
+  border-radius: 6px;
+  box-shadow: 2px 7px 15px 8px rgba(0, 0, 0, 0.4);
   background-color: rgba(255, 255, 192, 0.1);
   backdrop-filter: blur(10px);
-  box-shadow: 2px 7px 15px 8px rgba(0, 0, 0, 0.3);
 `;
 
 const ListItem = styled.a`
@@ -84,7 +84,7 @@ const MenuContainer: React.FC<MenuContainerProps> = ({
               alt="apple-settings"
             />
           </ListItem>
-          <ListItem title="Resume" onClick={toggleProjectsOpen}>
+          <ListItem title="Resume" href="https://github.com/pyj2025">
             <img
               src="https://img.icons8.com/color/48/000000/pdf.png"
               alt="pdf"
