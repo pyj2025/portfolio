@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-const SidebarContainer = styled.div`
+const SidebarContainer = styled.div<{ width: number; height: number }>`
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  width: 100%;
-  height: 100%;
+  width: ${({ width }) => `${width}px`};
+  height: ${({ height }) => `${height}px`};
   color: white;
 `;
 
@@ -40,6 +40,8 @@ const ListItem = styled.a`
 `;
 
 export type MenuContainerProps = {
+  width: number;
+  height: number;
   toggleAboutOpen: () => void;
   toggleSkillsOpen: () => void;
   toggleProjectsOpen: () => void;
@@ -47,6 +49,8 @@ export type MenuContainerProps = {
 };
 
 const MenuContainer: React.FC<MenuContainerProps> = ({
+  width,
+  height,
   toggleAboutOpen,
   toggleSkillsOpen,
   toggleProjectsOpen,
@@ -54,7 +58,7 @@ const MenuContainer: React.FC<MenuContainerProps> = ({
 }) => {
   return (
     <>
-      <SidebarContainer>
+      <SidebarContainer width={width} height={height}>
         <MenuWrapper>
           <ListItem title="About" onClick={toggleAboutOpen}>
             <img
