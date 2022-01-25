@@ -7,16 +7,16 @@ const SidebarContainer = styled.div<{ width: number; height: number }>`
   align-items: flex-end;
   width: ${({ width }) => `${width}px`};
   height: ${({ height }) => `calc(${height}px - 25px)`};
-  color: white;
 `;
 
 const MenuWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: solid 1px #3c3c3c;
-  box-shadow: 1px 1px #333333;
-  border-radius: 0.2rem;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 192, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 2px 7px 15px 8px rgba(0, 0, 0, 0.3);
 `;
 
 const ListItem = styled.a`
@@ -35,7 +35,7 @@ const ListItem = styled.a`
   cursor: pointer;
 
   :hover {
-    background-color: #3c3c3c;
+    background-color: rgba(255, 255, 192, 0.1);
   }
 `;
 
