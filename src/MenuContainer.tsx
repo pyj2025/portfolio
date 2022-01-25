@@ -6,7 +6,7 @@ const SidebarContainer = styled.div<{ width: number; height: number }>`
   justify-content: center;
   align-items: flex-end;
   width: ${({ width }) => `${width}px`};
-  height: ${({ height }) => `${height}px`};
+  height: ${({ height }) => `calc(${height}px - 25px)`};
   color: white;
 `;
 
@@ -30,7 +30,7 @@ const ListItem = styled.a`
   box-sizing: border-box;
   transition: background-color 0.2s;
   border-radius: 0.2rem;
-  padding: 1.5rem;
+  padding: 1rem;
   text-decoration: none;
   cursor: pointer;
 
