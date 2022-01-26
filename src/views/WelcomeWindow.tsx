@@ -187,8 +187,8 @@ const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
       id="Welcome"
       ref={welcomeRef}
       default={{
-        x: width / 6,
-        y: (-1 * (height + 25) * 6) / 7,
+        x: Math.round(Math.max((width - 700) / 2, 0)),
+        y: -1 * (height - 25 - 50),
         width: 700,
         height: 450,
       }}
