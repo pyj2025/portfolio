@@ -5,7 +5,6 @@ import { isMobile, browserName, isBrowser } from "react-device-detect";
 import { Slide, toast, ToastContainer } from "react-toastify";
 import BodyContent from "../BodyContent";
 import DesktopTopBar from "../DesktopTopBar";
-import FooterBar from "../FooterBar";
 import MenuContainer from "../MenuContainer";
 import MobileTopBar from "../MobileTopBar";
 import macOS from "../image/macos.jpg";
@@ -17,8 +16,6 @@ const MOBILE_MAX_WIDTH = 768;
 const BodyContainer = styled.div`
   background-image: url(${macOS});
   background-size: cover;
-  height: 100%;
-  width: 100%;
 `;
 
 type MainAppProps = {
