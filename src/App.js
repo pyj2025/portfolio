@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React from "react";
-import { useResizeDetector } from "react-resize-detector";
+import useScreenSize from "./utils/useScreenSize";
 
 import { isIE } from "react-device-detect";
 import Maintenance from "./components/Maintenance";
@@ -13,12 +13,11 @@ const Wrapper = styled.div`
 `;
 
 function App() {
-  const { width, height, ref } = useResizeDetector();
-
+  const { height, width } = useScreenSize();
   const [inMaintenance, setMaintenance] = React.useState(false);
 
   return (
-    <Wrapper ref={ref}>
+    <Wrapper>
       {inMaintenance ? <Maintenance /> : null}
       {isIE ? <NotSupport /> : null}
       {!inMaintenance && !isIE ? (
