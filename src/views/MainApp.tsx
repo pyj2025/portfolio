@@ -15,6 +15,9 @@ const MOBILE_MAX_WIDTH = 768;
 
 const BodyContainer = styled.div`
   background-image: url(${macOS});
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
   background-size: cover;
 `;
 
