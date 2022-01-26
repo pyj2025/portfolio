@@ -87,6 +87,8 @@ const BodyContent: React.FC<BodyContentProps> = ({
     <Container>
       {isWelcomeWindowOpen ? (
         <WelcomeWindow
+          width={width}
+          height={height}
           focusedWindow={focusedWindow}
           handleFocus={handleFocus}
           close={closeWelcomeWindow}

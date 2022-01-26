@@ -177,17 +177,6 @@ const MainApp: React.FC<MainAppProps> = ({ width, height }) => {
         toggleDesktopAboutOpen={toggleDesktopAboutOpen}
         setFocusedWindow={setFocusedWindow}
       />
-      <FooterBar
-        isAboutMinimized={isAboutMinimized}
-        isSkillsMinimized={isSkillsMinimized}
-        isProjectsMinimized={isProjectsMinimized}
-        toggleAboutOpen={toggleAboutOpen}
-        setAboutMinimized={setAboutMinimized}
-        toggleSkillsOpen={toggleSkillsOpen}
-        setSkillsMinimized={setSkillsMinimized}
-        toggleProjectsOpen={toggleProjectsOpen}
-        setProjectsMinimized={setProjectsMinimized}
-      />
     </BodyContainer>
   );
 };

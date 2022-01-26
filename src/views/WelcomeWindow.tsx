@@ -160,12 +160,16 @@ const ContentLineArrow = styled(FontAwesomeIcon)`
 `;
 
 type WelcomeWindowProps = {
+  width: number;
+  height: number;
   focusedWindow: string;
   handleFocus: (_e: any, data: DraggableData) => void;
   close: (flag: boolean) => void;
 };
 
 const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
+  width,
+  height,
   focusedWindow,
   handleFocus,
   close,
@@ -183,8 +187,8 @@ const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
       id="Welcome"
       ref={welcomeRef}
       default={{
-        x: 0,
-        y: -600,
+        x: width / 6,
+        y: (-1 * (height + 25) * 6) / 7,
         width: 700,
         height: 450,
       }}
