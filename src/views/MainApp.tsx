@@ -72,9 +72,9 @@ const MainApp: React.FC<MainAppProps> = ({ width, height }) => {
 
   const toggleAboutOpen = () => {
     setAboutOpen((state) => !state);
-
     if (!isAboutOpen) {
       setFocusedWindow("About");
+      setAboutMinimized(false);
     } else {
       setFocusedWindow("");
     }
@@ -89,6 +89,7 @@ const MainApp: React.FC<MainAppProps> = ({ width, height }) => {
 
     if (!isSkillsOpen) {
       setFocusedWindow("Skills");
+      setSkillsMinimized(false);
     } else {
       setFocusedWindow("");
     }
@@ -103,6 +104,7 @@ const MainApp: React.FC<MainAppProps> = ({ width, height }) => {
 
     if (!isProjectsOpen) {
       setFocusedWindow("Projects");
+      setProjectsMinimized(false);
     } else {
       setFocusedWindow("");
     }
