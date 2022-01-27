@@ -138,6 +138,9 @@ const MainApp: React.FC<MainAppProps> = ({ width, height }) => {
       <MenuContainer
         width={width}
         height={height}
+        isAboutMinimized={isAboutMinimized}
+        isSkillsMinimized={isSkillsMinimized}
+        isProjectsMinimized={isProjectsMinimized}
         toggleAboutOpen={toggleAboutOpen}
         toggleSkillsOpen={toggleSkillsOpen}
         toggleProjectsOpen={toggleProjectsOpen}

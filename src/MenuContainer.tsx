@@ -1,3 +1,5 @@
+import { faCircle } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import styled from "styled-components";
 
@@ -11,6 +13,7 @@ const SidebarContainer = styled.div<{ width: number; height: number }>`
 
 const MenuWrapper = styled.div`
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   border-radius: 6px;
@@ -39,9 +42,20 @@ const ListItem = styled.a`
   }
 `;
 
+const MinimizedIcon = styled(FontAwesomeIcon)`
+  position: absolute;
+  height: 4px;
+  width: 4px;
+  padding-top: 3.5rem;
+  color: #aaaaaa;
+`;
+
 export type MenuContainerProps = {
   width: number;
   height: number;
+  isAboutMinimized: boolean;
+  isSkillsMinimized: boolean;
+  isProjectsMinimized: boolean;
   toggleAboutOpen: () => void;
   toggleSkillsOpen: () => void;
   toggleProjectsOpen: () => void;
@@ -51,6 +65,9 @@ export type MenuContainerProps = {
 const MenuContainer: React.FC<MenuContainerProps> = ({
   width,
   height,
+  isAboutMinimized,
+  isSkillsMinimized,
+  isProjectsMinimized,
   toggleAboutOpen,
   toggleSkillsOpen,
   toggleProjectsOpen,
@@ -65,18 +82,21 @@ const MenuContainer: React.FC<MenuContainerProps> = ({
               src="https://img.icons8.com/color/48/000000/mac-logo.png"
               alt="Finder"
             />
+            {isAboutMinimized ? <MinimizedIcon icon={faCircle} /> : null}
           </ListItem>
           <ListItem title="Skills" onClick={toggleSkillsOpen}>
             <img
               src="https://img.icons8.com/color/48/000000/visual-studio-code-2019.png"
               alt="visual-studio-code"
             />
+            {isSkillsMinimized ? <MinimizedIcon icon={faCircle} /> : null}
           </ListItem>
           <ListItem title="Projects" onClick={toggleProjectsOpen}>
             <img
               src="https://img.icons8.com/color/48/000000/mac-folder.png"
               alt="mac-folder"
             />
+            {isProjectsMinimized ? <MinimizedIcon icon={faCircle} /> : null}
           </ListItem>
           <ListItem title="Settings" onClick={toggleProjectsOpen}>
             <img
