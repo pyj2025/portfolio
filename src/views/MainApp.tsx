@@ -7,19 +7,10 @@ import BodyContent from "../BodyContent";
 import DesktopTopBar from "../DesktopTopBar";
 import MenuContainer from "../MenuContainer";
 import MobileTopBar from "../MobileTopBar";
-import macOS from "../image/macos.jpg";
 import "react-toastify/dist/ReactToastify.css";
 
 const TABLET_MAX_WIDTH = 900;
 const MOBILE_MAX_WIDTH = 768;
-
-const BodyContainer = styled.div`
-  background-image: url(${macOS});
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-attachment: fixed;
-  background-size: cover;
-`;
 
 type MainAppProps = {
   width: number;
@@ -126,7 +117,7 @@ const MainApp: React.FC<MainAppProps> = ({ width, height }) => {
   };
 
   return (
-    <BodyContainer>
+    <>
       {isMobile || width < MOBILE_MAX_WIDTH ? (
         <MobileTopBar />
       ) : (
@@ -177,7 +168,7 @@ const MainApp: React.FC<MainAppProps> = ({ width, height }) => {
         toggleDesktopAboutOpen={toggleDesktopAboutOpen}
         setFocusedWindow={setFocusedWindow}
       />
-    </BodyContainer>
+    </>
   );
 };
 
