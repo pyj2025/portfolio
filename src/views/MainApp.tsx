@@ -1,13 +1,18 @@
 import React from "react";
 
-import { isMobile, browserName, isBrowser } from "react-device-detect";
+import {
+  isMobile,
+  browserName,
+  isBrowser,
+  isTablet,
+} from "react-device-detect";
 import { Slide, toast, ToastContainer } from "react-toastify";
 import BodyContent from "../BodyContent";
 import DesktopTopBar from "../DesktopTopBar";
 import MenuContainer from "../MenuContainer";
 import MobileTopBar from "../MobileTopBar";
 import "react-toastify/dist/ReactToastify.css";
-import { MOBILE_MAX_WIDTH } from "../utils/useScreenSize";
+import { MOBILE_MAX_WIDTH, TABLET_MAX_WIDTH } from "../utils/useScreenSize";
 
 type MainAppProps = {
   width: number;
@@ -117,7 +122,7 @@ const MainApp: React.FC<MainAppProps> = ({ width, height }) => {
 
   return (
     <>
-      {isMobile || width < MOBILE_MAX_WIDTH ? (
+      {isMobile || isTablet || width < TABLET_MAX_WIDTH ? (
         <MobileTopBar />
       ) : (
         <DesktopTopBar toggleDesktopAboutOpen={toggleDesktopAboutOpen} />

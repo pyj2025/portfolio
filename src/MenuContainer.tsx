@@ -22,7 +22,7 @@ const MenuWrapper = styled.div`
   backdrop-filter: blur(10px);
 `;
 
-const ListItem = styled.a`
+const MenuItem = styled.a`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -77,46 +77,46 @@ const MenuContainer: React.FC<MenuContainerProps> = ({
     <>
       <SidebarContainer width={width} height={height}>
         <MenuWrapper>
-          <ListItem title="About" onClick={toggleAboutOpen}>
+          <MenuItem title="About" onClick={toggleAboutOpen}>
             <img
               src="https://img.icons8.com/color/48/000000/mac-logo.png"
               alt="Finder"
             />
             {isAboutMinimized ? <MinimizedIcon icon={faCircle} /> : null}
-          </ListItem>
-          <ListItem title="Skills" onClick={toggleSkillsOpen}>
+          </MenuItem>
+          <MenuItem title="Skills" onClick={toggleSkillsOpen}>
             <img
               src="https://img.icons8.com/color/48/000000/visual-studio-code-2019.png"
               alt="visual-studio-code"
             />
             {isSkillsMinimized ? <MinimizedIcon icon={faCircle} /> : null}
-          </ListItem>
-          <ListItem title="Projects" onClick={toggleProjectsOpen}>
+          </MenuItem>
+          <MenuItem title="Projects" onClick={toggleProjectsOpen}>
             <img
               src="https://img.icons8.com/color/48/000000/mac-folder.png"
               alt="mac-folder"
             />
             {isProjectsMinimized ? <MinimizedIcon icon={faCircle} /> : null}
-          </ListItem>
-          <ListItem title="Settings" onClick={toggleProjectsOpen}>
+          </MenuItem>
+          <MenuItem title="Settings" onClick={toggleProjectsOpen}>
             <img
               src="https://img.icons8.com/color/48/000000/apple-settings.png"
               alt="apple-settings"
             />
-          </ListItem>
-          <ListItem title="Resume" href="https://github.com/pyj2025">
+          </MenuItem>
+          <MenuItem title="Resume" href="https://github.com/pyj2025">
             <img
               src="https://img.icons8.com/color/48/000000/pdf.png"
               alt="pdf"
             />
-          </ListItem>
-          <ListItem title="Github" href="https://github.com/pyj2025">
+          </MenuItem>
+          <MenuItem title="Github" href="https://github.com/pyj2025">
             <img
               src="https://img.icons8.com/material-outlined/48/000000/github.png"
               alt="Github"
             />
-          </ListItem>
-          <ListItem
+          </MenuItem>
+          <MenuItem
             title="Linkedin"
             href="https://www.linkedin.com/in/devjoon/"
           >
@@ -124,8 +124,8 @@ const MenuContainer: React.FC<MenuContainerProps> = ({
               src="https://img.icons8.com/fluency/48/000000/linkedin.png"
               alt="Linkedin"
             />
-          </ListItem>
-          <ListItem
+          </MenuItem>
+          <MenuItem
             title="Facebook"
             href="https://www.facebook.com/youngjoon.park.71"
           >
@@ -133,13 +133,13 @@ const MenuContainer: React.FC<MenuContainerProps> = ({
               src="https://img.icons8.com/color/48/000000/facebook-new.png"
               alt="Facebook"
             />
-          </ListItem>
-          <ListItem title="Email" onClick={emailClick}>
+          </MenuItem>
+          <MenuItem title="Email" onClick={emailClick}>
             <img
               src="https://img.icons8.com/color/48/000000/gmail-new.png"
               alt="Email"
             />
-          </ListItem>
+          </MenuItem>
         </MenuWrapper>
       </SidebarContainer>
     </>
