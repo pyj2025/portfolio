@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 
+export const TABLET_MAX_WIDTH = 900;
+export const MOBILE_MAX_WIDTH = 768;
+
 const getScreenSize = () => {
   const { innerWidth: width, innerHeight: height } = window;
 

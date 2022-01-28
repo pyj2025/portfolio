@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 
 import { isMobile, browserName, isBrowser } from "react-device-detect";
 import { Slide, toast, ToastContainer } from "react-toastify";
@@ -8,9 +7,7 @@ import DesktopTopBar from "../DesktopTopBar";
 import MenuContainer from "../MenuContainer";
 import MobileTopBar from "../MobileTopBar";
 import "react-toastify/dist/ReactToastify.css";
-
-const TABLET_MAX_WIDTH = 900;
-const MOBILE_MAX_WIDTH = 768;
+import { MOBILE_MAX_WIDTH } from "../utils/useScreenSize";
 
 type MainAppProps = {
   width: number;

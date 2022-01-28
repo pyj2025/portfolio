@@ -18,7 +18,7 @@ import {
 
 const WindowBody = styled.div`
   display: grid;
-  grid-template-columns: 45% 55%;
+  grid-template-columns: 1fr 1fr;
   justify-content: center;
   align-items: center;
   width: 100%;
