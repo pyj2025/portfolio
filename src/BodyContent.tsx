@@ -2,11 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import { DraggableData } from "react-rnd";
 
-import ProjectsWindow from "./views/ProjectsWindow";
-import SkillsWindow from "./views/SkillsWindow";
-import AboutWindow from "./views/AboutWindow";
-import TopbarAboutWindow from "./views/TopbarAboutWindow";
-import WelcomeWindow from "./views/WelcomeWindow";
+import ProjectsWindow from "./views/window/ProjectsWindow";
+import AboutWindow from "./views/window/AboutWindow";
+import TopbarAboutWindow from "./views/window/TopbarAboutWindow";
+import WelcomeWindow from "./views/window/WelcomeWindow";
+import SkillsWindow from "./views/window/SkillsWindow";
 
 const Container = styled.div`
   background-color: #3c3c3c;

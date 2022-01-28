@@ -7,14 +7,14 @@ import {
   faLocationArrow,
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
-import img from "../image/Logo.png";
+import img from "../../image/Logo.png";
 import {
   TopbarBtn,
   TopbarBtnContainer,
   TopbarTitle,
   Window,
   WindowTopbar,
-} from "../GlobalStyle";
+} from "../../GlobalStyle";
 
 const WindowBody = styled.div`
   display: grid;

@@ -1,6 +1,6 @@
 import React from "react";
 import { DraggableData, Position, ResizableDelta } from "react-rnd";
-import { WindowPositionSetting, WindowSizeSetting } from "../types";
+import { WindowPositionSetting, WindowSizeSetting } from "../../types";
 import {
   NavItmLabel,
   TopbarBtn,
@@ -14,13 +14,13 @@ import {
   WindowBodyNavbar,
   WindowBodyNavItm,
   WindowTopbar,
-} from "../GlobalStyle";
+} from "../../GlobalStyle";
 import {
   BackEnd,
   FrontEnd,
   Mobile,
   ProgrammingLanguage,
-} from "../components/Skills";
+} from "../../components/Skills";
 
 type IndexType = "Front" | "Back" | "Mobile" | "Programming";
 

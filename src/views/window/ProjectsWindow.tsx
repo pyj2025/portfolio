@@ -7,7 +7,7 @@ import {
   Portfolio,
   Projects,
   WebProjects,
-} from "../components/Projects";
+} from "../../components/Projects";
 import {
   NavItmLabel,
   TopbarBtn,
@@ -21,8 +21,8 @@ import {
   WindowBodyNavbar,
   WindowBodyNavItm,
   WindowTopbar,
-} from "../GlobalStyle";
-import { WindowPositionSetting, WindowSizeSetting } from "../types";
+} from "../../GlobalStyle";
+import { WindowPositionSetting, WindowSizeSetting } from "../../types";
 
 export type IndexType =
   | "Projects"

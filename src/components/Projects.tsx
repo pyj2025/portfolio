@@ -3,7 +3,7 @@ import styled from "styled-components";
 import FoodieLogo from "../image/Foodie.png";
 import DatApexLogo from "../image/DatApex.png";
 
-import { IndexType } from "../views/ProjectsWindow";
+import { IndexType } from "../views/window/ProjectsWindow";
 import { MutedText } from "../GlobalStyle";
 
 const IconListContainer = styled.div`

@@ -2,11 +2,11 @@ import "rc-menu/assets/index.css";
 
 import React from "react";
 import styled from "styled-components";
-import Menu, { MenuItem } from "rc-menu";
+import Menu, { Divider, MenuItem } from "rc-menu";
 import Clock from "./components/Clock";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
-import { MutedText } from "./GlobalStyle";
+import { BoldText, MutedText } from "./GlobalStyle";
 
 const Container = styled.div`
   display: flex;
@@ -32,12 +32,8 @@ const MainMenuBtn = styled.button`
   color: white;
 `;
 
-const MainMenuBtnTitle = styled.div`
-  font-weight: bold;
-`;
-
 const MenuItemTitle = styled.div`
-  height: 20px;
+  color: white;
 `;
 
 const TopbarAppContainer = styled.div`
@@ -77,7 +73,7 @@ const DesktopTopBar: React.FC<DesktopTopBarProps> = ({
     <Container>
       <MainMenuBtnContainer>
         <MainMenuBtn onClick={handleClick}>
-          <MainMenuBtnTitle>Joon</MainMenuBtnTitle>
+          <BoldText>Joon</BoldText>
         </MainMenuBtn>
         {menuOpen ? (
           <MenuContainer
@@ -86,14 +82,12 @@ const DesktopTopBar: React.FC<DesktopTopBarProps> = ({
               border: 0,
             }}
           >
-            <MenuItem
-              style={{
-                padding: 5,
-                color: "white",
-              }}
-              onClick={handleAbout}
-            >
+            <MenuItem key="about" onClick={handleAbout}>
               <MenuItemTitle>About Joon</MenuItemTitle>
+            </MenuItem>
+            <Divider />
+            <MenuItem key="restart" onClick={() => window.location.reload()}>
+              <MenuItemTitle>Restart</MenuItemTitle>
             </MenuItem>
           </MenuContainer>
         ) : null}
