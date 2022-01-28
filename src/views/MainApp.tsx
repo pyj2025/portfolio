@@ -36,7 +36,7 @@ const MainApp: React.FC<MainAppProps> = ({ width, height }) => {
   React.useEffect(() => {
     const message =
       "You've accessed via " +
-      (isBrowser ? "desktop " : isMobile ? "mobile " : "tablet") +
+      (isBrowser ? "desktop " : isMobile ? "mobile " : "tablet ") +
       browserName.toLowerCase();
 
     toast(message, {
