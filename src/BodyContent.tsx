@@ -4,7 +4,7 @@ import { DraggableData } from "react-rnd";
 
 import ProjectsWindow from "./views/window/ProjectsWindow";
 import AboutWindow from "./views/window/AboutWindow";
-import TopbarAboutWindow from "./views/window/TopbarAboutWindow";
+import TopbarAboutWindow from "./views/window/desktop/TopbarAboutWindow";
 import WelcomeWindow from "./views/window/WelcomeWindow";
 import SkillsWindow from "./views/window/SkillsWindow";
 

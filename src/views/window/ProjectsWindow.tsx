@@ -61,8 +61,8 @@ const ProjectsWindow: React.FC<ProjectsWindowProps> = ({
   });
   const [projectsPosition, setProjectsPosition] =
     React.useState<WindowPositionSetting>({
-      x: 40,
-      y: -600,
+      x: 80,
+      y: -550,
     });
 
   const [projectsPrevSetting, setProjectsPrevSetting] = React.useState<
