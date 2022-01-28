@@ -9,16 +9,19 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import img from "../../../image/Logo.png";
 import {
+  BoldText,
   TopbarBtn,
   TopbarBtnContainer,
   TopbarTitle,
   Window,
   WindowTopbar,
 } from "../../../GlobalStyle";
+import { faCopyright } from "@fortawesome/free-regular-svg-icons";
 
 const WindowBody = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: 9fr 1fr;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -44,6 +47,11 @@ const InfoListItem = styled.div`
 
 const InfoListItemLabel = styled.div`
   margin-left: 8px;
+`;
+
+const CopyrightContainer = styled.div`
+  justify-content: center;
+  align-items: center;
 `;
 
 type TopbarAboutWindowProps = {
@@ -118,6 +126,12 @@ const TopbarAboutWindow: React.FC<TopbarAboutWindowProps> = ({
             </InfoListItem>
           </InfoList>
         </div>
+        <CopyrightContainer>
+          <BoldText>
+            <FontAwesomeIcon icon={faCopyright} />
+            Youngjoon Park
+          </BoldText>
+        </CopyrightContainer>
       </WindowBody>
     </Window>
   );
