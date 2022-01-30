@@ -219,8 +219,8 @@ const AboutWindow: React.FC<AboutWindowProps> = ({
         </WindowBodyNavbar>
         <WindowBodyContent>
           {index === "About" ? <About /> : null}
-          {index === "Education" ? <Education /> : null}
           {index === "Experience" ? <Experience /> : null}
+          {index === "Education" ? <Education /> : null}
         </WindowBodyContent>
       </WindowBody>
     </Window>

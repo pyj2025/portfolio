@@ -3,6 +3,14 @@ import styled from "styled-components";
 import { BoldText } from "../GlobalStyle";
 import PurdueLogo from "../image/PurdueLogo.png";
 
+const Container = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+`;
+
 const EducationContainer = styled.div`
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
@@ -13,6 +21,7 @@ const EducationContainer = styled.div`
 const LogoContainer = styled.div`
   display: grid;
   justify-content: center;
+  align-items: center;
   margin: 10px;
 `;
 
@@ -29,7 +38,7 @@ const DataRowContainer = styled.div`
 
 const Education: React.FC = () => {
   return (
-    <>
+    <Container>
       <LogoContainer>
         <PurdueLogoImage src={PurdueLogo} alt="PurdueLogo" />
       </LogoContainer>
@@ -51,7 +60,7 @@ const Education: React.FC = () => {
           <div>Dec. 2019</div>
         </DataRowContainer>
       </EducationContainer>
-    </>
+    </Container>
   );
 };
 
