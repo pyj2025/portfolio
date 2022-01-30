@@ -20,6 +20,7 @@ import { faCopyright } from "@fortawesome/free-regular-svg-icons";
 const WindowBody = styled.div`
   display: grid;
   grid-template-rows: 9fr 1fr;
+  gap: 8px;
   justify-content: center;
   align-items: center;
   width: 100%;
