@@ -1,6 +1,14 @@
 import { Rnd } from "react-rnd";
 import styled from "styled-components";
 
+//Layout
+export const TwoColumnsGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+`;
+
 //window
 export const Window = styled(Rnd)`
   display: grid;

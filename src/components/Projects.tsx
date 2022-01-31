@@ -4,7 +4,7 @@ import FoodieLogo from "../image/Foodie.png";
 import DatApexLogo from "../image/DatApex.png";
 
 import { IndexType } from "../views/window/ProjectsWindow";
-import { MutedText } from "../GlobalStyle";
+import { MutedText, TwoColumnsGrid } from "../GlobalStyle";
 
 const IconListContainer = styled.div`
   display: flex;
@@ -34,9 +34,7 @@ const IconLabel = styled.div`
   font-size: 0.75rem;
 `;
 
-const ContentContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+const ContentContainer = styled(TwoColumnsGrid)`
   margin: 10px;
 `;
 

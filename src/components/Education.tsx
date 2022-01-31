@@ -1,13 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { BoldText } from "../GlobalStyle";
+import { BoldText, TwoColumnsGrid } from "../GlobalStyle";
 import PurdueLogo from "../image/PurdueLogo.png";
 
-const Container = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-content: center;
-  align-items: center;
+const Container = styled(TwoColumnsGrid)`
   margin: 10px;
 `;
 

@@ -12,6 +12,7 @@ import {
   TopbarBtn,
   TopbarBtnContainer,
   TopbarTitle,
+  TwoColumnsGrid,
   Window,
   WindowTopbar,
 } from "../../../GlobalStyle";
@@ -26,13 +27,6 @@ const WindowBody = styled.div`
   width: 100%;
   height: 272px;
   color: black;
-`;
-
-const InlineGrid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-content: center;
-  align-items: center;
 `;
 
 const LogoContainer = styled.div`
@@ -110,7 +104,7 @@ const TopbarAboutWindow: React.FC<TopbarAboutWindowProps> = ({
         <TopbarTitle />
       </WindowTopbar>
       <WindowBody>
-        <InlineGrid>
+        <TwoColumnsGrid>
           <LogoContainer>
             <img src={img} width="200" height="200" alt="Logo" />
           </LogoContainer>
@@ -134,7 +128,7 @@ const TopbarAboutWindow: React.FC<TopbarAboutWindowProps> = ({
               </InfoListItem>
             </InfoList>
           </div>
-        </InlineGrid>
+        </TwoColumnsGrid>
         <CopyrightContainer>
           <InfoListItem>
             <FontAwesomeIcon icon={faCopyright} />
