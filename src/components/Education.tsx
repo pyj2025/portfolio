@@ -19,16 +19,15 @@ const EducationContainer = styled.div`
 `;
 
 const LogoContainer = styled.div`
-  display: grid;
+  display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px;
 `;
 
 const PurdueLogoImage = styled.img`
   background-color: white;
-  width: 95%;
-  height: 95%;
+  width: 200px;
+  height: 200px;
 `;
 
 const DataRowContainer = styled.div`
@@ -40,7 +39,7 @@ const Education: React.FC = () => {
   return (
     <Container>
       <LogoContainer>
-        <PurdueLogoImage src={PurdueLogo} alt="PurdueLogo" />
+        <PurdueLogoImage src={PurdueLogo} alt="Purdue" />
       </LogoContainer>
       <EducationContainer>
         <DataRowContainer>
