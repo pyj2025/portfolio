@@ -18,12 +18,11 @@ import {
   WindowTopbar,
 } from "../../GlobalStyle";
 import { WindowPositionSetting, WindowSizeSetting } from "../../types";
+import useScreenSize from "../../utils/useScreenSize";
 
 type IndexType = "About" | "Experience" | "Education";
 
 type AboutWindowProps = {
-  width: number;
-  height: number;
   focusedWindow: string;
   handleFocus: (_e: any, data: DraggableData) => void;
   isAboutExpanded: boolean;
@@ -33,8 +32,6 @@ type AboutWindowProps = {
 };
 
 const AboutWindow: React.FC<AboutWindowProps> = ({
-  width,
-  height,
   focusedWindow,
   handleFocus,
   isAboutExpanded,
@@ -42,6 +39,8 @@ const AboutWindow: React.FC<AboutWindowProps> = ({
   toggleAboutOpen,
   toggleAboutExpanded,
 }) => {
+  const { width, height } = useScreenSize();
+
   const aboutRef = React.useRef<any>();
 
   const [aboutSize, setAboutSize] = React.useState<WindowSizeSetting>({

@@ -12,14 +12,14 @@ import DesktopTopBar from "../DesktopTopBar";
 import MenuContainer from "../MenuContainer";
 import MobileTopBar from "../MobileTopBar";
 import "react-toastify/dist/ReactToastify.css";
-import { MOBILE_MAX_WIDTH, TABLET_MAX_WIDTH } from "../utils/useScreenSize";
+import useScreenSize, {
+  MOBILE_MAX_WIDTH,
+  TABLET_MAX_WIDTH,
+} from "../utils/useScreenSize";
 
-type MainAppProps = {
-  width: number;
-  height: number;
-};
+const MainApp: React.FC = () => {
+  const { width, height } = useScreenSize();
 
-const MainApp: React.FC<MainAppProps> = ({ width, height }) => {
   const [focusedWindow, setFocusedWindow] = React.useState("Welcome");
 
   const [isWelcomeWindowOpen, setWelcomeWindowOpen] = React.useState(true);
@@ -140,8 +140,6 @@ const MainApp: React.FC<MainAppProps> = ({ width, height }) => {
         draggablePercent={60}
       />
       <BodyContent
-        width={width}
-        height={height}
         focusedWindow={focusedWindow}
         isWelcomeWindowOpen={isWelcomeWindowOpen}
         isAboutOpen={isAboutOpen}
@@ -165,8 +163,6 @@ const MainApp: React.FC<MainAppProps> = ({ width, height }) => {
         setFocusedWindow={setFocusedWindow}
       />
       <MenuContainer
-        width={width}
-        height={height}
         isAboutMinimized={isAboutMinimized}
         isSkillsMinimized={isSkillsMinimized}
         isProjectsMinimized={isProjectsMinimized}

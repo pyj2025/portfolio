@@ -17,6 +17,7 @@ import {
   WindowTopbar,
 } from "../../../GlobalStyle";
 import { faCopyright } from "@fortawesome/free-regular-svg-icons";
+import useScreenSize from "../../../utils/useScreenSize";
 
 const WindowBody = styled.div`
   display: grid;
@@ -56,20 +57,18 @@ const CopyrightContainer = styled.div`
 `;
 
 type TopbarAboutWindowProps = {
-  width: number;
-  height: number;
   focusedWindow: string;
   handleFocus: (_e: any, data: DraggableData) => void;
   toggleDesktopAboutOpen: () => void;
 };
 
 const TopbarAboutWindow: React.FC<TopbarAboutWindowProps> = ({
-  width,
-  height,
   focusedWindow,
   handleFocus,
   toggleDesktopAboutOpen,
 }) => {
+  const { width, height } = useScreenSize();
+
   const desktopAboutRef = React.useRef<any>();
 
   const handleDesktopAboutClose = () => {

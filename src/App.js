@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import React from "react";
-import useScreenSize from "./utils/useScreenSize";
 
 import { isIE } from "react-device-detect";
 import Maintenance from "./components/Maintenance";
@@ -13,16 +12,13 @@ const Wrapper = styled.div`
 `;
 
 function App() {
-  const { height, width } = useScreenSize();
   const [inMaintenance, setMaintenance] = React.useState(false);
 
   return (
     <Wrapper>
       {inMaintenance ? <Maintenance /> : null}
       {isIE ? <NotSupport /> : null}
-      {!inMaintenance && !isIE ? (
-        <MainApp width={width} height={height} />
-      ) : null}
+      {!inMaintenance && !isIE ? <MainApp /> : null}
     </Wrapper>
   );
 }

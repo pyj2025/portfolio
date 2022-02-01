@@ -7,6 +7,7 @@ import AboutWindow from "./views/window/AboutWindow";
 import TopbarAboutWindow from "./views/window/desktop/TopbarAboutWindow";
 import WelcomeWindow from "./views/window/WelcomeWindow";
 import SkillsWindow from "./views/window/SkillsWindow";
+import useScreenSize from "./utils/useScreenSize";
 
 const Container = styled.div`
   background-color: #3c3c3c;
@@ -14,8 +15,6 @@ const Container = styled.div`
 `;
 
 export type BodyContentProps = {
-  width: number;
-  height: number;
   focusedWindow: string;
   isWelcomeWindowOpen: boolean;
   isAboutOpen: boolean;
@@ -40,8 +39,6 @@ export type BodyContentProps = {
 };
 
 const BodyContent: React.FC<BodyContentProps> = ({
-  width,
-  height,
   focusedWindow,
   isWelcomeWindowOpen,
   isAboutOpen,
@@ -64,6 +61,8 @@ const BodyContent: React.FC<BodyContentProps> = ({
   setFocusedWindow,
   toggleDesktopAboutOpen,
 }) => {
+  const { width, height } = useScreenSize();
+
   const windowRef = React.useRef({
     newZIndex: "10",
     prevNode: null as unknown as HTMLElement,
@@ -87,8 +86,6 @@ const BodyContent: React.FC<BodyContentProps> = ({
     <Container>
       {isWelcomeWindowOpen ? (
         <WelcomeWindow
-          width={width}
-          height={height}
           focusedWindow={focusedWindow}
           handleFocus={handleFocus}
           close={closeWelcomeWindow}
@@ -97,8 +94,6 @@ const BodyContent: React.FC<BodyContentProps> = ({
 
       {isDesktopAboutOpen ? (
         <TopbarAboutWindow
-          width={width}
-          height={height}
           focusedWindow={focusedWindow}
           handleFocus={handleFocus}
           toggleDesktopAboutOpen={toggleDesktopAboutOpen}
@@ -106,8 +101,6 @@ const BodyContent: React.FC<BodyContentProps> = ({
       ) : null}
       {isAboutOpen ? (
         <AboutWindow
-          width={width}
-          height={height}
           focusedWindow={focusedWindow}
           handleFocus={handleFocus}
           isAboutExpanded={isAboutExpanded}
@@ -118,8 +111,6 @@ const BodyContent: React.FC<BodyContentProps> = ({
       ) : null}
       {isSkillsOpen ? (
         <SkillsWindow
-          width={width}
-          height={height}
           focusedWindow={focusedWindow}
           handleFocus={handleFocus}
           isSkillsExpanded={isSkillsExpanded}
@@ -130,8 +121,6 @@ const BodyContent: React.FC<BodyContentProps> = ({
       ) : null}
       {isProjectsOpen ? (
         <ProjectsWindow
-          width={width}
-          height={height}
           focusedWindow={focusedWindow}
           handleFocus={handleFocus}
           isProjectsExpanded={isProjectsExpanded}

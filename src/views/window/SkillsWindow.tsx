@@ -21,12 +21,11 @@ import {
   Mobile,
   ProgrammingLanguage,
 } from "../../components/Skills";
+import useScreenSize from "../../utils/useScreenSize";
 
 type IndexType = "Front" | "Back" | "Mobile" | "Programming";
 
 type SkillsWindowProps = {
-  width: number;
-  height: number;
   focusedWindow: string;
   handleFocus: (_e: any, data: DraggableData) => void;
   isSkillsExpanded: boolean;
@@ -36,8 +35,6 @@ type SkillsWindowProps = {
 };
 
 const SkillsWindow: React.FC<SkillsWindowProps> = ({
-  width,
-  height,
   focusedWindow,
   handleFocus,
   isSkillsExpanded,
@@ -45,6 +42,8 @@ const SkillsWindow: React.FC<SkillsWindowProps> = ({
   toggleSkillsOpen,
   toggleSkillsExpanded,
 }) => {
+  const { width, height } = useScreenSize();
+
   const skillsRef = React.useRef<any>();
 
   const [skillsSize, setSkillsSize] = React.useState<WindowSizeSetting>({

@@ -4,6 +4,7 @@ import { DraggableData, Rnd } from "react-rnd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import Typist from "react-typist";
+import useScreenSize from "../../utils/useScreenSize";
 
 const Window = styled(Rnd)`
   width: 100%;
@@ -160,20 +161,18 @@ const ContentLineArrow = styled(FontAwesomeIcon)`
 `;
 
 type WelcomeWindowProps = {
-  width: number;
-  height: number;
   focusedWindow: string;
   handleFocus: (_e: any, data: DraggableData) => void;
   close: (flag: boolean) => void;
 };
 
 const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
-  width,
-  height,
   focusedWindow,
   handleFocus,
   close,
 }) => {
+  const { width, height } = useScreenSize();
+
   const welcomeRef = React.useRef<any>();
 
   const [firstLine, setFirstLine] = React.useState(false);

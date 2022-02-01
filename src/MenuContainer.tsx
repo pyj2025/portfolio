@@ -2,6 +2,7 @@ import { faCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import styled from "styled-components";
+import useScreenSize from "./utils/useScreenSize";
 
 const SidebarContainer = styled.div<{ width: number; height: number }>`
   display: flex;
@@ -51,8 +52,6 @@ const MinimizedIcon = styled(FontAwesomeIcon)`
 `;
 
 export type MenuContainerProps = {
-  width: number;
-  height: number;
   isAboutMinimized: boolean;
   isSkillsMinimized: boolean;
   isProjectsMinimized: boolean;
@@ -63,8 +62,6 @@ export type MenuContainerProps = {
 };
 
 const MenuContainer: React.FC<MenuContainerProps> = ({
-  width,
-  height,
   isAboutMinimized,
   isSkillsMinimized,
   isProjectsMinimized,
@@ -73,6 +70,8 @@ const MenuContainer: React.FC<MenuContainerProps> = ({
   toggleProjectsOpen,
   emailClick,
 }) => {
+  const { width, height } = useScreenSize();
+
   return (
     <>
       <SidebarContainer width={width} height={height}>
