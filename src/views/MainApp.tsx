@@ -139,17 +139,6 @@ const MainApp: React.FC<MainAppProps> = ({ width, height }) => {
         limit={1}
         draggablePercent={60}
       />
-      <MenuContainer
-        width={width}
-        height={height}
-        isAboutMinimized={isAboutMinimized}
-        isSkillsMinimized={isSkillsMinimized}
-        isProjectsMinimized={isProjectsMinimized}
-        toggleAboutOpen={toggleAboutOpen}
-        toggleSkillsOpen={toggleSkillsOpen}
-        toggleProjectsOpen={toggleProjectsOpen}
-        emailClick={handleEmailClick}
-      />
       <BodyContent
         width={width}
         height={height}
@@ -174,6 +163,17 @@ const MainApp: React.FC<MainAppProps> = ({ width, height }) => {
         toggleProjectsExpanded={toggleProjectsExpanded}
         toggleDesktopAboutOpen={toggleDesktopAboutOpen}
         setFocusedWindow={setFocusedWindow}
+      />
+      <MenuContainer
+        width={width}
+        height={height}
+        isAboutMinimized={isAboutMinimized}
+        isSkillsMinimized={isSkillsMinimized}
+        isProjectsMinimized={isProjectsMinimized}
+        toggleAboutOpen={toggleAboutOpen}
+        toggleSkillsOpen={toggleSkillsOpen}
+        toggleProjectsOpen={toggleProjectsOpen}
+        emailClick={handleEmailClick}
       />
     </>
   );

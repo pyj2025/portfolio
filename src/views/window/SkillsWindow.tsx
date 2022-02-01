@@ -54,7 +54,7 @@ const SkillsWindow: React.FC<SkillsWindowProps> = ({
   const [skillsPosition, setSkillsPosition] =
     React.useState<WindowPositionSetting>({
       x: 40,
-      y: -600,
+      y: 40,
     });
 
   const [skillsPrevSetting, setSkillsPrevSetting] = React.useState<

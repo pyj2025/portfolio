@@ -82,7 +82,7 @@ const TopbarAboutWindow: React.FC<TopbarAboutWindowProps> = ({
       ref={desktopAboutRef}
       default={{
         x: width / 3,
-        y: -1 * ((height * 2) / 3),
+        y: height / 5,
         width: 500,
         height: 300,
       }}
