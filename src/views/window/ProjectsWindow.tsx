@@ -60,8 +60,8 @@ const ProjectsWindow: React.FC<ProjectsWindowProps> = ({
   });
   const [projectsPosition, setProjectsPosition] =
     React.useState<WindowPositionSetting>({
-      x: 80,
-      y: 80,
+      x: 100,
+      y: 100,
     });
 
   const [projectsPrevSetting, setProjectsPrevSetting] = React.useState<
@@ -89,8 +89,8 @@ const ProjectsWindow: React.FC<ProjectsWindowProps> = ({
             height: 300,
           });
           setProjectsPosition({
-            x: 40,
-            y: -600,
+            x: 100,
+            y: 100,
           });
         } else {
           setProjectsSize({
@@ -116,7 +116,7 @@ const ProjectsWindow: React.FC<ProjectsWindowProps> = ({
         });
         setProjectsPosition({
           x: 0,
-          y: -1 * height,
+          y: 0,
         });
       }
       projectsRef.current.updateSize(projectsSize);

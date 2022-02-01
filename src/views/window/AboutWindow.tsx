@@ -49,8 +49,8 @@ const AboutWindow: React.FC<AboutWindowProps> = ({
   });
   const [aboutPosition, setAboutPosition] =
     React.useState<WindowPositionSetting>({
-      x: 0,
-      y: 0,
+      x: 20,
+      y: 20,
     });
 
   const [aboutPrevSetting, setAboutPrevSetting] = React.useState<
@@ -85,8 +85,8 @@ const AboutWindow: React.FC<AboutWindowProps> = ({
             height: 300,
           });
           setAboutPosition({
-            x: 40,
-            y: -600,
+            x: 20,
+            y: 20,
           });
         } else {
           setAboutSize({
@@ -112,7 +112,7 @@ const AboutWindow: React.FC<AboutWindowProps> = ({
         });
         setAboutPosition({
           x: 0,
-          y: -1 * height,
+          y: 0,
         });
       }
       aboutRef.current.updateSize(aboutSize);

@@ -52,8 +52,8 @@ const SkillsWindow: React.FC<SkillsWindowProps> = ({
   });
   const [skillsPosition, setSkillsPosition] =
     React.useState<WindowPositionSetting>({
-      x: 40,
-      y: 40,
+      x: 60,
+      y: 60,
     });
 
   const [skillsPrevSetting, setSkillsPrevSetting] = React.useState<
@@ -81,8 +81,8 @@ const SkillsWindow: React.FC<SkillsWindowProps> = ({
             height: 300,
           });
           setSkillsPosition({
-            x: 40,
-            y: -600,
+            x: 60,
+            y: 60,
           });
         } else {
           setSkillsSize({
@@ -108,7 +108,7 @@ const SkillsWindow: React.FC<SkillsWindowProps> = ({
         });
         setSkillsPosition({
           x: 0,
-          y: -1 * height,
+          y: 0,
         });
       }
       skillsRef.current.updateSize(skillsSize);
