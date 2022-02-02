@@ -7,6 +7,7 @@ import Clock from "./components/Clock";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { BoldText, MutedText } from "./GlobalStyle";
+import { useWindows } from "./utils/context/context";
 
 const Container = styled.div`
   display: flex;
@@ -53,14 +54,9 @@ const TopbarAppIcon = styled(FontAwesomeIcon)`
   opacity: 0.5;
 `;
 
-type DesktopTopBarProps = {
-  toggleDesktopAboutOpen: () => void;
-};
-
-const DesktopTopBar: React.FC<DesktopTopBarProps> = ({
-  toggleDesktopAboutOpen,
-}) => {
+const DesktopTopBar: React.FC = () => {
   const [menuOpen, setMenuOpen] = React.useState(false);
+  const { toggleDesktopAboutOpen } = useWindows();
 
   const handleClick = () => setMenuOpen(!menuOpen);
 

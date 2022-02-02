@@ -2,6 +2,7 @@ import { faCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import styled from "styled-components";
+import { useWindows } from "./utils/context/context";
 import useScreenSize from "./utils/useScreenSize";
 
 const SidebarContainer = styled.div<{ width: number; height: number }>`
@@ -52,25 +53,19 @@ const MinimizedIcon = styled(FontAwesomeIcon)`
 `;
 
 export type MenuContainerProps = {
-  isAboutMinimized: boolean;
-  isSkillsMinimized: boolean;
-  isProjectsMinimized: boolean;
-  toggleAboutOpen: () => void;
-  toggleSkillsOpen: () => void;
-  toggleProjectsOpen: () => void;
   emailClick: () => void;
 };
 
-const MenuContainer: React.FC<MenuContainerProps> = ({
-  isAboutMinimized,
-  isSkillsMinimized,
-  isProjectsMinimized,
-  toggleAboutOpen,
-  toggleSkillsOpen,
-  toggleProjectsOpen,
-  emailClick,
-}) => {
+const MenuContainer: React.FC<MenuContainerProps> = ({ emailClick }) => {
   const { width, height } = useScreenSize();
+  const {
+    isAboutMinimized,
+    isSkillsMinimized,
+    isProjectsMinimized,
+    toggleAboutOpen,
+    toggleSkillsOpen,
+    toggleProjectsOpen,
+  } = useWindows();
 
   return (
     <>

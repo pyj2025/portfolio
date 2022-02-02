@@ -22,27 +22,23 @@ import {
   ProgrammingLanguage,
 } from "../../components/Skills";
 import useScreenSize from "../../utils/useScreenSize";
+import { useWindows } from "../../utils/context/context";
 
 type IndexType = "Front" | "Back" | "Mobile" | "Programming";
 
 type SkillsWindowProps = {
-  focusedWindow: string;
   handleFocus: (_e: any, data: DraggableData) => void;
-  isSkillsExpanded: boolean;
-  setSkillsMinimized: (flag: boolean) => void;
-  toggleSkillsOpen: () => void;
-  toggleSkillsExpanded: () => void;
 };
 
-const SkillsWindow: React.FC<SkillsWindowProps> = ({
-  focusedWindow,
-  handleFocus,
-  isSkillsExpanded,
-  setSkillsMinimized,
-  toggleSkillsOpen,
-  toggleSkillsExpanded,
-}) => {
+const SkillsWindow: React.FC<SkillsWindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
+  const {
+    focusedWindow,
+    isSkillsExpanded,
+    setSkillsMinimized,
+    toggleSkillsOpen,
+    toggleSkillsExpanded,
+  } = useWindows();
 
   const skillsRef = React.useRef<any>();
 

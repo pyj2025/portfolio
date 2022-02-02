@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import Typist from "react-typist";
 import useScreenSize from "../../utils/useScreenSize";
+import { useWindows } from "../../utils/context/context";
 
 const Window = styled(Rnd)`
   width: 100%;
@@ -161,17 +162,12 @@ const ContentLineArrow = styled(FontAwesomeIcon)`
 `;
 
 type WelcomeWindowProps = {
-  focusedWindow: string;
   handleFocus: (_e: any, data: DraggableData) => void;
-  close: (flag: boolean) => void;
 };
 
-const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
-  focusedWindow,
-  handleFocus,
-  close,
-}) => {
+const WelcomeWindow: React.FC<WelcomeWindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
+  const { focusedWindow, closeWelcomeWindow } = useWindows();
 
   const welcomeRef = React.useRef<any>();
 
@@ -200,7 +196,7 @@ const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
           <TopbarBtn
             color="close"
             title={focusedWindow === "Welcome" ? "Close" : undefined}
-            onClick={() => close(false)}
+            onClick={closeWelcomeWindow}
             disabled={focusedWindow !== "Welcome"}
           />
           <TopbarBtn color="disabled" disabled={true} />

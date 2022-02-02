@@ -7,61 +7,22 @@ import AboutWindow from "./views/window/AboutWindow";
 import TopbarAboutWindow from "./views/window/desktop/TopbarAboutWindow";
 import WelcomeWindow from "./views/window/WelcomeWindow";
 import SkillsWindow from "./views/window/SkillsWindow";
-import useScreenSize from "./utils/useScreenSize";
+import { useWindows } from "./utils/context/context";
 
 const Container = styled.div`
   background-color: #3c3c3c;
   color: white;
 `;
 
-export type BodyContentProps = {
-  focusedWindow: string;
-  isWelcomeWindowOpen: boolean;
-  isAboutOpen: boolean;
-  isAboutExpanded: boolean;
-  isSkillsOpen: boolean;
-  isProjectsExpanded: boolean;
-  isProjectsOpen: boolean;
-  isSkillsExpanded: boolean;
-  isDesktopAboutOpen: boolean;
-  closeWelcomeWindow: (flag: boolean) => void;
-  toggleAboutOpen: () => void;
-  setAboutMinimized: (flag: boolean) => void;
-  toggleAboutExpanded: () => void;
-  toggleSkillsOpen: () => void;
-  setSkillsMinimized: (flag: boolean) => void;
-  toggleSkillsExpanded: () => void;
-  toggleProjectsOpen: () => void;
-  setProjectsMinimized: (flag: boolean) => void;
-  toggleProjectsExpanded: () => void;
-  setFocusedWindow: (name: string) => void;
-  toggleDesktopAboutOpen: () => void;
-};
-
-const BodyContent: React.FC<BodyContentProps> = ({
-  focusedWindow,
-  isWelcomeWindowOpen,
-  isAboutOpen,
-  isAboutExpanded,
-  isSkillsOpen,
-  isSkillsExpanded,
-  isProjectsOpen,
-  isProjectsExpanded,
-  isDesktopAboutOpen,
-  closeWelcomeWindow,
-  toggleAboutOpen,
-  setAboutMinimized,
-  toggleAboutExpanded,
-  toggleSkillsOpen,
-  setSkillsMinimized,
-  toggleSkillsExpanded,
-  toggleProjectsOpen,
-  setProjectsMinimized,
-  toggleProjectsExpanded,
-  setFocusedWindow,
-  toggleDesktopAboutOpen,
-}) => {
-  const { width, height } = useScreenSize();
+const BodyContent: React.FC = () => {
+  const {
+    isWelcomeWindowOpen,
+    isDesktopAboutOpen,
+    isAboutOpen,
+    isSkillsOpen,
+    isProjectsOpen,
+    setFocusedWindow,
+  } = useWindows();
 
   const windowRef = React.useRef({
     newZIndex: "10",
@@ -84,51 +45,13 @@ const BodyContent: React.FC<BodyContentProps> = ({
 
   return (
     <Container>
-      {isWelcomeWindowOpen ? (
-        <WelcomeWindow
-          focusedWindow={focusedWindow}
-          handleFocus={handleFocus}
-          close={closeWelcomeWindow}
-        />
-      ) : null}
-
+      {isWelcomeWindowOpen ? <WelcomeWindow handleFocus={handleFocus} /> : null}
       {isDesktopAboutOpen ? (
-        <TopbarAboutWindow
-          focusedWindow={focusedWindow}
-          handleFocus={handleFocus}
-          toggleDesktopAboutOpen={toggleDesktopAboutOpen}
-        />
+        <TopbarAboutWindow handleFocus={handleFocus} />
       ) : null}
-      {isAboutOpen ? (
-        <AboutWindow
-          focusedWindow={focusedWindow}
-          handleFocus={handleFocus}
-          isAboutExpanded={isAboutExpanded}
-          setAboutMinimized={setAboutMinimized}
-          toggleAboutOpen={toggleAboutOpen}
-          toggleAboutExpanded={toggleAboutExpanded}
-        />
-      ) : null}
-      {isSkillsOpen ? (
-        <SkillsWindow
-          focusedWindow={focusedWindow}
-          handleFocus={handleFocus}
-          isSkillsExpanded={isSkillsExpanded}
-          setSkillsMinimized={setSkillsMinimized}
-          toggleSkillsOpen={toggleSkillsOpen}
-          toggleSkillsExpanded={toggleSkillsExpanded}
-        />
-      ) : null}
-      {isProjectsOpen ? (
-        <ProjectsWindow
-          focusedWindow={focusedWindow}
-          handleFocus={handleFocus}
-          isProjectsExpanded={isProjectsExpanded}
-          setProjectsMinimized={setProjectsMinimized}
-          toggleProjectsOpen={toggleProjectsOpen}
-          toggleProjectsExpanded={toggleProjectsExpanded}
-        />
-      ) : null}
+      {isAboutOpen ? <AboutWindow handleFocus={handleFocus} /> : null}
+      {isSkillsOpen ? <SkillsWindow handleFocus={handleFocus} /> : null}
+      {isProjectsOpen ? <ProjectsWindow handleFocus={handleFocus} /> : null}
     </Container>
   );
 };

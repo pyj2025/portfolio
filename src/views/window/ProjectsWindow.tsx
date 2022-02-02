@@ -23,6 +23,7 @@ import {
   WindowTopbar,
 } from "../../GlobalStyle";
 import { WindowPositionSetting, WindowSizeSetting } from "../../types";
+import { useWindows } from "../../utils/context/context";
 import useScreenSize from "../../utils/useScreenSize";
 
 export type IndexType =
@@ -34,23 +35,18 @@ export type IndexType =
   | "Portfolio";
 
 type ProjectsWindowProps = {
-  focusedWindow: string;
   handleFocus: (_e: any, data: DraggableData) => void;
-  isProjectsExpanded: boolean;
-  setProjectsMinimized: (flag: boolean) => void;
-  toggleProjectsOpen: () => void;
-  toggleProjectsExpanded: () => void;
 };
 
-const ProjectsWindow: React.FC<ProjectsWindowProps> = ({
-  focusedWindow,
-  handleFocus,
-  isProjectsExpanded,
-  setProjectsMinimized,
-  toggleProjectsOpen,
-  toggleProjectsExpanded,
-}) => {
+const ProjectsWindow: React.FC<ProjectsWindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
+  const {
+    focusedWindow,
+    isProjectsExpanded,
+    setProjectsMinimized,
+    toggleProjectsOpen,
+    toggleProjectsExpanded,
+  } = useWindows();
 
   const projectsRef = React.useRef<any>();
 

@@ -19,27 +19,23 @@ import {
 } from "../../GlobalStyle";
 import { WindowPositionSetting, WindowSizeSetting } from "../../types";
 import useScreenSize from "../../utils/useScreenSize";
+import { useWindows } from "../../utils/context/context";
 
 type IndexType = "About" | "Experience" | "Education";
 
 type AboutWindowProps = {
-  focusedWindow: string;
   handleFocus: (_e: any, data: DraggableData) => void;
-  isAboutExpanded: boolean;
-  setAboutMinimized: (flag: boolean) => void;
-  toggleAboutOpen: () => void;
-  toggleAboutExpanded: () => void;
 };
 
-const AboutWindow: React.FC<AboutWindowProps> = ({
-  focusedWindow,
-  handleFocus,
-  isAboutExpanded,
-  setAboutMinimized,
-  toggleAboutOpen,
-  toggleAboutExpanded,
-}) => {
+const AboutWindow: React.FC<AboutWindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
+  const {
+    focusedWindow,
+    isAboutExpanded,
+    setAboutMinimized,
+    toggleAboutOpen,
+    toggleAboutExpanded,
+  } = useWindows();
 
   const aboutRef = React.useRef<any>();
 
