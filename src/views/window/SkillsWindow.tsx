@@ -23,14 +23,11 @@ import {
 } from "../../components/Skills";
 import useScreenSize from "../../utils/useScreenSize";
 import { useWindows } from "../../utils/context/context";
+import { WindowProps } from "../../BodyContent";
 
 type IndexType = "Front" | "Back" | "Mobile" | "Programming";
 
-type SkillsWindowProps = {
-  handleFocus: (_e: any, data: DraggableData) => void;
-};
-
-const SkillsWindow: React.FC<SkillsWindowProps> = ({ handleFocus }) => {
+const SkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
   const {
     focusedWindow,

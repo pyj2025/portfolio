@@ -20,14 +20,11 @@ import {
 import { WindowPositionSetting, WindowSizeSetting } from "../../types";
 import useScreenSize from "../../utils/useScreenSize";
 import { useWindows } from "../../utils/context/context";
+import { WindowProps } from "../../BodyContent";
 
 type IndexType = "About" | "Experience" | "Education";
 
-type AboutWindowProps = {
-  handleFocus: (_e: any, data: DraggableData) => void;
-};
-
-const AboutWindow: React.FC<AboutWindowProps> = ({ handleFocus }) => {
+const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
   const {
     focusedWindow,

@@ -6,6 +6,7 @@ import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import Typist from "react-typist";
 import useScreenSize from "../../utils/useScreenSize";
 import { useWindows } from "../../utils/context/context";
+import { WindowProps } from "../../BodyContent";
 
 const Window = styled(Rnd)`
   width: 100%;
@@ -161,11 +162,7 @@ const ContentLineArrow = styled(FontAwesomeIcon)`
   margin-right: 8px;
 `;
 
-type WelcomeWindowProps = {
-  handleFocus: (_e: any, data: DraggableData) => void;
-};
-
-const WelcomeWindow: React.FC<WelcomeWindowProps> = ({ handleFocus }) => {
+const WelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
   const { focusedWindow, closeWelcomeWindow } = useWindows();
 

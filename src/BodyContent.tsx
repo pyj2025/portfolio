@@ -14,6 +14,10 @@ const Container = styled.div`
   color: white;
 `;
 
+export type WindowProps = {
+  handleFocus: (_e: any, data: DraggableData) => void;
+};
+
 const BodyContent: React.FC = () => {
   const {
     isWelcomeWindowOpen,

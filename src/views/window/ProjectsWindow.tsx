@@ -1,5 +1,6 @@
 import React from "react";
 import { DraggableData, Position, ResizableDelta } from "react-rnd";
+import { WindowProps } from "../../BodyContent";
 import {
   DatApex,
   Foodie,
@@ -34,11 +35,7 @@ export type IndexType =
   | "Foodie"
   | "Portfolio";
 
-type ProjectsWindowProps = {
-  handleFocus: (_e: any, data: DraggableData) => void;
-};
-
-const ProjectsWindow: React.FC<ProjectsWindowProps> = ({ handleFocus }) => {
+const ProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
   const {
     focusedWindow,
