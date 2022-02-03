@@ -148,6 +148,7 @@ const SkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
             color="close"
             title={focusedWindow === "Skills" ? "Close" : undefined}
             onClick={handleSkillsClose}
+            onTouchStart={handleSkillsClose}
             disabled={focusedWindow !== "Skills"}
           />
           <TopbarBtn

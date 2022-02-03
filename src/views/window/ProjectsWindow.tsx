@@ -156,6 +156,7 @@ const ProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
             color="close"
             title={focusedWindow === "Projects" ? "Close" : undefined}
             onClick={handleProjectsClose}
+            onTouchStart={handleProjectsClose}
             disabled={focusedWindow !== "Projects"}
           />
           <TopbarBtn

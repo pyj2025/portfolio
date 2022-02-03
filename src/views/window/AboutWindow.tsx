@@ -152,6 +152,7 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
             color="close"
             title={focusedWindow === "About" ? "Close" : undefined}
             onClick={handleAboutClose}
+            onTouchStart={handleAboutClose}
             disabled={focusedWindow !== "About"}
           />
           <TopbarBtn

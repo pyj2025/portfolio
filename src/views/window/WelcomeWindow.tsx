@@ -194,6 +194,7 @@ const WelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
             color="close"
             title={focusedWindow === "Welcome" ? "Close" : undefined}
             onClick={closeWelcomeWindow}
+            onTouchStart={closeWelcomeWindow}
             disabled={focusedWindow !== "Welcome"}
           />
           <TopbarBtn color="disabled" disabled={true} />
