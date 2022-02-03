@@ -9,6 +9,7 @@ const Container = styled.div`
   background-color: rgba(0, 0, 0, 0.4);
   color: white;
   height: 25px;
+  width: 100%;
   font-weight: bold;
 `;
 
