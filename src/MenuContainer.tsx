@@ -51,11 +51,7 @@ const MinimizedIcon = styled(FontAwesomeIcon)`
   color: #aaaaaa;
 `;
 
-export type MenuContainerProps = {
-  emailClick: () => void;
-};
-
-const MenuContainer: React.FC<MenuContainerProps> = ({ emailClick }) => {
+const MenuContainer: React.FC = () => {
   const {
     isAboutMinimized,
     isSkillsMinimized,
@@ -64,6 +60,10 @@ const MenuContainer: React.FC<MenuContainerProps> = ({ emailClick }) => {
     toggleSkillsOpen,
     toggleProjectsOpen,
   } = useWindows();
+
+  const handleEmailClick = () => {
+    window.open("mailto:pyj2025@gmail.com");
+  };
 
   return (
     <SidebarContainer>
@@ -119,7 +119,7 @@ const MenuContainer: React.FC<MenuContainerProps> = ({ emailClick }) => {
             alt="Facebook"
           />
         </MenuItem>
-        <MenuItem title="Email" onClick={emailClick}>
+        <MenuItem title="Email" onClick={handleEmailClick}>
           <img
             src="https://img.icons8.com/color/48/000000/gmail-new.png"
             alt="Email"

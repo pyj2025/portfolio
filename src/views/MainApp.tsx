@@ -22,10 +22,6 @@ const Wrapper = styled.div`
 const MainApp: React.FC = () => {
   const { width, height } = useScreenSize();
 
-  const handleEmailClick = () => {
-    window.open("mailto:pyj2025@gmail.com");
-  };
-
   return (
     <WindowsProvider>
       <Wrapper>
@@ -36,7 +32,7 @@ const MainApp: React.FC = () => {
         )}
 
         <BodyContent />
-        <MenuContainer emailClick={handleEmailClick} />
+        <MenuContainer />
       </Wrapper>
     </WindowsProvider>
   );
