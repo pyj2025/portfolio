@@ -1,22 +1,24 @@
 import React from "react";
 import styled from "styled-components";
+import { BoldText } from "./GlobalStyle";
+import useScreenSize from "./utils/useScreenSize";
 
-const Container = styled.div`
-  display: grid;
-  grid-template-columns: auto;
+const Container = styled.div<{ width: number }>`
+  display: flex;
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.4);
-  color: white;
+  color: rgb(255, 255, 255);
+  width: ${({ width }) => width}px;
   height: 25px;
-  width: 100%;
-  font-weight: bold;
 `;
 
-const MobileTopBar: React.FC<unknown> = () => {
+const MobileTopBar: React.FC = () => {
+  const { width } = useScreenSize();
+
   return (
-    <Container>
-      <span>Joon Park</span>
+    <Container width={width}>
+      <BoldText>Joon Park</BoldText>
     </Container>
   );
 };
