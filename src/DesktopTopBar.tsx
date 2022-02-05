@@ -8,13 +8,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { BoldText, MutedText } from "./GlobalStyle";
 import { useWindows } from "./utils/context/context";
+import useScreenSize from "./utils/useScreenSize";
 
-const Container = styled.div`
+const Container = styled.div<{ width: number }>`
   display: flex;
   justify-content: flex-start;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.4);
-  color: white;
+  color: rgb(255, 255, 255);
+  width: ${({ width }) => width}px;
   height: 25px;
 `;
 
@@ -55,6 +57,8 @@ const TopbarAppIcon = styled(FontAwesomeIcon)`
 `;
 
 const DesktopTopBar: React.FC = () => {
+  const { width } = useScreenSize();
+
   const [menuOpen, setMenuOpen] = React.useState(false);
   const { toggleDesktopAboutOpen } = useWindows();
 
@@ -66,7 +70,7 @@ const DesktopTopBar: React.FC = () => {
   };
 
   return (
-    <Container>
+    <Container width={width}>
       <MainMenuBtnContainer>
         <MainMenuBtn onClick={handleClick}>
           <BoldText>Joon</BoldText>
