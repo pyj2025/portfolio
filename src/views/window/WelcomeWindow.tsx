@@ -4,9 +4,10 @@ import { DraggableData, Rnd } from "react-rnd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import Typist from "react-typist";
-import useScreenSize from "../../utils/useScreenSize";
+import useScreenSize, { TABLET_MAX_WIDTH } from "../../utils/useScreenSize";
 import { useWindows } from "../../utils/context/context";
 import { WindowProps } from "../../BodyContent";
+import { WindowPositionSetting, WindowSizeSetting } from "../../types";
 
 const Window = styled(Rnd)`
   width: 100%;
@@ -168,21 +169,44 @@ const WelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
 
   const welcomeRef = React.useRef<any>();
 
+  const [windowPosition, setWindowPosition] =
+    React.useState<WindowPositionSetting>({
+      x: Math.round(Math.max((width - 700) / 2, 0)),
+      y: 0,
+    });
+  const [windowSize, setWindowSize] = React.useState<WindowSizeSetting>({
+    width: 700,
+    height: 450,
+  });
+
   const [firstLine, setFirstLine] = React.useState(false);
   const [secondLine, setSecondLine] = React.useState(false);
   const [secondContent, setSecondContent] = React.useState(false);
   const [thirdLine, setThirdLine] = React.useState(false);
   const [thirdContent, setThirdContent] = React.useState(false);
 
+  React.useEffect(() => {
+    if (width < TABLET_MAX_WIDTH) {
+      setWindowSize({
+        width,
+        height,
+      });
+      setWindowPosition({
+        x: 0,
+        y: 0,
+      });
+    }
+  }, [width, height]);
+
   return (
     <Window
       id="Welcome"
       ref={welcomeRef}
       default={{
-        x: Math.round(Math.max((width - 700) / 2, 0)),
-        y: 0,
-        width: 700,
-        height: 450,
+        x: windowPosition.x,
+        y: windowPosition.y,
+        width: windowSize.width,
+        height: windowSize.height,
       }}
       dragHandleClassName="topbar"
       onDragStart={handleFocus}
