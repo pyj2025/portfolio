@@ -3,7 +3,7 @@ import React from "react";
 import { isMobile, isTablet } from "react-device-detect";
 import BodyContent from "../BodyContent";
 import DesktopTopBar from "../DesktopTopBar";
-import MenuContainer from "../MenuContainer";
+import MenuContainer from "../Menu";
 import MobileTopBar from "../MobileTopBar";
 import useScreenSize, {
   MOBILE_MAX_WIDTH,

@@ -4,7 +4,7 @@ import React from "react";
 import styled from "styled-components";
 import { useWindows } from "./utils/context/context";
 
-const SidebarContainer = styled.div`
+const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -51,7 +51,7 @@ const MinimizedIcon = styled(FontAwesomeIcon)`
   color: #aaaaaa;
 `;
 
-const MenuContainer: React.FC = () => {
+const Menu: React.FC = () => {
   const {
     isAboutMinimized,
     isSkillsMinimized,
@@ -59,30 +59,46 @@ const MenuContainer: React.FC = () => {
     toggleAboutOpen,
     toggleSkillsOpen,
     toggleProjectsOpen,
+    setFocusedWindow,
   } = useWindows();
+
+  const handleAboutClick = () => {
+    toggleAboutOpen();
+    setFocusedWindow("About");
+  };
+
+  const handleSkillsClick = () => {
+    toggleSkillsOpen();
+    setFocusedWindow("Skills");
+  };
+
+  const handleProjectsClick = () => {
+    toggleProjectsOpen();
+    setFocusedWindow("Projects");
+  };
 
   const handleEmailClick = () => {
     window.open("mailto:pyj2025@gmail.com");
   };
 
   return (
-    <SidebarContainer>
+    <Container>
       <MenuWrapper>
-        <MenuItem title="About" onClick={toggleAboutOpen}>
+        <MenuItem title="About" onClick={handleAboutClick}>
           <img
             src="https://img.icons8.com/color/48/000000/mac-logo.png"
             alt="Finder"
           />
           {isAboutMinimized ? <MinimizedIcon icon={faCircle} /> : null}
         </MenuItem>
-        <MenuItem title="Skills" onClick={toggleSkillsOpen}>
+        <MenuItem title="Skills" onClick={handleSkillsClick}>
           <img
             src="https://img.icons8.com/color/48/000000/visual-studio-code-2019.png"
             alt="visual-studio-code"
           />
           {isSkillsMinimized ? <MinimizedIcon icon={faCircle} /> : null}
         </MenuItem>
-        <MenuItem title="Projects" onClick={toggleProjectsOpen}>
+        <MenuItem title="Projects" onClick={handleProjectsClick}>
           <img
             src="https://img.icons8.com/color/48/000000/mac-folder.png"
             alt="mac-folder"
@@ -126,8 +142,8 @@ const MenuContainer: React.FC = () => {
           />
         </MenuItem>
       </MenuWrapper>
-    </SidebarContainer>
+    </Container>
   );
 };
 
-export default MenuContainer;
+export default Menu;
