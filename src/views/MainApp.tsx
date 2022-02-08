@@ -3,12 +3,9 @@ import React from "react";
 import { isMobile, isTablet } from "react-device-detect";
 import BodyContent from "../BodyContent";
 import DesktopTopBar from "../DesktopTopBar";
-import MenuContainer from "../Menu";
+import Menu from "../Menu";
 import MobileTopBar from "../MobileTopBar";
-import useScreenSize, {
-  MOBILE_MAX_WIDTH,
-  TABLET_MAX_WIDTH,
-} from "../utils/useScreenSize";
+import useScreenSize, { TABLET_MAX_WIDTH } from "../utils/useScreenSize";
 import { WindowsProvider } from "../utils/context/WindowsProvider";
 import styled from "styled-components";
 
@@ -20,7 +17,7 @@ const Wrapper = styled.div`
 `;
 
 const MainApp: React.FC = () => {
-  const { width, height } = useScreenSize();
+  const { width } = useScreenSize();
 
   return (
     <WindowsProvider>
@@ -30,9 +27,8 @@ const MainApp: React.FC = () => {
         ) : (
           <DesktopTopBar />
         )}
-
         <BodyContent />
-        <MenuContainer />
+        <Menu />
       </Wrapper>
     </WindowsProvider>
   );

@@ -18,7 +18,7 @@ import {
   WindowTopbar,
 } from "../../GlobalStyle";
 import { WindowPositionSetting, WindowSizeSetting } from "../../types";
-import useScreenSize from "../../utils/useScreenSize";
+import useScreenSize, { TABLET_MAX_WIDTH } from "../../utils/useScreenSize";
 import { useWindows } from "../../utils/context/context";
 import { WindowProps } from "../../BodyContent";
 
@@ -53,10 +53,17 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const [index, setIndex] = React.useState<IndexType>("About");
 
   React.useEffect(() => {
-    if (width < aboutSize.width) {
-      handleAboutExpand();
+    if (width < TABLET_MAX_WIDTH) {
+      setAboutSize({
+        width,
+        height: height - 80 - 25,
+      });
+      setAboutPosition({
+        x: 0,
+        y: 0,
+      });
     }
-  }, [width, aboutSize.width]);
+  }, [width]);
 
   const handleAboutClose = () => {
     if (focusedWindow === "About") toggleAboutOpen();
