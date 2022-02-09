@@ -16,6 +16,26 @@ const Wrapper = styled.div`
   grid-template-rows: 25px auto 80px;
 `;
 
+const DesktopApp: React.FC = () => {
+  return (
+    <>
+      <DesktopTopBar />
+      <BodyContent />
+      <Menu />
+    </>
+  );
+};
+
+const MobileApp: React.FC = () => {
+  return (
+    <>
+      <MobileTopBar />
+      <BodyContent />
+      <Menu />
+    </>
+  );
+};
+
 const MainApp: React.FC = () => {
   const { width } = useScreenSize();
 
@@ -23,12 +43,10 @@ const MainApp: React.FC = () => {
     <WindowsProvider>
       <Wrapper>
         {isMobile || isTablet || width < TABLET_MAX_WIDTH ? (
-          <MobileTopBar />
+          <MobileApp />
         ) : (
-          <DesktopTopBar />
+          <DesktopApp />
         )}
-        <BodyContent />
-        <Menu />
       </Wrapper>
     </WindowsProvider>
   );
