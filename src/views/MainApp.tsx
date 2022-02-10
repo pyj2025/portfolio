@@ -12,27 +12,32 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   height: 100vh;
   width: 100vw;
+`;
+
+const Container = styled.div`
   display: grid;
   grid-template-rows: 25px auto 80px;
+  width: 100%;
+  height: 100%;
 `;
 
 const DesktopApp: React.FC = () => {
   return (
-    <>
+    <Container>
       <DesktopTopBar />
       <BodyContent />
       <Menu />
-    </>
+    </Container>
   );
 };
 
 const MobileApp: React.FC = () => {
   return (
-    <>
+    <Container>
       <MobileTopBar />
       <BodyContent />
       <Menu />
-    </>
+    </Container>
   );
 };
 

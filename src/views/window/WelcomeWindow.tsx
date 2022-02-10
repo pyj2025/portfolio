@@ -331,7 +331,10 @@ const WelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
                   hideWhenDone: true,
                   hideWhenDoneDelay: 100,
                 }}
-                onTypingDone={() => setThirdContent(true)}
+                onTypingDone={() => {
+                  setThirdContent(true);
+                  window.localStorage.setItem("welcomeWindowRendered", "true");
+                }}
               >
                 cat contact.md
               </Typist>

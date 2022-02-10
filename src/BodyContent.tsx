@@ -31,6 +31,9 @@ const BodyContent: React.FC = () => {
     setFocusedWindow,
   } = useWindows();
 
+  const isWelcomeRendered =
+    window.localStorage.getItem("welcomeWindowRendered") === "true";
+
   const windowRef = React.useRef({
     newZIndex: "10",
     prevNode: null as unknown as HTMLElement,
@@ -77,7 +80,9 @@ const BodyContent: React.FC = () => {
         draggablePercent={60}
       />
 
-      {isWelcomeWindowOpen ? <WelcomeWindow handleFocus={handleFocus} /> : null}
+      {isWelcomeWindowOpen && !isWelcomeRendered ? (
+        <WelcomeWindow handleFocus={handleFocus} />
+      ) : null}
       {isDesktopAboutOpen ? (
         <TopbarAboutWindow handleFocus={handleFocus} />
       ) : null}
