@@ -25,7 +25,7 @@ import {
 } from "../../GlobalStyle";
 import { WindowPositionSetting, WindowSizeSetting } from "../../types";
 import { useWindows } from "../../utils/context/context";
-import useScreenSize from "../../utils/useScreenSize";
+import useScreenSize, { TABLET_MAX_WIDTH } from "../../utils/useScreenSize";
 
 export type IndexType =
   | "Projects"
@@ -61,6 +61,24 @@ const ProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
     (WindowSizeSetting & WindowPositionSetting) | null
   >(null);
   const [index, setIndex] = React.useState<IndexType>("Projects");
+  const [isMobileWindow, setIsMobileWindow] = React.useState(false);
+
+  React.useEffect(() => {
+    if (width < TABLET_MAX_WIDTH) {
+      setProjectsSize({
+        width,
+        height: height - 80 - 25,
+      });
+      setProjectsPosition({
+        x: 0,
+        y: 0,
+      });
+      setIsMobileWindow(true);
+    } else {
+      setIsMobileWindow(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [width]);
 
   const handleProjectsClose = () => {
     if (focusedWindow === "Projects") toggleProjectsOpen();
@@ -161,15 +179,23 @@ const ProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
           />
           <TopbarBtn
             color="minimize"
-            title={focusedWindow === "Projects" ? "Minimize" : undefined}
+            title={
+              focusedWindow === "Projects" && !isMobileWindow
+                ? "Minimize"
+                : undefined
+            }
             onClick={handleProjectsMinimized}
-            disabled={focusedWindow !== "Projects"}
+            disabled={focusedWindow !== "Projects" || isMobileWindow}
           />
           <TopbarBtn
             color="expand"
-            title={focusedWindow === "Projects" ? "Expand" : undefined}
+            title={
+              focusedWindow === "Projects" && !isMobileWindow
+                ? "Expand"
+                : undefined
+            }
             onClick={handleProjectsExpand}
-            disabled={focusedWindow !== "Projects"}
+            disabled={focusedWindow !== "Projects" || isMobileWindow}
           />
         </TopbarBtnContainer>
         <TopbarTitle>

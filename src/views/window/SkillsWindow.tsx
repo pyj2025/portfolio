@@ -21,7 +21,7 @@ import {
   Mobile,
   ProgrammingLanguage,
 } from "../../components/Skills";
-import useScreenSize from "../../utils/useScreenSize";
+import useScreenSize, { TABLET_MAX_WIDTH } from "../../utils/useScreenSize";
 import { useWindows } from "../../utils/context/context";
 import { WindowProps } from "../../BodyContent";
 
@@ -53,6 +53,24 @@ const SkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
     (WindowSizeSetting & WindowPositionSetting) | null
   >(null);
   const [index, setIndex] = React.useState<IndexType>("Front");
+  const [isMobileWindow, setIsMobileWindow] = React.useState(false);
+
+  React.useEffect(() => {
+    if (width < TABLET_MAX_WIDTH) {
+      setSkillsSize({
+        width,
+        height: height - 80 - 25,
+      });
+      setSkillsPosition({
+        x: 0,
+        y: 0,
+      });
+      setIsMobileWindow(true);
+    } else {
+      setIsMobileWindow(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [width]);
 
   const handleSkillsClose = () => {
     if (focusedWindow === "Skills") toggleSkillsOpen();
@@ -153,15 +171,23 @@ const SkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
           />
           <TopbarBtn
             color="minimize"
-            title={focusedWindow === "Skills" ? "Minimize" : undefined}
+            title={
+              focusedWindow === "Skills" && !isMobileWindow
+                ? "Minimize"
+                : undefined
+            }
             onClick={handleSkillsMinimized}
-            disabled={focusedWindow !== "Skills"}
+            disabled={focusedWindow !== "Skills" || isMobileWindow}
           />
           <TopbarBtn
             color="expand"
-            title={focusedWindow === "Skills" ? "Expand" : undefined}
+            title={
+              focusedWindow === "Skills" && !isMobileWindow
+                ? "Expand"
+                : undefined
+            }
             onClick={handleSkillsExpand}
-            disabled={focusedWindow !== "Skills"}
+            disabled={focusedWindow !== "Skills" || isMobileWindow}
           />
         </TopbarBtnContainer>
         <TopbarTitle>

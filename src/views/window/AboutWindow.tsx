@@ -51,6 +51,7 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   >(null);
 
   const [index, setIndex] = React.useState<IndexType>("About");
+  const [isMobileWindow, setIsMobileWindow] = React.useState(false);
 
   React.useEffect(() => {
     if (width < TABLET_MAX_WIDTH) {
@@ -62,7 +63,11 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         x: 0,
         y: 0,
       });
+      setIsMobileWindow(true);
+    } else {
+      setIsMobileWindow(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [width]);
 
   const handleAboutClose = () => {
@@ -164,15 +169,23 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
           />
           <TopbarBtn
             color="minimize"
-            title={focusedWindow === "About" ? "Minimize" : undefined}
+            title={
+              focusedWindow === "About" && !isMobileWindow
+                ? "Minimize"
+                : undefined
+            }
             onClick={handleAboutMinimized}
-            disabled={focusedWindow !== "About"}
+            disabled={focusedWindow !== "About" || isMobileWindow}
           />
           <TopbarBtn
             color="expand"
-            title={focusedWindow === "About" ? "Expand" : undefined}
+            title={
+              focusedWindow === "About" && !isMobileWindow
+                ? "Expand"
+                : undefined
+            }
             onClick={handleAboutExpand}
-            disabled={focusedWindow !== "About"}
+            disabled={focusedWindow !== "About" || isMobileWindow}
           />
         </TopbarBtnContainer>
         <TopbarTitle>
