@@ -34,6 +34,9 @@ const BodyContent: React.FC = () => {
   const isWelcomeRendered =
     window.localStorage.getItem("welcomeWindowRendered") === "true";
 
+  const isToastRendered =
+    window.localStorage.getItem("toastRendered") === "true";
+
   const windowRef = React.useRef({
     newZIndex: "10",
     prevNode: null as unknown as HTMLElement,
@@ -50,6 +53,7 @@ const BodyContent: React.FC = () => {
       transition: Slide,
       type: "info",
     });
+    window.localStorage.setItem("toastRendered", "true");
   }, []);
 
   const handleFocus = (_e: any, data: DraggableData) => {
@@ -83,7 +87,7 @@ const BodyContent: React.FC = () => {
       {isWelcomeWindowOpen && !isWelcomeRendered ? (
         <WelcomeWindow handleFocus={handleFocus} />
       ) : null}
-      {isDesktopAboutOpen ? (
+      {isDesktopAboutOpen && !isToastRendered ? (
         <TopbarAboutWindow handleFocus={handleFocus} />
       ) : null}
       {isAboutOpen ? <AboutWindow handleFocus={handleFocus} /> : null}
