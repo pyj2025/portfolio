@@ -24,7 +24,29 @@ import { WindowProps } from "../../BodyContent";
 
 type IndexType = "About" | "Experience" | "Education";
 
-const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
+type AboutWindowTopbarProps = {
+  ref: any;
+  aboutSize: WindowSizeSetting;
+  setAboutSize: (size: WindowSizeSetting) => void;
+  aboutPosition: WindowPositionSetting;
+  setAboutPosition: (position: WindowPositionSetting) => void;
+  aboutPrevSetting: (WindowSizeSetting & WindowPositionSetting) | null;
+  setAboutPrevSetting: (
+    setting: WindowSizeSetting & WindowPositionSetting
+  ) => void;
+  isMobileWindow: boolean;
+};
+
+const AboutWindowTopbar: React.FC<AboutWindowTopbarProps> = ({
+  ref,
+  aboutSize,
+  setAboutSize,
+  aboutPosition,
+  setAboutPosition,
+  aboutPrevSetting,
+  setAboutPrevSetting,
+  isMobileWindow,
+}) => {
   const { width, height } = useScreenSize();
   const {
     focusedWindow,
@@ -33,42 +55,6 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
     toggleAboutOpen,
     toggleAboutExpanded,
   } = useWindows();
-
-  const aboutRef = React.useRef<any>();
-
-  const [aboutSize, setAboutSize] = React.useState<WindowSizeSetting>({
-    width: 500,
-    height: 300,
-  });
-  const [aboutPosition, setAboutPosition] =
-    React.useState<WindowPositionSetting>({
-      x: 20,
-      y: 20,
-    });
-
-  const [aboutPrevSetting, setAboutPrevSetting] = React.useState<
-    (WindowSizeSetting & WindowPositionSetting) | null
-  >(null);
-
-  const [index, setIndex] = React.useState<IndexType>("About");
-  const [isMobileWindow, setIsMobileWindow] = React.useState(false);
-
-  React.useEffect(() => {
-    if (width < TABLET_MAX_WIDTH) {
-      setAboutSize({
-        width,
-        height: height - 80 - 25,
-      });
-      setAboutPosition({
-        x: 0,
-        y: 0,
-      });
-      setIsMobileWindow(true);
-    } else {
-      setIsMobileWindow(false);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [width]);
 
   const handleAboutClose = () => {
     if (focusedWindow === "About") toggleAboutOpen();
@@ -120,12 +106,91 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
           y: 0,
         });
       }
-      aboutRef.current.updateSize(aboutSize);
-      aboutRef.current.updatePosition(aboutPosition);
+      ref?.current.updateSize(aboutSize);
+      ref?.current.updatePosition(aboutPosition);
 
       toggleAboutExpanded();
     }
   };
+
+  return (
+    <WindowTopbar className="topbar">
+      <TopbarBtnContainer>
+        <TopbarBtn
+          color="close"
+          title={focusedWindow === "About" ? "Close" : undefined}
+          onClick={handleAboutClose}
+          onTouchStart={handleAboutClose}
+          disabled={focusedWindow !== "About"}
+        />
+        <TopbarBtn
+          color="minimize"
+          title={
+            focusedWindow === "About" && !isMobileWindow
+              ? "Minimize"
+              : undefined
+          }
+          onClick={!isMobileWindow ? handleAboutMinimized : undefined}
+          disabled={focusedWindow !== "About" || isMobileWindow}
+        />
+        <TopbarBtn
+          color="expand"
+          title={
+            focusedWindow === "About" && !isMobileWindow ? "Expand" : undefined
+          }
+          onClick={!isMobileWindow ? handleAboutExpand : undefined}
+          disabled={focusedWindow !== "About" || isMobileWindow}
+        />
+      </TopbarBtnContainer>
+      <TopbarTitle>
+        <TopbarTitleImage
+          src="https://img.icons8.com/color/48/000000/mac-logo.png"
+          alt="About"
+        />
+        <TopbarTitleText>About</TopbarTitleText>
+      </TopbarTitle>
+    </WindowTopbar>
+  );
+};
+
+const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
+  const { width, height } = useScreenSize();
+
+  const aboutRef = React.useRef<any>();
+
+  const [aboutSize, setAboutSize] = React.useState<WindowSizeSetting>({
+    width: 500,
+    height: 300,
+  });
+  const [aboutPosition, setAboutPosition] =
+    React.useState<WindowPositionSetting>({
+      x: 20,
+      y: 20,
+    });
+
+  const [aboutPrevSetting, setAboutPrevSetting] = React.useState<
+    (WindowSizeSetting & WindowPositionSetting) | null
+  >(null);
+
+  const [index, setIndex] = React.useState<IndexType>("About");
+  const [isMobileWindow, setIsMobileWindow] = React.useState(false);
+
+  React.useEffect(() => {
+    if (width < TABLET_MAX_WIDTH) {
+      setAboutSize({
+        width,
+        height: height - 80 - 25,
+      });
+      setAboutPosition({
+        x: 0,
+        y: 0,
+      });
+      setIsMobileWindow(true);
+    } else {
+      setIsMobileWindow(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [width]);
 
   const handleClick = (name: IndexType) => {
     setIndex(name);
@@ -158,44 +223,16 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         setAboutPosition({ x: position.x, y: position.y });
       }}
     >
-      <WindowTopbar className="topbar">
-        <TopbarBtnContainer>
-          <TopbarBtn
-            color="close"
-            title={focusedWindow === "About" ? "Close" : undefined}
-            onClick={handleAboutClose}
-            onTouchStart={handleAboutClose}
-            disabled={focusedWindow !== "About"}
-          />
-          <TopbarBtn
-            color="minimize"
-            title={
-              focusedWindow === "About" && !isMobileWindow
-                ? "Minimize"
-                : undefined
-            }
-            onClick={handleAboutMinimized}
-            disabled={focusedWindow !== "About" || isMobileWindow}
-          />
-          <TopbarBtn
-            color="expand"
-            title={
-              focusedWindow === "About" && !isMobileWindow
-                ? "Expand"
-                : undefined
-            }
-            onClick={handleAboutExpand}
-            disabled={focusedWindow !== "About" || isMobileWindow}
-          />
-        </TopbarBtnContainer>
-        <TopbarTitle>
-          <TopbarTitleImage
-            src="https://img.icons8.com/color/48/000000/mac-logo.png"
-            alt="About"
-          />
-          <TopbarTitleText>About</TopbarTitleText>
-        </TopbarTitle>
-      </WindowTopbar>
+      <AboutWindowTopbar
+        ref={aboutRef}
+        isMobileWindow={isMobileWindow}
+        aboutPrevSetting={aboutPrevSetting}
+        aboutSize={aboutSize}
+        setAboutSize={setAboutSize}
+        setAboutPosition={setAboutPosition}
+        aboutPosition={aboutPosition}
+        setAboutPrevSetting={setAboutPrevSetting}
+      />
       <WindowBody>
         <WindowBodyNavbar>
           <WindowBodyNavItm
