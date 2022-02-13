@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import React from "react";
 
 import { isIE } from "react-device-detect";

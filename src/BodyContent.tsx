@@ -48,7 +48,6 @@ const BodyContent: React.FC = () => {
       "You've accessed via " +
       (isBrowser ? "desktop " : isMobile ? "mobile " : "tablet ") +
       browserName.toLowerCase();
-
     toast(message, {
       transition: Slide,
       type: "info",
