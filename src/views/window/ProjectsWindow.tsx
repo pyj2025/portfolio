@@ -9,22 +9,17 @@ import {
   Projects,
   WebProjects,
 } from "../../components/Projects";
+import WindowTopbar from "../../components/WindowTopbar";
 import {
   NavItmLabel,
-  TopbarBtn,
-  TopbarBtnContainer,
-  TopbarTitle,
   TopbarTitleImage,
-  TopbarTitleText,
   Window,
   WindowBody,
   WindowBodyContent,
   WindowBodyNavbar,
   WindowBodyNavItm,
-  WindowTopbar,
 } from "../../GlobalStyle";
 import { WindowPositionSetting, WindowSizeSetting } from "../../types";
-import { useWindows } from "../../utils/context/context";
 import useScreenSize, { TABLET_MAX_WIDTH } from "../../utils/useScreenSize";
 
 export type IndexType =
@@ -37,13 +32,6 @@ export type IndexType =
 
 const ProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
-  const {
-    focusedWindow,
-    isProjectsExpanded,
-    setProjectsMinimized,
-    toggleProjectsOpen,
-    toggleProjectsExpanded,
-  } = useWindows();
 
   const projectsRef = React.useRef<any>();
 
@@ -80,63 +68,6 @@ const ProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [width]);
 
-  const handleProjectsClose = () => {
-    if (focusedWindow === "Projects") toggleProjectsOpen();
-  };
-
-  const handleProjectsMinimized = () => {
-    if (focusedWindow === "Projects") {
-      setProjectsMinimized(true);
-      toggleProjectsOpen();
-    }
-  };
-
-  const handleProjectsExpand = () => {
-    if (focusedWindow === "Projects") {
-      if (isProjectsExpanded) {
-        if (projectsPrevSetting === null) {
-          setProjectsSize({
-            width: 500,
-            height: 300,
-          });
-          setProjectsPosition({
-            x: 100,
-            y: 100,
-          });
-        } else {
-          setProjectsSize({
-            width: projectsPrevSetting.width,
-            height: projectsPrevSetting.height,
-          });
-          setProjectsPosition({
-            x: projectsPrevSetting.x,
-            y: projectsPrevSetting.y,
-          });
-        }
-      } else {
-        setProjectsPrevSetting({
-          width: projectsSize.width,
-          height: projectsSize.height,
-          x: projectsPosition.x,
-          y: projectsPosition.y,
-        });
-
-        setProjectsSize({
-          width: width,
-          height: height,
-        });
-        setProjectsPosition({
-          x: 0,
-          y: 0,
-        });
-      }
-      projectsRef.current.updateSize(projectsSize);
-      projectsRef.current.updatePosition(projectsPosition);
-
-      toggleProjectsExpanded();
-    }
-  };
-
   const handleClick = (name: IndexType) => {
     setIndex(name);
   };
@@ -168,44 +99,17 @@ const ProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         setProjectsPosition({ x: position.x, y: position.y });
       }}
     >
-      <WindowTopbar className="topbar">
-        <TopbarBtnContainer>
-          <TopbarBtn
-            color="close"
-            title={focusedWindow === "Projects" ? "Close" : undefined}
-            onClick={handleProjectsClose}
-            onTouchStart={handleProjectsClose}
-            disabled={focusedWindow !== "Projects"}
-          />
-          <TopbarBtn
-            color="minimize"
-            title={
-              focusedWindow === "Projects" && !isMobileWindow
-                ? "Minimize"
-                : undefined
-            }
-            onClick={handleProjectsMinimized}
-            disabled={focusedWindow !== "Projects" || isMobileWindow}
-          />
-          <TopbarBtn
-            color="expand"
-            title={
-              focusedWindow === "Projects" && !isMobileWindow
-                ? "Expand"
-                : undefined
-            }
-            onClick={handleProjectsExpand}
-            disabled={focusedWindow !== "Projects" || isMobileWindow}
-          />
-        </TopbarBtnContainer>
-        <TopbarTitle>
-          <TopbarTitleImage
-            src="https://img.icons8.com/color/48/000000/mac-folder.png"
-            alt="Projects"
-          />
-          <TopbarTitleText>Projects</TopbarTitleText>
-        </TopbarTitle>
-      </WindowTopbar>
+      <WindowTopbar
+        title="Projects"
+        ref={projectsRef}
+        size={projectsSize}
+        setSize={setProjectsSize}
+        position={projectsPosition}
+        setPosition={setProjectsPosition}
+        prevSetting={projectsPrevSetting}
+        setPrevSetting={setProjectsPrevSetting}
+        isMobileWindow={isMobileWindow}
+      />
       <WindowBody>
         <WindowBodyNavbar>
           <WindowBodyNavItm first onClick={() => handleClick("Projects")} focus>

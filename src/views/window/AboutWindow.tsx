@@ -5,153 +5,19 @@ import About from "../../components/About";
 import Experience from "../../components/Experience";
 import {
   NavItmLabel,
-  TopbarBtn,
-  TopbarBtnContainer,
-  TopbarTitle,
   TopbarTitleImage,
-  TopbarTitleText,
   Window,
   WindowBody,
   WindowBodyContent,
   WindowBodyNavbar,
   WindowBodyNavItm,
-  WindowTopbar,
 } from "../../GlobalStyle";
 import { WindowPositionSetting, WindowSizeSetting } from "../../types";
 import useScreenSize, { TABLET_MAX_WIDTH } from "../../utils/useScreenSize";
-import { useWindows } from "../../utils/context/context";
 import { WindowProps } from "../../BodyContent";
+import WindowTopbar from "../../components/WindowTopbar";
 
 type IndexType = "About" | "Experience" | "Education";
-
-type AboutWindowTopbarProps = {
-  ref: any;
-  aboutSize: WindowSizeSetting;
-  setAboutSize: (size: WindowSizeSetting) => void;
-  aboutPosition: WindowPositionSetting;
-  setAboutPosition: (position: WindowPositionSetting) => void;
-  aboutPrevSetting: (WindowSizeSetting & WindowPositionSetting) | null;
-  setAboutPrevSetting: (
-    setting: WindowSizeSetting & WindowPositionSetting
-  ) => void;
-  isMobileWindow: boolean;
-};
-
-const AboutWindowTopbar: React.FC<AboutWindowTopbarProps> = ({
-  ref,
-  aboutSize,
-  setAboutSize,
-  aboutPosition,
-  setAboutPosition,
-  aboutPrevSetting,
-  setAboutPrevSetting,
-  isMobileWindow,
-}) => {
-  const { width, height } = useScreenSize();
-  const {
-    focusedWindow,
-    isAboutExpanded,
-    setAboutMinimized,
-    toggleAboutOpen,
-    toggleAboutExpanded,
-  } = useWindows();
-
-  const handleAboutClose = () => {
-    if (focusedWindow === "About") toggleAboutOpen();
-  };
-
-  const handleAboutMinimized = () => {
-    if (focusedWindow === "About") {
-      setAboutMinimized(true);
-      toggleAboutOpen();
-    }
-  };
-
-  const handleAboutExpand = () => {
-    if (focusedWindow === "About") {
-      if (isAboutExpanded) {
-        if (aboutPrevSetting === null) {
-          setAboutSize({
-            width: 500,
-            height: 300,
-          });
-          setAboutPosition({
-            x: 20,
-            y: 20,
-          });
-        } else {
-          setAboutSize({
-            width: aboutPrevSetting.width,
-            height: aboutPrevSetting.height,
-          });
-          setAboutPosition({
-            x: aboutPrevSetting.x,
-            y: aboutPrevSetting.y,
-          });
-        }
-      } else {
-        setAboutPrevSetting({
-          width: aboutSize.width,
-          height: aboutSize.height,
-          x: aboutPosition.x,
-          y: aboutPosition.y,
-        });
-
-        setAboutSize({
-          width: width,
-          height: height,
-        });
-        setAboutPosition({
-          x: 0,
-          y: 0,
-        });
-      }
-      ref?.current.updateSize(aboutSize);
-      ref?.current.updatePosition(aboutPosition);
-
-      toggleAboutExpanded();
-    }
-  };
-
-  return (
-    <WindowTopbar className="topbar">
-      <TopbarBtnContainer>
-        <TopbarBtn
-          color="close"
-          title={focusedWindow === "About" ? "Close" : undefined}
-          onClick={handleAboutClose}
-          onTouchStart={handleAboutClose}
-          disabled={focusedWindow !== "About"}
-        />
-        <TopbarBtn
-          color="minimize"
-          title={
-            focusedWindow === "About" && !isMobileWindow
-              ? "Minimize"
-              : undefined
-          }
-          onClick={!isMobileWindow ? handleAboutMinimized : undefined}
-          disabled={focusedWindow !== "About" || isMobileWindow}
-        />
-        <TopbarBtn
-          color="expand"
-          title={
-            focusedWindow === "About" && !isMobileWindow ? "Expand" : undefined
-          }
-          onClick={!isMobileWindow ? handleAboutExpand : undefined}
-          disabled={focusedWindow !== "About" || isMobileWindow}
-        />
-      </TopbarBtnContainer>
-      <TopbarTitle>
-        <TopbarTitleImage
-          src="https://img.icons8.com/color/48/000000/mac-logo.png"
-          alt="About"
-        />
-        <TopbarTitleText>About</TopbarTitleText>
-      </TopbarTitle>
-    </WindowTopbar>
-  );
-};
 
 const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
@@ -223,15 +89,16 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         setAboutPosition({ x: position.x, y: position.y });
       }}
     >
-      <AboutWindowTopbar
+      <WindowTopbar
+        title="About"
         ref={aboutRef}
+        size={aboutSize}
+        setSize={setAboutSize}
+        position={aboutPosition}
+        setPosition={setAboutPosition}
+        prevSetting={aboutPrevSetting}
+        setPrevSetting={setAboutPrevSetting}
         isMobileWindow={isMobileWindow}
-        aboutPrevSetting={aboutPrevSetting}
-        aboutSize={aboutSize}
-        setAboutSize={setAboutSize}
-        setAboutPosition={setAboutPosition}
-        aboutPosition={aboutPosition}
-        setAboutPrevSetting={setAboutPrevSetting}
       />
       <WindowBody>
         <WindowBodyNavbar>

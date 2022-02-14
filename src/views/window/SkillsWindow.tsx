@@ -3,17 +3,12 @@ import { DraggableData, Position, ResizableDelta } from "react-rnd";
 import { WindowPositionSetting, WindowSizeSetting } from "../../types";
 import {
   NavItmLabel,
-  TopbarBtn,
-  TopbarBtnContainer,
-  TopbarTitle,
   TopbarTitleImage,
-  TopbarTitleText,
   Window,
   WindowBody,
   WindowBodyContent,
   WindowBodyNavbar,
   WindowBodyNavItm,
-  WindowTopbar,
 } from "../../GlobalStyle";
 import {
   BackEnd,
@@ -22,20 +17,13 @@ import {
   ProgrammingLanguage,
 } from "../../components/Skills";
 import useScreenSize, { TABLET_MAX_WIDTH } from "../../utils/useScreenSize";
-import { useWindows } from "../../utils/context/context";
 import { WindowProps } from "../../BodyContent";
+import WindowTopbar from "../../components/WindowTopbar";
 
 type IndexType = "Front" | "Back" | "Mobile" | "Programming";
 
 const SkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
-  const {
-    focusedWindow,
-    isSkillsExpanded,
-    setSkillsMinimized,
-    toggleSkillsOpen,
-    toggleSkillsExpanded,
-  } = useWindows();
 
   const skillsRef = React.useRef<any>();
 
@@ -48,7 +36,6 @@ const SkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
       x: 60,
       y: 60,
     });
-
   const [skillsPrevSetting, setSkillsPrevSetting] = React.useState<
     (WindowSizeSetting & WindowPositionSetting) | null
   >(null);
@@ -71,63 +58,6 @@ const SkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [width]);
-
-  const handleSkillsClose = () => {
-    if (focusedWindow === "Skills") toggleSkillsOpen();
-  };
-
-  const handleSkillsMinimized = () => {
-    if (focusedWindow === "Skills") {
-      setSkillsMinimized(true);
-      toggleSkillsOpen();
-    }
-  };
-
-  const handleSkillsExpand = () => {
-    if (focusedWindow === "Skills") {
-      if (isSkillsExpanded) {
-        if (skillsPrevSetting === null) {
-          setSkillsSize({
-            width: 500,
-            height: 300,
-          });
-          setSkillsPosition({
-            x: 60,
-            y: 60,
-          });
-        } else {
-          setSkillsSize({
-            width: skillsPrevSetting.width,
-            height: skillsPrevSetting.height,
-          });
-          setSkillsPosition({
-            x: skillsPrevSetting.x,
-            y: skillsPrevSetting.y,
-          });
-        }
-      } else {
-        setSkillsPrevSetting({
-          width: skillsSize.width,
-          height: skillsSize.height,
-          x: skillsPosition.x,
-          y: skillsPosition.y,
-        });
-
-        setSkillsSize({
-          width: width,
-          height: height,
-        });
-        setSkillsPosition({
-          x: 0,
-          y: 0,
-        });
-      }
-      skillsRef.current.updateSize(skillsSize);
-      skillsRef.current.updatePosition(skillsPosition);
-
-      toggleSkillsExpanded();
-    }
-  };
 
   const handleClick = (name: IndexType) => {
     setIndex(name);
@@ -160,44 +90,17 @@ const SkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         setSkillsPosition({ x: position.x, y: position.y });
       }}
     >
-      <WindowTopbar className="topbar">
-        <TopbarBtnContainer>
-          <TopbarBtn
-            color="close"
-            title={focusedWindow === "Skills" ? "Close" : undefined}
-            onClick={handleSkillsClose}
-            onTouchStart={handleSkillsClose}
-            disabled={focusedWindow !== "Skills"}
-          />
-          <TopbarBtn
-            color="minimize"
-            title={
-              focusedWindow === "Skills" && !isMobileWindow
-                ? "Minimize"
-                : undefined
-            }
-            onClick={handleSkillsMinimized}
-            disabled={focusedWindow !== "Skills" || isMobileWindow}
-          />
-          <TopbarBtn
-            color="expand"
-            title={
-              focusedWindow === "Skills" && !isMobileWindow
-                ? "Expand"
-                : undefined
-            }
-            onClick={handleSkillsExpand}
-            disabled={focusedWindow !== "Skills" || isMobileWindow}
-          />
-        </TopbarBtnContainer>
-        <TopbarTitle>
-          <TopbarTitleImage
-            src="https://img.icons8.com/color/48/000000/visual-studio-code-2019.png"
-            alt="Skills"
-          />
-          <TopbarTitleText>Skills</TopbarTitleText>
-        </TopbarTitle>
-      </WindowTopbar>
+      <WindowTopbar
+        title="Skills"
+        ref={skillsRef}
+        size={skillsSize}
+        setSize={setSkillsSize}
+        position={skillsPosition}
+        setPosition={setSkillsPosition}
+        prevSetting={skillsPrevSetting}
+        setPrevSetting={setSkillsPrevSetting}
+        isMobileWindow={isMobileWindow}
+      />
       <WindowBody>
         <WindowBodyNavbar>
           <WindowBodyNavItm

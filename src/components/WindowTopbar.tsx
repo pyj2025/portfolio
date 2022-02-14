@@ -6,7 +6,7 @@ import {
   TopbarTitle,
   TopbarTitleImage,
   TopbarTitleText,
-  WindowTopbar,
+  WindowTopbarContainer,
 } from "../GlobalStyle";
 import { WindowPositionSetting, WindowSizeSetting } from "../types";
 import { useWindows } from "../utils/context/context";
@@ -24,7 +24,7 @@ export type WindowTopbarProps = {
   isMobileWindow: boolean;
 };
 
-const Topbar: React.FC<WindowTopbarProps> = ({
+const WindowTopbar: React.FC<WindowTopbarProps> = ({
   title,
   ref,
   size,
@@ -187,7 +187,7 @@ const Topbar: React.FC<WindowTopbarProps> = ({
   };
 
   return (
-    <WindowTopbar className="topbar">
+    <WindowTopbarContainer className="topbar">
       <TopbarBtnContainer>
         <TopbarBtn
           color="close"
@@ -217,8 +217,8 @@ const Topbar: React.FC<WindowTopbarProps> = ({
         <TopbarTitleImage src={image} alt={title} />
         <TopbarTitleText>{title}</TopbarTitleText>
       </TopbarTitle>
-    </WindowTopbar>
+    </WindowTopbarContainer>
   );
 };
 
-export default Topbar;
+export default WindowTopbar;

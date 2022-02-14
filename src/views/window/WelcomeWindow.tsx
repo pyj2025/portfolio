@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { DraggableData, Rnd } from "react-rnd";
+import { Rnd } from "react-rnd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import Typist from "react-typist";

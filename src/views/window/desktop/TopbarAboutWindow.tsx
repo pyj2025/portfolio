@@ -14,7 +14,7 @@ import {
   TopbarTitle,
   TwoColumnsGrid,
   Window,
-  WindowTopbar,
+  WindowTopbarContainer,
 } from "../../../GlobalStyle";
 import { faCopyright } from "@fortawesome/free-regular-svg-icons";
 import useScreenSize from "../../../utils/useScreenSize";
@@ -87,7 +87,7 @@ const TopbarAboutWindow: React.FC<TopbarAboutWindowProps> = ({
       onDragStart={handleFocus}
       enableResizing={false}
     >
-      <WindowTopbar className="topbar">
+      <WindowTopbarContainer className="topbar">
         <TopbarBtnContainer>
           <TopbarBtn
             color="close"
@@ -99,7 +99,7 @@ const TopbarAboutWindow: React.FC<TopbarAboutWindowProps> = ({
           <TopbarBtn color="disabled" disabled={true} />
         </TopbarBtnContainer>
         <TopbarTitle />
-      </WindowTopbar>
+      </WindowTopbarContainer>
       <WindowBody>
         <TwoColumnsGrid>
           <LogoContainer>

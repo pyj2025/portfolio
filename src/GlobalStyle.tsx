@@ -20,7 +20,7 @@ export const Window = styled(Rnd)`
   box-shadow: 0px 0px 8px black;
 `;
 
-export const WindowTopbar = styled.div`
+export const WindowTopbarContainer = styled.div`
   width: 100%;
   height: 28px;
   background-color: rgb(51, 52, 54);
