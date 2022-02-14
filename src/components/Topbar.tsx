@@ -1,3 +1,5 @@
+import React from "react";
+
 import {
   TopbarBtn,
   TopbarBtnContainer,
@@ -10,7 +12,7 @@ import { WindowPositionSetting, WindowSizeSetting } from "../types";
 import { useWindows } from "../utils/context/context";
 import useScreenSize from "../utils/useScreenSize";
 
-export type AboutWindowTopbarProps = {
+export type WindowTopbarProps = {
   title: string;
   ref: any;
   size: WindowSizeSetting;
@@ -22,7 +24,7 @@ export type AboutWindowTopbarProps = {
   isMobileWindow: boolean;
 };
 
-const Topbar: React.FC<AboutWindowTopbarProps> = ({
+const Topbar: React.FC<WindowTopbarProps> = ({
   title,
   ref,
   size,
@@ -37,6 +39,8 @@ const Topbar: React.FC<AboutWindowTopbarProps> = ({
   const {
     focusedWindow,
     isAboutExpanded,
+    isSkillsExpanded,
+    isProjectsExpanded,
     toggleAboutOpen,
     toggleSkillsOpen,
     toggleProjectsOpen,
@@ -44,7 +48,30 @@ const Topbar: React.FC<AboutWindowTopbarProps> = ({
     setSkillsMinimized,
     setProjectsMinimized,
     toggleAboutExpanded,
+    toggleSkillsExpanded,
+    toggleProjectsExpanded,
   } = useWindows();
+
+  const [image, setImage] = React.useState<string>("");
+
+  React.useEffect(() => {
+    switch (title) {
+      case "About": {
+        setImage("https://img.icons8.com/color/48/000000/mac-logo.png");
+        break;
+      }
+      case "Skills": {
+        setImage("https://img.icons8.com/color/48/000000/mac-logo.png");
+        break;
+      }
+      case "Projects": {
+        setImage("https://img.icons8.com/color/48/000000/mac-logo.png");
+        break;
+      }
+      default:
+        break;
+    }
+  }, []);
 
   const handleClose = () => {
     if (focusedWindow === title) {
@@ -93,48 +120,68 @@ const Topbar: React.FC<AboutWindowTopbarProps> = ({
 
   const handleExpand = () => {
     if (focusedWindow === title) {
-      if (isAboutExpanded) {
-        if (prevSetting === null) {
-          setSize({
-            width: 500,
-            height: 300,
-          });
-          setPosition({
-            x: 20,
-            y: 20,
-          });
-        } else {
-          setSize({
-            width: prevSetting.width,
-            height: prevSetting.height,
-          });
-          setPosition({
-            x: prevSetting.x,
-            y: prevSetting.y,
-          });
+      switch (title) {
+        case "About": {
+          expand(isAboutExpanded);
+          toggleAboutExpanded();
+          break;
         }
-      } else {
-        setPrevSetting({
-          width: size.width,
-          height: size.height,
-          x: position.x,
-          y: position.y,
-        });
+        case "Skills": {
+          expand(isSkillsExpanded);
+          toggleSkillsExpanded();
+          break;
+        }
+        case "Projects": {
+          expand(isProjectsExpanded);
+          toggleProjectsExpanded();
+          break;
+        }
+        default:
+          break;
+      }
+    }
+  };
 
+  const expand = (isExpanded: boolean) => {
+    if (isExpanded) {
+      if (prevSetting === null) {
         setSize({
-          width: width,
-          height: height,
+          width: 500,
+          height: 300,
         });
         setPosition({
-          x: 0,
-          y: 0,
+          x: 20,
+          y: 20,
+        });
+      } else {
+        setSize({
+          width: prevSetting.width,
+          height: prevSetting.height,
+        });
+        setPosition({
+          x: prevSetting.x,
+          y: prevSetting.y,
         });
       }
-      ref?.current.updateSize(size);
-      ref?.current.updatePosition(position);
+    } else {
+      setPrevSetting({
+        width: size.width,
+        height: size.height,
+        x: position.x,
+        y: position.y,
+      });
 
-      toggleAboutExpanded();
+      setSize({
+        width: width,
+        height: height,
+      });
+      setPosition({
+        x: 0,
+        y: 0,
+      });
     }
+    ref?.current.updateSize(size);
+    ref?.current.updatePosition(position);
   };
 
   return (
@@ -165,10 +212,7 @@ const Topbar: React.FC<AboutWindowTopbarProps> = ({
         />
       </TopbarBtnContainer>
       <TopbarTitle>
-        <TopbarTitleImage
-          src="https://img.icons8.com/color/48/000000/mac-logo.png"
-          alt={title}
-        />
+        <TopbarTitleImage src={image} alt={title} />
         <TopbarTitleText>{title}</TopbarTitleText>
       </TopbarTitle>
     </WindowTopbar>
