@@ -61,11 +61,13 @@ const Topbar: React.FC<WindowTopbarProps> = ({
         break;
       }
       case "Skills": {
-        setImage("https://img.icons8.com/color/48/000000/mac-logo.png");
+        setImage(
+          "https://img.icons8.com/color/48/000000/visual-studio-code-2019.png"
+        );
         break;
       }
       case "Projects": {
-        setImage("https://img.icons8.com/color/48/000000/mac-logo.png");
+        setImage("https://img.icons8.com/color/48/000000/mac-folder.png");
         break;
       }
       default:
