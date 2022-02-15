@@ -15,12 +15,15 @@ export type WindowsContextValue = {
   isDesktopAboutOpen: boolean;
   closeWelcomeWindow: () => void;
   toggleAboutOpen: () => void;
+  closeAbout: () => void;
   setAboutMinimized: (flag: boolean) => void;
   toggleAboutExpanded: () => void;
   toggleSkillsOpen: () => void;
+  closeSkills: () => void;
   setSkillsMinimized: (flag: boolean) => void;
   toggleSkillsExpanded: () => void;
   toggleProjectsOpen: () => void;
+  closeProjects: () => void;
   setProjectsMinimized: (flag: boolean) => void;
   toggleProjectsExpanded: () => void;
   setFocusedWindow: (name: string) => void;

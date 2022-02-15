@@ -24,16 +24,10 @@ export const WindowsProvider: React.FC = ({ children }) => {
   const [isDesktopAboutOpen, setDesktopAboutOpen] = React.useState(false);
 
   React.useEffect(() => {
-    console.log("width = ", width);
-    console.log("height = ", height);
-
-    console.log("window.innerWidth = ", window.innerWidth);
-    console.log("window.innerHeight = ", window.innerHeight);
-
     if (width < MOBILE_MAX_WIDTH) {
       if (isDesktopAboutOpen) setDesktopAboutOpen(false);
     }
-  }, [width, height]);
+  }, [width, height, isDesktopAboutOpen]);
 
   const closeWelcomeWindow = () => {
     setWelcomeWindowOpen(false);
@@ -54,9 +48,15 @@ export const WindowsProvider: React.FC = ({ children }) => {
     setAboutOpen((state) => !state);
     if (!isAboutOpen) {
       setAboutMinimized(false);
+      setFocusedWindow("About");
     } else {
       setFocusedWindow("");
     }
+  };
+
+  const closeAbout = () => {
+    setAboutOpen(false);
+    setFocusedWindow("");
   };
 
   const toggleAboutExpanded = () => {
@@ -68,9 +68,15 @@ export const WindowsProvider: React.FC = ({ children }) => {
 
     if (!isSkillsOpen) {
       setSkillsMinimized(false);
+      setFocusedWindow("Skills");
     } else {
       setFocusedWindow("");
     }
+  };
+
+  const closeSkills = () => {
+    setSkillsOpen(false);
+    setFocusedWindow("");
   };
 
   const toggleSkillsExpanded = () => {
@@ -82,9 +88,15 @@ export const WindowsProvider: React.FC = ({ children }) => {
 
     if (!isProjectsOpen) {
       setProjectsMinimized(false);
+      setFocusedWindow("Projects");
     } else {
       setFocusedWindow("");
     }
+  };
+
+  const closeProjects = () => {
+    setProjectsOpen(false);
+    setFocusedWindow("");
   };
 
   const toggleProjectsExpanded = () => {
@@ -108,12 +120,15 @@ export const WindowsProvider: React.FC = ({ children }) => {
         isDesktopAboutOpen,
         closeWelcomeWindow,
         toggleAboutOpen,
+        closeAbout,
         setAboutMinimized,
         toggleAboutExpanded,
         toggleSkillsOpen,
+        closeSkills,
         setSkillsMinimized,
         toggleSkillsExpanded,
         toggleProjectsOpen,
+        closeProjects,
         setProjectsMinimized,
         toggleProjectsExpanded,
         setFocusedWindow,

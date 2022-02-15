@@ -73,7 +73,7 @@ const WindowTopbar: React.FC<WindowTopbarProps> = ({
       default:
         break;
     }
-  }, []);
+  }, [title]);
 
   const handleClose = () => {
     if (focusedWindow === title) {
