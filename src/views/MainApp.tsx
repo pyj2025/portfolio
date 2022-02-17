@@ -1,7 +1,7 @@
 import React from "react";
 
 import { isMobile, isTablet } from "react-device-detect";
-import BodyContent from "../BodyContent";
+import BodyContent from "./BodyContent";
 import DesktopTopBar from "../DesktopTopBar";
 import Menu from "../Menu";
 import MobileTopBar from "../MobileTopBar";

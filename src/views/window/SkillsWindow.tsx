@@ -17,7 +17,7 @@ import {
   ProgrammingLanguage,
 } from "../../components/Skills";
 import useScreenSize, { TABLET_MAX_WIDTH } from "../../utils/useScreenSize";
-import { WindowProps } from "../../BodyContent";
+import { WindowProps } from "../BodyContent";
 import WindowTopbar from "../../components/WindowTopbar";
 
 type IndexType = "Front" | "Back" | "Mobile" | "Programming";

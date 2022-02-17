@@ -2,12 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import { DraggableData } from "react-rnd";
 
-import ProjectsWindow from "./views/window/ProjectsWindow";
-import AboutWindow from "./views/window/AboutWindow";
-import TopbarAboutWindow from "./views/window/desktop/TopbarAboutWindow";
-import WelcomeWindow from "./views/window/WelcomeWindow";
-import SkillsWindow from "./views/window/SkillsWindow";
-import { useWindows } from "./utils/context/context";
+import ProjectsWindow from "./window/ProjectsWindow";
+import AboutWindow from "./window/AboutWindow";
+import TopbarAboutWindow from "./window/desktop/TopbarAboutWindow";
+import WelcomeWindow from "./window/WelcomeWindow";
+import SkillsWindow from "./window/SkillsWindow";
+import { useWindows } from "../utils/context/context";
 import { Slide, toast, ToastContainer } from "react-toastify";
 import { browserName, isBrowser, isMobile } from "react-device-detect";
 import "react-toastify/dist/ReactToastify.css";
