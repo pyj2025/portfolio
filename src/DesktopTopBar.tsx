@@ -9,6 +9,7 @@ import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { BoldText, MutedText } from "./GlobalStyle";
 import { useWindows } from "./utils/context/context";
 import useScreenSize from "./utils/useScreenSize";
+import { useClickAway } from "react-use";
 
 const Container = styled.div<{ width: number }>`
   display: flex;
@@ -58,9 +59,18 @@ const TopbarAppIcon = styled(FontAwesomeIcon)`
 
 const DesktopTopBar: React.FC = () => {
   const { width } = useScreenSize();
+  const { toggleDesktopAboutOpen } = useWindows();
+
+  const mainMenuRef = React.useRef<HTMLDivElement | null>(null);
 
   const [menuOpen, setMenuOpen] = React.useState(false);
-  const { toggleDesktopAboutOpen } = useWindows();
+
+  useClickAway(
+    mainMenuRef as React.MutableRefObject<HTMLDivElement | null>,
+    () => {
+      setMenuOpen(false);
+    }
+  );
 
   const handleClick = () => setMenuOpen(!menuOpen);
 
@@ -71,7 +81,7 @@ const DesktopTopBar: React.FC = () => {
 
   return (
     <Container width={width}>
-      <MainMenuBtnContainer>
+      <MainMenuBtnContainer ref={mainMenuRef}>
         <MainMenuBtn onClick={handleClick}>
           <BoldText>Joon</BoldText>
         </MainMenuBtn>

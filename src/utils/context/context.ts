@@ -1,7 +1,8 @@
 import * as React from "react";
+import { FocusedWindowType } from "../../types";
 
 export type WindowsContextValue = {
-  focusedWindow: string;
+  focusedWindow: FocusedWindowType;
   isWelcomeWindowOpen: boolean;
   isAboutOpen: boolean;
   isAboutMinimized: boolean;
@@ -26,7 +27,7 @@ export type WindowsContextValue = {
   closeProjects: () => void;
   setProjectsMinimized: (flag: boolean) => void;
   toggleProjectsExpanded: () => void;
-  setFocusedWindow: (name: string) => void;
+  setFocusedWindow: (type: FocusedWindowType) => void;
   toggleDesktopAboutOpen: () => void;
 };
 

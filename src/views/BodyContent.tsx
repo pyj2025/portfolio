@@ -4,13 +4,14 @@ import { DraggableData } from "react-rnd";
 
 import ProjectsWindow from "./window/ProjectsWindow";
 import AboutWindow from "./window/AboutWindow";
-import TopbarAboutWindow from "./window/desktop/TopbarAboutWindow";
 import WelcomeWindow from "./window/WelcomeWindow";
 import SkillsWindow from "./window/SkillsWindow";
 import { useWindows } from "../utils/context/context";
 import { Slide, toast, ToastContainer } from "react-toastify";
 import { browserName, isBrowser, isMobile } from "react-device-detect";
 import "react-toastify/dist/ReactToastify.css";
+import TopbarAboutWindow from "./window/desktop/TopbarAboutWindow";
+import { FocusedWindowType } from "../types";
 
 const Container = styled.div`
   background-color: transparent;
@@ -34,9 +35,6 @@ const BodyContent: React.FC = () => {
   const isWelcomeRendered =
     window.localStorage.getItem("welcomeWindowRendered") === "true";
 
-  const isToastRendered =
-    window.localStorage.getItem("toastRendered") === "true";
-
   const windowRef = React.useRef({
     newZIndex: "10",
     prevNode: null as unknown as HTMLElement,
@@ -52,7 +50,6 @@ const BodyContent: React.FC = () => {
       transition: Slide,
       type: "info",
     });
-    window.localStorage.setItem("toastRendered", "true");
   }, []);
 
   const handleFocus = (_e: any, data: DraggableData) => {
@@ -65,7 +62,7 @@ const BodyContent: React.FC = () => {
     ref.prevNode = data.node;
     ref.prevZIndex = ref.prevNode.style.zIndex;
     ref.prevNode.style.zIndex = ref.newZIndex;
-    setFocusedWindow(data.node.id);
+    setFocusedWindow(data.node.id as FocusedWindowType);
   };
 
   return (
@@ -86,7 +83,7 @@ const BodyContent: React.FC = () => {
       {isWelcomeWindowOpen && !isWelcomeRendered ? (
         <WelcomeWindow handleFocus={handleFocus} />
       ) : null}
-      {isDesktopAboutOpen && !isToastRendered ? (
+      {isDesktopAboutOpen ? (
         <TopbarAboutWindow handleFocus={handleFocus} />
       ) : null}
       {isAboutOpen ? <AboutWindow handleFocus={handleFocus} /> : null}

@@ -1,11 +1,10 @@
 import * as React from "react";
-import useScreenSize, { MOBILE_MAX_WIDTH } from "../useScreenSize";
+import { FocusedWindowType } from "../../types";
 import { WindowsContext } from "./context";
 
 export const WindowsProvider: React.FC = ({ children }) => {
-  const { width, height } = useScreenSize();
-
-  const [focusedWindow, setFocusedWindow] = React.useState("Welcome");
+  const [focusedWindow, setFocusedWindow] =
+    React.useState<FocusedWindowType>("Welcome");
 
   const [isWelcomeWindowOpen, setWelcomeWindowOpen] = React.useState(true);
 
@@ -23,15 +22,9 @@ export const WindowsProvider: React.FC = ({ children }) => {
 
   const [isDesktopAboutOpen, setDesktopAboutOpen] = React.useState(false);
 
-  React.useEffect(() => {
-    if (width < MOBILE_MAX_WIDTH) {
-      if (isDesktopAboutOpen) setDesktopAboutOpen(false);
-    }
-  }, [width, height, isDesktopAboutOpen]);
-
   const closeWelcomeWindow = () => {
     setWelcomeWindowOpen(false);
-    setFocusedWindow("");
+    setFocusedWindow("None");
   };
 
   const toggleDesktopAboutOpen = () => {
@@ -40,7 +33,7 @@ export const WindowsProvider: React.FC = ({ children }) => {
     if (!isDesktopAboutOpen) {
       setFocusedWindow("DesktopAbout");
     } else {
-      setFocusedWindow("");
+      setFocusedWindow("None");
     }
   };
 
@@ -50,13 +43,13 @@ export const WindowsProvider: React.FC = ({ children }) => {
       setAboutMinimized(false);
       setFocusedWindow("About");
     } else {
-      setFocusedWindow("");
+      setFocusedWindow("None");
     }
   };
 
   const closeAbout = () => {
     setAboutOpen(false);
-    setFocusedWindow("");
+    setFocusedWindow("None");
   };
 
   const toggleAboutExpanded = () => {
@@ -70,13 +63,13 @@ export const WindowsProvider: React.FC = ({ children }) => {
       setSkillsMinimized(false);
       setFocusedWindow("Skills");
     } else {
-      setFocusedWindow("");
+      setFocusedWindow("None");
     }
   };
 
   const closeSkills = () => {
     setSkillsOpen(false);
-    setFocusedWindow("");
+    setFocusedWindow("None");
   };
 
   const toggleSkillsExpanded = () => {
@@ -90,13 +83,13 @@ export const WindowsProvider: React.FC = ({ children }) => {
       setProjectsMinimized(false);
       setFocusedWindow("Projects");
     } else {
-      setFocusedWindow("");
+      setFocusedWindow("None");
     }
   };
 
   const closeProjects = () => {
     setProjectsOpen(false);
-    setFocusedWindow("");
+    setFocusedWindow("None");
   };
 
   const toggleProjectsExpanded = () => {
