@@ -91,7 +91,7 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
     >
       <WindowTopbar
         title="About"
-        ref={aboutRef}
+        windowRef={aboutRef}
         size={aboutSize}
         setSize={setAboutSize}
         position={aboutPosition}

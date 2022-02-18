@@ -92,7 +92,7 @@ const SkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
     >
       <WindowTopbar
         title="Skills"
-        ref={skillsRef}
+        windowRef={skillsRef}
         size={skillsSize}
         setSize={setSkillsSize}
         position={skillsPosition}

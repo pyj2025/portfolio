@@ -101,7 +101,7 @@ const ProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
     >
       <WindowTopbar
         title="Projects"
-        ref={projectsRef}
+        windowRef={projectsRef}
         size={projectsSize}
         setSize={setProjectsSize}
         position={projectsPosition}

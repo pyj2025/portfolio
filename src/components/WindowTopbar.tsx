@@ -14,7 +14,7 @@ import useScreenSize from "../utils/useScreenSize";
 
 export type WindowTopbarProps = {
   title: string;
-  ref: any;
+  windowRef: any;
   size: WindowSizeSetting;
   setSize: (size: WindowSizeSetting) => void;
   position: WindowPositionSetting;
@@ -26,7 +26,7 @@ export type WindowTopbarProps = {
 
 const WindowTopbar: React.FC<WindowTopbarProps> = ({
   title,
-  ref,
+  windowRef,
   size,
   setSize,
   position,
@@ -182,8 +182,8 @@ const WindowTopbar: React.FC<WindowTopbarProps> = ({
         y: 0,
       });
     }
-    ref?.current.updateSize(size);
-    ref?.current.updatePosition(position);
+    windowRef?.current.updateSize(size);
+    windowRef?.current.updatePosition(position);
   };
 
   return (

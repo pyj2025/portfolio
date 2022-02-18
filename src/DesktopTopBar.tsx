@@ -9,7 +9,7 @@ import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { BoldText, MutedText } from "./GlobalStyle";
 import { useWindows } from "./utils/context/context";
 import useScreenSize from "./utils/useScreenSize";
-import { useClickAway } from "react-use";
+import useClickOutside from "./utils/useClickOutside";
 
 const Container = styled.div<{ width: number }>`
   display: flex;
@@ -65,12 +65,9 @@ const DesktopTopBar: React.FC = () => {
 
   const [menuOpen, setMenuOpen] = React.useState(false);
 
-  useClickAway(
-    mainMenuRef as React.MutableRefObject<HTMLDivElement | null>,
-    () => {
-      setMenuOpen(false);
-    }
-  );
+  useClickOutside(mainMenuRef, () => {
+    setMenuOpen(false);
+  });
 
   const handleClick = () => setMenuOpen(!menuOpen);
 
