@@ -10,8 +10,12 @@ const Container = styled.div`
 `;
 
 const DataRow = styled.div`
-  display: grid;
+  display: flex;
+  flex-direction: column;
+
   margin-bottom: 4px;
+  padding: 4px;
+  border: 1px solid red;
 `;
 
 const Experience: React.FC = () => {
