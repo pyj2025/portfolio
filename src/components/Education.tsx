@@ -1,16 +1,23 @@
 import React from "react";
 import styled from "styled-components";
-import { BoldText, TwoColumnsGrid } from "../GlobalStyle";
+import { BoldText } from "../GlobalStyle";
 import PurdueLogo from "../image/PurdueLogo.png";
 
-const Container = styled(TwoColumnsGrid)`
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   margin: 10px;
 `;
 
 const EducationContainer = styled.div`
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid red;
   margin: 10px;
 `;
 
