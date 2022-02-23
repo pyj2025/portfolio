@@ -7,8 +7,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
   margin: 10px;
 `;
 
@@ -17,7 +15,6 @@ const EducationContainer = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  border: 1px solid red;
   margin: 10px;
 `;
 
@@ -25,6 +22,7 @@ const LogoContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 10px;
 `;
 
 const PurdueLogoImage = styled.img`
@@ -35,7 +33,12 @@ const PurdueLogoImage = styled.img`
 
 const DataRowContainer = styled.div`
   display: grid;
-  grid-template-columns: 130px auto;
+  grid-template-columns: 120px auto;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 4px;
 `;
 
 const Education: React.FC = () => {

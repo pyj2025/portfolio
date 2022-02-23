@@ -4,7 +4,7 @@ import { BoldText } from "../GlobalStyle";
 
 const Container = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
   margin: 10px;
 `;
@@ -12,10 +12,18 @@ const Container = styled.div`
 const DataRow = styled.div`
   display: flex;
   flex-direction: column;
-
   margin-bottom: 4px;
   padding: 4px;
-  border: 1px solid red;
+`;
+
+const RowContainer = styled.div`
+  display: grid;
+  grid-template-columns: 80px auto;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 4px;
 `;
 
 const Experience: React.FC = () => {
@@ -23,23 +31,63 @@ const Experience: React.FC = () => {
     <Container>
       <DataRow>
         <BoldText>Junior Frontend Developer</BoldText>
-        <div>Enfusion, Chicago, IL, USA</div>
-        <div>Jan 2020 - Present</div>
+        <RowContainer>
+          <div>Name:</div>
+          <div>Enfusion</div>
+        </RowContainer>
+        <RowContainer>
+          <div>Location:</div>
+          <div>Chicago, IL, USA</div>
+        </RowContainer>
+        <RowContainer>
+          <div>Date:</div>
+          <div>Jan 2020 - Present</div>
+        </RowContainer>
       </DataRow>
       <DataRow>
         <BoldText>Undergraduate Teaching Assistant</BoldText>
-        <div>Purdue University, West Lafayette, IN, USA</div>
-        <div>Aug 2018 - Dec 2019</div>
+        <RowContainer>
+          <div>Name:</div>
+          <div>Purdue University</div>
+        </RowContainer>
+        <RowContainer>
+          <div>Location:</div>
+          <div>West Lafayette, IN, USA</div>
+        </RowContainer>
+        <RowContainer>
+          <div>Date:</div>
+          <div>Aug 2018 - Dec 2019</div>
+        </RowContainer>
       </DataRow>
       <DataRow>
         <BoldText>Technical Consultant Intern</BoldText>
-        <div>Dotis, Seoul, South Korea</div>
-        <div>Jun 2017 - Jul 2017</div>
+        <RowContainer>
+          <div>Name:</div>
+          <div>Dotis</div>
+        </RowContainer>
+        <RowContainer>
+          <div>Location:</div>
+          <div>Seoul, South Korea</div>
+        </RowContainer>
+        <RowContainer>
+          <div>Date:</div>
+          <div>Jun 2017 - Jul 2017</div>
+        </RowContainer>
       </DataRow>
       <DataRow>
         <BoldText>Software Engineering Intern</BoldText>
-        <div>Hyop Woon, Seoul, South Korea</div>
-        <div>Jul 2015 - Aug 2015</div>
+        <RowContainer>
+          <div>Name:</div>
+          <div>Hyop Woon International Co .,Ltd</div>
+        </RowContainer>
+        <RowContainer>
+          <div>Location:</div>
+          <div>Seoul, South Korea</div>
+        </RowContainer>
+        <RowContainer>
+          <div>Date:</div>
+          <div>Jul 2015 - Aug 2015</div>
+        </RowContainer>
       </DataRow>
     </Container>
   );
