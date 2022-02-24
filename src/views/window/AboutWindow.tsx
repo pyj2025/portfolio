@@ -63,13 +63,13 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
 
     if (name === "Experience") {
       setAboutSize({
-        width: aboutSize.width,
-        height: aboutSize.height + 150,
+        width: 500,
+        height: 300 + 150,
       });
     } else if (name === "Education") {
       setAboutSize({
-        width: aboutSize.width + 50,
-        height: aboutSize.height + 50,
+        width: 500 + 50,
+        height: 300 + 200,
       });
     }
   };

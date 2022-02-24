@@ -6,6 +6,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  gap: 4px;
   margin: 10px;
 `;
 
@@ -14,6 +15,11 @@ const DataRow = styled.div`
   flex-direction: column;
   margin-bottom: 4px;
   padding: 4px;
+  width: 100%;
+  max-width: 350px;
+  height: 100%;
+  border: 1px solid red;
+  border-radius: 8px;
 `;
 
 const RowContainer = styled.div`
