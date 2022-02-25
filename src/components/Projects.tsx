@@ -5,6 +5,12 @@ import DatApexLogo from "../image/DatApex.png";
 
 import { IndexType } from "../views/window/ProjectsWindow";
 import { MutedText, TwoColumnsGrid } from "../GlobalStyle";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+
+type ProjectsProps = {
+  click: (name: IndexType) => void;
+};
 
 const IconListContainer = styled.div`
   display: flex;
@@ -46,16 +52,13 @@ const LogoImage = styled.img`
 const DescriptionContainer = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 4px;
 `;
 
 const DescriptionRow = styled.div`
   display: grid;
   grid-template-columns: 30% auto;
 `;
-
-type ProjectsProps = {
-  click: (name: IndexType) => void;
-};
 
 export const Projects: React.FC<ProjectsProps> = ({ click }) => {
   return (
@@ -113,7 +116,11 @@ export const DatApex = () => {
         </DescriptionRow>
         <DescriptionRow>
           <MutedText>Link</MutedText>
-          <a href="https://github.com/SeoHyunAhn/DatApex">Link</a>
+          <a href="https://github.com/SeoHyunAhn/DatApex">
+            <span>
+              Link <FontAwesomeIcon icon={faExternalLinkAlt} />
+            </span>
+          </a>
         </DescriptionRow>
         <DescriptionRow>
           <MutedText>Detail</MutedText>
@@ -140,11 +147,15 @@ export const Portfolio = () => {
       <DescriptionContainer>
         <DescriptionRow>
           <MutedText>Name</MutedText>
-          <div>Portfolio</div>
+          <div>Joon's Portfolio</div>
         </DescriptionRow>
         <DescriptionRow>
-          <MutedText>Name</MutedText>
-          <a href="https://pyj2025.github.io/portfolio/">Link</a>
+          <MutedText>Link</MutedText>
+          <a href="https://pyj2025.github.io/portfolio/">
+            <span>
+              Link <FontAwesomeIcon icon={faExternalLinkAlt} />
+            </span>
+          </a>
         </DescriptionRow>
         <DescriptionRow>
           <MutedText>Detail</MutedText>
