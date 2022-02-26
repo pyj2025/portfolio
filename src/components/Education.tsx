@@ -1,21 +1,22 @@
 import React from "react";
 import styled from "styled-components";
-import { BoldText } from "../GlobalStyle";
+import { BoldText, MutedText } from "../GlobalStyle";
 import PurdueLogo from "../image/PurdueLogo.png";
 
 const Container = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
+  justify-content: center;
+  min-width: 20rem;
   margin: 10px;
 `;
 
 const EducationContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  width: 100%;
   align-items: center;
-  margin: 10px;
 `;
 
 const LogoContainer = styled.div`
@@ -49,19 +50,19 @@ const Education: React.FC = () => {
       </LogoContainer>
       <EducationContainer>
         <DataRowContainer>
-          <BoldText>Name</BoldText>
-          <div>Purdue University</div>
+          <MutedText>Name</MutedText>
+          <BoldText>Purdue University</BoldText>
         </DataRowContainer>
         <DataRowContainer>
-          <BoldText>Details</BoldText>
+          <MutedText>Details</MutedText>
           <div>Bachelor of Science in Computer Science</div>
         </DataRowContainer>
         <DataRowContainer>
-          <BoldText>Concentration</BoldText>
+          <MutedText>Concentration</MutedText>
           <div>Software Engineering</div>
         </DataRowContainer>
         <DataRowContainer>
-          <BoldText>Graduated</BoldText>
+          <MutedText>Graduated</MutedText>
           <div>Dec. 2019</div>
         </DataRowContainer>
       </EducationContainer>

@@ -61,16 +61,18 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const handleClick = (name: IndexType) => {
     setIndex(name);
 
-    if (name === "Experience") {
-      setAboutSize({
-        width: 500,
-        height: 300 + 150,
-      });
-    } else if (name === "Education") {
-      setAboutSize({
-        width: 500 + 50,
-        height: 300 + 200,
-      });
+    if (!isMobileWindow) {
+      if (name === "Experience") {
+        setAboutSize({
+          width: 500,
+          height: 300 + 150,
+        });
+      } else if (name === "Education") {
+        setAboutSize({
+          width: 500,
+          height: 300 + 80,
+        });
+      }
     }
   };
 
