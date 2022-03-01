@@ -8,10 +8,17 @@ import WelcomeWindow from "./window/WelcomeWindow";
 import SkillsWindow from "./window/SkillsWindow";
 import { useWindows } from "../utils/context/context";
 import { Slide, toast, ToastContainer } from "react-toastify";
-import { browserName, isBrowser, isMobile } from "react-device-detect";
+import {
+  browserName,
+  isBrowser,
+  isMobile,
+  isTablet,
+} from "react-device-detect";
 import "react-toastify/dist/ReactToastify.css";
 import TopbarAboutWindow from "./window/desktop/TopbarAboutWindow";
 import { FocusedWindowType } from "../types";
+import useScreenSize, { TABLET_MAX_WIDTH } from "../utils/useScreenSize";
+import MobileMenu from "../MobileMenu";
 
 const Container = styled.div`
   background-color: transparent;
@@ -31,6 +38,8 @@ const BodyContent: React.FC = () => {
     isProjectsOpen,
     setFocusedWindow,
   } = useWindows();
+  const { width } = useScreenSize();
+  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
   const isWelcomeRendered =
     window.localStorage.getItem("welcomeWindowRendered") === "true";
@@ -51,6 +60,14 @@ const BodyContent: React.FC = () => {
       type: "info",
     });
   }, []);
+
+  React.useEffect(() => {
+    if (isMobile || isTablet || width < TABLET_MAX_WIDTH) {
+      setMobileMenuOpen(true);
+    } else {
+      setMobileMenuOpen(false);
+    }
+  }, [width]);
 
   const handleFocus = (_e: any, data: DraggableData) => {
     const ref = windowRef.current;
@@ -79,7 +96,7 @@ const BodyContent: React.FC = () => {
         limit={1}
         draggablePercent={60}
       />
-
+      {mobileMenuOpen ? <MobileMenu /> : null}
       {isWelcomeWindowOpen && !isWelcomeRendered ? (
         <WelcomeWindow handleFocus={handleFocus} />
       ) : null}
