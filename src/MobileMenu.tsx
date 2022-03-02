@@ -1,11 +1,14 @@
-import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import { faCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import styled from "styled-components";
+import { useWindows } from "./utils/context/context";
+import useScreenSize, { TABLET_MAX_WIDTH } from "./utils/useScreenSize";
 
 const Container = styled.div`
   display: flex;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: flex-end;
   width: 100%;
   height: 100%;
 `;
@@ -13,8 +16,12 @@ const Container = styled.div`
 const MenuWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  width: 100%;
-  border: 1px solid blue;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1.2rem;
+  box-shadow: 2px 7px 15px 8px rgba(0, 0, 0, 0.4);
+  background-color: rgba(255, 255, 192, 0.1);
+  backdrop-filter: blur(10px);
 `;
 
 const MenuItem = styled.a`
@@ -23,7 +30,6 @@ const MenuItem = styled.a`
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: white;
   margin: 0 auto;
   box-sizing: border-box;
   transition: background-color 0.2s;
@@ -31,66 +37,102 @@ const MenuItem = styled.a`
   padding: 1rem;
   text-decoration: none;
   cursor: pointer;
+`;
 
-  border: 4px solid purple;
-
-  :hover {
-    background-color: rgba(255, 255, 192, 0.1);
-  }
+const MinimizedIcon = styled(FontAwesomeIcon)`
+  position: absolute;
+  height: 4px;
+  width: 4px;
+  padding-top: 3.5rem;
+  color: #aaaaaa;
 `;
 
 const MobileMenu: React.FC = () => {
-  const handleEmailClick = () => {
-    window.open("mailto:pyj2025@gmail.com");
+  const { width } = useScreenSize();
+  const {
+    isAboutOpen,
+    isSkillsOpen,
+    isProjectsOpen,
+    isAboutMinimized,
+    isSkillsMinimized,
+    isProjectsMinimized,
+    toggleAboutOpen,
+    toggleSkillsOpen,
+    toggleProjectsOpen,
+    closeAbout,
+    closeSkills,
+    closeProjects,
+  } = useWindows();
+  const [isMobileWindow, setIsMobileWindow] = React.useState(false);
+
+  React.useEffect(() => {
+    if (width < TABLET_MAX_WIDTH) {
+      setIsMobileWindow(true);
+    } else {
+      setIsMobileWindow(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [width]);
+
+  const handleAboutClick = () => {
+    if (isMobileWindow) {
+      if (isSkillsOpen) {
+        closeSkills();
+      } else if (isProjectsOpen) {
+        closeProjects();
+      }
+    }
+
+    toggleAboutOpen();
+  };
+
+  const handleSkillsClick = () => {
+    if (isMobileWindow) {
+      if (isAboutOpen) {
+        closeAbout();
+      } else if (isProjectsOpen) {
+        closeProjects();
+      }
+    }
+
+    toggleSkillsOpen();
+  };
+
+  const handleProjectsClick = () => {
+    if (isMobileWindow) {
+      if (isAboutOpen) {
+        closeAbout();
+      } else if (isSkillsOpen) {
+        closeSkills();
+      }
+    }
+
+    toggleProjectsOpen();
   };
 
   return (
     <Container>
       <MenuWrapper>
-        <MenuItem title="Resume" href="https://github.com/pyj2025">
-          <img src="https://img.icons8.com/color/48/000000/pdf.png" alt="pdf" />
-          <span>
-            Resume <FontAwesomeIcon icon={faExternalLinkAlt} />
-          </span>
-        </MenuItem>
-        <MenuItem title="Github" href="https://github.com/pyj2025">
+        <MenuItem title="About" onClick={handleAboutClick}>
           <img
-            src="https://img.icons8.com/material-outlined/48/000000/github.png"
-            alt="Github"
+            src="https://img.icons8.com/color/48/000000/mac-logo.png"
+            alt="Finder"
           />
-          <span>
-            Github <FontAwesomeIcon icon={faExternalLinkAlt} />
-          </span>
+          {isAboutMinimized ? <MinimizedIcon icon={faCircle} /> : null}
         </MenuItem>
-        <MenuItem title="Linkedin" href="https://www.linkedin.com/in/devjoon/">
+        <MenuItem title="Skills" onClick={handleSkillsClick}>
           <img
-            src="https://img.icons8.com/fluency/48/000000/linkedin.png"
-            alt="Linkedin"
+            src="https://img.icons8.com/color/48/000000/visual-studio-code-2019.png"
+            alt="visual-studio-code"
           />
-          <span>
-            Linkedin <FontAwesomeIcon icon={faExternalLinkAlt} />
-          </span>
+          {isSkillsMinimized ? <MinimizedIcon icon={faCircle} /> : null}
         </MenuItem>
-        <MenuItem
-          title="Facebook"
-          href="https://www.facebook.com/youngjoon.park.71"
-        >
+        <MenuItem title="Projects" onClick={handleProjectsClick}>
           <img
-            src="https://img.icons8.com/color/48/000000/facebook-new.png"
-            alt="Facebook"
+            src="https://img.icons8.com/color/48/000000/mac-folder.png"
+            alt="mac-folder"
           />
-          <span>
-            Facebook <FontAwesomeIcon icon={faExternalLinkAlt} />
-          </span>
-        </MenuItem>
-        <MenuItem title="Email" onClick={handleEmailClick}>
-          <img
-            src="https://img.icons8.com/color/48/000000/gmail-new.png"
-            alt="Email"
-          />
-          <span>
-            Email <FontAwesomeIcon icon={faExternalLinkAlt} />
-          </span>
+          {isProjectsMinimized ? <MinimizedIcon icon={faCircle} /> : null}
         </MenuItem>
       </MenuWrapper>
     </Container>

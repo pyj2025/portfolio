@@ -18,7 +18,7 @@ import "react-toastify/dist/ReactToastify.css";
 import TopbarAboutWindow from "./window/desktop/TopbarAboutWindow";
 import { FocusedWindowType } from "../types";
 import useScreenSize, { TABLET_MAX_WIDTH } from "../utils/useScreenSize";
-import MobileMenu from "../MobileMenu";
+import MobileApp from "../MobileApp";
 
 const Container = styled.div`
   background-color: transparent;
@@ -96,7 +96,7 @@ const BodyContent: React.FC = () => {
         limit={1}
         draggablePercent={60}
       />
-      {mobileMenuOpen ? <MobileMenu /> : null}
+      {mobileMenuOpen ? <MobileApp /> : null}
       {isWelcomeWindowOpen && !isWelcomeRendered ? (
         <WelcomeWindow handleFocus={handleFocus} />
       ) : null}
