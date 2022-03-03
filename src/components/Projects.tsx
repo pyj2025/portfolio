@@ -123,12 +123,17 @@ export const DatApex = () => {
           </a>
         </DescriptionRow>
         <DescriptionRow>
-          <MutedText>Detail</MutedText>
-          <div>###</div>
-        </DescriptionRow>
-        <DescriptionRow>
           <MutedText>Stack</MutedText>
           <div>React, Django, Bootstrap</div>
+        </DescriptionRow>
+        <DescriptionRow>
+          <MutedText>Detail</MutedText>
+          <div>
+            A web application that provides different preprocessing algorithms
+            which the users can run to modify their datasets and allow users to
+            run different machine learning algorithms on datasets uploaded by
+            them, and present accuracy plots/visualizations in a clean UI
+          </div>
         </DescriptionRow>
       </DescriptionContainer>
     </ContentContainer>
@@ -158,12 +163,12 @@ export const Portfolio = () => {
           </a>
         </DescriptionRow>
         <DescriptionRow>
-          <MutedText>Detail</MutedText>
-          <div>This site</div>
-        </DescriptionRow>
-        <DescriptionRow>
           <MutedText>Stack</MutedText>
           <div>React, Typescript, Styled-components</div>
+        </DescriptionRow>
+        <DescriptionRow>
+          <MutedText>Detail</MutedText>
+          <div>This site</div>
         </DescriptionRow>
       </DescriptionContainer>
     </ContentContainer>
@@ -200,12 +205,15 @@ export const Foodie = () => {
             <div>###</div>
           </DescriptionRow>
           <DescriptionRow>
-            <MutedText>Detail</MutedText>
-            <div>###</div>
+            <MutedText>Stack</MutedText>
+            <div>Swift, Firebase, Yelp API, and Google API</div>
           </DescriptionRow>
           <DescriptionRow>
-            <MutedText>Stack</MutedText>
-            <div>Swift, Firebase</div>
+            <MutedText>Detail</MutedText>
+            <div>
+              An application that recommends the dining places based on users’
+              preferences and connects users with QR code.
+            </div>
           </DescriptionRow>
         </DescriptionContainer>
       </ContentContainer>

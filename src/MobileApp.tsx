@@ -1,5 +1,10 @@
 import React from "react";
+import { isMobile, isTablet } from "react-device-detect";
 import styled from "styled-components";
+import useScreenSize, {
+  MOBILE_MAX_WIDTH,
+  TABLET_MAX_WIDTH,
+} from "./utils/useScreenSize";
 
 const Container = styled.div`
   display: flex;
@@ -8,11 +13,11 @@ const Container = styled.div`
   height: 100%;
 `;
 
-const MenuWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
+const MenuWrapper = styled.div<{ numOfCols: number }>`
+  display: grid;
+  grid-template-columns: ${({ numOfCols }) => `repeat(${numOfCols}, 1fr)`};
+  grid-gap: 8px;
   width: 100%;
-  border: 1px solid blue;
 `;
 
 const MenuItem = styled.a`
@@ -26,18 +31,32 @@ const MenuItem = styled.a`
   padding: 0.5rem;
   text-decoration: none;
   cursor: pointer;
-
-  border: 4px solid purple;
 `;
 
 const MobileApp: React.FC = () => {
+  const { width } = useScreenSize();
+  const [numOfCols, setNumOfCols] = React.useState(5);
+
+  React.useEffect(() => {
+    if (isMobile || width <= MOBILE_MAX_WIDTH) {
+      setNumOfCols(4);
+    } else if (
+      isTablet ||
+      (width > MOBILE_MAX_WIDTH && width <= TABLET_MAX_WIDTH)
+    ) {
+      setNumOfCols(5);
+    } else {
+      setNumOfCols(5);
+    }
+  }, [width]);
+
   const handleEmailClick = () => {
     window.open("mailto:pyj2025@gmail.com");
   };
 
   return (
     <Container>
-      <MenuWrapper>
+      <MenuWrapper numOfCols={numOfCols}>
         <MenuItem title="Resume" href="https://github.com/pyj2025">
           <img src="https://img.icons8.com/color/48/000000/pdf.png" alt="pdf" />
           <div>Resume</div>
