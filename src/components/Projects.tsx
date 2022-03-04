@@ -4,9 +4,6 @@ import FoodieLogo from "../image/Foodie.png";
 import DatApexLogo from "../image/DatApex.png";
 
 import { IndexType } from "../views/window/ProjectsWindow";
-import { MutedText, TwoColumnsGrid } from "../GlobalStyle";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 
 type ProjectsProps = {
   click: (name: IndexType) => void;
@@ -38,26 +35,6 @@ const IconLogoImage = styled.img`
 
 const IconLabel = styled.div`
   font-size: 0.75rem;
-`;
-
-const ContentContainer = styled(TwoColumnsGrid)`
-  margin: 10px;
-`;
-
-const LogoImage = styled.img`
-  width: 95%;
-  height: 95%;
-`;
-
-const DescriptionContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-`;
-
-const DescriptionRow = styled.div`
-  display: grid;
-  grid-template-columns: 30% auto;
 `;
 
 export const Projects: React.FC<ProjectsProps> = ({ click }) => {
@@ -103,78 +80,6 @@ export const WebProjects: React.FC<ProjectsProps> = ({ click }) => {
   );
 };
 
-export const DatApex = () => {
-  return (
-    <ContentContainer>
-      <div>
-        <LogoImage src={DatApexLogo} alt="DatApex" />
-      </div>
-      <DescriptionContainer>
-        <DescriptionRow>
-          <MutedText>Name</MutedText>
-          <div>DatApex</div>
-        </DescriptionRow>
-        <DescriptionRow>
-          <MutedText>Link</MutedText>
-          <a href="https://github.com/SeoHyunAhn/DatApex">
-            <span>
-              Link <FontAwesomeIcon icon={faExternalLinkAlt} />
-            </span>
-          </a>
-        </DescriptionRow>
-        <DescriptionRow>
-          <MutedText>Stack</MutedText>
-          <div>React, Django, Bootstrap</div>
-        </DescriptionRow>
-        <DescriptionRow>
-          <MutedText>Detail</MutedText>
-          <div>
-            A web application that provides different preprocessing algorithms
-            which the users can run to modify their datasets and allow users to
-            run different machine learning algorithms on datasets uploaded by
-            them, and present accuracy plots/visualizations in a clean UI
-          </div>
-        </DescriptionRow>
-      </DescriptionContainer>
-    </ContentContainer>
-  );
-};
-
-export const Portfolio = () => {
-  return (
-    <ContentContainer>
-      <div>
-        <img
-          src="https://img.icons8.com/color/96/000000/code-file.png"
-          alt="code-file"
-        />
-      </div>
-      <DescriptionContainer>
-        <DescriptionRow>
-          <MutedText>Name</MutedText>
-          <div>Joon's Portfolio</div>
-        </DescriptionRow>
-        <DescriptionRow>
-          <MutedText>Link</MutedText>
-          <a href="https://pyj2025.github.io/portfolio/">
-            <span>
-              Link <FontAwesomeIcon icon={faExternalLinkAlt} />
-            </span>
-          </a>
-        </DescriptionRow>
-        <DescriptionRow>
-          <MutedText>Stack</MutedText>
-          <div>React, Typescript, Styled-components</div>
-        </DescriptionRow>
-        <DescriptionRow>
-          <MutedText>Detail</MutedText>
-          <div>This site</div>
-        </DescriptionRow>
-      </DescriptionContainer>
-    </ContentContainer>
-  );
-};
-
 export const MobileProjects: React.FC<ProjectsProps> = ({ click }) => {
   return (
     <>
@@ -184,39 +89,6 @@ export const MobileProjects: React.FC<ProjectsProps> = ({ click }) => {
           <IconLabel>Foodie</IconLabel>
         </IconContainer>
       </IconListContainer>
-    </>
-  );
-};
-
-export const Foodie = () => {
-  return (
-    <>
-      <ContentContainer>
-        <div>
-          <LogoImage src={FoodieLogo} alt="Foodie" />
-        </div>
-        <DescriptionContainer>
-          <DescriptionRow>
-            <MutedText>Name</MutedText>
-            <div>Foodie</div>
-          </DescriptionRow>
-          <DescriptionRow>
-            <MutedText>Link</MutedText>
-            <div>###</div>
-          </DescriptionRow>
-          <DescriptionRow>
-            <MutedText>Stack</MutedText>
-            <div>Swift, Firebase, Yelp API, and Google API</div>
-          </DescriptionRow>
-          <DescriptionRow>
-            <MutedText>Detail</MutedText>
-            <div>
-              An application that recommends the dining places based on users’
-              preferences and connects users with QR code.
-            </div>
-          </DescriptionRow>
-        </DescriptionContainer>
-      </ContentContainer>
     </>
   );
 };

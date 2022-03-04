@@ -2,10 +2,7 @@ import React from "react";
 import { DraggableData, Position, ResizableDelta } from "react-rnd";
 import { WindowProps } from "../BodyContent";
 import {
-  DatApex,
-  Foodie,
   MobileProjects,
-  Portfolio,
   Projects,
   WebProjects,
 } from "../../components/Projects";
@@ -21,6 +18,9 @@ import {
 } from "../../GlobalStyle";
 import { WindowPositionSetting, WindowSizeSetting } from "../../types";
 import useScreenSize, { TABLET_MAX_WIDTH } from "../../utils/useScreenSize";
+import Foodie from "../../components/projects/Foodie";
+import Portfolio from "../../components/projects/Portfolio";
+import DatApex from "../../components/projects/DatApex";
 
 export type IndexType =
   | "Projects"

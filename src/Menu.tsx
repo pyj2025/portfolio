@@ -143,12 +143,6 @@ const Menu: React.FC = () => {
           />
           {isProjectsMinimized ? <MinimizedIcon icon={faCircle} /> : null}
         </MenuItem>
-        <MenuItem title="Settings" onClick={toggleProjectsOpen}>
-          <img
-            src="https://img.icons8.com/color/48/000000/apple-settings.png"
-            alt="apple-settings"
-          />
-        </MenuItem>
         <MenuItem title="Resume" href="https://github.com/pyj2025">
           <img src="https://img.icons8.com/color/48/000000/pdf.png" alt="pdf" />
         </MenuItem>
