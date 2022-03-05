@@ -17,8 +17,11 @@ const SkillsIconContainer = styled.div<{ noWidth?: boolean }>`
   align-items: center;
 `;
 
-const IconLabel = styled.div`
+const IconLabel = styled.div<{ noWidth?: boolean }>`
   font-size: 0.75rem;
+
+  display: flex;
+  flex-wrap: wrap;
 `;
 
 const FrontEnd: React.FC = () => {
@@ -54,15 +57,12 @@ const FrontEnd: React.FC = () => {
       </SkillsIconContainer>
       <SkillsIconContainer>
         <img
-          src="https://img.icons8.com/ios-filled/50/000000/jquery.png"
+          src="https://img.icons8.com/ios-filled/48/000000/jquery.png"
           alt="jQuery"
         />
         <IconLabel>jQuery</IconLabel>
       </SkillsIconContainer>
-      <SkillsIconContainer>
-        <img src="https://img.icons8.com/color/50/000000/sass.png" alt="SASS" />
-        <IconLabel>SASS</IconLabel>
-      </SkillsIconContainer>
+
       <SkillsIconContainer>
         <img
           src="https://img.icons8.com/color/48/000000/bootstrap.png"
@@ -71,18 +71,22 @@ const FrontEnd: React.FC = () => {
         <IconLabel>Bootstrap</IconLabel>
       </SkillsIconContainer>
       <SkillsIconContainer>
-        <img
-          src="https://img.icons8.com/color/48/000000/code-file.png"
-          alt="Styled-components"
-        />
-        <IconLabel>Styled-components</IconLabel>
+        <img src="https://img.icons8.com/color/48/000000/sass.png" alt="SASS" />
+        <IconLabel>SASS</IconLabel>
       </SkillsIconContainer>
       <SkillsIconContainer>
         <img
-          src="https://img.icons8.com/color/48/000000/code-file.png"
-          alt="Tailwind"
+          src="https://img.icons8.com/external-flat-juicy-fish/48/000000/external-css-coding-and-development-flat-flat-juicy-fish-2.png"
+          alt="css-file"
         />
         <IconLabel>Tailwind</IconLabel>
+      </SkillsIconContainer>
+      <SkillsIconContainer noWidth>
+        <img
+          src="https://img.icons8.com/external-flat-juicy-fish/48/000000/external-css-coding-and-development-flat-flat-juicy-fish-2.png"
+          alt="css-file"
+        />
+        <IconLabel>Styled-components</IconLabel>
       </SkillsIconContainer>
     </ContentContainer>
   );

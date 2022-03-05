@@ -51,13 +51,13 @@ const ProgrammingLanguage: React.FC = () => {
       </SkillsIconContainer>
       <SkillsIconContainer>
         <img
-          src="https://img.icons8.com/color/48/000000/html.png"
+          src="https://img.icons8.com/color/48/000000/html-5--v1.png"
           alt="HTML5"
         />
         <IconLabel>HTML5</IconLabel>
       </SkillsIconContainer>
       <SkillsIconContainer>
-        <img src="https://img.icons8.com/color/48/000000/css.png" alt="css" />
+        <img src="https://img.icons8.com/color/48/000000/css3.png" alt="css" />
         <IconLabel>CSS3</IconLabel>
       </SkillsIconContainer>
       <SkillsIconContainer>
@@ -75,19 +75,18 @@ const ProgrammingLanguage: React.FC = () => {
         <IconLabel>C/C++</IconLabel>
       </SkillsIconContainer>
       <SkillsIconContainer>
-        <img src="https://img.icons8.com/color/48/000000/sql.png" alt="SQL" />
-        <IconLabel>SQL</IconLabel>
-      </SkillsIconContainer>
-      <SkillsIconContainer>
-        <img src="https://img.icons8.com/color/48/000000/php.png" alt="PHP" />
-        <IconLabel>PHP</IconLabel>
-      </SkillsIconContainer>
-      <SkillsIconContainer>
         <img
-          src="https://img.icons8.com/color/48/000000/mysql.png"
+          src="https://img.icons8.com/fluency/48/000000/mysql-logo.png"
           alt="MySQL"
         />
         <IconLabel>MySQL</IconLabel>
+      </SkillsIconContainer>
+      <SkillsIconContainer>
+        <img
+          src="https://img.icons8.com/officel/48/000000/php-logo.png"
+          alt="PHP"
+        />
+        <IconLabel>PHP</IconLabel>
       </SkillsIconContainer>
       <SkillsIconContainer>
         <img
@@ -97,7 +96,10 @@ const ProgrammingLanguage: React.FC = () => {
         <IconLabel>PL/SQL</IconLabel>
       </SkillsIconContainer>
       <SkillsIconContainer>
-        <img src="https://img.icons8.com/color/48/000000/r.png" alt="R" />
+        <img
+          src="https://img.icons8.com/external-becris-flat-becris/48/000000/external-r-data-science-becris-flat-becris.png"
+          alt="R"
+        />
         <IconLabel>R</IconLabel>
       </SkillsIconContainer>
     </ContentContainer>

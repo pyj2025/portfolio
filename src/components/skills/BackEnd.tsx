@@ -45,7 +45,7 @@ const BackEnd: React.FC = () => {
         />
         <IconLabel>Spring</IconLabel>
       </SkillsIconContainer>
-      <SkillsIconContainer>
+      <SkillsIconContainer noWidth>
         <img
           src="https://img.icons8.com/color/48/000000/code-file.png"
           alt="ASP.Net Core"
@@ -54,7 +54,7 @@ const BackEnd: React.FC = () => {
       </SkillsIconContainer>
       <SkillsIconContainer>
         <img
-          src="https://img.icons8.com/ios-filled/50/000000/laravel.png"
+          src="https://img.icons8.com/ios-filled/48/000000/laravel.png"
           alt="Laravel"
         />
         <IconLabel>Laravel</IconLabel>
