@@ -79,7 +79,7 @@ const ProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
       size={{ width: projectsSize.width, height: projectsSize.height }}
       position={{ x: projectsPosition.x, y: projectsPosition.y }}
       dragHandleClassName="topbar"
-      minWidth={525}
+      minWidth={isMobileWindow ? width : 525}
       minHeight={300}
       onDragStart={handleFocus}
       onDragStop={(_e: any, data: DraggableData) => {
