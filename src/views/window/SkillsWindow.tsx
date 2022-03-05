@@ -10,15 +10,14 @@ import {
   WindowBodyNavbar,
   WindowBodyNavItm,
 } from "../../GlobalStyle";
-import {
-  BackEnd,
-  FrontEnd,
-  Mobile,
-  ProgrammingLanguage,
-} from "../../components/Skills";
+
 import useScreenSize, { TABLET_MAX_WIDTH } from "../../utils/useScreenSize";
 import { WindowProps } from "../BodyContent";
 import WindowTopbar from "../../components/WindowTopbar";
+import FrontEnd from "../../components/skills/FrontEnd";
+import BackEnd from "../../components/skills/BackEnd";
+import Mobile from "../../components/skills/Mobile";
+import ProgrammingLanguage from "../../components/skills/ProgrammingLanguage";
 
 type IndexType = "Front" | "Back" | "Mobile" | "Programming";
 
