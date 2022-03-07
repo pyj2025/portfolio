@@ -4,7 +4,10 @@ import { Rnd } from "react-rnd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import Typist from "react-typist";
-import useScreenSize, { TABLET_MAX_WIDTH } from "../../utils/useScreenSize";
+import useScreenSize, {
+  MOBILE_MAX_WIDTH,
+  TABLET_MAX_WIDTH,
+} from "../../utils/useScreenSize";
 import { useWindows } from "../../utils/context/context";
 import { WindowProps } from "../BodyContent";
 import { WindowPositionSetting, WindowSizeSetting } from "../../types";
@@ -93,7 +96,7 @@ const WindowBody = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   width: 100%;
-  height: 422px;
+  height: calc(100% - 28px);
   background-color: #282a36;
   color: #ffffff;
   border-bottom-left-radius: 6px;
@@ -178,6 +181,8 @@ const WelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
     width: 700,
     height: 450,
   });
+  const [isMobileWindow, setIsMobileWindow] = React.useState(false);
+  const [isMobileTerminal, setIsMobileTerminal] = React.useState(false);
 
   const [firstLine, setFirstLine] = React.useState(false);
   const [secondLine, setSecondLine] = React.useState(false);
@@ -186,15 +191,24 @@ const WelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const [thirdContent, setThirdContent] = React.useState(false);
 
   React.useEffect(() => {
-    if (width < TABLET_MAX_WIDTH) {
+    if (width <= TABLET_MAX_WIDTH) {
+      if (width <= MOBILE_MAX_WIDTH) {
+        setIsMobileTerminal(true);
+      } else {
+        setIsMobileTerminal(false);
+      }
       setWindowSize({
         width,
-        height,
+        height: height - 80 - 25,
       });
       setWindowPosition({
         x: 0,
         y: 0,
       });
+      setIsMobileWindow(true);
+    } else {
+      setIsMobileWindow(false);
+      setIsMobileTerminal(false);
     }
   }, [width, height]);
 
@@ -202,12 +216,8 @@ const WelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
     <Window
       id="Welcome"
       ref={welcomeRef}
-      default={{
-        x: windowPosition.x,
-        y: windowPosition.y,
-        width: windowSize.width,
-        height: windowSize.height,
-      }}
+      size={{ width: windowSize.width, height: windowSize.height }}
+      position={{ x: windowPosition.x, y: windowPosition.y }}
       dragHandleClassName="topbar"
       onDragStart={handleFocus}
       enableResizing={false}
@@ -333,7 +343,7 @@ const WelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
                 }}
                 onTypingDone={() => {
                   setThirdContent(true);
-                  window.localStorage.setItem("welcomeWindowRendered", "true");
+                  // window.localStorage.setItem("welcomeWindowRendered", "true");
                 }}
               >
                 cat contact.md

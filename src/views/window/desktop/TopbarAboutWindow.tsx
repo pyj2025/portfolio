@@ -27,7 +27,7 @@ const WindowBody = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 272px;
+  height: calc(100% - 28px);
   color: black;
 `;
 
