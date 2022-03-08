@@ -166,7 +166,7 @@ const ContentLineArrow = styled(FontAwesomeIcon)`
   margin-right: 8px;
 `;
 
-const WelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
+const MobileWelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
   const { focusedWindow, closeWelcomeWindow } = useWindows();
 
@@ -249,7 +249,7 @@ const WelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         {firstLine ? (
           <TerminalRow>
             <TerminalBadge>
-              <FirstBadge>joon@MacBook-Air</FirstBadge>
+              <FirstBadge>joon</FirstBadge>
               <BadgeArrow first />
             </TerminalBadge>
             <TerminalLine>
@@ -271,10 +271,8 @@ const WelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         {secondLine ? (
           <TerminalRow>
             <TerminalBadge>
-              <FirstBadge>joon@MacBook-Air</FirstBadge>
-              <BadgeArrow />
-              <SecondBadge>~/portfolio</SecondBadge>
-              <SecondBadgeArrow />
+              <FirstBadge>~/portfolio</FirstBadge>
+              <BadgeArrow first />
             </TerminalBadge>
             <TerminalLine>
               <Typist
@@ -316,10 +314,8 @@ const WelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         {thirdLine ? (
           <TerminalRow>
             <TerminalBadge>
-              <FirstBadge>joon@MacBook-Air</FirstBadge>
-              <BadgeArrow />
-              <SecondBadge>~/portfolio</SecondBadge>
-              <SecondBadgeArrow />
+              <FirstBadge>~/portfolio</FirstBadge>
+              <BadgeArrow first />
             </TerminalBadge>
             <TerminalLine>
               <Typist
@@ -362,4 +358,4 @@ const WelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   );
 };
 
-export default WelcomeWindow;
+export default MobileWelcomeWindow;

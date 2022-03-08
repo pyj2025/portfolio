@@ -17,8 +17,12 @@ import {
 import "react-toastify/dist/ReactToastify.css";
 import TopbarAboutWindow from "./window/desktop/TopbarAboutWindow";
 import { FocusedWindowType } from "../types";
-import useScreenSize, { TABLET_MAX_WIDTH } from "../utils/useScreenSize";
+import useScreenSize, {
+  MOBILE_MAX_WIDTH,
+  TABLET_MAX_WIDTH,
+} from "../utils/useScreenSize";
 import MobileApp from "../MobileApp";
+import MobileWelcomeWindow from "./window/MobileWelcomeWindow";
 
 const Container = styled.div`
   background-color: transparent;
@@ -40,6 +44,7 @@ const BodyContent: React.FC = () => {
   } = useWindows();
   const { width } = useScreenSize();
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+  const [mobileWindow, setMobileWindow] = React.useState(false);
 
   const isWelcomeRendered =
     window.localStorage.getItem("welcomeWindowRendered") === "true";
@@ -62,9 +67,15 @@ const BodyContent: React.FC = () => {
   }, []);
 
   React.useEffect(() => {
-    if (isMobile || isTablet || width < TABLET_MAX_WIDTH) {
+    if (isMobile || isTablet || width <= TABLET_MAX_WIDTH) {
+      if (width <= MOBILE_MAX_WIDTH) {
+        setMobileWindow(true);
+      } else {
+        setMobileWindow(false);
+      }
       setMobileMenuOpen(true);
     } else {
+      setMobileWindow(false);
       setMobileMenuOpen(false);
     }
   }, [width]);
@@ -82,6 +93,8 @@ const BodyContent: React.FC = () => {
     setFocusedWindow(data.node.id as FocusedWindowType);
   };
 
+  const welcomeWindowCheck = isWelcomeWindowOpen && !isWelcomeRendered;
+
   return (
     <Container>
       <ToastContainer
@@ -97,9 +110,13 @@ const BodyContent: React.FC = () => {
         draggablePercent={60}
       />
       {mobileMenuOpen ? <MobileApp /> : null}
-      {isWelcomeWindowOpen && !isWelcomeRendered ? (
+      {welcomeWindowCheck && (isMobile || mobileWindow) ? (
+        <MobileWelcomeWindow handleFocus={handleFocus} />
+      ) : null}
+      {welcomeWindowCheck && !isMobile && !mobileWindow ? (
         <WelcomeWindow handleFocus={handleFocus} />
       ) : null}
+
       {isDesktopAboutOpen ? (
         <TopbarAboutWindow handleFocus={handleFocus} />
       ) : null}
