@@ -116,7 +116,6 @@ const BodyContent: React.FC = () => {
       {welcomeWindowCheck && !isMobile && !mobileWindow ? (
         <WelcomeWindow handleFocus={handleFocus} />
       ) : null}
-
       {isDesktopAboutOpen ? (
         <TopbarAboutWindow handleFocus={handleFocus} />
       ) : null}

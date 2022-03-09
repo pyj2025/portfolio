@@ -11,6 +11,7 @@ import useScreenSize, {
 import { useWindows } from "../../utils/context/context";
 import { WindowProps } from "../BodyContent";
 import { WindowPositionSetting, WindowSizeSetting } from "../../types";
+import Loaded from "../../components/welcome/Loaded";
 
 const Window = styled(Rnd)`
   width: 100%;
@@ -109,10 +110,6 @@ const TerminalRow = styled.div`
   justify-content: flex-start;
   align-items: center;
   margin: 4px 8px;
-`;
-
-const LoadedCommandLine = styled(Typist)`
-  margin-top: 8px;
 `;
 
 const TerminalBadge = styled.div`
@@ -232,20 +229,7 @@ const MobileWelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         </TopbarTitle>
       </WindowTopbar>
       <WindowBody>
-        <TerminalRow>
-          <LoadedCommandLine
-            cursor={{
-              show: true,
-              blink: true,
-              element: "|",
-              hideWhenDone: true,
-              hideWhenDoneDelay: 100,
-            }}
-            onTypingDone={() => setFirstLine(true)}
-          >
-            Loaded...
-          </LoadedCommandLine>
-        </TerminalRow>
+        <Loaded setFirstLine={setFirstLine} />
         {firstLine ? (
           <TerminalRow>
             <TerminalBadge>
