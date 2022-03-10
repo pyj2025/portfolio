@@ -41,7 +41,7 @@ const Contact: React.FC = () => {
         <ContentLine>## Phone Number</ContentLine>
         <ContentLine>
           <ContentLineArrow icon={faAngleRight} />
-          <div>312-9374435</div>
+          <div>(+1) 312-9374435</div>
         </ContentLine>
       </TerminalLine>
     </TerminalRow>

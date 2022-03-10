@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { BoldText } from "../GlobalStyle";
+import { BoldText, MutedText } from "../GlobalStyle";
 
 const Container = styled.div`
   display: flex;
@@ -38,60 +38,60 @@ const Experience: React.FC = () => {
       <DataRow>
         <BoldText>Junior Frontend Developer</BoldText>
         <RowContainer>
-          <div>Name:</div>
+          <MutedText>Name</MutedText>
           <div>Enfusion</div>
         </RowContainer>
         <RowContainer>
-          <div>Location:</div>
+          <MutedText>Location</MutedText>
           <div>Chicago, IL, USA</div>
         </RowContainer>
         <RowContainer>
-          <div>Date:</div>
+          <MutedText>Date</MutedText>
           <div>Jan 2020 - Present</div>
         </RowContainer>
       </DataRow>
       <DataRow>
         <BoldText>Undergraduate Teaching Assistant</BoldText>
         <RowContainer>
-          <div>Name:</div>
+          <MutedText>Name</MutedText>
           <div>Purdue University</div>
         </RowContainer>
         <RowContainer>
-          <div>Location:</div>
+          <MutedText>Location</MutedText>
           <div>West Lafayette, IN, USA</div>
         </RowContainer>
         <RowContainer>
-          <div>Date:</div>
+          <MutedText>Date</MutedText>
           <div>Aug 2018 - Dec 2019</div>
         </RowContainer>
       </DataRow>
       <DataRow>
         <BoldText>Technical Consultant Intern</BoldText>
         <RowContainer>
-          <div>Name:</div>
+          <MutedText>Name</MutedText>
           <div>Dotis</div>
         </RowContainer>
         <RowContainer>
-          <div>Location:</div>
+          <MutedText>Location</MutedText>
           <div>Seoul, South Korea</div>
         </RowContainer>
         <RowContainer>
-          <div>Date:</div>
+          <MutedText>Date</MutedText>
           <div>Jun 2017 - Jul 2017</div>
         </RowContainer>
       </DataRow>
       <DataRow>
         <BoldText>Software Engineering Intern</BoldText>
         <RowContainer>
-          <div>Name:</div>
+          <MutedText>Name</MutedText>
           <div>Hyop Woon International Co .,Ltd</div>
         </RowContainer>
         <RowContainer>
-          <div>Location:</div>
+          <MutedText>Location</MutedText>
           <div>Seoul, South Korea</div>
         </RowContainer>
         <RowContainer>
-          <div>Date:</div>
+          <MutedText>Date</MutedText>
           <div>Jul 2015 - Aug 2015</div>
         </RowContainer>
       </DataRow>

@@ -90,7 +90,7 @@ const ProgrammingLanguage: React.FC = () => {
       </SkillsIconContainer>
       <SkillsIconContainer>
         <img
-          src="https://img.icons8.com/color/48/000000/swift.png"
+          src="https://img.icons8.com/color/48/000000/code-file.png"
           alt="PL/SQL"
         />
         <IconLabel>PL/SQL</IconLabel>
