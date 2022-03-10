@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { Rnd } from "react-rnd";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import Typist from "react-typist";
 import useScreenSize, {
   MOBILE_MAX_WIDTH,
@@ -12,6 +10,8 @@ import { useWindows } from "../../utils/context/context";
 import { WindowProps } from "../BodyContent";
 import { WindowPositionSetting, WindowSizeSetting } from "../../types";
 import Loaded from "../../components/welcome/Loaded";
+import Intro from "../../components/welcome/Intro";
+import Contact from "../../components/welcome/Contact";
 
 const Window = styled(Rnd)`
   width: 100%;
@@ -134,33 +134,8 @@ const BadgeArrow = styled.div<{ first?: boolean }>`
   border-left: 13px solid #000000;
 `;
 
-const SecondBadge = styled.div`
-  background-color: #caa9fa;
-  color: #000000;
-  padding: 4px 10px;
-  border: none;
-`;
-
-const SecondBadgeArrow = styled(BadgeArrow)`
-  background-color: transparent;
-  border-left: 13px solid #caa9fa;
-`;
-
 const TerminalLine = styled.div`
   margin-left: 8px;
-`;
-
-const ContentLine = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  margin-top: 2px;
-`;
-
-const ContentLineArrow = styled(FontAwesomeIcon)`
-  font-size: 18px;
-  margin-right: 8px;
 `;
 
 const MobileWelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
@@ -233,7 +208,7 @@ const MobileWelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         {firstLine ? (
           <TerminalRow>
             <TerminalBadge>
-              <FirstBadge>joon</FirstBadge>
+              <FirstBadge>~/</FirstBadge>
               <BadgeArrow first />
             </TerminalBadge>
             <TerminalLine>
@@ -255,7 +230,7 @@ const MobileWelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         {secondLine ? (
           <TerminalRow>
             <TerminalBadge>
-              <FirstBadge>~/portfolio</FirstBadge>
+              <FirstBadge>~/portfolio/</FirstBadge>
               <BadgeArrow first />
             </TerminalBadge>
             <TerminalLine>
@@ -277,28 +252,11 @@ const MobileWelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
             </TerminalLine>
           </TerminalRow>
         ) : null}
-        {secondContent ? (
-          <TerminalRow>
-            <TerminalLine>
-              <ContentLine># Hi, I'm Joon.</ContentLine>
-              <ContentLine>
-                <ContentLineArrow icon={faAngleRight} />
-                <div>I'm a front-end developer at Enfusion</div>
-              </ContentLine>
-              <ContentLine>
-                <ContentLineArrow icon={faAngleRight} />
-                <div>
-                  I'm an alumnus of Purdue University Computer Science (Software
-                  Engineering)
-                </div>
-              </ContentLine>
-            </TerminalLine>
-          </TerminalRow>
-        ) : null}
+        {secondContent ? <Intro /> : null}
         {thirdLine ? (
           <TerminalRow>
             <TerminalBadge>
-              <FirstBadge>~/portfolio</FirstBadge>
+              <FirstBadge>~/portfolio/</FirstBadge>
               <BadgeArrow first />
             </TerminalBadge>
             <TerminalLine>
@@ -320,23 +278,7 @@ const MobileWelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
             </TerminalLine>
           </TerminalRow>
         ) : null}
-        {thirdContent ? (
-          <TerminalRow>
-            <TerminalLine>
-              <ContentLine># Info</ContentLine>
-              <ContentLine>## Email</ContentLine>
-              <ContentLine>
-                <ContentLineArrow icon={faAngleRight} />
-                <div> pyj2025@gmail.com</div>
-              </ContentLine>
-              <ContentLine>## Phone Number</ContentLine>
-              <ContentLine>
-                <ContentLineArrow icon={faAngleRight} />
-                <div>312-9374435</div>
-              </ContentLine>
-            </TerminalLine>
-          </TerminalRow>
-        ) : null}
+        {thirdContent ? <Contact /> : null}
       </WindowBody>
     </Window>
   );
