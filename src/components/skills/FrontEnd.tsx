@@ -5,23 +5,23 @@ const ContentContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 0.5rem;
   margin: 10px;
 `;
 
-const SkillsIconContainer = styled.div<{ noWidth?: boolean }>`
+const SkillsIconContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: ${({ noWidth }) => (noWidth ? undefined : "60px")};
+  width: 4rem;
+  height: 4rem;
   justify-content: center;
   align-items: center;
 `;
 
-const IconLabel = styled.div<{ noWidth?: boolean }>`
+const IconLabel = styled.div`
   font-size: 0.75rem;
-
-  display: flex;
-  flex-wrap: wrap;
+  text-align: center;
+  height: 1em;
 `;
 
 const FrontEnd: React.FC = () => {
@@ -36,17 +36,17 @@ const FrontEnd: React.FC = () => {
       </SkillsIconContainer>
       <SkillsIconContainer>
         <img
-          src="https://img.icons8.com/color/48/000000/angularjs.png"
-          alt="Angular"
-        />
-        <IconLabel>Angular</IconLabel>
-      </SkillsIconContainer>
-      <SkillsIconContainer>
-        <img
           src="https://img.icons8.com/color/48/000000/vue-js.png"
           alt="Vue"
         />
         <IconLabel>Vue</IconLabel>
+      </SkillsIconContainer>
+      <SkillsIconContainer>
+        <img
+          src="https://img.icons8.com/color/48/000000/angularjs.png"
+          alt="Angular"
+        />
+        <IconLabel>Angular</IconLabel>
       </SkillsIconContainer>
       <SkillsIconContainer>
         <img
@@ -81,12 +81,12 @@ const FrontEnd: React.FC = () => {
         />
         <IconLabel>Tailwind</IconLabel>
       </SkillsIconContainer>
-      <SkillsIconContainer noWidth>
+      <SkillsIconContainer>
         <img
           src="https://img.icons8.com/external-flat-juicy-fish/48/000000/external-css-coding-and-development-flat-flat-juicy-fish-2.png"
           alt="css-file"
         />
-        <IconLabel>Styled-components</IconLabel>
+        <IconLabel>styled-components</IconLabel>
       </SkillsIconContainer>
     </ContentContainer>
   );
