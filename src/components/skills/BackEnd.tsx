@@ -5,20 +5,23 @@ const ContentContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 0.5rem;
   margin: 10px;
 `;
 
 const SkillsIconContainer = styled.div<{ noWidth?: boolean }>`
   display: flex;
   flex-direction: column;
-  width: ${({ noWidth }) => (noWidth ? undefined : "60px")};
+  width: 4rem;
+  height: 4rem;
   justify-content: center;
   align-items: center;
 `;
 
 const IconLabel = styled.div`
   font-size: 0.75rem;
+  text-align: center;
+  height: 1em;
 `;
 
 const BackEnd: React.FC = () => {
