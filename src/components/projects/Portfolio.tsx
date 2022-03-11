@@ -47,7 +47,11 @@ const Portfolio: React.FC = () => {
         </DescriptionRow>
         <DescriptionRow>
           <MutedText>Detail</MutedText>
-          <div>This site</div>
+          <div>
+            Joon's portfolio aka this site. It presents who am I, what skills I
+            have, and what kind of work experience I have. Also, it provides the
+            contact methods.
+          </div>
         </DescriptionRow>
       </DescriptionContainer>
     </ContentContainer>
