@@ -50,6 +50,14 @@ const FrontEnd: React.FC = () => {
       </SkillsIconContainer>
       <SkillsIconContainer>
         <img
+          src="https://api.iconify.design/logos/nextjs.svg"
+          style={{ width: 48, height: 48 }}
+          alt="nextjs"
+        />
+        <IconLabel>Nextjs</IconLabel>
+      </SkillsIconContainer>
+      <SkillsIconContainer>
+        <img
           src="https://img.icons8.com/color/48/000000/redux.png"
           alt="Redux"
         />
@@ -62,7 +70,6 @@ const FrontEnd: React.FC = () => {
         />
         <IconLabel>jQuery</IconLabel>
       </SkillsIconContainer>
-
       <SkillsIconContainer>
         <img
           src="https://img.icons8.com/color/48/000000/bootstrap.png"
@@ -76,8 +83,9 @@ const FrontEnd: React.FC = () => {
       </SkillsIconContainer>
       <SkillsIconContainer>
         <img
-          src="https://img.icons8.com/external-flat-juicy-fish/48/000000/external-css-coding-and-development-flat-flat-juicy-fish-2.png"
-          alt="css-file"
+          src="https://api.iconify.design/vscode-icons/file-type-tailwind.svg"
+          style={{ width: 48, height: 48 }}
+          alt="tailwind"
         />
         <IconLabel>Tailwind</IconLabel>
       </SkillsIconContainer>

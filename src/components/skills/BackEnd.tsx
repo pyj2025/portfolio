@@ -36,7 +36,8 @@ const BackEnd: React.FC = () => {
       </SkillsIconContainer>
       <SkillsIconContainer>
         <img
-          src="https://img.icons8.com/color/48/000000/code-file.png"
+          src="https://api.iconify.design/logos/express.svg"
+          style={{ width: 48, height: 48, backgroundColor: "white" }}
           alt="Express"
         />
         <IconLabel>Express</IconLabel>

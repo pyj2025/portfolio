@@ -35,7 +35,7 @@ const Intro: React.FC = () => {
         <ContentLine># Hi, I'm Joon.</ContentLine>
         <ContentLine>
           <ContentLineArrow icon={faAngleRight} />
-          <div>I'm a front-end developer at Enfusion</div>
+          <div>I'm a front-end developer.</div>
         </ContentLine>
         <ContentLine>
           <ContentLineArrow icon={faAngleRight} />
@@ -43,6 +43,10 @@ const Intro: React.FC = () => {
             I'm an alumnus of Purdue University Computer Science (Software
             Engineering)
           </div>
+        </ContentLine>
+        <ContentLine>
+          <ContentLineArrow icon={faAngleRight} />
+          <div>Feel free to explore and hope you enjoy my website</div>
         </ContentLine>
       </TerminalLine>
     </TerminalRow>
