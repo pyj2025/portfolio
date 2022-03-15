@@ -109,7 +109,7 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
           >
             <TopbarTitleImage
               src="https://img.icons8.com/color/48/000000/file.png"
-              alt="folder"
+              alt="file"
             />
             <NavItmLabel>Personal Info</NavItmLabel>
           </WindowBodyNavItm>
@@ -118,7 +118,7 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
             focus={index === "Experience"}
           >
             <TopbarTitleImage
-              src="https://img.icons8.com/color/48/000000/file.png"
+              src="https://img.icons8.com/color/48/000000/mac-folder.png"
               alt="folder"
             />
             <NavItmLabel>Experience</NavItmLabel>
@@ -129,7 +129,7 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
           >
             <TopbarTitleImage
               src="https://img.icons8.com/color/48/000000/file.png"
-              alt="folder"
+              alt="file"
             />
             <NavItmLabel>Education</NavItmLabel>
           </WindowBodyNavItm>
