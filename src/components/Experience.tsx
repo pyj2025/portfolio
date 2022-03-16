@@ -13,11 +13,28 @@ const Container = styled.div`
 `;
 
 const DataRow = styled.div<{ isEven?: boolean }>`
+  display: flex;
+  flex-direction: row;
   width: 100%;
   height: 100%;
   background-color: ${({ isEven }) => (isEven ? "#28292a" : "transparent")};
   padding-left: 8px;
   cursor: pointer;
+`;
+
+const FileImage = styled.img`
+  width: 1.25rem;
+  height: 1.25rem;
+`;
+
+const DateLabel = styled(MutedText)`
+  justify-items: flex-end;
+`;
+
+const DataContent = styled.div`
+  width: 100%;
+  height: 100%;
+  padding-left: 8px;
 `;
 
 const RowContainer = styled.div`
@@ -54,16 +71,23 @@ const Experience: React.FC = () => {
 
   return (
     <Container>
+      <DataRow>
+        <BoldText>Sort</BoldText>
+        <BoldText>Sort</BoldText>
+      </DataRow>
       <DataRow onClick={toggleEnfusionOpen}>
         <FontAwesomeIcon
           icon={isEnfusionOpen ? faChevronDown : faChevronRight}
         />
-        <img src="https://img.icons8.com/color/48/000000/file.png" alt="file" />
+        <FileImage
+          src="https://img.icons8.com/color/48/000000/file.png"
+          alt="file"
+        />
         <BoldText>Junior Frontend Developer</BoldText>
-        <MutedText>Jan 2020 - Present</MutedText>
+        <DateLabel>Jan 2020 - Present</DateLabel>
       </DataRow>
       {isEnfusionOpen ? (
-        <DataRow>
+        <DataContent>
           <BoldText>Junior Frontend Developer</BoldText>
           <RowContainer>
             <MutedText>Name</MutedText>
@@ -77,16 +101,19 @@ const Experience: React.FC = () => {
             <MutedText>Date</MutedText>
             <div>Jan 2020 - Present</div>
           </RowContainer>
-        </DataRow>
+        </DataContent>
       ) : null}
       <DataRow isEven onClick={togglePurdueOpen}>
         <FontAwesomeIcon icon={isPurdueOpen ? faChevronDown : faChevronRight} />
-        <img src="https://img.icons8.com/color/48/000000/file.png" alt="file" />
+        <FileImage
+          src="https://img.icons8.com/color/48/000000/file.png"
+          alt="file"
+        />
         <BoldText>Undergraduate Teaching Assistant</BoldText>
         <MutedText>Aug 2018 - Dec 2019</MutedText>
       </DataRow>
       {isPurdueOpen ? (
-        <DataRow>
+        <DataContent>
           <BoldText>Undergraduate Teaching Assistant</BoldText>
           <RowContainer>
             <MutedText>Name</MutedText>
@@ -100,16 +127,19 @@ const Experience: React.FC = () => {
             <MutedText>Date</MutedText>
             <div>Aug 2018 - Dec 2019</div>
           </RowContainer>
-        </DataRow>
+        </DataContent>
       ) : null}
       <DataRow onClick={toggleDotisOpen}>
         <FontAwesomeIcon icon={isDotisOpen ? faChevronDown : faChevronRight} />
-        <img src="https://img.icons8.com/color/48/000000/file.png" alt="file" />
+        <FileImage
+          src="https://img.icons8.com/color/48/000000/file.png"
+          alt="file"
+        />
         <BoldText>Technical Consultant Intern</BoldText>
         <MutedText>Jun 2017 - Jul 2017</MutedText>
       </DataRow>
       {isDotisOpen ? (
-        <DataRow>
+        <DataContent>
           <BoldText>Technical Consultant Intern</BoldText>
           <RowContainer>
             <MutedText>Name</MutedText>
@@ -123,18 +153,21 @@ const Experience: React.FC = () => {
             <MutedText>Date</MutedText>
             <div>Jun 2017 - Jul 2017</div>
           </RowContainer>
-        </DataRow>
+        </DataContent>
       ) : null}
       <DataRow isEven onClick={toggleHyopWoonOpen}>
         <FontAwesomeIcon
           icon={isHyopWoonOpen ? faChevronDown : faChevronRight}
         />
-        <img src="https://img.icons8.com/color/48/000000/file.png" alt="file" />
+        <FileImage
+          src="https://img.icons8.com/color/48/000000/file.png"
+          alt="file"
+        />
         <BoldText>Software Engineering Intern</BoldText>
         <MutedText>Jul 2015 - Aug 2015</MutedText>
       </DataRow>
       {isHyopWoonOpen ? (
-        <DataRow>
+        <DataContent>
           <BoldText>Software Engineering Intern</BoldText>
           <RowContainer>
             <MutedText>Name</MutedText>
@@ -148,7 +181,7 @@ const Experience: React.FC = () => {
             <MutedText>Date</MutedText>
             <div>Jul 2015 - Aug 2015</div>
           </RowContainer>
-        </DataRow>
+        </DataContent>
       ) : null}
     </Container>
   );

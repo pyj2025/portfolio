@@ -138,7 +138,8 @@ export const WindowBodyContent = styled.div`
   background-color: #1d1f21;
   color: white;
   border-bottom-right-radius: 6px;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
 `;
 
 //text
