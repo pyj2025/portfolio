@@ -18,7 +18,7 @@ const DataRow = styled.div<{ isEven?: boolean }>`
   width: 100%;
   height: 100%;
   background-color: ${({ isEven }) => (isEven ? "#28292a" : "transparent")};
-  padding-left: 8px;
+  padding-left: 0.5rem;
   cursor: pointer;
 `;
 
@@ -34,7 +34,8 @@ const DateLabel = styled(MutedText)`
 const DataContent = styled.div`
   width: 100%;
   height: 100%;
-  padding-left: 8px;
+  margin-left: 1.5rem;
+  margin-top: 0.25rem;
 `;
 
 const RowContainer = styled.div`
@@ -69,11 +70,23 @@ const Experience: React.FC = () => {
     setHyopWoonOpen((state) => !state);
   };
 
+  const sortByPosition = () => {
+    alert("sortByPosition");
+  };
+
+  const sortByDate = () => {
+    alert("sortByDate");
+  };
+
   return (
     <Container>
       <DataRow>
-        <BoldText>Sort</BoldText>
-        <BoldText>Sort</BoldText>
+        <div onClick={sortByPosition}>
+          <BoldText>Position</BoldText>
+        </div>
+        <div onClick={sortByDate}>
+          <BoldText>Date</BoldText>
+        </div>
       </DataRow>
       <DataRow onClick={toggleEnfusionOpen}>
         <FontAwesomeIcon
