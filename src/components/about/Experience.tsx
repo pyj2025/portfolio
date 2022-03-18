@@ -1,4 +1,4 @@
-import { faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import styled from "styled-components";
@@ -52,24 +52,13 @@ const Experience: React.FC = () => {
 
   const sortByPosition = React.useCallback(() => {
     if (positionSortType === "asc") {
-      setPositionSortType("dec");
-      setDateSortType(null);
-
-      setExperiences((prevExperiences) => {
-        return [
-          ...prevExperiences.sort((a, b) => (a.title > b.title ? 1 : -1)),
-        ];
-      });
-    } else if (positionSortType === "dec") {
       setPositionSortType(null);
       setDateSortType(null);
 
-      setExperiences((prevExperiences) => {
-        return [
-          ...prevExperiences.sort((a, b) => (a.title > b.title ? 1 : -1)),
-        ];
+      setExperiences((prev) => {
+        return [...prev.sort((a, b) => a.dateRank - b.dateRank)];
       });
-    } else {
+    } else if (positionSortType === "dec") {
       setPositionSortType("asc");
       setDateSortType(null);
 
@@ -78,26 +67,35 @@ const Experience: React.FC = () => {
           ...prevExperiences.sort((a, b) => (a.title > b.title ? 1 : -1)),
         ];
       });
+    } else {
+      setPositionSortType("dec");
+      setDateSortType(null);
+
+      setExperiences((prevExperiences) => {
+        return [
+          ...prevExperiences.sort((a, b) => (b.title > a.title ? 1 : -1)),
+        ];
+      });
     }
   }, [positionSortType]);
 
   const sortByDate = React.useCallback(() => {
     if (dateSortType === "asc") {
-      setDateSortType("dec");
-      setPositionSortType(null);
-
-      setExperiences((prev) => {
-        return [...prev.sort((a, b) => a.dateRank - b.dateRank)];
-      });
-    } else if (dateSortType === "dec") {
       setDateSortType(null);
       setPositionSortType(null);
 
       setExperiences((prev) => {
         return [...prev.sort((a, b) => a.dateRank - b.dateRank)];
       });
-    } else {
+    } else if (dateSortType === "dec") {
       setDateSortType("asc");
+      setPositionSortType(null);
+
+      setExperiences((prev) => {
+        return [...prev.sort((a, b) => b.dateRank - a.dateRank)];
+      });
+    } else {
+      setDateSortType("dec");
       setPositionSortType(null);
 
       setExperiences((prev) => {
@@ -113,7 +111,7 @@ const Experience: React.FC = () => {
           <BoldText>Position</BoldText>
           {positionSortType ? (
             <FontAwesomeIcon
-              icon={positionSortType === "asc" ? faArrowUp : faArrowDown}
+              icon={positionSortType === "asc" ? faChevronUp : faChevronDown}
             />
           ) : null}
         </div>
@@ -121,7 +119,7 @@ const Experience: React.FC = () => {
           <BoldText>Date</BoldText>
           {dateSortType ? (
             <FontAwesomeIcon
-              icon={dateSortType === "asc" ? faArrowUp : faArrowDown}
+              icon={dateSortType === "asc" ? faChevronUp : faChevronDown}
             />
           ) : null}
         </div>
