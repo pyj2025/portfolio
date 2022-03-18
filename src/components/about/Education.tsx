@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { BoldText, MutedText } from "../GlobalStyle";
-import PurdueLogo from "../image/PurdueLogo.png";
+import { BoldText, MutedText } from "../../GlobalStyle";
+import PurdueLogo from "../../image/PurdueLogo.png";
 
 const Container = styled.div`
   display: flex;

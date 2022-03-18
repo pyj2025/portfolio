@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { MutedText } from "../GlobalStyle";
+import { MutedText } from "../../GlobalStyle";
 
 const Container = styled.div`
   display: flex;

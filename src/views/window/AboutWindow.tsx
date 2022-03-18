@@ -1,8 +1,8 @@
 import React from "react";
 import { DraggableData, Position, ResizableDelta } from "react-rnd";
-import Education from "../../components/Education";
-import About from "../../components/About";
-import Experience from "../../components/Experience";
+import Education from "../../components/about/Education";
+import About from "../../components/about/About";
+import Experience from "../../components/about/Experience";
 import {
   NavItmLabel,
   TopbarTitleImage,
