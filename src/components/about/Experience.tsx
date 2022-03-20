@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import styled from "styled-components";
 import { BoldText } from "../../GlobalStyle";
-import ExperienceRow, { DataRow, ExperienceType } from "./ExperienceRow";
+import ExperienceRow, { ExperienceType } from "./ExperienceRow";
 
 const ExperienceObject = [
   {
@@ -39,6 +39,19 @@ const ExperienceObject = [
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+export const DataRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  padding-left: 0.5rem;
+`;
+
+export const SortButton = styled.div`
+  cursor: pointer;
 `;
 
 type SortType = "asc" | "dec";
@@ -107,22 +120,22 @@ const Experience: React.FC = () => {
   return (
     <Container>
       <DataRow>
-        <div onClick={sortByPosition}>
+        <SortButton onClick={sortByPosition}>
           <BoldText>Position</BoldText>
           {positionSortType ? (
             <FontAwesomeIcon
               icon={positionSortType === "asc" ? faChevronUp : faChevronDown}
             />
           ) : null}
-        </div>
-        <div onClick={sortByDate}>
+        </SortButton>
+        <SortButton onClick={sortByDate}>
           <BoldText>Date</BoldText>
           {dateSortType ? (
             <FontAwesomeIcon
               icon={dateSortType === "asc" ? faChevronUp : faChevronDown}
             />
           ) : null}
-        </div>
+        </SortButton>
       </DataRow>
       {experiences.map((experience: ExperienceType, idx: number) => (
         <ExperienceRow
