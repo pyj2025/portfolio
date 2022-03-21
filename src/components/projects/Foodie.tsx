@@ -41,6 +41,11 @@ const DescriptionRow = styled.div`
   margin-bottom: 4px;
 `;
 
+const LinkLabel = styled.a`
+  color: white;
+  text-decoration: none;
+`;
+
 const Foodie: React.FC = () => {
   return (
     <ContentContainer>
@@ -54,7 +59,7 @@ const Foodie: React.FC = () => {
         </DescriptionRow>
         <DescriptionRow>
           <MutedText>Link</MutedText>
-          <div>###</div>
+          <LinkLabel>###</LinkLabel>
         </DescriptionRow>
         <DescriptionRow>
           <MutedText>Stack</MutedText>

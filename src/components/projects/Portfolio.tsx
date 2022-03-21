@@ -41,6 +41,11 @@ const DescriptionRow = styled.div`
   margin-bottom: 4px;
 `;
 
+const LinkLabel = styled.a`
+  color: white;
+  text-decoration: none;
+`;
+
 const Portfolio: React.FC = () => {
   return (
     <ContentContainer>
@@ -57,11 +62,11 @@ const Portfolio: React.FC = () => {
         </DescriptionRow>
         <DescriptionRow>
           <MutedText>Link</MutedText>
-          <a href="https://pyj2025.github.io/portfolio/">
+          <LinkLabel href="https://pyj2025.github.io/portfolio/">
             <span>
               Link <FontAwesomeIcon icon={faExternalLinkAlt} />
             </span>
-          </a>
+          </LinkLabel>
         </DescriptionRow>
         <DescriptionRow>
           <MutedText>Stack</MutedText>
@@ -71,7 +76,7 @@ const Portfolio: React.FC = () => {
           <MutedText>Detail</MutedText>
           <div>
             Joon's portfolio aka this site. It presents who am I, what skills I
-            have, and what kind of work experience I have. Also, it provides the
+            have, and what kind of work experience I have. Also, it provides my
             contact methods.
           </div>
         </DescriptionRow>

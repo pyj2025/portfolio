@@ -43,6 +43,11 @@ const DescriptionRow = styled.div`
   margin-bottom: 4px;
 `;
 
+const LinkLabel = styled.a`
+  color: white;
+  text-decoration: none;
+`;
+
 const DatApex: React.FC = () => {
   return (
     <ContentContainer>
@@ -56,11 +61,11 @@ const DatApex: React.FC = () => {
         </DescriptionRow>
         <DescriptionRow>
           <MutedText>Link</MutedText>
-          <a href="https://github.com/SeoHyunAhn/DatApex">
+          <LinkLabel href="https://github.com/SeoHyunAhn/DatApex">
             <span>
               Link <FontAwesomeIcon icon={faExternalLinkAlt} />
             </span>
-          </a>
+          </LinkLabel>
         </DescriptionRow>
         <DescriptionRow>
           <MutedText>Stack</MutedText>
