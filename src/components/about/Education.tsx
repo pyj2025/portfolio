@@ -36,7 +36,6 @@ const DataRowContainer = styled.div`
   display: grid;
   grid-template-columns: 120px auto;
   justify-content: flex-start;
-  align-items: center;
   width: 100%;
   height: 100%;
   margin-bottom: 4px;
@@ -54,16 +53,16 @@ const Education: React.FC = () => {
           <BoldText>Purdue University</BoldText>
         </DataRowContainer>
         <DataRowContainer>
+          <MutedText>Graduated</MutedText>
+          <div>Dec. 2019</div>
+        </DataRowContainer>
+        <DataRowContainer>
           <MutedText>Details</MutedText>
           <div>Bachelor of Science in Computer Science</div>
         </DataRowContainer>
         <DataRowContainer>
           <MutedText>Concentration</MutedText>
           <div>Software Engineering</div>
-        </DataRowContainer>
-        <DataRowContainer>
-          <MutedText>Graduated</MutedText>
-          <div>Dec. 2019</div>
         </DataRowContainer>
       </EducationContainer>
     </Container>

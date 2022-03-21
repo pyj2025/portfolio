@@ -8,14 +8,23 @@ import React from "react";
 import styled from "styled-components";
 import { BoldText, MutedText } from "../../GlobalStyle";
 
-export const DataRow = styled.div<{ isEven?: boolean }>`
-  display: flex;
-  flex-direction: row;
+export const DataRow = styled.div<{ isEven?: boolean; showDate: boolean }>`
+  display: grid;
+  grid-template-columns: ${({ showDate }) =>
+    showDate ? "6.5fr 3.5fr" : "auto"};
   width: 100%;
   height: 100%;
   background-color: ${({ isEven }) => (isEven ? "#28292a" : "transparent")};
   padding-left: 0.5rem;
+
   cursor: pointer;
+`;
+
+export const PositionContainer = styled.div<{ isEven?: boolean }>`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
 `;
 
 const FileImage = styled.img`
@@ -31,7 +40,8 @@ const DataContent = styled.div`
   width: 100%;
   height: 100%;
   margin-left: 1.5rem;
-  margin-top: 0.25rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
 `;
 
 const RowContainer = styled.div`
@@ -55,11 +65,13 @@ export type ExperienceType = {
 type ExperienceRowProps = {
   experience: ExperienceType;
   isEven: boolean;
+  showDate: boolean;
 };
 
 const ExperienceRow: React.FC<ExperienceRowProps> = ({
   experience,
   isEven,
+  showDate,
 }) => {
   const [isOpen, setOpen] = React.useState<boolean>(false);
 
@@ -69,18 +81,19 @@ const ExperienceRow: React.FC<ExperienceRowProps> = ({
 
   return (
     <>
-      <DataRow isEven={isEven} onClick={toggleOpen}>
-        <FontAwesomeIcon icon={isOpen ? faChevronDown : faChevronRight} />
-        <FileImage
-          src="https://img.icons8.com/color/48/000000/file.png"
-          alt="file"
-        />
-        <BoldText>{experience.title}</BoldText>
-        <DateLabel>{experience.date}</DateLabel>
+      <DataRow isEven={isEven} showDate={showDate} onClick={toggleOpen}>
+        <PositionContainer>
+          <FontAwesomeIcon icon={isOpen ? faChevronDown : faChevronRight} />
+          <FileImage
+            src="https://img.icons8.com/color/48/000000/file.png"
+            alt="file"
+          />
+          <BoldText>{experience.title}</BoldText>
+        </PositionContainer>
+        {showDate ? <DateLabel>{experience.date}</DateLabel> : null}
       </DataRow>
       {isOpen ? (
         <DataContent>
-          <BoldText>{experience.title}</BoldText>
           <RowContainer>
             <MutedText>Name</MutedText>
             <div>{experience.company}</div>

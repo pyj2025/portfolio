@@ -39,7 +39,8 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   >(null);
 
   const [index, setIndex] = React.useState<IndexType>("About");
-  const [isMobileWindow, setIsMobileWindow] = React.useState(false);
+  const [isMobileWindow, setIsMobileWindow] = React.useState<boolean>(false);
+  const [showDate, setShowDate] = React.useState<boolean>(false);
 
   React.useEffect(() => {
     if (width < TABLET_MAX_WIDTH) {
@@ -57,6 +58,15 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [width]);
+
+  React.useEffect(() => {
+    // 150 is menu
+    if (aboutSize.width - 150 >= 470) {
+      setShowDate(true);
+    } else {
+      setShowDate(false);
+    }
+  }, [aboutSize.width, showDate]);
 
   const handleClick = (name: IndexType) => {
     setIndex(name);
@@ -82,9 +92,16 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         _delta: ResizableDelta,
         position: Position
       ) => {
+        const newWidth = Number(
+          ref.style.width.substring(0, ref.style.width.indexOf("p"))
+        );
+        const newHeight = Number(
+          ref.style.height.substring(0, ref.style.height.indexOf("p"))
+        );
+
         setAboutSize({
-          width: ref.style.width,
-          height: ref.style.height,
+          width: newWidth,
+          height: newHeight,
         });
         setAboutPosition({ x: position.x, y: position.y });
       }}
@@ -136,7 +153,7 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         </WindowBodyNavbar>
         <WindowBodyContent>
           {index === "About" ? <About /> : null}
-          {index === "Experience" ? <Experience /> : null}
+          {index === "Experience" ? <Experience showDate={showDate} /> : null}
           {index === "Education" ? <Education /> : null}
         </WindowBodyContent>
       </WindowBody>

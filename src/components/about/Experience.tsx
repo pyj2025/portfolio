@@ -41,9 +41,10 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
-export const DataRow = styled.div`
-  display: flex;
-  flex-direction: row;
+export const DataRow = styled.div<{ showDate?: boolean }>`
+  display: grid;
+  grid-template-columns: ${({ showDate }) =>
+    showDate ? "6.5fr 3.5fr" : "auto"};
   width: 100%;
   height: 100%;
   background-color: transparent;
@@ -56,7 +57,9 @@ export const SortButton = styled.div`
 
 type SortType = "asc" | "dec";
 
-const Experience: React.FC = () => {
+type ExperienceProps = { showDate: boolean };
+
+const Experience: React.FC<ExperienceProps> = ({ showDate }) => {
   const [experiences, setExperiences] =
     React.useState<Array<ExperienceType>>(ExperienceObject);
   const [positionSortType, setPositionSortType] =
@@ -119,7 +122,7 @@ const Experience: React.FC = () => {
 
   return (
     <Container>
-      <DataRow>
+      <DataRow showDate={showDate}>
         <SortButton onClick={sortByPosition}>
           <BoldText>Position</BoldText>
           {positionSortType ? (
@@ -128,20 +131,23 @@ const Experience: React.FC = () => {
             />
           ) : null}
         </SortButton>
-        <SortButton onClick={sortByDate}>
-          <BoldText>Date</BoldText>
-          {dateSortType ? (
-            <FontAwesomeIcon
-              icon={dateSortType === "asc" ? faChevronUp : faChevronDown}
-            />
-          ) : null}
-        </SortButton>
+        {showDate ? (
+          <SortButton onClick={sortByDate}>
+            <BoldText>Date</BoldText>
+            {dateSortType ? (
+              <FontAwesomeIcon
+                icon={dateSortType === "asc" ? faChevronUp : faChevronDown}
+              />
+            ) : null}
+          </SortButton>
+        ) : null}
       </DataRow>
       {experiences.map((experience: ExperienceType, idx: number) => (
         <ExperienceRow
           key={experience.title}
           experience={experience}
           isEven={idx % 2 === 0}
+          showDate={showDate}
         />
       ))}
     </Container>
