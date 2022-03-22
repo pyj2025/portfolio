@@ -24,6 +24,16 @@ const IconLabel = styled.div`
   height: 1em;
 `;
 
+const IconImageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 48px;
+  height: 48px;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+`;
+
 const BackEnd: React.FC = () => {
   return (
     <ContentContainer>
@@ -35,11 +45,14 @@ const BackEnd: React.FC = () => {
         <IconLabel>Node.js</IconLabel>
       </SkillsIconContainer>
       <SkillsIconContainer>
-        <img
-          src="https://api.iconify.design/logos/express.svg"
-          style={{ width: 48, height: 48, backgroundColor: "white" }}
-          alt="Express"
-        />
+        <IconImageContainer>
+          <img
+            src="https://api.iconify.design/logos/express.svg"
+            style={{ width: 40, height: 40 }}
+            alt="Express"
+          />
+        </IconImageContainer>
+
         <IconLabel>Express</IconLabel>
       </SkillsIconContainer>
       <SkillsIconContainer>
@@ -50,15 +63,19 @@ const BackEnd: React.FC = () => {
         <IconLabel>Spring</IconLabel>
       </SkillsIconContainer>
       <SkillsIconContainer noWidth>
-        <img
-          src="https://img.icons8.com/color/48/000000/code-file.png"
-          alt="ASP.Net Core"
-        />
+        <IconImageContainer>
+          <img
+            src="https://api.iconify.design/cib/dot-net.svg"
+            style={{ width: 40, height: 40 }}
+            alt=".Net"
+          />
+        </IconImageContainer>
         <IconLabel>ASP.Net Core</IconLabel>
       </SkillsIconContainer>
       <SkillsIconContainer>
         <img
-          src="https://img.icons8.com/ios-filled/48/000000/laravel.png"
+          src="https://api.iconify.design/logos/laravel.svg"
+          style={{ width: 48, height: 48 }}
           alt="Laravel"
         />
         <IconLabel>Laravel</IconLabel>

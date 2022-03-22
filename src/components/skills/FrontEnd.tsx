@@ -24,6 +24,16 @@ const IconLabel = styled.div`
   height: 1em;
 `;
 
+const IconImageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 48px;
+  height: 48px;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+`;
+
 const FrontEnd: React.FC = () => {
   return (
     <ContentContainer>
@@ -49,11 +59,14 @@ const FrontEnd: React.FC = () => {
         <IconLabel>Angular</IconLabel>
       </SkillsIconContainer>
       <SkillsIconContainer>
-        <img
-          src="https://api.iconify.design/logos/nextjs.svg"
-          style={{ width: 48, height: 48 }}
-          alt="nextjs"
-        />
+        <IconImageContainer>
+          <img
+            src="https://api.iconify.design/logos/nextjs.svg"
+            style={{ width: 40, height: 40 }}
+            alt="nextjs"
+          />
+        </IconImageContainer>
+
         <IconLabel>Nextjs</IconLabel>
       </SkillsIconContainer>
       <SkillsIconContainer>
@@ -66,6 +79,7 @@ const FrontEnd: React.FC = () => {
       <SkillsIconContainer>
         <img
           src="https://img.icons8.com/ios-filled/48/000000/jquery.png"
+          style={{ width: 48, height: 48, backgroundColor: "white" }}
           alt="jQuery"
         />
         <IconLabel>jQuery</IconLabel>
