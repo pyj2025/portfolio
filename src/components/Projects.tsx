@@ -3,8 +3,11 @@ import styled from "styled-components";
 import FoodieLogo from "../image/Foodie.png";
 import DatApexLogo from "../image/DatApex.png";
 
-import { IndexType } from "../views/ProjectsWindow";
-import { MutedText } from "../GlobalStyle";
+import { IndexType } from "../views/window/ProjectsWindow";
+
+type ProjectsProps = {
+  click: (name: IndexType) => void;
+};
 
 const IconListContainer = styled.div`
   display: flex;
@@ -20,6 +23,7 @@ const IconContainer = styled.div<{ noWidth?: boolean }>`
   width: ${({ noWidth }) => (noWidth ? undefined : "60px")};
   justify-content: center;
   align-items: center;
+  padding: 2px;
   cursor: pointer;
 `;
 
@@ -32,31 +36,6 @@ const IconLogoImage = styled.img`
 const IconLabel = styled.div`
   font-size: 0.75rem;
 `;
-
-const ContentContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin: 10px;
-`;
-
-const LogoImage = styled.img`
-  width: 95%;
-  height: 95%;
-`;
-
-const DescriptionContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const DescriptionRow = styled.div`
-  display: grid;
-  grid-template-columns: 30% auto;
-`;
-
-type ProjectsProps = {
-  click: (name: IndexType) => void;
-};
 
 export const Projects: React.FC<ProjectsProps> = ({ click }) => {
   return (
@@ -101,65 +80,6 @@ export const WebProjects: React.FC<ProjectsProps> = ({ click }) => {
   );
 };
 
-export const DatApex = () => {
-  return (
-    <ContentContainer>
-      <div>
-        <LogoImage src={DatApexLogo} alt="DatApex" />
-      </div>
-      <DescriptionContainer>
-        <DescriptionRow>
-          <MutedText>Name</MutedText>
-          <div>DatApex</div>
-        </DescriptionRow>
-        <DescriptionRow>
-          <MutedText>Link</MutedText>
-          <div>###</div>
-        </DescriptionRow>
-        <DescriptionRow>
-          <MutedText>Detail</MutedText>
-          <div>###</div>
-        </DescriptionRow>
-        <DescriptionRow>
-          <MutedText>Stack</MutedText>
-          <div>React, Django, Bootstrap</div>
-        </DescriptionRow>
-      </DescriptionContainer>
-    </ContentContainer>
-  );
-};
-
-export const Portfolio = () => {
-  return (
-    <ContentContainer>
-      <div>
-        <img
-          src="https://img.icons8.com/color/96/000000/code-file.png"
-          alt="code-file"
-        />
-      </div>
-      <DescriptionContainer>
-        <DescriptionRow>
-          <MutedText>Name</MutedText>
-          <div>Portfolio</div>
-        </DescriptionRow>
-        <DescriptionRow>
-          <MutedText>Name</MutedText>
-          <a href="https://pyj2025.github.io/portfolio/">Link</a>
-        </DescriptionRow>
-        <DescriptionRow>
-          <MutedText>Detail</MutedText>
-          <div>This site</div>
-        </DescriptionRow>
-        <DescriptionRow>
-          <MutedText>Stack</MutedText>
-          <div>React, Typescript, Styled-components</div>
-        </DescriptionRow>
-      </DescriptionContainer>
-    </ContentContainer>
-  );
-};
-
 export const MobileProjects: React.FC<ProjectsProps> = ({ click }) => {
   return (
     <>
@@ -169,36 +89,6 @@ export const MobileProjects: React.FC<ProjectsProps> = ({ click }) => {
           <IconLabel>Foodie</IconLabel>
         </IconContainer>
       </IconListContainer>
-    </>
-  );
-};
-
-export const Foodie = () => {
-  return (
-    <>
-      <ContentContainer>
-        <div>
-          <LogoImage src={FoodieLogo} alt="Foodie" />
-        </div>
-        <DescriptionContainer>
-          <DescriptionRow>
-            <MutedText>Name</MutedText>
-            <div>Foodie</div>
-          </DescriptionRow>
-          <DescriptionRow>
-            <MutedText>Link</MutedText>
-            <div>###</div>
-          </DescriptionRow>
-          <DescriptionRow>
-            <MutedText>Detail</MutedText>
-            <div>###</div>
-          </DescriptionRow>
-          <DescriptionRow>
-            <MutedText>Stack</MutedText>
-            <div>Swift, Firebase</div>
-          </DescriptionRow>
-        </DescriptionContainer>
-      </ContentContainer>
     </>
   );
 };

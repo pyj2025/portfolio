@@ -1,9 +1,17 @@
 import React from "react";
 import styled from "styled-components";
-import { DraggableData, Rnd } from "react-rnd";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { Rnd } from "react-rnd";
 import Typist from "react-typist";
+import useScreenSize, {
+  MOBILE_MAX_WIDTH,
+  TABLET_MAX_WIDTH,
+} from "../../utils/useScreenSize";
+import { useWindows } from "../../utils/context/context";
+import { WindowProps } from "../BodyContent";
+import { WindowPositionSetting, WindowSizeSetting } from "../../types";
+import Loaded from "../../components/welcome/Loaded";
+import Intro from "../../components/welcome/Intro";
+import Contact from "../../components/welcome/Contact";
 
 const Window = styled(Rnd)`
   width: 100%;
@@ -89,7 +97,7 @@ const WindowBody = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   width: 100%;
-  height: 422px;
+  height: calc(100% - 28px);
   background-color: #282a36;
   color: #ffffff;
   border-bottom-left-radius: 6px;
@@ -102,10 +110,6 @@ const TerminalRow = styled.div`
   justify-content: flex-start;
   align-items: center;
   margin: 4px 8px;
-`;
-
-const LoadedCommandLine = styled(Typist)`
-  margin-top: 8px;
 `;
 
 const TerminalBadge = styled.div`
@@ -130,47 +134,25 @@ const BadgeArrow = styled.div<{ first?: boolean }>`
   border-left: 13px solid #000000;
 `;
 
-const SecondBadge = styled.div`
-  background-color: #caa9fa;
-  color: #000000;
-  padding: 4px 10px;
-  border: none;
-`;
-
-const SecondBadgeArrow = styled(BadgeArrow)`
-  background-color: transparent;
-  border-left: 13px solid #caa9fa;
-`;
-
 const TerminalLine = styled.div`
   margin-left: 8px;
 `;
 
-const ContentLine = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  margin-top: 2px;
-`;
+const MobileWelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
+  const { width, height } = useScreenSize();
+  const { focusedWindow, closeWelcomeWindow } = useWindows();
 
-const ContentLineArrow = styled(FontAwesomeIcon)`
-  font-size: 18px;
-  margin-right: 8px;
-`;
-
-type WelcomeWindowProps = {
-  focusedWindow: string;
-  handleFocus: (_e: any, data: DraggableData) => void;
-  close: (flag: boolean) => void;
-};
-
-const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
-  focusedWindow,
-  handleFocus,
-  close,
-}) => {
   const welcomeRef = React.useRef<any>();
+
+  const [windowPosition, setWindowPosition] =
+    React.useState<WindowPositionSetting>({
+      x: Math.round(Math.max((width - 700) / 2, 0)),
+      y: 0,
+    });
+  const [windowSize, setWindowSize] = React.useState<WindowSizeSetting>({
+    width: 700,
+    height: 450,
+  });
 
   const [firstLine, setFirstLine] = React.useState(false);
   const [secondLine, setSecondLine] = React.useState(false);
@@ -178,16 +160,25 @@ const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
   const [thirdLine, setThirdLine] = React.useState(false);
   const [thirdContent, setThirdContent] = React.useState(false);
 
+  React.useEffect(() => {
+    if (width <= TABLET_MAX_WIDTH) {
+      setWindowSize({
+        width,
+        height: height - 80 - 25,
+      });
+      setWindowPosition({
+        x: 0,
+        y: 0,
+      });
+    }
+  }, [width, height]);
+
   return (
     <Window
       id="Welcome"
       ref={welcomeRef}
-      default={{
-        x: window.innerWidth / 5,
-        y: -1 * ((window.innerHeight * 4) / 5),
-        width: 700,
-        height: 450,
-      }}
+      size={{ width: windowSize.width, height: windowSize.height }}
+      position={{ x: windowPosition.x, y: windowPosition.y }}
       dragHandleClassName="topbar"
       onDragStart={handleFocus}
       enableResizing={false}
@@ -197,7 +188,8 @@ const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
           <TopbarBtn
             color="close"
             title={focusedWindow === "Welcome" ? "Close" : undefined}
-            onClick={() => close(false)}
+            onClick={closeWelcomeWindow}
+            onTouchStart={closeWelcomeWindow}
             disabled={focusedWindow !== "Welcome"}
           />
           <TopbarBtn color="disabled" disabled={true} />
@@ -212,24 +204,11 @@ const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
         </TopbarTitle>
       </WindowTopbar>
       <WindowBody>
-        <TerminalRow>
-          <LoadedCommandLine
-            cursor={{
-              show: true,
-              blink: true,
-              element: "|",
-              hideWhenDone: true,
-              hideWhenDoneDelay: 100,
-            }}
-            onTypingDone={() => setFirstLine(true)}
-          >
-            Loaded...
-          </LoadedCommandLine>
-        </TerminalRow>
+        <Loaded setFirstLine={setFirstLine} />
         {firstLine ? (
           <TerminalRow>
             <TerminalBadge>
-              <FirstBadge>joon@MacBook-Air</FirstBadge>
+              <FirstBadge>~/</FirstBadge>
               <BadgeArrow first />
             </TerminalBadge>
             <TerminalLine>
@@ -251,10 +230,8 @@ const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
         {secondLine ? (
           <TerminalRow>
             <TerminalBadge>
-              <FirstBadge>joon@MacBook-Air</FirstBadge>
-              <BadgeArrow />
-              <SecondBadge>~/portfolio</SecondBadge>
-              <SecondBadgeArrow />
+              <FirstBadge>~/portfolio/</FirstBadge>
+              <BadgeArrow first />
             </TerminalBadge>
             <TerminalLine>
               <Typist
@@ -275,31 +252,12 @@ const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
             </TerminalLine>
           </TerminalRow>
         ) : null}
-        {secondContent ? (
-          <TerminalRow>
-            <TerminalLine>
-              <ContentLine># Hi, I'm Joon.</ContentLine>
-              <ContentLine>
-                <ContentLineArrow icon={faAngleRight} />
-                <div>I'm a front-end developer at Enfusion</div>
-              </ContentLine>
-              <ContentLine>
-                <ContentLineArrow icon={faAngleRight} />
-                <div>
-                  I'm an alumnus of Purdue University Computer Science (Software
-                  Engineering)
-                </div>
-              </ContentLine>
-            </TerminalLine>
-          </TerminalRow>
-        ) : null}
+        {secondContent ? <Intro /> : null}
         {thirdLine ? (
           <TerminalRow>
             <TerminalBadge>
-              <FirstBadge>joon@MacBook-Air</FirstBadge>
-              <BadgeArrow />
-              <SecondBadge>~/portfolio</SecondBadge>
-              <SecondBadgeArrow />
+              <FirstBadge>~/portfolio/</FirstBadge>
+              <BadgeArrow first />
             </TerminalBadge>
             <TerminalLine>
               <Typist
@@ -310,33 +268,20 @@ const WelcomeWindow: React.FC<WelcomeWindowProps> = ({
                   hideWhenDone: true,
                   hideWhenDoneDelay: 100,
                 }}
-                onTypingDone={() => setThirdContent(true)}
+                onTypingDone={() => {
+                  setThirdContent(true);
+                  // window.localStorage.setItem("welcomeWindowRendered", "true");
+                }}
               >
                 cat contact.md
               </Typist>
             </TerminalLine>
           </TerminalRow>
         ) : null}
-        {thirdContent ? (
-          <TerminalRow>
-            <TerminalLine>
-              <ContentLine># Info</ContentLine>
-              <ContentLine>## Email</ContentLine>
-              <ContentLine>
-                <ContentLineArrow icon={faAngleRight} />
-                <div> pyj2025@gmail.com</div>
-              </ContentLine>
-              <ContentLine>## Phone Number</ContentLine>
-              <ContentLine>
-                <ContentLineArrow icon={faAngleRight} />
-                <div>312-9374435</div>
-              </ContentLine>
-            </TerminalLine>
-          </TerminalRow>
-        ) : null}
+        {thirdContent ? <Contact /> : null}
       </WindowBody>
     </Window>
   );
 };
 
-export default WelcomeWindow;
+export default MobileWelcomeWindow;
