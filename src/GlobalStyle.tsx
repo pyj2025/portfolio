@@ -142,6 +142,49 @@ export const WindowBodyContent = styled.div`
   overflow-y: scroll;
 `;
 
+//Panel
+export const PanelContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  min-width: 20rem;
+  margin: 10px;
+`;
+
+export const PanelLogoContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+`;
+
+export const PanelLogoImage = styled.img`
+  width: 150px;
+  height: 150px;
+`;
+
+export const PanelDescriptionContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+`;
+
+export const PanelDescriptionRow = styled.div`
+  display: grid;
+  grid-template-columns: 100px auto;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 4px;
+`;
+
+export const LinkLabel = styled.a`
+  color: white;
+  text-decoration: none;
+`;
+
 //text
 export const BoldText = styled.span`
   font-weight: bold;
