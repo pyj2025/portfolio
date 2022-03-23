@@ -16,8 +16,8 @@ const Wrapper = styled.div`
 `;
 
 const Container = styled.div`
-  display: grid;
-  grid-template-rows: 25px auto 80px;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
 `;

@@ -25,6 +25,8 @@ import MobileApp from "../MobileApp";
 import MobileWelcomeWindow from "./window/MobileWelcomeWindow";
 
 const Container = styled.div`
+  width: 100%;
+  height: calc(100% - 28px);
   background-color: transparent;
   color: white;
 `;

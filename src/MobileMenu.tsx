@@ -22,6 +22,7 @@ const MenuWrapper = styled.div`
   box-shadow: 2px 7px 15px 8px rgba(0, 0, 0, 0.4);
   background-color: rgba(255, 255, 192, 0.1);
   backdrop-filter: blur(10px);
+  height: 80px;
 `;
 
 const MenuItem = styled.a`
