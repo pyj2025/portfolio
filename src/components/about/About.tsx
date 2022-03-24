@@ -1,43 +1,38 @@
 import React from "react";
 import styled from "styled-components";
-import { MutedText } from "../../GlobalStyle";
+import {
+  PanelDescriptionContainer,
+  PanelDescriptionLabel,
+  PanelDescriptionRow,
+  PanelDescriptionText,
+} from "../../GlobalStyle";
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
+const Container = styled(PanelDescriptionContainer)`
   margin: 10px;
-`;
-
-const DataRow = styled.div`
-  display: grid;
-  grid-template-columns: 120px auto;
-  margin-bottom: 4px;
 `;
 
 const About: React.FC = () => {
   return (
     <Container>
-      <DataRow>
-        <MutedText>Name</MutedText>
-        <div>Youngjoon Park</div>
-      </DataRow>
-      <DataRow>
-        <MutedText>Date of Birth</MutedText>
-        <div>Jan.17.1994</div>
-      </DataRow>
-      <DataRow>
-        <MutedText>Phone</MutedText>
-        <div>(+1) 312-937-4435</div>
-      </DataRow>
-      <DataRow>
-        <MutedText>Address</MutedText>
+      <PanelDescriptionRow>
+        <PanelDescriptionLabel>Name</PanelDescriptionLabel>
+        <PanelDescriptionText>Youngjoon Park</PanelDescriptionText>
+      </PanelDescriptionRow>
+      <PanelDescriptionRow>
+        <PanelDescriptionLabel>Date of Birth</PanelDescriptionLabel>
+        <PanelDescriptionText>Jan.17.1994</PanelDescriptionText>
+      </PanelDescriptionRow>
+      <PanelDescriptionRow>
+        <PanelDescriptionLabel>Phone</PanelDescriptionLabel>
+        <PanelDescriptionText>(+1) 312-937-4435</PanelDescriptionText>
+      </PanelDescriptionRow>
+      <PanelDescriptionRow>
+        <PanelDescriptionLabel>Address</PanelDescriptionLabel>
         <div>
           <div>25 W Randolph St Apt 903,</div>
           <div>Chicago, IL, 60601</div>
         </div>
-      </DataRow>
+      </PanelDescriptionRow>
     </Container>
   );
 };

@@ -9,6 +9,15 @@ export const TwoColumnsGrid = styled.div`
   align-items: center;
 `;
 
+//text
+export const BoldText = styled.span`
+  font-weight: bold;
+`;
+
+export const MutedText = styled.span`
+  opacity: 0.5;
+`;
+
 //window
 export const Window = styled(Rnd)`
   display: grid;
@@ -160,7 +169,7 @@ export const PanelLogoContainer = styled.div`
 `;
 
 export const PanelLogoImage = styled.img`
-  width: 150px;
+  width: 200px;
   height: 150px;
 `;
 
@@ -172,24 +181,24 @@ export const PanelDescriptionContainer = styled.div`
 `;
 
 export const PanelDescriptionRow = styled.div`
-  display: grid;
-  grid-template-columns: 100px auto;
+  display: flex;
+  flex-direction: row;
   justify-content: flex-start;
   width: 100%;
   height: 100%;
   margin-bottom: 4px;
 `;
 
+export const PanelDescriptionLabel = styled(MutedText)`
+  min-width: 120px;
+`;
+
+export const PanelDescriptionText = styled.div<{ bold?: boolean }>`
+  width: 100%;
+  font-weight: ${({ bold }) => (bold ? "bold" : undefined)};
+`;
+
 export const LinkLabel = styled.a`
   color: white;
   text-decoration: none;
-`;
-
-//text
-export const BoldText = styled.span`
-  font-weight: bold;
-`;
-
-export const MutedText = styled.span`
-  opacity: 0.5;
 `;

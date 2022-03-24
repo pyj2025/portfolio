@@ -10,7 +10,8 @@ import {
   LinkLabel,
   PanelLogoContainer,
   PanelLogoImage,
-  MutedText,
+  PanelDescriptionLabel,
+  PanelDescriptionText,
 } from "../../GlobalStyle";
 
 const DatApex: React.FC = () => {
@@ -21,11 +22,11 @@ const DatApex: React.FC = () => {
       </PanelLogoContainer>
       <PanelDescriptionContainer>
         <PanelDescriptionRow>
-          <MutedText>Name</MutedText>
-          <div>DatApex</div>
+          <PanelDescriptionLabel>Name</PanelDescriptionLabel>
+          <PanelDescriptionText>DatApex</PanelDescriptionText>
         </PanelDescriptionRow>
         <PanelDescriptionRow>
-          <MutedText>Link</MutedText>
+          <PanelDescriptionLabel>Link</PanelDescriptionLabel>
           <LinkLabel href="https://github.com/SeoHyunAhn/DatApex">
             <span>
               Link <FontAwesomeIcon icon={faExternalLinkAlt} />
@@ -33,17 +34,17 @@ const DatApex: React.FC = () => {
           </LinkLabel>
         </PanelDescriptionRow>
         <PanelDescriptionRow>
-          <MutedText>Stack</MutedText>
-          <div>React, Django, Bootstrap</div>
+          <PanelDescriptionLabel>Stack</PanelDescriptionLabel>
+          <PanelDescriptionText>React, Django, Bootstrap</PanelDescriptionText>
         </PanelDescriptionRow>
         <PanelDescriptionRow>
-          <MutedText>Details</MutedText>
-          <div>
+          <PanelDescriptionLabel>Details</PanelDescriptionLabel>
+          <PanelDescriptionText>
             A web application that provides different preprocessing algorithms
             which the users can run to modify their datasets and allow users to
             run different machine learning algorithms on datasets uploaded by
             them, and present accuracy plots/visualizations in a clean UI
-          </div>
+          </PanelDescriptionText>
         </PanelDescriptionRow>
       </PanelDescriptionContainer>
     </PanelContainer>

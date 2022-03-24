@@ -8,7 +8,8 @@ import {
   LinkLabel,
   PanelLogoContainer,
   PanelLogoImage,
-  MutedText,
+  PanelDescriptionLabel,
+  PanelDescriptionText,
 } from "../../GlobalStyle";
 
 const Foodie: React.FC = () => {
@@ -19,23 +20,25 @@ const Foodie: React.FC = () => {
       </PanelLogoContainer>
       <PanelDescriptionContainer>
         <PanelDescriptionRow>
-          <MutedText>Name</MutedText>
-          <div>Foodie</div>
+          <PanelDescriptionLabel>Name</PanelDescriptionLabel>
+          <PanelDescriptionText>Foodie</PanelDescriptionText>
         </PanelDescriptionRow>
         <PanelDescriptionRow>
-          <MutedText>Link</MutedText>
+          <PanelDescriptionLabel>Link</PanelDescriptionLabel>
           <LinkLabel>###</LinkLabel>
         </PanelDescriptionRow>
         <PanelDescriptionRow>
-          <MutedText>Stack</MutedText>
-          <div>Swift, Firebase, Yelp API, and Google API</div>
+          <PanelDescriptionLabel>Stack</PanelDescriptionLabel>
+          <PanelDescriptionText>
+            Swift, Firebase, Yelp API, and Google API
+          </PanelDescriptionText>
         </PanelDescriptionRow>
         <PanelDescriptionRow>
-          <MutedText>Detail</MutedText>
-          <div>
+          <PanelDescriptionLabel>Detail</PanelDescriptionLabel>
+          <PanelDescriptionText>
             An application that recommends the dining places based on users’
             preferences and connects users with QR code.
-          </div>
+          </PanelDescriptionText>
         </PanelDescriptionRow>
       </PanelDescriptionContainer>
     </PanelContainer>
