@@ -16,8 +16,28 @@ import { WindowPositionSetting, WindowSizeSetting } from "../../types";
 import useScreenSize, { TABLET_MAX_WIDTH } from "../../utils/useScreenSize";
 import { WindowProps } from "../BodyContent";
 import WindowTopbar from "../../components/WindowTopbar";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import styled from "styled-components";
 
 type IndexType = "About" | "Experience" | "Education";
+
+const WindowNavbarToggle = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  margin: 0.75rem;
+  background-color: rgba(51, 49, 51, 0.9);
+  width: 2rem;
+  height: 2rem;
+  color: white;
+`;
+
+const CollapsedWindowNavbar = styled.div`
+  background-color: #1d1f21;
+  border-bottom-left-radius: 6px;
+`;
 
 const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
@@ -41,6 +61,8 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const [index, setIndex] = React.useState<IndexType>("About");
   const [isMobileWindow, setIsMobileWindow] = React.useState<boolean>(false);
   const [showDate, setShowDate] = React.useState<boolean>(false);
+  const [isWindowNavbarOpen, setWindowNavbarOpen] =
+    React.useState<boolean>(false);
 
   React.useEffect(() => {
     if (width < TABLET_MAX_WIDTH) {
@@ -117,40 +139,58 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         setPrevSetting={setAboutPrevSetting}
         isMobileWindow={isMobileWindow}
       />
-      <WindowBody>
-        <WindowBodyNavbar>
-          <WindowBodyNavItm
-            first
-            onClick={() => handleClick("About")}
-            focus={index === "About"}
+      <WindowBody isMobile={isWindowNavbarOpen}>
+        {isWindowNavbarOpen ? (
+          <WindowNavbarToggle
+            onClick={() => setWindowNavbarOpen((state) => !state)}
           >
-            <TopbarTitleImage
-              src="https://img.icons8.com/color/48/000000/file.png"
-              alt="file"
-            />
-            <NavItmLabel>Personal Info</NavItmLabel>
-          </WindowBodyNavItm>
-          <WindowBodyNavItm
-            onClick={() => handleClick("Experience")}
-            focus={index === "Experience"}
-          >
-            <TopbarTitleImage
-              src="https://img.icons8.com/color/48/000000/mac-folder.png"
-              alt="folder"
-            />
-            <NavItmLabel>Experience</NavItmLabel>
-          </WindowBodyNavItm>
-          <WindowBodyNavItm
-            onClick={() => handleClick("Education")}
-            focus={index === "Education"}
-          >
-            <TopbarTitleImage
-              src="https://img.icons8.com/color/48/000000/file.png"
-              alt="file"
-            />
-            <NavItmLabel>Education</NavItmLabel>
-          </WindowBodyNavItm>
-        </WindowBodyNavbar>
+            <FontAwesomeIcon icon={faBars} />
+          </WindowNavbarToggle>
+        ) : null}
+        {!isWindowNavbarOpen ? (
+          <WindowBodyNavbar>
+            <WindowBodyNavItm
+              first
+              onClick={() => handleClick("About")}
+              focus={index === "About"}
+            >
+              <TopbarTitleImage
+                src="https://img.icons8.com/color/48/000000/file.png"
+                alt="file"
+              />
+              <NavItmLabel>Personal Info</NavItmLabel>
+            </WindowBodyNavItm>
+            <WindowBodyNavItm
+              onClick={() => handleClick("Experience")}
+              focus={index === "Experience"}
+            >
+              <TopbarTitleImage
+                src="https://img.icons8.com/color/48/000000/mac-folder.png"
+                alt="folder"
+              />
+              <NavItmLabel>Experience</NavItmLabel>
+            </WindowBodyNavItm>
+            <WindowBodyNavItm
+              onClick={() => handleClick("Education")}
+              focus={index === "Education"}
+            >
+              <TopbarTitleImage
+                src="https://img.icons8.com/color/48/000000/file.png"
+                alt="file"
+              />
+              <NavItmLabel>Education</NavItmLabel>
+            </WindowBodyNavItm>
+            <div
+              onClick={() => setWindowNavbarOpen((state) => !state)}
+              style={{ marginTop: "auto", marginBottom: "20px" }}
+            >
+              <div style={{ backgroundColor: "black" }}>Close</div>
+            </div>
+          </WindowBodyNavbar>
+        ) : (
+          <CollapsedWindowNavbar />
+        )}
+
         <WindowBodyContent>
           {index === "About" ? <About /> : null}
           {index === "Experience" ? <Experience showDate={showDate} /> : null}

@@ -98,9 +98,11 @@ export const TopbarTitleText = styled.span`
   pointer-events: none;
 `;
 
-export const WindowBody = styled.div`
+export const WindowBody = styled.div<{ isMobile?: boolean }>`
   display: grid;
-  grid-template-columns: 150px auto;
+
+  grid-template-columns: ${({ isMobile }) =>
+    isMobile ? "50px auto" : "150px auto"};
   width: 100%;
   height: calc(100% - 28px);
 `;
