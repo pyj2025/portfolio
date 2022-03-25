@@ -39,6 +39,19 @@ const CollapsedWindowNavbar = styled.div`
   border-bottom-left-radius: 6px;
 `;
 
+const NavbarCloseButtonContainer = styled.div`
+  margin-top: auto;
+  margin-bottom: 1.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const NavbarCloseButton = styled.div`
+  background-color: #1d1f21;
+  padding: 0.5rem 1rem;
+`;
+
 const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
 
@@ -180,12 +193,11 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
               />
               <NavItmLabel>Education</NavItmLabel>
             </WindowBodyNavItm>
-            <div
+            <NavbarCloseButtonContainer
               onClick={() => setWindowNavbarOpen((state) => !state)}
-              style={{ marginTop: "auto", marginBottom: "20px" }}
             >
-              <div style={{ backgroundColor: "black" }}>Close</div>
-            </div>
+              <NavbarCloseButton>Close</NavbarCloseButton>
+            </NavbarCloseButtonContainer>
           </WindowBodyNavbar>
         ) : (
           <CollapsedWindowNavbar />
