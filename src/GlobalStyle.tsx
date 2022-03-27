@@ -107,6 +107,13 @@ export const WindowBody = styled.div<{ isMobile?: boolean }>`
   height: calc(100% - 28px);
 `;
 
+export const NewWindowBody = styled.div<{ navbarWidth: number }>`
+  display: grid;
+  grid-template-columns: ${({ navbarWidth }) => `${navbarWidth}px auto`};
+  width: 100%;
+  height: calc(100% - 28px);
+`;
+
 export const WindowBodyNavbar = styled.div`
   display: flex;
   flex-direction: column;

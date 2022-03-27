@@ -1,8 +1,9 @@
 import React from "react";
-import { DraggableData, Position, ResizableDelta } from "react-rnd";
+import { DraggableData, Position, ResizableDelta, Rnd } from "react-rnd";
 import { WindowPositionSetting, WindowSizeSetting } from "../../types";
 import {
   NavItmLabel,
+  NewWindowBody,
   TopbarTitleImage,
   Window,
   WindowBody,
@@ -18,13 +19,22 @@ import FrontEnd from "../../components/skills/FrontEnd";
 import BackEnd from "../../components/skills/BackEnd";
 import Mobile from "../../components/skills/Mobile";
 import ProgrammingLanguage from "../../components/skills/ProgrammingLanguage";
+import styled from "styled-components";
 
 type IndexType = "Front" | "Back" | "Mobile" | "Programming";
+
+const NewWindowBodyNavItm = styled.div``;
 
 const SkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
 
   const skillsRef = React.useRef<any>();
+
+  const [windowNavbarSize, setWindowNavbarSize] =
+    React.useState<WindowSizeSetting>({
+      width: 150,
+      height: 300,
+    });
 
   const [skillsSize, setSkillsSize] = React.useState<WindowSizeSetting>({
     width: 500,
@@ -62,6 +72,7 @@ const SkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
     setIndex(name);
   };
 
+  // console.log("windowNavbarSize.width = ", windowNavbarSize.width);
   return (
     <Window
       id="Skills"
@@ -100,49 +111,90 @@ const SkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         setPrevSetting={setSkillsPrevSetting}
         isMobileWindow={isMobileWindow}
       />
-      <WindowBody>
+      <NewWindowBody navbarWidth={windowNavbarSize.width}>
         <WindowBodyNavbar>
-          <WindowBodyNavItm
-            first
-            onClick={() => handleClick("Front")}
-            focus={index === "Front"}
+          <Rnd
+            default={{
+              x: 0,
+              y: 0,
+              width: windowNavbarSize.width,
+              height: windowNavbarSize.height,
+            }}
+            minWidth={50}
+            maxWidth={150}
+            enableResizing={{
+              top: false,
+              right: true,
+              bottom: false,
+              left: false,
+              topRight: false,
+              bottomRight: false,
+              bottomLeft: false,
+              topLeft: false,
+            }}
+            onResize={(
+              _e: MouseEvent | TouchEvent,
+              _dir: any,
+              ref: any,
+              _delta: ResizableDelta,
+              position: Position
+            ) => {
+              const newWidth = Number(
+                ref.style.width.substring(0, ref.style.width.indexOf("p"))
+              );
+              const newHeight = Number(
+                ref.style.height.substring(0, ref.style.height.indexOf("p"))
+              );
+
+              setWindowNavbarSize({
+                width: newWidth,
+                height: newHeight,
+              });
+            }}
+            disableDragging
           >
-            <TopbarTitleImage
-              src="https://img.icons8.com/color/48/000000/mac-folder.png"
-              alt="folder"
-            />
-            <NavItmLabel>Front-End</NavItmLabel>
-          </WindowBodyNavItm>
-          <WindowBodyNavItm
-            onClick={() => handleClick("Back")}
-            focus={index === "Back"}
-          >
-            <TopbarTitleImage
-              src="https://img.icons8.com/color/48/000000/mac-folder.png"
-              alt="folder"
-            />
-            <NavItmLabel>Back-End</NavItmLabel>
-          </WindowBodyNavItm>
-          <WindowBodyNavItm
-            onClick={() => handleClick("Mobile")}
-            focus={index === "Mobile"}
-          >
-            <TopbarTitleImage
-              src="https://img.icons8.com/color/48/000000/code-file.png"
-              alt="folder"
-            />
-            <NavItmLabel>Mobile</NavItmLabel>
-          </WindowBodyNavItm>
-          <WindowBodyNavItm
-            onClick={() => handleClick("Programming")}
-            focus={index === "Programming"}
-          >
-            <TopbarTitleImage
-              src="https://img.icons8.com/color/48/000000/google-code.png"
-              alt="folder"
-            />
-            <NavItmLabel>Language</NavItmLabel>
-          </WindowBodyNavItm>
+            <WindowBodyNavItm
+              first
+              onClick={() => handleClick("Front")}
+              focus={index === "Front"}
+            >
+              <TopbarTitleImage
+                src="https://img.icons8.com/color/48/000000/mac-folder.png"
+                alt="folder"
+              />
+              <NavItmLabel>Front-End</NavItmLabel>
+            </WindowBodyNavItm>
+            <WindowBodyNavItm
+              onClick={() => handleClick("Back")}
+              focus={index === "Back"}
+            >
+              <TopbarTitleImage
+                src="https://img.icons8.com/color/48/000000/mac-folder.png"
+                alt="folder"
+              />
+              <NavItmLabel>Back-End</NavItmLabel>
+            </WindowBodyNavItm>
+            <WindowBodyNavItm
+              onClick={() => handleClick("Mobile")}
+              focus={index === "Mobile"}
+            >
+              <TopbarTitleImage
+                src="https://img.icons8.com/color/48/000000/code-file.png"
+                alt="folder"
+              />
+              <NavItmLabel>Mobile</NavItmLabel>
+            </WindowBodyNavItm>
+            <WindowBodyNavItm
+              onClick={() => handleClick("Programming")}
+              focus={index === "Programming"}
+            >
+              <TopbarTitleImage
+                src="https://img.icons8.com/color/48/000000/google-code.png"
+                alt="folder"
+              />
+              <NavItmLabel>Language</NavItmLabel>
+            </WindowBodyNavItm>
+          </Rnd>
         </WindowBodyNavbar>
         <WindowBodyContent>
           {index === "Front" ? <FrontEnd /> : null}
@@ -150,7 +202,7 @@ const SkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
           {index === "Mobile" ? <Mobile /> : null}
           {index === "Programming" ? <ProgrammingLanguage /> : null}
         </WindowBodyContent>
-      </WindowBody>
+      </NewWindowBody>
     </Window>
   );
 };

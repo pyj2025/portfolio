@@ -57,6 +57,13 @@ const BackEnd: React.FC = () => {
       </SkillsIconContainer>
       <SkillsIconContainer>
         <img
+          src="https://img.icons8.com/color/48/000000/amazon-web-services.png"
+          alt="aws"
+        />
+        <IconLabel>aws</IconLabel>
+      </SkillsIconContainer>
+      <SkillsIconContainer>
+        <img
           src="https://img.icons8.com/color/48/000000/spring-logo.png"
           alt="Spring"
         />
