@@ -1,8 +1,7 @@
 import {
-  faBars,
   faBriefcase,
-  faInfoCircle,
   faSchool,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
@@ -20,23 +19,6 @@ import { Window } from "../../../GlobalStyle";
 
 type IndexType = "About" | "Experience" | "Education";
 
-const WindowNavbarToggle = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  margin: 0.75rem;
-  background-color: rgba(51, 49, 51, 0.9);
-  width: 2rem;
-  height: 2rem;
-  color: white;
-`;
-
-const CollapsedWindowNavbar = styled.div`
-  background-color: #1d1f21;
-  border-bottom-left-radius: 6px;
-`;
-
 const NewWindowBodyNavItm = styled.div<{
   focus: boolean;
 }>`
@@ -48,27 +30,13 @@ const NewWindowBodyNavItm = styled.div<{
     focus ? "rgba(120, 120, 120, 0.5)" : "transparent"};
   color: white;
   width: 100%;
+  height: 2rem;
   cursor: pointer;
 `;
 
 const NewWindowBodyNavItmIcon = styled(FontAwesomeIcon)`
   width: 1.5rem;
   height: 1.5rem;
-`;
-
-const NewNavItmLabel = styled.div`
-  color: red;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 2rem;
-  font-size: xx-small;
-  /* overflow: hidden; */
-  /* text-overflow: ellipsis;
-  white-space: nowrap; */
-  /* font-size: 1rem;
-  font-weight: 400; */
-  line-height: 1.4rem;
 `;
 
 const NewWindowBody2 = styled.div`
@@ -121,8 +89,6 @@ const MobileAboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const [index, setIndex] = React.useState<IndexType>("About");
   const [isMobileWindow, setIsMobileWindow] = React.useState<boolean>(false);
   const [showDate, setShowDate] = React.useState<boolean>(false);
-  const [isWindowNavbarOpen, setWindowNavbarOpen] =
-    React.useState<boolean>(false);
 
   React.useEffect(() => {
     if (width < TABLET_MAX_WIDTH) {
@@ -200,37 +166,26 @@ const MobileAboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         isMobileWindow={isMobileWindow}
       />
       <NewWindowBody2>
-        {isWindowNavbarOpen ? (
-          <WindowNavbarToggle
-            onClick={() => setWindowNavbarOpen((state) => !state)}
+        <WindowBodyNavbar2>
+          <NewWindowBodyNavItm
+            onClick={() => handleClick("About")}
+            focus={index === "About"}
           >
-            <FontAwesomeIcon icon={faBars} />
-          </WindowNavbarToggle>
-        ) : null}
-        {!isWindowNavbarOpen ? (
-          <WindowBodyNavbar2>
-            <NewWindowBodyNavItm
-              onClick={() => handleClick("About")}
-              focus={index === "About"}
-            >
-              <NewWindowBodyNavItmIcon icon={faInfoCircle} />
-            </NewWindowBodyNavItm>
-            <NewWindowBodyNavItm
-              onClick={() => handleClick("Experience")}
-              focus={index === "Experience"}
-            >
-              <NewWindowBodyNavItmIcon icon={faBriefcase} />
-            </NewWindowBodyNavItm>
-            <NewWindowBodyNavItm
-              onClick={() => handleClick("Education")}
-              focus={index === "Education"}
-            >
-              <NewWindowBodyNavItmIcon icon={faSchool} />
-            </NewWindowBodyNavItm>
-          </WindowBodyNavbar2>
-        ) : (
-          <CollapsedWindowNavbar />
-        )}
+            <NewWindowBodyNavItmIcon icon={faUser} />
+          </NewWindowBodyNavItm>
+          <NewWindowBodyNavItm
+            onClick={() => handleClick("Experience")}
+            focus={index === "Experience"}
+          >
+            <NewWindowBodyNavItmIcon icon={faBriefcase} />
+          </NewWindowBodyNavItm>
+          <NewWindowBodyNavItm
+            onClick={() => handleClick("Education")}
+            focus={index === "Education"}
+          >
+            <NewWindowBodyNavItmIcon icon={faSchool} />
+          </NewWindowBodyNavItm>
+        </WindowBodyNavbar2>
         <WindowBodyContent2>
           {index === "About" ? <About /> : null}
           {index === "Experience" ? <Experience showDate={showDate} /> : null}
