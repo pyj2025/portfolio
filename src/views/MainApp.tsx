@@ -9,6 +9,7 @@ import useScreenSize, { TABLET_MAX_WIDTH } from "../utils/useScreenSize";
 import { WindowsProvider } from "../utils/context/WindowsProvider";
 import styled from "styled-components";
 import MobileMenu from "../MobileMenu";
+import MobileBodyContent from "./MobileBodyContent";
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -36,7 +37,7 @@ const MobileApp: React.FC = () => {
   return (
     <Container>
       <MobileTopBar />
-      <BodyContent />
+      <MobileBodyContent />
       <MobileMenu />
     </Container>
   );
