@@ -23,6 +23,7 @@ import useScreenSize, {
 import MobileApp from "../MobileApp";
 import MobileWelcomeWindow from "./window/MobileWelcomeWindow";
 import MobileAboutWindow from "./window/mobile/MobileAboutWindow";
+import MobileSkillsWindow from "./window/mobile/MobileSkillsWindow";
 
 const Container = styled.div`
   width: 100%;
@@ -122,7 +123,7 @@ const MobileBodyContent: React.FC = () => {
         <TopbarAboutWindow handleFocus={handleFocus} />
       ) : null}
       {isAboutOpen ? <MobileAboutWindow handleFocus={handleFocus} /> : null}
-      {isSkillsOpen ? <SkillsWindow handleFocus={handleFocus} /> : null}
+      {isSkillsOpen ? <MobileSkillsWindow handleFocus={handleFocus} /> : null}
       {isProjectsOpen ? <ProjectsWindow handleFocus={handleFocus} /> : null}
     </Container>
   );
