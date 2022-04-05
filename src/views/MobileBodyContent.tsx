@@ -2,9 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { DraggableData } from "react-rnd";
 
-import ProjectsWindow from "./window/ProjectsWindow";
 import WelcomeWindow from "./window/WelcomeWindow";
-import SkillsWindow from "./window/SkillsWindow";
 import { useWindows } from "../utils/context/context";
 import { Slide, toast, ToastContainer } from "react-toastify";
 import {
@@ -24,6 +22,7 @@ import MobileApp from "../MobileApp";
 import MobileWelcomeWindow from "./window/MobileWelcomeWindow";
 import MobileAboutWindow from "./window/mobile/MobileAboutWindow";
 import MobileSkillsWindow from "./window/mobile/MobileSkillsWindow";
+import MobileProjectsWindow from "./window/mobile/MobileProjectsWindow";
 
 const Container = styled.div`
   width: 100%;
@@ -124,7 +123,9 @@ const MobileBodyContent: React.FC = () => {
       ) : null}
       {isAboutOpen ? <MobileAboutWindow handleFocus={handleFocus} /> : null}
       {isSkillsOpen ? <MobileSkillsWindow handleFocus={handleFocus} /> : null}
-      {isProjectsOpen ? <ProjectsWindow handleFocus={handleFocus} /> : null}
+      {isProjectsOpen ? (
+        <MobileProjectsWindow handleFocus={handleFocus} />
+      ) : null}
     </Container>
   );
 };

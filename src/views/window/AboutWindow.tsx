@@ -163,6 +163,12 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         {!isWindowNavbarOpen ? (
           <WindowBodyNavbar>
             <WindowBodyNavItm
+              onClick={() => setWindowNavbarOpen((state) => !state)}
+              focus={false}
+            >
+              <NavbarCloseButton>X</NavbarCloseButton>
+            </WindowBodyNavItm>
+            <WindowBodyNavItm
               first
               onClick={() => handleClick("About")}
               focus={index === "About"}
@@ -193,11 +199,6 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
               />
               <NavItmLabel>Education</NavItmLabel>
             </WindowBodyNavItm>
-            <NavbarCloseButtonContainer
-              onClick={() => setWindowNavbarOpen((state) => !state)}
-            >
-              <NavbarCloseButton>Close</NavbarCloseButton>
-            </NavbarCloseButtonContainer>
           </WindowBodyNavbar>
         ) : (
           <CollapsedWindowNavbar />
