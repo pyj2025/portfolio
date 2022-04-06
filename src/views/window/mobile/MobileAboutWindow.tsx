@@ -1,8 +1,3 @@
-import {
-  faBriefcase,
-  faSchool,
-  faUser,
-} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { DraggableData, Position, ResizableDelta } from "react-rnd";
@@ -15,9 +10,9 @@ import { WindowPositionSetting, WindowSizeSetting } from "../../../types";
 import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
 import { WindowProps } from "../../BodyContent";
 
-import { Window } from "../../../GlobalStyle";
+import { TopbarTitleImage, Window } from "../../../GlobalStyle";
 
-type IndexType = "About" | "Experience" | "Education";
+type MobileIndexType = "Menu" | "About" | "Experience" | "Education";
 
 const NewWindowBodyNavItm = styled.div<{
   focus: boolean;
@@ -32,11 +27,6 @@ const NewWindowBodyNavItm = styled.div<{
   width: 100%;
   height: 2rem;
   cursor: pointer;
-`;
-
-const NewWindowBodyNavItmIcon = styled(FontAwesomeIcon)`
-  width: 1.5rem;
-  height: 1.5rem;
 `;
 
 const NewWindowBody2 = styled.div`
@@ -86,7 +76,7 @@ const MobileAboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
     (WindowSizeSetting & WindowPositionSetting) | null
   >(null);
 
-  const [index, setIndex] = React.useState<IndexType>("About");
+  const [index, setIndex] = React.useState<MobileIndexType>("Menu");
   const [isMobileWindow, setIsMobileWindow] = React.useState<boolean>(false);
   const [showDate, setShowDate] = React.useState<boolean>(false);
 
@@ -116,7 +106,7 @@ const MobileAboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
     }
   }, [aboutSize.width, showDate]);
 
-  const handleClick = (name: IndexType) => {
+  const handleClick = (name: MobileIndexType) => {
     setIndex(name);
   };
 
@@ -171,23 +161,37 @@ const MobileAboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
             onClick={() => handleClick("About")}
             focus={index === "About"}
           >
-            <NewWindowBodyNavItmIcon icon={faUser} />
+            <TopbarTitleImage
+              src="https://img.icons8.com/color/48/000000/file.png"
+              alt="file"
+            />
           </NewWindowBodyNavItm>
           <NewWindowBodyNavItm
             onClick={() => handleClick("Experience")}
             focus={index === "Experience"}
           >
-            <NewWindowBodyNavItmIcon icon={faBriefcase} />
+            <TopbarTitleImage
+              src="https://img.icons8.com/color/48/000000/mac-folder.png"
+              alt="folder"
+            />
           </NewWindowBodyNavItm>
           <NewWindowBodyNavItm
             onClick={() => handleClick("Education")}
             focus={index === "Education"}
           >
-            <NewWindowBodyNavItmIcon icon={faSchool} />
+            <TopbarTitleImage
+              src="https://img.icons8.com/color/48/000000/file.png"
+              alt="file"
+            />
           </NewWindowBodyNavItm>
         </WindowBodyNavbar2>
         <WindowBodyContent2>
-          {index === "About" ? <About /> : null}
+          {index === "About" ? (
+            <div style={{ border: "2px solid red" }}>
+              <div>#</div>
+              <About />
+            </div>
+          ) : null}
           {index === "Experience" ? <Experience showDate={showDate} /> : null}
           {index === "Education" ? <Education /> : null}
         </WindowBodyContent2>

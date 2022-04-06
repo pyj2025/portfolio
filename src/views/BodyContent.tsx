@@ -111,10 +111,6 @@ const BodyContent: React.FC = () => {
         limit={1}
         draggablePercent={60}
       />
-      {mobileMenuOpen ? <MobileApp /> : null}
-      {welcomeWindowCheck && (isMobile || mobileWindow) ? (
-        <MobileWelcomeWindow handleFocus={handleFocus} />
-      ) : null}
       {welcomeWindowCheck && !isMobile && !mobileWindow ? (
         <WelcomeWindow handleFocus={handleFocus} />
       ) : null}

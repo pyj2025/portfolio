@@ -1,5 +1,5 @@
 import React from "react";
-import { DraggableData, Position, ResizableDelta, Rnd } from "react-rnd";
+import { DraggableData, Position, ResizableDelta } from "react-rnd";
 import { WindowPositionSetting, WindowSizeSetting } from "../../../types";
 import { TopbarTitleImage, Window } from "../../../GlobalStyle";
 
@@ -11,7 +11,6 @@ import BackEnd from "../../../components/skills/BackEnd";
 import Mobile from "../../../components/skills/Mobile";
 import ProgrammingLanguage from "../../../components/skills/ProgrammingLanguage";
 import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const NewWindowBodyNavItm = styled.div<{
   focus: boolean;
@@ -26,11 +25,6 @@ const NewWindowBodyNavItm = styled.div<{
   width: 100%;
   height: 2rem;
   cursor: pointer;
-`;
-
-const NewWindowBodyNavItmIcon = styled(FontAwesomeIcon)`
-  width: 1.5rem;
-  height: 1.5rem;
 `;
 
 const NewWindowBody2 = styled.div`
@@ -67,12 +61,6 @@ const MobileSkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
 
   const skillsRef = React.useRef<any>();
-
-  const [windowNavbarSize, setWindowNavbarSize] =
-    React.useState<WindowSizeSetting>({
-      width: 150,
-      height: 300,
-    });
 
   const [skillsSize, setSkillsSize] = React.useState<WindowSizeSetting>({
     width: 500,
