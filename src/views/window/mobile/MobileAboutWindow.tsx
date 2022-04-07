@@ -1,4 +1,3 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { DraggableData, Position, ResizableDelta } from "react-rnd";
 import styled from "styled-components";
@@ -13,6 +12,11 @@ import { WindowProps } from "../../BodyContent";
 import { TopbarTitleImage, Window } from "../../../GlobalStyle";
 
 type MobileIndexType = "Menu" | "About" | "Experience" | "Education";
+
+type MobileAboutWindowMenuProps = {
+  index: MobileIndexType;
+  onClick: (index: MobileIndexType) => void;
+};
 
 const NewWindowBodyNavItm = styled.div<{
   focus: boolean;
@@ -56,6 +60,43 @@ const WindowBodyContent2 = styled.div`
   overflow-x: hidden;
   overflow-y: scroll;
 `;
+
+const MobileAboutWindowMenu: React.FC<MobileAboutWindowMenuProps> = ({
+  index,
+  onClick,
+}) => {
+  return (
+    <div>
+      <NewWindowBodyNavItm
+        onClick={() => onClick("About")}
+        focus={index === "About"}
+      >
+        <TopbarTitleImage
+          src="https://img.icons8.com/color/48/000000/file.png"
+          alt="file"
+        />
+      </NewWindowBodyNavItm>
+      <NewWindowBodyNavItm
+        onClick={() => onClick("Experience")}
+        focus={index === "Experience"}
+      >
+        <TopbarTitleImage
+          src="https://img.icons8.com/color/48/000000/mac-folder.png"
+          alt="folder"
+        />
+      </NewWindowBodyNavItm>
+      <NewWindowBodyNavItm
+        onClick={() => onClick("Education")}
+        focus={index === "Education"}
+      >
+        <TopbarTitleImage
+          src="https://img.icons8.com/color/48/000000/file.png"
+          alt="file"
+        />
+      </NewWindowBodyNavItm>
+    </div>
+  );
+};
 
 const MobileAboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
