@@ -14,7 +14,6 @@ import { TopbarTitleImage, Window } from "../../../GlobalStyle";
 type MobileIndexType = "Menu" | "About" | "Experience" | "Education";
 
 type MobileAboutWindowMenuProps = {
-  index: MobileIndexType;
   onClick: (index: MobileIndexType) => void;
 };
 
@@ -30,6 +29,20 @@ const NewWindowBodyNavItm = styled.div<{
   color: white;
   width: 100%;
   height: 2rem;
+  cursor: pointer;
+`;
+
+const MobileAboutWindowMenuItem = styled.div<{
+  isEven?: boolean;
+}>`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: ${({ isEven }) => (isEven ? "transparent" : "#28292a")};
+  color: white;
+  width: 100%;
+  height: 3rem;
   cursor: pointer;
 `;
 
@@ -62,39 +75,26 @@ const WindowBodyContent2 = styled.div`
 `;
 
 const MobileAboutWindowMenu: React.FC<MobileAboutWindowMenuProps> = ({
-  index,
   onClick,
 }) => {
   return (
-    <div>
-      <NewWindowBodyNavItm
-        onClick={() => onClick("About")}
-        focus={index === "About"}
-      >
-        <TopbarTitleImage
-          src="https://img.icons8.com/color/48/000000/file.png"
-          alt="file"
-        />
-      </NewWindowBodyNavItm>
-      <NewWindowBodyNavItm
-        onClick={() => onClick("Experience")}
-        focus={index === "Experience"}
-      >
-        <TopbarTitleImage
+    <>
+      <MobileAboutWindowMenuItem onClick={() => onClick("About")}>
+        <img src="https://img.icons8.com/color/48/000000/file.png" alt="file" />
+        <div>About</div>
+      </MobileAboutWindowMenuItem>
+      <MobileAboutWindowMenuItem onClick={() => onClick("Experience")} isEven>
+        <img
           src="https://img.icons8.com/color/48/000000/mac-folder.png"
           alt="folder"
         />
-      </NewWindowBodyNavItm>
-      <NewWindowBodyNavItm
-        onClick={() => onClick("Education")}
-        focus={index === "Education"}
-      >
-        <TopbarTitleImage
-          src="https://img.icons8.com/color/48/000000/file.png"
-          alt="file"
-        />
-      </NewWindowBodyNavItm>
-    </div>
+        <div>Experience</div>
+      </MobileAboutWindowMenuItem>
+      <MobileAboutWindowMenuItem onClick={() => onClick("Education")}>
+        <img src="https://img.icons8.com/color/48/000000/file.png" alt="file" />
+        <div>Education</div>
+      </MobileAboutWindowMenuItem>
+    </>
   );
 };
 
@@ -227,6 +227,11 @@ const MobileAboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
           </NewWindowBodyNavItm>
         </WindowBodyNavbar2>
         <WindowBodyContent2>
+          {index === "Menu" ? (
+            <div style={{ border: "2px solid red", height: "100%" }}>
+              <MobileAboutWindowMenu onClick={handleClick} />
+            </div>
+          ) : null}
           {index === "About" ? (
             <div style={{ border: "2px solid red" }}>
               <div>#</div>
