@@ -7,13 +7,15 @@ import {
   WebProjects,
 } from "../../../components/Projects";
 import WindowTopbar from "../../../components/WindowTopbar";
-import { TopbarTitleImage, Window } from "../../../GlobalStyle";
+import { Window } from "../../../GlobalStyle";
 import { WindowPositionSetting, WindowSizeSetting } from "../../../types";
 import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
 import Foodie from "../../../components/projects/Foodie";
 import Portfolio from "../../../components/projects/Portfolio";
 import DatApex from "../../../components/projects/DatApex";
 import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const NewWindowBodyNavItm = styled.div<{
   focus: boolean;
@@ -26,8 +28,13 @@ const NewWindowBodyNavItm = styled.div<{
     focus ? "rgba(120, 120, 120, 0.5)" : "transparent"};
   color: white;
   width: 100%;
-  height: 2rem;
+  height: 3rem;
   cursor: pointer;
+`;
+
+const MobileNavbarMenu = styled.img`
+  height: 1.5rem;
+  width: 1.5rem;
 `;
 
 const NewWindowBody2 = styled.div`
@@ -56,6 +63,28 @@ const WindowBodyContent2 = styled.div`
   border-bottom-right-radius: 6px;
   overflow-x: hidden;
   overflow-y: scroll;
+`;
+
+const MobileContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: white;
+  border-bottom-right-radius: 6px;
+`;
+
+const MobileCloseButtonContainer = styled.div`
+  display: flex;
+  color: white;
+  justify-content: flex-end;
+  align-items: center;
+  height: 1.5rem;
+  padding-right: 0.5rem;
+`;
+
+const MobileCloseButton = styled.div`
+  margin-top: 0.75rem;
+  padding: 0.5rem;
 `;
 
 export type IndexType =
@@ -149,7 +178,7 @@ const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
       <NewWindowBody2>
         <WindowBodyNavbar2>
           <NewWindowBodyNavItm onClick={() => handleClick("Projects")} focus>
-            <TopbarTitleImage
+            <MobileNavbarMenu
               src="https://img.icons8.com/color/48/000000/mac-folder.png"
               alt="folder"
             />
@@ -162,7 +191,7 @@ const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
               index === "WebProjects"
             }
           >
-            <TopbarTitleImage
+            <MobileNavbarMenu
               src="https://img.icons8.com/color/48/000000/mac-folder.png"
               alt="folder"
             />
@@ -171,7 +200,7 @@ const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
             onClick={() => handleClick("MobileProjects")}
             focus={index === "Foodie" || index === "MobileProjects"}
           >
-            <TopbarTitleImage
+            <MobileNavbarMenu
               src="https://img.icons8.com/color/48/000000/mac-folder.png"
               alt="folder"
             />
@@ -183,9 +212,36 @@ const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
           {index === "MobileProjects" ? (
             <MobileProjects click={handleClick} />
           ) : null}
-          {index === "DatApex" ? <DatApex /> : null}
-          {index === "Portfolio" ? <Portfolio /> : null}
-          {index === "Foodie" ? <Foodie /> : null}
+          {index === "DatApex" ? (
+            <MobileContentContainer>
+              <MobileCloseButtonContainer>
+                <MobileCloseButton onClick={() => handleClick("Projects")}>
+                  <FontAwesomeIcon icon={faTimes} />
+                </MobileCloseButton>
+              </MobileCloseButtonContainer>
+              <DatApex />
+            </MobileContentContainer>
+          ) : null}
+          {index === "Portfolio" ? (
+            <MobileContentContainer>
+              <MobileCloseButtonContainer>
+                <MobileCloseButton onClick={() => handleClick("Projects")}>
+                  <FontAwesomeIcon icon={faTimes} />
+                </MobileCloseButton>
+              </MobileCloseButtonContainer>
+              <Portfolio />
+            </MobileContentContainer>
+          ) : null}
+          {index === "Foodie" ? (
+            <MobileContentContainer>
+              <MobileCloseButtonContainer>
+                <MobileCloseButton onClick={() => handleClick("Projects")}>
+                  <FontAwesomeIcon icon={faTimes} />
+                </MobileCloseButton>
+              </MobileCloseButtonContainer>
+              <Foodie />
+            </MobileContentContainer>
+          ) : null}
         </WindowBodyContent2>
       </NewWindowBody2>
     </Window>

@@ -9,13 +9,11 @@ import { WindowPositionSetting, WindowSizeSetting } from "../../../types";
 import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
 import { WindowProps } from "../../BodyContent";
 
-import { TopbarTitleImage, Window } from "../../../GlobalStyle";
+import { Window } from "../../../GlobalStyle";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 type MobileIndexType = "Menu" | "About" | "Experience" | "Education";
-
-type MobileAboutWindowMenuProps = {
-  onClick: (index: MobileIndexType) => void;
-};
 
 const NewWindowBodyNavItm = styled.div<{
   focus: boolean;
@@ -28,7 +26,7 @@ const NewWindowBodyNavItm = styled.div<{
     focus ? "rgba(120, 120, 120, 0.5)" : "transparent"};
   color: white;
   width: 100%;
-  height: 2rem;
+  height: 3rem;
   cursor: pointer;
 `;
 
@@ -41,9 +39,20 @@ const MobileAboutWindowMenuItem = styled.div<{
   align-items: center;
   background-color: ${({ isEven }) => (isEven ? "transparent" : "#28292a")};
   color: white;
+  padding: 0.25rem 0.5rem;
   width: 100%;
   height: 3rem;
   cursor: pointer;
+`;
+
+const MobileMenuItemLabel = styled.div`
+  font-weight: bold;
+  margin-left: 1rem;
+`;
+
+const MobileNavbarMenu = styled.img`
+  height: 1.5rem;
+  width: 1.5rem;
 `;
 
 const NewWindowBody2 = styled.div`
@@ -74,6 +83,32 @@ const WindowBodyContent2 = styled.div`
   overflow-y: scroll;
 `;
 
+const MobileContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: white;
+  border-bottom-right-radius: 6px;
+`;
+
+const MobileCloseButtonContainer = styled.div`
+  display: flex;
+  color: white;
+  justify-content: flex-end;
+  align-items: center;
+  height: 1.5rem;
+  padding-right: 0.5rem;
+`;
+
+const MobileCloseButton = styled.div`
+  margin-top: 0.75rem;
+  padding: 0.5rem;
+`;
+
+type MobileAboutWindowMenuProps = {
+  onClick: (index: MobileIndexType) => void;
+};
+
 const MobileAboutWindowMenu: React.FC<MobileAboutWindowMenuProps> = ({
   onClick,
 }) => {
@@ -81,18 +116,18 @@ const MobileAboutWindowMenu: React.FC<MobileAboutWindowMenuProps> = ({
     <>
       <MobileAboutWindowMenuItem onClick={() => onClick("About")}>
         <img src="https://img.icons8.com/color/48/000000/file.png" alt="file" />
-        <div>About</div>
+        <MobileMenuItemLabel>About</MobileMenuItemLabel>
       </MobileAboutWindowMenuItem>
       <MobileAboutWindowMenuItem onClick={() => onClick("Experience")} isEven>
         <img
           src="https://img.icons8.com/color/48/000000/mac-folder.png"
           alt="folder"
         />
-        <div>Experience</div>
+        <MobileMenuItemLabel>Experience</MobileMenuItemLabel>
       </MobileAboutWindowMenuItem>
       <MobileAboutWindowMenuItem onClick={() => onClick("Education")}>
         <img src="https://img.icons8.com/color/48/000000/file.png" alt="file" />
-        <div>Education</div>
+        <MobileMenuItemLabel>Education</MobileMenuItemLabel>
       </MobileAboutWindowMenuItem>
     </>
   );
@@ -202,7 +237,7 @@ const MobileAboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
             onClick={() => handleClick("About")}
             focus={index === "About"}
           >
-            <TopbarTitleImage
+            <MobileNavbarMenu
               src="https://img.icons8.com/color/48/000000/file.png"
               alt="file"
             />
@@ -211,7 +246,7 @@ const MobileAboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
             onClick={() => handleClick("Experience")}
             focus={index === "Experience"}
           >
-            <TopbarTitleImage
+            <MobileNavbarMenu
               src="https://img.icons8.com/color/48/000000/mac-folder.png"
               alt="folder"
             />
@@ -220,7 +255,7 @@ const MobileAboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
             onClick={() => handleClick("Education")}
             focus={index === "Education"}
           >
-            <TopbarTitleImage
+            <MobileNavbarMenu
               src="https://img.icons8.com/color/48/000000/file.png"
               alt="file"
             />
@@ -228,18 +263,19 @@ const MobileAboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         </WindowBodyNavbar2>
         <WindowBodyContent2>
           {index === "Menu" ? (
-            <div style={{ border: "2px solid red", height: "100%" }}>
-              <MobileAboutWindowMenu onClick={handleClick} />
-            </div>
-          ) : null}
-          {index === "About" ? (
-            <div style={{ border: "2px solid red" }}>
-              <div>#</div>
-              <About />
-            </div>
-          ) : null}
-          {index === "Experience" ? <Experience showDate={showDate} /> : null}
-          {index === "Education" ? <Education /> : null}
+            <MobileAboutWindowMenu onClick={handleClick} />
+          ) : (
+            <MobileContentContainer>
+              <MobileCloseButtonContainer>
+                <MobileCloseButton onClick={() => handleClick("Menu")}>
+                  <FontAwesomeIcon icon={faTimes} />
+                </MobileCloseButton>
+              </MobileCloseButtonContainer>
+              {index === "About" && <About />}
+              {index === "Experience" && <Experience showDate={showDate} />}
+              {index === "Education" && <Education />}
+            </MobileContentContainer>
+          )}
         </WindowBodyContent2>
       </NewWindowBody2>
     </Window>

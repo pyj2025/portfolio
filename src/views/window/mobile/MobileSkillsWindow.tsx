@@ -1,7 +1,7 @@
 import React from "react";
 import { DraggableData, Position, ResizableDelta } from "react-rnd";
 import { WindowPositionSetting, WindowSizeSetting } from "../../../types";
-import { TopbarTitleImage, Window } from "../../../GlobalStyle";
+import { Window } from "../../../GlobalStyle";
 
 import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
 import { WindowProps } from "../../BodyContent";
@@ -11,6 +11,10 @@ import BackEnd from "../../../components/skills/BackEnd";
 import Mobile from "../../../components/skills/Mobile";
 import ProgrammingLanguage from "../../../components/skills/ProgrammingLanguage";
 import styled from "styled-components";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+type MobileIndexType = "Menu" | "Front" | "Back" | "Mobile" | "Programming";
 
 const NewWindowBodyNavItm = styled.div<{
   focus: boolean;
@@ -23,8 +27,33 @@ const NewWindowBodyNavItm = styled.div<{
     focus ? "rgba(120, 120, 120, 0.5)" : "transparent"};
   color: white;
   width: 100%;
-  height: 2rem;
+  height: 3rem;
   cursor: pointer;
+`;
+
+const MobileAboutWindowMenuItem = styled.div<{
+  isEven?: boolean;
+}>`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: ${({ isEven }) => (isEven ? "transparent" : "#28292a")};
+  color: white;
+  padding: 0.25rem 0.5rem;
+  width: 100%;
+  height: 3rem;
+  cursor: pointer;
+`;
+
+const MobileMenuItemLabel = styled.div`
+  font-weight: bold;
+  margin-left: 1rem;
+`;
+
+const MobileNavbarMenu = styled.img`
+  height: 1.5rem;
+  width: 1.5rem;
 `;
 
 const NewWindowBody2 = styled.div`
@@ -55,7 +84,68 @@ const WindowBodyContent2 = styled.div`
   overflow-y: scroll;
 `;
 
-type IndexType = "Front" | "Back" | "Mobile" | "Programming";
+const MobileContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: white;
+  border-bottom-right-radius: 6px;
+`;
+
+const MobileCloseButtonContainer = styled.div`
+  display: flex;
+  color: white;
+  justify-content: flex-end;
+  align-items: center;
+  height: 1.5rem;
+  padding-right: 0.5rem;
+`;
+
+const MobileCloseButton = styled.div`
+  margin-top: 0.75rem;
+  padding: 0.5rem;
+`;
+
+type MobileWindowMenuProps = {
+  onClick: (index: MobileIndexType) => void;
+};
+
+const MobileSkillsWindowMenu: React.FC<MobileWindowMenuProps> = ({
+  onClick,
+}) => {
+  return (
+    <>
+      <MobileAboutWindowMenuItem onClick={() => onClick("Front")}>
+        <img
+          src="https://img.icons8.com/color/48/000000/mac-folder.png"
+          alt="folder"
+        />
+        <MobileMenuItemLabel>Frontend</MobileMenuItemLabel>
+      </MobileAboutWindowMenuItem>
+      <MobileAboutWindowMenuItem onClick={() => onClick("Back")} isEven>
+        <img
+          src="https://img.icons8.com/color/48/000000/mac-folder.png"
+          alt="folder"
+        />
+        <MobileMenuItemLabel>Backend</MobileMenuItemLabel>
+      </MobileAboutWindowMenuItem>
+      <MobileAboutWindowMenuItem onClick={() => onClick("Mobile")}>
+        <img
+          src="https://img.icons8.com/color/48/000000/code-file.png"
+          alt="folder"
+        />
+        <MobileMenuItemLabel>Mobile</MobileMenuItemLabel>
+      </MobileAboutWindowMenuItem>
+      <MobileAboutWindowMenuItem onClick={() => onClick("Programming")} isEven>
+        <img
+          src="https://img.icons8.com/color/48/000000/google-code.png"
+          alt="folder"
+        />
+        <MobileMenuItemLabel>Programming Language</MobileMenuItemLabel>
+      </MobileAboutWindowMenuItem>
+    </>
+  );
+};
 
 const MobileSkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
@@ -74,7 +164,7 @@ const MobileSkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const [skillsPrevSetting, setSkillsPrevSetting] = React.useState<
     (WindowSizeSetting & WindowPositionSetting) | null
   >(null);
-  const [index, setIndex] = React.useState<IndexType>("Front");
+  const [index, setIndex] = React.useState<MobileIndexType>("Menu");
   const [isMobileWindow, setIsMobileWindow] = React.useState(false);
 
   React.useEffect(() => {
@@ -94,7 +184,7 @@ const MobileSkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [width]);
 
-  const handleClick = (name: IndexType) => {
+  const handleClick = (name: MobileIndexType) => {
     setIndex(name);
   };
 
@@ -143,7 +233,7 @@ const MobileSkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
             onClick={() => handleClick("Front")}
             focus={index === "Front"}
           >
-            <TopbarTitleImage
+            <MobileNavbarMenu
               src="https://img.icons8.com/color/48/000000/mac-folder.png"
               alt="folder"
             />
@@ -152,7 +242,7 @@ const MobileSkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
             onClick={() => handleClick("Back")}
             focus={index === "Back"}
           >
-            <TopbarTitleImage
+            <MobileNavbarMenu
               src="https://img.icons8.com/color/48/000000/mac-folder.png"
               alt="folder"
             />
@@ -161,7 +251,7 @@ const MobileSkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
             onClick={() => handleClick("Mobile")}
             focus={index === "Mobile"}
           >
-            <TopbarTitleImage
+            <MobileNavbarMenu
               src="https://img.icons8.com/color/48/000000/code-file.png"
               alt="folder"
             />
@@ -170,17 +260,28 @@ const MobileSkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
             onClick={() => handleClick("Programming")}
             focus={index === "Programming"}
           >
-            <TopbarTitleImage
+            <MobileNavbarMenu
               src="https://img.icons8.com/color/48/000000/google-code.png"
               alt="folder"
             />
           </NewWindowBodyNavItm>
         </WindowBodyNavbar2>
         <WindowBodyContent2>
-          {index === "Front" ? <FrontEnd /> : null}
-          {index === "Back" ? <BackEnd /> : null}
-          {index === "Mobile" ? <Mobile /> : null}
-          {index === "Programming" ? <ProgrammingLanguage /> : null}
+          {index === "Menu" ? (
+            <MobileSkillsWindowMenu onClick={handleClick} />
+          ) : (
+            <MobileContentContainer>
+              <MobileCloseButtonContainer>
+                <MobileCloseButton onClick={() => handleClick("Menu")}>
+                  <FontAwesomeIcon icon={faTimes} />
+                </MobileCloseButton>
+              </MobileCloseButtonContainer>
+              {index === "Front" && <FrontEnd />}
+              {index === "Back" && <BackEnd />}
+              {index === "Mobile" && <Mobile />}
+              {index === "Programming" && <ProgrammingLanguage />}
+            </MobileContentContainer>
+          )}
         </WindowBodyContent2>
       </NewWindowBody2>
     </Window>
