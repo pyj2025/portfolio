@@ -8,12 +8,16 @@ import React from "react";
 import styled from "styled-components";
 import { BoldText, MutedText } from "../../GlobalStyle";
 
-export const DataRow = styled.div<{ isEven?: boolean; showDate: boolean }>`
+export const DataRow = styled.div<{
+  isEven?: boolean;
+  isMobile?: boolean;
+  showDate: boolean;
+}>`
   display: grid;
   grid-template-columns: ${({ showDate }) =>
     showDate ? "6.5fr 3.5fr" : "auto"};
   width: 100%;
-  height: 100%;
+  height: ${({ isMobile }) => (isMobile ? "3rem" : "100%")};
   background-color: ${({ isEven }) => (isEven ? "#28292a" : "transparent")};
   padding-left: 0.5rem;
 
@@ -27,13 +31,14 @@ export const PositionContainer = styled.div<{ isEven?: boolean }>`
   align-items: center;
 `;
 
-const FileImage = styled.img`
-  width: 1.25rem;
-  height: 1.25rem;
+const FileImage = styled.img<{ isMobile?: boolean }>`
+  width: ${({ isMobile }) => (isMobile ? "2.5rem" : "1.25rem")};
+  height: ${({ isMobile }) => (isMobile ? "2.5rem" : "1.25rem")};
 `;
 
 const DateLabel = styled(MutedText)`
   justify-items: flex-end;
+  align-self: center;
 `;
 
 const DataContent = styled.div`
@@ -66,9 +71,11 @@ type ExperienceRowProps = {
   experience: ExperienceType;
   isEven: boolean;
   showDate: boolean;
+  isMobile?: boolean;
 };
 
 const ExperienceRow: React.FC<ExperienceRowProps> = ({
+  isMobile = false,
   experience,
   isEven,
   showDate,
@@ -81,10 +88,16 @@ const ExperienceRow: React.FC<ExperienceRowProps> = ({
 
   return (
     <>
-      <DataRow isEven={isEven} showDate={showDate} onClick={toggleOpen}>
+      <DataRow
+        isEven={isEven}
+        isMobile={isMobile}
+        showDate={showDate}
+        onClick={toggleOpen}
+      >
         <PositionContainer>
           <FontAwesomeIcon icon={isOpen ? faChevronDown : faChevronRight} />
           <FileImage
+            isMobile={isMobile}
             src="https://img.icons8.com/color/48/000000/file.png"
             alt="file"
           />

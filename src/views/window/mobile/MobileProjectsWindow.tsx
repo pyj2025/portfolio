@@ -19,6 +19,7 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const NewWindowBodyNavItm = styled.div<{
   focus: boolean;
+  isChild?: boolean;
 }>`
   display: flex;
   flex-direction: column;
@@ -27,6 +28,7 @@ const NewWindowBodyNavItm = styled.div<{
   background-color: ${({ focus }) =>
     focus ? "rgba(120, 120, 120, 0.5)" : "transparent"};
   color: white;
+  margin-top: ${({ isChild }) => (isChild ? "1px" : undefined)};
   width: 100%;
   height: 3rem;
   cursor: pointer;
@@ -177,19 +179,10 @@ const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
       />
       <NewWindowBody2>
         <WindowBodyNavbar2>
-          <NewWindowBodyNavItm onClick={() => handleClick("Projects")} focus>
-            <MobileNavbarMenu
-              src="https://img.icons8.com/color/48/000000/mac-folder.png"
-              alt="folder"
-            />
-          </NewWindowBodyNavItm>
           <NewWindowBodyNavItm
-            onClick={() => handleClick("WebProjects")}
-            focus={
-              index === "DatApex" ||
-              index === "Portfolio" ||
-              index === "WebProjects"
-            }
+            title="Projects"
+            onClick={() => handleClick("Projects")}
+            focus
           >
             <MobileNavbarMenu
               src="https://img.icons8.com/color/48/000000/mac-folder.png"
@@ -197,8 +190,25 @@ const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
             />
           </NewWindowBodyNavItm>
           <NewWindowBodyNavItm
+            title="Web"
+            onClick={() => handleClick("WebProjects")}
+            focus={
+              index === "DatApex" ||
+              index === "Portfolio" ||
+              index === "WebProjects"
+            }
+            isChild
+          >
+            <MobileNavbarMenu
+              src="https://img.icons8.com/color/48/000000/mac-folder.png"
+              alt="folder"
+            />
+          </NewWindowBodyNavItm>
+          <NewWindowBodyNavItm
+            title="Mobile"
             onClick={() => handleClick("MobileProjects")}
             focus={index === "Foodie" || index === "MobileProjects"}
+            isChild
           >
             <MobileNavbarMenu
               src="https://img.icons8.com/color/48/000000/mac-folder.png"

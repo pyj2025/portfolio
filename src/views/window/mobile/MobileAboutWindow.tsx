@@ -234,6 +234,7 @@ const MobileAboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
       <NewWindowBody2>
         <WindowBodyNavbar2>
           <NewWindowBodyNavItm
+            title="About"
             onClick={() => handleClick("About")}
             focus={index === "About"}
           >
@@ -243,6 +244,7 @@ const MobileAboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
             />
           </NewWindowBodyNavItm>
           <NewWindowBodyNavItm
+            title="Experience"
             onClick={() => handleClick("Experience")}
             focus={index === "Experience"}
           >
@@ -252,6 +254,7 @@ const MobileAboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
             />
           </NewWindowBodyNavItm>
           <NewWindowBodyNavItm
+            title="Education"
             onClick={() => handleClick("Education")}
             focus={index === "Education"}
           >
@@ -272,7 +275,9 @@ const MobileAboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
                 </MobileCloseButton>
               </MobileCloseButtonContainer>
               {index === "About" && <About />}
-              {index === "Experience" && <Experience showDate={showDate} />}
+              {index === "Experience" && (
+                <Experience isMobile={isMobileWindow} showDate={showDate} />
+              )}
               {index === "Education" && <Education />}
             </MobileContentContainer>
           )}

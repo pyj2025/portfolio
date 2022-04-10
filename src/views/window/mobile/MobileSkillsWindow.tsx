@@ -120,14 +120,14 @@ const MobileSkillsWindowMenu: React.FC<MobileWindowMenuProps> = ({
           src="https://img.icons8.com/color/48/000000/mac-folder.png"
           alt="folder"
         />
-        <MobileMenuItemLabel>Frontend</MobileMenuItemLabel>
+        <MobileMenuItemLabel>Front-End</MobileMenuItemLabel>
       </MobileAboutWindowMenuItem>
       <MobileAboutWindowMenuItem onClick={() => onClick("Back")} isEven>
         <img
           src="https://img.icons8.com/color/48/000000/mac-folder.png"
           alt="folder"
         />
-        <MobileMenuItemLabel>Backend</MobileMenuItemLabel>
+        <MobileMenuItemLabel>Back-End</MobileMenuItemLabel>
       </MobileAboutWindowMenuItem>
       <MobileAboutWindowMenuItem onClick={() => onClick("Mobile")}>
         <img
@@ -230,6 +230,7 @@ const MobileSkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
       <NewWindowBody2>
         <WindowBodyNavbar2>
           <NewWindowBodyNavItm
+            title="Front-End"
             onClick={() => handleClick("Front")}
             focus={index === "Front"}
           >
@@ -239,6 +240,7 @@ const MobileSkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
             />
           </NewWindowBodyNavItm>
           <NewWindowBodyNavItm
+            title="Back-End"
             onClick={() => handleClick("Back")}
             focus={index === "Back"}
           >
@@ -248,6 +250,7 @@ const MobileSkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
             />
           </NewWindowBodyNavItm>
           <NewWindowBodyNavItm
+            title="Mobile"
             onClick={() => handleClick("Mobile")}
             focus={index === "Mobile"}
           >
@@ -257,6 +260,7 @@ const MobileSkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
             />
           </NewWindowBodyNavItm>
           <NewWindowBodyNavItm
+            title="Programming Language"
             onClick={() => handleClick("Programming")}
             focus={index === "Programming"}
           >

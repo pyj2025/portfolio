@@ -30,6 +30,7 @@ const IconImageContainer = styled.div`
   width: 48px;
   height: 48px;
   background-color: white;
+  border-radius: 0.5rem;
   justify-content: center;
   align-items: center;
 `;
@@ -56,10 +57,14 @@ const BackEnd: React.FC = () => {
         <IconLabel>Express</IconLabel>
       </SkillsIconContainer>
       <SkillsIconContainer>
-        <img
-          src="https://img.icons8.com/color/48/000000/amazon-web-services.png"
-          alt="aws"
-        />
+        <IconImageContainer>
+          <img
+            src="https://img.icons8.com/color/48/000000/amazon-web-services.png"
+            style={{ width: 40, height: 40 }}
+            alt="aws"
+          />
+        </IconImageContainer>
+
         <IconLabel>aws</IconLabel>
       </SkillsIconContainer>
       <SkillsIconContainer>
