@@ -22,6 +22,7 @@ const IconLabel = styled.div`
   font-size: 0.75rem;
   text-align: center;
   height: 1em;
+  margin-top: 0.25rem;
 `;
 
 const IconImageContainer = styled.div`

@@ -19,6 +19,7 @@ const SkillsIconContainer = styled.div<{ noWidth?: boolean }>`
 
 const IconLabel = styled.div`
   font-size: 0.75rem;
+  margin-top: 0.25rem;
 `;
 
 const Mobile: React.FC = () => {

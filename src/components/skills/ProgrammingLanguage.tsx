@@ -19,6 +19,18 @@ const SkillsIconContainer = styled.div<{ noWidth?: boolean }>`
 
 const IconLabel = styled.div`
   font-size: 0.75rem;
+  margin-top: 0.25rem;
+`;
+
+const IconImageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 48px;
+  height: 48px;
+  background-color: white;
+  border-radius: 0.5rem;
+  justify-content: center;
+  align-items: center;
 `;
 
 const ProgrammingLanguage: React.FC = () => {
@@ -46,7 +58,13 @@ const ProgrammingLanguage: React.FC = () => {
         <IconLabel>Python</IconLabel>
       </SkillsIconContainer>
       <SkillsIconContainer>
-        <img src="https://img.icons8.com/color/48/000000/java.png" alt="Java" />
+        <IconImageContainer>
+          <img
+            src="https://img.icons8.com/color/48/000000/java.png"
+            style={{ width: 40, height: 40 }}
+            alt="Java"
+          />
+        </IconImageContainer>
         <IconLabel>Java</IconLabel>
       </SkillsIconContainer>
       <SkillsIconContainer>
@@ -75,17 +93,25 @@ const ProgrammingLanguage: React.FC = () => {
         <IconLabel>C/C++</IconLabel>
       </SkillsIconContainer>
       <SkillsIconContainer>
-        <img
-          src="https://img.icons8.com/fluency/48/000000/mysql-logo.png"
-          alt="MySQL"
-        />
+        <IconImageContainer>
+          <img
+            src="https://img.icons8.com/fluency/48/000000/mysql-logo.png"
+            style={{ width: 40, height: 40 }}
+            alt="MySQL"
+          />
+        </IconImageContainer>
+
         <IconLabel>MySQL</IconLabel>
       </SkillsIconContainer>
       <SkillsIconContainer>
-        <img
-          src="https://img.icons8.com/officel/48/000000/php-logo.png"
-          alt="PHP"
-        />
+        <IconImageContainer>
+          <img
+            src="https://img.icons8.com/officel/48/000000/php-logo.png"
+            style={{ width: 40, height: 40 }}
+            alt="PHP"
+          />
+        </IconImageContainer>
+
         <IconLabel>PHP</IconLabel>
       </SkillsIconContainer>
       <SkillsIconContainer>

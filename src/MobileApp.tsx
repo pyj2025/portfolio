@@ -44,6 +44,10 @@ const IconImageContainer = styled.div`
   align-items: center;
 `;
 
+const IconLabel = styled.div`
+  margin-top: 0.2rem;
+`;
+
 const MobileApp: React.FC = () => {
   const { width } = useScreenSize();
   const [numOfCols, setNumOfCols] = React.useState(5);
@@ -75,7 +79,7 @@ const MobileApp: React.FC = () => {
               alt="google-docs"
             />
           </IconImageContainer>
-          <div>Resume</div>
+          <IconLabel>Resume</IconLabel>
         </MenuItem>
         <MenuItem title="Github" href="https://github.com/pyj2025">
           <IconImageContainer>
@@ -84,7 +88,7 @@ const MobileApp: React.FC = () => {
               alt="Github"
             />
           </IconImageContainer>
-          <div>Github</div>
+          <IconLabel>Github</IconLabel>
         </MenuItem>
         <MenuItem title="Linkedin" href="https://www.linkedin.com/in/devjoon/">
           <IconImageContainer>
@@ -93,8 +97,7 @@ const MobileApp: React.FC = () => {
               alt="Linkedin"
             />
           </IconImageContainer>
-
-          <div>Linkedin</div>
+          <IconLabel>Linkedin</IconLabel>
         </MenuItem>
         <MenuItem
           title="Facebook"
@@ -106,8 +109,7 @@ const MobileApp: React.FC = () => {
               alt="Facebook"
             />
           </IconImageContainer>
-
-          <div>Facebook</div>
+          <IconLabel>Facebook</IconLabel>
         </MenuItem>
         <MenuItem title="Email" onClick={handleEmailClick}>
           <IconImageContainer>
@@ -116,7 +118,7 @@ const MobileApp: React.FC = () => {
               alt="Email"
             />
           </IconImageContainer>
-          <div>Email</div>
+          <IconLabel>Email</IconLabel>
         </MenuItem>
       </MenuWrapper>
     </Container>
