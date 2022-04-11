@@ -33,6 +33,17 @@ const MenuItem = styled.a`
   cursor: pointer;
 `;
 
+const IconImageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border-radius: 0.5rem;
+  justify-content: center;
+  align-items: center;
+`;
+
 const MobileApp: React.FC = () => {
   const { width } = useScreenSize();
   const [numOfCols, setNumOfCols] = React.useState(5);
@@ -58,41 +69,53 @@ const MobileApp: React.FC = () => {
     <Container>
       <MenuWrapper numOfCols={numOfCols}>
         <MenuItem title="Resume" href="https://github.com/pyj2025">
-          <img
-            src="https://img.icons8.com/color/48/000000/google-docs.png"
-            alt="google-docs"
-          />
+          <IconImageContainer>
+            <img
+              src="https://img.icons8.com/color/48/000000/google-docs.png"
+              alt="google-docs"
+            />
+          </IconImageContainer>
           <div>Resume</div>
         </MenuItem>
         <MenuItem title="Github" href="https://github.com/pyj2025">
-          <img
-            src="https://img.icons8.com/material-outlined/48/000000/github.png"
-            alt="Github"
-          />
+          <IconImageContainer>
+            <img
+              src="https://img.icons8.com/material-outlined/48/000000/github.png"
+              alt="Github"
+            />
+          </IconImageContainer>
           <div>Github</div>
         </MenuItem>
         <MenuItem title="Linkedin" href="https://www.linkedin.com/in/devjoon/">
-          <img
-            src="https://img.icons8.com/fluency/48/000000/linkedin.png"
-            alt="Linkedin"
-          />
+          <IconImageContainer>
+            <img
+              src="https://img.icons8.com/fluency/48/000000/linkedin.png"
+              alt="Linkedin"
+            />
+          </IconImageContainer>
+
           <div>Linkedin</div>
         </MenuItem>
         <MenuItem
           title="Facebook"
           href="https://www.facebook.com/youngjoon.park.71"
         >
-          <img
-            src="https://img.icons8.com/color/48/000000/facebook-new.png"
-            alt="Facebook"
-          />
+          <IconImageContainer>
+            <img
+              src="https://img.icons8.com/color/48/000000/facebook-new.png"
+              alt="Facebook"
+            />
+          </IconImageContainer>
+
           <div>Facebook</div>
         </MenuItem>
         <MenuItem title="Email" onClick={handleEmailClick}>
-          <img
-            src="https://img.icons8.com/color/48/000000/gmail-new.png"
-            alt="Email"
-          />
+          <IconImageContainer>
+            <img
+              src="https://img.icons8.com/color/48/000000/gmail-new.png"
+              alt="Email"
+            />
+          </IconImageContainer>
           <div>Email</div>
         </MenuItem>
       </MenuWrapper>

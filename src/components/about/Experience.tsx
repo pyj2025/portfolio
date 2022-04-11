@@ -47,7 +47,7 @@ export const DataRow = styled.div<{ showDate?: boolean; isMobile?: boolean }>`
     showDate ? "6.5fr 3.5fr" : "auto"};
   width: 100%;
   height: ${({ isMobile }) => (isMobile ? "2rem" : "100%")};
-  background-color: transparent;
+  background-color: red;
   padding-left: 0.5rem;
 `;
 

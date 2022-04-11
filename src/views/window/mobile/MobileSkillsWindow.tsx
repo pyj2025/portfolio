@@ -11,7 +11,7 @@ import BackEnd from "../../../components/skills/BackEnd";
 import Mobile from "../../../components/skills/Mobile";
 import ProgrammingLanguage from "../../../components/skills/ProgrammingLanguage";
 import styled from "styled-components";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 type MobileIndexType = "Menu" | "Front" | "Back" | "Mobile" | "Programming";
@@ -95,10 +95,11 @@ const MobileContentContainer = styled.div`
 const MobileCloseButtonContainer = styled.div`
   display: flex;
   color: white;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
   height: 1.5rem;
   padding-right: 0.5rem;
+  margin-bottom: 0.75rem;
 `;
 
 const MobileCloseButton = styled.div`
@@ -277,7 +278,7 @@ const MobileSkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
             <MobileContentContainer>
               <MobileCloseButtonContainer>
                 <MobileCloseButton onClick={() => handleClick("Menu")}>
-                  <FontAwesomeIcon icon={faTimes} />
+                  <FontAwesomeIcon icon={faArrowLeft} />
                 </MobileCloseButton>
               </MobileCloseButtonContainer>
               {index === "Front" && <FrontEnd />}

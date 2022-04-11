@@ -39,10 +39,14 @@ const BackEnd: React.FC = () => {
   return (
     <ContentContainer>
       <SkillsIconContainer>
-        <img
-          src="https://img.icons8.com/color/48/000000/nodejs.png"
-          alt="Node.js"
-        />
+        <IconImageContainer>
+          <img
+            src="https://img.icons8.com/color/48/000000/nodejs.png"
+            style={{ width: 40, height: 40 }}
+            alt="Node.js"
+          />
+        </IconImageContainer>
+
         <IconLabel>Node.js</IconLabel>
       </SkillsIconContainer>
       <SkillsIconContainer>
@@ -68,10 +72,14 @@ const BackEnd: React.FC = () => {
         <IconLabel>aws</IconLabel>
       </SkillsIconContainer>
       <SkillsIconContainer>
-        <img
-          src="https://img.icons8.com/color/48/000000/spring-logo.png"
-          alt="Spring"
-        />
+        <IconImageContainer>
+          <img
+            src="https://img.icons8.com/color/48/000000/spring-logo.png"
+            style={{ width: 40, height: 40 }}
+            alt="Spring"
+          />
+        </IconImageContainer>
+
         <IconLabel>Spring</IconLabel>
       </SkillsIconContainer>
       <SkillsIconContainer noWidth>
@@ -85,18 +93,23 @@ const BackEnd: React.FC = () => {
         <IconLabel>ASP.Net Core</IconLabel>
       </SkillsIconContainer>
       <SkillsIconContainer>
-        <img
-          src="https://api.iconify.design/logos/laravel.svg"
-          style={{ width: 48, height: 48 }}
-          alt="Laravel"
-        />
+        <IconImageContainer>
+          <img
+            src="https://api.iconify.design/logos/laravel.svg"
+            style={{ width: 40, height: 40 }}
+            alt="Laravel"
+          />
+        </IconImageContainer>
         <IconLabel>Laravel</IconLabel>
       </SkillsIconContainer>
       <SkillsIconContainer>
-        <img
-          src="https://img.icons8.com/color/48/000000/mongodb.png"
-          alt="MongoDB"
-        />
+        <IconImageContainer>
+          <img
+            src="https://img.icons8.com/color/48/000000/mongodb.png"
+            style={{ width: 40, height: 40 }}
+            alt="MongoDB"
+          />
+        </IconImageContainer>
         <IconLabel>MongoDB</IconLabel>
       </SkillsIconContainer>
     </ContentContainer>

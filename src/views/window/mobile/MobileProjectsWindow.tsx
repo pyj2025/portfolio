@@ -15,7 +15,7 @@ import Portfolio from "../../../components/projects/Portfolio";
 import DatApex from "../../../components/projects/DatApex";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 const NewWindowBodyNavItm = styled.div<{
   focus: boolean;
@@ -78,10 +78,11 @@ const MobileContentContainer = styled.div`
 const MobileCloseButtonContainer = styled.div`
   display: flex;
   color: white;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
   height: 1.5rem;
   padding-right: 0.5rem;
+  margin-bottom: 0.75rem;
 `;
 
 const MobileCloseButton = styled.div`
@@ -226,7 +227,7 @@ const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
             <MobileContentContainer>
               <MobileCloseButtonContainer>
                 <MobileCloseButton onClick={() => handleClick("Projects")}>
-                  <FontAwesomeIcon icon={faTimes} />
+                  <FontAwesomeIcon icon={faArrowLeft} />
                 </MobileCloseButton>
               </MobileCloseButtonContainer>
               <DatApex />
@@ -236,7 +237,7 @@ const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
             <MobileContentContainer>
               <MobileCloseButtonContainer>
                 <MobileCloseButton onClick={() => handleClick("Projects")}>
-                  <FontAwesomeIcon icon={faTimes} />
+                  <FontAwesomeIcon icon={faArrowLeft} />
                 </MobileCloseButton>
               </MobileCloseButtonContainer>
               <Portfolio />
@@ -246,7 +247,7 @@ const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
             <MobileContentContainer>
               <MobileCloseButtonContainer>
                 <MobileCloseButton onClick={() => handleClick("Projects")}>
-                  <FontAwesomeIcon icon={faTimes} />
+                  <FontAwesomeIcon icon={faArrowLeft} />
                 </MobileCloseButton>
               </MobileCloseButtonContainer>
               <Foodie />

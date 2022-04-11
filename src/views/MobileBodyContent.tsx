@@ -38,7 +38,6 @@ export type WindowProps = {
 const MobileBodyContent: React.FC = () => {
   const {
     isWelcomeWindowOpen,
-    isDesktopAboutOpen,
     isAboutOpen,
     isSkillsOpen,
     isProjectsOpen,
