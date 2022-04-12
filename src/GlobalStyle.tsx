@@ -20,7 +20,8 @@ export const MutedText = styled.span`
 
 //window
 export const Window = styled(Rnd)`
-  display: grid;
+  display: flex;
+  flex-direction: row;
   width: 100%;
   justify-content: center;
   align-items: center;
@@ -210,4 +211,100 @@ export const PanelDescriptionText = styled.div<{ bold?: boolean }>`
 export const LinkLabel = styled.a`
   color: white;
   text-decoration: none;
+`;
+
+//mobile window
+export const MobileWindowBody = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: calc(100% - 28px);
+`;
+
+export const MobileNavbar = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 3rem;
+  background-color: rgba(51, 49, 51, 0.9);
+  color: white;
+  border-right: 0.2px solid #141516;
+  border-bottom-left-radius: 6px;
+`;
+
+export const MobileNavbarItem = styled.div<{
+  focus: boolean;
+  isChild?: boolean;
+}>`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: ${({ focus }) =>
+    focus ? "rgba(120, 120, 120, 0.5)" : "transparent"};
+  color: white;
+  margin-top: ${({ isChild }) => (isChild ? "1px" : undefined)};
+  width: 100%;
+  height: 3rem;
+  cursor: pointer;
+`;
+
+export const MobileNavbarMenu = styled.img`
+  height: 1.5rem;
+  width: 1.5rem;
+`;
+
+export const MobileBodyContent = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: #1d1f21;
+  color: white;
+  border-bottom-right-radius: 6px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+`;
+
+//mobile menu screen
+export const MobileWindowMenuItem = styled.div<{
+  isEven?: boolean;
+}>`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: ${({ isEven }) => (isEven ? "transparent" : "#28292a")};
+  color: white;
+  padding: 0.25rem 0.5rem;
+  width: 100%;
+  height: 3rem;
+  cursor: pointer;
+`;
+
+export const MobileMenuItemLabel = styled.div`
+  font-weight: bold;
+  margin-left: 1rem;
+`;
+
+// mobile panel
+export const MobilePanel = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: white;
+  border-bottom-right-radius: 6px;
+`;
+
+export const MobileBackButtonContainer = styled.div`
+  display: flex;
+  color: white;
+  justify-content: flex-start;
+  align-items: center;
+  height: 1.5rem;
+  padding-right: 0.5rem;
+  margin-bottom: 0.75rem;
+`;
+
+export const MobileBackButton = styled.div`
+  margin-top: 0.75rem;
+  padding: 0.5rem;
 `;

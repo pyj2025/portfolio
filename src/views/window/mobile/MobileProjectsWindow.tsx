@@ -7,88 +7,24 @@ import {
   WebProjects,
 } from "../../../components/Projects";
 import WindowTopbar from "../../../components/WindowTopbar";
-import { Window } from "../../../GlobalStyle";
+import {
+  MobileBackButton,
+  MobileBackButtonContainer,
+  MobileBodyContent,
+  MobilePanel,
+  MobileNavbar,
+  MobileNavbarMenu,
+  MobileWindowBody,
+  MobileNavbarItem,
+  Window,
+} from "../../../GlobalStyle";
 import { WindowPositionSetting, WindowSizeSetting } from "../../../types";
 import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
 import Foodie from "../../../components/projects/Foodie";
 import Portfolio from "../../../components/projects/Portfolio";
 import DatApex from "../../../components/projects/DatApex";
-import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-
-const NewWindowBodyNavItm = styled.div<{
-  focus: boolean;
-  isChild?: boolean;
-}>`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: ${({ focus }) =>
-    focus ? "rgba(120, 120, 120, 0.5)" : "transparent"};
-  color: white;
-  margin-top: ${({ isChild }) => (isChild ? "1px" : undefined)};
-  width: 100%;
-  height: 3rem;
-  cursor: pointer;
-`;
-
-const MobileNavbarMenu = styled.img`
-  height: 1.5rem;
-  width: 1.5rem;
-`;
-
-const NewWindowBody2 = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: calc(100% - 28px);
-`;
-
-const WindowBodyNavbar2 = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  width: 3rem;
-  background-color: rgba(51, 49, 51, 0.9);
-  color: white;
-  border-right: 0.2px solid #141516;
-  border-bottom-left-radius: 6px;
-`;
-
-const WindowBodyContent2 = styled.div`
-  width: 100%;
-  height: 100%;
-  background-color: #1d1f21;
-  color: white;
-  border-bottom-right-radius: 6px;
-  overflow-x: hidden;
-  overflow-y: scroll;
-`;
-
-const MobileContentContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  color: white;
-  border-bottom-right-radius: 6px;
-`;
-
-const MobileCloseButtonContainer = styled.div`
-  display: flex;
-  color: white;
-  justify-content: flex-start;
-  align-items: center;
-  height: 1.5rem;
-  padding-right: 0.5rem;
-  margin-bottom: 0.75rem;
-`;
-
-const MobileCloseButton = styled.div`
-  margin-top: 0.75rem;
-  padding: 0.5rem;
-`;
 
 export type IndexType =
   | "Projects"
@@ -178,9 +114,9 @@ const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         setPrevSetting={setProjectsPrevSetting}
         isMobileWindow={isMobileWindow}
       />
-      <NewWindowBody2>
-        <WindowBodyNavbar2>
-          <NewWindowBodyNavItm
+      <MobileWindowBody>
+        <MobileNavbar>
+          <MobileNavbarItem
             title="Projects"
             onClick={() => handleClick("Projects")}
             focus
@@ -189,8 +125,8 @@ const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
               src="https://img.icons8.com/color/48/000000/mac-folder.png"
               alt="folder"
             />
-          </NewWindowBodyNavItm>
-          <NewWindowBodyNavItm
+          </MobileNavbarItem>
+          <MobileNavbarItem
             title="Web"
             onClick={() => handleClick("WebProjects")}
             focus={
@@ -204,8 +140,8 @@ const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
               src="https://img.icons8.com/color/48/000000/mac-folder.png"
               alt="folder"
             />
-          </NewWindowBodyNavItm>
-          <NewWindowBodyNavItm
+          </MobileNavbarItem>
+          <MobileNavbarItem
             title="Mobile"
             onClick={() => handleClick("MobileProjects")}
             focus={index === "Foodie" || index === "MobileProjects"}
@@ -215,46 +151,46 @@ const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
               src="https://img.icons8.com/color/48/000000/mac-folder.png"
               alt="folder"
             />
-          </NewWindowBodyNavItm>
-        </WindowBodyNavbar2>
-        <WindowBodyContent2>
+          </MobileNavbarItem>
+        </MobileNavbar>
+        <MobileBodyContent>
           {index === "Projects" ? <Projects click={handleClick} /> : null}
           {index === "WebProjects" ? <WebProjects click={handleClick} /> : null}
           {index === "MobileProjects" ? (
             <MobileProjects click={handleClick} />
           ) : null}
           {index === "DatApex" ? (
-            <MobileContentContainer>
-              <MobileCloseButtonContainer>
-                <MobileCloseButton onClick={() => handleClick("Projects")}>
+            <MobilePanel>
+              <MobileBackButtonContainer>
+                <MobileBackButton onClick={() => handleClick("Projects")}>
                   <FontAwesomeIcon icon={faArrowLeft} />
-                </MobileCloseButton>
-              </MobileCloseButtonContainer>
+                </MobileBackButton>
+              </MobileBackButtonContainer>
               <DatApex />
-            </MobileContentContainer>
+            </MobilePanel>
           ) : null}
           {index === "Portfolio" ? (
-            <MobileContentContainer>
-              <MobileCloseButtonContainer>
-                <MobileCloseButton onClick={() => handleClick("Projects")}>
+            <MobilePanel>
+              <MobileBackButtonContainer>
+                <MobileBackButton onClick={() => handleClick("Projects")}>
                   <FontAwesomeIcon icon={faArrowLeft} />
-                </MobileCloseButton>
-              </MobileCloseButtonContainer>
+                </MobileBackButton>
+              </MobileBackButtonContainer>
               <Portfolio />
-            </MobileContentContainer>
+            </MobilePanel>
           ) : null}
           {index === "Foodie" ? (
-            <MobileContentContainer>
-              <MobileCloseButtonContainer>
-                <MobileCloseButton onClick={() => handleClick("Projects")}>
+            <MobilePanel>
+              <MobileBackButtonContainer>
+                <MobileBackButton onClick={() => handleClick("Projects")}>
                   <FontAwesomeIcon icon={faArrowLeft} />
-                </MobileCloseButton>
-              </MobileCloseButtonContainer>
+                </MobileBackButton>
+              </MobileBackButtonContainer>
               <Foodie />
-            </MobileContentContainer>
+            </MobilePanel>
           ) : null}
-        </WindowBodyContent2>
-      </NewWindowBody2>
+        </MobileBodyContent>
+      </MobileWindowBody>
     </Window>
   );
 };

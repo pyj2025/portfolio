@@ -1,7 +1,19 @@
 import React from "react";
 import { DraggableData, Position, ResizableDelta } from "react-rnd";
 import { WindowPositionSetting, WindowSizeSetting } from "../../../types";
-import { Window } from "../../../GlobalStyle";
+import {
+  MobileBackButton,
+  MobileBackButtonContainer,
+  MobileBodyContent,
+  MobilePanel,
+  MobileMenuItemLabel,
+  MobileNavbar,
+  MobileNavbarMenu,
+  MobileWindowBody,
+  MobileWindowMenuItem,
+  MobileNavbarItem,
+  Window,
+} from "../../../GlobalStyle";
 
 import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
 import { WindowProps } from "../../BodyContent";
@@ -16,97 +28,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 type MobileIndexType = "Menu" | "Front" | "Back" | "Mobile" | "Programming";
 
-const NewWindowBodyNavItm = styled.div<{
-  focus: boolean;
-}>`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: ${({ focus }) =>
-    focus ? "rgba(120, 120, 120, 0.5)" : "transparent"};
-  color: white;
-  width: 100%;
-  height: 3rem;
-  cursor: pointer;
-`;
-
-const MobileAboutWindowMenuItem = styled.div<{
-  isEven?: boolean;
-}>`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  background-color: ${({ isEven }) => (isEven ? "transparent" : "#28292a")};
-  color: white;
-  padding: 0.25rem 0.5rem;
-  width: 100%;
-  height: 3rem;
-  cursor: pointer;
-`;
-
-const MobileMenuItemLabel = styled.div`
-  font-weight: bold;
-  margin-left: 1rem;
-`;
-
-const MobileNavbarMenu = styled.img`
-  height: 1.5rem;
-  width: 1.5rem;
-`;
-
-const NewWindowBody2 = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: calc(100% - 28px);
-`;
-
-const WindowBodyNavbar2 = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  width: 3rem;
-  background-color: rgba(51, 49, 51, 0.9);
-  color: white;
-  border-right: 0.2px solid #141516;
-  border-bottom-left-radius: 6px;
-`;
-
-const WindowBodyContent2 = styled.div`
-  width: 100%;
-  height: 100%;
-  background-color: #1d1f21;
-  color: white;
-  border-bottom-right-radius: 6px;
-  overflow-x: hidden;
-  overflow-y: scroll;
-`;
-
-const MobileContentContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  color: white;
-  border-bottom-right-radius: 6px;
-`;
-
-const MobileCloseButtonContainer = styled.div`
-  display: flex;
-  color: white;
-  justify-content: flex-start;
-  align-items: center;
-  height: 1.5rem;
-  padding-right: 0.5rem;
-  margin-bottom: 0.75rem;
-`;
-
-const MobileCloseButton = styled.div`
-  margin-top: 0.75rem;
-  padding: 0.5rem;
-`;
-
 type MobileWindowMenuProps = {
   onClick: (index: MobileIndexType) => void;
 };
@@ -116,34 +37,34 @@ const MobileSkillsWindowMenu: React.FC<MobileWindowMenuProps> = ({
 }) => {
   return (
     <>
-      <MobileAboutWindowMenuItem onClick={() => onClick("Front")}>
+      <MobileWindowMenuItem onClick={() => onClick("Front")}>
         <img
           src="https://img.icons8.com/color/48/000000/mac-folder.png"
           alt="folder"
         />
         <MobileMenuItemLabel>Front-End</MobileMenuItemLabel>
-      </MobileAboutWindowMenuItem>
-      <MobileAboutWindowMenuItem onClick={() => onClick("Back")} isEven>
+      </MobileWindowMenuItem>
+      <MobileWindowMenuItem onClick={() => onClick("Back")} isEven>
         <img
           src="https://img.icons8.com/color/48/000000/mac-folder.png"
           alt="folder"
         />
         <MobileMenuItemLabel>Back-End</MobileMenuItemLabel>
-      </MobileAboutWindowMenuItem>
-      <MobileAboutWindowMenuItem onClick={() => onClick("Mobile")}>
+      </MobileWindowMenuItem>
+      <MobileWindowMenuItem onClick={() => onClick("Mobile")}>
         <img
           src="https://img.icons8.com/color/48/000000/code-file.png"
           alt="folder"
         />
         <MobileMenuItemLabel>Mobile</MobileMenuItemLabel>
-      </MobileAboutWindowMenuItem>
-      <MobileAboutWindowMenuItem onClick={() => onClick("Programming")} isEven>
+      </MobileWindowMenuItem>
+      <MobileWindowMenuItem onClick={() => onClick("Programming")} isEven>
         <img
           src="https://img.icons8.com/color/48/000000/google-code.png"
           alt="folder"
         />
         <MobileMenuItemLabel>Programming Language</MobileMenuItemLabel>
-      </MobileAboutWindowMenuItem>
+      </MobileWindowMenuItem>
     </>
   );
 };
@@ -228,9 +149,9 @@ const MobileSkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         setPrevSetting={setSkillsPrevSetting}
         isMobileWindow={isMobileWindow}
       />
-      <NewWindowBody2>
-        <WindowBodyNavbar2>
-          <NewWindowBodyNavItm
+      <MobileWindowBody>
+        <MobileNavbar>
+          <MobileNavbarItem
             title="Front-End"
             onClick={() => handleClick("Front")}
             focus={index === "Front"}
@@ -239,8 +160,8 @@ const MobileSkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
               src="https://img.icons8.com/color/48/000000/mac-folder.png"
               alt="folder"
             />
-          </NewWindowBodyNavItm>
-          <NewWindowBodyNavItm
+          </MobileNavbarItem>
+          <MobileNavbarItem
             title="Back-End"
             onClick={() => handleClick("Back")}
             focus={index === "Back"}
@@ -249,8 +170,8 @@ const MobileSkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
               src="https://img.icons8.com/color/48/000000/mac-folder.png"
               alt="folder"
             />
-          </NewWindowBodyNavItm>
-          <NewWindowBodyNavItm
+          </MobileNavbarItem>
+          <MobileNavbarItem
             title="Mobile"
             onClick={() => handleClick("Mobile")}
             focus={index === "Mobile"}
@@ -259,8 +180,8 @@ const MobileSkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
               src="https://img.icons8.com/color/48/000000/code-file.png"
               alt="folder"
             />
-          </NewWindowBodyNavItm>
-          <NewWindowBodyNavItm
+          </MobileNavbarItem>
+          <MobileNavbarItem
             title="Programming Language"
             onClick={() => handleClick("Programming")}
             focus={index === "Programming"}
@@ -269,26 +190,26 @@ const MobileSkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
               src="https://img.icons8.com/color/48/000000/google-code.png"
               alt="folder"
             />
-          </NewWindowBodyNavItm>
-        </WindowBodyNavbar2>
-        <WindowBodyContent2>
+          </MobileNavbarItem>
+        </MobileNavbar>
+        <MobileBodyContent>
           {index === "Menu" ? (
             <MobileSkillsWindowMenu onClick={handleClick} />
           ) : (
-            <MobileContentContainer>
-              <MobileCloseButtonContainer>
-                <MobileCloseButton onClick={() => handleClick("Menu")}>
+            <MobilePanel>
+              <MobileBackButtonContainer>
+                <MobileBackButton onClick={() => handleClick("Menu")}>
                   <FontAwesomeIcon icon={faArrowLeft} />
-                </MobileCloseButton>
-              </MobileCloseButtonContainer>
+                </MobileBackButton>
+              </MobileBackButtonContainer>
               {index === "Front" && <FrontEnd />}
               {index === "Back" && <BackEnd />}
               {index === "Mobile" && <Mobile />}
               {index === "Programming" && <ProgrammingLanguage />}
-            </MobileContentContainer>
+            </MobilePanel>
           )}
-        </WindowBodyContent2>
-      </NewWindowBody2>
+        </MobileBodyContent>
+      </MobileWindowBody>
     </Window>
   );
 };
