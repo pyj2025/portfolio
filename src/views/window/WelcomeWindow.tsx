@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Rnd } from "react-rnd";
+import { DraggableData, Rnd } from "react-rnd";
 import Typist from "react-typist";
 import useScreenSize, {
   MOBILE_MAX_WIDTH,
@@ -156,15 +156,19 @@ const WelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
 
   const welcomeRef = React.useRef<any>();
 
-  const [windowPosition, setWindowPosition] =
+  const [welcomeSize, setWelcomeSize] = React.useState<WindowSizeSetting>({
+    width: 700,
+    height: 450,
+  });
+  const [welcomePosition, setWelcomePosition] =
     React.useState<WindowPositionSetting>({
       x: Math.round(Math.max((width - 700) / 2, 0)),
       y: 0,
     });
-  const [windowSize, setWindowSize] = React.useState<WindowSizeSetting>({
-    width: 700,
-    height: 450,
-  });
+
+  const [welcomePrevSetting, setWelcomePrevSetting] = React.useState<
+    (WindowSizeSetting & WindowPositionSetting) | null
+  >(null);
 
   const [firstLine, setFirstLine] = React.useState(false);
   const [secondLine, setSecondLine] = React.useState(false);
@@ -174,11 +178,11 @@ const WelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
 
   React.useEffect(() => {
     if (width <= TABLET_MAX_WIDTH) {
-      setWindowSize({
+      setWelcomeSize({
         width,
         height: height - 80 - 25,
       });
-      setWindowPosition({
+      setWelcomePosition({
         x: 0,
         y: 0,
       });
@@ -189,10 +193,13 @@ const WelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
     <Window
       id="Welcome"
       ref={welcomeRef}
-      size={{ width: windowSize.width, height: windowSize.height }}
-      position={{ x: windowPosition.x, y: windowPosition.y }}
+      size={{ width: welcomeSize.width, height: welcomeSize.height }}
+      position={{ x: welcomePosition.x, y: welcomePosition.y }}
       dragHandleClassName="topbar"
       onDragStart={handleFocus}
+      onDragStop={(_e: any, data: DraggableData) => {
+        setWelcomePosition({ x: data.x, y: data.y });
+      }}
       enableResizing={false}
     >
       <WindowTopbar className="topbar">
