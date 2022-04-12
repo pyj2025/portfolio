@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { DraggableData } from "react-rnd";
 
-import WelcomeWindow from "./window/WelcomeWindow";
 import { useWindows } from "../utils/context/context";
 import { Slide, toast, ToastContainer } from "react-toastify";
 import {
@@ -12,7 +11,6 @@ import {
   isTablet,
 } from "react-device-detect";
 import "react-toastify/dist/ReactToastify.css";
-import TopbarAboutWindow from "./window/desktop/TopbarAboutWindow";
 import { FocusedWindowType } from "../types";
 import useScreenSize, {
   MOBILE_MAX_WIDTH,

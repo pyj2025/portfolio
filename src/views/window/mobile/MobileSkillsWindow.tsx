@@ -22,7 +22,6 @@ import FrontEnd from "../../../components/skills/FrontEnd";
 import BackEnd from "../../../components/skills/BackEnd";
 import Mobile from "../../../components/skills/Mobile";
 import ProgrammingLanguage from "../../../components/skills/ProgrammingLanguage";
-import styled from "styled-components";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 

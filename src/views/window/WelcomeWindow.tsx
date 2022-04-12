@@ -2,10 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { DraggableData, Rnd } from "react-rnd";
 import Typist from "react-typist";
-import useScreenSize, {
-  MOBILE_MAX_WIDTH,
-  TABLET_MAX_WIDTH,
-} from "../../utils/useScreenSize";
+import useScreenSize, { TABLET_MAX_WIDTH } from "../../utils/useScreenSize";
 import { useWindows } from "../../utils/context/context";
 import { WindowProps } from "../BodyContent";
 import { WindowPositionSetting, WindowSizeSetting } from "../../types";
@@ -165,10 +162,6 @@ const WelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
       x: Math.round(Math.max((width - 700) / 2, 0)),
       y: 0,
     });
-
-  const [welcomePrevSetting, setWelcomePrevSetting] = React.useState<
-    (WindowSizeSetting & WindowPositionSetting) | null
-  >(null);
 
   const [firstLine, setFirstLine] = React.useState(false);
   const [secondLine, setSecondLine] = React.useState(false);
