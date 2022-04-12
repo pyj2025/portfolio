@@ -111,90 +111,49 @@ const SkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         setPrevSetting={setSkillsPrevSetting}
         isMobileWindow={isMobileWindow}
       />
-      <NewWindowBody navbarWidth={windowNavbarSize.width}>
+      <WindowBody>
         <WindowBodyNavbar>
-          <Rnd
-            default={{
-              x: 0,
-              y: 0,
-              width: windowNavbarSize.width,
-              height: windowNavbarSize.height,
-            }}
-            minWidth={50}
-            maxWidth={150}
-            enableResizing={{
-              top: false,
-              right: true,
-              bottom: false,
-              left: false,
-              topRight: false,
-              bottomRight: false,
-              bottomLeft: false,
-              topLeft: false,
-            }}
-            onResize={(
-              _e: MouseEvent | TouchEvent,
-              _dir: any,
-              ref: any,
-              _delta: ResizableDelta,
-              position: Position
-            ) => {
-              const newWidth = Number(
-                ref.style.width.substring(0, ref.style.width.indexOf("p"))
-              );
-              const newHeight = Number(
-                ref.style.height.substring(0, ref.style.height.indexOf("p"))
-              );
-
-              setWindowNavbarSize({
-                width: newWidth,
-                height: newHeight,
-              });
-            }}
-            disableDragging
+          <WindowBodyNavItm
+            first
+            onClick={() => handleClick("Front")}
+            focus={index === "Front"}
           >
-            <WindowBodyNavItm
-              first
-              onClick={() => handleClick("Front")}
-              focus={index === "Front"}
-            >
-              <TopbarTitleImage
-                src="https://img.icons8.com/color/48/000000/mac-folder.png"
-                alt="folder"
-              />
-              <NavItmLabel>Front-End</NavItmLabel>
-            </WindowBodyNavItm>
-            <WindowBodyNavItm
-              onClick={() => handleClick("Back")}
-              focus={index === "Back"}
-            >
-              <TopbarTitleImage
-                src="https://img.icons8.com/color/48/000000/mac-folder.png"
-                alt="folder"
-              />
-              <NavItmLabel>Back-End</NavItmLabel>
-            </WindowBodyNavItm>
-            <WindowBodyNavItm
-              onClick={() => handleClick("Mobile")}
-              focus={index === "Mobile"}
-            >
-              <TopbarTitleImage
-                src="https://img.icons8.com/color/48/000000/code-file.png"
-                alt="folder"
-              />
-              <NavItmLabel>Mobile</NavItmLabel>
-            </WindowBodyNavItm>
-            <WindowBodyNavItm
-              onClick={() => handleClick("Programming")}
-              focus={index === "Programming"}
-            >
-              <TopbarTitleImage
-                src="https://img.icons8.com/color/48/000000/google-code.png"
-                alt="folder"
-              />
-              <NavItmLabel>Language</NavItmLabel>
-            </WindowBodyNavItm>
-          </Rnd>
+            <TopbarTitleImage
+              src="https://img.icons8.com/color/48/000000/mac-folder.png"
+              alt="folder"
+            />
+            <NavItmLabel>Front-End</NavItmLabel>
+          </WindowBodyNavItm>
+          <WindowBodyNavItm
+            onClick={() => handleClick("Back")}
+            focus={index === "Back"}
+          >
+            <TopbarTitleImage
+              src="https://img.icons8.com/color/48/000000/mac-folder.png"
+              alt="folder"
+            />
+            <NavItmLabel>Back-End</NavItmLabel>
+          </WindowBodyNavItm>
+          <WindowBodyNavItm
+            onClick={() => handleClick("Mobile")}
+            focus={index === "Mobile"}
+          >
+            <TopbarTitleImage
+              src="https://img.icons8.com/color/48/000000/code-file.png"
+              alt="folder"
+            />
+            <NavItmLabel>Mobile</NavItmLabel>
+          </WindowBodyNavItm>
+          <WindowBodyNavItm
+            onClick={() => handleClick("Programming")}
+            focus={index === "Programming"}
+          >
+            <TopbarTitleImage
+              src="https://img.icons8.com/color/48/000000/google-code.png"
+              alt="folder"
+            />
+            <NavItmLabel>Language</NavItmLabel>
+          </WindowBodyNavItm>
         </WindowBodyNavbar>
         <WindowBodyContent>
           {index === "Front" ? <FrontEnd /> : null}
@@ -202,7 +161,7 @@ const SkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
           {index === "Mobile" ? <Mobile /> : null}
           {index === "Programming" ? <ProgrammingLanguage /> : null}
         </WindowBodyContent>
-      </NewWindowBody>
+      </WindowBody>
     </Window>
   );
 };
