@@ -5,8 +5,7 @@ const ContentContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 10px;
+  margin-top: 10px;
 `;
 
 const SkillsIconContainer = styled.div`
@@ -16,6 +15,7 @@ const SkillsIconContainer = styled.div`
   height: 4rem;
   justify-content: center;
   align-items: center;
+  margin: 0.25rem;
 `;
 
 const IconLabel = styled.div`

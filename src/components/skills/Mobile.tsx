@@ -5,8 +5,7 @@ const ContentContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 10px;
-  margin: 10px;
+  margin-top: 10px;
 `;
 
 const SkillsIconContainer = styled.div<{ noWidth?: boolean }>`
@@ -15,6 +14,7 @@ const SkillsIconContainer = styled.div<{ noWidth?: boolean }>`
   width: ${({ noWidth }) => (noWidth ? undefined : "60px")};
   justify-content: center;
   align-items: center;
+  margin: 0.25rem;
 `;
 
 const IconLabel = styled.div`
