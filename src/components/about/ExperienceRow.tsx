@@ -87,7 +87,7 @@ const ExperienceRow: React.FC<ExperienceRowProps> = ({
   };
 
   return (
-    <>
+    <div>
       <DataRow
         isEven={isEven}
         isMobile={isMobile}
@@ -121,7 +121,7 @@ const ExperienceRow: React.FC<ExperienceRowProps> = ({
           </RowContainer>
         </DataContent>
       ) : null}
-    </>
+    </div>
   );
 };
 
