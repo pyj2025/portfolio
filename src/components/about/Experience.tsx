@@ -46,7 +46,7 @@ export const DataRow = styled.div<{ showDate?: boolean; isMobile?: boolean }>`
   grid-template-columns: ${({ showDate }) =>
     showDate ? "6.5fr 3.5fr" : "auto"};
   width: 100%;
-  height: ${({ isMobile }) => (isMobile ? "2rem" : "100%")};
+  height: ${({ isMobile }) => (isMobile ? "2rem" : "1.25rem")};
   background-color: rgb(51, 52, 54);
   border-bottom: 1px solid black;
   padding-left: 0.5rem;

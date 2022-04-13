@@ -12,10 +12,10 @@ import Contact from "../../components/welcome/Contact";
 
 const Window = styled(Rnd)`
   width: 100%;
-  display: grid;
+  display: flex;
   align-items: center;
   justify-content: center;
-  background-color: white;
+  background-color: transparent;
   border-radius: 6px;
   box-shadow: 0px 0px 8px black;
 `;
@@ -24,11 +24,12 @@ const WindowTopbar = styled.div`
   width: 100%;
   height: 28px;
   background-color: rgb(51, 52, 54);
-  border-top: 1px rgb(70, 75, 80) solid;
+  /* border-top: 1px rgb(70, 75, 80) solid; */
+  border-bottom: 1px rgb(70, 75, 80) solid;
 
   padding: 0px 10px;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
+  /* border-top-left-radius: 6px;
+  border-top-right-radius: 6px; */
   cursor: default;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -97,8 +98,11 @@ const WindowBody = styled.div`
   height: calc(100% - 28px);
   background-color: #282a36;
   color: #ffffff;
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
+
+  /* -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  -khtml-border-radius: 6px; */
 `;
 
 const TerminalRow = styled.div`
