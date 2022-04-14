@@ -28,8 +28,8 @@ const IconLabel = styled.div`
 const IconImageContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 48px;
-  height: 48px;
+  width: 3rem;
+  height: 3rem;
   background-color: white;
   border-radius: 0.5rem;
   justify-content: center;

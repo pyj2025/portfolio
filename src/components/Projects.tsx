@@ -28,8 +28,8 @@ const IconContainer = styled.div<{ noWidth?: boolean }>`
 `;
 
 const IconLogoImage = styled.img`
-  width: 90%;
-  height: 90%;
+  width: 3rem;
+  height: 3rem;
   margin-bottom: 4px;
 `;
 
