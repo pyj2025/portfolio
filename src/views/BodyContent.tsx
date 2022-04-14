@@ -21,12 +21,10 @@ import useScreenSize, {
   MOBILE_MAX_WIDTH,
   TABLET_MAX_WIDTH,
 } from "../utils/useScreenSize";
-import MobileApp from "../MobileApp";
-import MobileWelcomeWindow from "./window/MobileWelcomeWindow";
 
 const Container = styled.div`
   width: 100%;
-  height: calc(100% - 28px);
+  height: calc(100% - 50px);
   background-color: transparent;
   color: white;
 `;

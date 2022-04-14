@@ -18,7 +18,7 @@ const Container = styled.div<{ width: number }>`
   background-color: rgba(0, 0, 0, 0.4);
   color: rgb(255, 255, 255);
   width: ${({ width }) => width}px;
-  height: 25px;
+  height: 3.125rem;
 `;
 
 const MenuContainer = styled(Menu)`

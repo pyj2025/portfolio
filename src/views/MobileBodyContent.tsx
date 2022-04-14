@@ -24,7 +24,7 @@ import MobileProjectsWindow from "./window/mobile/MobileProjectsWindow";
 
 const Container = styled.div`
   width: 100%;
-  height: calc(100% - 28px);
+  height: calc(100% - 50px);
   background-color: transparent;
   color: white;
 `;
