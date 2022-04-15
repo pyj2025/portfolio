@@ -16,7 +16,7 @@ const Window = styled(Rnd)`
   align-items: center;
   justify-content: center;
   background-color: white;
-  border-radius: 6px;
+  /* border-radius: 6px; */
   box-shadow: 0px 0px 8px black;
 `;
 
@@ -27,8 +27,8 @@ const WindowTopbar = styled.div`
   border-top: 1px rgb(70, 75, 80) solid;
 
   padding: 0px 10px;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
+  /* border-top-left-radius: 6px;
+  border-top-right-radius: 6px; */
   cursor: default;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -97,8 +97,8 @@ const WindowBody = styled.div`
   height: calc(100% - 28px);
   background-color: #282a36;
   color: #ffffff;
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
+  /* border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px; */
 `;
 
 const TerminalRow = styled.div`
