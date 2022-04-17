@@ -71,7 +71,10 @@ const MobileApp: React.FC = () => {
   return (
     <Container>
       <MenuWrapper numOfCols={numOfCols}>
-        <MenuItem title="Resume" href="https://github.com/pyj2025">
+        <MenuItem
+          title="Resume"
+          href="https://drive.google.com/file/d/1cK6hYsbjwWTExdAzHPuWgYGHKINsOphg/view?usp=sharing"
+        >
           <IconImageContainer>
             <img
               src="https://img.icons8.com/color/48/000000/google-docs.png"
