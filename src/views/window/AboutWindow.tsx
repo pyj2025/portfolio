@@ -41,8 +41,6 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const [index, setIndex] = React.useState<IndexType>("About");
   const [isMobileWindow, setIsMobileWindow] = React.useState<boolean>(false);
   const [showDate, setShowDate] = React.useState<boolean>(false);
-  const [isWindowNavbarOpen, setWindowNavbarOpen] =
-    React.useState<boolean>(false);
 
   React.useEffect(() => {
     if (width < TABLET_MAX_WIDTH) {

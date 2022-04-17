@@ -1,9 +1,8 @@
 import React from "react";
-import { DraggableData, Position, ResizableDelta, Rnd } from "react-rnd";
+import { DraggableData, Position, ResizableDelta } from "react-rnd";
 import { WindowPositionSetting, WindowSizeSetting } from "../../types";
 import {
   NavItmLabel,
-  NewWindowBody,
   TopbarTitleImage,
   Window,
   WindowBody,
@@ -19,22 +18,13 @@ import FrontEnd from "../../components/skills/FrontEnd";
 import BackEnd from "../../components/skills/BackEnd";
 import Mobile from "../../components/skills/Mobile";
 import ProgrammingLanguage from "../../components/skills/ProgrammingLanguage";
-import styled from "styled-components";
 
 type IndexType = "Front" | "Back" | "Mobile" | "Programming";
-
-const NewWindowBodyNavItm = styled.div``;
 
 const SkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
 
   const skillsRef = React.useRef<any>();
-
-  const [windowNavbarSize, setWindowNavbarSize] =
-    React.useState<WindowSizeSetting>({
-      width: 150,
-      height: 300,
-    });
 
   const [skillsSize, setSkillsSize] = React.useState<WindowSizeSetting>({
     width: 500,

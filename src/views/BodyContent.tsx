@@ -43,7 +43,6 @@ const BodyContent: React.FC = () => {
     setFocusedWindow,
   } = useWindows();
   const { width } = useScreenSize();
-  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const [mobileWindow, setMobileWindow] = React.useState(false);
 
   const isWelcomeRendered =
@@ -73,10 +72,8 @@ const BodyContent: React.FC = () => {
       } else {
         setMobileWindow(false);
       }
-      setMobileMenuOpen(true);
     } else {
       setMobileWindow(false);
-      setMobileMenuOpen(false);
     }
   }, [width]);
 
