@@ -54,6 +54,7 @@ const MobileMenu: React.FC = () => {
     isAboutOpen,
     isSkillsOpen,
     isProjectsOpen,
+    isWelcomeWindowOpen,
     isAboutMinimized,
     isSkillsMinimized,
     isProjectsMinimized,
@@ -63,6 +64,7 @@ const MobileMenu: React.FC = () => {
     closeAbout,
     closeSkills,
     closeProjects,
+    closeWelcomeWindow,
   } = useWindows();
   const [isMobileWindow, setIsMobileWindow] = React.useState(false);
 
@@ -77,9 +79,13 @@ const MobileMenu: React.FC = () => {
 
   const handleAboutClick = () => {
     if (isMobileWindow) {
+      if (isWelcomeWindowOpen) {
+        closeWelcomeWindow();
+      }
       if (isSkillsOpen) {
         closeSkills();
-      } else if (isProjectsOpen) {
+      }
+      if (isProjectsOpen) {
         closeProjects();
       }
     }
@@ -89,9 +95,13 @@ const MobileMenu: React.FC = () => {
 
   const handleSkillsClick = () => {
     if (isMobileWindow) {
+      if (isWelcomeWindowOpen) {
+        closeWelcomeWindow();
+      }
       if (isAboutOpen) {
         closeAbout();
-      } else if (isProjectsOpen) {
+      }
+      if (isProjectsOpen) {
         closeProjects();
       }
     }
@@ -101,9 +111,13 @@ const MobileMenu: React.FC = () => {
 
   const handleProjectsClick = () => {
     if (isMobileWindow) {
+      if (isWelcomeWindowOpen) {
+        closeWelcomeWindow();
+      }
       if (isAboutOpen) {
         closeAbout();
-      } else if (isSkillsOpen) {
+      }
+      if (isSkillsOpen) {
         closeSkills();
       }
     }
