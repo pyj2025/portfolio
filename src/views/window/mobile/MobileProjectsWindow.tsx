@@ -5,7 +5,7 @@ import {
   MobileProjects,
   Projects,
   WebProjects,
-} from "../../../components/Projects";
+} from "../../../components/projects/Projects";
 import WindowTopbar from "../../../components/WindowTopbar";
 import {
   MobileBackButton,

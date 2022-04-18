@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import FoodieLogo from "../image/Foodie.png";
-import DatApexLogo from "../image/DatApex.png";
-import { IndexType } from "../views/window/desktop/ProjectsWindow";
+import FoodieLogo from "../../image/Foodie.png";
+import DatApexLogo from "../../image/DatApex.png";
+import { IndexType } from "../../views/window/desktop/ProjectsWindow";
 
 type ProjectsProps = {
   click: (name: IndexType) => void;
