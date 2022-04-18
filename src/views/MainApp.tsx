@@ -1,7 +1,7 @@
 import React from "react";
 
 import { isMobile, isTablet } from "react-device-detect";
-import BodyContent from "./BodyContent";
+import BodyContent from "./window/desktop/BodyContent";
 import DesktopTopBar from "../DesktopTopBar";
 import Menu from "../Menu";
 import MobileTopBar from "../MobileTopBar";
@@ -9,7 +9,7 @@ import useScreenSize, { TABLET_MAX_WIDTH } from "../utils/useScreenSize";
 import { WindowsProvider } from "../utils/context/WindowsProvider";
 import styled from "styled-components";
 import MobileMenu from "../MobileMenu";
-import MobileBodyContent from "./MobileBodyContent";
+import MobileBodyContent from "./window/mobile/MobileBodyContent";
 
 const Wrapper = styled.div`
   height: 100vh;

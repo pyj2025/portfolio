@@ -4,7 +4,7 @@ import { DraggableData, Rnd } from "react-rnd";
 import Typist from "react-typist";
 import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
 import { useWindows } from "../../../utils/context/context";
-import { WindowProps } from "../../BodyContent";
+import { WindowProps } from "./BodyContent";
 import { WindowPositionSetting, WindowSizeSetting } from "../../../types";
 import Loaded from "../../../components/welcome/Loaded";
 import Intro from "../../../components/welcome/Intro";

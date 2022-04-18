@@ -1,6 +1,6 @@
 import React from "react";
 import { DraggableData, Position, ResizableDelta } from "react-rnd";
-import { WindowProps } from "../../BodyContent";
+import { WindowProps } from "./BodyContent";
 import {
   MobileProjects,
   Projects,

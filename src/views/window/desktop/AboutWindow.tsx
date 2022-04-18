@@ -14,8 +14,8 @@ import {
 } from "../../../GlobalStyle";
 import { WindowPositionSetting, WindowSizeSetting } from "../../../types";
 import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
-import { WindowProps } from "../../BodyContent";
 import WindowTopbar from "../../../components/WindowTopbar";
+import { WindowProps } from "./BodyContent";
 
 type IndexType = "About" | "Experience" | "Education";
 
