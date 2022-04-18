@@ -162,7 +162,7 @@ const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
           {index === "DatApex" ? (
             <MobilePanel>
               <MobileBackButtonContainer>
-                <MobileBackButton onClick={() => handleClick("Projects")}>
+                <MobileBackButton onClick={() => handleClick("WebProjects")}>
                   <FontAwesomeIcon icon={faArrowLeft} />
                 </MobileBackButton>
               </MobileBackButtonContainer>
@@ -172,7 +172,7 @@ const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
           {index === "Portfolio" ? (
             <MobilePanel>
               <MobileBackButtonContainer>
-                <MobileBackButton onClick={() => handleClick("Projects")}>
+                <MobileBackButton onClick={() => handleClick("WebProjects")}>
                   <FontAwesomeIcon icon={faArrowLeft} />
                 </MobileBackButton>
               </MobileBackButtonContainer>
@@ -182,7 +182,7 @@ const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
           {index === "Foodie" ? (
             <MobilePanel>
               <MobileBackButtonContainer>
-                <MobileBackButton onClick={() => handleClick("Projects")}>
+                <MobileBackButton onClick={() => handleClick("MobileProjects")}>
                   <FontAwesomeIcon icon={faArrowLeft} />
                 </MobileBackButton>
               </MobileBackButtonContainer>
