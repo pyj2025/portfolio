@@ -16,7 +16,7 @@ import useScreenSize, {
   MOBILE_MAX_WIDTH,
   TABLET_MAX_WIDTH,
 } from "../../../utils/useScreenSize";
-import MobileApp from "../../../MobileApp";
+import MobileApp from "../../../components/MobileApp";
 import MobileWelcomeWindow from "./MobileWelcomeWindow";
 import MobileAboutWindow from "./MobileAboutWindow";
 import MobileSkillsWindow from "./MobileSkillsWindow";

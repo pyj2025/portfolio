@@ -2,8 +2,8 @@ import { faCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import styled from "styled-components";
-import { useWindows } from "./utils/context/context";
-import useScreenSize, { TABLET_MAX_WIDTH } from "./utils/useScreenSize";
+import { useWindows } from "../utils/context/context";
+import useScreenSize, { TABLET_MAX_WIDTH } from "../utils/useScreenSize";
 
 const Container = styled.div`
   display: flex;

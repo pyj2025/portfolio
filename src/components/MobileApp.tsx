@@ -4,7 +4,7 @@ import styled from "styled-components";
 import useScreenSize, {
   MOBILE_MAX_WIDTH,
   TABLET_MAX_WIDTH,
-} from "./utils/useScreenSize";
+} from "../utils/useScreenSize";
 
 const Container = styled.div`
   display: flex;
