@@ -15,7 +15,7 @@ import {
 import { WindowPositionSetting, WindowSizeSetting } from "../../../types";
 import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
 import WindowTopbar from "../../../components/WindowTopbar";
-import { WindowProps } from "./BodyContent";
+import { WindowProps } from "../../../components/BodyContent";
 
 type IndexType = "About" | "Experience" | "Education";
 

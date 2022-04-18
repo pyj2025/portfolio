@@ -2,11 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import { DraggableData } from "react-rnd";
 
-import ProjectsWindow from "./ProjectsWindow";
-import AboutWindow from "./AboutWindow";
-import WelcomeWindow from "./WelcomeWindow";
-import SkillsWindow from "./SkillsWindow";
-import { useWindows } from "../../../utils/context/context";
+import ProjectsWindow from "../views/window/desktop/ProjectsWindow";
+import AboutWindow from "../views/window/desktop/AboutWindow";
+import WelcomeWindow from "../views/window/desktop/WelcomeWindow";
+import SkillsWindow from "../views/window/desktop/SkillsWindow";
+import { useWindows } from "../utils/context/context";
 import { Slide, toast, ToastContainer } from "react-toastify";
 import {
   browserName,
@@ -15,12 +15,12 @@ import {
   isTablet,
 } from "react-device-detect";
 import "react-toastify/dist/ReactToastify.css";
-import TopbarAboutWindow from "./TopbarAboutWindow";
-import { FocusedWindowType } from "../../../types";
+import TopbarAboutWindow from "../views/window/desktop/TopbarAboutWindow";
+import { FocusedWindowType } from "../types";
 import useScreenSize, {
   MOBILE_MAX_WIDTH,
   TABLET_MAX_WIDTH,
-} from "../../../utils/useScreenSize";
+} from "../utils/useScreenSize";
 
 const Container = styled.div`
   width: 100%;

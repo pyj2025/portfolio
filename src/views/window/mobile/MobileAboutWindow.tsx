@@ -6,7 +6,7 @@ import Experience from "../../../components/about/Experience";
 import WindowTopbar from "../../../components/WindowTopbar";
 import { WindowPositionSetting, WindowSizeSetting } from "../../../types";
 import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
-import { WindowProps } from "../desktop/BodyContent";
+import { WindowProps } from "../../../components/BodyContent";
 
 import {
   MobileBackButton,

@@ -12,7 +12,7 @@ import {
 } from "../../../GlobalStyle";
 
 import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
-import { WindowProps } from "./BodyContent";
+import { WindowProps } from "../../../components/BodyContent";
 import WindowTopbar from "../../../components/WindowTopbar";
 import FrontEnd from "../../../components/skills/FrontEnd";
 import BackEnd from "../../../components/skills/BackEnd";
