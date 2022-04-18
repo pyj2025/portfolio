@@ -1,8 +1,8 @@
 import React from "react";
 import { DraggableData, Position, ResizableDelta } from "react-rnd";
-import Education from "../../components/about/Education";
-import About from "../../components/about/About";
-import Experience from "../../components/about/Experience";
+import Education from "../../../components/about/Education";
+import About from "../../../components/about/About";
+import Experience from "../../../components/about/Experience";
 import {
   NavItmLabel,
   TopbarTitleImage,
@@ -11,11 +11,11 @@ import {
   WindowBodyContent,
   WindowBodyNavbar,
   WindowBodyNavItm,
-} from "../../GlobalStyle";
-import { WindowPositionSetting, WindowSizeSetting } from "../../types";
-import useScreenSize, { TABLET_MAX_WIDTH } from "../../utils/useScreenSize";
-import { WindowProps } from "../BodyContent";
-import WindowTopbar from "../../components/WindowTopbar";
+} from "../../../GlobalStyle";
+import { WindowPositionSetting, WindowSizeSetting } from "../../../types";
+import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
+import { WindowProps } from "../../BodyContent";
+import WindowTopbar from "../../../components/WindowTopbar";
 
 type IndexType = "About" | "Experience" | "Education";
 

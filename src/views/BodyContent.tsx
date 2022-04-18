@@ -2,10 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { DraggableData } from "react-rnd";
 
-import ProjectsWindow from "./window/ProjectsWindow";
-import AboutWindow from "./window/AboutWindow";
-import WelcomeWindow from "./window/WelcomeWindow";
-import SkillsWindow from "./window/SkillsWindow";
+import ProjectsWindow from "./window/desktop/ProjectsWindow";
+import AboutWindow from "./window/desktop/AboutWindow";
+import WelcomeWindow from "./window/desktop/WelcomeWindow";
+import SkillsWindow from "./window/desktop/SkillsWindow";
 import { useWindows } from "../utils/context/context";
 import { Slide, toast, ToastContainer } from "react-toastify";
 import {

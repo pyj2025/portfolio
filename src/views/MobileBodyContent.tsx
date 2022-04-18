@@ -17,7 +17,7 @@ import useScreenSize, {
   TABLET_MAX_WIDTH,
 } from "../utils/useScreenSize";
 import MobileApp from "../MobileApp";
-import MobileWelcomeWindow from "./window/MobileWelcomeWindow";
+import MobileWelcomeWindow from "./window/mobile/MobileWelcomeWindow";
 import MobileAboutWindow from "./window/mobile/MobileAboutWindow";
 import MobileSkillsWindow from "./window/mobile/MobileSkillsWindow";
 import MobileProjectsWindow from "./window/mobile/MobileProjectsWindow";

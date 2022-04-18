@@ -1,22 +1,22 @@
 import React from "react";
 import styled from "styled-components";
-import { DraggableData, Rnd } from "react-rnd";
+import { Rnd } from "react-rnd";
 import Typist from "react-typist";
-import useScreenSize, { TABLET_MAX_WIDTH } from "../../utils/useScreenSize";
-import { useWindows } from "../../utils/context/context";
-import { WindowProps } from "../BodyContent";
-import { WindowPositionSetting, WindowSizeSetting } from "../../types";
-import Loaded from "../../components/welcome/Loaded";
-import Intro from "../../components/welcome/Intro";
-import Contact from "../../components/welcome/Contact";
+import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
+import { useWindows } from "../../../utils/context/context";
+import { WindowProps } from "../../BodyContent";
+import { WindowPositionSetting, WindowSizeSetting } from "../../../types";
+import Loaded from "../../../components/welcome/Loaded";
+import Intro from "../../../components/welcome/Intro";
+import Contact from "../../../components/welcome/Contact";
 
 const Window = styled(Rnd)`
   width: 100%;
-  display: flex;
+  display: grid;
   align-items: center;
   justify-content: center;
-  background-color: transparent;
-  border-radius: 6px;
+  background-color: white;
+  /* border-radius: 6px; */
   box-shadow: 0px 0px 8px black;
 `;
 
@@ -24,8 +24,7 @@ const WindowTopbar = styled.div`
   width: 100%;
   height: 28px;
   background-color: rgb(51, 52, 54);
-  /* border-top: 1px rgb(70, 75, 80) solid; */
-  border-bottom: 1px rgb(70, 75, 80) solid;
+  border-top: 1px rgb(70, 75, 80) solid;
 
   padding: 0px 10px;
   /* border-top-left-radius: 6px;
@@ -98,11 +97,8 @@ const WindowBody = styled.div`
   height: calc(100% - 28px);
   background-color: #282a36;
   color: #ffffff;
-
-  /* -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
-  -khtml-border-radius: 6px; */
+  /* border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px; */
 `;
 
 const TerminalRow = styled.div`
@@ -135,37 +131,25 @@ const BadgeArrow = styled.div<{ first?: boolean }>`
   border-left: 13px solid #000000;
 `;
 
-const SecondBadge = styled.div`
-  background-color: #caa9fa;
-  color: #000000;
-  padding: 4px 10px;
-  border: none;
-`;
-
-const SecondBadgeArrow = styled(BadgeArrow)`
-  background-color: transparent;
-  border-left: 13px solid #caa9fa;
-`;
-
 const TerminalLine = styled.div`
   margin-left: 8px;
 `;
 
-const WelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
+const MobileWelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
   const { focusedWindow, closeWelcomeWindow } = useWindows();
 
   const welcomeRef = React.useRef<any>();
 
-  const [welcomeSize, setWelcomeSize] = React.useState<WindowSizeSetting>({
-    width: 700,
-    height: 450,
-  });
-  const [welcomePosition, setWelcomePosition] =
+  const [windowPosition, setWindowPosition] =
     React.useState<WindowPositionSetting>({
       x: Math.round(Math.max((width - 700) / 2, 0)),
       y: 0,
     });
+  const [windowSize, setWindowSize] = React.useState<WindowSizeSetting>({
+    width: 700,
+    height: 450,
+  });
 
   const [firstLine, setFirstLine] = React.useState(false);
   const [secondLine, setSecondLine] = React.useState(false);
@@ -175,11 +159,11 @@ const WelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
 
   React.useEffect(() => {
     if (width <= TABLET_MAX_WIDTH) {
-      setWelcomeSize({
+      setWindowSize({
         width,
         height: height - 80 - 25,
       });
-      setWelcomePosition({
+      setWindowPosition({
         x: 0,
         y: 0,
       });
@@ -190,13 +174,10 @@ const WelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
     <Window
       id="Welcome"
       ref={welcomeRef}
-      size={{ width: welcomeSize.width, height: welcomeSize.height }}
-      position={{ x: welcomePosition.x, y: welcomePosition.y }}
+      size={{ width: windowSize.width, height: windowSize.height }}
+      position={{ x: windowPosition.x, y: windowPosition.y }}
       dragHandleClassName="topbar"
       onDragStart={handleFocus}
-      onDragStop={(_e: any, data: DraggableData) => {
-        setWelcomePosition({ x: data.x, y: data.y });
-      }}
       enableResizing={false}
     >
       <WindowTopbar className="topbar">
@@ -224,7 +205,7 @@ const WelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         {firstLine ? (
           <TerminalRow>
             <TerminalBadge>
-              <FirstBadge>joon@MacBook-Air</FirstBadge>
+              <FirstBadge>~/</FirstBadge>
               <BadgeArrow first />
             </TerminalBadge>
             <TerminalLine>
@@ -246,10 +227,8 @@ const WelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         {secondLine ? (
           <TerminalRow>
             <TerminalBadge>
-              <FirstBadge>joon@MacBook-Air</FirstBadge>
-              <BadgeArrow />
-              <SecondBadge>~/portfolio/</SecondBadge>
-              <SecondBadgeArrow />
+              <FirstBadge>~/portfolio/</FirstBadge>
+              <BadgeArrow first />
             </TerminalBadge>
             <TerminalLine>
               <Typist
@@ -274,10 +253,8 @@ const WelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         {thirdLine ? (
           <TerminalRow>
             <TerminalBadge>
-              <FirstBadge>joon@MacBook-Air</FirstBadge>
-              <BadgeArrow />
-              <SecondBadge>~/portfolio/</SecondBadge>
-              <SecondBadgeArrow />
+              <FirstBadge>~/portfolio/</FirstBadge>
+              <BadgeArrow first />
             </TerminalBadge>
             <TerminalLine>
               <Typist
@@ -304,4 +281,4 @@ const WelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   );
 };
 
-export default WelcomeWindow;
+export default MobileWelcomeWindow;

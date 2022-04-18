@@ -1,6 +1,6 @@
 import React from "react";
 import { DraggableData, Position, ResizableDelta } from "react-rnd";
-import { WindowPositionSetting, WindowSizeSetting } from "../../types";
+import { WindowPositionSetting, WindowSizeSetting } from "../../../types";
 import {
   NavItmLabel,
   TopbarTitleImage,
@@ -9,15 +9,15 @@ import {
   WindowBodyContent,
   WindowBodyNavbar,
   WindowBodyNavItm,
-} from "../../GlobalStyle";
+} from "../../../GlobalStyle";
 
-import useScreenSize, { TABLET_MAX_WIDTH } from "../../utils/useScreenSize";
-import { WindowProps } from "../BodyContent";
-import WindowTopbar from "../../components/WindowTopbar";
-import FrontEnd from "../../components/skills/FrontEnd";
-import BackEnd from "../../components/skills/BackEnd";
-import Mobile from "../../components/skills/Mobile";
-import ProgrammingLanguage from "../../components/skills/ProgrammingLanguage";
+import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
+import { WindowProps } from "../../BodyContent";
+import WindowTopbar from "../../../components/WindowTopbar";
+import FrontEnd from "../../../components/skills/FrontEnd";
+import BackEnd from "../../../components/skills/BackEnd";
+import Mobile from "../../../components/skills/Mobile";
+import ProgrammingLanguage from "../../../components/skills/ProgrammingLanguage";
 
 type IndexType = "Front" | "Back" | "Mobile" | "Programming";
 
