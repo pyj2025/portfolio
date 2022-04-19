@@ -4,18 +4,10 @@ import { DraggableData } from "react-rnd";
 
 import { useWindows } from "../utils/context/context";
 import { Slide, toast, ToastContainer } from "react-toastify";
-import {
-  browserName,
-  isBrowser,
-  isMobile,
-  isTablet,
-} from "react-device-detect";
+import { browserName, isBrowser, isMobile } from "react-device-detect";
 import "react-toastify/dist/ReactToastify.css";
 import { FocusedWindowType } from "../types";
-import useScreenSize, {
-  MOBILE_MAX_WIDTH,
-  TABLET_MAX_WIDTH,
-} from "../utils/useScreenSize";
+import useScreenSize, { MOBILE_MAX_WIDTH } from "../utils/useScreenSize";
 import MobileApp from "./MobileApp";
 import MobileWelcomeWindow from "../views/window/mobile/MobileWelcomeWindow";
 import MobileAboutWindow from "../views/window/mobile/MobileAboutWindow";
@@ -42,11 +34,7 @@ const MobileBodyContent: React.FC = () => {
     setFocusedWindow,
   } = useWindows();
   const { width } = useScreenSize();
-  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
-  const [mobileWindow, setMobileWindow] = React.useState(false);
-
-  const isWelcomeRendered =
-    window.localStorage.getItem("welcomeWindowRendered") === "true";
+  const [checkMobile, setCheckMobile] = React.useState(false);
 
   const windowRef = React.useRef({
     newZIndex: "10",
@@ -66,19 +54,10 @@ const MobileBodyContent: React.FC = () => {
   }, []);
 
   React.useEffect(() => {
-    if (isMobile || isTablet || width <= TABLET_MAX_WIDTH) {
-      if (width <= MOBILE_MAX_WIDTH) {
-        setMobileWindow(true);
-      } else {
-        setMobileWindow(false);
-      }
-      setMobileMenuOpen(true);
-    } else {
-      setMobileWindow(false);
-      setMobileMenuOpen(false);
+    if (isMobile || width <= MOBILE_MAX_WIDTH) {
+      setCheckMobile(true);
     }
   }, [width]);
-
   const handleFocus = (_e: any, data: DraggableData) => {
     const ref = windowRef.current;
 
@@ -92,12 +71,10 @@ const MobileBodyContent: React.FC = () => {
     setFocusedWindow(data.node.id as FocusedWindowType);
   };
 
-  const welcomeWindowCheck = isWelcomeWindowOpen && !isWelcomeRendered;
-
   return (
     <Container>
       <ToastContainer
-        position={isMobile ? "top-center" : "top-right"}
+        position={checkMobile ? "top-center" : "top-right"}
         autoClose={5000}
         newestOnTop
         hideProgressBar
@@ -108,15 +85,11 @@ const MobileBodyContent: React.FC = () => {
         limit={1}
         draggablePercent={60}
       />
-      {mobileMenuOpen ? <MobileApp /> : null}
-      {welcomeWindowCheck && (isMobile || mobileWindow) ? (
-        <MobileWelcomeWindow handleFocus={handleFocus} />
-      ) : null}
-      {isAboutOpen ? <MobileAboutWindow handleFocus={handleFocus} /> : null}
-      {isSkillsOpen ? <MobileSkillsWindow handleFocus={handleFocus} /> : null}
-      {isProjectsOpen ? (
-        <MobileProjectsWindow handleFocus={handleFocus} />
-      ) : null}
+      <MobileApp />
+      {isWelcomeWindowOpen && <MobileWelcomeWindow handleFocus={handleFocus} />}
+      {isAboutOpen && <MobileAboutWindow handleFocus={handleFocus} />}
+      {isSkillsOpen && <MobileSkillsWindow handleFocus={handleFocus} />}
+      {isProjectsOpen && <MobileProjectsWindow handleFocus={handleFocus} />}
     </Container>
   );
 };

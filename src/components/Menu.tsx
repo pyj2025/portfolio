@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import styled from "styled-components";
 import { useWindows } from "../utils/context/context";
-import useScreenSize, { TABLET_MAX_WIDTH } from "../utils/useScreenSize";
 
 const Container = styled.div`
   display: flex;
@@ -53,65 +52,24 @@ const MinimizedIcon = styled(FontAwesomeIcon)`
 `;
 
 const Menu: React.FC = () => {
-  const { width } = useScreenSize();
   const {
-    isAboutOpen,
-    isSkillsOpen,
-    isProjectsOpen,
     isAboutMinimized,
     isSkillsMinimized,
     isProjectsMinimized,
     toggleAboutOpen,
     toggleSkillsOpen,
     toggleProjectsOpen,
-    closeAbout,
-    closeSkills,
-    closeProjects,
   } = useWindows();
-  const [isMobileWindow, setIsMobileWindow] = React.useState(false);
-
-  React.useEffect(() => {
-    if (width < TABLET_MAX_WIDTH) {
-      setIsMobileWindow(true);
-    } else {
-      setIsMobileWindow(false);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [width]);
 
   const handleAboutClick = () => {
-    if (isMobileWindow) {
-      if (isSkillsOpen) {
-        closeSkills();
-      } else if (isProjectsOpen) {
-        closeProjects();
-      }
-    }
-
     toggleAboutOpen();
   };
 
   const handleSkillsClick = () => {
-    if (isMobileWindow) {
-      if (isAboutOpen) {
-        closeAbout();
-      } else if (isProjectsOpen) {
-        closeProjects();
-      }
-    }
-
     toggleSkillsOpen();
   };
 
   const handleProjectsClick = () => {
-    if (isMobileWindow) {
-      if (isAboutOpen) {
-        closeAbout();
-      } else if (isSkillsOpen) {
-        closeSkills();
-      }
-    }
-
     toggleProjectsOpen();
   };
 

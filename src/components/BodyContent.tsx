@@ -8,19 +8,10 @@ import WelcomeWindow from "../views/window/desktop/WelcomeWindow";
 import SkillsWindow from "../views/window/desktop/SkillsWindow";
 import { useWindows } from "../utils/context/context";
 import { Slide, toast, ToastContainer } from "react-toastify";
-import {
-  browserName,
-  isBrowser,
-  isMobile,
-  isTablet,
-} from "react-device-detect";
+import { browserName, isBrowser, isMobile } from "react-device-detect";
 import "react-toastify/dist/ReactToastify.css";
 import TopbarAboutWindow from "../views/window/desktop/TopbarAboutWindow";
 import { FocusedWindowType } from "../types";
-import useScreenSize, {
-  MOBILE_MAX_WIDTH,
-  TABLET_MAX_WIDTH,
-} from "../utils/useScreenSize";
 
 const Container = styled.div`
   width: 100%;
@@ -42,11 +33,6 @@ const BodyContent: React.FC = () => {
     isProjectsOpen,
     setFocusedWindow,
   } = useWindows();
-  const { width } = useScreenSize();
-  const [mobileWindow, setMobileWindow] = React.useState(false);
-
-  const isWelcomeRendered =
-    window.localStorage.getItem("welcomeWindowRendered") === "true";
 
   const windowRef = React.useRef({
     newZIndex: "10",
@@ -65,18 +51,6 @@ const BodyContent: React.FC = () => {
     });
   }, []);
 
-  React.useEffect(() => {
-    if (isMobile || isTablet || width <= TABLET_MAX_WIDTH) {
-      if (width <= MOBILE_MAX_WIDTH) {
-        setMobileWindow(true);
-      } else {
-        setMobileWindow(false);
-      }
-    } else {
-      setMobileWindow(false);
-    }
-  }, [width]);
-
   const handleFocus = (_e: any, data: DraggableData) => {
     const ref = windowRef.current;
 
@@ -90,12 +64,10 @@ const BodyContent: React.FC = () => {
     setFocusedWindow(data.node.id as FocusedWindowType);
   };
 
-  const welcomeWindowCheck = isWelcomeWindowOpen && !isWelcomeRendered;
-
   return (
     <Container>
       <ToastContainer
-        position={isMobile ? "top-center" : "top-right"}
+        position="top-right"
         autoClose={5000}
         newestOnTop
         hideProgressBar
@@ -106,15 +78,11 @@ const BodyContent: React.FC = () => {
         limit={1}
         draggablePercent={60}
       />
-      {welcomeWindowCheck && !isMobile && !mobileWindow ? (
-        <WelcomeWindow handleFocus={handleFocus} />
-      ) : null}
-      {isDesktopAboutOpen ? (
-        <TopbarAboutWindow handleFocus={handleFocus} />
-      ) : null}
-      {isAboutOpen ? <AboutWindow handleFocus={handleFocus} /> : null}
-      {isSkillsOpen ? <SkillsWindow handleFocus={handleFocus} /> : null}
-      {isProjectsOpen ? <ProjectsWindow handleFocus={handleFocus} /> : null}
+      {isWelcomeWindowOpen && <WelcomeWindow handleFocus={handleFocus} />}
+      {isDesktopAboutOpen && <TopbarAboutWindow handleFocus={handleFocus} />}
+      {isAboutOpen && <AboutWindow handleFocus={handleFocus} />}
+      {isSkillsOpen && <SkillsWindow handleFocus={handleFocus} />}
+      {isProjectsOpen && <ProjectsWindow handleFocus={handleFocus} />}
     </Container>
   );
 };
