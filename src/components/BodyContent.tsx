@@ -26,6 +26,7 @@ export type WindowProps = {
 
 const BodyContent: React.FC = () => {
   const {
+    focusedWindow,
     isWelcomeWindowOpen,
     isDesktopAboutOpen,
     isAboutOpen,
@@ -50,6 +51,15 @@ const BodyContent: React.FC = () => {
       type: "info",
     });
   }, []);
+
+  React.useEffect(() => {
+    console.log("focusedWindow = ", focusedWindow);
+    console.log("windowRef.current = ", windowRef.current);
+
+    if (windowRef.current.prevNode) {
+      windowRef.current.prevNode.style.zIndex = "0";
+    }
+  }, [focusedWindow]);
 
   const handleFocus = (_e: any, data: DraggableData) => {
     const ref = windowRef.current;

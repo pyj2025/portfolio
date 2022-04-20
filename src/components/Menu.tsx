@@ -56,21 +56,21 @@ const Menu: React.FC = () => {
     isAboutMinimized,
     isSkillsMinimized,
     isProjectsMinimized,
-    toggleAboutOpen,
-    toggleSkillsOpen,
-    toggleProjectsOpen,
+    openAbout,
+    openSkills,
+    openProjects,
   } = useWindows();
 
   const handleAboutClick = () => {
-    toggleAboutOpen();
+    openAbout();
   };
 
   const handleSkillsClick = () => {
-    toggleSkillsOpen();
+    openSkills();
   };
 
   const handleProjectsClick = () => {
-    toggleProjectsOpen();
+    openProjects();
   };
 
   const handleEmailClick = () => {
