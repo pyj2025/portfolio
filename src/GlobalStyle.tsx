@@ -234,7 +234,6 @@ export const MobileNavbar = styled.div`
   background-color: rgba(51, 49, 51, 0.9);
   color: white;
   border-right: 0.2px solid #141516;
-  /* border-bottom-left-radius: 6px; */
 `;
 
 export const MobileNavbarItem = styled.div<{
@@ -264,7 +263,6 @@ export const MobileBodyContent = styled.div`
   height: 100%;
   background-color: #1d1f21;
   color: white;
-  /* border-bottom-right-radius: 6px; */
   overflow-x: hidden;
   overflow-y: scroll;
 `;
@@ -296,7 +294,6 @@ export const MobilePanel = styled.div`
   flex-direction: column;
   width: 100%;
   color: white;
-  /* border-bottom-right-radius: 6px; */
 `;
 
 export const MobileBackButtonContainer = styled.div`
