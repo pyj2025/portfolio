@@ -26,7 +26,11 @@ export const Window = styled(Rnd)`
   justify-content: center;
   align-items: center;
   background-color: white;
-  /* border-radius: 6px; */
+  border-radius: 0.375rem;
+  -webkit-border-radius: 0.375rem;
+  -moz-border-radius: 0.375rem;
+  -khtml-border-radius: 0.375rem;
+  overflow: hidden;
   box-shadow: 0px 0px 8px black;
 `;
 
@@ -36,8 +40,6 @@ export const WindowTopbarContainer = styled.div`
   background-color: rgb(51, 52, 54);
   border-top: 1px solid rgb(70, 75, 80);
   padding: 0px 10px;
-  /* border-top-left-radius: 6px;
-  border-top-right-radius: 6px; */
   cursor: default;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -95,7 +97,7 @@ export const TopbarTitle = styled.div`
 `;
 
 export const TopbarTitleText = styled.span`
-  margin-left: 6px;
+  margin-left: 0.375rem;
   pointer-events: none;
 `;
 
@@ -123,7 +125,6 @@ export const WindowBodyNavbar = styled.div`
   background-color: rgba(51, 49, 51, 0.9);
   color: white;
   border-right: 0.2px solid #141516;
-  /* border-bottom-left-radius: 6px; */
 `;
 
 export const WindowBodyNavItm = styled.div<{

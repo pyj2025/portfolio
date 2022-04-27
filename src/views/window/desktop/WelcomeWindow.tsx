@@ -16,7 +16,11 @@ const Window = styled(Rnd)`
   align-items: center;
   justify-content: center;
   background-color: transparent;
-  border-radius: 6px;
+  border-radius: 0.375rem;
+  -webkit-border-radius: 0.375rem;
+  -moz-border-radius: 0.375rem;
+  -khtml-border-radius: 0.375rem;
+  overflow: hidden;
   box-shadow: 0px 0px 8px black;
 `;
 
@@ -24,12 +28,8 @@ const WindowTopbar = styled.div`
   width: 100%;
   height: 28px;
   background-color: rgb(51, 52, 54);
-  /* border-top: 1px rgb(70, 75, 80) solid; */
   border-bottom: 1px rgb(70, 75, 80) solid;
-
   padding: 0px 10px;
-  /* border-top-left-radius: 6px;
-  border-top-right-radius: 6px; */
   cursor: default;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -98,11 +98,6 @@ const WindowBody = styled.div`
   height: calc(100% - 28px);
   background-color: #282a36;
   color: #ffffff;
-
-  /* -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
-  -khtml-border-radius: 6px; */
 `;
 
 const TerminalRow = styled.div`
