@@ -41,25 +41,36 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
-export const DataRow = styled.div<{ showDate?: boolean }>`
+export const DataRow = styled.div<{ showDate?: boolean; isMobile?: boolean }>`
   display: grid;
   grid-template-columns: ${({ showDate }) =>
     showDate ? "6.5fr 3.5fr" : "auto"};
   width: 100%;
-  height: 100%;
-  background-color: transparent;
+  height: ${({ isMobile }) => (isMobile ? "2rem" : "1.25rem")};
+  background-color: rgb(51, 52, 54);
+  border-bottom: 1px solid black;
   padding-left: 0.5rem;
 `;
 
 export const SortButton = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   cursor: pointer;
+`;
+
+export const SortButtonText = styled(BoldText)`
+  margin-right: 0.5rem;
 `;
 
 type SortType = "asc" | "dec";
 
-type ExperienceProps = { showDate: boolean };
+type ExperienceProps = { showDate: boolean; isMobile?: boolean };
 
-const Experience: React.FC<ExperienceProps> = ({ showDate }) => {
+const Experience: React.FC<ExperienceProps> = ({
+  isMobile = false,
+  showDate,
+}) => {
   const [experiences, setExperiences] =
     React.useState<Array<ExperienceType>>(ExperienceObject);
   const [positionSortType, setPositionSortType] =
@@ -122,9 +133,9 @@ const Experience: React.FC<ExperienceProps> = ({ showDate }) => {
 
   return (
     <Container>
-      <DataRow showDate={showDate}>
+      <DataRow showDate={showDate} isMobile={isMobile}>
         <SortButton onClick={sortByPosition}>
-          <BoldText>Position</BoldText>
+          <SortButtonText>Position</SortButtonText>
           {positionSortType ? (
             <FontAwesomeIcon
               icon={positionSortType === "asc" ? faChevronUp : faChevronDown}
@@ -133,7 +144,7 @@ const Experience: React.FC<ExperienceProps> = ({ showDate }) => {
         </SortButton>
         {showDate ? (
           <SortButton onClick={sortByDate}>
-            <BoldText>Date</BoldText>
+            <SortButtonText>Date</SortButtonText>
             {dateSortType ? (
               <FontAwesomeIcon
                 icon={dateSortType === "asc" ? faChevronUp : faChevronDown}
@@ -148,6 +159,7 @@ const Experience: React.FC<ExperienceProps> = ({ showDate }) => {
           experience={experience}
           isEven={idx % 2 === 0}
           showDate={showDate}
+          isMobile={isMobile}
         />
       ))}
     </Container>

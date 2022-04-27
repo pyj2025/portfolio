@@ -5,8 +5,7 @@ const ContentContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 10px;
+  margin-top: 10px;
 `;
 
 const SkillsIconContainer = styled.div<{ noWidth?: boolean }>`
@@ -16,12 +15,14 @@ const SkillsIconContainer = styled.div<{ noWidth?: boolean }>`
   height: 4rem;
   justify-content: center;
   align-items: center;
+  margin: 0.25rem;
 `;
 
 const IconLabel = styled.div`
   font-size: 0.75rem;
   text-align: center;
   height: 1em;
+  margin-top: 0.25rem;
 `;
 
 const IconImageContainer = styled.div`
@@ -30,6 +31,7 @@ const IconImageContainer = styled.div`
   width: 48px;
   height: 48px;
   background-color: white;
+  border-radius: 0.5rem;
   justify-content: center;
   align-items: center;
 `;
@@ -38,10 +40,14 @@ const BackEnd: React.FC = () => {
   return (
     <ContentContainer>
       <SkillsIconContainer>
-        <img
-          src="https://img.icons8.com/color/48/000000/nodejs.png"
-          alt="Node.js"
-        />
+        <IconImageContainer>
+          <img
+            src="https://img.icons8.com/color/48/000000/nodejs.png"
+            style={{ width: 40, height: 40 }}
+            alt="Node.js"
+          />
+        </IconImageContainer>
+
         <IconLabel>Node.js</IconLabel>
       </SkillsIconContainer>
       <SkillsIconContainer>
@@ -56,10 +62,25 @@ const BackEnd: React.FC = () => {
         <IconLabel>Express</IconLabel>
       </SkillsIconContainer>
       <SkillsIconContainer>
-        <img
-          src="https://img.icons8.com/color/48/000000/spring-logo.png"
-          alt="Spring"
-        />
+        <IconImageContainer>
+          <img
+            src="https://img.icons8.com/color/48/000000/amazon-web-services.png"
+            style={{ width: 40, height: 40 }}
+            alt="aws"
+          />
+        </IconImageContainer>
+
+        <IconLabel>aws</IconLabel>
+      </SkillsIconContainer>
+      <SkillsIconContainer>
+        <IconImageContainer>
+          <img
+            src="https://img.icons8.com/color/48/000000/spring-logo.png"
+            style={{ width: 40, height: 40 }}
+            alt="Spring"
+          />
+        </IconImageContainer>
+
         <IconLabel>Spring</IconLabel>
       </SkillsIconContainer>
       <SkillsIconContainer noWidth>
@@ -73,18 +94,23 @@ const BackEnd: React.FC = () => {
         <IconLabel>ASP.Net Core</IconLabel>
       </SkillsIconContainer>
       <SkillsIconContainer>
-        <img
-          src="https://api.iconify.design/logos/laravel.svg"
-          style={{ width: 48, height: 48 }}
-          alt="Laravel"
-        />
+        <IconImageContainer>
+          <img
+            src="https://api.iconify.design/logos/laravel.svg"
+            style={{ width: 40, height: 40 }}
+            alt="Laravel"
+          />
+        </IconImageContainer>
         <IconLabel>Laravel</IconLabel>
       </SkillsIconContainer>
       <SkillsIconContainer>
-        <img
-          src="https://img.icons8.com/color/48/000000/mongodb.png"
-          alt="MongoDB"
-        />
+        <IconImageContainer>
+          <img
+            src="https://img.icons8.com/color/48/000000/mongodb.png"
+            style={{ width: 40, height: 40 }}
+            alt="MongoDB"
+          />
+        </IconImageContainer>
         <IconLabel>MongoDB</IconLabel>
       </SkillsIconContainer>
     </ContentContainer>

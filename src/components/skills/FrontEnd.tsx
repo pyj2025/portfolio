@@ -5,8 +5,7 @@ const ContentContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 10px;
+  margin-top: 10px;
 `;
 
 const SkillsIconContainer = styled.div`
@@ -16,20 +15,23 @@ const SkillsIconContainer = styled.div`
   height: 4rem;
   justify-content: center;
   align-items: center;
+  margin: 0.25rem;
 `;
 
 const IconLabel = styled.div`
   font-size: 0.75rem;
   text-align: center;
   height: 1em;
+  margin-top: 0.25rem;
 `;
 
 const IconImageContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 48px;
-  height: 48px;
+  width: 3rem;
+  height: 3rem;
   background-color: white;
+  border-radius: 0.5rem;
   justify-content: center;
   align-items: center;
 `;
@@ -77,11 +79,14 @@ const FrontEnd: React.FC = () => {
         <IconLabel>Redux</IconLabel>
       </SkillsIconContainer>
       <SkillsIconContainer>
-        <img
-          src="https://img.icons8.com/ios-filled/48/000000/jquery.png"
-          style={{ width: 48, height: 48, backgroundColor: "white" }}
-          alt="jQuery"
-        />
+        <IconImageContainer>
+          <img
+            src="https://img.icons8.com/ios-filled/48/000000/jquery.png"
+            style={{ width: 40, height: 40 }}
+            alt="jQuery"
+          />
+        </IconImageContainer>
+
         <IconLabel>jQuery</IconLabel>
       </SkillsIconContainer>
       <SkillsIconContainer>

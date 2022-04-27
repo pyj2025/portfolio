@@ -1,25 +1,60 @@
 import React from "react";
 import { DraggableData, Position, ResizableDelta } from "react-rnd";
-import Education from "../../components/about/Education";
-import About from "../../components/about/About";
-import Experience from "../../components/about/Experience";
+import About from "../../../components/about/About";
+import Education from "../../../components/about/Education";
+import Experience from "../../../components/about/Experience";
+import WindowTopbar from "../../../components/WindowTopbar";
+import { WindowPositionSetting, WindowSizeSetting } from "../../../types";
+import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
+import { WindowProps } from "../../../components/BodyContent";
+
 import {
-  NavItmLabel,
-  TopbarTitleImage,
+  MobileBackButton,
+  MobileBackButtonContainer,
+  MobileBodyContent,
+  MobilePanel,
+  MobileMenuItemLabel,
+  MobileNavbar,
+  MobileNavbarMenu,
+  MobileWindowBody,
+  MobileWindowMenuItem,
+  MobileNavbarItem,
   Window,
-  WindowBody,
-  WindowBodyContent,
-  WindowBodyNavbar,
-  WindowBodyNavItm,
-} from "../../GlobalStyle";
-import { WindowPositionSetting, WindowSizeSetting } from "../../types";
-import useScreenSize, { TABLET_MAX_WIDTH } from "../../utils/useScreenSize";
-import { WindowProps } from "../BodyContent";
-import WindowTopbar from "../../components/WindowTopbar";
+} from "../../../GlobalStyle";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
-type IndexType = "About" | "Experience" | "Education";
+type MobileIndexType = "Menu" | "About" | "Experience" | "Education";
 
-const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
+type MobileAboutWindowMenuProps = {
+  onClick: (index: MobileIndexType) => void;
+};
+
+const MobileAboutWindowMenu: React.FC<MobileAboutWindowMenuProps> = ({
+  onClick,
+}) => {
+  return (
+    <>
+      <MobileWindowMenuItem onClick={() => onClick("About")}>
+        <img src="https://img.icons8.com/color/48/000000/file.png" alt="file" />
+        <MobileMenuItemLabel>About</MobileMenuItemLabel>
+      </MobileWindowMenuItem>
+      <MobileWindowMenuItem onClick={() => onClick("Experience")} isEven>
+        <img
+          src="https://img.icons8.com/color/48/000000/mac-folder.png"
+          alt="folder"
+        />
+        <MobileMenuItemLabel>Experience</MobileMenuItemLabel>
+      </MobileWindowMenuItem>
+      <MobileWindowMenuItem onClick={() => onClick("Education")}>
+        <img src="https://img.icons8.com/color/48/000000/file.png" alt="file" />
+        <MobileMenuItemLabel>Education</MobileMenuItemLabel>
+      </MobileWindowMenuItem>
+    </>
+  );
+};
+
+const MobileAboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
 
   const aboutRef = React.useRef<any>();
@@ -38,7 +73,7 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
     (WindowSizeSetting & WindowPositionSetting) | null
   >(null);
 
-  const [index, setIndex] = React.useState<IndexType>("About");
+  const [index, setIndex] = React.useState<MobileIndexType>("Menu");
   const [isMobileWindow, setIsMobileWindow] = React.useState<boolean>(false);
   const [showDate, setShowDate] = React.useState<boolean>(false);
 
@@ -68,7 +103,7 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
     }
   }, [aboutSize.width, showDate]);
 
-  const handleClick = (name: IndexType) => {
+  const handleClick = (name: MobileIndexType) => {
     setIndex(name);
   };
 
@@ -117,48 +152,60 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         setPrevSetting={setAboutPrevSetting}
         isMobileWindow={isMobileWindow}
       />
-      <WindowBody>
-        <WindowBodyNavbar>
-          <WindowBodyNavItm
-            first
+      <MobileWindowBody>
+        <MobileNavbar>
+          <MobileNavbarItem
+            title="About"
             onClick={() => handleClick("About")}
             focus={index === "About"}
           >
-            <TopbarTitleImage
+            <MobileNavbarMenu
               src="https://img.icons8.com/color/48/000000/file.png"
               alt="file"
             />
-            <NavItmLabel>Personal Info</NavItmLabel>
-          </WindowBodyNavItm>
-          <WindowBodyNavItm
+          </MobileNavbarItem>
+          <MobileNavbarItem
+            title="Experience"
             onClick={() => handleClick("Experience")}
             focus={index === "Experience"}
           >
-            <TopbarTitleImage
+            <MobileNavbarMenu
               src="https://img.icons8.com/color/48/000000/mac-folder.png"
               alt="folder"
             />
-            <NavItmLabel>Experience</NavItmLabel>
-          </WindowBodyNavItm>
-          <WindowBodyNavItm
+          </MobileNavbarItem>
+          <MobileNavbarItem
+            title="Education"
             onClick={() => handleClick("Education")}
             focus={index === "Education"}
           >
-            <TopbarTitleImage
+            <MobileNavbarMenu
               src="https://img.icons8.com/color/48/000000/file.png"
               alt="file"
             />
-            <NavItmLabel>Education</NavItmLabel>
-          </WindowBodyNavItm>
-        </WindowBodyNavbar>
-        <WindowBodyContent>
-          {index === "About" ? <About /> : null}
-          {index === "Experience" ? <Experience showDate={showDate} /> : null}
-          {index === "Education" ? <Education /> : null}
-        </WindowBodyContent>
-      </WindowBody>
+          </MobileNavbarItem>
+        </MobileNavbar>
+        <MobileBodyContent>
+          {index === "Menu" ? (
+            <MobileAboutWindowMenu onClick={handleClick} />
+          ) : (
+            <MobilePanel>
+              <MobileBackButtonContainer>
+                <MobileBackButton onClick={() => handleClick("Menu")}>
+                  <FontAwesomeIcon icon={faArrowLeft} />
+                </MobileBackButton>
+              </MobileBackButtonContainer>
+              {index === "About" && <About />}
+              {index === "Experience" && (
+                <Experience isMobile={isMobileWindow} showDate={showDate} />
+              )}
+              {index === "Education" && <Education />}
+            </MobilePanel>
+          )}
+        </MobileBodyContent>
+      </MobileWindowBody>
     </Window>
   );
 };
 
-export default AboutWindow;
+export default MobileAboutWindow;

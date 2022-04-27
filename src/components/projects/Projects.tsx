@@ -1,9 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import FoodieLogo from "../image/Foodie.png";
-import DatApexLogo from "../image/DatApex.png";
-
-import { IndexType } from "../views/window/ProjectsWindow";
+import FoodieLogo from "../../image/Foodie.png";
+import DatApexLogo from "../../image/DatApex.png";
+import { IndexType } from "../../views/window/desktop/ProjectsWindow";
 
 type ProjectsProps = {
   click: (name: IndexType) => void;
@@ -28,8 +27,8 @@ const IconContainer = styled.div<{ noWidth?: boolean }>`
 `;
 
 const IconLogoImage = styled.img`
-  width: 90%;
-  height: 90%;
+  width: 3rem;
+  height: 3rem;
   margin-bottom: 4px;
 `;
 

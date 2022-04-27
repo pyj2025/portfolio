@@ -47,6 +47,11 @@ export const WindowsProvider: React.FC = ({ children }) => {
     }
   };
 
+  const openAbout = () => {
+    setAboutOpen(true);
+    setFocusedWindow("About");
+  };
+
   const closeAbout = () => {
     setAboutOpen(false);
     setFocusedWindow("None");
@@ -67,6 +72,11 @@ export const WindowsProvider: React.FC = ({ children }) => {
     }
   };
 
+  const openSkills = () => {
+    setSkillsOpen(true);
+    setFocusedWindow("Skills");
+  };
+
   const closeSkills = () => {
     setSkillsOpen(false);
     setFocusedWindow("None");
@@ -85,6 +95,11 @@ export const WindowsProvider: React.FC = ({ children }) => {
     } else {
       setFocusedWindow("None");
     }
+  };
+
+  const openProjects = () => {
+    setProjectsOpen(true);
+    setFocusedWindow("Projects");
   };
 
   const closeProjects = () => {
@@ -113,14 +128,17 @@ export const WindowsProvider: React.FC = ({ children }) => {
         isDesktopAboutOpen,
         closeWelcomeWindow,
         toggleAboutOpen,
+        openAbout,
         closeAbout,
         setAboutMinimized,
         toggleAboutExpanded,
         toggleSkillsOpen,
+        openSkills,
         closeSkills,
         setSkillsMinimized,
         toggleSkillsExpanded,
         toggleProjectsOpen,
+        openProjects,
         closeProjects,
         setProjectsMinimized,
         toggleProjectsExpanded,

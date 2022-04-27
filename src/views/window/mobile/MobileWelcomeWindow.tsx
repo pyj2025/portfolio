@@ -2,16 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import { Rnd } from "react-rnd";
 import Typist from "react-typist";
-import useScreenSize, {
-  MOBILE_MAX_WIDTH,
-  TABLET_MAX_WIDTH,
-} from "../../utils/useScreenSize";
-import { useWindows } from "../../utils/context/context";
-import { WindowProps } from "../BodyContent";
-import { WindowPositionSetting, WindowSizeSetting } from "../../types";
-import Loaded from "../../components/welcome/Loaded";
-import Intro from "../../components/welcome/Intro";
-import Contact from "../../components/welcome/Contact";
+import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
+import { useWindows } from "../../../utils/context/context";
+import { WindowProps } from "../../../components/BodyContent";
+import { WindowPositionSetting, WindowSizeSetting } from "../../../types";
+import Loaded from "../../../components/welcome/Loaded";
+import Intro from "../../../components/welcome/Intro";
+import Contact from "../../../components/welcome/Contact";
 
 const Window = styled(Rnd)`
   width: 100%;
@@ -19,7 +16,7 @@ const Window = styled(Rnd)`
   align-items: center;
   justify-content: center;
   background-color: white;
-  border-radius: 6px;
+  /* border-radius: 6px; */
   box-shadow: 0px 0px 8px black;
 `;
 
@@ -30,8 +27,8 @@ const WindowTopbar = styled.div`
   border-top: 1px rgb(70, 75, 80) solid;
 
   padding: 0px 10px;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
+  /* border-top-left-radius: 6px;
+  border-top-right-radius: 6px; */
   cursor: default;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -100,8 +97,8 @@ const WindowBody = styled.div`
   height: calc(100% - 28px);
   background-color: #282a36;
   color: #ffffff;
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
+  /* border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px; */
 `;
 
 const TerminalRow = styled.div`

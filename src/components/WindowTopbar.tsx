@@ -173,9 +173,10 @@ const WindowTopbar: React.FC<WindowTopbarProps> = ({
         y: position.y,
       });
 
+      // 28 is windowTopbar height
       setSize({
         width: width,
-        height: height,
+        height: height - 28,
       });
       setPosition({
         x: 0,

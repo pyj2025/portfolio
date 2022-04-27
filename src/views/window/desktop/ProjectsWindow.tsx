@@ -1,12 +1,12 @@
 import React from "react";
 import { DraggableData, Position, ResizableDelta } from "react-rnd";
-import { WindowProps } from "../BodyContent";
+import { WindowProps } from "../../../components/BodyContent";
 import {
   MobileProjects,
   Projects,
   WebProjects,
-} from "../../components/Projects";
-import WindowTopbar from "../../components/WindowTopbar";
+} from "../../../components/projects/Projects";
+import WindowTopbar from "../../../components/WindowTopbar";
 import {
   NavItmLabel,
   TopbarTitleImage,
@@ -15,12 +15,12 @@ import {
   WindowBodyContent,
   WindowBodyNavbar,
   WindowBodyNavItm,
-} from "../../GlobalStyle";
-import { WindowPositionSetting, WindowSizeSetting } from "../../types";
-import useScreenSize, { TABLET_MAX_WIDTH } from "../../utils/useScreenSize";
-import Foodie from "../../components/projects/Foodie";
-import Portfolio from "../../components/projects/Portfolio";
-import DatApex from "../../components/projects/DatApex";
+} from "../../../GlobalStyle";
+import { WindowPositionSetting, WindowSizeSetting } from "../../../types";
+import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
+import Foodie from "../../../components/projects/Foodie";
+import Portfolio from "../../../components/projects/Portfolio";
+import DatApex from "../../../components/projects/DatApex";
 
 export type IndexType =
   | "Projects"

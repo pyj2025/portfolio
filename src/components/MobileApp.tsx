@@ -4,13 +4,12 @@ import styled from "styled-components";
 import useScreenSize, {
   MOBILE_MAX_WIDTH,
   TABLET_MAX_WIDTH,
-} from "./utils/useScreenSize";
+} from "../utils/useScreenSize";
 
 const Container = styled.div`
   display: flex;
   align-items: flex-start;
   width: 100%;
-  height: 100%;
 `;
 
 const MenuWrapper = styled.div<{ numOfCols: number }>`
@@ -31,6 +30,21 @@ const MenuItem = styled.a`
   padding: 0.5rem;
   text-decoration: none;
   cursor: pointer;
+`;
+
+const IconImageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border-radius: 0.5rem;
+  justify-content: center;
+  align-items: center;
+`;
+
+const IconLabel = styled.div`
+  margin-top: 0.2rem;
 `;
 
 const MobileApp: React.FC = () => {
@@ -57,43 +71,56 @@ const MobileApp: React.FC = () => {
   return (
     <Container>
       <MenuWrapper numOfCols={numOfCols}>
-        <MenuItem title="Resume" href="https://github.com/pyj2025">
-          <img
-            src="https://img.icons8.com/color/48/000000/google-docs.png"
-            alt="google-docs"
-          />
-          <div>Resume</div>
+        <MenuItem
+          title="Resume"
+          href="https://drive.google.com/file/d/1cK6hYsbjwWTExdAzHPuWgYGHKINsOphg/view?usp=sharing"
+        >
+          <IconImageContainer>
+            <img
+              src="https://img.icons8.com/color/48/000000/google-docs.png"
+              alt="google-docs"
+            />
+          </IconImageContainer>
+          <IconLabel>Resume</IconLabel>
         </MenuItem>
         <MenuItem title="Github" href="https://github.com/pyj2025">
-          <img
-            src="https://img.icons8.com/material-outlined/48/000000/github.png"
-            alt="Github"
-          />
-          <div>Github</div>
+          <IconImageContainer>
+            <img
+              src="https://img.icons8.com/material-outlined/48/000000/github.png"
+              alt="Github"
+            />
+          </IconImageContainer>
+          <IconLabel>Github</IconLabel>
         </MenuItem>
         <MenuItem title="Linkedin" href="https://www.linkedin.com/in/devjoon/">
-          <img
-            src="https://img.icons8.com/fluency/48/000000/linkedin.png"
-            alt="Linkedin"
-          />
-          <div>Linkedin</div>
+          <IconImageContainer>
+            <img
+              src="https://img.icons8.com/fluency/48/000000/linkedin.png"
+              alt="Linkedin"
+            />
+          </IconImageContainer>
+          <IconLabel>Linkedin</IconLabel>
         </MenuItem>
         <MenuItem
           title="Facebook"
           href="https://www.facebook.com/youngjoon.park.71"
         >
-          <img
-            src="https://img.icons8.com/color/48/000000/facebook-new.png"
-            alt="Facebook"
-          />
-          <div>Facebook</div>
+          <IconImageContainer>
+            <img
+              src="https://img.icons8.com/color/48/000000/facebook-new.png"
+              alt="Facebook"
+            />
+          </IconImageContainer>
+          <IconLabel>Facebook</IconLabel>
         </MenuItem>
         <MenuItem title="Email" onClick={handleEmailClick}>
-          <img
-            src="https://img.icons8.com/color/48/000000/gmail-new.png"
-            alt="Email"
-          />
-          <div>Email</div>
+          <IconImageContainer>
+            <img
+              src="https://img.icons8.com/color/48/000000/gmail-new.png"
+              alt="Email"
+            />
+          </IconImageContainer>
+          <IconLabel>Email</IconLabel>
         </MenuItem>
       </MenuWrapper>
     </Container>

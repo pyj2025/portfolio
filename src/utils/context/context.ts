@@ -16,14 +16,17 @@ export type WindowsContextValue = {
   isDesktopAboutOpen: boolean;
   closeWelcomeWindow: () => void;
   toggleAboutOpen: () => void;
+  openAbout: () => void;
   closeAbout: () => void;
   setAboutMinimized: (flag: boolean) => void;
   toggleAboutExpanded: () => void;
   toggleSkillsOpen: () => void;
+  openSkills: () => void;
   closeSkills: () => void;
   setSkillsMinimized: (flag: boolean) => void;
   toggleSkillsExpanded: () => void;
   toggleProjectsOpen: () => void;
+  openProjects: () => void;
   closeProjects: () => void;
   setProjectsMinimized: (flag: boolean) => void;
   toggleProjectsExpanded: () => void;

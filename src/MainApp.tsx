@@ -1,14 +1,15 @@
 import React from "react";
 
 import { isMobile, isTablet } from "react-device-detect";
-import BodyContent from "./BodyContent";
-import DesktopTopBar from "../DesktopTopBar";
-import Menu from "../Menu";
-import MobileTopBar from "../MobileTopBar";
-import useScreenSize, { TABLET_MAX_WIDTH } from "../utils/useScreenSize";
-import { WindowsProvider } from "../utils/context/WindowsProvider";
+import BodyContent from "./components/BodyContent";
+import DesktopTopBar from "./components/DesktopTopBar";
+import Menu from "./components/Menu";
+import MobileTopBar from "./components/MobileTopBar";
+import useScreenSize, { TABLET_MAX_WIDTH } from "./utils/useScreenSize";
+import { WindowsProvider } from "./utils/context/WindowsProvider";
 import styled from "styled-components";
-import MobileMenu from "../MobileMenu";
+import MobileMenu from "./components/MobileMenu";
+import MobileBodyContent from "./components/MobileBodyContent";
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -16,8 +17,8 @@ const Wrapper = styled.div`
 `;
 
 const Container = styled.div`
-  display: grid;
-  grid-template-rows: 25px auto 80px;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
 `;
@@ -36,7 +37,7 @@ const MobileApp: React.FC = () => {
   return (
     <Container>
       <MobileTopBar />
-      <BodyContent />
+      <MobileBodyContent />
       <MobileMenu />
     </Container>
   );

@@ -3,13 +3,13 @@ import "rc-menu/assets/index.css";
 import React from "react";
 import styled from "styled-components";
 import Menu, { Divider, MenuItem } from "rc-menu";
-import Clock from "./components/Clock";
+import Clock from "./Clock";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
-import { BoldText, MutedText } from "./GlobalStyle";
-import { useWindows } from "./utils/context/context";
-import useScreenSize from "./utils/useScreenSize";
-import useClickOutside from "./utils/useClickOutside";
+import { BoldText, MutedText } from "../GlobalStyle";
+import { useWindows } from "../utils/context/context";
+import useScreenSize from "../utils/useScreenSize";
+import useClickOutside from "../utils/useClickOutside";
 
 const Container = styled.div<{ width: number }>`
   display: flex;
@@ -18,7 +18,7 @@ const Container = styled.div<{ width: number }>`
   background-color: rgba(0, 0, 0, 0.4);
   color: rgb(255, 255, 255);
   width: ${({ width }) => width}px;
-  height: 25px;
+  height: 3.125rem;
 `;
 
 const MenuContainer = styled(Menu)`
