@@ -157,9 +157,13 @@ export const WindowBodyContent = styled.div`
   height: 100%;
   background-color: #1d1f21;
   color: white;
-  /* border-bottom-right-radius: 6px; */
   overflow-x: hidden;
-  overflow-y: scroll;
+  //  overflow-y: auto;
+  overflow-y: hidden;
+
+  :hover {
+    overflow-y: auto;
+  }
 `;
 
 //Panel
