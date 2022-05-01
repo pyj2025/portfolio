@@ -13,6 +13,7 @@ import {
   MobileWindowMenuItem,
   MobileNavbarItem,
   Window,
+  MobileNavbarMenuLabel,
 } from "../../../GlobalStyle";
 
 import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
@@ -159,6 +160,7 @@ const MobileSkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
               src="https://img.icons8.com/color/48/000000/mac-folder.png"
               alt="folder"
             />
+            <MobileNavbarMenuLabel>Front</MobileNavbarMenuLabel>
           </MobileNavbarItem>
           <MobileNavbarItem
             title="Back-End"
@@ -169,6 +171,7 @@ const MobileSkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
               src="https://img.icons8.com/color/48/000000/mac-folder.png"
               alt="folder"
             />
+            <MobileNavbarMenuLabel>Back</MobileNavbarMenuLabel>
           </MobileNavbarItem>
           <MobileNavbarItem
             title="Mobile"
@@ -179,6 +182,7 @@ const MobileSkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
               src="https://img.icons8.com/color/48/000000/code-file.png"
               alt="folder"
             />
+            <MobileNavbarMenuLabel>Mobile</MobileNavbarMenuLabel>
           </MobileNavbarItem>
           <MobileNavbarItem
             title="Programming Language"
@@ -189,6 +193,7 @@ const MobileSkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
               src="https://img.icons8.com/color/48/000000/google-code.png"
               alt="folder"
             />
+            <MobileNavbarMenuLabel>Language</MobileNavbarMenuLabel>
           </MobileNavbarItem>
         </MobileNavbar>
         <MobileBodyContent>

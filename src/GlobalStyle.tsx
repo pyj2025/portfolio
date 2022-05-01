@@ -258,6 +258,11 @@ export const MobileNavbarMenu = styled.img`
   width: 1.5rem;
 `;
 
+export const MobileNavbarMenuLabel = styled.div`
+  font-size: 1rem;
+  transform: scale(0.5);
+`;
+
 export const MobileBodyContent = styled.div`
   width: 100%;
   height: 100%;

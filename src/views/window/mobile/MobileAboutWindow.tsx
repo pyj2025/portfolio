@@ -20,6 +20,7 @@ import {
   MobileWindowMenuItem,
   MobileNavbarItem,
   Window,
+  MobileNavbarMenuLabel,
 } from "../../../GlobalStyle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
@@ -163,6 +164,7 @@ const MobileAboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
               src="https://img.icons8.com/color/48/000000/file.png"
               alt="file"
             />
+            <MobileNavbarMenuLabel>About</MobileNavbarMenuLabel>
           </MobileNavbarItem>
           <MobileNavbarItem
             title="Experience"
@@ -173,6 +175,7 @@ const MobileAboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
               src="https://img.icons8.com/color/48/000000/mac-folder.png"
               alt="folder"
             />
+            <MobileNavbarMenuLabel>Experience</MobileNavbarMenuLabel>
           </MobileNavbarItem>
           <MobileNavbarItem
             title="Education"
@@ -183,6 +186,7 @@ const MobileAboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
               src="https://img.icons8.com/color/48/000000/file.png"
               alt="file"
             />
+            <MobileNavbarMenuLabel>Education</MobileNavbarMenuLabel>
           </MobileNavbarItem>
         </MobileNavbar>
         <MobileBodyContent>
