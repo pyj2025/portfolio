@@ -17,6 +17,7 @@ import {
   MobileWindowBody,
   MobileNavbarItem,
   Window,
+  MobileNavbarMenuLabel,
 } from "../../../GlobalStyle";
 import { WindowPositionSetting, WindowSizeSetting } from "../../../types";
 import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
@@ -125,6 +126,7 @@ const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
               src="https://img.icons8.com/color/48/000000/mac-folder.png"
               alt="folder"
             />
+            <MobileNavbarMenuLabel>Projects</MobileNavbarMenuLabel>
           </MobileNavbarItem>
           <MobileNavbarItem
             title="Web"
@@ -140,6 +142,7 @@ const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
               src="https://img.icons8.com/color/48/000000/mac-folder.png"
               alt="folder"
             />
+            <MobileNavbarMenuLabel>Web</MobileNavbarMenuLabel>
           </MobileNavbarItem>
           <MobileNavbarItem
             title="Mobile"
@@ -151,6 +154,7 @@ const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
               src="https://img.icons8.com/color/48/000000/mac-folder.png"
               alt="folder"
             />
+            <MobileNavbarMenuLabel>Mobile</MobileNavbarMenuLabel>
           </MobileNavbarItem>
         </MobileNavbar>
         <MobileBodyContent>

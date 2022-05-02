@@ -157,9 +157,13 @@ export const WindowBodyContent = styled.div`
   height: 100%;
   background-color: #1d1f21;
   color: white;
-  /* border-bottom-right-radius: 6px; */
   overflow-x: hidden;
-  overflow-y: scroll;
+  //  overflow-y: auto;
+  overflow-y: hidden;
+
+  :hover {
+    overflow-y: auto;
+  }
 `;
 
 //Panel
@@ -230,7 +234,6 @@ export const MobileNavbar = styled.div`
   background-color: rgba(51, 49, 51, 0.9);
   color: white;
   border-right: 0.2px solid #141516;
-  /* border-bottom-left-radius: 6px; */
 `;
 
 export const MobileNavbarItem = styled.div<{
@@ -255,12 +258,16 @@ export const MobileNavbarMenu = styled.img`
   width: 1.5rem;
 `;
 
+export const MobileNavbarMenuLabel = styled.div`
+  font-size: 1rem;
+  transform: scale(0.5);
+`;
+
 export const MobileBodyContent = styled.div`
   width: 100%;
   height: 100%;
   background-color: #1d1f21;
   color: white;
-  /* border-bottom-right-radius: 6px; */
   overflow-x: hidden;
   overflow-y: scroll;
 `;
@@ -292,7 +299,6 @@ export const MobilePanel = styled.div`
   flex-direction: column;
   width: 100%;
   color: white;
-  /* border-bottom-right-radius: 6px; */
 `;
 
 export const MobileBackButtonContainer = styled.div`
