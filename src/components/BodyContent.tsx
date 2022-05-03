@@ -26,7 +26,7 @@ export type WindowProps = {
 
 const BodyContent: React.FC = () => {
   const {
-    focusedWindow,
+    // focusedWindow,
     isWelcomeWindowOpen,
     isDesktopAboutOpen,
     isAboutOpen,
@@ -35,11 +35,11 @@ const BodyContent: React.FC = () => {
     setFocusedWindow,
   } = useWindows();
 
-  const windowRef = React.useRef({
-    newZIndex: "10",
-    prevNode: null as unknown as HTMLElement,
-    prevZIndex: null as unknown as string,
-  });
+  // const windowRef = React.useRef({
+  //   newZIndex: "10",
+  //   prevNode: null as unknown as HTMLElement,
+  //   prevZIndex: null as unknown as string,
+  // });
 
   React.useEffect(() => {
     const message =
@@ -52,25 +52,25 @@ const BodyContent: React.FC = () => {
     });
   }, []);
 
-  React.useEffect(() => {
-    console.log("focusedWindow = ", focusedWindow);
-    console.log("windowRef.current = ", windowRef.current);
+  // React.useEffect(() => {
+  //   console.log("focusedWindow = ", focusedWindow);
+  //   console.log("windowRef.current = ", windowRef.current);
 
-    if (windowRef.current.prevNode) {
-      windowRef.current.prevNode.style.zIndex = "0";
-    }
-  }, [focusedWindow]);
+  //   if (windowRef.current.prevNode) {
+  //     windowRef.current.prevNode.style.zIndex = "0";
+  //   }
+  // }, [focusedWindow]);
 
   const handleFocus = (_e: any, data: DraggableData) => {
-    const ref = windowRef.current;
+    // const ref = windowRef.current;
 
-    if (ref.prevNode) {
-      ref.prevNode.style.zIndex = ref.prevZIndex;
-    }
+    // if (ref.prevNode) {
+    //   ref.prevNode.style.zIndex = ref.prevZIndex;
+    // }
 
-    ref.prevNode = data.node;
-    ref.prevZIndex = ref.prevNode.style.zIndex;
-    ref.prevNode.style.zIndex = ref.newZIndex;
+    // ref.prevNode = data.node;
+    // ref.prevZIndex = ref.prevNode.style.zIndex;
+    // ref.prevNode.style.zIndex = ref.newZIndex;
     setFocusedWindow(data.node.id as FocusedWindowType);
   };
 

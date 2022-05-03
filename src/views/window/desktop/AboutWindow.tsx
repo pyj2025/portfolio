@@ -16,11 +16,13 @@ import { WindowPositionSetting, WindowSizeSetting } from "../../../types";
 import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
 import WindowTopbar from "../../../components/WindowTopbar";
 import { WindowProps } from "../../../components/BodyContent";
+import { useWindows } from "../../../utils/context/context";
 
 type IndexType = "About" | "Experience" | "Education";
 
 const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
+  const { focusedWindow } = useWindows();
 
   const aboutRef = React.useRef<any>();
 
@@ -81,6 +83,7 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
       dragHandleClassName="topbar"
       minWidth={isMobileWindow ? width : 500}
       minHeight={300}
+      style={{ zIndex: focusedWindow === "About" ? 10 : undefined }}
       onDragStart={handleFocus}
       onDragStop={(_e: any, data: DraggableData) => {
         setAboutPosition({ x: data.x, y: data.y });

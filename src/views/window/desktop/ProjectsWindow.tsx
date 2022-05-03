@@ -21,6 +21,7 @@ import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
 import Foodie from "../../../components/projects/Foodie";
 import Portfolio from "../../../components/projects/Portfolio";
 import DatApex from "../../../components/projects/DatApex";
+import { useWindows } from "../../../utils/context/context";
 
 export type IndexType =
   | "Projects"
@@ -32,6 +33,7 @@ export type IndexType =
 
 const ProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
+  const { focusedWindow } = useWindows();
 
   const projectsRef = React.useRef<any>();
 
@@ -81,6 +83,7 @@ const ProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
       dragHandleClassName="topbar"
       minWidth={isMobileWindow ? width : 525}
       minHeight={300}
+      style={{ zIndex: focusedWindow === "Projects" ? 10 : undefined }}
       onDragStart={handleFocus}
       onDragStop={(_e: any, data: DraggableData) => {
         setProjectsPosition({ x: data.x, y: data.y });
