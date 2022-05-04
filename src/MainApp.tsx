@@ -11,16 +11,11 @@ import styled from "styled-components";
 import MobileMenu from "./components/MobileMenu";
 import MobileBodyContent from "./components/MobileBodyContent";
 
-const Wrapper = styled.div`
-  height: 100vh;
-  width: 100vw;
-`;
-
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: 100%;
+  height: 100vh;
+  width: 100vw;
 `;
 
 const DesktopApp: React.FC = () => {
@@ -48,13 +43,11 @@ const MainApp: React.FC = () => {
 
   return (
     <WindowsProvider>
-      <Wrapper>
-        {isMobile || isTablet || width < TABLET_MAX_WIDTH ? (
-          <MobileApp />
-        ) : (
-          <DesktopApp />
-        )}
-      </Wrapper>
+      {isMobile || isTablet || width < TABLET_MAX_WIDTH ? (
+        <MobileApp />
+      ) : (
+        <DesktopApp />
+      )}
     </WindowsProvider>
   );
 };

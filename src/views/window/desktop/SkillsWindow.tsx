@@ -18,11 +18,13 @@ import FrontEnd from "../../../components/skills/FrontEnd";
 import BackEnd from "../../../components/skills/BackEnd";
 import Mobile from "../../../components/skills/Mobile";
 import ProgrammingLanguage from "../../../components/skills/ProgrammingLanguage";
+import { useWindows } from "../../../utils/context/context";
 
 type IndexType = "Front" | "Back" | "Mobile" | "Programming";
 
 const SkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
+  const { focusedWindow } = useWindows();
 
   const skillsRef = React.useRef<any>();
 
@@ -72,6 +74,7 @@ const SkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
       dragHandleClassName="topbar"
       minWidth={isMobileWindow ? width : 525}
       minHeight={300}
+      style={{ zIndex: focusedWindow === "Skills" ? 10 : undefined }}
       onDragStart={handleFocus}
       onDragStop={(_e: any, data: DraggableData) => {
         setSkillsPosition({ x: data.x, y: data.y });

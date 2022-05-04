@@ -24,6 +24,7 @@ import {
 } from "../../../GlobalStyle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { useWindows } from "../../../utils/context/context";
 
 type MobileIndexType = "Menu" | "About" | "Experience" | "Education";
 
@@ -57,6 +58,7 @@ const MobileAboutWindowMenu: React.FC<MobileAboutWindowMenuProps> = ({
 
 const MobileAboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
+  const { focusedWindow } = useWindows();
 
   const aboutRef = React.useRef<any>();
 
@@ -117,6 +119,7 @@ const MobileAboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
       dragHandleClassName="topbar"
       minWidth={isMobileWindow ? width : 500}
       minHeight={300}
+      style={{ zIndex: focusedWindow === "About" ? 10 : undefined }}
       onDragStart={handleFocus}
       onDragStop={(_e: any, data: DraggableData) => {
         setAboutPosition({ x: data.x, y: data.y });
@@ -134,7 +137,6 @@ const MobileAboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         const newHeight = Number(
           ref.style.height.substring(0, ref.style.height.indexOf("p"))
         );
-
         setAboutSize({
           width: newWidth,
           height: newHeight,

@@ -49,6 +49,7 @@ export const WindowsProvider: React.FC = ({ children }) => {
 
   const openAbout = () => {
     setAboutOpen(true);
+    setAboutMinimized(false);
     setFocusedWindow("About");
   };
 
@@ -74,6 +75,7 @@ export const WindowsProvider: React.FC = ({ children }) => {
 
   const openSkills = () => {
     setSkillsOpen(true);
+    setSkillsMinimized(false);
     setFocusedWindow("Skills");
   };
 
@@ -99,6 +101,7 @@ export const WindowsProvider: React.FC = ({ children }) => {
 
   const openProjects = () => {
     setProjectsOpen(true);
+    setProjectsMinimized(false);
     setFocusedWindow("Projects");
   };
 
