@@ -26,6 +26,7 @@ import Portfolio from "../../../components/projects/Portfolio";
 import DatApex from "../../../components/projects/DatApex";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { useWindows } from "../../../utils/context/context";
 
 export type IndexType =
   | "Projects"
@@ -37,6 +38,7 @@ export type IndexType =
 
 const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
+  const { focusedWindow } = useWindows();
 
   const projectsRef = React.useRef<any>();
 
@@ -86,6 +88,7 @@ const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
       dragHandleClassName="topbar"
       minWidth={isMobileWindow ? width : 525}
       minHeight={300}
+      style={{ zIndex: focusedWindow === "Projects" ? 10 : undefined }}
       onDragStart={handleFocus}
       onDragStop={(_e: any, data: DraggableData) => {
         setProjectsPosition({ x: data.x, y: data.y });

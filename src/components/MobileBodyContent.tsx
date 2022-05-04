@@ -36,12 +36,6 @@ const MobileBodyContent: React.FC = () => {
   const { width } = useScreenSize();
   const [checkMobile, setCheckMobile] = React.useState(false);
 
-  const windowRef = React.useRef({
-    newZIndex: "10",
-    prevNode: null as unknown as HTMLElement,
-    prevZIndex: null as unknown as string,
-  });
-
   React.useEffect(() => {
     const message =
       "You've accessed via " +
@@ -59,15 +53,6 @@ const MobileBodyContent: React.FC = () => {
     }
   }, [width]);
   const handleFocus = (_e: any, data: DraggableData) => {
-    const ref = windowRef.current;
-
-    if (ref.prevNode) {
-      ref.prevNode.style.zIndex = ref.prevZIndex;
-    }
-
-    ref.prevNode = data.node;
-    ref.prevZIndex = ref.prevNode.style.zIndex;
-    ref.prevNode.style.zIndex = ref.newZIndex;
     setFocusedWindow(data.node.id as FocusedWindowType);
   };
 

@@ -25,6 +25,7 @@ import Mobile from "../../../components/skills/Mobile";
 import ProgrammingLanguage from "../../../components/skills/ProgrammingLanguage";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useWindows } from "../../../utils/context/context";
 
 type MobileIndexType = "Menu" | "Front" | "Back" | "Mobile" | "Programming";
 
@@ -71,6 +72,7 @@ const MobileSkillsWindowMenu: React.FC<MobileWindowMenuProps> = ({
 
 const MobileSkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
+  const { focusedWindow } = useWindows();
 
   const skillsRef = React.useRef<any>();
 
@@ -120,6 +122,7 @@ const MobileSkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
       dragHandleClassName="topbar"
       minWidth={isMobileWindow ? width : 525}
       minHeight={300}
+      style={{ zIndex: focusedWindow === "Skills" ? 10 : undefined }}
       onDragStart={handleFocus}
       onDragStop={(_e: any, data: DraggableData) => {
         setSkillsPosition({ x: data.x, y: data.y });
