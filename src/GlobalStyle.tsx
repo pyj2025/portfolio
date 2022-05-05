@@ -269,7 +269,11 @@ export const MobileBodyContent = styled.div`
   background-color: #1d1f21;
   color: white;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: hidden;
+
+  :hover {
+    overflow-y: auto;
+  }
 `;
 
 //mobile menu screen
