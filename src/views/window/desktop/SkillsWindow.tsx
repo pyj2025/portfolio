@@ -24,7 +24,7 @@ type IndexType = "Front" | "Back" | "Mobile" | "Programming";
 
 const SkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
-  const { focusedWindow } = useWindows();
+  const { focusedWindow, setFocusedWindow } = useWindows();
 
   const skillsRef = React.useRef<any>();
 
@@ -59,6 +59,10 @@ const SkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [width]);
+
+  const clickContentBody = () => {
+    setFocusedWindow("Skills");
+  };
 
   const handleClick = (name: IndexType) => {
     setIndex(name);
@@ -104,7 +108,7 @@ const SkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         setPrevSetting={setSkillsPrevSetting}
         isMobileWindow={isMobileWindow}
       />
-      <WindowBody>
+      <WindowBody onClick={clickContentBody}>
         <WindowBodyNavbar>
           <WindowBodyNavItm
             first

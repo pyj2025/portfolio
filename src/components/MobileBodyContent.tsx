@@ -16,7 +16,7 @@ import MobileProjectsWindow from "../views/window/mobile/MobileProjectsWindow";
 
 const Container = styled.div`
   width: 100%;
-  height: calc(100% - 25px - 80px);
+  height: calc(100vh - 25px - 80px);
   background-color: transparent;
   color: white;
 `;

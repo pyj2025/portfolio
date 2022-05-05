@@ -22,7 +22,7 @@ type IndexType = "About" | "Experience" | "Education";
 
 const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
-  const { focusedWindow } = useWindows();
+  const { focusedWindow, setFocusedWindow } = useWindows();
 
   const aboutRef = React.useRef<any>();
 
@@ -69,6 +69,10 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
       setShowDate(false);
     }
   }, [aboutSize.width, showDate]);
+
+  const clickContentBody = () => {
+    setFocusedWindow("About");
+  };
 
   const handleClick = (name: IndexType) => {
     setIndex(name);
@@ -120,7 +124,7 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         setPrevSetting={setAboutPrevSetting}
         isMobileWindow={isMobileWindow}
       />
-      <WindowBody>
+      <WindowBody onClick={clickContentBody}>
         <WindowBodyNavbar>
           <WindowBodyNavItm
             first

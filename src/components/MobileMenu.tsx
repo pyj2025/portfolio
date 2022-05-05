@@ -7,8 +7,9 @@ import { useWindows } from "../utils/context/context";
 const Container = styled.div`
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  /* align-items: flex-end; */
   width: 100%;
+  height: 80px;
 `;
 
 const MenuWrapper = styled.div`

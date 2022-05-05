@@ -14,8 +14,8 @@ import MobileBodyContent from "./components/MobileBodyContent";
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  width: 100vw;
+  height: calc(100vh);
+  width: calc(100vw);
 `;
 
 const DesktopApp: React.FC = () => {

@@ -33,7 +33,7 @@ export type IndexType =
 
 const ProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
-  const { focusedWindow } = useWindows();
+  const { focusedWindow, setFocusedWindow } = useWindows();
 
   const projectsRef = React.useRef<any>();
 
@@ -69,6 +69,10 @@ const ProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [width]);
+
+  const clickContentBody = () => {
+    setFocusedWindow("Projects");
+  };
 
   const handleClick = (name: IndexType) => {
     setIndex(name);
@@ -113,7 +117,7 @@ const ProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         setPrevSetting={setProjectsPrevSetting}
         isMobileWindow={isMobileWindow}
       />
-      <WindowBody>
+      <WindowBody onClick={clickContentBody}>
         <WindowBodyNavbar>
           <WindowBodyNavItm first onClick={() => handleClick("Projects")} focus>
             <TopbarTitleImage
