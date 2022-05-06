@@ -11,16 +11,21 @@ import styled from "styled-components";
 import MobileMenu from "./components/MobileMenu";
 import MobileBodyContent from "./components/MobileBodyContent";
 
-const Container = styled.div`
+const Container = styled.div<{ width: number; height: number }>`
   display: flex;
   flex-direction: column;
-  height: calc(100vh);
-  width: calc(100vw);
+  width: ${({ width }) => `calc(${width}px)`};
+  height: ${({ height }) => `calc(${height}px)`};
 `;
 
-const DesktopApp: React.FC = () => {
+type AppProps = {
+  width: number;
+  height: number;
+};
+
+const DesktopApp: React.FC<AppProps> = ({ width, height }) => {
   return (
-    <Container>
+    <Container width={width} height={height}>
       <DesktopTopBar />
       <BodyContent />
       <Menu />
@@ -28,9 +33,9 @@ const DesktopApp: React.FC = () => {
   );
 };
 
-const MobileApp: React.FC = () => {
+const MobileApp: React.FC<AppProps> = ({ width, height }) => {
   return (
-    <Container>
+    <Container width={width} height={height}>
       <MobileTopBar />
       <MobileBodyContent />
       <MobileMenu />
@@ -39,14 +44,14 @@ const MobileApp: React.FC = () => {
 };
 
 const MainApp: React.FC = () => {
-  const { width } = useScreenSize();
+  const { width, height } = useScreenSize();
 
   return (
     <WindowsProvider>
       {isMobile || isTablet || width < TABLET_MAX_WIDTH ? (
-        <MobileApp />
+        <MobileApp width={width} height={height} />
       ) : (
-        <DesktopApp />
+        <DesktopApp width={width} height={height} />
       )}
     </WindowsProvider>
   );
