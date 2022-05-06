@@ -7,7 +7,6 @@ import { useWindows } from "../utils/context/context";
 const Container = styled.div`
   display: flex;
   justify-content: center;
-  /* align-items: flex-end; */
   width: 100%;
   height: 80px;
 `;
@@ -21,7 +20,7 @@ const MenuWrapper = styled.div`
   box-shadow: 2px 7px 15px 8px rgba(0, 0, 0, 0.4);
   background-color: rgba(255, 255, 192, 0.1);
   backdrop-filter: blur(10px);
-  height: 80px;
+  /* height: 80px; */
 `;
 
 const MenuItem = styled.a`
