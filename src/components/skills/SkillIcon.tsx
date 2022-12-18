@@ -1,16 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-// const SkillsIconContainer = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   width: 4rem;
-//   height: 4rem;
-//   justify-content: center;
-//   align-items: center;
-//   margin: 0.25rem;
-// `;
-
 const SkillsIconContainer = styled.div<{ noWidth?: boolean }>`
   display: flex;
   flex-direction: column;
@@ -61,7 +51,7 @@ const SkillIcon: React.FC<SkillIconProps> = ({
           <img src={icon} alt={name} style={iconStyles} />
         </IconImageContainer>
       ) : (
-        <img src={icon} alt={name} />
+        <img src={icon} alt={name} style={iconStyles} />
       )}
       <IconLabel>{name}</IconLabel>
     </SkillsIconContainer>
