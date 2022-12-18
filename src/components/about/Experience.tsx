@@ -4,37 +4,7 @@ import React from "react";
 import styled from "styled-components";
 import { BoldText } from "../../GlobalStyle";
 import ExperienceRow, { ExperienceType } from "./ExperienceRow";
-
-const ExperienceObject = [
-  {
-    title: "Junior Frontend Developer",
-    company: "Enfusion",
-    location: "Chicago, IL, USA",
-    date: "Jan 2020 - Present",
-    dateRank: 1,
-  },
-  {
-    title: "Undergraduate Teaching Assistant",
-    company: "Purdue University",
-    location: "West Lafayette, IN, USA",
-    date: "Aug 2018 - Dec 2019",
-    dateRank: 2,
-  },
-  {
-    title: "Technical Consultant Intern",
-    company: "Dotis",
-    location: "Seoul, South Korea",
-    date: "Jun 2017 - Jul 2017",
-    dateRank: 3,
-  },
-  {
-    title: "Software Engineering Intern",
-    company: "Hyop Woon International Co .,Ltd",
-    location: "Seoul, South Korea",
-    date: "Jul 2015 - Aug 2015",
-    dateRank: 4,
-  },
-];
+import info from "../../info.json";
 
 const Container = styled.div`
   display: flex;
@@ -71,8 +41,9 @@ const Experience: React.FC<ExperienceProps> = ({
   isMobile = false,
   showDate,
 }) => {
-  const [experiences, setExperiences] =
-    React.useState<Array<ExperienceType>>(ExperienceObject);
+  const [experiences, setExperiences] = React.useState<Array<ExperienceType>>(
+    info.about.experience
+  );
   const [positionSortType, setPositionSortType] =
     React.useState<SortType | null>(null);
   const [dateSortType, setDateSortType] = React.useState<SortType | null>(null);

@@ -1,5 +1,7 @@
 import React from "react";
+import info from "../../info.json";
 import styled from "styled-components";
+import SkillIcon, { SkillIconProps } from "./SkillIcon";
 
 const ContentContainer = styled.div`
   display: flex;
@@ -8,37 +10,27 @@ const ContentContainer = styled.div`
   margin-top: 10px;
 `;
 
-const SkillsIconContainer = styled.div<{ noWidth?: boolean }>`
-  display: flex;
-  flex-direction: column;
-  width: ${({ noWidth }) => (noWidth ? undefined : "60px")};
-  justify-content: center;
-  align-items: center;
-  margin: 0.25rem;
-`;
-
-const IconLabel = styled.div`
-  font-size: 0.75rem;
-  margin-top: 0.25rem;
-`;
-
 const Mobile: React.FC = () => {
+  const [mobileSkills, setMobileSkills] = React.useState<Array<SkillIconProps>>(
+    []
+  );
+
+  React.useEffect(() => {
+    setMobileSkills(info.skills.mobile);
+  }, []);
+
   return (
     <ContentContainer>
-      <SkillsIconContainer noWidth>
-        <img
-          src="https://img.icons8.com/color/48/000000/react-native.png"
-          alt="React-Native"
-        />
-        <IconLabel>React Native</IconLabel>
-      </SkillsIconContainer>
-      <SkillsIconContainer>
-        <img
-          src="https://img.icons8.com/color/48/000000/swift.png"
-          alt="Swift"
-        />
-        <IconLabel>Swift</IconLabel>
-      </SkillsIconContainer>
+      {mobileSkills.map((skill) => {
+        return (
+          <SkillIcon
+            name={skill.name}
+            icon={skill.icon}
+            background={skill.background}
+            noWidth={skill.noWidth}
+          />
+        );
+      })}
     </ContentContainer>
   );
 };

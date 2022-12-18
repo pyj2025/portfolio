@@ -1,4 +1,5 @@
 import React from "react";
+import info from "../../info.json";
 import FoodieLogo from "../../image/Foodie.png";
 
 import {
@@ -21,23 +22,28 @@ const Foodie: React.FC = () => {
       <PanelDescriptionContainer>
         <PanelDescriptionRow>
           <PanelDescriptionLabel>Name</PanelDescriptionLabel>
-          <PanelDescriptionText>Foodie</PanelDescriptionText>
+          <PanelDescriptionText>
+            {info.project.Foodie.name}
+          </PanelDescriptionText>
         </PanelDescriptionRow>
         <PanelDescriptionRow>
           <PanelDescriptionLabel>Link</PanelDescriptionLabel>
-          <LinkLabel>###</LinkLabel>
+          <LinkLabel>{info.project.Foodie.link}</LinkLabel>
         </PanelDescriptionRow>
         <PanelDescriptionRow>
           <PanelDescriptionLabel>Stack</PanelDescriptionLabel>
           <PanelDescriptionText>
-            Swift, Firebase, Yelp API, and Google API
+            {info.project.Foodie.stack.map((value, idx) =>
+              idx === info.project.Foodie.stack.length - 1
+                ? value
+                : value + ", "
+            )}
           </PanelDescriptionText>
         </PanelDescriptionRow>
         <PanelDescriptionRow>
           <PanelDescriptionLabel>Detail</PanelDescriptionLabel>
           <PanelDescriptionText>
-            An application that recommends the dining places based on users’
-            preferences and connects users with QR code.
+            {info.project.Foodie.details}
           </PanelDescriptionText>
         </PanelDescriptionRow>
       </PanelDescriptionContainer>
