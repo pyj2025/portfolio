@@ -9,6 +9,7 @@ import {
   PanelLogoContainer,
 } from "../../GlobalStyle";
 import PurdueLogo from "../../image/PurdueLogo.png";
+import info from "../../info.json";
 
 const PurdueLogoImage = styled.img`
   background-color: white;
@@ -25,21 +26,27 @@ const Education: React.FC = () => {
       <PanelDescriptionContainer>
         <PanelDescriptionRow>
           <PanelDescriptionLabel>Name</PanelDescriptionLabel>
-          <PanelDescriptionText bold>Purdue University</PanelDescriptionText>
+          <PanelDescriptionText bold>
+            {info.about.education.university.name}
+          </PanelDescriptionText>
         </PanelDescriptionRow>
         <PanelDescriptionRow>
           <PanelDescriptionLabel>Graduated</PanelDescriptionLabel>
-          <PanelDescriptionText>Dec. 2019</PanelDescriptionText>
+          <PanelDescriptionText>
+            {`${info.about.education.university.graduateYear.month} ${info.about.education.university.graduateYear.year}`}
+          </PanelDescriptionText>
         </PanelDescriptionRow>
         <PanelDescriptionRow>
           <PanelDescriptionLabel>Details</PanelDescriptionLabel>
           <PanelDescriptionText>
-            Bachelor of Science in Computer Science
+            {info.about.education.university.details}
           </PanelDescriptionText>
         </PanelDescriptionRow>
         <PanelDescriptionRow>
           <PanelDescriptionLabel>Concentration</PanelDescriptionLabel>
-          <PanelDescriptionText>Software Engineering</PanelDescriptionText>
+          <PanelDescriptionText>
+            {info.about.education.university.concentration}
+          </PanelDescriptionText>
         </PanelDescriptionRow>
       </PanelDescriptionContainer>
     </PanelContainer>

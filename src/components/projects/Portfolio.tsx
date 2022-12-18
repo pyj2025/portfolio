@@ -1,6 +1,7 @@
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import info from "../../info.json";
 import styled from "styled-components";
 
 import {
@@ -30,11 +31,13 @@ const Portfolio: React.FC = () => {
       <PanelDescriptionContainer>
         <PanelDescriptionRow>
           <PanelDescriptionLabel>Name</PanelDescriptionLabel>
-          <PanelDescriptionText>Joon's Portfolio</PanelDescriptionText>
+          <PanelDescriptionText>
+            {info.project.Portfolio.name}
+          </PanelDescriptionText>
         </PanelDescriptionRow>
         <PanelDescriptionRow>
           <PanelDescriptionLabel>Link</PanelDescriptionLabel>
-          <LinkLabel href="https://pyj2025.github.io/portfolio/">
+          <LinkLabel href={info.project.Portfolio.link}>
             <span>
               Link <FontAwesomeIcon icon={faExternalLinkAlt} />
             </span>
@@ -43,15 +46,17 @@ const Portfolio: React.FC = () => {
         <PanelDescriptionRow>
           <PanelDescriptionLabel>Stack</PanelDescriptionLabel>
           <PanelDescriptionText>
-            React, Typescript, Styled-components
+            {info.project.Portfolio.stack.map((value, idx) =>
+              idx === info.project.Portfolio.stack.length - 1
+                ? value
+                : value + ", "
+            )}
           </PanelDescriptionText>
         </PanelDescriptionRow>
         <PanelDescriptionRow>
           <PanelDescriptionLabel>Detail</PanelDescriptionLabel>
           <PanelDescriptionText>
-            Joon's portfolio aka this site. It presents who am I, what skills I
-            have, and what kind of work experience I have. Also, it provides my
-            contact methods.
+            {info.project.Portfolio.details}
           </PanelDescriptionText>
         </PanelDescriptionRow>
       </PanelDescriptionContainer>

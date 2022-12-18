@@ -5,16 +5,18 @@ import Maintenance from "./components/Maintenance";
 import NotSupport from "./components/NotSupport";
 import MainApp from "./MainApp";
 
-function App() {
-  const [inMaintenance, setMaintenance] = React.useState(false);
+const inMaintenance = false;
 
-  return (
-    <>
-      {inMaintenance ? <Maintenance /> : null}
-      {isIE ? <NotSupport /> : null}
-      {!inMaintenance && !isIE ? <MainApp /> : null}
-    </>
+function App() {
+  const component = inMaintenance ? (
+    <Maintenance />
+  ) : isIE ? (
+    <NotSupport />
+  ) : (
+    <MainApp />
   );
+
+  return <>{component}</>;
 }
 
 export default App;
