@@ -73,7 +73,7 @@ const MobileApp: React.FC = () => {
       <MenuWrapper numOfCols={numOfCols}>
         <MenuItem
           title="Resume"
-          href="https://drive.google.com/file/d/1cK6hYsbjwWTExdAzHPuWgYGHKINsOphg/view?usp=sharing"
+          href="https://drive.google.com/file/d/1m8QTUEZhkkZMs4hHc-FPCVFQHo5B76rc/view?usp=sharing"
         >
           <IconImageContainer>
             <img
