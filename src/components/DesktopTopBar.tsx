@@ -10,6 +10,7 @@ import { BoldText, MutedText } from "../GlobalStyle";
 import { useWindows } from "../utils/context/context";
 import useScreenSize from "../utils/useScreenSize";
 import useClickOutside from "../utils/useClickOutside";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 const Container = styled.div<{ width: number }>`
   display: flex;
@@ -101,7 +102,7 @@ const DesktopTopBar: React.FC = () => {
       </MainMenuBtnContainer>
       <TopbarAppContainer>
         <TopbarAppItemContainer>
-          <TopbarAppIcon icon={faMapMarkerAlt} />
+          <TopbarAppIcon icon={faMapMarkerAlt as IconProp} />
           <MutedText>Chicago, IL, USA</MutedText>
         </TopbarAppItemContainer>
         <TopbarAppItemContainer>

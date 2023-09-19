@@ -53,5 +53,8 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://pyj2025.github.io/portfolio/"
+  "homepage": "https://pyj2025.github.io/portfolio/",
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+  }
 }

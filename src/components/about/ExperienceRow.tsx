@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import styled from "styled-components";
 import { BoldText, MutedText } from "../../GlobalStyle";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 export const DataRow = styled.div<{
   isEven?: boolean;
@@ -95,7 +96,7 @@ const ExperienceRow: React.FC<ExperienceRowProps> = ({
         onClick={toggleOpen}
       >
         <PositionContainer>
-          <FontAwesomeIcon icon={isOpen ? faChevronDown : faChevronRight} />
+          <FontAwesomeIcon icon={isOpen ? faChevronDown as IconProp : faChevronRight as IconProp} />
           <FileImage
             isMobile={isMobile}
             src="https://img.icons8.com/color/48/000000/file.png"

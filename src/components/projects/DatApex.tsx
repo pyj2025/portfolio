@@ -13,6 +13,7 @@ import {
   PanelDescriptionLabel,
   PanelDescriptionText,
 } from "../../GlobalStyle";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 const DatApex: React.FC = () => {
   return (
@@ -31,7 +32,7 @@ const DatApex: React.FC = () => {
           <PanelDescriptionLabel>Link</PanelDescriptionLabel>
           <LinkLabel href={info.project.DatApex.link}>
             <span>
-              Link <FontAwesomeIcon icon={faExternalLinkAlt} />
+              Link <FontAwesomeIcon icon={faExternalLinkAlt as IconProp} />
             </span>
           </LinkLabel>
         </PanelDescriptionRow>

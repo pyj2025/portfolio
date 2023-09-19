@@ -1,3 +1,4 @@
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
@@ -34,18 +35,18 @@ const Intro: React.FC = () => {
       <TerminalLine>
         <ContentLine># Hi, I'm Joon.</ContentLine>
         <ContentLine>
-          <ContentLineArrow icon={faAngleRight} />
+          <ContentLineArrow icon={faAngleRight as IconProp} />
           <div>I'm a front-end developer.</div>
         </ContentLine>
         <ContentLine>
-          <ContentLineArrow icon={faAngleRight} />
+          <ContentLineArrow icon={faAngleRight as IconProp} />
           <div>
             I'm an alumnus of Purdue University Computer Science (Software
             Engineering)
           </div>
         </ContentLine>
         <ContentLine>
-          <ContentLineArrow icon={faAngleRight} />
+          <ContentLineArrow icon={faAngleRight as IconProp} />
           <div>Feel free to explore and hope you enjoy my website</div>
         </ContentLine>
       </TerminalLine>
