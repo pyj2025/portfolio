@@ -7,7 +7,8 @@ import {
   faLocationArrow,
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
-import img from "../../../image/Logo.png";
+// import img from "../../../image/Logo.png";
+import img from "../../../image/profile.jpg";
 import {
   TopbarBtn,
   TopbarBtnContainer,
