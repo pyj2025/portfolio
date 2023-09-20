@@ -2,7 +2,11 @@ import * as React from "react";
 import { FocusedWindowType } from "../../types";
 import { WindowsContext } from "./context";
 
-export const WindowsProvider: React.FC = ({ children }) => {
+type WindowsProviderProps = {
+  children?: React.ReactNode
+}
+
+export const WindowsProvider: React.FC<WindowsProviderProps> = ({ children }) => {
   const [focusedWindow, setFocusedWindow] =
     React.useState<FocusedWindowType>("Welcome");
 

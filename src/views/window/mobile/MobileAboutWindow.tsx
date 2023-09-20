@@ -25,6 +25,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { useWindows } from "../../../utils/context/context";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 type MobileIndexType = "Menu" | "About" | "Experience" | "Education";
 
@@ -198,7 +199,7 @@ const MobileAboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
             <MobilePanel>
               <MobileBackButtonContainer>
                 <MobileBackButton onClick={() => handleClick("Menu")}>
-                  <FontAwesomeIcon icon={faArrowLeft} />
+                  <FontAwesomeIcon icon={faArrowLeft as IconProp} />
                 </MobileBackButton>
               </MobileBackButtonContainer>
               {index === "About" && <About />}

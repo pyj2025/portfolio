@@ -26,6 +26,7 @@ import ProgrammingLanguage from "../../../components/skills/ProgrammingLanguage"
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useWindows } from "../../../utils/context/context";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 type MobileIndexType = "Menu" | "Front" | "Back" | "Mobile" | "Programming";
 
@@ -206,7 +207,7 @@ const MobileSkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
             <MobilePanel>
               <MobileBackButtonContainer>
                 <MobileBackButton onClick={() => handleClick("Menu")}>
-                  <FontAwesomeIcon icon={faArrowLeft} />
+                  <FontAwesomeIcon icon={faArrowLeft as IconProp} />
                 </MobileBackButton>
               </MobileBackButtonContainer>
               {index === "Front" && <FrontEnd />}

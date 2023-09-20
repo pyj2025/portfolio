@@ -20,6 +20,7 @@ import {
 import { faCopyright } from "@fortawesome/free-regular-svg-icons";
 import useScreenSize from "../../../utils/useScreenSize";
 import { useWindows } from "../../../utils/context/context";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 const WindowBody = styled.div`
   display: grid;
@@ -111,15 +112,15 @@ const TopbarAboutWindow: React.FC<TopbarAboutWindowProps> = ({
             <h4>Junior Frontend Developer</h4>
             <InfoList>
               <InfoListItem>
-                <FontAwesomeIcon icon={faBirthdayCake} />
+                <FontAwesomeIcon icon={faBirthdayCake as IconProp} />
                 <InfoListItemLabel>Jan.17.1994</InfoListItemLabel>
               </InfoListItem>
               <InfoListItem>
-                <FontAwesomeIcon icon={faPhone} />
+                <FontAwesomeIcon icon={faPhone as IconProp} />
                 <InfoListItemLabel>+1 312-937-4435</InfoListItemLabel>
               </InfoListItem>
               <InfoListItem>
-                <FontAwesomeIcon icon={faLocationArrow} />
+                <FontAwesomeIcon icon={faLocationArrow as IconProp} />
                 <InfoListItemLabel>
                   25 W Randolph St Apt 903, Chicago, IL, 60601
                 </InfoListItemLabel>
@@ -129,7 +130,7 @@ const TopbarAboutWindow: React.FC<TopbarAboutWindowProps> = ({
         </TwoColumnsGrid>
         <CopyrightContainer>
           <InfoListItem>
-            <FontAwesomeIcon icon={faCopyright} />
+            <FontAwesomeIcon icon={faCopyright as IconProp} />
             <InfoListItemLabel>Youngjoon Park</InfoListItemLabel>
           </InfoListItem>
         </CopyrightContainer>
