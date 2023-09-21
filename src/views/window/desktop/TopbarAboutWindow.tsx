@@ -113,7 +113,7 @@ const TopbarAboutWindow: React.FC<TopbarAboutWindowProps> = ({
             <InfoList>
               <InfoListItem>
                 <FontAwesomeIcon icon={faBirthdayCake as IconProp} />
-                <InfoListItemLabel>Jan.17.1994</InfoListItemLabel>
+                <InfoListItemLabel>Jan 17th, 1994</InfoListItemLabel>
               </InfoListItem>
               <InfoListItem>
                 <FontAwesomeIcon icon={faPhone as IconProp} />
@@ -122,7 +122,7 @@ const TopbarAboutWindow: React.FC<TopbarAboutWindowProps> = ({
               <InfoListItem>
                 <FontAwesomeIcon icon={faLocationArrow as IconProp} />
                 <InfoListItemLabel>
-                  25 W Randolph St Apt 903, Chicago, IL, 60601
+                  514-384 E 1st Ave, Vancouver, BC, V5T 0G5
                 </InfoListItemLabel>
               </InfoListItem>
             </InfoList>
