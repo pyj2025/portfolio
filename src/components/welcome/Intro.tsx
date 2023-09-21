@@ -36,7 +36,11 @@ const Intro: React.FC = () => {
         <ContentLine># Hi, I'm Joon.</ContentLine>
         <ContentLine>
           <ContentLineArrow icon={faAngleRight as IconProp} />
-          <div>I'm a front-end developer.</div>
+          <div>I'm a software engineer.</div>
+        </ContentLine>
+        <ContentLine>
+          <ContentLineArrow icon={faAngleRight as IconProp} />
+          <div>I'm a full stack developer.</div>
         </ContentLine>
         <ContentLine>
           <ContentLineArrow icon={faAngleRight as IconProp} />

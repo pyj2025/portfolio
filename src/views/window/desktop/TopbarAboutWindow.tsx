@@ -7,7 +7,6 @@ import {
   faLocationArrow,
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
-// import img from "../../../image/Logo.png";
 import img from "../../../image/profile.jpg";
 import {
   TopbarBtn,
@@ -21,6 +20,9 @@ import { faCopyright } from "@fortawesome/free-regular-svg-icons";
 import useScreenSize from "../../../utils/useScreenSize";
 import { useWindows } from "../../../utils/context/context";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
+
+import info from "../../../info.json";
+
 
 const WindowBody = styled.div`
   display: grid;
@@ -110,20 +112,21 @@ const TopbarAboutWindow: React.FC<TopbarAboutWindowProps> = ({
           </LogoContainer>
           <div>
             <h1>Youngjoon Park</h1>
-            <h4>Junior Frontend Developer</h4>
+            <h4>Frontend Developer</h4>
             <InfoList>
               <InfoListItem>
                 <FontAwesomeIcon icon={faBirthdayCake as IconProp} />
-                <InfoListItemLabel>Jan 17th, 1994</InfoListItemLabel>
+                <InfoListItemLabel>{`${info.about.info.dateOfBirth.month} ${info.about.info.dateOfBirth.day}, ${info.about.info.dateOfBirth.year}`}</InfoListItemLabel>
               </InfoListItem>
               <InfoListItem>
                 <FontAwesomeIcon icon={faPhone as IconProp} />
-                <InfoListItemLabel>+1 778-847-4625</InfoListItemLabel>
+                <InfoListItemLabel>{info.about.info.phoneNumber}</InfoListItemLabel>
               </InfoListItem>
               <InfoListItem>
                 <FontAwesomeIcon icon={faLocationArrow as IconProp} />
                 <InfoListItemLabel>
-                  514-384 E 1st Ave, Vancouver, BC, V5T 0G5
+                  <div>{info.about.info.address.address}</div>
+                  <div>{`${info.about.info.address.city}, ${info.about.info.address.state}, ${info.about.info.address.postalCode}`}</div>
                 </InfoListItemLabel>
               </InfoListItem>
             </InfoList>
