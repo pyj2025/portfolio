@@ -117,7 +117,7 @@ const TopbarAboutWindow: React.FC<TopbarAboutWindowProps> = ({
               </InfoListItem>
               <InfoListItem>
                 <FontAwesomeIcon icon={faPhone as IconProp} />
-                <InfoListItemLabel>+1 312-937-4435</InfoListItemLabel>
+                <InfoListItemLabel>+1 778-847-4625</InfoListItemLabel>
               </InfoListItem>
               <InfoListItem>
                 <FontAwesomeIcon icon={faLocationArrow as IconProp} />
