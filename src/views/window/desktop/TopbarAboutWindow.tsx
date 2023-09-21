@@ -30,7 +30,8 @@ const WindowBody = styled.div`
   align-items: center;
   width: 100%;
   height: calc(100% - 28px);
-  color: black;
+  background-color: #1d1f21;
+  color: white;
 `;
 
 const LogoContainer = styled.div`
