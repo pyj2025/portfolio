@@ -9,6 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import img from "../../../image/profile.jpg";
 import {
+  MutedText,
   TopbarBtn,
   TopbarBtnContainer,
   TopbarTitle,
@@ -52,7 +53,7 @@ const InfoListItem = styled.div`
   flex-direction: row;
 `;
 
-const InfoListItemLabel = styled.div`
+const InfoListItemLabel = styled(MutedText)`
   margin-left: 8px;
 `;
 
@@ -112,7 +113,7 @@ const TopbarAboutWindow: React.FC<TopbarAboutWindowProps> = ({
           </LogoContainer>
           <div>
             <h1>Youngjoon Park</h1>
-            <h4>Frontend Developer</h4>
+            <h4>Full Stack Developer</h4>
             <InfoList>
               <InfoListItem>
                 <FontAwesomeIcon icon={faBirthdayCake as IconProp} />
