@@ -66,6 +66,7 @@ export type ExperienceType = {
   location: string;
   date: string;
   dateRank: number;
+  tech: string;
 };
 
 type ExperienceRowProps = {
@@ -119,6 +120,10 @@ const ExperienceRow: React.FC<ExperienceRowProps> = ({
           <RowContainer>
             <MutedText>Date</MutedText>
             <div>{experience.date}</div>
+          </RowContainer>
+          <RowContainer>
+            <MutedText>Tech</MutedText>
+            <div>{experience.tech}</div>
           </RowContainer>
         </DataContent>
       ) : null}

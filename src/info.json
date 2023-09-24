@@ -36,6 +36,7 @@
           "company": "Enfusion",
           "location": "Chicago, IL, USA",
           "date": "Jan 2020 - Jul 2023",
+          "tech": "React, TypeScript, React Native, Jest, React Testing Library, Puppeteer, Jira",
           "dateRank": 1
         },
         {
@@ -43,6 +44,7 @@
           "company": "Purdue University",
           "location": "West Lafayette, IN, USA",
           "date": "Aug 2018 - Dec 2019",
+          "tech": "React, TypeScript, React Native, Jest, React Testing Library, Puppeteer, Jira",
           "dateRank": 2
         },
         {
@@ -50,6 +52,7 @@
           "company": "Dotis",
           "location": "Seoul, South Korea",
           "date": "Jun 2017 - Jul 2017",
+          "tech": "MongoDB, Express, React, Node.js, Mocha, C++",
           "dateRank": 3
         },
         {
@@ -57,6 +60,7 @@
           "company": "Hyop Woon International Co .,Ltd",
           "location": "Seoul, South Korea",
           "date": "Jul 2015 - Aug 2015",
+          "tech": "Python, Java, MySQL",
           "dateRank": 4
         }
       ]
