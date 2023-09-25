@@ -36,7 +36,7 @@
           "company": "Enfusion",
           "location": "Chicago, IL, USA",
           "date": "Jan 2020 - Jul 2023",
-          "tech": "React, TypeScript, React Native, Jest, React Testing Library, Puppeteer, Jira",
+          "tech": "React, TypeScript, React Native, Jest, React Testing Library, Puppeteer, Storybook, Figma, Jira",
           "dateRank": 1
         },
         {
@@ -44,7 +44,7 @@
           "company": "Purdue University",
           "location": "West Lafayette, IN, USA",
           "date": "Aug 2018 - Dec 2019",
-          "tech": "React, TypeScript, React Native, Jest, React Testing Library, Puppeteer, Jira",
+          "tech": "Software Testing(CS40800), Systems Programming(CS25200), Computer Architecture(CS25000)",
           "dateRank": 2
         },
         {

@@ -104,7 +104,7 @@ const Menu: React.FC = () => {
         </MenuItem>
         <MenuItem
           title="Resume"
-          href="https://drive.google.com/file/d/1m8QTUEZhkkZMs4hHc-FPCVFQHo5B76rc/view?usp=sharing"
+          href="https://drive.google.com/file/d/1eKA2yZLv_271nj6TJD316C5zGx-NPiMH/view?usp=sharing"
         >
           <img
             src="https://img.icons8.com/color/48/000000/google-docs.png"
