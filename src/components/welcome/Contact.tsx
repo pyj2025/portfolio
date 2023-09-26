@@ -45,6 +45,11 @@ const Contact: React.FC = () => {
           <ContentLineArrow icon={faAngleRight as IconProp} />
           <div>{info.about.info.phoneNumber}</div>
         </ContentLine>
+        <ContentLine>## Linked In</ContentLine>
+        <ContentLine>
+          <ContentLineArrow icon={faAngleRight as IconProp} />
+          <div>devjoon</div>
+        </ContentLine>
       </TerminalLine>
     </TerminalRow>
   );

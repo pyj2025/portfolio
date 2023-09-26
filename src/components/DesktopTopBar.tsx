@@ -103,7 +103,7 @@ const DesktopTopBar: React.FC = () => {
       <TopbarAppContainer>
         <TopbarAppItemContainer>
           <TopbarAppIcon icon={faMapMarkerAlt as IconProp} />
-          <MutedText>Chicago, IL, USA</MutedText>
+          <MutedText>Vancouver, BC, Canada</MutedText>
         </TopbarAppItemContainer>
         <TopbarAppItemContainer>
           <Clock />
