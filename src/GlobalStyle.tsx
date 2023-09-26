@@ -158,7 +158,6 @@ export const WindowBodyContent = styled.div`
   background-color: #1d1f21;
   color: white;
   overflow-x: hidden;
-  //  overflow-y: auto;
   overflow-y: hidden;
 
   :hover {

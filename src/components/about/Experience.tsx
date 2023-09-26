@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { BoldText } from "../../GlobalStyle";
 import ExperienceRow, { ExperienceType } from "./ExperienceRow";
 import info from "../../info.json";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 const Container = styled.div`
   display: flex;
@@ -109,7 +110,7 @@ const Experience: React.FC<ExperienceProps> = ({
           <SortButtonText>Position</SortButtonText>
           {positionSortType ? (
             <FontAwesomeIcon
-              icon={positionSortType === "asc" ? faChevronUp : faChevronDown}
+              icon={positionSortType === "asc" ? faChevronUp as IconProp : faChevronDown as IconProp}
             />
           ) : null}
         </SortButton>
@@ -118,7 +119,7 @@ const Experience: React.FC<ExperienceProps> = ({
             <SortButtonText>Date</SortButtonText>
             {dateSortType ? (
               <FontAwesomeIcon
-                icon={dateSortType === "asc" ? faChevronUp : faChevronDown}
+                icon={dateSortType === "asc" ? faChevronUp as IconProp : faChevronDown as IconProp}
               />
             ) : null}
           </SortButton>

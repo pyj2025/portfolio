@@ -27,6 +27,7 @@ import DatApex from "../../../components/projects/DatApex";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { useWindows } from "../../../utils/context/context";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 export type IndexType =
   | "Projects"
@@ -170,7 +171,7 @@ const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
             <MobilePanel>
               <MobileBackButtonContainer>
                 <MobileBackButton onClick={() => handleClick("WebProjects")}>
-                  <FontAwesomeIcon icon={faArrowLeft} />
+                  <FontAwesomeIcon icon={faArrowLeft as IconProp} />
                 </MobileBackButton>
               </MobileBackButtonContainer>
               <DatApex />
@@ -180,7 +181,7 @@ const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
             <MobilePanel>
               <MobileBackButtonContainer>
                 <MobileBackButton onClick={() => handleClick("WebProjects")}>
-                  <FontAwesomeIcon icon={faArrowLeft} />
+                  <FontAwesomeIcon icon={faArrowLeft as IconProp} />
                 </MobileBackButton>
               </MobileBackButtonContainer>
               <Portfolio />
@@ -190,7 +191,7 @@ const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
             <MobilePanel>
               <MobileBackButtonContainer>
                 <MobileBackButton onClick={() => handleClick("MobileProjects")}>
-                  <FontAwesomeIcon icon={faArrowLeft} />
+                  <FontAwesomeIcon icon={faArrowLeft as IconProp} />
                 </MobileBackButton>
               </MobileBackButtonContainer>
               <Foodie />

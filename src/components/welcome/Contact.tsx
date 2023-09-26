@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import styled from "styled-components";
 import info from "../../info.json";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 const TerminalRow = styled.div`
   display: flex;
@@ -36,13 +37,18 @@ const Contact: React.FC = () => {
         <ContentLine># Info</ContentLine>
         <ContentLine>## Email</ContentLine>
         <ContentLine>
-          <ContentLineArrow icon={faAngleRight} />
+          <ContentLineArrow icon={faAngleRight as IconProp} />
           <div>{info.about.info.email}</div>
         </ContentLine>
         <ContentLine>## Phone Number</ContentLine>
         <ContentLine>
-          <ContentLineArrow icon={faAngleRight} />
+          <ContentLineArrow icon={faAngleRight as IconProp} />
           <div>{info.about.info.phoneNumber}</div>
+        </ContentLine>
+        <ContentLine>## Linked In</ContentLine>
+        <ContentLine>
+          <ContentLineArrow icon={faAngleRight as IconProp} />
+          <div>devjoon</div>
         </ContentLine>
       </TerminalLine>
     </TerminalRow>

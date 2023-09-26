@@ -7,8 +7,9 @@ import {
   faLocationArrow,
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
-import img from "../../../image/Logo.png";
+import img from "../../../image/profile.jpg";
 import {
+  MutedText,
   TopbarBtn,
   TopbarBtnContainer,
   TopbarTitle,
@@ -19,6 +20,10 @@ import {
 import { faCopyright } from "@fortawesome/free-regular-svg-icons";
 import useScreenSize from "../../../utils/useScreenSize";
 import { useWindows } from "../../../utils/context/context";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+
+import info from "../../../info.json";
+
 
 const WindowBody = styled.div`
   display: grid;
@@ -28,7 +33,8 @@ const WindowBody = styled.div`
   align-items: center;
   width: 100%;
   height: calc(100% - 28px);
-  color: black;
+  background-color: #1d1f21;
+  color: white;
 `;
 
 const LogoContainer = styled.div`
@@ -47,7 +53,7 @@ const InfoListItem = styled.div`
   flex-direction: row;
 `;
 
-const InfoListItemLabel = styled.div`
+const InfoListItemLabel = styled(MutedText)`
   margin-left: 8px;
 `;
 
@@ -107,20 +113,21 @@ const TopbarAboutWindow: React.FC<TopbarAboutWindowProps> = ({
           </LogoContainer>
           <div>
             <h1>Youngjoon Park</h1>
-            <h4>Junior Frontend Developer</h4>
+            <h4>Full Stack Developer</h4>
             <InfoList>
               <InfoListItem>
-                <FontAwesomeIcon icon={faBirthdayCake} />
-                <InfoListItemLabel>Jan.17.1994</InfoListItemLabel>
+                <FontAwesomeIcon icon={faBirthdayCake as IconProp} />
+                <InfoListItemLabel>{`${info.about.info.dateOfBirth.month} ${info.about.info.dateOfBirth.day}, ${info.about.info.dateOfBirth.year}`}</InfoListItemLabel>
               </InfoListItem>
               <InfoListItem>
-                <FontAwesomeIcon icon={faPhone} />
-                <InfoListItemLabel>+1 312-937-4435</InfoListItemLabel>
+                <FontAwesomeIcon icon={faPhone as IconProp} />
+                <InfoListItemLabel>{info.about.info.phoneNumber}</InfoListItemLabel>
               </InfoListItem>
               <InfoListItem>
-                <FontAwesomeIcon icon={faLocationArrow} />
+                <FontAwesomeIcon icon={faLocationArrow as IconProp} />
                 <InfoListItemLabel>
-                  25 W Randolph St Apt 903, Chicago, IL, 60601
+                  <div>{info.about.info.address.address}</div>
+                  <div>{`${info.about.info.address.city}, ${info.about.info.address.state}, ${info.about.info.address.postalCode}`}</div>
                 </InfoListItemLabel>
               </InfoListItem>
             </InfoList>
@@ -128,7 +135,7 @@ const TopbarAboutWindow: React.FC<TopbarAboutWindowProps> = ({
         </TwoColumnsGrid>
         <CopyrightContainer>
           <InfoListItem>
-            <FontAwesomeIcon icon={faCopyright} />
+            <FontAwesomeIcon icon={faCopyright as IconProp} />
             <InfoListItemLabel>Youngjoon Park</InfoListItemLabel>
           </InfoListItem>
         </CopyrightContainer>

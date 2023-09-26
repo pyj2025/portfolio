@@ -13,6 +13,7 @@ import {
   PanelDescriptionLabel,
   PanelDescriptionText,
 } from "../../GlobalStyle";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 const LogoImage = styled.img`
   width: 150px;
@@ -39,7 +40,7 @@ const Portfolio: React.FC = () => {
           <PanelDescriptionLabel>Link</PanelDescriptionLabel>
           <LinkLabel href={info.project.Portfolio.link}>
             <span>
-              Link <FontAwesomeIcon icon={faExternalLinkAlt} />
+              Link <FontAwesomeIcon icon={faExternalLinkAlt as IconProp} />
             </span>
           </LinkLabel>
         </PanelDescriptionRow>

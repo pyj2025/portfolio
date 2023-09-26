@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import styled from "styled-components";
 import { useWindows } from "../utils/context/context";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 const Container = styled.div`
   display: flex;
@@ -85,25 +86,25 @@ const Menu: React.FC = () => {
             src="https://img.icons8.com/color/48/000000/mac-logo.png"
             alt="Finder"
           />
-          {isAboutMinimized ? <MinimizedIcon icon={faCircle} /> : null}
+          {isAboutMinimized ? <MinimizedIcon icon={faCircle as IconProp} /> : null}
         </MenuItem>
         <MenuItem title="Skills" onClick={handleSkillsClick}>
           <img
             src="https://img.icons8.com/color/48/000000/visual-studio-code-2019.png"
             alt="visual-studio-code"
           />
-          {isSkillsMinimized ? <MinimizedIcon icon={faCircle} /> : null}
+          {isSkillsMinimized ? <MinimizedIcon icon={faCircle as IconProp} /> : null}
         </MenuItem>
         <MenuItem title="Projects" onClick={handleProjectsClick}>
           <img
             src="https://img.icons8.com/color/48/000000/mac-folder.png"
             alt="mac-folder"
           />
-          {isProjectsMinimized ? <MinimizedIcon icon={faCircle} /> : null}
+          {isProjectsMinimized ? <MinimizedIcon icon={faCircle as IconProp} /> : null}
         </MenuItem>
         <MenuItem
           title="Resume"
-          href="https://drive.google.com/file/d/1cK6hYsbjwWTExdAzHPuWgYGHKINsOphg/view?usp=sharing"
+          href="https://drive.google.com/file/d/1eKA2yZLv_271nj6TJD316C5zGx-NPiMH/view?usp=sharing"
         >
           <img
             src="https://img.icons8.com/color/48/000000/google-docs.png"

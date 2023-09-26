@@ -1,0 +1,316 @@
+{
+    "about": {
+      "info": {
+        "name": {
+          "firstName": "Youngjoon",
+          "lastName": "Park"
+        },
+        "dateOfBirth": {
+          "year": 1994,
+          "month": "Jan",
+          "day": 17
+        },
+        "phoneNumber": "(+1) 778-847-4625",
+        "address": {
+          "address": "514-384 E 1st Ave",
+          "city": "Vancouver",
+          "state": "BC",
+          "postalCode": "V5T 0G5"
+        },
+        "email": "pyj2025@gmail.com"
+      },
+      "education": {
+        "university": {
+          "name": "Purdue University",
+          "graduateYear": {
+            "year": 2019,
+            "month": "Dec"
+          },
+          "details": "Bachelor of Science in Computer Science",
+          "concentration": "Software Engineering"
+        }
+      },
+      "experience": [
+        {
+          "title": "Junior Frontend Developer",
+          "company": "Enfusion",
+          "location": "Chicago, IL, USA",
+          "date": "Jan 2020 - Jul 2023",
+          "tech": "React, TypeScript, React Native, Jest, React Testing Library, Puppeteer, Storybook, Figma, Jira",
+          "dateRank": 1
+        },
+        {
+          "title": "Undergraduate Teaching Assistant",
+          "company": "Purdue University",
+          "location": "West Lafayette, IN, USA",
+          "date": "Aug 2018 - Dec 2019",
+          "tech": "Software Testing(CS40800), Systems Programming(CS25200), Computer Architecture(CS25000)",
+          "dateRank": 2
+        },
+        {
+          "title": "Technical Consultant Intern",
+          "company": "Dotis",
+          "location": "Seoul, South Korea",
+          "date": "Jun 2017 - Jul 2017",
+          "tech": "MongoDB, Express, React, Node.js, Mocha, C++",
+          "dateRank": 3
+        },
+        {
+          "title": "Software Engineering Intern",
+          "company": "Hyop Woon International Co .,Ltd",
+          "location": "Seoul, South Korea",
+          "date": "Jul 2015 - Aug 2015",
+          "tech": "Python, Java, MySQL",
+          "dateRank": 4
+        }
+      ]
+    },
+    "project": {
+      "DatApex": {
+        "name": "DatApex",
+        "link": "https://github.com/SeoHyunAhn/DatApex",
+        "stack": ["React", "Django", "Bootstrap"],
+        "details": "A web application that provides different preprocessing algorithms which the users can run to modify their datasets and allow users to run different machine learning algorithms on datasets uploaded by them, and present accuracy plots/visualizations in a clean UI"
+      },
+      "Foodie": {
+        "name": "Foodie",
+        "link": "###",
+        "stack": ["Swift", "Firebase", "Yelp API", "Google API"],
+        "details": "An application that recommends the dining places based on users’ preferences and connects users with QR code."
+      },
+      "Portfolio": {
+        "name": "Joon's Portfolio",
+        "link": "https://pyj2025.github.io/portfolio/",
+        "stack": ["React", "Typescript", "Styled-components"],
+        "details": "Joon's portfolio aka this site. It presents who am I, what skills I have, and what kind of work experience I have. Also, it provides my contact methods."
+      }
+    },
+    "skills": {
+      "front": [
+        {
+          "name": "React",
+          "icon": "https://img.icons8.com/color/48/000000/react-native.png",
+          "background": false
+        },
+        {
+          "name": "Vue",
+          "icon": "https://img.icons8.com/color/48/000000/vue-js.png",
+          "background": false
+        },
+        {
+          "name": "Angular",
+          "icon": "https://img.icons8.com/color/48/000000/angularjs.png",
+          "background": false
+        },
+        {
+          "name": "Nextjs",
+          "icon": "https://api.iconify.design/logos/nextjs.svg",
+          "background": true,
+          "iconStyles": {
+            "width": 40,
+            "height": 40
+          }
+        },
+        {
+          "name": "Redux",
+          "icon": "https://img.icons8.com/color/48/000000/redux.png",
+          "background": false
+        },
+        {
+          "name": "jQuery",
+          "icon": "https://img.icons8.com/ios-filled/48/000000/jquery.png",
+          "background": true,
+          "iconStyles": {
+            "width": 40,
+            "height": 40
+          }
+        },
+        {
+          "name": "Bootstrap",
+          "icon": "https://img.icons8.com/color/48/000000/bootstrap.png",
+          "background": false
+        },
+        {
+          "name": "SASS",
+          "icon": "https://img.icons8.com/color/48/000000/sass.png",
+          "background": false
+        },
+        {
+          "name": "Tailwind",
+          "icon": "https://api.iconify.design/vscode-icons/file-type-tailwind.svg",
+          "background": true,
+          "iconStyles": {
+            "width": 48,
+            "height": 48
+          }
+        },
+        {
+          "name": "styled-components",
+          "icon": "https://img.icons8.com/external-flat-juicy-fish/48/000000/external-css-coding-and-development-flat-flat-juicy-fish-2.png",
+          "background": false
+        }
+      ],
+      "back": [
+        {
+          "name": "Node.js",
+          "icon": "https://img.icons8.com/color/48/000000/nodejs.png",
+          "background": true,
+          "iconStyles": {
+            "width": 40,
+            "height": 40
+          }
+        },
+        {
+          "name": "Express",
+          "icon": "https://api.iconify.design/logos/express.svg",
+          "background": true,
+          "iconStyles": {
+            "width": 40,
+            "height": 40
+          }
+        },
+        {
+          "name": "NestJS",
+          "icon": "https://api.iconify.design/logos/nestjs.svg",
+          "background": false,
+          "iconStyles": {
+            "width": 40,
+            "height": 40
+          }
+        },
+        {
+          "name": "aws",
+          "icon": "https://img.icons8.com/color/48/000000/amazon-web-services.png",
+          "background": true,
+          "iconStyles": {
+            "width": 40,
+            "height": 40
+          }
+        },
+        {
+          "name": "Spring",
+          "icon": "https://img.icons8.com/color/48/000000/spring-logo.png",
+          "background": false,
+          "iconStyles": {
+            "width": 40,
+            "height": 40
+          }
+        },
+        {
+          "name": "Laravel",
+          "icon": "https://api.iconify.design/logos/laravel.svg",
+          "background": false,
+          "iconStyles": {
+            "width": 40,
+            "height": 40
+          }
+        },
+        {
+          "name": "MongoDB",
+          "icon": "https://img.icons8.com/color/48/000000/mongodb.png",
+          "background": false,
+          "iconStyles": {
+            "width": 40,
+            "height": 40
+          }
+        },
+        {
+          "name": "ASP.Net Core",
+          "icon": "https://api.iconify.design/cib/dot-net.svg",
+          "background": true,
+          "iconStyles": {
+            "width": 40,
+            "height": 40
+          }
+        }
+      ],
+      "mobile": [
+        {
+          "name": "React Native",
+          "icon": "https://img.icons8.com/color/48/000000/react-native.png",
+          "background": false,
+          "noWidth": true
+        },
+        {
+          "name": "Swift",
+          "icon": "https://img.icons8.com/color/48/000000/swift.png",
+          "background": false
+        }
+      ],
+      "languages": [
+        {
+          "name": "TypeScript",
+          "icon": "https://img.icons8.com/color/48/000000/typescript.png",
+          "background": false
+        },
+        {
+          "name": "JavaScript",
+          "icon": "https://img.icons8.com/color/48/000000/javascript.png",
+          "background": false
+        },
+        {
+          "name": "Python",
+          "icon": "https://img.icons8.com/color/48/000000/python.png",
+          "background": false
+        },
+        {
+          "name": "Java",
+          "icon": "https://img.icons8.com/color/48/000000/java.png",
+          "background": true,
+          "iconStyles": {
+            "width": 40,
+            "height": 40
+          }
+        },
+        {
+          "name": "HTML5",
+          "icon": "https://img.icons8.com/color/48/000000/html-5--v1.png",
+          "background": false
+        },
+        {
+          "name": "CSS3",
+          "icon": "https://img.icons8.com/color/48/000000/css3.png",
+          "background": false
+        },
+        {
+          "name": "C#",
+          "icon": "https://img.icons8.com/color/48/000000/c-sharp-logo.png",
+          "background": false
+        },
+        {
+          "name": "C/C++",
+          "icon": "https://img.icons8.com/color/48/000000/c-plus-plus-logo.png",
+          "background": false
+        },
+        {
+          "name": "MySQL",
+          "icon": "https://img.icons8.com/fluency/48/000000/mysql-logo.png",
+          "background": true,
+          "iconStyles": {
+            "width": 40,
+            "height": 40
+          }
+        },
+        {
+          "name": "PHP",
+          "icon": "https://img.icons8.com/officel/48/000000/php-logo.png",
+          "background": true,
+          "iconStyles": {
+            "width": 40,
+            "height": 40
+          }
+        },
+        {
+          "name": "PL/SQL",
+          "icon": "https://img.icons8.com/color/48/000000/code-file.png",
+          "background": false
+        },
+        {
+          "name": "R",
+          "icon": "https://img.icons8.com/external-becris-flat-becris/48/000000/external-r-data-science-becris-flat-becris.png",
+          "background": false
+        }
+      ]
+    }
+  }
+  
