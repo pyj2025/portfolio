@@ -1,29 +1,19 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.f2911cbe.chunk.css",
-    "main.js": "/portfolio/static/js/main.b9c06591.chunk.js",
-    "main.js.map": "/portfolio/static/js/main.b9c06591.chunk.js.map",
-    "runtime-main.js": "/portfolio/static/js/runtime-main.bd40af9d.js",
-    "runtime-main.js.map": "/portfolio/static/js/runtime-main.bd40af9d.js.map",
-    "static/css/2.440d3507.chunk.css": "/portfolio/static/css/2.440d3507.chunk.css",
-    "static/js/2.19c3761a.chunk.js": "/portfolio/static/js/2.19c3761a.chunk.js",
-    "static/js/2.19c3761a.chunk.js.map": "/portfolio/static/js/2.19c3761a.chunk.js.map",
-    "static/js/3.1c26c4bc.chunk.js": "/portfolio/static/js/3.1c26c4bc.chunk.js",
-    "static/js/3.1c26c4bc.chunk.js.map": "/portfolio/static/js/3.1c26c4bc.chunk.js.map",
+    "main.css": "/portfolio/static/css/main.a544a712.css",
+    "main.js": "/portfolio/static/js/main.cc54c598.js",
+    "static/js/787.b9ec5bb0.chunk.js": "/portfolio/static/js/787.b9ec5bb0.chunk.js",
+    "static/media/macos.jpg": "/portfolio/static/media/macos.17ce460bcb0b8087b537.jpg",
+    "static/media/profile.jpg": "/portfolio/static/media/profile.6bfb910c684a616ff656.jpg",
+    "static/media/Foodie.png": "/portfolio/static/media/Foodie.17ab0102e93b947adbdd.png",
+    "static/media/DatApex.png": "/portfolio/static/media/DatApex.5ec74c1bd7919b67de89.png",
     "index.html": "/portfolio/index.html",
-    "static/css/2.440d3507.chunk.css.map": "/portfolio/static/css/2.440d3507.chunk.css.map",
-    "static/css/main.f2911cbe.chunk.css.map": "/portfolio/static/css/main.f2911cbe.chunk.css.map",
-    "static/js/2.19c3761a.chunk.js.LICENSE.txt": "/portfolio/static/js/2.19c3761a.chunk.js.LICENSE.txt",
-    "static/media/DatApex.5ec74c1b.png": "/portfolio/static/media/DatApex.5ec74c1b.png",
-    "static/media/Foodie.17ab0102.png": "/portfolio/static/media/Foodie.17ab0102.png",
-    "static/media/Logo.cdaaaea6.png": "/portfolio/static/media/Logo.cdaaaea6.png",
-    "static/media/index.css": "/portfolio/static/media/macos.17ce460b.jpg"
+    "main.a544a712.css.map": "/portfolio/static/css/main.a544a712.css.map",
+    "main.cc54c598.js.map": "/portfolio/static/js/main.cc54c598.js.map",
+    "787.b9ec5bb0.chunk.js.map": "/portfolio/static/js/787.b9ec5bb0.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.bd40af9d.js",
-    "static/css/2.440d3507.chunk.css",
-    "static/js/2.19c3761a.chunk.js",
-    "static/css/main.f2911cbe.chunk.css",
-    "static/js/main.b9c06591.chunk.js"
+    "static/css/main.a544a712.css",
+    "static/js/main.cc54c598.js"
   ]
 }
