@@ -74,7 +74,7 @@
       },
       "Foodie": {
         "name": "Foodie",
-        "link": "###",
+        "link": "https://github.com/axer0310/Foodie",
         "stack": ["Swift", "Firebase", "Yelp API", "Google API"],
         "details": "An application that recommends the dining places based on users’ preferences and connects users with QR code."
       },
@@ -83,6 +83,30 @@
         "link": "https://pyj2025.github.io/portfolio/",
         "stack": ["React", "Typescript", "Styled-components"],
         "details": "Joon's portfolio aka this site. It presents who am I, what skills I have, and what kind of work experience I have. Also, it provides my contact methods."
+      },
+      "Parstagram": {
+        "name": "Parstagram",
+        "link": "https://github.com/park612/Parstagram",
+        "stack": ["Swift"],
+        "details": "This is an Instagram clone with a custom Parse backend that allows a user to post photos and view a global photos feed."
+      },
+      "Twitter": {
+        "name": "Twitter",
+        "link": "https://github.com/park612/Twitter",
+        "stack": ["Swift"],
+        "details": "Twitter is a basic twitter app to read your tweets."
+      },
+      "Flix": {
+        "name": "Twitter",
+        "link": "https://github.com/park612/Flix",
+        "stack": ["Swift"],
+        "details": "Flix is an app that allows users to browse movies from the The Movie Database API."
+      },
+      "Tippy": {
+        "name": "Tippy",
+        "link": "https://github.com/park612/TipCalculator",
+        "stack": ["Swift"],
+        "details": "Tippy is a tip calculator application for iOS."
       }
     },
     "skills": {
