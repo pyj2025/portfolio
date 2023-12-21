@@ -1,17 +1,17 @@
-import React from "react";
-import styled from "styled-components";
-import { DraggableData } from "react-rnd";
+import React from 'react';
+import styled from 'styled-components';
+import { DraggableData } from 'react-rnd';
 
-import ProjectsWindow from "../views/window/desktop/ProjectsWindow";
-import AboutWindow from "../views/window/desktop/AboutWindow";
-import WelcomeWindow from "../views/window/desktop/WelcomeWindow";
-import SkillsWindow from "../views/window/desktop/SkillsWindow";
-import { useWindows } from "../utils/context/context";
-import { Slide, toast, ToastContainer } from "react-toastify";
-import { browserName, isBrowser, isMobile } from "react-device-detect";
-import "react-toastify/dist/ReactToastify.css";
-import TopbarAboutWindow from "../views/window/desktop/TopbarAboutWindow";
-import { FocusedWindowType } from "../types";
+import ProjectsWindow from '../views/window/desktop/ProjectsWindow';
+import AboutWindow from '../views/window/desktop/AboutWindow';
+import WelcomeWindow from '../views/window/desktop/WelcomeWindow';
+import SkillsWindow from '../views/window/desktop/SkillsWindow';
+import { useWindows } from '../utils/context/context';
+import { Slide, toast, ToastContainer } from 'react-toastify';
+import { browserName, isBrowser, isMobile } from 'react-device-detect';
+import 'react-toastify/dist/ReactToastify.css';
+import TopbarAboutWindow from '../views/window/desktop/TopbarAboutWindow';
+import { FocusedWindowType } from '../types';
 
 const Container = styled.div`
   width: 100%;
@@ -37,11 +37,11 @@ const BodyContent: React.FC = () => {
   React.useEffect(() => {
     const message =
       "You've accessed via " +
-      (isBrowser ? "desktop " : isMobile ? "mobile " : "tablet ") +
+      (isBrowser ? 'desktop ' : isMobile ? 'mobile ' : 'tablet ') +
       browserName.toLowerCase();
     toast(message, {
       transition: Slide,
-      type: "info",
+      type: 'info',
     });
   }, []);
 
