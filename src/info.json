@@ -203,7 +203,7 @@
           }
         },
         {
-          "name": "aws",
+          "name": "AWS",
           "icon": "https://img.icons8.com/color/48/000000/amazon-web-services.png",
           "background": true,
           "iconStyles": {
