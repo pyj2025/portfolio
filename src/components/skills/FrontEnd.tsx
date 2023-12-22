@@ -1,7 +1,7 @@
-import React from "react";
-import info from "../../info.json";
-import styled from "styled-components";
-import SkillIcon, { SkillIconProps } from "./SkillIcon";
+import React from 'react';
+import info from '../../info.json';
+import styled from 'styled-components';
+import SkillIcon, { SkillIconProps } from './SkillIcon';
 
 const ContentContainer = styled.div`
   display: flex;
