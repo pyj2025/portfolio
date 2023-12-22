@@ -32,6 +32,8 @@ import flutter from '../../image/skills/flutter.png';
 import dart from '../../image/skills/dart.png';
 import php from '../../image/skills/php.png';
 import expressjs from '../../image/skills/expressjs.png';
+import jquery from '../../image/skills/jquery.png';
+import codeFile from '../../image/icons/codeFile.png';
 
 const SkillsIconContainer = styled.div<{ noWidth?: boolean }>`
   display: flex;
@@ -77,8 +79,8 @@ export const getIcon = (name: string) => {
       );
     case 'Redux':
       return <img src={redux} alt={name} />;
-    // case 'jQuery':
-    //   return <img src={react} alt={name} />;
+    case 'jQuery':
+      return <img src={jquery} alt={name} style={{ width: 48, height: 48 }} />;
     case 'Bootstrap':
       return <img src={bootstrap} alt={name} />;
     case 'Tailwind':
@@ -156,8 +158,8 @@ export const getIcon = (name: string) => {
       return <img src={php} alt={name} style={{ width: 48, height: 48 }} />;
     case 'Dart':
       return <img src={dart} alt={name} />;
-    // case 'PL/SQL':
-    //   return <img src={react} alt={name} />;
+    case 'PL/SQL':
+      return <img src={codeFile} alt={name} />;
     case 'R':
       return (
         <IconImageContainer>
