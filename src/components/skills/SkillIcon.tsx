@@ -16,6 +16,7 @@ import spring from '../../image/skills/spring-boot.png';
 import mongoDB from '../../image/skills/mongodb.png';
 import swift from '../../image/skills/swift.png';
 import typescript from '../../image/skills/typescript.png';
+import javascript from '../../image/skills/javascript.png';
 import python from '../../image/skills/python.png';
 import java from '../../image/skills/java.png';
 import html from '../../image/skills/html.png';
@@ -25,6 +26,12 @@ import cPlusPlus from '../../image/skills/c++.png';
 import mySQL from '../../image/skills/mysql.png';
 import rProject from '../../image/skills/r-project.png';
 import laravel from '../../image/skills/laravel.png';
+import styledComponents from '../../image/skills/styled-components.png';
+import dotNetCore from '../../image/skills/aspDotNetCore.png';
+import flutter from '../../image/skills/flutter.png';
+import dart from '../../image/skills/dart.png';
+import php from '../../image/skills/php.png';
+import expressjs from '../../image/skills/expressjs.png';
 
 const SkillsIconContainer = styled.div<{ noWidth?: boolean }>`
   display: flex;
@@ -78,12 +85,16 @@ export const getIcon = (name: string) => {
       return <img src={tailwindCss} alt={name} />;
     case 'SASS':
       return <img src={sass} alt={name} />;
-    // case 'styled-components':
-    //   return <img src={react} alt={name} />;
+    case 'styled-components':
+      return <img src={styledComponents} alt={name} />;
     case 'Node.js':
       return <img src={nodejs} alt={name} />;
-    // case 'Express':
-    //   return <img src={react} alt={name} />;
+    case 'Express':
+      return (
+        <IconImageContainer>
+          <img src={expressjs} alt={name} style={{ width: 40, height: 40 }} />
+        </IconImageContainer>
+      );
     case 'NestJS':
       return <img src={nestjs} alt={name} />;
     case 'AWS':
@@ -98,18 +109,27 @@ export const getIcon = (name: string) => {
       return <img src={laravel} alt={name} style={{ width: 48, height: 48 }} />;
     case 'MongoDB':
       return <img src={mongoDB} alt={name} />;
-    // case 'ASP.Net Core':
-    //   return <img src={react} alt={name} />;
+    case 'ASP.Net Core':
+      return (
+        <IconImageContainer>
+          <img
+            src={dotNetCore}
+            alt={name}
+            style={{ width: 40, height: 35.75 }}
+          />
+        </IconImageContainer>
+      );
+
     case 'React Native':
       return <img src={react} alt={name} />;
-    // case 'Flutter':
-    //   return <img src={react} alt={name} />;
+    case 'Flutter':
+      return <img src={flutter} alt={name} />;
     case 'Swift':
       return <img src={swift} alt={name} />;
     case 'TypeScript':
       return <img src={typescript} alt={name} />;
-    // case 'JavaScript':
-    //   return <img src={react} alt={name} />;
+    case 'JavaScript':
+      return <img src={javascript} alt={name} />;
     case 'Python':
       return <img src={python} alt={name} />;
     case 'Java':
@@ -132,10 +152,10 @@ export const getIcon = (name: string) => {
           <img src={mySQL} alt={name} style={{ width: 40, height: 40 }} />
         </IconImageContainer>
       );
-    // case 'PHP':
-    //   return <img src={react} alt={name} />;
-    // case 'Dart':
-    //   return <img src={react} alt={name} />;
+    case 'PHP':
+      return <img src={php} alt={name} style={{ width: 48, height: 48 }} />;
+    case 'Dart':
+      return <img src={dart} alt={name} />;
     // case 'PL/SQL':
     //   return <img src={react} alt={name} />;
     case 'R':

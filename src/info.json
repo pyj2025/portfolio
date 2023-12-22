@@ -256,6 +256,11 @@
           "noWidth": true
         },
         {
+          "name": "Flutter",
+          "icon": "https://img.icons8.com/color/48/000000/swift.png",
+          "background": false
+        },
+        {
           "name": "Swift",
           "icon": "https://img.icons8.com/color/48/000000/swift.png",
           "background": false
@@ -286,6 +291,31 @@
             "height": 40
           }
         },
+        
+        {
+          "name": "C#",
+          "icon": "https://img.icons8.com/color/48/000000/c-sharp-logo.png",
+          "background": false
+        },
+        {
+          "name": "Dart",
+          "icon": "https://img.icons8.com/color/48/000000/css3.png",
+          "background": false
+        },
+        {
+          "name": "C/C++",
+          "icon": "https://img.icons8.com/color/48/000000/c-plus-plus-logo.png",
+          "background": false
+        },
+        {
+          "name": "PHP",
+          "icon": "https://img.icons8.com/officel/48/000000/php-logo.png",
+          "background": true,
+          "iconStyles": {
+            "width": 40,
+            "height": 40
+          }
+        },
         {
           "name": "HTML5",
           "icon": "https://img.icons8.com/color/48/000000/html-5--v1.png",
@@ -297,27 +327,8 @@
           "background": false
         },
         {
-          "name": "C#",
-          "icon": "https://img.icons8.com/color/48/000000/c-sharp-logo.png",
-          "background": false
-        },
-        {
-          "name": "C/C++",
-          "icon": "https://img.icons8.com/color/48/000000/c-plus-plus-logo.png",
-          "background": false
-        },
-        {
           "name": "MySQL",
           "icon": "https://img.icons8.com/fluency/48/000000/mysql-logo.png",
-          "background": true,
-          "iconStyles": {
-            "width": 40,
-            "height": 40
-          }
-        },
-        {
-          "name": "PHP",
-          "icon": "https://img.icons8.com/officel/48/000000/php-logo.png",
           "background": true,
           "iconStyles": {
             "width": 40,
