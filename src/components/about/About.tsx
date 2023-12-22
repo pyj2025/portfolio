@@ -7,18 +7,31 @@ import {
   PanelDescriptionText,
 } from '../../GlobalStyle';
 import info from '../../info.json';
-import profileImage from '../../image/profile.jpg';
+import profileImage from '../../image/Profile.png';
 
 const Container = styled(PanelDescriptionContainer)`
   margin: 10px;
 `;
 
+const ProfileContainer = styled.div`
+  position: relative;
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  border-radius: 50%;
+`;
+
+const Profile = styled.img`
+  width: 100%;
+  height: auto;
+`;
+
 const About: React.FC = () => {
   return (
     <>
-      <Container>
-        <img src={profileImage} width="152px" height="200px" alt="Profile" />
-      </Container>
+      <ProfileContainer>
+        <Profile src={profileImage} alt="Profile" />
+      </ProfileContainer>
       <Container>
         <PanelDescriptionRow>
           <PanelDescriptionLabel>Name</PanelDescriptionLabel>

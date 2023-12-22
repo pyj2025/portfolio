@@ -1,13 +1,13 @@
-import React from "react";
-import styled from "styled-components";
-import { DraggableData } from "react-rnd";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from 'react';
+import styled from 'styled-components';
+import { DraggableData } from 'react-rnd';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faBirthdayCake,
   faLocationArrow,
   faPhone,
-} from "@fortawesome/free-solid-svg-icons";
-import img from "../../../image/profile.jpg";
+} from '@fortawesome/free-solid-svg-icons';
+import img from '../../../image/Profile.png';
 import {
   MutedText,
   TopbarBtn,
@@ -16,14 +16,13 @@ import {
   TwoColumnsGrid,
   Window,
   WindowTopbarContainer,
-} from "../../../GlobalStyle";
-import { faCopyright } from "@fortawesome/free-regular-svg-icons";
-import useScreenSize from "../../../utils/useScreenSize";
-import { useWindows } from "../../../utils/context/context";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
+} from '../../../GlobalStyle';
+import { faCopyright } from '@fortawesome/free-regular-svg-icons';
+import useScreenSize from '../../../utils/useScreenSize';
+import { useWindows } from '../../../utils/context/context';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
-import info from "../../../info.json";
-
+import info from '../../../info.json';
 
 const WindowBody = styled.div`
   display: grid;
@@ -76,7 +75,7 @@ const TopbarAboutWindow: React.FC<TopbarAboutWindowProps> = ({
   const desktopAboutRef = React.useRef<any>();
 
   const handleDesktopAboutClose = () => {
-    if (focusedWindow === "DesktopAbout") toggleDesktopAboutOpen();
+    if (focusedWindow === 'DesktopAbout') toggleDesktopAboutOpen();
   };
 
   return (
@@ -97,9 +96,9 @@ const TopbarAboutWindow: React.FC<TopbarAboutWindowProps> = ({
         <TopbarBtnContainer>
           <TopbarBtn
             color="close"
-            title={focusedWindow === "DesktopAbout" ? "Close" : undefined}
+            title={focusedWindow === 'DesktopAbout' ? 'Close' : undefined}
             onClick={handleDesktopAboutClose}
-            disabled={focusedWindow !== "DesktopAbout"}
+            disabled={focusedWindow !== 'DesktopAbout'}
           />
           <TopbarBtn color="disabled" disabled={true} />
           <TopbarBtn color="disabled" disabled={true} />
@@ -121,7 +120,9 @@ const TopbarAboutWindow: React.FC<TopbarAboutWindowProps> = ({
               </InfoListItem>
               <InfoListItem>
                 <FontAwesomeIcon icon={faPhone as IconProp} />
-                <InfoListItemLabel>{info.about.info.phoneNumber}</InfoListItemLabel>
+                <InfoListItemLabel>
+                  {info.about.info.phoneNumber}
+                </InfoListItemLabel>
               </InfoListItem>
               <InfoListItem>
                 <FontAwesomeIcon icon={faLocationArrow as IconProp} />

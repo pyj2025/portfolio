@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 import {
   PanelContainer,
   PanelDescriptionContainer,
@@ -7,13 +7,12 @@ import {
   PanelDescriptionRow,
   PanelDescriptionText,
   PanelLogoContainer,
-} from "../../GlobalStyle";
-import PurdueLogo from "../../image/PurdueLogo.png";
-import info from "../../info.json";
+} from '../../GlobalStyle';
+import PurdueLogo from '../../image/PurdueLogo.png';
+import info from '../../info.json';
 
 const PurdueLogoImage = styled.img`
-  background-color: white;
-  width: 200px;
+  width: 150px;
   height: 150px;
 `;
 
