@@ -1,6 +1,6 @@
-import React from "react";
-import info from "../../info.json";
-import FoodieLogo from "../../image/Foodie.png";
+import React from 'react';
+import info from '../../info.json';
+import FoodieLogo from '../../image/projects/Foodie.png';
 
 import {
   PanelContainer,
@@ -11,7 +11,7 @@ import {
   PanelLogoImage,
   PanelDescriptionLabel,
   PanelDescriptionText,
-} from "../../GlobalStyle";
+} from '../../GlobalStyle';
 
 const Foodie: React.FC = () => {
   return (
@@ -36,7 +36,7 @@ const Foodie: React.FC = () => {
             {info.project.Foodie.stack.map((value, idx) =>
               idx === info.project.Foodie.stack.length - 1
                 ? value
-                : value + ", "
+                : value + ', '
             )}
           </PanelDescriptionText>
         </PanelDescriptionRow>

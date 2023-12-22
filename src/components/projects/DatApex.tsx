@@ -1,8 +1,8 @@
-import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import info from "../../info.json";
-import DatApexLogo from "../../image/DatApex.png";
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
+import info from '../../info.json';
+import DatApexLogo from '../../image/projects/DatApex.png';
 import {
   PanelContainer,
   PanelDescriptionContainer,
@@ -12,8 +12,8 @@ import {
   PanelLogoImage,
   PanelDescriptionLabel,
   PanelDescriptionText,
-} from "../../GlobalStyle";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
+} from '../../GlobalStyle';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 const DatApex: React.FC = () => {
   return (
@@ -42,7 +42,7 @@ const DatApex: React.FC = () => {
             {info.project.DatApex.stack.map((value, idx) =>
               idx === info.project.DatApex.stack.length - 1
                 ? value
-                : value + ", "
+                : value + ', '
             )}
           </PanelDescriptionText>
         </PanelDescriptionRow>
