@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import { BoldText } from "../GlobalStyle";
-import useScreenSize from "../utils/useScreenSize";
+import React from 'react';
+import styled from 'styled-components';
+import { BoldText } from '../GlobalStyle';
+import useScreenSize from '../utils/useScreenSize';
 
 const Container = styled.div<{ width: number }>`
   display: flex;
@@ -18,7 +18,7 @@ const MobileTopBar: React.FC = () => {
 
   return (
     <Container width={width}>
-      <BoldText>Joon Park</BoldText>
+      <BoldText>Youngjoon Park</BoldText>
     </Container>
   );
 };

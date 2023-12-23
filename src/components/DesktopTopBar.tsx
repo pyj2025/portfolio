@@ -1,16 +1,16 @@
-import "rc-menu/assets/index.css";
+import 'rc-menu/assets/index.css';
 
-import React from "react";
-import styled from "styled-components";
-import Menu, { Divider, MenuItem } from "rc-menu";
-import Clock from "./Clock";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
-import { BoldText, MutedText } from "../GlobalStyle";
-import { useWindows } from "../utils/context/context";
-import useScreenSize from "../utils/useScreenSize";
-import useClickOutside from "../utils/useClickOutside";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import React from 'react';
+import styled from 'styled-components';
+import Menu, { Divider, MenuItem } from 'rc-menu';
+import Clock from './Clock';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import { BoldText, MutedText } from '../GlobalStyle';
+import { useWindows } from '../utils/context/context';
+import useScreenSize from '../utils/useScreenSize';
+import useClickOutside from '../utils/useClickOutside';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 const Container = styled.div<{ width: number }>`
   display: flex;
@@ -35,10 +35,19 @@ const MainMenuBtn = styled.button`
   background-color: transparent;
   border: 0;
   color: white;
+  // z-index: -150;
 `;
 
 const MenuItemTitle = styled.div`
   color: white;
+`;
+
+const MenuDivider = styled(Divider)`
+  width: 92%;
+  margin-left: 8px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  opacity: 0.7;
 `;
 
 const TopbarAppContainer = styled.div`
@@ -60,7 +69,7 @@ const TopbarAppIcon = styled(FontAwesomeIcon)`
 
 const DesktopTopBar: React.FC = () => {
   const { width } = useScreenSize();
-  const { toggleDesktopAboutOpen } = useWindows();
+  const { openAbout, unfocusWindows } = useWindows();
 
   const mainMenuRef = React.useRef<HTMLDivElement | null>(null);
 
@@ -70,10 +79,13 @@ const DesktopTopBar: React.FC = () => {
     setMenuOpen(false);
   });
 
-  const handleClick = () => setMenuOpen(!menuOpen);
+  const handleClick = () => {
+    setMenuOpen(!menuOpen);
+    unfocusWindows();
+  };
 
   const handleAbout = () => {
-    toggleDesktopAboutOpen();
+    openAbout();
     setMenuOpen(false);
   };
 
@@ -93,9 +105,19 @@ const DesktopTopBar: React.FC = () => {
             <MenuItem key="about" onClick={handleAbout}>
               <MenuItemTitle>About Joon</MenuItemTitle>
             </MenuItem>
-            <Divider />
+            <MenuDivider />
             <MenuItem key="restart" onClick={() => window.location.reload()}>
               <MenuItemTitle>Restart</MenuItemTitle>
+            </MenuItem>
+            <MenuDivider />
+            <MenuItem
+              key="close"
+              onClick={() => {
+                window.open('', '_self');
+                window.close();
+              }}
+            >
+              <MenuItemTitle>Close</MenuItemTitle>
             </MenuItem>
           </MenuContainer>
         ) : null}

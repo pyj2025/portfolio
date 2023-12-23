@@ -1,8 +1,8 @@
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import styled from "styled-components";
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
+import styled from 'styled-components';
 
 const TerminalRow = styled.div`
   display: flex;
@@ -33,18 +33,23 @@ const Intro: React.FC = () => {
   return (
     <TerminalRow>
       <TerminalLine>
-        <ContentLine># Hi, I'm Joon.</ContentLine>
+        <ContentLine># Hi, I'm Youngjoon.</ContentLine>
         <ContentLine>
           <ContentLineArrow icon={faAngleRight as IconProp} />
           <div>I'm a Full Stack developer.</div>
         </ContentLine>
         <ContentLine>
           <ContentLineArrow icon={faAngleRight as IconProp} />
-          <div>I am an alumnus of Purdue University with a major in Computer Science.</div>
+          <div>
+            I am an alumnus of Purdue University with a major in Computer
+            Science.
+          </div>
         </ContentLine>
         <ContentLine>
           <ContentLineArrow icon={faAngleRight as IconProp} />
-          <div>I am passionate about developing both web and mobile applications.</div>
+          <div>
+            I am passionate about developing both web and mobile applications.
+          </div>
         </ContentLine>
         <ContentLine>
           <ContentLineArrow icon={faAngleRight as IconProp} />

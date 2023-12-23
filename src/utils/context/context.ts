@@ -13,7 +13,7 @@ export type WindowsContextValue = {
   isProjectsOpen: boolean;
   isProjectsMinimized: boolean;
   isProjectsExpanded: boolean;
-  isDesktopAboutOpen: boolean;
+  // isDesktopAboutOpen: boolean;
   closeWelcomeWindow: () => void;
   toggleAboutOpen: () => void;
   openAbout: () => void;
@@ -31,7 +31,8 @@ export type WindowsContextValue = {
   setProjectsMinimized: (flag: boolean) => void;
   toggleProjectsExpanded: () => void;
   setFocusedWindow: (type: FocusedWindowType) => void;
-  toggleDesktopAboutOpen: () => void;
+  unfocusWindows: () => void;
+  // toggleDesktopAboutOpen: () => void;
 };
 
 export const WindowsContext = React.createContext<

@@ -1,14 +1,16 @@
-import * as React from "react";
-import { FocusedWindowType } from "../../types";
-import { WindowsContext } from "./context";
+import * as React from 'react';
+import { FocusedWindowType } from '../../types';
+import { WindowsContext } from './context';
 
 type WindowsProviderProps = {
-  children?: React.ReactNode
-}
+  children?: React.ReactNode;
+};
 
-export const WindowsProvider: React.FC<WindowsProviderProps> = ({ children }) => {
+export const WindowsProvider: React.FC<WindowsProviderProps> = ({
+  children,
+}) => {
   const [focusedWindow, setFocusedWindow] =
-    React.useState<FocusedWindowType>("Welcome");
+    React.useState<FocusedWindowType>('Welcome');
 
   const [isWelcomeWindowOpen, setWelcomeWindowOpen] = React.useState(true);
 
@@ -24,42 +26,42 @@ export const WindowsProvider: React.FC<WindowsProviderProps> = ({ children }) =>
   const [isProjectsMinimized, setProjectsMinimized] = React.useState(false);
   const [isProjectsExpanded, setProjectsExpanded] = React.useState(false);
 
-  const [isDesktopAboutOpen, setDesktopAboutOpen] = React.useState(false);
+  // const [isDesktopAboutOpen, setDesktopAboutOpen] = React.useState(false);
 
   const closeWelcomeWindow = () => {
     setWelcomeWindowOpen(false);
-    setFocusedWindow("None");
+    setFocusedWindow('None');
   };
 
-  const toggleDesktopAboutOpen = () => {
-    setDesktopAboutOpen((state) => !state);
+  // const toggleDesktopAboutOpen = () => {
+  //   setDesktopAboutOpen((state) => !state);
 
-    if (!isDesktopAboutOpen) {
-      setFocusedWindow("DesktopAbout");
-    } else {
-      setFocusedWindow("None");
-    }
-  };
+  //   if (!isDesktopAboutOpen) {
+  //     setFocusedWindow("DesktopAbout");
+  //   } else {
+  //     setFocusedWindow("None");
+  //   }
+  // };
 
   const toggleAboutOpen = () => {
     setAboutOpen((state) => !state);
     if (!isAboutOpen) {
       setAboutMinimized(false);
-      setFocusedWindow("About");
+      setFocusedWindow('About');
     } else {
-      setFocusedWindow("None");
+      setFocusedWindow('None');
     }
   };
 
   const openAbout = () => {
     setAboutOpen(true);
     setAboutMinimized(false);
-    setFocusedWindow("About");
+    setFocusedWindow('About');
   };
 
   const closeAbout = () => {
     setAboutOpen(false);
-    setFocusedWindow("None");
+    setFocusedWindow('None');
   };
 
   const toggleAboutExpanded = () => {
@@ -71,21 +73,21 @@ export const WindowsProvider: React.FC<WindowsProviderProps> = ({ children }) =>
 
     if (!isSkillsOpen) {
       setSkillsMinimized(false);
-      setFocusedWindow("Skills");
+      setFocusedWindow('Skills');
     } else {
-      setFocusedWindow("None");
+      setFocusedWindow('None');
     }
   };
 
   const openSkills = () => {
     setSkillsOpen(true);
     setSkillsMinimized(false);
-    setFocusedWindow("Skills");
+    setFocusedWindow('Skills');
   };
 
   const closeSkills = () => {
     setSkillsOpen(false);
-    setFocusedWindow("None");
+    setFocusedWindow('None');
   };
 
   const toggleSkillsExpanded = () => {
@@ -97,25 +99,29 @@ export const WindowsProvider: React.FC<WindowsProviderProps> = ({ children }) =>
 
     if (!isProjectsOpen) {
       setProjectsMinimized(false);
-      setFocusedWindow("Projects");
+      setFocusedWindow('Projects');
     } else {
-      setFocusedWindow("None");
+      setFocusedWindow('None');
     }
   };
 
   const openProjects = () => {
     setProjectsOpen(true);
     setProjectsMinimized(false);
-    setFocusedWindow("Projects");
+    setFocusedWindow('Projects');
   };
 
   const closeProjects = () => {
     setProjectsOpen(false);
-    setFocusedWindow("None");
+    setFocusedWindow('None');
   };
 
   const toggleProjectsExpanded = () => {
     setProjectsExpanded((state) => !state);
+  };
+
+  const unfocusWindows = () => {
+    setFocusedWindow('None');
   };
 
   return (
@@ -132,7 +138,7 @@ export const WindowsProvider: React.FC<WindowsProviderProps> = ({ children }) =>
         isProjectsOpen,
         isProjectsMinimized,
         isProjectsExpanded,
-        isDesktopAboutOpen,
+        // isDesktopAboutOpen,
         closeWelcomeWindow,
         toggleAboutOpen,
         openAbout,
@@ -150,7 +156,8 @@ export const WindowsProvider: React.FC<WindowsProviderProps> = ({ children }) =>
         setProjectsMinimized,
         toggleProjectsExpanded,
         setFocusedWindow,
-        toggleDesktopAboutOpen,
+        unfocusWindows,
+        // toggleDesktopAboutOpen,
       }}
     >
       {children}
