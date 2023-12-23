@@ -102,7 +102,7 @@ export const getIcon = (name: string) => {
     case 'AWS':
       return (
         <IconImageContainer>
-          <img src={aws} alt={name} />
+          <img src={aws} alt={name} style={{ width: 40, height: 40 }} />
         </IconImageContainer>
       );
     case 'Spring':
@@ -166,9 +166,8 @@ export const getIcon = (name: string) => {
           <img src={rProject} alt={name} style={{ width: 40, height: 40 }} />
         </IconImageContainer>
       );
-
     default:
-      return;
+      return <img src={codeFile} alt={name} />;
   }
 };
 

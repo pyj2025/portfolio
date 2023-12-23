@@ -10,7 +10,7 @@ import { useWindows } from '../utils/context/context';
 import { Slide, toast, ToastContainer } from 'react-toastify';
 import { browserName, isBrowser, isMobile } from 'react-device-detect';
 import 'react-toastify/dist/ReactToastify.css';
-import TopbarAboutWindow from '../views/window/desktop/TopbarAboutWindow';
+// import TopbarAboutWindow from '../views/window/desktop/TopbarAboutWindow';
 import { FocusedWindowType } from '../types';
 
 const Container = styled.div`
@@ -27,7 +27,7 @@ export type WindowProps = {
 const BodyContent: React.FC = () => {
   const {
     isWelcomeWindowOpen,
-    isDesktopAboutOpen,
+    // isDesktopAboutOpen,
     isAboutOpen,
     isSkillsOpen,
     isProjectsOpen,
@@ -64,7 +64,7 @@ const BodyContent: React.FC = () => {
         draggablePercent={60}
       />
       {isWelcomeWindowOpen && <WelcomeWindow handleFocus={handleFocus} />}
-      {isDesktopAboutOpen && <TopbarAboutWindow handleFocus={handleFocus} />}
+      {/* {isDesktopAboutOpen && <TopbarAboutWindow handleFocus={handleFocus} />} */}
       {isAboutOpen && <AboutWindow handleFocus={handleFocus} />}
       {isSkillsOpen && <SkillsWindow handleFocus={handleFocus} />}
       {isProjectsOpen && <ProjectsWindow handleFocus={handleFocus} />}
