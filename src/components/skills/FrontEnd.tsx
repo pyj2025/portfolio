@@ -22,14 +22,7 @@ const FrontEnd: React.FC = () => {
   return (
     <ContentContainer>
       {frontEndSkills.map((skill) => {
-        return (
-          <SkillIcon
-            name={skill.name}
-            icon={skill.icon}
-            background={skill.background}
-            iconStyles={skill.iconStyles}
-          />
-        );
+        return <SkillIcon name={skill.name} noWidth={skill.noWidth} />;
       })}
     </ContentContainer>
   );

@@ -1,8 +1,7 @@
-import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import info from "../../info.json";
-import styled from "styled-components";
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
+import info from '../../info.json';
 
 import {
   PanelContainer,
@@ -12,23 +11,14 @@ import {
   PanelLogoContainer,
   PanelDescriptionLabel,
   PanelDescriptionText,
-} from "../../GlobalStyle";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
-
-const LogoImage = styled.img`
-  width: 150px;
-  height: 150px;
-`;
+} from '../../GlobalStyle';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { getIcon } from '../getIcon';
 
 const Portfolio: React.FC = () => {
   return (
     <PanelContainer>
-      <PanelLogoContainer>
-        <LogoImage
-          src="https://img.icons8.com/color/96/000000/code-file.png"
-          alt="code-file"
-        />
-      </PanelLogoContainer>
+      <PanelLogoContainer>{getIcon('CodeFile', 150)}</PanelLogoContainer>
       <PanelDescriptionContainer>
         <PanelDescriptionRow>
           <PanelDescriptionLabel>Name</PanelDescriptionLabel>
@@ -50,7 +40,7 @@ const Portfolio: React.FC = () => {
             {info.project.Portfolio.stack.map((value, idx) =>
               idx === info.project.Portfolio.stack.length - 1
                 ? value
-                : value + ", "
+                : value + ', '
             )}
           </PanelDescriptionText>
         </PanelDescriptionRow>

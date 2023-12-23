@@ -1,24 +1,24 @@
-import React from "react";
-import { DraggableData, Position, ResizableDelta } from "react-rnd";
-import Education from "../../../components/about/Education";
-import About from "../../../components/about/About";
-import Experience from "../../../components/about/Experience";
+import React from 'react';
+import { DraggableData, Position, ResizableDelta } from 'react-rnd';
+import Education from '../../../components/about/Education';
+import About from '../../../components/about/About';
+import Experience from '../../../components/about/Experience';
 import {
   NavItmLabel,
-  TopbarTitleImage,
   Window,
   WindowBody,
   WindowBodyContent,
   WindowBodyNavbar,
   WindowBodyNavItm,
-} from "../../../GlobalStyle";
-import { WindowPositionSetting, WindowSizeSetting } from "../../../types";
-import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
-import WindowTopbar from "../../../components/WindowTopbar";
-import { WindowProps } from "../../../components/BodyContent";
-import { useWindows } from "../../../utils/context/context";
+} from '../../../GlobalStyle';
+import { WindowPositionSetting, WindowSizeSetting } from '../../../types';
+import useScreenSize, { TABLET_MAX_WIDTH } from '../../../utils/useScreenSize';
+import WindowTopbar from '../../../components/WindowTopbar';
+import { WindowProps } from '../../../components/BodyContent';
+import { useWindows } from '../../../utils/context/context';
+import { SMALL_ICON_SIZE, getIcon } from '../../../components/getIcon';
 
-type IndexType = "About" | "Experience" | "Education";
+type IndexType = 'About' | 'Experience' | 'Education';
 
 const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
@@ -40,7 +40,7 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
     (WindowSizeSetting & WindowPositionSetting) | null
   >(null);
 
-  const [index, setIndex] = React.useState<IndexType>("About");
+  const [index, setIndex] = React.useState<IndexType>('About');
   const [isMobileWindow, setIsMobileWindow] = React.useState<boolean>(false);
   const [showDate, setShowDate] = React.useState<boolean>(false);
 
@@ -71,7 +71,7 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   }, [aboutSize.width, showDate]);
 
   const clickContentBody = () => {
-    setFocusedWindow("About");
+    setFocusedWindow('About');
   };
 
   const handleClick = (name: IndexType) => {
@@ -87,7 +87,7 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
       dragHandleClassName="topbar"
       minWidth={isMobileWindow ? width : 500}
       minHeight={300}
-      style={{ zIndex: focusedWindow === "About" ? 10 : undefined }}
+      style={{ zIndex: focusedWindow === 'About' ? 10 : undefined }}
       onDragStart={handleFocus}
       onDragStop={(_e: any, data: DraggableData) => {
         setAboutPosition({ x: data.x, y: data.y });
@@ -100,10 +100,10 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         position: Position
       ) => {
         const newWidth = Number(
-          ref.style.width.substring(0, ref.style.width.indexOf("p"))
+          ref.style.width.substring(0, ref.style.width.indexOf('p'))
         );
         const newHeight = Number(
-          ref.style.height.substring(0, ref.style.height.indexOf("p"))
+          ref.style.height.substring(0, ref.style.height.indexOf('p'))
         );
 
         setAboutSize({
@@ -128,40 +128,31 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         <WindowBodyNavbar>
           <WindowBodyNavItm
             first
-            onClick={() => handleClick("About")}
-            focus={index === "About"}
+            onClick={() => handleClick('About')}
+            focus={index === 'About'}
           >
-            <TopbarTitleImage
-              src="https://img.icons8.com/color/48/000000/file.png"
-              alt="file"
-            />
+            {getIcon('File', SMALL_ICON_SIZE)}
             <NavItmLabel>Personal Info</NavItmLabel>
           </WindowBodyNavItm>
           <WindowBodyNavItm
-            onClick={() => handleClick("Experience")}
-            focus={index === "Experience"}
+            onClick={() => handleClick('Experience')}
+            focus={index === 'Experience'}
           >
-            <TopbarTitleImage
-              src="https://img.icons8.com/color/48/000000/mac-folder.png"
-              alt="folder"
-            />
+            {getIcon('Folder', SMALL_ICON_SIZE)}
             <NavItmLabel>Experience</NavItmLabel>
           </WindowBodyNavItm>
           <WindowBodyNavItm
-            onClick={() => handleClick("Education")}
-            focus={index === "Education"}
+            onClick={() => handleClick('Education')}
+            focus={index === 'Education'}
           >
-            <TopbarTitleImage
-              src="https://img.icons8.com/color/48/000000/file.png"
-              alt="file"
-            />
+            {getIcon('File', SMALL_ICON_SIZE)}
             <NavItmLabel>Education</NavItmLabel>
           </WindowBodyNavItm>
         </WindowBodyNavbar>
         <WindowBodyContent>
-          {index === "About" ? <About /> : null}
-          {index === "Experience" ? <Experience showDate={showDate} /> : null}
-          {index === "Education" ? <Education /> : null}
+          {index === 'About' ? <About /> : null}
+          {index === 'Experience' ? <Experience showDate={showDate} /> : null}
+          {index === 'Education' ? <Education /> : null}
         </WindowBodyContent>
       </WindowBody>
     </Window>

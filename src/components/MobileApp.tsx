@@ -1,10 +1,11 @@
-import React from "react";
-import { isMobile, isTablet } from "react-device-detect";
-import styled from "styled-components";
+import React from 'react';
+import { isMobile, isTablet } from 'react-device-detect';
+import styled from 'styled-components';
 import useScreenSize, {
   MOBILE_MAX_WIDTH,
   TABLET_MAX_WIDTH,
-} from "../utils/useScreenSize";
+} from '../utils/useScreenSize';
+import { getIcon } from './getIcon';
 
 const Container = styled.div`
   display: flex;
@@ -65,7 +66,7 @@ const MobileApp: React.FC = () => {
   }, [width]);
 
   const handleEmailClick = () => {
-    window.open("mailto:pyj2025@gmail.com");
+    window.open('mailto:pyj2025@gmail.com');
   };
 
   return (
@@ -75,51 +76,26 @@ const MobileApp: React.FC = () => {
           title="Resume"
           href="https://drive.google.com/file/d/1eKA2yZLv_271nj6TJD316C5zGx-NPiMH/view?usp=sharing"
         >
-          <IconImageContainer>
-            <img
-              src="https://img.icons8.com/color/48/000000/google-docs.png"
-              alt="google-docs"
-            />
-          </IconImageContainer>
+          <IconImageContainer>{getIcon('Resume')}</IconImageContainer>
           <IconLabel>Resume</IconLabel>
         </MenuItem>
         <MenuItem title="Github" href="https://github.com/pyj2025">
-          <IconImageContainer>
-            <img
-              src="https://img.icons8.com/material-outlined/48/000000/github.png"
-              alt="Github"
-            />
-          </IconImageContainer>
+          <IconImageContainer>{getIcon('Github')}</IconImageContainer>
           <IconLabel>Github</IconLabel>
         </MenuItem>
         <MenuItem title="Linkedin" href="https://www.linkedin.com/in/devjoon/">
-          <IconImageContainer>
-            <img
-              src="https://img.icons8.com/fluency/48/000000/linkedin.png"
-              alt="Linkedin"
-            />
-          </IconImageContainer>
+          <IconImageContainer>{getIcon('Linkedin')}</IconImageContainer>
           <IconLabel>Linkedin</IconLabel>
         </MenuItem>
         <MenuItem
           title="Facebook"
           href="https://www.facebook.com/youngjoon.park.71"
         >
-          <IconImageContainer>
-            <img
-              src="https://img.icons8.com/color/48/000000/facebook-new.png"
-              alt="Facebook"
-            />
-          </IconImageContainer>
+          <IconImageContainer>{getIcon('Facebook')}</IconImageContainer>
           <IconLabel>Facebook</IconLabel>
         </MenuItem>
         <MenuItem title="Email" onClick={handleEmailClick}>
-          <IconImageContainer>
-            <img
-              src="https://img.icons8.com/color/48/000000/gmail-new.png"
-              alt="Email"
-            />
-          </IconImageContainer>
+          <IconImageContainer>{getIcon('Email')}</IconImageContainer>
           <IconLabel>Email</IconLabel>
         </MenuItem>
       </MenuWrapper>

@@ -1,7 +1,7 @@
-import React from "react";
-import info from "../../info.json";
-import styled from "styled-components";
-import SkillIcon, { SkillIconProps } from "./SkillIcon";
+import React from 'react';
+import info from '../../info.json';
+import styled from 'styled-components';
+import SkillIcon, { SkillIconProps } from './SkillIcon';
 
 const ContentContainer = styled.div`
   display: flex;
@@ -20,14 +20,7 @@ const ProgrammingLanguage: React.FC = () => {
   return (
     <ContentContainer>
       {languages.map((skill) => {
-        return (
-          <SkillIcon
-            name={skill.name}
-            icon={skill.icon}
-            background={skill.background}
-            noWidth={skill.noWidth}
-          />
-        );
+        return <SkillIcon name={skill.name} noWidth={skill.noWidth} />;
       })}
     </ContentContainer>
   );

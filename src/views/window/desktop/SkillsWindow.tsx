@@ -1,26 +1,26 @@
-import React from "react";
-import { DraggableData, Position, ResizableDelta } from "react-rnd";
-import { WindowPositionSetting, WindowSizeSetting } from "../../../types";
+import React from 'react';
+import { DraggableData, Position, ResizableDelta } from 'react-rnd';
+import { WindowPositionSetting, WindowSizeSetting } from '../../../types';
 import {
   NavItmLabel,
-  TopbarTitleImage,
   Window,
   WindowBody,
   WindowBodyContent,
   WindowBodyNavbar,
   WindowBodyNavItm,
-} from "../../../GlobalStyle";
+} from '../../../GlobalStyle';
 
-import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
-import { WindowProps } from "../../../components/BodyContent";
-import WindowTopbar from "../../../components/WindowTopbar";
-import FrontEnd from "../../../components/skills/FrontEnd";
-import BackEnd from "../../../components/skills/BackEnd";
-import Mobile from "../../../components/skills/Mobile";
-import ProgrammingLanguage from "../../../components/skills/ProgrammingLanguage";
-import { useWindows } from "../../../utils/context/context";
+import useScreenSize, { TABLET_MAX_WIDTH } from '../../../utils/useScreenSize';
+import { WindowProps } from '../../../components/BodyContent';
+import WindowTopbar from '../../../components/WindowTopbar';
+import FrontEnd from '../../../components/skills/FrontEnd';
+import BackEnd from '../../../components/skills/BackEnd';
+import Mobile from '../../../components/skills/Mobile';
+import ProgrammingLanguage from '../../../components/skills/ProgrammingLanguage';
+import { useWindows } from '../../../utils/context/context';
+import { SMALL_ICON_SIZE, getIcon } from '../../../components/getIcon';
 
-type IndexType = "Front" | "Back" | "Mobile" | "Programming";
+type IndexType = 'Front' | 'Back' | 'Mobile' | 'Programming';
 
 const SkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
@@ -40,7 +40,7 @@ const SkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const [skillsPrevSetting, setSkillsPrevSetting] = React.useState<
     (WindowSizeSetting & WindowPositionSetting) | null
   >(null);
-  const [index, setIndex] = React.useState<IndexType>("Front");
+  const [index, setIndex] = React.useState<IndexType>('Front');
   const [isMobileWindow, setIsMobileWindow] = React.useState(false);
 
   React.useEffect(() => {
@@ -61,7 +61,7 @@ const SkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   }, [width]);
 
   const clickContentBody = () => {
-    setFocusedWindow("Skills");
+    setFocusedWindow('Skills');
   };
 
   const handleClick = (name: IndexType) => {
@@ -78,7 +78,7 @@ const SkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
       dragHandleClassName="topbar"
       minWidth={isMobileWindow ? width : 525}
       minHeight={300}
-      style={{ zIndex: focusedWindow === "Skills" ? 10 : undefined }}
+      style={{ zIndex: focusedWindow === 'Skills' ? 10 : undefined }}
       onDragStart={handleFocus}
       onDragStop={(_e: any, data: DraggableData) => {
         setSkillsPosition({ x: data.x, y: data.y });
@@ -112,51 +112,43 @@ const SkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         <WindowBodyNavbar>
           <WindowBodyNavItm
             first
-            onClick={() => handleClick("Front")}
-            focus={index === "Front"}
+            onClick={() => handleClick('Front')}
+            focus={index === 'Front'}
+            title="Front-End"
           >
-            <TopbarTitleImage
-              src="https://img.icons8.com/color/48/000000/mac-folder.png"
-              alt="folder"
-            />
+            {getIcon('Folder', SMALL_ICON_SIZE)}
             <NavItmLabel>Front-End</NavItmLabel>
           </WindowBodyNavItm>
           <WindowBodyNavItm
-            onClick={() => handleClick("Back")}
-            focus={index === "Back"}
+            onClick={() => handleClick('Back')}
+            focus={index === 'Back'}
+            title="Back-End"
           >
-            <TopbarTitleImage
-              src="https://img.icons8.com/color/48/000000/mac-folder.png"
-              alt="folder"
-            />
+            {getIcon('Folder', SMALL_ICON_SIZE)}
             <NavItmLabel>Back-End</NavItmLabel>
           </WindowBodyNavItm>
           <WindowBodyNavItm
-            onClick={() => handleClick("Mobile")}
-            focus={index === "Mobile"}
+            onClick={() => handleClick('Mobile')}
+            focus={index === 'Mobile'}
+            title="Mobile"
           >
-            <TopbarTitleImage
-              src="https://img.icons8.com/color/48/000000/code-file.png"
-              alt="folder"
-            />
+            {getIcon('Folder', SMALL_ICON_SIZE)}
             <NavItmLabel>Mobile</NavItmLabel>
           </WindowBodyNavItm>
           <WindowBodyNavItm
-            onClick={() => handleClick("Programming")}
-            focus={index === "Programming"}
+            onClick={() => handleClick('Programming')}
+            focus={index === 'Programming'}
+            title="Language"
           >
-            <TopbarTitleImage
-              src="https://img.icons8.com/color/48/000000/google-code.png"
-              alt="folder"
-            />
+            {getIcon('CodeFile', SMALL_ICON_SIZE)}
             <NavItmLabel>Language</NavItmLabel>
           </WindowBodyNavItm>
         </WindowBodyNavbar>
         <WindowBodyContent>
-          {index === "Front" ? <FrontEnd /> : null}
-          {index === "Back" ? <BackEnd /> : null}
-          {index === "Mobile" ? <Mobile /> : null}
-          {index === "Programming" ? <ProgrammingLanguage /> : null}
+          {index === 'Front' ? <FrontEnd /> : null}
+          {index === 'Back' ? <BackEnd /> : null}
+          {index === 'Mobile' ? <Mobile /> : null}
+          {index === 'Programming' ? <ProgrammingLanguage /> : null}
         </WindowBodyContent>
       </WindowBody>
     </Window>

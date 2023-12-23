@@ -1,16 +1,16 @@
-import React from "react";
+import React from 'react';
 
 import {
   TopbarBtn,
   TopbarBtnContainer,
   TopbarTitle,
-  TopbarTitleImage,
   TopbarTitleText,
   WindowTopbarContainer,
-} from "../GlobalStyle";
-import { WindowPositionSetting, WindowSizeSetting } from "../types";
-import { useWindows } from "../utils/context/context";
-import useScreenSize from "../utils/useScreenSize";
+} from '../GlobalStyle';
+import { WindowPositionSetting, WindowSizeSetting } from '../types';
+import { useWindows } from '../utils/context/context';
+import useScreenSize from '../utils/useScreenSize';
+import { IconType, SMALL_ICON_SIZE, getIcon } from './getIcon';
 
 export type WindowTopbarProps = {
   title: string;
@@ -52,22 +52,20 @@ const WindowTopbar: React.FC<WindowTopbarProps> = ({
     toggleProjectsExpanded,
   } = useWindows();
 
-  const [image, setImage] = React.useState<string>("");
+  const [image, setImage] = React.useState<IconType>('');
 
   React.useEffect(() => {
     switch (title) {
-      case "About": {
-        setImage("https://img.icons8.com/color/48/000000/mac-logo.png");
+      case 'About': {
+        setImage('About');
         break;
       }
-      case "Skills": {
-        setImage(
-          "https://img.icons8.com/color/48/000000/visual-studio-code-2019.png"
-        );
+      case 'Skills': {
+        setImage('Skills');
         break;
       }
-      case "Projects": {
-        setImage("https://img.icons8.com/color/48/000000/mac-folder.png");
+      case 'Projects': {
+        setImage('Projects');
         break;
       }
       default:
@@ -78,15 +76,15 @@ const WindowTopbar: React.FC<WindowTopbarProps> = ({
   const handleClose = () => {
     if (focusedWindow === title) {
       switch (title) {
-        case "About": {
+        case 'About': {
           toggleAboutOpen();
           break;
         }
-        case "Skills": {
+        case 'Skills': {
           toggleSkillsOpen();
           break;
         }
-        case "Projects": {
+        case 'Projects': {
           toggleProjectsOpen();
           break;
         }
@@ -99,17 +97,17 @@ const WindowTopbar: React.FC<WindowTopbarProps> = ({
   const handleMinimized = () => {
     if (focusedWindow === title) {
       switch (title) {
-        case "About": {
+        case 'About': {
           setAboutMinimized(true);
           toggleAboutOpen();
           break;
         }
-        case "Skills": {
+        case 'Skills': {
           setSkillsMinimized(true);
           toggleSkillsOpen();
           break;
         }
-        case "Projects": {
+        case 'Projects': {
           setProjectsMinimized(true);
           toggleProjectsOpen();
           break;
@@ -123,17 +121,17 @@ const WindowTopbar: React.FC<WindowTopbarProps> = ({
   const handleExpand = () => {
     if (focusedWindow === title) {
       switch (title) {
-        case "About": {
+        case 'About': {
           expand(isAboutExpanded);
           toggleAboutExpanded();
           break;
         }
-        case "Skills": {
+        case 'Skills': {
           expand(isSkillsExpanded);
           toggleSkillsExpanded();
           break;
         }
-        case "Projects": {
+        case 'Projects': {
           expand(isProjectsExpanded);
           toggleProjectsExpanded();
           break;
@@ -192,7 +190,7 @@ const WindowTopbar: React.FC<WindowTopbarProps> = ({
       <TopbarBtnContainer>
         <TopbarBtn
           color="close"
-          title={focusedWindow === title ? "Close" : undefined}
+          title={focusedWindow === title ? 'Close' : undefined}
           onClick={handleClose}
           onTouchStart={handleClose}
           disabled={focusedWindow !== title}
@@ -200,7 +198,7 @@ const WindowTopbar: React.FC<WindowTopbarProps> = ({
         <TopbarBtn
           color="minimize"
           title={
-            focusedWindow === title && !isMobileWindow ? "Minimize" : undefined
+            focusedWindow === title && !isMobileWindow ? 'Minimize' : undefined
           }
           onClick={!isMobileWindow ? handleMinimized : undefined}
           disabled={focusedWindow !== title || isMobileWindow}
@@ -208,14 +206,14 @@ const WindowTopbar: React.FC<WindowTopbarProps> = ({
         <TopbarBtn
           color="expand"
           title={
-            focusedWindow === title && !isMobileWindow ? "Expand" : undefined
+            focusedWindow === title && !isMobileWindow ? 'Expand' : undefined
           }
           onClick={!isMobileWindow ? handleExpand : undefined}
           disabled={focusedWindow !== title || isMobileWindow}
         />
       </TopbarBtnContainer>
       <TopbarTitle>
-        <TopbarTitleImage src={image} alt={title} />
+        {getIcon(image, SMALL_ICON_SIZE)}
         <TopbarTitleText>{title}</TopbarTitleText>
       </TopbarTitle>
     </WindowTopbarContainer>

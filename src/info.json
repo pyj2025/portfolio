@@ -112,238 +112,114 @@
     "skills": {
       "front": [
         {
-          "name": "React",
-          "icon": "https://img.icons8.com/color/48/000000/react-native.png",
-          "background": false
+          "name": "React"
         },
         {
-          "name": "Vue",
-          "icon": "https://img.icons8.com/color/48/000000/vue-js.png",
-          "background": false
+          "name": "Vue"
         },
         {
-          "name": "Angular",
-          "icon": "https://img.icons8.com/color/48/000000/angularjs.png",
-          "background": false
+          "name": "Angular"
         },
         {
-          "name": "Nextjs",
-          "icon": "https://api.iconify.design/logos/nextjs.svg",
-          "background": true,
-          "iconStyles": {
-            "width": 40,
-            "height": 40
-          }
+          "name": "Nextjs"
         },
         {
-          "name": "Redux",
-          "icon": "https://img.icons8.com/color/48/000000/redux.png",
-          "background": false
+          "name": "Redux"
         },
         {
-          "name": "jQuery",
-          "icon": "https://img.icons8.com/ios-filled/48/000000/jquery.png",
-          "background": true,
-          "iconStyles": {
-            "width": 40,
-            "height": 40
-          }
+          "name": "jQuery"
         },
         {
-          "name": "Bootstrap",
-          "icon": "https://img.icons8.com/color/48/000000/bootstrap.png",
-          "background": false
+          "name": "Bootstrap"
         },
         {
-          "name": "SASS",
-          "icon": "https://img.icons8.com/color/48/000000/sass.png",
-          "background": false
+          "name": "SASS"
         },
         {
-          "name": "Tailwind",
-          "icon": "https://api.iconify.design/vscode-icons/file-type-tailwind.svg",
-          "background": true,
-          "iconStyles": {
-            "width": 48,
-            "height": 48
-          }
+          "name": "Tailwind"
         },
         {
-          "name": "styled-components",
-          "icon": "https://img.icons8.com/external-flat-juicy-fish/48/000000/external-css-coding-and-development-flat-flat-juicy-fish-2.png",
-          "background": false
+          "name": "styled-components"
         }
       ],
       "back": [
         {
-          "name": "Node.js",
-          "icon": "https://img.icons8.com/color/48/000000/nodejs.png",
-          "background": true,
-          "iconStyles": {
-            "width": 40,
-            "height": 40
-          }
+          "name": "Node.js"
         },
         {
-          "name": "Express",
-          "icon": "https://api.iconify.design/logos/express.svg",
-          "background": true,
-          "iconStyles": {
-            "width": 40,
-            "height": 40
-          }
+          "name": "Express"
         },
         {
-          "name": "NestJS",
-          "icon": "https://api.iconify.design/logos/nestjs.svg",
-          "background": false,
-          "iconStyles": {
-            "width": 40,
-            "height": 40
-          }
+          "name": "NestJS"
         },
         {
-          "name": "AWS",
-          "icon": "https://img.icons8.com/color/48/000000/amazon-web-services.png",
-          "background": true,
-          "iconStyles": {
-            "width": 40,
-            "height": 40
-          }
+          "name": "AWS"
         },
         {
-          "name": "Spring",
-          "icon": "https://img.icons8.com/color/48/000000/spring-logo.png",
-          "background": false,
-          "iconStyles": {
-            "width": 40,
-            "height": 40
-          }
+          "name": "Spring"
         },
         {
-          "name": "Laravel",
-          "icon": "https://api.iconify.design/logos/laravel.svg",
-          "background": false,
-          "iconStyles": {
-            "width": 40,
-            "height": 40
-          }
+          "name": "Laravel"
         },
         {
-          "name": "MongoDB",
-          "icon": "https://img.icons8.com/color/48/000000/mongodb.png",
-          "background": false,
-          "iconStyles": {
-            "width": 40,
-            "height": 40
-          }
+          "name": "MongoDB"
         },
         {
-          "name": "ASP.Net Core",
-          "icon": "https://api.iconify.design/cib/dot-net.svg",
-          "background": true,
-          "iconStyles": {
-            "width": 40,
-            "height": 40
-          }
+          "name": "ASP.Net Core"
         }
       ],
       "mobile": [
         {
           "name": "React Native",
-          "icon": "https://img.icons8.com/color/48/000000/react-native.png",
-          "background": false,
           "noWidth": true
         },
         {
-          "name": "Flutter",
-          "icon": "https://img.icons8.com/color/48/000000/swift.png",
-          "background": false
+          "name": "Flutter"
         },
         {
-          "name": "Swift",
-          "icon": "https://img.icons8.com/color/48/000000/swift.png",
-          "background": false
+          "name": "Swift"
         }
       ],
       "languages": [
         {
-          "name": "TypeScript",
-          "icon": "https://img.icons8.com/color/48/000000/typescript.png",
-          "background": false
+          "name": "TypeScript"
         },
         {
-          "name": "JavaScript",
-          "icon": "https://img.icons8.com/color/48/000000/javascript.png",
-          "background": false
+          "name": "JavaScript"
         },
         {
-          "name": "Python",
-          "icon": "https://img.icons8.com/color/48/000000/python.png",
-          "background": false
+          "name": "Python"
         },
         {
-          "name": "Java",
-          "icon": "https://img.icons8.com/color/48/000000/java.png",
-          "background": true,
-          "iconStyles": {
-            "width": 40,
-            "height": 40
-          }
+          "name": "Java"
         },
         
         {
-          "name": "C#",
-          "icon": "https://img.icons8.com/color/48/000000/c-sharp-logo.png",
-          "background": false
+          "name": "C#"
         },
         {
-          "name": "Dart",
-          "icon": "https://img.icons8.com/color/48/000000/css3.png",
-          "background": false
+          "name": "Dart"
         },
         {
-          "name": "C/C++",
-          "icon": "https://img.icons8.com/color/48/000000/c-plus-plus-logo.png",
-          "background": false
+          "name": "C/C++"
         },
         {
-          "name": "PHP",
-          "icon": "https://img.icons8.com/officel/48/000000/php-logo.png",
-          "background": true,
-          "iconStyles": {
-            "width": 40,
-            "height": 40
-          }
+          "name": "PHP"
         },
         {
-          "name": "HTML5",
-          "icon": "https://img.icons8.com/color/48/000000/html-5--v1.png",
-          "background": false
+          "name": "HTML5"
         },
         {
-          "name": "CSS3",
-          "icon": "https://img.icons8.com/color/48/000000/css3.png",
-          "background": false
+          "name": "CSS3"
         },
         {
-          "name": "MySQL",
-          "icon": "https://img.icons8.com/fluency/48/000000/mysql-logo.png",
-          "background": true,
-          "iconStyles": {
-            "width": 40,
-            "height": 40
-          }
+          "name": "MySQL"
         },
         {
-          "name": "PL/SQL",
-          "icon": "https://img.icons8.com/color/48/000000/code-file.png",
-          "background": false
+          "name": "PL/SQL"
         },
         {
-          "name": "R",
-          "icon": "https://img.icons8.com/external-becris-flat-becris/48/000000/external-r-data-science-becris-flat-becris.png",
-          "background": false
+          "name": "R"
         }
       ]
     }
