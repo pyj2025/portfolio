@@ -1,12 +1,12 @@
-import React from "react";
-import { DraggableData, Position, ResizableDelta } from "react-rnd";
-import { WindowProps } from "../../../components/BodyContent";
+import React from 'react';
+import { DraggableData, Position, ResizableDelta } from 'react-rnd';
+import { WindowProps } from '../../../components/BodyContent';
 import {
   MobileProjects,
   Projects,
   WebProjects,
-} from "../../../components/projects/Projects";
-import WindowTopbar from "../../../components/WindowTopbar";
+} from '../../../components/projects/Projects';
+import WindowTopbar from '../../../components/WindowTopbar';
 import {
   NavItmLabel,
   TopbarTitleImage,
@@ -15,21 +15,22 @@ import {
   WindowBodyContent,
   WindowBodyNavbar,
   WindowBodyNavItm,
-} from "../../../GlobalStyle";
-import { WindowPositionSetting, WindowSizeSetting } from "../../../types";
-import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
-import Foodie from "../../../components/projects/Foodie";
-import Portfolio from "../../../components/projects/Portfolio";
-import DatApex from "../../../components/projects/DatApex";
-import { useWindows } from "../../../utils/context/context";
+} from '../../../GlobalStyle';
+import { WindowPositionSetting, WindowSizeSetting } from '../../../types';
+import useScreenSize, { TABLET_MAX_WIDTH } from '../../../utils/useScreenSize';
+import Foodie from '../../../components/projects/Foodie';
+import Portfolio from '../../../components/projects/Portfolio';
+import DatApex from '../../../components/projects/DatApex';
+import { useWindows } from '../../../utils/context/context';
+import { SMALL_ICON_SIZE, getIcon } from '../../../components/getIcon';
 
 export type IndexType =
-  | "Projects"
-  | "WebProjects"
-  | "MobileProjects"
-  | "DatApex"
-  | "Foodie"
-  | "Portfolio";
+  | 'Projects'
+  | 'WebProjects'
+  | 'MobileProjects'
+  | 'DatApex'
+  | 'Foodie'
+  | 'Portfolio';
 
 const ProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
@@ -50,7 +51,7 @@ const ProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const [projectsPrevSetting, setProjectsPrevSetting] = React.useState<
     (WindowSizeSetting & WindowPositionSetting) | null
   >(null);
-  const [index, setIndex] = React.useState<IndexType>("Projects");
+  const [index, setIndex] = React.useState<IndexType>('Projects');
   const [isMobileWindow, setIsMobileWindow] = React.useState(false);
 
   React.useEffect(() => {
@@ -71,7 +72,7 @@ const ProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   }, [width]);
 
   const clickContentBody = () => {
-    setFocusedWindow("Projects");
+    setFocusedWindow('Projects');
   };
 
   const handleClick = (name: IndexType) => {
@@ -87,7 +88,7 @@ const ProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
       dragHandleClassName="topbar"
       minWidth={isMobileWindow ? width : 525}
       minHeight={300}
-      style={{ zIndex: focusedWindow === "Projects" ? 10 : undefined }}
+      style={{ zIndex: focusedWindow === 'Projects' ? 10 : undefined }}
       onDragStart={handleFocus}
       onDragStop={(_e: any, data: DraggableData) => {
         setProjectsPosition({ x: data.x, y: data.y });
@@ -119,49 +120,40 @@ const ProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
       />
       <WindowBody onClick={clickContentBody}>
         <WindowBodyNavbar>
-          <WindowBodyNavItm first onClick={() => handleClick("Projects")} focus>
-            <TopbarTitleImage
-              src="https://img.icons8.com/color/48/000000/mac-folder.png"
-              alt="folder"
-            />
+          <WindowBodyNavItm first onClick={() => handleClick('Projects')} focus>
+            {getIcon('Folder', SMALL_ICON_SIZE)}
             <NavItmLabel>Projects</NavItmLabel>
           </WindowBodyNavItm>
           <WindowBodyNavItm
-            onClick={() => handleClick("WebProjects")}
+            onClick={() => handleClick('WebProjects')}
             focus={
-              index === "DatApex" ||
-              index === "Portfolio" ||
-              index === "WebProjects"
+              index === 'DatApex' ||
+              index === 'Portfolio' ||
+              index === 'WebProjects'
             }
             isChild
           >
-            <TopbarTitleImage
-              src="https://img.icons8.com/color/48/000000/mac-folder.png"
-              alt="folder"
-            />
+            {getIcon('Folder', SMALL_ICON_SIZE)}
             <NavItmLabel>Web</NavItmLabel>
           </WindowBodyNavItm>
           <WindowBodyNavItm
-            onClick={() => handleClick("MobileProjects")}
-            focus={index === "Foodie" || index === "MobileProjects"}
+            onClick={() => handleClick('MobileProjects')}
+            focus={index === 'Foodie' || index === 'MobileProjects'}
             isChild
           >
-            <TopbarTitleImage
-              src="https://img.icons8.com/color/48/000000/mac-folder.png"
-              alt="folder"
-            />
+            {getIcon('Folder', SMALL_ICON_SIZE)}
             <NavItmLabel>Mobile</NavItmLabel>
           </WindowBodyNavItm>
         </WindowBodyNavbar>
         <WindowBodyContent>
-          {index === "Projects" ? <Projects click={handleClick} /> : null}
-          {index === "WebProjects" ? <WebProjects click={handleClick} /> : null}
-          {index === "MobileProjects" ? (
+          {index === 'Projects' ? <Projects click={handleClick} /> : null}
+          {index === 'WebProjects' ? <WebProjects click={handleClick} /> : null}
+          {index === 'MobileProjects' ? (
             <MobileProjects click={handleClick} />
           ) : null}
-          {index === "DatApex" ? <DatApex /> : null}
-          {index === "Portfolio" ? <Portfolio /> : null}
-          {index === "Foodie" ? <Foodie /> : null}
+          {index === 'DatApex' ? <DatApex /> : null}
+          {index === 'Portfolio' ? <Portfolio /> : null}
+          {index === 'Foodie' ? <Foodie /> : null}
         </WindowBodyContent>
       </WindowBody>
     </Window>

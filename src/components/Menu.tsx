@@ -1,9 +1,10 @@
-import { faCircle } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import styled from "styled-components";
-import { useWindows } from "../utils/context/context";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
+import styled from 'styled-components';
+import { useWindows } from '../utils/context/context';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { getIcon } from './getIcon';
 
 const Container = styled.div`
   display: flex;
@@ -75,68 +76,50 @@ const Menu: React.FC = () => {
   };
 
   const handleEmailClick = () => {
-    window.open("mailto:pyj2025@gmail.com");
+    window.open('mailto:pyj2025@gmail.com');
   };
 
   return (
     <Container>
       <MenuWrapper>
         <MenuItem title="About" onClick={handleAboutClick}>
-          <img
-            src="https://img.icons8.com/color/48/000000/mac-logo.png"
-            alt="Finder"
-          />
-          {isAboutMinimized ? <MinimizedIcon icon={faCircle as IconProp} /> : null}
+          {getIcon('About')}
+          {isAboutMinimized ? (
+            <MinimizedIcon icon={faCircle as IconProp} />
+          ) : null}
         </MenuItem>
         <MenuItem title="Skills" onClick={handleSkillsClick}>
-          <img
-            src="https://img.icons8.com/color/48/000000/visual-studio-code-2019.png"
-            alt="visual-studio-code"
-          />
-          {isSkillsMinimized ? <MinimizedIcon icon={faCircle as IconProp} /> : null}
+          {getIcon('Skills')}
+          {isSkillsMinimized ? (
+            <MinimizedIcon icon={faCircle as IconProp} />
+          ) : null}
         </MenuItem>
         <MenuItem title="Projects" onClick={handleProjectsClick}>
-          <img
-            src="https://img.icons8.com/color/48/000000/mac-folder.png"
-            alt="mac-folder"
-          />
-          {isProjectsMinimized ? <MinimizedIcon icon={faCircle as IconProp} /> : null}
+          {getIcon('Projects')}
+          {isProjectsMinimized ? (
+            <MinimizedIcon icon={faCircle as IconProp} />
+          ) : null}
         </MenuItem>
         <MenuItem
           title="Resume"
           href="https://drive.google.com/file/d/1eKA2yZLv_271nj6TJD316C5zGx-NPiMH/view?usp=sharing"
         >
-          <img
-            src="https://img.icons8.com/color/48/000000/google-docs.png"
-            alt="google-docs"
-          />
+          {getIcon('Resume')}
         </MenuItem>
         <MenuItem title="Github" href="https://github.com/pyj2025">
-          <img
-            src="https://img.icons8.com/material-outlined/48/000000/github.png"
-            alt="Github"
-          />
+          {getIcon('Github')}
         </MenuItem>
         <MenuItem title="Linkedin" href="https://www.linkedin.com/in/devjoon/">
-          <img
-            src="https://img.icons8.com/fluency/48/000000/linkedin.png"
-            alt="Linkedin"
-          />
+          {getIcon('Linkedin')}
         </MenuItem>
         <MenuItem
           title="Facebook"
           href="https://www.facebook.com/youngjoon.park.71"
         >
-          <img
-            src="https://img.icons8.com/color/48/000000/facebook-new.png"
-            alt="Facebook"
-          />
+          {getIcon('Facebook')}
         </MenuItem>
         <MenuItem title="Email" onClick={handleEmailClick}>
-          <img
-            src="https://img.icons8.com/color/48/000000/gmail-new.png"
-            alt="Email"
-          />
+          {getIcon('Email')}
         </MenuItem>
       </MenuWrapper>
     </Container>

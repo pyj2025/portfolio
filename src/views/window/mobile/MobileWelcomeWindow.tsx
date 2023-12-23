@@ -1,14 +1,15 @@
-import React from "react";
-import styled from "styled-components";
-import { Rnd } from "react-rnd";
-import Typist from "react-typist";
-import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
-import { useWindows } from "../../../utils/context/context";
-import { WindowProps } from "../../../components/BodyContent";
-import { WindowPositionSetting, WindowSizeSetting } from "../../../types";
-import Loaded from "../../../components/welcome/Loaded";
-import Intro from "../../../components/welcome/Intro";
-import Contact from "../../../components/welcome/Contact";
+import React from 'react';
+import styled from 'styled-components';
+import { Rnd } from 'react-rnd';
+import Typist from 'react-typist';
+import useScreenSize, { TABLET_MAX_WIDTH } from '../../../utils/useScreenSize';
+import { useWindows } from '../../../utils/context/context';
+import { WindowProps } from '../../../components/BodyContent';
+import { WindowPositionSetting, WindowSizeSetting } from '../../../types';
+import Loaded from '../../../components/welcome/Loaded';
+import Intro from '../../../components/welcome/Intro';
+import Contact from '../../../components/welcome/Contact';
+import { SMALL_ICON_SIZE, getIcon } from '../../../components/getIcon';
 
 const Window = styled(Rnd)`
   width: 100%;
@@ -49,7 +50,7 @@ const TopbarBtn = styled.div<{ color: string; disabled: boolean }>`
   color: #62574c;
   display: inline-block;
   margin-left: ${({ color }: { color: string }) =>
-    color === "close" ? "0px" : "8px"};
+    color === 'close' ? '0px' : '8px'};
   border-radius: 8px;
   align-items: center;
   vertical-align: middle;
@@ -61,14 +62,14 @@ const TopbarBtn = styled.div<{ color: string; disabled: boolean }>`
     disabled: boolean;
   }) =>
     disabled
-      ? "#686B6D"
-      : color === "minimize"
-      ? "#F7BD45"
-      : color === "expand"
-      ? "#5FCB43"
-      : "#ee514a"};
+      ? '#686B6D'
+      : color === 'minimize'
+      ? '#F7BD45'
+      : color === 'expand'
+      ? '#5FCB43'
+      : '#ee514a'};
   cursor: ${({ disabled }: { disabled: boolean }) =>
-    disabled ? undefined : "pointer"};
+    disabled ? undefined : 'pointer'};
 `;
 
 const TopbarTitleImage = styled.img`
@@ -123,7 +124,7 @@ const FirstBadge = styled.div`
 `;
 
 const BadgeArrow = styled.div<{ first?: boolean }>`
-  background-color: ${({ first }) => (first ? "transparent" : "#caa9fa")};
+  background-color: ${({ first }) => (first ? 'transparent' : '#caa9fa')};
   width: 0;
   height: 0;
   border-top: 13px solid transparent;
@@ -184,19 +185,16 @@ const MobileWelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         <TopbarBtnContainer>
           <TopbarBtn
             color="close"
-            title={focusedWindow === "Welcome" ? "Close" : undefined}
+            title={focusedWindow === 'Welcome' ? 'Close' : undefined}
             onClick={closeWelcomeWindow}
             onTouchStart={closeWelcomeWindow}
-            disabled={focusedWindow !== "Welcome"}
+            disabled={focusedWindow !== 'Welcome'}
           />
           <TopbarBtn color="disabled" disabled={true} />
           <TopbarBtn color="disabled" disabled={true} />
         </TopbarBtnContainer>
         <TopbarTitle>
-          <TopbarTitleImage
-            src="https://img.icons8.com/office/40/000000/console.png"
-            alt="Welcome"
-          />
+          {getIcon('Terminal', SMALL_ICON_SIZE)}
           <TopbarTitleText>Welcome</TopbarTitleText>
         </TopbarTitle>
       </WindowTopbar>
@@ -213,7 +211,7 @@ const MobileWelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
                 cursor={{
                   show: true,
                   blink: true,
-                  element: "|",
+                  element: '|',
                   hideWhenDone: true,
                   hideWhenDoneDelay: 100,
                 }}
@@ -235,7 +233,7 @@ const MobileWelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
                 cursor={{
                   show: true,
                   blink: true,
-                  element: "|",
+                  element: '|',
                   hideWhenDone: true,
                   hideWhenDoneDelay: 100,
                 }}
@@ -261,7 +259,7 @@ const MobileWelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
                 cursor={{
                   show: true,
                   blink: true,
-                  element: "|",
+                  element: '|',
                   hideWhenDone: true,
                   hideWhenDoneDelay: 100,
                 }}

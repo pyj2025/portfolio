@@ -1,5 +1,5 @@
-import { Rnd } from "react-rnd";
-import styled from "styled-components";
+import { Rnd } from 'react-rnd';
+import styled from 'styled-components';
 
 //Layout
 export const TwoColumnsGrid = styled.div`
@@ -61,7 +61,7 @@ export const TopbarBtn = styled.div<{ color: string; disabled: boolean }>`
   color: #62574c;
   display: inline-block;
   margin-left: ${({ color }: { color: string }) =>
-    color === "close" ? "0px" : "8px"};
+    color === 'close' ? '0px' : '8px'};
   border-radius: 8px;
   align-items: center;
   vertical-align: middle;
@@ -73,14 +73,14 @@ export const TopbarBtn = styled.div<{ color: string; disabled: boolean }>`
     disabled: boolean;
   }) =>
     disabled
-      ? "#686B6D"
-      : color === "minimize"
-      ? "#F7BD45"
-      : color === "expand"
-      ? "#5FCB43"
-      : "#ee514a"};
+      ? '#686B6D'
+      : color === 'minimize'
+      ? '#F7BD45'
+      : color === 'expand'
+      ? '#5FCB43'
+      : '#ee514a'};
   cursor: ${({ disabled }: { disabled: boolean }) =>
-    disabled ? undefined : "pointer"};
+    disabled ? undefined : 'pointer'};
 `;
 
 export const TopbarTitleImage = styled.img`
@@ -105,7 +105,7 @@ export const WindowBody = styled.div<{ isMobile?: boolean }>`
   display: grid;
 
   grid-template-columns: ${({ isMobile }) =>
-    isMobile ? "50px auto" : "150px auto"};
+    isMobile ? '50px auto' : '150px auto'};
   width: 100%;
   height: calc(100% - 28px);
 `;
@@ -137,13 +137,13 @@ export const WindowBodyNavItm = styled.div<{
   justify-content: flex-start;
   align-items: center;
   background-color: ${({ focus }) =>
-    focus ? "rgba(120, 120, 120, 0.5)" : "transparent"};
+    focus ? 'rgba(120, 120, 120, 0.5)' : 'transparent'};
   color: white;
   margin-top: ${({ first, isChild }) =>
-    first ? "4px" : isChild ? "1px" : undefined};
+    first ? '4px' : isChild ? '1px' : undefined};
   padding-top: 2px;
   padding-bottom: 2px;
-  padding-left: ${({ isChild }) => (isChild ? "24px" : "8px")};
+  padding-left: ${({ isChild }) => (isChild ? '24px' : '8px')};
   cursor: pointer;
 `;
 
@@ -209,7 +209,7 @@ export const PanelDescriptionLabel = styled(MutedText)`
 
 export const PanelDescriptionText = styled.div<{ bold?: boolean }>`
   width: 100%;
-  font-weight: ${({ bold }) => (bold ? "bold" : undefined)};
+  font-weight: ${({ bold }) => (bold ? 'bold' : undefined)};
 `;
 
 export const LinkLabel = styled.a`
@@ -244,9 +244,9 @@ export const MobileNavbarItem = styled.div<{
   justify-content: center;
   align-items: center;
   background-color: ${({ focus }) =>
-    focus ? "rgba(120, 120, 120, 0.5)" : "transparent"};
+    focus ? 'rgba(120, 120, 120, 0.5)' : 'transparent'};
   color: white;
-  margin-top: ${({ isChild }) => (isChild ? "1px" : undefined)};
+  margin-top: ${({ isChild }) => (isChild ? '1px' : undefined)};
   width: 100%;
   height: 3rem;
   cursor: pointer;
@@ -283,7 +283,7 @@ export const MobileWindowMenuItem = styled.div<{
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  background-color: ${({ isEven }) => (isEven ? "transparent" : "#28292a")};
+  background-color: ${({ isEven }) => (isEven ? 'transparent' : '#28292a')};
   color: white;
   padding: 0.25rem 0.5rem;
   width: 100%;

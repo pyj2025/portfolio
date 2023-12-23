@@ -1,9 +1,10 @@
-import { faCircle } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import styled from "styled-components";
-import { useWindows } from "../utils/context/context";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
+import styled from 'styled-components';
+import { useWindows } from '../utils/context/context';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { getIcon } from './getIcon';
 
 const Container = styled.div`
   display: flex;
@@ -111,25 +112,22 @@ const MobileMenu: React.FC = () => {
     <Container>
       <MenuWrapper>
         <MenuItem title="About" onClick={handleAboutClick}>
-          <img
-            src="https://img.icons8.com/color/48/000000/mac-logo.png"
-            alt="Finder"
-          />
-          {isAboutMinimized ? <MinimizedIcon icon={faCircle as IconProp} /> : null}
+          {getIcon('About')}
+          {isAboutMinimized ? (
+            <MinimizedIcon icon={faCircle as IconProp} />
+          ) : null}
         </MenuItem>
         <MenuItem title="Skills" onClick={handleSkillsClick}>
-          <img
-            src="https://img.icons8.com/color/48/000000/visual-studio-code-2019.png"
-            alt="visual-studio-code"
-          />
-          {isSkillsMinimized ? <MinimizedIcon icon={faCircle as IconProp} /> : null}
+          {getIcon('Skills')}
+          {isSkillsMinimized ? (
+            <MinimizedIcon icon={faCircle as IconProp} />
+          ) : null}
         </MenuItem>
         <MenuItem title="Projects" onClick={handleProjectsClick}>
-          <img
-            src="https://img.icons8.com/color/48/000000/mac-folder.png"
-            alt="mac-folder"
-          />
-          {isProjectsMinimized ? <MinimizedIcon icon={faCircle as IconProp} /> : null}
+          {getIcon('Projects')}
+          {isProjectsMinimized ? (
+            <MinimizedIcon icon={faCircle as IconProp} />
+          ) : null}
         </MenuItem>
       </MenuWrapper>
     </Container>

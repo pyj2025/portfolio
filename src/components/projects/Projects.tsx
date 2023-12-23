@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import FoodieLogo from '../../image/projects/Foodie.png';
 import DatApexLogo from '../../image/projects/DatApex.png';
 import { IndexType } from '../../views/window/desktop/ProjectsWindow';
+import { getIcon } from '../getIcon';
 
 type ProjectsProps = {
   click: (name: IndexType) => void;
@@ -40,18 +41,12 @@ export const Projects: React.FC<ProjectsProps> = ({ click }) => {
   return (
     <>
       <IconListContainer>
-        <IconContainer onClick={() => click('WebProjects')}>
-          <img
-            src="https://img.icons8.com/color/48/000000/mac-folder.png"
-            alt="Folder"
-          />
+        <IconContainer title="Web" onClick={() => click('WebProjects')}>
+          {getIcon('Folder')}
           <IconLabel>Web</IconLabel>
         </IconContainer>
-        <IconContainer onClick={() => click('MobileProjects')}>
-          <img
-            src="https://img.icons8.com/color/48/000000/mac-folder.png"
-            alt="Folder"
-          />
+        <IconContainer title="Mobile" onClick={() => click('MobileProjects')}>
+          {getIcon('Folder')}
           <IconLabel>Mobile</IconLabel>
         </IconContainer>
       </IconListContainer>
@@ -68,10 +63,7 @@ export const WebProjects: React.FC<ProjectsProps> = ({ click }) => {
           <IconLabel>DatApex</IconLabel>
         </IconContainer>
         <IconContainer onClick={() => click('Portfolio')}>
-          <img
-            src="https://img.icons8.com/color/48/000000/code-file.png"
-            alt="code-file"
-          />
+          {getIcon('CodeFile')}
           <IconLabel>Portfolio</IconLabel>
         </IconContainer>
       </IconListContainer>

@@ -1,12 +1,12 @@
-import React from "react";
-import { DraggableData, Position, ResizableDelta } from "react-rnd";
-import About from "../../../components/about/About";
-import Education from "../../../components/about/Education";
-import Experience from "../../../components/about/Experience";
-import WindowTopbar from "../../../components/WindowTopbar";
-import { WindowPositionSetting, WindowSizeSetting } from "../../../types";
-import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
-import { WindowProps } from "../../../components/BodyContent";
+import React from 'react';
+import { DraggableData, Position, ResizableDelta } from 'react-rnd';
+import About from '../../../components/about/About';
+import Education from '../../../components/about/Education';
+import Experience from '../../../components/about/Experience';
+import WindowTopbar from '../../../components/WindowTopbar';
+import { WindowPositionSetting, WindowSizeSetting } from '../../../types';
+import useScreenSize, { TABLET_MAX_WIDTH } from '../../../utils/useScreenSize';
+import { WindowProps } from '../../../components/BodyContent';
 
 import {
   MobileBackButton,
@@ -21,13 +21,14 @@ import {
   MobileNavbarItem,
   Window,
   MobileNavbarMenuLabel,
-} from "../../../GlobalStyle";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { useWindows } from "../../../utils/context/context";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
+} from '../../../GlobalStyle';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { useWindows } from '../../../utils/context/context';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { getIcon } from '../../../components/getIcon';
 
-type MobileIndexType = "Menu" | "About" | "Experience" | "Education";
+type MobileIndexType = 'Menu' | 'About' | 'Experience' | 'Education';
 
 type MobileAboutWindowMenuProps = {
   onClick: (index: MobileIndexType) => void;
@@ -38,19 +39,16 @@ const MobileAboutWindowMenu: React.FC<MobileAboutWindowMenuProps> = ({
 }) => {
   return (
     <>
-      <MobileWindowMenuItem onClick={() => onClick("About")}>
-        <img src="https://img.icons8.com/color/48/000000/file.png" alt="file" />
+      <MobileWindowMenuItem onClick={() => onClick('About')}>
+        {getIcon('File')}
         <MobileMenuItemLabel>About</MobileMenuItemLabel>
       </MobileWindowMenuItem>
-      <MobileWindowMenuItem onClick={() => onClick("Experience")} isEven>
-        <img
-          src="https://img.icons8.com/color/48/000000/mac-folder.png"
-          alt="folder"
-        />
+      <MobileWindowMenuItem onClick={() => onClick('Experience')} isEven>
+        {getIcon('Folder')}
         <MobileMenuItemLabel>Experience</MobileMenuItemLabel>
       </MobileWindowMenuItem>
-      <MobileWindowMenuItem onClick={() => onClick("Education")}>
-        <img src="https://img.icons8.com/color/48/000000/file.png" alt="file" />
+      <MobileWindowMenuItem onClick={() => onClick('Education')}>
+        {getIcon('File')}
         <MobileMenuItemLabel>Education</MobileMenuItemLabel>
       </MobileWindowMenuItem>
     </>
@@ -77,7 +75,7 @@ const MobileAboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
     (WindowSizeSetting & WindowPositionSetting) | null
   >(null);
 
-  const [index, setIndex] = React.useState<MobileIndexType>("Menu");
+  const [index, setIndex] = React.useState<MobileIndexType>('Menu');
   const [isMobileWindow, setIsMobileWindow] = React.useState<boolean>(false);
   const [showDate, setShowDate] = React.useState<boolean>(false);
 
@@ -120,7 +118,7 @@ const MobileAboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
       dragHandleClassName="topbar"
       minWidth={isMobileWindow ? width : 500}
       minHeight={300}
-      style={{ zIndex: focusedWindow === "About" ? 10 : undefined }}
+      style={{ zIndex: focusedWindow === 'About' ? 10 : undefined }}
       onDragStart={handleFocus}
       onDragStop={(_e: any, data: DraggableData) => {
         setAboutPosition({ x: data.x, y: data.y });
@@ -133,10 +131,10 @@ const MobileAboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         position: Position
       ) => {
         const newWidth = Number(
-          ref.style.width.substring(0, ref.style.width.indexOf("p"))
+          ref.style.width.substring(0, ref.style.width.indexOf('p'))
         );
         const newHeight = Number(
-          ref.style.height.substring(0, ref.style.height.indexOf("p"))
+          ref.style.height.substring(0, ref.style.height.indexOf('p'))
         );
         setAboutSize({
           width: newWidth,
@@ -160,8 +158,8 @@ const MobileAboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         <MobileNavbar>
           <MobileNavbarItem
             title="About"
-            onClick={() => handleClick("About")}
-            focus={index === "About"}
+            onClick={() => handleClick('About')}
+            focus={index === 'About'}
           >
             <MobileNavbarMenu
               src="https://img.icons8.com/color/48/000000/file.png"
@@ -171,8 +169,8 @@ const MobileAboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
           </MobileNavbarItem>
           <MobileNavbarItem
             title="Experience"
-            onClick={() => handleClick("Experience")}
-            focus={index === "Experience"}
+            onClick={() => handleClick('Experience')}
+            focus={index === 'Experience'}
           >
             <MobileNavbarMenu
               src="https://img.icons8.com/color/48/000000/mac-folder.png"
@@ -182,8 +180,8 @@ const MobileAboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
           </MobileNavbarItem>
           <MobileNavbarItem
             title="Education"
-            onClick={() => handleClick("Education")}
-            focus={index === "Education"}
+            onClick={() => handleClick('Education')}
+            focus={index === 'Education'}
           >
             <MobileNavbarMenu
               src="https://img.icons8.com/color/48/000000/file.png"
@@ -193,20 +191,20 @@ const MobileAboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
           </MobileNavbarItem>
         </MobileNavbar>
         <MobileBodyContent>
-          {index === "Menu" ? (
+          {index === 'Menu' ? (
             <MobileAboutWindowMenu onClick={handleClick} />
           ) : (
             <MobilePanel>
               <MobileBackButtonContainer>
-                <MobileBackButton onClick={() => handleClick("Menu")}>
+                <MobileBackButton onClick={() => handleClick('Menu')}>
                   <FontAwesomeIcon icon={faArrowLeft as IconProp} />
                 </MobileBackButton>
               </MobileBackButtonContainer>
-              {index === "About" && <About />}
-              {index === "Experience" && (
+              {index === 'About' && <About />}
+              {index === 'Experience' && (
                 <Experience isMobile={isMobileWindow} showDate={showDate} />
               )}
-              {index === "Education" && <Education />}
+              {index === 'Education' && <Education />}
             </MobilePanel>
           )}
         </MobileBodyContent>
