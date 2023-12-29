@@ -22,22 +22,12 @@ import Portfolio from '../../../components/projects/Portfolio';
 import DatApex from '../../../components/projects/DatApex';
 import { useWindows } from '../../../utils/context/context';
 import { SMALL_ICON_SIZE, getIcon } from '../../../components/getIcon';
+import { IndexType } from '../../../components/projects/type';
 import Tippy from '../../../components/projects/Tippy';
 import Flix from '../../../components/projects/Flix';
 import Twitter from '../../../components/projects/Twitter';
 import Parstagram from '../../../components/projects/Parstagram';
-
-export type IndexType =
-  | 'Projects'
-  | 'WebProjects'
-  | 'MobileProjects'
-  | 'DatApex'
-  | 'Foodie'
-  | 'Tippy'
-  | 'Flix'
-  | 'Twitter'
-  | 'Parstagram'
-  | 'Portfolio';
+import ToonFlix from '../../../components/projects/ToonFlix';
 
 const ProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
@@ -165,6 +155,7 @@ const ProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
           {index === 'Flix' ? <Flix /> : null}
           {index === 'Twitter' ? <Twitter /> : null}
           {index === 'Parstagram' ? <Parstagram /> : null}
+          {index === 'ToonFlix' ? <ToonFlix /> : null}
         </WindowBodyContent>
       </WindowBody>
     </Window>

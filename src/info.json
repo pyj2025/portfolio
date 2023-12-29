@@ -78,12 +78,6 @@
         "stack": ["Swift", "Firebase", "Yelp API", "Google API"],
         "details": "An application that recommends the dining places based on users’ preferences and connects users with QR code."
       },
-      "Portfolio": {
-        "name": "Joon's Portfolio",
-        "link": "https://pyj2025.github.io/portfolio/",
-        "stack": ["React", "Typescript", "Styled-components"],
-        "details": "Joon's portfolio aka this site. It presents who am I, what skills I have, and what kind of work experience I have. Also, it provides my contact methods."
-      },
       "Tippy": {
         "name": "Tippy",
         "link": "https://github.com/park612/TipCalculator",
@@ -107,6 +101,18 @@
         "link": "https://github.com/park612/Parstagram",
         "stack": ["Swift"],
         "details": "This is an Instagram clone with a custom Parse backend that allows a user to post photos and view a global photos feed."
+      },
+      "ToonFlix": {
+        "name": "ToonFlix",
+        "link": "https://github.com/pyj2025/toonflix",
+        "stack": ["Flutter"],
+        "details": "ToonFlix is a Flutter app that allows users to dive into Naver's awesome webtoon collection."
+      },
+      "Portfolio": {
+        "name": "Joon's Portfolio",
+        "link": "https://pyj2025.github.io/portfolio/",
+        "stack": ["React", "Typescript", "Styled-components"],
+        "details": "Joon's portfolio aka this site. It presents who am I, what skills I have, and what kind of work experience I have. Also, it provides my contact methods."
       }
     },
     "skills": {
