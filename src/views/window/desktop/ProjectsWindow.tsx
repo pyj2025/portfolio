@@ -9,7 +9,6 @@ import {
 import WindowTopbar from '../../../components/WindowTopbar';
 import {
   NavItmLabel,
-  TopbarTitleImage,
   Window,
   WindowBody,
   WindowBodyContent,
@@ -23,6 +22,10 @@ import Portfolio from '../../../components/projects/Portfolio';
 import DatApex from '../../../components/projects/DatApex';
 import { useWindows } from '../../../utils/context/context';
 import { SMALL_ICON_SIZE, getIcon } from '../../../components/getIcon';
+import Tippy from '../../../components/projects/Tippy';
+import Flix from '../../../components/projects/Flix';
+import Twitter from '../../../components/projects/Twitter';
+import Parstagram from '../../../components/projects/Parstagram';
 
 export type IndexType =
   | 'Projects'
@@ -30,6 +33,10 @@ export type IndexType =
   | 'MobileProjects'
   | 'DatApex'
   | 'Foodie'
+  | 'Tippy'
+  | 'Flix'
+  | 'Twitter'
+  | 'Parstagram'
   | 'Portfolio';
 
 const ProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
@@ -154,6 +161,10 @@ const ProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
           {index === 'DatApex' ? <DatApex /> : null}
           {index === 'Portfolio' ? <Portfolio /> : null}
           {index === 'Foodie' ? <Foodie /> : null}
+          {index === 'Tippy' ? <Tippy /> : null}
+          {index === 'Flix' ? <Flix /> : null}
+          {index === 'Twitter' ? <Twitter /> : null}
+          {index === 'Parstagram' ? <Parstagram /> : null}
         </WindowBodyContent>
       </WindowBody>
     </Window>

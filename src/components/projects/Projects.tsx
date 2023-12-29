@@ -79,6 +79,22 @@ export const MobileProjects: React.FC<ProjectsProps> = ({ click }) => {
           <IconLogoImage src={FoodieLogo} alt="Foodie" />
           <IconLabel>Foodie</IconLabel>
         </IconContainer>
+        <IconContainer onClick={() => click('Tippy')}>
+          {getIcon('CodeFile')}
+          <IconLabel>Tippy</IconLabel>
+        </IconContainer>
+        <IconContainer onClick={() => click('Flix')}>
+          {getIcon('CodeFile')}
+          <IconLabel>Flix</IconLabel>
+        </IconContainer>
+        <IconContainer onClick={() => click('Twitter')}>
+          {getIcon('CodeFile')}
+          <IconLabel>Twitter</IconLabel>
+        </IconContainer>
+        <IconContainer onClick={() => click('Parstagram')}>
+          {getIcon('CodeFile')}
+          <IconLabel>Parstagram</IconLabel>
+        </IconContainer>
       </IconListContainer>
     </>
   );
