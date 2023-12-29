@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import FoodieLogo from '../../image/projects/Foodie.png';
 import DatApexLogo from '../../image/projects/DatApex.png';
-import { IndexType } from '../../views/window/desktop/ProjectsWindow';
 import { getIcon } from '../getIcon';
+import { IndexType } from './type';
 
 type ProjectsProps = {
   click: (name: IndexType) => void;
@@ -78,6 +78,10 @@ export const MobileProjects: React.FC<ProjectsProps> = ({ click }) => {
         <IconContainer onClick={() => click('Foodie')}>
           <IconLogoImage src={FoodieLogo} alt="Foodie" />
           <IconLabel>Foodie</IconLabel>
+        </IconContainer>
+        <IconContainer onClick={() => click('ToonFlix')}>
+          {getIcon('CodeFile')}
+          <IconLabel>ToonFlix</IconLabel>
         </IconContainer>
         <IconContainer onClick={() => click('Tippy')}>
           {getIcon('CodeFile')}
