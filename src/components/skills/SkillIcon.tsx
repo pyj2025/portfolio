@@ -33,4 +33,4 @@ const SkillIcon: React.FC<SkillIconProps> = ({ name, noWidth }) => {
   );
 };
 
-export default SkillIcon;
+export default React.memo(SkillIcon);
