@@ -15,7 +15,6 @@ import {
   MobilePanel,
   MobileMenuItemLabel,
   MobileNavbar,
-  MobileNavbarMenu,
   MobileWindowBody,
   MobileWindowMenuItem,
   MobileNavbarItem,
@@ -26,7 +25,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { useWindows } from '../../../utils/context/context';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { getIcon } from '../../../components/getIcon';
+import { getIcon, getMobileNavbarMenuIcon } from '../../../components/getIcon';
 
 type MobileIndexType = 'Menu' | 'About' | 'Experience' | 'Education';
 
@@ -161,10 +160,7 @@ const MobileAboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
             onClick={() => handleClick('About')}
             focus={index === 'About'}
           >
-            <MobileNavbarMenu
-              src="https://img.icons8.com/color/48/000000/file.png"
-              alt="file"
-            />
+            {getMobileNavbarMenuIcon('File')}
             <MobileNavbarMenuLabel>About</MobileNavbarMenuLabel>
           </MobileNavbarItem>
           <MobileNavbarItem
@@ -172,10 +168,7 @@ const MobileAboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
             onClick={() => handleClick('Experience')}
             focus={index === 'Experience'}
           >
-            <MobileNavbarMenu
-              src="https://img.icons8.com/color/48/000000/mac-folder.png"
-              alt="folder"
-            />
+            {getMobileNavbarMenuIcon('Folder')}
             <MobileNavbarMenuLabel>Experience</MobileNavbarMenuLabel>
           </MobileNavbarItem>
           <MobileNavbarItem
@@ -183,10 +176,7 @@ const MobileAboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
             onClick={() => handleClick('Education')}
             focus={index === 'Education'}
           >
-            <MobileNavbarMenu
-              src="https://img.icons8.com/color/48/000000/file.png"
-              alt="file"
-            />
+            {getMobileNavbarMenuIcon('File')}
             <MobileNavbarMenuLabel>Education</MobileNavbarMenuLabel>
           </MobileNavbarItem>
         </MobileNavbar>

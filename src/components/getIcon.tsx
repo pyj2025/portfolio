@@ -9,6 +9,7 @@ import gmail from '../image/icons/gmail.png';
 import file from '../image/icons/file.png';
 import codeFile from '../image/icons/codeFile.png';
 import terminal from '../image/icons/terminal.png';
+import { MobileNavbarMenu } from '../GlobalStyle';
 
 export const SMALL_ICON_SIZE = 16;
 
@@ -52,6 +53,19 @@ export const getIcon = (name: string, size?: number) => {
       return <img src={codeFile} alt={name} width={size} height={size} />;
     case 'Terminal':
       return <img src={terminal} alt={name} width={size} height={size} />;
+    default:
+      return;
+  }
+};
+
+export const getMobileNavbarMenuIcon = (name: string) => {
+  switch (name) {
+    case 'Folder':
+      return <MobileNavbarMenu src={folder} alt={name} />;
+    case 'File':
+      return <MobileNavbarMenu src={file} alt={name} />;
+    case 'CodeFile':
+      return <MobileNavbarMenu src={codeFile} alt={name} />;
     default:
       return;
   }

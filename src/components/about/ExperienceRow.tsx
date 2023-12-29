@@ -1,13 +1,14 @@
 import {
   faChevronDown,
   faChevronRight,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import React from "react";
-import styled from "styled-components";
-import { BoldText, MutedText } from "../../GlobalStyle";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import React from 'react';
+import styled from 'styled-components';
+import { BoldText, MutedText } from '../../GlobalStyle';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { getIcon } from '../getIcon';
 
 export const DataRow = styled.div<{
   isEven?: boolean;
@@ -16,10 +17,10 @@ export const DataRow = styled.div<{
 }>`
   display: grid;
   grid-template-columns: ${({ showDate }) =>
-    showDate ? "6.5fr 3.5fr" : "auto"};
+    showDate ? '6.5fr 3.5fr' : 'auto'};
   width: 100%;
-  height: ${({ isMobile }) => (isMobile ? "3rem" : "100%")};
-  background-color: ${({ isEven }) => (isEven ? "#28292a" : "transparent")};
+  height: ${({ isMobile }) => (isMobile ? '3rem' : '100%')};
+  background-color: ${({ isEven }) => (isEven ? '#28292a' : 'transparent')};
   padding-left: 0.5rem;
 
   cursor: pointer;
@@ -30,11 +31,6 @@ export const PositionContainer = styled.div<{ isEven?: boolean }>`
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-`;
-
-const FileImage = styled.img<{ isMobile?: boolean }>`
-  width: ${({ isMobile }) => (isMobile ? "2.5rem" : "1.25rem")};
-  height: ${({ isMobile }) => (isMobile ? "2.5rem" : "1.25rem")};
 `;
 
 const DateLabel = styled(MutedText)`
@@ -97,12 +93,14 @@ const ExperienceRow: React.FC<ExperienceRowProps> = ({
         onClick={toggleOpen}
       >
         <PositionContainer>
-          <FontAwesomeIcon icon={isOpen ? faChevronDown as IconProp : faChevronRight as IconProp} />
-          <FileImage
-            isMobile={isMobile}
-            src="https://img.icons8.com/color/48/000000/file.png"
-            alt="file"
+          <FontAwesomeIcon
+            icon={
+              isOpen
+                ? (faChevronDown as IconProp)
+                : (faChevronRight as IconProp)
+            }
           />
+          {getIcon('File', isMobile ? 40 : 20)}
           <BoldText>{experience.title}</BoldText>
         </PositionContainer>
         {showDate ? <DateLabel>{experience.date}</DateLabel> : null}
