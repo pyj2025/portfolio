@@ -28,6 +28,10 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { useWindows } from '../../../utils/context/context';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { getMobileNavbarMenuIcon } from '../../../components/getIcon';
+import Tippy from '../../../components/projects/Tippy';
+import Flix from '../../../components/projects/Flix';
+import Twitter from '../../../components/projects/Twitter';
+import Parstagram from '../../../components/projects/Parstagram';
 
 export type IndexType =
   | 'Projects'
@@ -35,6 +39,10 @@ export type IndexType =
   | 'MobileProjects'
   | 'DatApex'
   | 'Foodie'
+  | 'Tippy'
+  | 'Flix'
+  | 'Twitter'
+  | 'Parstagram'
   | 'Portfolio';
 
 const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
@@ -186,6 +194,46 @@ const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
                 </MobileBackButton>
               </MobileBackButtonContainer>
               <Foodie />
+            </MobilePanel>
+          ) : null}
+          {index === 'Tippy' ? (
+            <MobilePanel>
+              <MobileBackButtonContainer>
+                <MobileBackButton onClick={() => handleClick('MobileProjects')}>
+                  <FontAwesomeIcon icon={faArrowLeft as IconProp} />
+                </MobileBackButton>
+              </MobileBackButtonContainer>
+              <Tippy />
+            </MobilePanel>
+          ) : null}
+          {index === 'Flix' ? (
+            <MobilePanel>
+              <MobileBackButtonContainer>
+                <MobileBackButton onClick={() => handleClick('MobileProjects')}>
+                  <FontAwesomeIcon icon={faArrowLeft as IconProp} />
+                </MobileBackButton>
+              </MobileBackButtonContainer>
+              <Flix />
+            </MobilePanel>
+          ) : null}
+          {index === 'Twitter' ? (
+            <MobilePanel>
+              <MobileBackButtonContainer>
+                <MobileBackButton onClick={() => handleClick('MobileProjects')}>
+                  <FontAwesomeIcon icon={faArrowLeft as IconProp} />
+                </MobileBackButton>
+              </MobileBackButtonContainer>
+              <Twitter />
+            </MobilePanel>
+          ) : null}
+          {index === 'Parstagram' ? (
+            <MobilePanel>
+              <MobileBackButtonContainer>
+                <MobileBackButton onClick={() => handleClick('MobileProjects')}>
+                  <FontAwesomeIcon icon={faArrowLeft as IconProp} />
+                </MobileBackButton>
+              </MobileBackButtonContainer>
+              <Parstagram />
             </MobilePanel>
           ) : null}
         </MobileBodyContent>
