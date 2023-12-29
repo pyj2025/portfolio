@@ -1,41 +1,41 @@
-import React from "react";
-import { DraggableData, Position, ResizableDelta } from "react-rnd";
-import { WindowProps } from "../../../components/BodyContent";
+import React from 'react';
+import { DraggableData, Position, ResizableDelta } from 'react-rnd';
+import { WindowProps } from '../../../components/BodyContent';
 import {
   MobileProjects,
   Projects,
   WebProjects,
-} from "../../../components/projects/Projects";
-import WindowTopbar from "../../../components/WindowTopbar";
+} from '../../../components/projects/Projects';
+import WindowTopbar from '../../../components/WindowTopbar';
 import {
   MobileBackButton,
   MobileBackButtonContainer,
   MobileBodyContent,
   MobilePanel,
   MobileNavbar,
-  MobileNavbarMenu,
   MobileWindowBody,
   MobileNavbarItem,
   Window,
   MobileNavbarMenuLabel,
-} from "../../../GlobalStyle";
-import { WindowPositionSetting, WindowSizeSetting } from "../../../types";
-import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
-import Foodie from "../../../components/projects/Foodie";
-import Portfolio from "../../../components/projects/Portfolio";
-import DatApex from "../../../components/projects/DatApex";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { useWindows } from "../../../utils/context/context";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
+} from '../../../GlobalStyle';
+import { WindowPositionSetting, WindowSizeSetting } from '../../../types';
+import useScreenSize, { TABLET_MAX_WIDTH } from '../../../utils/useScreenSize';
+import Foodie from '../../../components/projects/Foodie';
+import Portfolio from '../../../components/projects/Portfolio';
+import DatApex from '../../../components/projects/DatApex';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { useWindows } from '../../../utils/context/context';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { getMobileNavbarMenuIcon } from '../../../components/getIcon';
 
 export type IndexType =
-  | "Projects"
-  | "WebProjects"
-  | "MobileProjects"
-  | "DatApex"
-  | "Foodie"
-  | "Portfolio";
+  | 'Projects'
+  | 'WebProjects'
+  | 'MobileProjects'
+  | 'DatApex'
+  | 'Foodie'
+  | 'Portfolio';
 
 const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
@@ -56,7 +56,7 @@ const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const [projectsPrevSetting, setProjectsPrevSetting] = React.useState<
     (WindowSizeSetting & WindowPositionSetting) | null
   >(null);
-  const [index, setIndex] = React.useState<IndexType>("Projects");
+  const [index, setIndex] = React.useState<IndexType>('Projects');
   const [isMobileWindow, setIsMobileWindow] = React.useState(false);
 
   React.useEffect(() => {
@@ -89,7 +89,7 @@ const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
       dragHandleClassName="topbar"
       minWidth={isMobileWindow ? width : 525}
       minHeight={300}
-      style={{ zIndex: focusedWindow === "Projects" ? 10 : undefined }}
+      style={{ zIndex: focusedWindow === 'Projects' ? 10 : undefined }}
       onDragStart={handleFocus}
       onDragStop={(_e: any, data: DraggableData) => {
         setProjectsPosition({ x: data.x, y: data.y });
@@ -123,74 +123,65 @@ const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         <MobileNavbar>
           <MobileNavbarItem
             title="Projects"
-            onClick={() => handleClick("Projects")}
+            onClick={() => handleClick('Projects')}
             focus
           >
-            <MobileNavbarMenu
-              src="https://img.icons8.com/color/48/000000/mac-folder.png"
-              alt="folder"
-            />
+            {getMobileNavbarMenuIcon('Folder')}
             <MobileNavbarMenuLabel>Projects</MobileNavbarMenuLabel>
           </MobileNavbarItem>
           <MobileNavbarItem
             title="Web"
-            onClick={() => handleClick("WebProjects")}
+            onClick={() => handleClick('WebProjects')}
             focus={
-              index === "DatApex" ||
-              index === "Portfolio" ||
-              index === "WebProjects"
+              index === 'DatApex' ||
+              index === 'Portfolio' ||
+              index === 'WebProjects'
             }
             isChild
           >
-            <MobileNavbarMenu
-              src="https://img.icons8.com/color/48/000000/mac-folder.png"
-              alt="folder"
-            />
+            {getMobileNavbarMenuIcon('Folder')}
             <MobileNavbarMenuLabel>Web</MobileNavbarMenuLabel>
           </MobileNavbarItem>
           <MobileNavbarItem
             title="Mobile"
-            onClick={() => handleClick("MobileProjects")}
-            focus={index === "Foodie" || index === "MobileProjects"}
+            onClick={() => handleClick('MobileProjects')}
+            focus={index === 'Foodie' || index === 'MobileProjects'}
             isChild
           >
-            <MobileNavbarMenu
-              src="https://img.icons8.com/color/48/000000/mac-folder.png"
-              alt="folder"
-            />
+            {getMobileNavbarMenuIcon('Folder')}
             <MobileNavbarMenuLabel>Mobile</MobileNavbarMenuLabel>
           </MobileNavbarItem>
         </MobileNavbar>
         <MobileBodyContent>
-          {index === "Projects" ? <Projects click={handleClick} /> : null}
-          {index === "WebProjects" ? <WebProjects click={handleClick} /> : null}
-          {index === "MobileProjects" ? (
+          {index === 'Projects' ? <Projects click={handleClick} /> : null}
+          {index === 'WebProjects' ? <WebProjects click={handleClick} /> : null}
+          {index === 'MobileProjects' ? (
             <MobileProjects click={handleClick} />
           ) : null}
-          {index === "DatApex" ? (
+          {index === 'DatApex' ? (
             <MobilePanel>
               <MobileBackButtonContainer>
-                <MobileBackButton onClick={() => handleClick("WebProjects")}>
+                <MobileBackButton onClick={() => handleClick('WebProjects')}>
                   <FontAwesomeIcon icon={faArrowLeft as IconProp} />
                 </MobileBackButton>
               </MobileBackButtonContainer>
               <DatApex />
             </MobilePanel>
           ) : null}
-          {index === "Portfolio" ? (
+          {index === 'Portfolio' ? (
             <MobilePanel>
               <MobileBackButtonContainer>
-                <MobileBackButton onClick={() => handleClick("WebProjects")}>
+                <MobileBackButton onClick={() => handleClick('WebProjects')}>
                   <FontAwesomeIcon icon={faArrowLeft as IconProp} />
                 </MobileBackButton>
               </MobileBackButtonContainer>
               <Portfolio />
             </MobilePanel>
           ) : null}
-          {index === "Foodie" ? (
+          {index === 'Foodie' ? (
             <MobilePanel>
               <MobileBackButtonContainer>
-                <MobileBackButton onClick={() => handleClick("MobileProjects")}>
+                <MobileBackButton onClick={() => handleClick('MobileProjects')}>
                   <FontAwesomeIcon icon={faArrowLeft as IconProp} />
                 </MobileBackButton>
               </MobileBackButtonContainer>

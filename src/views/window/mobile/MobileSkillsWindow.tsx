@@ -8,7 +8,6 @@ import {
   MobilePanel,
   MobileMenuItemLabel,
   MobileNavbar,
-  MobileNavbarMenu,
   MobileWindowBody,
   MobileWindowMenuItem,
   MobileNavbarItem,
@@ -27,7 +26,7 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useWindows } from '../../../utils/context/context';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { getIcon } from '../../../components/getIcon';
+import { getIcon, getMobileNavbarMenuIcon } from '../../../components/getIcon';
 
 type MobileIndexType = 'Menu' | 'Front' | 'Back' | 'Mobile' | 'Programming';
 
@@ -149,10 +148,7 @@ const MobileSkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
             onClick={() => handleClick('Front')}
             focus={index === 'Front'}
           >
-            <MobileNavbarMenu
-              src="https://img.icons8.com/color/48/000000/mac-folder.png"
-              alt="folder"
-            />
+            {getMobileNavbarMenuIcon('Folder')}
             <MobileNavbarMenuLabel>Front</MobileNavbarMenuLabel>
           </MobileNavbarItem>
           <MobileNavbarItem
@@ -160,10 +156,7 @@ const MobileSkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
             onClick={() => handleClick('Back')}
             focus={index === 'Back'}
           >
-            <MobileNavbarMenu
-              src="https://img.icons8.com/color/48/000000/mac-folder.png"
-              alt="folder"
-            />
+            {getMobileNavbarMenuIcon('Folder')}
             <MobileNavbarMenuLabel>Back</MobileNavbarMenuLabel>
           </MobileNavbarItem>
           <MobileNavbarItem
@@ -171,10 +164,7 @@ const MobileSkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
             onClick={() => handleClick('Mobile')}
             focus={index === 'Mobile'}
           >
-            <MobileNavbarMenu
-              src="https://img.icons8.com/color/48/000000/code-file.png"
-              alt="folder"
-            />
+            {getMobileNavbarMenuIcon('Folder')}
             <MobileNavbarMenuLabel>Mobile</MobileNavbarMenuLabel>
           </MobileNavbarItem>
           <MobileNavbarItem
@@ -182,10 +172,7 @@ const MobileSkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
             onClick={() => handleClick('Programming')}
             focus={index === 'Programming'}
           >
-            <MobileNavbarMenu
-              src="https://img.icons8.com/color/48/000000/google-code.png"
-              alt="folder"
-            />
+            {getMobileNavbarMenuIcon('CodeFile')}
             <MobileNavbarMenuLabel>Language</MobileNavbarMenuLabel>
           </MobileNavbarItem>
         </MobileNavbar>

@@ -72,11 +72,6 @@ const TopbarBtn = styled.div<{ color: string; disabled: boolean }>`
     disabled ? undefined : 'pointer'};
 `;
 
-const TopbarTitleImage = styled.img`
-  width: 16px;
-  height: 16px;
-`;
-
 const TopbarTitle = styled.div`
   display: flex;
   justify-content: center;
