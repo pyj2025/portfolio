@@ -51,4 +51,4 @@ const Tippy: React.FC = () => {
   );
 };
 
-export default Tippy;
+export default React.memo(Tippy);

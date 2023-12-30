@@ -51,4 +51,4 @@ const Foodie: React.FC = () => {
   );
 };
 
-export default Foodie;
+export default React.memo(Foodie);

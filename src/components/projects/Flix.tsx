@@ -51,4 +51,4 @@ const Flix: React.FC = () => {
   );
 };
 
-export default Flix;
+export default React.memo(Flix);

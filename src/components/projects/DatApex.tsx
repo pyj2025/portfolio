@@ -57,4 +57,4 @@ const DatApex: React.FC = () => {
   );
 };
 
-export default DatApex;
+export default React.memo(DatApex);

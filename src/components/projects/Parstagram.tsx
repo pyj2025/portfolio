@@ -55,4 +55,4 @@ const Parstagram: React.FC = () => {
   );
 };
 
-export default Parstagram;
+export default React.memo(Parstagram);
