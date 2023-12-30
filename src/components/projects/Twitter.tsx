@@ -53,4 +53,4 @@ const Twitter: React.FC = () => {
   );
 };
 
-export default Twitter;
+export default React.memo(Twitter);

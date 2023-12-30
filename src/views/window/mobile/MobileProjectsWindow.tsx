@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { DraggableData, Position, ResizableDelta } from 'react-rnd';
 import { WindowProps } from '../../../components/BodyContent';
 import {
@@ -34,6 +34,27 @@ import Flix from '../../../components/projects/Flix';
 import Twitter from '../../../components/projects/Twitter';
 import Parstagram from '../../../components/projects/Parstagram';
 import ToonFlix from '../../../components/projects/ToonFlix';
+
+type MobilePanelWrapperProps = {
+  backIndex: string;
+  onClick: (index: string) => void;
+  children?: ReactNode;
+};
+
+const MobilePanelWrapper: React.FC<MobilePanelWrapperProps> = React.memo(
+  ({ backIndex, onClick, children }) => {
+    return (
+      <MobilePanel>
+        <MobileBackButtonContainer>
+          <MobileBackButton onClick={() => onClick(backIndex)}>
+            <FontAwesomeIcon icon={faArrowLeft as IconProp} />
+          </MobileBackButton>
+        </MobileBackButtonContainer>
+        {children}
+      </MobilePanel>
+    );
+  }
+);
 
 const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
@@ -74,9 +95,13 @@ const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [width]);
 
-  const handleClick = (name: IndexType) => {
-    setIndex(name);
-  };
+  const handleClick = React.useCallback(
+    (name: IndexType) => {
+      setIndex(name);
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [index]
+  );
 
   return (
     <Window
@@ -157,84 +182,76 @@ const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
             <MobileProjects click={handleClick} />
           ) : null}
           {index === 'DatApex' ? (
-            <MobilePanel>
-              <MobileBackButtonContainer>
-                <MobileBackButton onClick={() => handleClick('WebProjects')}>
-                  <FontAwesomeIcon icon={faArrowLeft as IconProp} />
-                </MobileBackButton>
-              </MobileBackButtonContainer>
+            <MobilePanelWrapper
+              key={index}
+              backIndex={'WebProjects'}
+              onClick={() => handleClick('WebProjects')}
+            >
               <DatApex />
-            </MobilePanel>
+            </MobilePanelWrapper>
           ) : null}
           {index === 'Portfolio' ? (
-            <MobilePanel>
-              <MobileBackButtonContainer>
-                <MobileBackButton onClick={() => handleClick('WebProjects')}>
-                  <FontAwesomeIcon icon={faArrowLeft as IconProp} />
-                </MobileBackButton>
-              </MobileBackButtonContainer>
+            <MobilePanelWrapper
+              key={index}
+              backIndex={'WebProjects'}
+              onClick={() => handleClick('WebProjects')}
+            >
               <Portfolio />
-            </MobilePanel>
+            </MobilePanelWrapper>
           ) : null}
           {index === 'Foodie' ? (
-            <MobilePanel>
-              <MobileBackButtonContainer>
-                <MobileBackButton onClick={() => handleClick('MobileProjects')}>
-                  <FontAwesomeIcon icon={faArrowLeft as IconProp} />
-                </MobileBackButton>
-              </MobileBackButtonContainer>
+            <MobilePanelWrapper
+              key={index}
+              backIndex={'MobileProjects'}
+              onClick={() => handleClick('MobileProjects')}
+            >
               <Foodie />
-            </MobilePanel>
+            </MobilePanelWrapper>
           ) : null}
           {index === 'Tippy' ? (
-            <MobilePanel>
-              <MobileBackButtonContainer>
-                <MobileBackButton onClick={() => handleClick('MobileProjects')}>
-                  <FontAwesomeIcon icon={faArrowLeft as IconProp} />
-                </MobileBackButton>
-              </MobileBackButtonContainer>
+            <MobilePanelWrapper
+              key={index}
+              backIndex={'MobileProjects'}
+              onClick={() => handleClick('MobileProjects')}
+            >
               <Tippy />
-            </MobilePanel>
+            </MobilePanelWrapper>
           ) : null}
           {index === 'Flix' ? (
-            <MobilePanel>
-              <MobileBackButtonContainer>
-                <MobileBackButton onClick={() => handleClick('MobileProjects')}>
-                  <FontAwesomeIcon icon={faArrowLeft as IconProp} />
-                </MobileBackButton>
-              </MobileBackButtonContainer>
+            <MobilePanelWrapper
+              key={index}
+              backIndex={'MobileProjects'}
+              onClick={() => handleClick('MobileProjects')}
+            >
               <Flix />
-            </MobilePanel>
+            </MobilePanelWrapper>
           ) : null}
           {index === 'Twitter' ? (
-            <MobilePanel>
-              <MobileBackButtonContainer>
-                <MobileBackButton onClick={() => handleClick('MobileProjects')}>
-                  <FontAwesomeIcon icon={faArrowLeft as IconProp} />
-                </MobileBackButton>
-              </MobileBackButtonContainer>
+            <MobilePanelWrapper
+              key={index}
+              backIndex={'MobileProjects'}
+              onClick={() => handleClick('MobileProjects')}
+            >
               <Twitter />
-            </MobilePanel>
+            </MobilePanelWrapper>
           ) : null}
           {index === 'Parstagram' ? (
-            <MobilePanel>
-              <MobileBackButtonContainer>
-                <MobileBackButton onClick={() => handleClick('MobileProjects')}>
-                  <FontAwesomeIcon icon={faArrowLeft as IconProp} />
-                </MobileBackButton>
-              </MobileBackButtonContainer>
+            <MobilePanelWrapper
+              key={index}
+              backIndex={'MobileProjects'}
+              onClick={() => handleClick('MobileProjects')}
+            >
               <Parstagram />
-            </MobilePanel>
+            </MobilePanelWrapper>
           ) : null}
           {index === 'ToonFlix' ? (
-            <MobilePanel>
-              <MobileBackButtonContainer>
-                <MobileBackButton onClick={() => handleClick('MobileProjects')}>
-                  <FontAwesomeIcon icon={faArrowLeft as IconProp} />
-                </MobileBackButton>
-              </MobileBackButtonContainer>
+            <MobilePanelWrapper
+              key={index}
+              backIndex={'MobileProjects'}
+              onClick={() => handleClick('MobileProjects')}
+            >
               <ToonFlix />
-            </MobilePanel>
+            </MobilePanelWrapper>
           ) : null}
         </MobileBodyContent>
       </MobileWindowBody>

@@ -55,4 +55,4 @@ const ToonFlix: React.FC = () => {
   );
 };
 
-export default ToonFlix;
+export default React.memo(ToonFlix);
