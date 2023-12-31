@@ -80,9 +80,10 @@ const ExperienceRow: React.FC<ExperienceRowProps> = ({
 }) => {
   const [isOpen, setOpen] = React.useState<boolean>(false);
 
-  const toggleOpen = () => {
+  const toggleOpen = React.useCallback(() => {
     setOpen((state) => !state);
-  };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen]);
 
   return (
     <div>
@@ -129,4 +130,4 @@ const ExperienceRow: React.FC<ExperienceRowProps> = ({
   );
 };
 
-export default ExperienceRow;
+export default React.memo(ExperienceRow);

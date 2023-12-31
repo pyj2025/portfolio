@@ -1,6 +1,6 @@
-import React from "react";
-import Typist from "react-typist";
-import styled from "styled-components";
+import React from 'react';
+import Typist from 'react-typist';
+import styled from 'styled-components';
 
 const TerminalRow = styled.div`
   display: flex;
@@ -25,7 +25,7 @@ const Loaded: React.FC<LoadedProps> = ({ setFirstLine }) => {
         cursor={{
           show: true,
           blink: true,
-          element: "|",
+          element: '|',
           hideWhenDone: true,
           hideWhenDoneDelay: 100,
         }}
@@ -37,4 +37,4 @@ const Loaded: React.FC<LoadedProps> = ({ setFirstLine }) => {
   );
 };
 
-export default Loaded;
+export default React.memo(Loaded);

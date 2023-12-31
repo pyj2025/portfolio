@@ -28,4 +28,4 @@ const Mobile: React.FC = () => {
   );
 };
 
-export default Mobile;
+export default React.memo(Mobile);

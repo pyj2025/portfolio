@@ -60,4 +60,4 @@ const Intro: React.FC = () => {
   );
 };
 
-export default Intro;
+export default React.memo(Intro);
