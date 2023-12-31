@@ -26,4 +26,4 @@ const ProgrammingLanguage: React.FC = () => {
   );
 };
 
-export default ProgrammingLanguage;
+export default React.memo(ProgrammingLanguage);

@@ -28,4 +28,4 @@ const FrontEnd: React.FC = () => {
   );
 };
 
-export default FrontEnd;
+export default React.memo(FrontEnd);

@@ -1,11 +1,11 @@
-import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import styled from "styled-components";
-import { BoldText } from "../../GlobalStyle";
-import ExperienceRow, { ExperienceType } from "./ExperienceRow";
-import info from "../../info.json";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
+import styled from 'styled-components';
+import { BoldText } from '../../GlobalStyle';
+import ExperienceRow, { ExperienceType } from './ExperienceRow';
+import info from '../../info.json';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 const Container = styled.div`
   display: flex;
@@ -15,9 +15,9 @@ const Container = styled.div`
 export const DataRow = styled.div<{ showDate?: boolean; isMobile?: boolean }>`
   display: grid;
   grid-template-columns: ${({ showDate }) =>
-    showDate ? "6.5fr 3.5fr" : "auto"};
+    showDate ? '6.5fr 3.5fr' : 'auto'};
   width: 100%;
-  height: ${({ isMobile }) => (isMobile ? "2rem" : "1.25rem")};
+  height: ${({ isMobile }) => (isMobile ? '2rem' : '1.25rem')};
   background-color: rgb(51, 52, 54);
   border-bottom: 1px solid black;
   padding-left: 0.5rem;
@@ -34,7 +34,7 @@ export const SortButtonText = styled(BoldText)`
   margin-right: 0.5rem;
 `;
 
-type SortType = "asc" | "dec";
+type SortType = 'asc' | 'dec';
 
 type ExperienceProps = { showDate: boolean; isMobile?: boolean };
 
@@ -50,15 +50,15 @@ const Experience: React.FC<ExperienceProps> = ({
   const [dateSortType, setDateSortType] = React.useState<SortType | null>(null);
 
   const sortByPosition = React.useCallback(() => {
-    if (positionSortType === "asc") {
+    if (positionSortType === 'asc') {
       setPositionSortType(null);
       setDateSortType(null);
 
       setExperiences((prev) => {
         return [...prev.sort((a, b) => a.dateRank - b.dateRank)];
       });
-    } else if (positionSortType === "dec") {
-      setPositionSortType("asc");
+    } else if (positionSortType === 'dec') {
+      setPositionSortType('asc');
       setDateSortType(null);
 
       setExperiences((prevExperiences) => {
@@ -67,7 +67,7 @@ const Experience: React.FC<ExperienceProps> = ({
         ];
       });
     } else {
-      setPositionSortType("dec");
+      setPositionSortType('dec');
       setDateSortType(null);
 
       setExperiences((prevExperiences) => {
@@ -79,22 +79,22 @@ const Experience: React.FC<ExperienceProps> = ({
   }, [positionSortType]);
 
   const sortByDate = React.useCallback(() => {
-    if (dateSortType === "asc") {
+    if (dateSortType === 'asc') {
       setDateSortType(null);
       setPositionSortType(null);
 
       setExperiences((prev) => {
         return [...prev.sort((a, b) => a.dateRank - b.dateRank)];
       });
-    } else if (dateSortType === "dec") {
-      setDateSortType("asc");
+    } else if (dateSortType === 'dec') {
+      setDateSortType('asc');
       setPositionSortType(null);
 
       setExperiences((prev) => {
         return [...prev.sort((a, b) => b.dateRank - a.dateRank)];
       });
     } else {
-      setDateSortType("dec");
+      setDateSortType('dec');
       setPositionSortType(null);
 
       setExperiences((prev) => {
@@ -110,7 +110,11 @@ const Experience: React.FC<ExperienceProps> = ({
           <SortButtonText>Position</SortButtonText>
           {positionSortType ? (
             <FontAwesomeIcon
-              icon={positionSortType === "asc" ? faChevronUp as IconProp : faChevronDown as IconProp}
+              icon={
+                positionSortType === 'asc'
+                  ? (faChevronUp as IconProp)
+                  : (faChevronDown as IconProp)
+              }
             />
           ) : null}
         </SortButton>
@@ -119,7 +123,11 @@ const Experience: React.FC<ExperienceProps> = ({
             <SortButtonText>Date</SortButtonText>
             {dateSortType ? (
               <FontAwesomeIcon
-                icon={dateSortType === "asc" ? faChevronUp as IconProp : faChevronDown as IconProp}
+                icon={
+                  dateSortType === 'asc'
+                    ? (faChevronUp as IconProp)
+                    : (faChevronDown as IconProp)
+                }
               />
             ) : null}
           </SortButton>
@@ -138,4 +146,4 @@ const Experience: React.FC<ExperienceProps> = ({
   );
 };
 
-export default Experience;
+export default React.memo(Experience);

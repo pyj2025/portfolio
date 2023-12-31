@@ -1,9 +1,9 @@
-import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import styled from "styled-components";
-import info from "../../info.json";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
+import styled from 'styled-components';
+import info from '../../info.json';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 const TerminalRow = styled.div`
   display: flex;
@@ -55,4 +55,4 @@ const Contact: React.FC = () => {
   );
 };
 
-export default Contact;
+export default React.memo(Contact);
