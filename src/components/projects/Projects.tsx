@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import FoodieLogo from '../../image/projects/Foodie.png';
 import DatApexLogo from '../../image/projects/DatApex.png';
 import { getIcon } from '../getIcon';
-import { IndexType } from './type';
+import { ProjectIndexType } from '../../types';
 
 type ProjectsProps = {
-  click: (name: IndexType) => void;
+  click: (name: ProjectIndexType) => void;
 };
 
 const IconListContainer = styled.div`

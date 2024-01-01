@@ -13,14 +13,17 @@ import {
   Window,
   MobileNavbarMenuLabel,
 } from '../../../GlobalStyle';
-import { WindowPositionSetting, WindowSizeSetting } from '../../../types';
+import {
+  ProjectIndexType,
+  WindowPositionSetting,
+  WindowSizeSetting,
+} from '../../../types';
 import useScreenSize, { TABLET_MAX_WIDTH } from '../../../utils/useScreenSize';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { useWindows } from '../../../utils/context/context';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { getMobileNavbarMenuIcon } from '../../../components/getIcon';
-import { IndexType } from '../../../components/projects/type';
 import { getProject } from '../../../components/projects/getProject';
 
 type MobilePanelWrapperProps = {
@@ -63,7 +66,7 @@ const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const [projectsPrevSetting, setProjectsPrevSetting] = React.useState<
     (WindowSizeSetting & WindowPositionSetting) | null
   >(null);
-  const [index, setIndex] = React.useState<IndexType>('Projects');
+  const [index, setIndex] = React.useState<ProjectIndexType>('Projects');
   const [isMobileWindow, setIsMobileWindow] = React.useState(false);
 
   React.useEffect(() => {
@@ -84,7 +87,7 @@ const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   }, [width]);
 
   const handleClick = React.useCallback(
-    (name: IndexType) => {
+    (name: ProjectIndexType) => {
       setIndex(name);
     },
     [setIndex]

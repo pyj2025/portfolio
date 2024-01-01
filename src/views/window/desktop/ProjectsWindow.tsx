@@ -10,11 +10,14 @@ import {
   WindowBodyNavbar,
   WindowBodyNavItm,
 } from '../../../GlobalStyle';
-import { WindowPositionSetting, WindowSizeSetting } from '../../../types';
+import {
+  ProjectIndexType,
+  WindowPositionSetting,
+  WindowSizeSetting,
+} from '../../../types';
 import useScreenSize, { TABLET_MAX_WIDTH } from '../../../utils/useScreenSize';
 import { useWindows } from '../../../utils/context/context';
 import { SMALL_ICON_SIZE, getIcon } from '../../../components/getIcon';
-import { IndexType } from '../../../components/projects/type';
 import { getProject } from '../../../components/projects/getProject';
 
 const ProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
@@ -36,7 +39,7 @@ const ProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const [projectsPrevSetting, setProjectsPrevSetting] = React.useState<
     (WindowSizeSetting & WindowPositionSetting) | null
   >(null);
-  const [index, setIndex] = React.useState<IndexType>('Projects');
+  const [index, setIndex] = React.useState<ProjectIndexType>('Projects');
   const [isMobileWindow, setIsMobileWindow] = React.useState(false);
 
   React.useEffect(() => {
@@ -61,7 +64,7 @@ const ProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   }, [setFocusedWindow]);
 
   const handleClick = React.useCallback(
-    (name: IndexType) => {
+    (name: ProjectIndexType) => {
       setIndex(name);
     },
     [setIndex]

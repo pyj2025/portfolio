@@ -1,6 +1,10 @@
 import React from 'react';
 import { DraggableData, Position, ResizableDelta } from 'react-rnd';
-import { WindowPositionSetting, WindowSizeSetting } from '../../../types';
+import {
+  SkillsIndexType,
+  WindowPositionSetting,
+  WindowSizeSetting,
+} from '../../../types';
 import {
   MobileBackButton,
   MobileBackButtonContainer,
@@ -14,7 +18,6 @@ import {
   Window,
   MobileNavbarMenuLabel,
 } from '../../../GlobalStyle';
-
 import useScreenSize, { TABLET_MAX_WIDTH } from '../../../utils/useScreenSize';
 import { WindowProps } from '../../../components/BodyContent';
 import WindowTopbar from '../../../components/WindowTopbar';
@@ -28,10 +31,8 @@ import { useWindows } from '../../../utils/context/context';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { getIcon, getMobileNavbarMenuIcon } from '../../../components/getIcon';
 
-type MobileIndexType = 'Menu' | 'Front' | 'Back' | 'Mobile' | 'Programming';
-
 type MobileWindowMenuProps = {
-  onClick: (index: MobileIndexType) => void;
+  onClick: (index: SkillsIndexType) => void;
 };
 
 const MobileSkillsWindowMenu: React.FC<MobileWindowMenuProps> = ({
@@ -77,7 +78,7 @@ const MobileSkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const [skillsPrevSetting, setSkillsPrevSetting] = React.useState<
     (WindowSizeSetting & WindowPositionSetting) | null
   >(null);
-  const [index, setIndex] = React.useState<MobileIndexType>('Menu');
+  const [index, setIndex] = React.useState<SkillsIndexType>('Menu');
   const [isMobileWindow, setIsMobileWindow] = React.useState(false);
 
   React.useEffect(() => {
@@ -97,7 +98,7 @@ const MobileSkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [width]);
 
-  const handleClick = (name: MobileIndexType) => {
+  const handleClick = (name: SkillsIndexType) => {
     setIndex(name);
   };
 
