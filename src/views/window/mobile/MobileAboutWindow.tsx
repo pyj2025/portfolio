@@ -4,7 +4,11 @@ import About from '../../../components/about/About';
 import Education from '../../../components/about/Education';
 import Experience from '../../../components/about/Experience';
 import WindowTopbar from '../../../components/WindowTopbar';
-import { WindowPositionSetting, WindowSizeSetting } from '../../../types';
+import {
+  AboutIndexType,
+  WindowPositionSetting,
+  WindowSizeSetting,
+} from '../../../types';
 import useScreenSize, { TABLET_MAX_WIDTH } from '../../../utils/useScreenSize';
 import { WindowProps } from '../../../components/BodyContent';
 
@@ -27,10 +31,8 @@ import { useWindows } from '../../../utils/context/context';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { getIcon, getMobileNavbarMenuIcon } from '../../../components/getIcon';
 
-type MobileIndexType = 'Menu' | 'About' | 'Experience' | 'Education';
-
 type MobileAboutWindowMenuProps = {
-  onClick: (index: MobileIndexType) => void;
+  onClick: (index: AboutIndexType) => void;
 };
 
 const MobileAboutWindowMenu: React.FC<MobileAboutWindowMenuProps> = ({
@@ -74,7 +76,7 @@ const MobileAboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
     (WindowSizeSetting & WindowPositionSetting) | null
   >(null);
 
-  const [index, setIndex] = React.useState<MobileIndexType>('Menu');
+  const [index, setIndex] = React.useState<AboutIndexType>('Menu');
   const [isMobileWindow, setIsMobileWindow] = React.useState<boolean>(false);
   const [showDate, setShowDate] = React.useState<boolean>(false);
 
@@ -104,9 +106,12 @@ const MobileAboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
     }
   }, [aboutSize.width, showDate]);
 
-  const handleClick = (name: MobileIndexType) => {
-    setIndex(name);
-  };
+  const handleClick = React.useCallback(
+    (name: AboutIndexType) => {
+      setIndex(name);
+    },
+    [setIndex]
+  );
 
   return (
     <Window

@@ -1,6 +1,10 @@
 import React from 'react';
 import { DraggableData, Position, ResizableDelta } from 'react-rnd';
-import { WindowPositionSetting, WindowSizeSetting } from '../../../types';
+import {
+  SkillsIndexType,
+  WindowPositionSetting,
+  WindowSizeSetting,
+} from '../../../types';
 import {
   NavItmLabel,
   Window,
@@ -20,8 +24,6 @@ import ProgrammingLanguage from '../../../components/skills/ProgrammingLanguage'
 import { useWindows } from '../../../utils/context/context';
 import { SMALL_ICON_SIZE, getIcon } from '../../../components/getIcon';
 
-type IndexType = 'Front' | 'Back' | 'Mobile' | 'Programming';
-
 const SkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
   const { focusedWindow, setFocusedWindow } = useWindows();
@@ -40,7 +42,7 @@ const SkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const [skillsPrevSetting, setSkillsPrevSetting] = React.useState<
     (WindowSizeSetting & WindowPositionSetting) | null
   >(null);
-  const [index, setIndex] = React.useState<IndexType>('Front');
+  const [index, setIndex] = React.useState<SkillsIndexType>('Front');
   const [isMobileWindow, setIsMobileWindow] = React.useState(false);
 
   React.useEffect(() => {
@@ -60,13 +62,16 @@ const SkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [width]);
 
-  const clickContentBody = () => {
+  const clickContentBody = React.useCallback(() => {
     setFocusedWindow('Skills');
-  };
+  }, [setFocusedWindow]);
 
-  const handleClick = (name: IndexType) => {
-    setIndex(name);
-  };
+  const handleClick = React.useCallback(
+    (name: SkillsIndexType) => {
+      setIndex(name);
+    },
+    [setIndex]
+  );
 
   // console.log("windowNavbarSize.width = ", windowNavbarSize.width);
   return (

@@ -11,14 +11,16 @@ import {
   WindowBodyNavbar,
   WindowBodyNavItm,
 } from '../../../GlobalStyle';
-import { WindowPositionSetting, WindowSizeSetting } from '../../../types';
+import {
+  AboutIndexType,
+  WindowPositionSetting,
+  WindowSizeSetting,
+} from '../../../types';
 import useScreenSize, { TABLET_MAX_WIDTH } from '../../../utils/useScreenSize';
 import WindowTopbar from '../../../components/WindowTopbar';
 import { WindowProps } from '../../../components/BodyContent';
 import { useWindows } from '../../../utils/context/context';
 import { SMALL_ICON_SIZE, getIcon } from '../../../components/getIcon';
-
-type IndexType = 'About' | 'Experience' | 'Education';
 
 const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
@@ -40,7 +42,7 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
     (WindowSizeSetting & WindowPositionSetting) | null
   >(null);
 
-  const [index, setIndex] = React.useState<IndexType>('About');
+  const [index, setIndex] = React.useState<AboutIndexType>('About');
   const [isMobileWindow, setIsMobileWindow] = React.useState<boolean>(false);
   const [showDate, setShowDate] = React.useState<boolean>(false);
 
@@ -74,7 +76,7 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
     setFocusedWindow('About');
   };
 
-  const handleClick = (name: IndexType) => {
+  const handleClick = (name: AboutIndexType) => {
     setIndex(name);
   };
 

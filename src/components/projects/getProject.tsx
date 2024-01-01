@@ -1,4 +1,3 @@
-import { IndexType } from './type';
 import DatApex from './DatApex';
 import Portfolio from './Portfolio';
 import Foodie from './Foodie';
@@ -8,10 +7,11 @@ import Twitter from './Twitter';
 import Parstagram from './Parstagram';
 import ToonFlix from './ToonFlix';
 import { MobileProjects, Projects, WebProjects } from './Projects';
+import { ProjectIndexType } from '../../types';
 
 export const getProject = (
-  index: IndexType,
-  onClick?: (name: IndexType) => void
+  index: ProjectIndexType,
+  onClick?: (name: ProjectIndexType) => void
 ) => {
   switch (index) {
     case 'Projects':
