@@ -1,17 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import {
+  PanelContainer,
   PanelDescriptionContainer,
   PanelDescriptionLabel,
   PanelDescriptionRow,
   PanelDescriptionText,
+  PanelLogoContainer,
 } from '../../GlobalStyle';
 import info from '../../info.json';
 import profileImage from '../../image/Profile.png';
-
-const Container = styled(PanelDescriptionContainer)`
-  margin: 10px;
-`;
 
 const ProfileContainer = styled.div`
   position: relative;
@@ -28,11 +26,13 @@ const Profile = styled.img`
 
 const About: React.FC = () => {
   return (
-    <>
-      <ProfileContainer>
-        <Profile src={profileImage} alt="Profile" />
-      </ProfileContainer>
-      <Container>
+    <PanelContainer>
+      <PanelLogoContainer>
+        <ProfileContainer>
+          <Profile src={profileImage} alt="Profile" />
+        </ProfileContainer>
+      </PanelLogoContainer>
+      <PanelDescriptionContainer>
         <PanelDescriptionRow>
           <PanelDescriptionLabel>Name</PanelDescriptionLabel>
           <PanelDescriptionText>{`${info.about.info.name.firstName} ${info.about.info.name.lastName}`}</PanelDescriptionText>
@@ -54,8 +54,8 @@ const About: React.FC = () => {
             <div>{`${info.about.info.address.city}, ${info.about.info.address.state}, ${info.about.info.address.postalCode}`}</div>
           </div>
         </PanelDescriptionRow>
-      </Container>
-    </>
+      </PanelDescriptionContainer>
+    </PanelContainer>
   );
 };
 
