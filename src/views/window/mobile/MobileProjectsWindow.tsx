@@ -1,11 +1,6 @@
 import React, { ReactNode } from 'react';
 import { DraggableData, Position, ResizableDelta } from 'react-rnd';
 import { WindowProps } from '../../../components/BodyContent';
-import {
-  MobileProjects,
-  Projects,
-  WebProjects,
-} from '../../../components/projects/Projects';
 import WindowTopbar from '../../../components/WindowTopbar';
 import {
   MobileBackButton,
@@ -20,20 +15,13 @@ import {
 } from '../../../GlobalStyle';
 import { WindowPositionSetting, WindowSizeSetting } from '../../../types';
 import useScreenSize, { TABLET_MAX_WIDTH } from '../../../utils/useScreenSize';
-import Foodie from '../../../components/projects/Foodie';
-import Portfolio from '../../../components/projects/Portfolio';
-import DatApex from '../../../components/projects/DatApex';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { useWindows } from '../../../utils/context/context';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { getMobileNavbarMenuIcon } from '../../../components/getIcon';
 import { IndexType } from '../../../components/projects/type';
-import Tippy from '../../../components/projects/Tippy';
-import Flix from '../../../components/projects/Flix';
-import Twitter from '../../../components/projects/Twitter';
-import Parstagram from '../../../components/projects/Parstagram';
-import ToonFlix from '../../../components/projects/ToonFlix';
+import { getProject } from '../../../components/projects/getProject';
 
 type MobilePanelWrapperProps = {
   backIndex: string;
@@ -99,8 +87,7 @@ const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
     (name: IndexType) => {
       setIndex(name);
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [index]
+    [setIndex]
   );
 
   return (
@@ -176,83 +163,29 @@ const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
           </MobileNavbarItem>
         </MobileNavbar>
         <MobileBodyContent>
-          {index === 'Projects' ? <Projects click={handleClick} /> : null}
-          {index === 'WebProjects' ? <WebProjects click={handleClick} /> : null}
-          {index === 'MobileProjects' ? (
-            <MobileProjects click={handleClick} />
-          ) : null}
-          {index === 'DatApex' ? (
+          {index === 'Projects' ||
+          index === 'WebProjects' ||
+          index === 'MobileProjects' ? (
+            getProject(index, handleClick)
+          ) : (
             <MobilePanelWrapper
               key={index}
-              backIndex={'WebProjects'}
-              onClick={() => handleClick('WebProjects')}
+              backIndex={
+                index === 'DatApex' || index === 'Portfolio'
+                  ? 'WebProjects'
+                  : 'MobileProjects'
+              }
+              onClick={() =>
+                handleClick(
+                  index === 'DatApex' || index === 'Portfolio'
+                    ? 'WebProjects'
+                    : 'MobileProjects'
+                )
+              }
             >
-              <DatApex />
+              {getProject(index, handleClick)}
             </MobilePanelWrapper>
-          ) : null}
-          {index === 'Portfolio' ? (
-            <MobilePanelWrapper
-              key={index}
-              backIndex={'WebProjects'}
-              onClick={() => handleClick('WebProjects')}
-            >
-              <Portfolio />
-            </MobilePanelWrapper>
-          ) : null}
-          {index === 'Foodie' ? (
-            <MobilePanelWrapper
-              key={index}
-              backIndex={'MobileProjects'}
-              onClick={() => handleClick('MobileProjects')}
-            >
-              <Foodie />
-            </MobilePanelWrapper>
-          ) : null}
-          {index === 'Tippy' ? (
-            <MobilePanelWrapper
-              key={index}
-              backIndex={'MobileProjects'}
-              onClick={() => handleClick('MobileProjects')}
-            >
-              <Tippy />
-            </MobilePanelWrapper>
-          ) : null}
-          {index === 'Flix' ? (
-            <MobilePanelWrapper
-              key={index}
-              backIndex={'MobileProjects'}
-              onClick={() => handleClick('MobileProjects')}
-            >
-              <Flix />
-            </MobilePanelWrapper>
-          ) : null}
-          {index === 'Twitter' ? (
-            <MobilePanelWrapper
-              key={index}
-              backIndex={'MobileProjects'}
-              onClick={() => handleClick('MobileProjects')}
-            >
-              <Twitter />
-            </MobilePanelWrapper>
-          ) : null}
-          {index === 'Parstagram' ? (
-            <MobilePanelWrapper
-              key={index}
-              backIndex={'MobileProjects'}
-              onClick={() => handleClick('MobileProjects')}
-            >
-              <Parstagram />
-            </MobilePanelWrapper>
-          ) : null}
-          {index === 'ToonFlix' ? (
-            <MobilePanelWrapper
-              key={index}
-              backIndex={'MobileProjects'}
-              onClick={() => handleClick('MobileProjects')}
-            >
-              <ToonFlix />
-            </MobilePanelWrapper>
-          ) : null}
+          )}
         </MobileBodyContent>
       </MobileWindowBody>
     </Window>

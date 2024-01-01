@@ -1,11 +1,6 @@
 import React from 'react';
 import { DraggableData, Position, ResizableDelta } from 'react-rnd';
 import { WindowProps } from '../../../components/BodyContent';
-import {
-  MobileProjects,
-  Projects,
-  WebProjects,
-} from '../../../components/projects/Projects';
 import WindowTopbar from '../../../components/WindowTopbar';
 import {
   NavItmLabel,
@@ -17,17 +12,10 @@ import {
 } from '../../../GlobalStyle';
 import { WindowPositionSetting, WindowSizeSetting } from '../../../types';
 import useScreenSize, { TABLET_MAX_WIDTH } from '../../../utils/useScreenSize';
-import Foodie from '../../../components/projects/Foodie';
-import Portfolio from '../../../components/projects/Portfolio';
-import DatApex from '../../../components/projects/DatApex';
 import { useWindows } from '../../../utils/context/context';
 import { SMALL_ICON_SIZE, getIcon } from '../../../components/getIcon';
 import { IndexType } from '../../../components/projects/type';
-import Tippy from '../../../components/projects/Tippy';
-import Flix from '../../../components/projects/Flix';
-import Twitter from '../../../components/projects/Twitter';
-import Parstagram from '../../../components/projects/Parstagram';
-import ToonFlix from '../../../components/projects/ToonFlix';
+import { getProject } from '../../../components/projects/getProject';
 
 const ProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
@@ -68,13 +56,16 @@ const ProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [width]);
 
-  const clickContentBody = () => {
+  const clickContentBody = React.useCallback(() => {
     setFocusedWindow('Projects');
-  };
+  }, [setFocusedWindow]);
 
-  const handleClick = (name: IndexType) => {
-    setIndex(name);
-  };
+  const handleClick = React.useCallback(
+    (name: IndexType) => {
+      setIndex(name);
+    },
+    [setIndex]
+  );
 
   return (
     <Window
@@ -142,21 +133,7 @@ const ProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
             <NavItmLabel>Mobile</NavItmLabel>
           </WindowBodyNavItm>
         </WindowBodyNavbar>
-        <WindowBodyContent>
-          {index === 'Projects' ? <Projects click={handleClick} /> : null}
-          {index === 'WebProjects' ? <WebProjects click={handleClick} /> : null}
-          {index === 'MobileProjects' ? (
-            <MobileProjects click={handleClick} />
-          ) : null}
-          {index === 'DatApex' ? <DatApex /> : null}
-          {index === 'Portfolio' ? <Portfolio /> : null}
-          {index === 'Foodie' ? <Foodie /> : null}
-          {index === 'Tippy' ? <Tippy /> : null}
-          {index === 'Flix' ? <Flix /> : null}
-          {index === 'Twitter' ? <Twitter /> : null}
-          {index === 'Parstagram' ? <Parstagram /> : null}
-          {index === 'ToonFlix' ? <ToonFlix /> : null}
-        </WindowBodyContent>
+        <WindowBodyContent>{getProject(index, handleClick)}</WindowBodyContent>
       </WindowBody>
     </Window>
   );
