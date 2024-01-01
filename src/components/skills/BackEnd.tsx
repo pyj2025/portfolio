@@ -1,30 +1,15 @@
 import React from 'react';
 import info from '../../info.json';
-import styled from 'styled-components';
-import SkillIcon, { SkillIconProps } from './SkillIcon';
-
-const ContentContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-top: 10px;
-`;
+import SkillIcon from './SkillIcon';
+import { SkillsContentContainer } from '../../views/window/desktop/SkillsWindow';
 
 const BackEnd: React.FC = () => {
-  const [backEndSkills, setBackEndSkills] = React.useState<
-    Array<SkillIconProps>
-  >([]);
-
-  React.useEffect(() => {
-    setBackEndSkills(info.skills.back);
-  }, []);
-
   return (
-    <ContentContainer>
-      {backEndSkills.map((skill) => {
-        return <SkillIcon name={skill.name} noWidth={skill.noWidth} />;
+    <SkillsContentContainer>
+      {info.skills.back.map((skill) => {
+        return <SkillIcon name={skill.name} />;
       })}
-    </ContentContainer>
+    </SkillsContentContainer>
   );
 };
 
