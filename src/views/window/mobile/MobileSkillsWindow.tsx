@@ -98,11 +98,13 @@ const MobileSkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [width]);
 
-  const handleClick = (name: SkillsIndexType) => {
-    setIndex(name);
-  };
+  const handleClick = React.useCallback(
+    (name: SkillsIndexType) => {
+      setIndex(name);
+    },
+    [setIndex]
+  );
 
-  // console.log("windowNavbarSize.width = ", windowNavbarSize.width);
   return (
     <Window
       id="Skills"

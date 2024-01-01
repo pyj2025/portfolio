@@ -72,13 +72,16 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
     }
   }, [aboutSize.width, showDate]);
 
-  const clickContentBody = () => {
+  const clickContentBody = React.useCallback(() => {
     setFocusedWindow('About');
-  };
+  }, [setFocusedWindow]);
 
-  const handleClick = (name: AboutIndexType) => {
-    setIndex(name);
-  };
+  const handleClick = React.useCallback(
+    (name: AboutIndexType) => {
+      setIndex(name);
+    },
+    [setIndex]
+  );
 
   return (
     <Window
