@@ -1,28 +1,15 @@
 import React from 'react';
 import info from '../../info.json';
-import styled from 'styled-components';
-import SkillIcon, { SkillIconProps } from './SkillIcon';
-
-const ContentContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-top: 10px;
-`;
+import SkillIcon from './SkillIcon';
+import { SkillsContentContainer } from '../../views/window/desktop/SkillsWindow';
 
 const ProgrammingLanguage: React.FC = () => {
-  const [languages, setLanguages] = React.useState<Array<SkillIconProps>>([]);
-
-  React.useEffect(() => {
-    setLanguages(info.skills.languages);
-  }, []);
-
   return (
-    <ContentContainer>
-      {languages.map((skill) => {
-        return <SkillIcon name={skill.name} noWidth={skill.noWidth} />;
+    <SkillsContentContainer>
+      {info.skills.languages.map((skill) => {
+        return <SkillIcon name={skill.name} />;
       })}
-    </ContentContainer>
+    </SkillsContentContainer>
   );
 };
 

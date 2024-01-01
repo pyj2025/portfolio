@@ -1,30 +1,15 @@
 import React from 'react';
 import info from '../../info.json';
-import styled from 'styled-components';
-import SkillIcon, { SkillIconProps } from './SkillIcon';
-
-const ContentContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-top: 10px;
-`;
+import SkillIcon from './SkillIcon';
+import { SkillsContentContainer } from '../../views/window/desktop/SkillsWindow';
 
 const Mobile: React.FC = () => {
-  const [mobileSkills, setMobileSkills] = React.useState<Array<SkillIconProps>>(
-    []
-  );
-
-  React.useEffect(() => {
-    setMobileSkills(info.skills.mobile);
-  }, []);
-
   return (
-    <ContentContainer>
-      {mobileSkills.map((skill) => {
+    <SkillsContentContainer>
+      {info.skills.mobile.map((skill) => {
         return <SkillIcon name={skill.name} noWidth={skill.noWidth} />;
       })}
-    </ContentContainer>
+    </SkillsContentContainer>
   );
 };
 

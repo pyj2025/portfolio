@@ -13,7 +13,6 @@ import {
   WindowBodyNavbar,
   WindowBodyNavItm,
 } from '../../../GlobalStyle';
-
 import useScreenSize, { TABLET_MAX_WIDTH } from '../../../utils/useScreenSize';
 import { WindowProps } from '../../../components/BodyContent';
 import WindowTopbar from '../../../components/WindowTopbar';
@@ -23,6 +22,14 @@ import Mobile from '../../../components/skills/Mobile';
 import ProgrammingLanguage from '../../../components/skills/ProgrammingLanguage';
 import { useWindows } from '../../../utils/context/context';
 import { SMALL_ICON_SIZE, getIcon } from '../../../components/getIcon';
+import styled from 'styled-components';
+
+export const SkillsContentContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 10px;
+`;
 
 const SkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
@@ -73,7 +80,6 @@ const SkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
     [setIndex]
   );
 
-  // console.log("windowNavbarSize.width = ", windowNavbarSize.width);
   return (
     <Window
       id="Skills"
