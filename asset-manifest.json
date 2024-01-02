@@ -1,19 +1,22 @@
 {
   "files": {
     "main.css": "/portfolio/static/css/main.a544a712.css",
-    "main.js": "/portfolio/static/js/main.cc54c598.js",
+    "main.js": "/portfolio/static/js/main.2b3a10d6.js",
     "static/js/787.b9ec5bb0.chunk.js": "/portfolio/static/js/787.b9ec5bb0.chunk.js",
     "static/media/macos.jpg": "/portfolio/static/media/macos.17ce460bcb0b8087b537.jpg",
-    "static/media/profile.jpg": "/portfolio/static/media/profile.6bfb910c684a616ff656.jpg",
+    "static/media/Profile.png": "/portfolio/static/media/Profile.0da98c2cd2e330a769f3.png",
+    "static/media/aspDotNetCore.png": "/portfolio/static/media/aspDotNetCore.7fa2d4c3416f743ea3d2.png",
+    "static/media/php.png": "/portfolio/static/media/php.b59deec830f215d303b4.png",
     "static/media/Foodie.png": "/portfolio/static/media/Foodie.17ab0102e93b947adbdd.png",
+    "static/media/PurdueLogo.png": "/portfolio/static/media/PurdueLogo.f0cb00497afbf1a7907d.png",
     "static/media/DatApex.png": "/portfolio/static/media/DatApex.5ec74c1bd7919b67de89.png",
     "index.html": "/portfolio/index.html",
     "main.a544a712.css.map": "/portfolio/static/css/main.a544a712.css.map",
-    "main.cc54c598.js.map": "/portfolio/static/js/main.cc54c598.js.map",
+    "main.2b3a10d6.js.map": "/portfolio/static/js/main.2b3a10d6.js.map",
     "787.b9ec5bb0.chunk.js.map": "/portfolio/static/js/787.b9ec5bb0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a544a712.css",
-    "static/js/main.cc54c598.js"
+    "static/js/main.2b3a10d6.js"
   ]
 }
