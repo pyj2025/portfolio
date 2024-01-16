@@ -8,6 +8,7 @@ import Parstagram from './Parstagram';
 import ToonFlix from './ToonFlix';
 import { MobileProjects, Projects, WebProjects } from './Projects';
 import { ProjectIndexType } from '../../types';
+import WebGame from './WebGame';
 
 export const getProject = (
   index: ProjectIndexType,
@@ -26,6 +27,8 @@ export const getProject = (
       return <Portfolio />;
     case 'Foodie':
       return <Foodie />;
+    case 'WebGame':
+      return <WebGame />;
     case 'Tippy':
       return <Tippy />;
     case 'Flix':

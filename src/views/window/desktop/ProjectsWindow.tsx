@@ -117,11 +117,7 @@ const ProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
           </WindowBodyNavItm>
           <WindowBodyNavItm
             onClick={() => handleClick('WebProjects')}
-            focus={
-              index === 'DatApex' ||
-              index === 'Portfolio' ||
-              index === 'WebProjects'
-            }
+            focus={['WebProjects', 'DatApex', 'Portfolio'].includes(index)}
             isChild
           >
             {getIcon('Folder', SMALL_ICON_SIZE)}
@@ -129,7 +125,16 @@ const ProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
           </WindowBodyNavItm>
           <WindowBodyNavItm
             onClick={() => handleClick('MobileProjects')}
-            focus={index === 'Foodie' || index === 'MobileProjects'}
+            focus={[
+              'MobileProjects',
+              'Foodie',
+              'WebGame',
+              'Tippy',
+              'Flix',
+              'Twitter',
+              'Parstagram',
+              'ToonFlix',
+            ].includes(index)}
             isChild
           >
             {getIcon('Folder', SMALL_ICON_SIZE)}

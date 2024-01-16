@@ -145,11 +145,7 @@ const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
           <MobileNavbarItem
             title="Web"
             onClick={() => handleClick('WebProjects')}
-            focus={
-              index === 'DatApex' ||
-              index === 'Portfolio' ||
-              index === 'WebProjects'
-            }
+            focus={['WebProjects', 'DatApex', 'Portfolio'].includes(index)}
             isChild
           >
             {getMobileNavbarMenuIcon('Folder')}
@@ -158,7 +154,16 @@ const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
           <MobileNavbarItem
             title="Mobile"
             onClick={() => handleClick('MobileProjects')}
-            focus={index === 'Foodie' || index === 'MobileProjects'}
+            focus={[
+              'MobileProjects',
+              'Foodie',
+              'WebGame',
+              'Tippy',
+              'Flix',
+              'Twitter',
+              'Parstagram',
+              'ToonFlix',
+            ].includes(index)}
             isChild
           >
             {getMobileNavbarMenuIcon('Folder')}
@@ -166,9 +171,7 @@ const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
           </MobileNavbarItem>
         </MobileNavbar>
         <MobileBodyContent>
-          {index === 'Projects' ||
-          index === 'WebProjects' ||
-          index === 'MobileProjects' ? (
+          {['Projects', 'WebProjects', 'MobileProjects'].includes(index) ? (
             getProject(index, handleClick)
           ) : (
             <MobilePanelWrapper
