@@ -78,6 +78,12 @@
         "stack": ["Swift", "Firebase", "Yelp API", "Google API"],
         "details": "An application that recommends the dining places based on users’ preferences and connects users with QR code."
       },
+      "WebGame": {
+        "name": "WebGame",
+        "link": "https://github.com/pyj2025/native-webgame",
+        "stack": ["React Native"],
+        "details": "This application is a haven for game lovers, featuring a variety of engaging games. With our Multi-Game App, you can enjoy a medley of different games all in one place."
+      },
       "Tippy": {
         "name": "Tippy",
         "link": "https://github.com/park612/TipCalculator",

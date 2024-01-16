@@ -24,6 +24,7 @@ export type ProjectIndexType =
   | 'MobileProjects'
   | 'DatApex'
   | 'Foodie'
+  | "WebGame"
   | 'Tippy'
   | 'Flix'
   | 'Twitter'
