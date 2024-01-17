@@ -98,7 +98,7 @@
       },
       "Twitter": {
         "name": "Twitter",
-        "link": "https://github.com/park612/Twitter",
+        "link": "https://github.com/pyj2025/Twitter",
         "stack": ["Swift"],
         "details": "Twitter is a basic twitter app to read your tweets."
       },
