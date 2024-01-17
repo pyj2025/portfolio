@@ -11,14 +11,17 @@ import {
   PanelLogoContainer,
   PanelDescriptionLabel,
   PanelDescriptionText,
+  PanelLogoImage,
 } from '../../GlobalStyle';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { getIcon } from '../getIcon';
+import TwitterLogo from '../../image/projects/Twitter.png';
 
 const Twitter: React.FC = () => {
   return (
     <PanelContainer>
-      <PanelLogoContainer>{getIcon('CodeFile', 150)}</PanelLogoContainer>
+      <PanelLogoContainer>
+        <PanelLogoImage src={TwitterLogo} alt="Twitter" />
+      </PanelLogoContainer>
       <PanelDescriptionContainer>
         <PanelDescriptionRow>
           <PanelDescriptionLabel>Name</PanelDescriptionLabel>

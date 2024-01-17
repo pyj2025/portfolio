@@ -183,7 +183,7 @@ export const PanelLogoContainer = styled.div`
 `;
 
 export const PanelLogoImage = styled.img`
-  width: 200px;
+  width: 150px;
   height: 150px;
 `;
 

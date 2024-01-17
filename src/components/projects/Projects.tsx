@@ -4,6 +4,8 @@ import FoodieLogo from '../../image/projects/Foodie.png';
 import DatApexLogo from '../../image/projects/DatApex.png';
 import { getIcon } from '../getIcon';
 import { ProjectIndexType } from '../../types';
+import ParstagramLogo from '../../image/projects/Parstagram.png';
+import TwitterLogo from '../../image/projects/Twitter.png';
 
 type ProjectsProps = {
   click: (name: ProjectIndexType) => void;
@@ -96,11 +98,11 @@ export const MobileProjects: React.FC<ProjectsProps> = ({ click }) => {
           <IconLabel>Flix</IconLabel>
         </IconContainer>
         <IconContainer onClick={() => click('Twitter')}>
-          {getIcon('CodeFile')}
+          <IconLogoImage src={TwitterLogo} alt="Twitter" />
           <IconLabel>Twitter</IconLabel>
         </IconContainer>
         <IconContainer onClick={() => click('Parstagram')}>
-          {getIcon('CodeFile')}
+          <IconLogoImage src={ParstagramLogo} alt="Parstagram" />
           <IconLabel>Parstagram</IconLabel>
         </IconContainer>
       </IconListContainer>

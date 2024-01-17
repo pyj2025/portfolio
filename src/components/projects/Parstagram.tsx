@@ -11,14 +11,17 @@ import {
   PanelLogoContainer,
   PanelDescriptionLabel,
   PanelDescriptionText,
+  PanelLogoImage,
 } from '../../GlobalStyle';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { getIcon } from '../getIcon';
+import ParstagramLogo from '../../image/projects/Parstagram.png';
 
 const Parstagram: React.FC = () => {
   return (
     <PanelContainer>
-      <PanelLogoContainer>{getIcon('CodeFile', 150)}</PanelLogoContainer>
+      <PanelLogoContainer>
+        <PanelLogoImage src={ParstagramLogo} alt="Parstagram" />
+      </PanelLogoContainer>
       <PanelDescriptionContainer>
         <PanelDescriptionRow>
           <PanelDescriptionLabel>Name</PanelDescriptionLabel>
