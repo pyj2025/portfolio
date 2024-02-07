@@ -12,6 +12,7 @@ import { browserName, isBrowser, isMobile } from 'react-device-detect';
 import 'react-toastify/dist/ReactToastify.css';
 // import TopbarAboutWindow from '../views/window/desktop/TopbarAboutWindow';
 import { FocusedWindowType } from '../types';
+import useWindowsStore from '../utils/useWindowsStore';
 
 const Container = styled.div`
   width: 100%;
@@ -26,13 +27,17 @@ export type WindowProps = {
 
 const BodyContent: React.FC = () => {
   const {
-    isWelcomeWindowOpen,
+    // isWelcomeWindowOpen,
     // isDesktopAboutOpen,
     isAboutOpen,
     isSkillsOpen,
     isProjectsOpen,
     setFocusedWindow,
   } = useWindows();
+
+  const isWelcomeWindowOpen = useWindowsStore(
+    (state) => state.isWelcomeWindowOpen
+  );
 
   React.useEffect(() => {
     const message =

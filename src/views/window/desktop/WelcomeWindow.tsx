@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { DraggableData, Rnd } from 'react-rnd';
 import Typist from 'react-typist';
 import useScreenSize, { TABLET_MAX_WIDTH } from '../../../utils/useScreenSize';
-import { useWindows } from '../../../utils/context/context';
+import useWindowsStore from '../../../utils/useWindowsStore';
 import { WindowProps } from '../../../components/BodyContent';
 import { WindowPositionSetting, WindowSizeSetting } from '../../../types';
 import Loaded from '../../../components/welcome/Loaded';
@@ -144,7 +144,10 @@ const TerminalLine = styled.div`
 
 const WelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
-  const { focusedWindow, closeWelcomeWindow } = useWindows();
+  const focusedWindow = useWindowsStore((state) => state.focusedWindow);
+  const closeWelcomeWindow = useWindowsStore(
+    (state) => state.closeWelcomeWindow
+  );
 
   const welcomeRef = React.useRef<any>();
 
