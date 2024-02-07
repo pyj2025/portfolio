@@ -1,18 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import { DraggableData } from 'react-rnd';
-
+import { Slide, toast, ToastContainer } from 'react-toastify';
+import { browserName, isBrowser, isMobile } from 'react-device-detect';
 import ProjectsWindow from '../views/window/desktop/ProjectsWindow';
 import AboutWindow from '../views/window/desktop/AboutWindow';
 import WelcomeWindow from '../views/window/desktop/WelcomeWindow';
 import SkillsWindow from '../views/window/desktop/SkillsWindow';
-import { useWindows } from '../utils/context/context';
-import { Slide, toast, ToastContainer } from 'react-toastify';
-import { browserName, isBrowser, isMobile } from 'react-device-detect';
-import 'react-toastify/dist/ReactToastify.css';
-// import TopbarAboutWindow from '../views/window/desktop/TopbarAboutWindow';
 import { FocusedWindowType } from '../types';
 import useWindowsStore from '../utils/useWindowsStore';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Container = styled.div`
   width: 100%;
@@ -26,24 +23,14 @@ export type WindowProps = {
 };
 
 const BodyContent: React.FC = () => {
-  const {
-    // isWelcomeWindowOpen,
-    // isDesktopAboutOpen,
-    // isAboutOpen,
-    // isSkillsOpen,
-    // isProjectsOpen,
-    setFocusedWindow,
-  } = useWindows();
-
   const isWelcomeWindowOpen = useWindowsStore(
     (state) => state.isWelcomeWindowOpen
   );
 
   const isAboutOpen = useWindowsStore((state) => state.isAboutOpen);
-
   const isSkillsOpen = useWindowsStore((state) => state.isSkillsOpen);
-
   const isProjectsOpen = useWindowsStore((state) => state.isProjectsOpen);
+  const setFocusedWindow = useWindowsStore((state) => state.setFocusedWindow);
 
   React.useEffect(() => {
     const message =
@@ -56,9 +43,12 @@ const BodyContent: React.FC = () => {
     });
   }, []);
 
-  const handleFocus = (_e: any, data: DraggableData) => {
-    setFocusedWindow(data.node.id as FocusedWindowType);
-  };
+  const handleFocus = React.useCallback(
+    (_e: any, data: DraggableData) => {
+      setFocusedWindow(data.node.id as FocusedWindowType);
+    },
+    [setFocusedWindow]
+  );
 
   return (
     <Container>

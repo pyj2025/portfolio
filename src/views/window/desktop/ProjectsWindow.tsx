@@ -1,7 +1,6 @@
 import React from 'react';
 import { DraggableData, Position, ResizableDelta } from 'react-rnd';
 import { WindowProps } from '../../../components/BodyContent';
-import WindowTopbar from '../../../components/WindowTopbar';
 import {
   NavItmLabel,
   Window,
@@ -16,13 +15,16 @@ import {
   WindowSizeSetting,
 } from '../../../types';
 import useScreenSize, { TABLET_MAX_WIDTH } from '../../../utils/useScreenSize';
-import { useWindows } from '../../../utils/context/context';
 import { SMALL_ICON_SIZE, getIcon } from '../../../components/getIcon';
 import { getProject } from '../../../components/projects/getProject';
+import WindowTopbar from '../../../components/WindowTopbar';
+import useWindowsStore from '../../../utils/useWindowsStore';
 
 const ProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
-  const { focusedWindow, setFocusedWindow } = useWindows();
+
+  const focusedWindow = useWindowsStore((state) => state.focusedWindow);
+  const setFocusedWindow = useWindowsStore((state) => state.setFocusedWindow);
 
   const projectsRef = React.useRef<any>();
 
