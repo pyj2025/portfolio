@@ -11,6 +11,7 @@ import { WindowPositionSetting, WindowSizeSetting } from '../types';
 import { useWindows } from '../utils/context/context';
 import useScreenSize from '../utils/useScreenSize';
 import { IconType, SMALL_ICON_SIZE, getIcon } from './getIcon';
+import useWindowsStore from '../utils/useWindowsStore';
 
 export type WindowTopbarProps = {
   title: string;
@@ -37,13 +38,13 @@ const WindowTopbar: React.FC<WindowTopbarProps> = ({
 }) => {
   const { width, height } = useScreenSize();
   const {
-    focusedWindow,
+    // focusedWindow,
     isAboutExpanded,
     isSkillsExpanded,
     isProjectsExpanded,
-    toggleAboutOpen,
-    toggleSkillsOpen,
-    toggleProjectsOpen,
+    // toggleAboutOpen,
+    // toggleSkillsOpen,
+    // toggleProjectsOpen,
     setAboutMinimized,
     setSkillsMinimized,
     setProjectsMinimized,
@@ -53,6 +54,16 @@ const WindowTopbar: React.FC<WindowTopbarProps> = ({
   } = useWindows();
 
   const [image, setImage] = React.useState<IconType>('');
+
+  const focusedWindow = useWindowsStore((state) => state.focusedWindow);
+
+  const toggleAboutOpen = useWindowsStore((state) => state.toggleAboutOpen);
+
+  const toggleSkillsOpen = useWindowsStore((state) => state.toggleSkillsOpen);
+
+  const toggleProjectsOpen = useWindowsStore(
+    (state) => state.toggleProjectsOpen
+  );
 
   React.useEffect(() => {
     switch (title) {

@@ -21,10 +21,13 @@ import WindowTopbar from '../../../components/WindowTopbar';
 import { WindowProps } from '../../../components/BodyContent';
 import { useWindows } from '../../../utils/context/context';
 import { SMALL_ICON_SIZE, getIcon } from '../../../components/getIcon';
+import useWindowsStore from '../../../utils/useWindowsStore';
 
 const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
-  const { focusedWindow, setFocusedWindow } = useWindows();
+  const { setFocusedWindow } = useWindows();
+
+  const focusedWindow = useWindowsStore((state) => state.focusedWindow);
 
   const aboutRef = React.useRef<any>();
 
