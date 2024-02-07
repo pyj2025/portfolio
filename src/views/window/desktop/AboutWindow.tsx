@@ -1,8 +1,5 @@
 import React from 'react';
 import { DraggableData, Position, ResizableDelta } from 'react-rnd';
-import Education from '../../../components/about/Education';
-import About from '../../../components/about/About';
-import Experience from '../../../components/about/Experience';
 import {
   NavItmLabel,
   Window,
@@ -17,17 +14,19 @@ import {
   WindowSizeSetting,
 } from '../../../types';
 import useScreenSize, { TABLET_MAX_WIDTH } from '../../../utils/useScreenSize';
-import WindowTopbar from '../../../components/WindowTopbar';
 import { WindowProps } from '../../../components/BodyContent';
-import { useWindows } from '../../../utils/context/context';
 import { SMALL_ICON_SIZE, getIcon } from '../../../components/getIcon';
+import WindowTopbar from '../../../components/WindowTopbar';
 import useWindowsStore from '../../../utils/useWindowsStore';
+import About from '../../../components/about/About';
+import Experience from '../../../components/about/Experience';
+import Education from '../../../components/about/Education';
 
 const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
-  const { setFocusedWindow } = useWindows();
 
   const focusedWindow = useWindowsStore((state) => state.focusedWindow);
+  const setFocusedWindow = useWindowsStore((state) => state.setFocusedWindow);
 
   const aboutRef = React.useRef<any>();
 
@@ -63,8 +62,7 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
     } else {
       setIsMobileWindow(false);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [width]);
+  }, [height, width]);
 
   React.useEffect(() => {
     // 150 is menu

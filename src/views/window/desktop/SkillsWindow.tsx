@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import { DraggableData, Position, ResizableDelta } from 'react-rnd';
 import {
   SkillsIndexType,
@@ -15,14 +16,13 @@ import {
 } from '../../../GlobalStyle';
 import useScreenSize, { TABLET_MAX_WIDTH } from '../../../utils/useScreenSize';
 import { WindowProps } from '../../../components/BodyContent';
+import { SMALL_ICON_SIZE, getIcon } from '../../../components/getIcon';
 import WindowTopbar from '../../../components/WindowTopbar';
+import useWindowsStore from '../../../utils/useWindowsStore';
 import FrontEnd from '../../../components/skills/FrontEnd';
 import BackEnd from '../../../components/skills/BackEnd';
 import Mobile from '../../../components/skills/Mobile';
 import ProgrammingLanguage from '../../../components/skills/ProgrammingLanguage';
-import { useWindows } from '../../../utils/context/context';
-import { SMALL_ICON_SIZE, getIcon } from '../../../components/getIcon';
-import styled from 'styled-components';
 
 export const SkillsContentContainer = styled.div`
   display: flex;
@@ -33,7 +33,8 @@ export const SkillsContentContainer = styled.div`
 
 const SkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
-  const { focusedWindow, setFocusedWindow } = useWindows();
+  const focusedWindow = useWindowsStore((state) => state.focusedWindow);
+  const setFocusedWindow = useWindowsStore((state) => state.setFocusedWindow);
 
   const skillsRef = React.useRef<any>();
 
