@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { useWindows } from '../utils/context/context';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { getIcon } from './getIcon';
+import useWindowsStore from '../utils/useWindowsStore';
 
 const Container = styled.div`
   display: flex;
@@ -58,26 +59,32 @@ const Menu: React.FC = () => {
     isAboutMinimized,
     isSkillsMinimized,
     isProjectsMinimized,
-    openAbout,
-    openSkills,
-    openProjects,
+    // openAbout,
+    // openSkills,
+    // openProjects,
   } = useWindows();
 
-  const handleAboutClick = () => {
+  const openAbout = useWindowsStore((state) => state.openAbout);
+
+  const openSkills = useWindowsStore((state) => state.openSkills);
+
+  const openProjects = useWindowsStore((state) => state.openProjects);
+
+  const handleAboutClick = React.useCallback(() => {
     openAbout();
-  };
+  }, [openAbout]);
 
-  const handleSkillsClick = () => {
+  const handleSkillsClick = React.useCallback(() => {
     openSkills();
-  };
+  }, [openSkills]);
 
-  const handleProjectsClick = () => {
+  const handleProjectsClick = React.useCallback(() => {
     openProjects();
-  };
+  }, [openProjects]);
 
-  const handleEmailClick = () => {
+  const handleEmailClick = React.useCallback(() => {
     window.open('mailto:pyj2025@gmail.com');
-  };
+  }, []);
 
   return (
     <Container>

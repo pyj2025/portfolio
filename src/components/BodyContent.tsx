@@ -29,15 +29,21 @@ const BodyContent: React.FC = () => {
   const {
     // isWelcomeWindowOpen,
     // isDesktopAboutOpen,
-    isAboutOpen,
-    isSkillsOpen,
-    isProjectsOpen,
+    // isAboutOpen,
+    // isSkillsOpen,
+    // isProjectsOpen,
     setFocusedWindow,
   } = useWindows();
 
   const isWelcomeWindowOpen = useWindowsStore(
     (state) => state.isWelcomeWindowOpen
   );
+
+  const isAboutOpen = useWindowsStore((state) => state.isAboutOpen);
+
+  const isSkillsOpen = useWindowsStore((state) => state.isSkillsOpen);
+
+  const isProjectsOpen = useWindowsStore((state) => state.isProjectsOpen);
 
   React.useEffect(() => {
     const message =
@@ -69,7 +75,6 @@ const BodyContent: React.FC = () => {
         draggablePercent={60}
       />
       {isWelcomeWindowOpen && <WelcomeWindow handleFocus={handleFocus} />}
-      {/* {isDesktopAboutOpen && <TopbarAboutWindow handleFocus={handleFocus} />} */}
       {isAboutOpen && <AboutWindow handleFocus={handleFocus} />}
       {isSkillsOpen && <SkillsWindow handleFocus={handleFocus} />}
       {isProjectsOpen && <ProjectsWindow handleFocus={handleFocus} />}
