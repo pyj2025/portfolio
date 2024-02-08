@@ -21,10 +21,10 @@ import {
 import useScreenSize, { TABLET_MAX_WIDTH } from '../../../utils/useScreenSize';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { useWindows } from '../../../utils/context/context';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { getMobileNavbarMenuIcon } from '../../../components/getIcon';
 import { getProject } from '../../../components/projects/getProject';
+import useWindowsStore from '../../../utils/useWindowsStore';
 
 type MobilePanelWrapperProps = {
   backIndex: string;
@@ -49,7 +49,7 @@ const MobilePanelWrapper: React.FC<MobilePanelWrapperProps> = React.memo(
 
 const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
-  const { focusedWindow } = useWindows();
+  const focusedWindow = useWindowsStore((state) => state.focusedWindow);
 
   const projectsRef = React.useRef<any>();
 

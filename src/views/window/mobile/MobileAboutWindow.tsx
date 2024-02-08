@@ -27,9 +27,9 @@ import {
 } from '../../../GlobalStyle';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { useWindows } from '../../../utils/context/context';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { getIcon, getMobileNavbarMenuIcon } from '../../../components/getIcon';
+import useWindowsStore from '../../../utils/useWindowsStore';
 
 type MobileAboutWindowMenuProps = {
   onClick: (index: AboutIndexType) => void;
@@ -58,7 +58,7 @@ const MobileAboutWindowMenu: React.FC<MobileAboutWindowMenuProps> = ({
 
 const MobileAboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
-  const { focusedWindow } = useWindows();
+  const focusedWindow = useWindowsStore((state) => state.focusedWindow);
 
   const aboutRef = React.useRef<any>();
 

@@ -27,9 +27,9 @@ import Mobile from '../../../components/skills/Mobile';
 import ProgrammingLanguage from '../../../components/skills/ProgrammingLanguage';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useWindows } from '../../../utils/context/context';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { getIcon, getMobileNavbarMenuIcon } from '../../../components/getIcon';
+import useWindowsStore from '../../../utils/useWindowsStore';
 
 type MobileWindowMenuProps = {
   onClick: (index: SkillsIndexType) => void;
@@ -62,7 +62,8 @@ const MobileSkillsWindowMenu: React.FC<MobileWindowMenuProps> = ({
 
 const MobileSkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
-  const { focusedWindow } = useWindows();
+
+  const focusedWindow = useWindowsStore((state) => state.focusedWindow);
 
   const skillsRef = React.useRef<any>();
 

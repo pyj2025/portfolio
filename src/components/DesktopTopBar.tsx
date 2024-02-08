@@ -7,10 +7,10 @@ import Clock from './Clock';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import { BoldText, MutedText } from '../GlobalStyle';
-import { useWindows } from '../utils/context/context';
 import useScreenSize from '../utils/useScreenSize';
 import useClickOutside from '../utils/useClickOutside';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import useWindowsStore from '../utils/useWindowsStore';
 
 const Container = styled.div<{ width: number }>`
   display: flex;
@@ -69,7 +69,10 @@ const TopbarAppIcon = styled(FontAwesomeIcon)`
 
 const DesktopTopBar: React.FC = () => {
   const { width } = useScreenSize();
-  const { openAbout, unfocusWindows } = useWindows();
+
+  const openAbout = useWindowsStore((state) => state.openAbout);
+
+  const unfocusWindows = useWindowsStore((state) => state.unfocusWindows);
 
   const mainMenuRef = React.useRef<HTMLDivElement | null>(null);
 
