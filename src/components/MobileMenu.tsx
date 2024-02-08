@@ -85,7 +85,7 @@ const MobileMenu: React.FC = () => {
     (state) => state.closeWelcomeWindow
   );
 
-  const handleAboutClick = () => {
+  const handleAboutClick = React.useCallback(() => {
     if (isWelcomeWindowOpen) {
       closeWelcomeWindow();
     }
@@ -97,9 +97,17 @@ const MobileMenu: React.FC = () => {
     }
 
     toggleAboutOpen();
-  };
+  }, [
+    closeProjects,
+    closeSkills,
+    closeWelcomeWindow,
+    isProjectsOpen,
+    isSkillsOpen,
+    isWelcomeWindowOpen,
+    toggleAboutOpen,
+  ]);
 
-  const handleSkillsClick = () => {
+  const handleSkillsClick = React.useCallback(() => {
     if (isWelcomeWindowOpen) {
       closeWelcomeWindow();
     }
@@ -111,9 +119,17 @@ const MobileMenu: React.FC = () => {
     }
 
     toggleSkillsOpen();
-  };
+  }, [
+    closeAbout,
+    closeProjects,
+    closeWelcomeWindow,
+    isAboutOpen,
+    isProjectsOpen,
+    isWelcomeWindowOpen,
+    toggleSkillsOpen,
+  ]);
 
-  const handleProjectsClick = () => {
+  const handleProjectsClick = React.useCallback(() => {
     if (isWelcomeWindowOpen) {
       closeWelcomeWindow();
     }
@@ -125,7 +141,15 @@ const MobileMenu: React.FC = () => {
     }
 
     toggleProjectsOpen();
-  };
+  }, [
+    closeAbout,
+    closeSkills,
+    closeWelcomeWindow,
+    isAboutOpen,
+    isSkillsOpen,
+    isWelcomeWindowOpen,
+    toggleProjectsOpen,
+  ]);
 
   return (
     <Container>

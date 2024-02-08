@@ -115,7 +115,7 @@ const WindowTopbar: React.FC<WindowTopbarProps> = ({
     }
   };
 
-  const handleMinimized = () => {
+  const handleMinimized = React.useCallback(() => {
     if (focusedWindow === title) {
       switch (title) {
         case 'About': {
@@ -137,9 +137,74 @@ const WindowTopbar: React.FC<WindowTopbarProps> = ({
           break;
       }
     }
-  };
+  }, [
+    focusedWindow,
+    setAboutMinimized,
+    setProjectsMinimized,
+    setSkillsMinimized,
+    title,
+    toggleAboutOpen,
+    toggleProjectsOpen,
+    toggleSkillsOpen,
+  ]);
 
-  const handleExpand = () => {
+  const expand = React.useCallback(
+    (isExpanded: boolean) => {
+      if (isExpanded) {
+        if (prevSetting === null) {
+          setSize({
+            width: 500,
+            height: 300,
+          });
+          setPosition({
+            x: 20,
+            y: 20,
+          });
+        } else {
+          setSize({
+            width: prevSetting.width,
+            height: prevSetting.height,
+          });
+          setPosition({
+            x: prevSetting.x,
+            y: prevSetting.y,
+          });
+        }
+      } else {
+        setPrevSetting({
+          width: size.width,
+          height: size.height,
+          x: position.x,
+          y: position.y,
+        });
+
+        // 28 is windowTopbar height
+        setSize({
+          width: width,
+          height: height - 28,
+        });
+        setPosition({
+          x: 0,
+          y: 0,
+        });
+      }
+      windowRef?.current.updateSize(size);
+      windowRef?.current.updatePosition(position);
+    },
+    [
+      height,
+      position,
+      prevSetting,
+      setPosition,
+      setPrevSetting,
+      setSize,
+      size,
+      width,
+      windowRef,
+    ]
+  );
+
+  const handleExpand = React.useCallback(() => {
     if (focusedWindow === title) {
       switch (title) {
         case 'About': {
@@ -161,50 +226,17 @@ const WindowTopbar: React.FC<WindowTopbarProps> = ({
           break;
       }
     }
-  };
-
-  const expand = (isExpanded: boolean) => {
-    if (isExpanded) {
-      if (prevSetting === null) {
-        setSize({
-          width: 500,
-          height: 300,
-        });
-        setPosition({
-          x: 20,
-          y: 20,
-        });
-      } else {
-        setSize({
-          width: prevSetting.width,
-          height: prevSetting.height,
-        });
-        setPosition({
-          x: prevSetting.x,
-          y: prevSetting.y,
-        });
-      }
-    } else {
-      setPrevSetting({
-        width: size.width,
-        height: size.height,
-        x: position.x,
-        y: position.y,
-      });
-
-      // 28 is windowTopbar height
-      setSize({
-        width: width,
-        height: height - 28,
-      });
-      setPosition({
-        x: 0,
-        y: 0,
-      });
-    }
-    windowRef?.current.updateSize(size);
-    windowRef?.current.updatePosition(position);
-  };
+  }, [
+    expand,
+    focusedWindow,
+    isAboutExpanded,
+    isProjectsExpanded,
+    isSkillsExpanded,
+    title,
+    toggleAboutExpanded,
+    toggleProjectsExpanded,
+    toggleSkillsExpanded,
+  ]);
 
   return (
     <WindowTopbarContainer className="topbar">
