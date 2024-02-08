@@ -1,26 +1,18 @@
 import React from 'react';
 import { DraggableData, Position, ResizableDelta } from 'react-rnd';
-import { WindowProps } from '../../../components/BodyContent';
-import {
-  NavItmLabel,
-  Window,
-  WindowBody,
-  WindowBodyContent,
-  WindowBodyNavbar,
-  WindowBodyNavItm,
-} from '../../../GlobalStyle';
+import { Window, WindowBody, WindowBodyContent } from '../../../GlobalStyle';
 import {
   ProjectIndexType,
   WindowPositionSetting,
   WindowSizeSetting,
 } from '../../../types';
 import useScreenSize, { TABLET_MAX_WIDTH } from '../../../utils/useScreenSize';
-import { SMALL_ICON_SIZE, getIcon } from '../../../components/getIcon';
 import { getProject } from '../../../components/projects/getProject';
 import WindowTopbar from '../../../components/WindowTopbar';
 import useWindowsStore from '../../../utils/useWindowsStore';
+import ProjectsNavbar from '../../../components/projects/ProjectsNavbar';
 
-const ProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
+const ProjectsWindow: React.FC = () => {
   const { width, height } = useScreenSize();
   const { focusedWindow, setFocusedWindow } = useWindowsStore((state) => state);
 
@@ -59,7 +51,7 @@ const ProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [width]);
 
-  const clickContentBody = React.useCallback(() => {
+  const focusProjectsWindow = React.useCallback(() => {
     setFocusedWindow('Projects');
   }, [setFocusedWindow]);
 
@@ -80,7 +72,9 @@ const ProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
       minWidth={isMobileWindow ? width : 525}
       minHeight={300}
       style={{ zIndex: focusedWindow === 'Projects' ? 10 : undefined }}
-      onDragStart={handleFocus}
+      onDragStart={(_e: any, _data: DraggableData) => {
+        focusProjectsWindow();
+      }}
       onDragStop={(_e: any, data: DraggableData) => {
         setProjectsPosition({ x: data.x, y: data.y });
       }}
@@ -109,38 +103,8 @@ const ProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         setPrevSetting={setProjectsPrevSetting}
         isMobileWindow={isMobileWindow}
       />
-      <WindowBody onClick={clickContentBody}>
-        <WindowBodyNavbar>
-          <WindowBodyNavItm first onClick={() => handleClick('Projects')} focus>
-            {getIcon('Folder', SMALL_ICON_SIZE)}
-            <NavItmLabel>Projects</NavItmLabel>
-          </WindowBodyNavItm>
-          <WindowBodyNavItm
-            onClick={() => handleClick('WebProjects')}
-            focus={['WebProjects', 'DatApex', 'Portfolio'].includes(index)}
-            isChild
-          >
-            {getIcon('Folder', SMALL_ICON_SIZE)}
-            <NavItmLabel>Web</NavItmLabel>
-          </WindowBodyNavItm>
-          <WindowBodyNavItm
-            onClick={() => handleClick('MobileProjects')}
-            focus={[
-              'MobileProjects',
-              'Foodie',
-              'WebGame',
-              'Tippy',
-              'Flix',
-              'Twitter',
-              'Parstagram',
-              'ToonFlix',
-            ].includes(index)}
-            isChild
-          >
-            {getIcon('Folder', SMALL_ICON_SIZE)}
-            <NavItmLabel>Mobile</NavItmLabel>
-          </WindowBodyNavItm>
-        </WindowBodyNavbar>
+      <WindowBody onClick={focusProjectsWindow}>
+        <ProjectsNavbar index={index} onClick={handleClick} />
         <WindowBodyContent>{getProject(index, handleClick)}</WindowBodyContent>
       </WindowBody>
     </Window>

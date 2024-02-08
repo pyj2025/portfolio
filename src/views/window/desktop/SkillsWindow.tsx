@@ -6,23 +6,15 @@ import {
   WindowPositionSetting,
   WindowSizeSetting,
 } from '../../../types';
-import {
-  NavItmLabel,
-  Window,
-  WindowBody,
-  WindowBodyContent,
-  WindowBodyNavbar,
-  WindowBodyNavItm,
-} from '../../../GlobalStyle';
+import { Window, WindowBody, WindowBodyContent } from '../../../GlobalStyle';
 import useScreenSize, { TABLET_MAX_WIDTH } from '../../../utils/useScreenSize';
-import { WindowProps } from '../../../components/BodyContent';
-import { SMALL_ICON_SIZE, getIcon } from '../../../components/getIcon';
 import WindowTopbar from '../../../components/WindowTopbar';
 import useWindowsStore from '../../../utils/useWindowsStore';
 import FrontEnd from '../../../components/skills/FrontEnd';
 import BackEnd from '../../../components/skills/BackEnd';
 import Mobile from '../../../components/skills/Mobile';
 import ProgrammingLanguage from '../../../components/skills/ProgrammingLanguage';
+import SkillsNavbar from '../../../components/skills/SkillsNavbar';
 
 export const SkillsContentContainer = styled.div`
   display: flex;
@@ -31,7 +23,7 @@ export const SkillsContentContainer = styled.div`
   margin-top: 10px;
 `;
 
-const SkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
+const SkillsWindow: React.FC = () => {
   const { width, height } = useScreenSize();
   const { focusedWindow, setFocusedWindow } = useWindowsStore((state) => state);
 
@@ -69,7 +61,7 @@ const SkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [width]);
 
-  const clickContentBody = React.useCallback(() => {
+  const focusSkillsWindow = React.useCallback(() => {
     setFocusedWindow('Skills');
   }, [setFocusedWindow]);
 
@@ -90,7 +82,9 @@ const SkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
       minWidth={isMobileWindow ? width : 525}
       minHeight={300}
       style={{ zIndex: focusedWindow === 'Skills' ? 10 : undefined }}
-      onDragStart={handleFocus}
+      onDragStart={(_e: any, _data: DraggableData) => {
+        focusSkillsWindow();
+      }}
       onDragStop={(_e: any, data: DraggableData) => {
         setSkillsPosition({ x: data.x, y: data.y });
       }}
@@ -119,42 +113,8 @@ const SkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         setPrevSetting={setSkillsPrevSetting}
         isMobileWindow={isMobileWindow}
       />
-      <WindowBody onClick={clickContentBody}>
-        <WindowBodyNavbar>
-          <WindowBodyNavItm
-            first
-            onClick={() => handleClick('Front')}
-            focus={index === 'Front'}
-            title="Front-End"
-          >
-            {getIcon('Folder', SMALL_ICON_SIZE)}
-            <NavItmLabel>Front-End</NavItmLabel>
-          </WindowBodyNavItm>
-          <WindowBodyNavItm
-            onClick={() => handleClick('Back')}
-            focus={index === 'Back'}
-            title="Back-End"
-          >
-            {getIcon('Folder', SMALL_ICON_SIZE)}
-            <NavItmLabel>Back-End</NavItmLabel>
-          </WindowBodyNavItm>
-          <WindowBodyNavItm
-            onClick={() => handleClick('Mobile')}
-            focus={index === 'Mobile'}
-            title="Mobile"
-          >
-            {getIcon('Folder', SMALL_ICON_SIZE)}
-            <NavItmLabel>Mobile</NavItmLabel>
-          </WindowBodyNavItm>
-          <WindowBodyNavItm
-            onClick={() => handleClick('Programming')}
-            focus={index === 'Programming'}
-            title="Language"
-          >
-            {getIcon('CodeFile', SMALL_ICON_SIZE)}
-            <NavItmLabel>Language</NavItmLabel>
-          </WindowBodyNavItm>
-        </WindowBodyNavbar>
+      <WindowBody onClick={focusSkillsWindow}>
+        <SkillsNavbar index={index} onClick={handleClick} />
         <WindowBodyContent>
           {index === 'Front' ? <FrontEnd /> : null}
           {index === 'Back' ? <BackEnd /> : null}

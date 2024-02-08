@@ -1,28 +1,20 @@
 import React from 'react';
 import { DraggableData, Position, ResizableDelta } from 'react-rnd';
-import {
-  NavItmLabel,
-  Window,
-  WindowBody,
-  WindowBodyContent,
-  WindowBodyNavbar,
-  WindowBodyNavItm,
-} from '../../../GlobalStyle';
+import { Window, WindowBody, WindowBodyContent } from '../../../GlobalStyle';
 import {
   AboutIndexType,
   WindowPositionSetting,
   WindowSizeSetting,
 } from '../../../types';
 import useScreenSize, { TABLET_MAX_WIDTH } from '../../../utils/useScreenSize';
-import { WindowProps } from '../../../components/BodyContent';
-import { SMALL_ICON_SIZE, getIcon } from '../../../components/getIcon';
 import WindowTopbar from '../../../components/WindowTopbar';
 import useWindowsStore from '../../../utils/useWindowsStore';
 import About from '../../../components/about/About';
 import Experience from '../../../components/about/Experience';
 import Education from '../../../components/about/Education';
+import AboutNavbar from '../../../components/about/AboutNavbar';
 
-const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
+const AboutWindow: React.FC = () => {
   const { width, height } = useScreenSize();
   const { focusedWindow, setFocusedWindow } = useWindowsStore((state) => state);
 
@@ -71,7 +63,7 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
     }
   }, [aboutSize.width, showDate]);
 
-  const clickContentBody = React.useCallback(() => {
+  const focusAboutWindow = React.useCallback(() => {
     setFocusedWindow('About');
   }, [setFocusedWindow]);
 
@@ -92,7 +84,9 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
       minWidth={isMobileWindow ? width : 500}
       minHeight={300}
       style={{ zIndex: focusedWindow === 'About' ? 10 : undefined }}
-      onDragStart={handleFocus}
+      onDragStart={(_e: any, _data: DraggableData) => {
+        focusAboutWindow();
+      }}
       onDragStop={(_e: any, data: DraggableData) => {
         setAboutPosition({ x: data.x, y: data.y });
       }}
@@ -128,31 +122,8 @@ const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         setPrevSetting={setAboutPrevSetting}
         isMobileWindow={isMobileWindow}
       />
-      <WindowBody onClick={clickContentBody}>
-        <WindowBodyNavbar>
-          <WindowBodyNavItm
-            first
-            onClick={() => handleClick('About')}
-            focus={index === 'About'}
-          >
-            {getIcon('File', SMALL_ICON_SIZE)}
-            <NavItmLabel>Personal Info</NavItmLabel>
-          </WindowBodyNavItm>
-          <WindowBodyNavItm
-            onClick={() => handleClick('Experience')}
-            focus={index === 'Experience'}
-          >
-            {getIcon('Folder', SMALL_ICON_SIZE)}
-            <NavItmLabel>Experience</NavItmLabel>
-          </WindowBodyNavItm>
-          <WindowBodyNavItm
-            onClick={() => handleClick('Education')}
-            focus={index === 'Education'}
-          >
-            {getIcon('File', SMALL_ICON_SIZE)}
-            <NavItmLabel>Education</NavItmLabel>
-          </WindowBodyNavItm>
-        </WindowBodyNavbar>
+      <WindowBody onClick={focusAboutWindow}>
+        <AboutNavbar index={index} onClick={handleClick} />
         <WindowBodyContent>
           {index === 'About' ? <About /> : null}
           {index === 'Experience' ? <Experience showDate={showDate} /> : null}

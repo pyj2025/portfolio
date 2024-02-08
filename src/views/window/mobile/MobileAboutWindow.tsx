@@ -10,7 +10,6 @@ import {
   WindowSizeSetting,
 } from '../../../types';
 import useScreenSize, { TABLET_MAX_WIDTH } from '../../../utils/useScreenSize';
-import { WindowProps } from '../../../components/BodyContent';
 
 import {
   MobileBackButton,
@@ -18,47 +17,45 @@ import {
   MobileBodyContent,
   MobilePanel,
   MobileMenuItemLabel,
-  MobileNavbar,
   MobileWindowBody,
   MobileWindowMenuItem,
-  MobileNavbarItem,
   Window,
-  MobileNavbarMenuLabel,
 } from '../../../GlobalStyle';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { getIcon, getMobileNavbarMenuIcon } from '../../../components/getIcon';
+import { getIcon } from '../../../components/getIcon';
 import useWindowsStore from '../../../utils/useWindowsStore';
+import MobileAboutNavbar from '../../../components/about/MobileAboutNavbar';
 
 type MobileAboutWindowMenuProps = {
   onClick: (index: AboutIndexType) => void;
 };
 
-const MobileAboutWindowMenu: React.FC<MobileAboutWindowMenuProps> = ({
-  onClick,
-}) => {
-  return (
-    <>
-      <MobileWindowMenuItem onClick={() => onClick('About')}>
-        {getIcon('File')}
-        <MobileMenuItemLabel>About</MobileMenuItemLabel>
-      </MobileWindowMenuItem>
-      <MobileWindowMenuItem onClick={() => onClick('Experience')} isEven>
-        {getIcon('Folder')}
-        <MobileMenuItemLabel>Experience</MobileMenuItemLabel>
-      </MobileWindowMenuItem>
-      <MobileWindowMenuItem onClick={() => onClick('Education')}>
-        {getIcon('File')}
-        <MobileMenuItemLabel>Education</MobileMenuItemLabel>
-      </MobileWindowMenuItem>
-    </>
-  );
-};
+const MobileAboutWindowMenu: React.FC<MobileAboutWindowMenuProps> = React.memo(
+  ({ onClick }) => {
+    return (
+      <>
+        <MobileWindowMenuItem onClick={() => onClick('About')}>
+          {getIcon('File')}
+          <MobileMenuItemLabel>About</MobileMenuItemLabel>
+        </MobileWindowMenuItem>
+        <MobileWindowMenuItem onClick={() => onClick('Experience')} isEven>
+          {getIcon('Folder')}
+          <MobileMenuItemLabel>Experience</MobileMenuItemLabel>
+        </MobileWindowMenuItem>
+        <MobileWindowMenuItem onClick={() => onClick('Education')}>
+          {getIcon('File')}
+          <MobileMenuItemLabel>Education</MobileMenuItemLabel>
+        </MobileWindowMenuItem>
+      </>
+    );
+  }
+);
 
-const MobileAboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
+const MobileAboutWindow: React.FC = () => {
   const { width, height } = useScreenSize();
-  const focusedWindow = useWindowsStore((state) => state.focusedWindow);
+  const { focusedWindow, setFocusedWindow } = useWindowsStore((state) => state);
 
   const aboutRef = React.useRef<any>();
 
@@ -123,7 +120,9 @@ const MobileAboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
       minWidth={isMobileWindow ? width : 500}
       minHeight={300}
       style={{ zIndex: focusedWindow === 'About' ? 10 : undefined }}
-      onDragStart={handleFocus}
+      onDragStart={(_e: any, _data: DraggableData) => {
+        setFocusedWindow('About');
+      }}
       onDragStop={(_e: any, data: DraggableData) => {
         setAboutPosition({ x: data.x, y: data.y });
       }}
@@ -159,32 +158,7 @@ const MobileAboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         isMobileWindow={isMobileWindow}
       />
       <MobileWindowBody>
-        <MobileNavbar>
-          <MobileNavbarItem
-            title="About"
-            onClick={() => handleClick('About')}
-            focus={index === 'About'}
-          >
-            {getMobileNavbarMenuIcon('File')}
-            <MobileNavbarMenuLabel>About</MobileNavbarMenuLabel>
-          </MobileNavbarItem>
-          <MobileNavbarItem
-            title="Experience"
-            onClick={() => handleClick('Experience')}
-            focus={index === 'Experience'}
-          >
-            {getMobileNavbarMenuIcon('Folder')}
-            <MobileNavbarMenuLabel>Experience</MobileNavbarMenuLabel>
-          </MobileNavbarItem>
-          <MobileNavbarItem
-            title="Education"
-            onClick={() => handleClick('Education')}
-            focus={index === 'Education'}
-          >
-            {getMobileNavbarMenuIcon('File')}
-            <MobileNavbarMenuLabel>Education</MobileNavbarMenuLabel>
-          </MobileNavbarItem>
-        </MobileNavbar>
+        <MobileAboutNavbar index={index} onClick={handleClick} />
         <MobileBodyContent>
           {index === 'Menu' ? (
             <MobileAboutWindowMenu onClick={handleClick} />

@@ -4,7 +4,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { getIcon } from './getIcon';
-import useWindowsStore from '../utils/useWindowsStore';
+import useAboutStore from '../utils/useAboutStore';
+import useSkillsStore from '../utils/useSkillsStore';
+import useProjectsStore from '../utils/useProjectsStore';
 
 const Container = styled.div`
   display: flex;
@@ -54,19 +56,11 @@ const MinimizedIcon = styled(FontAwesomeIcon)`
 `;
 
 const Menu: React.FC = () => {
-  const isAboutMinimized = useWindowsStore((state) => state.isAboutMinimized);
-
-  const isSkillsMinimized = useWindowsStore((state) => state.isSkillsMinimized);
-
-  const isProjectsMinimized = useWindowsStore(
-    (state) => state.isProjectsMinimized
+  const { isAboutMinimized, openAbout } = useAboutStore((state) => state);
+  const { isSkillsMinimized, openSkills } = useSkillsStore((state) => state);
+  const { isProjectsMinimized, openProjects } = useProjectsStore(
+    (state) => state
   );
-
-  const openAbout = useWindowsStore((state) => state.openAbout);
-
-  const openSkills = useWindowsStore((state) => state.openSkills);
-
-  const openProjects = useWindowsStore((state) => state.openProjects);
 
   const handleAboutClick = React.useCallback(() => {
     openAbout();

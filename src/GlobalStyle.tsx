@@ -18,6 +18,53 @@ export const MutedText = styled.span`
   opacity: 0.5;
 `;
 
+//Terminal
+export const TerminalRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 4px 8px;
+`;
+
+export const TerminalBadge = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+export const FirstBadgeText = styled.div`
+  background-color: #000000;
+  padding: 4px 10px;
+  border: none;
+`;
+
+export const BadgeArrow = styled.div<{ first?: boolean }>`
+  background-color: ${({ first }) => (first ? 'transparent' : '#caa9fa')};
+  width: 0;
+  height: 0;
+  border-top: 13px solid transparent;
+  border-bottom: 13px solid transparent;
+  border-left: 13px solid #000000;
+`;
+
+export const SecondBadge = styled.div`
+  background-color: #caa9fa;
+  color: #000000;
+  padding: 4px 10px;
+  border: none;
+`;
+
+export const SecondBadgeArrow = styled(BadgeArrow)`
+  background-color: transparent;
+  border-left: 13px solid #caa9fa;
+`;
+
+export const TerminalLine = styled.div`
+  margin-left: 8px;
+`;
+
 //window
 export const Window = styled(Rnd)`
   display: flex;

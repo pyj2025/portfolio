@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React from "react";
 
 export const TABLET_MAX_WIDTH = 900;
 export const MOBILE_MAX_WIDTH = 768;
@@ -13,9 +13,9 @@ const getScreenSize = () => {
 };
 
 export default function useScreenSize() {
-  const [screenSize, setScreenSize] = useState(getScreenSize);
+  const [screenSize, setScreenSize] = React.useState(getScreenSize);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const handleResize = () => {
       setScreenSize(getScreenSize);
     };

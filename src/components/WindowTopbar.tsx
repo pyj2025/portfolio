@@ -11,6 +11,9 @@ import { WindowPositionSetting, WindowSizeSetting } from '../types';
 import useScreenSize from '../utils/useScreenSize';
 import { IconType, SMALL_ICON_SIZE, getIcon } from './getIcon';
 import useWindowsStore from '../utils/useWindowsStore';
+import useAboutStore from '../utils/useAboutStore';
+import useSkillsStore from '../utils/useSkillsStore';
+import useProjectsStore from '../utils/useProjectsStore';
 
 export type WindowTopbarProps = {
   title: string;
@@ -36,42 +39,28 @@ const WindowTopbar: React.FC<WindowTopbarProps> = ({
   isMobileWindow,
 }) => {
   const { width, height } = useScreenSize();
-
   const focusedWindow = useWindowsStore((state) => state.focusedWindow);
 
-  const isAboutExpanded = useWindowsStore((state) => state.isAboutExpanded);
+  const {
+    isAboutExpanded,
+    toggleAboutOpen,
+    toggleAboutExpanded,
+    setAboutMinimized,
+  } = useAboutStore((state) => state);
 
-  const isSkillsExpanded = useWindowsStore((state) => state.isSkillsExpanded);
+  const {
+    isSkillsExpanded,
+    toggleSkillsOpen,
+    toggleSkillsExpanded,
+    setSkillsMinimized,
+  } = useSkillsStore((state) => state);
 
-  const isProjectsExpanded = useWindowsStore(
-    (state) => state.isProjectsExpanded
-  );
-
-  const toggleAboutOpen = useWindowsStore((state) => state.toggleAboutOpen);
-
-  const toggleSkillsOpen = useWindowsStore((state) => state.toggleSkillsOpen);
-
-  const toggleProjectsOpen = useWindowsStore(
-    (state) => state.toggleProjectsOpen
-  );
-
-  const toggleAboutExpanded = useWindowsStore(
-    (state) => state.toggleAboutExpanded
-  );
-  const toggleSkillsExpanded = useWindowsStore(
-    (state) => state.toggleSkillsExpanded
-  );
-  const toggleProjectsExpanded = useWindowsStore(
-    (state) => state.toggleProjectsExpanded
-  );
-
-  const setAboutMinimized = useWindowsStore((state) => state.setAboutMinimized);
-  const setSkillsMinimized = useWindowsStore(
-    (state) => state.setSkillsMinimized
-  );
-  const setProjectsMinimized = useWindowsStore(
-    (state) => state.setProjectsMinimized
-  );
+  const {
+    isProjectsExpanded,
+    toggleProjectsOpen,
+    toggleProjectsExpanded,
+    setProjectsMinimized,
+  } = useProjectsStore((state) => state);
 
   const [image, setImage] = React.useState<IconType>('');
 
@@ -94,7 +83,7 @@ const WindowTopbar: React.FC<WindowTopbarProps> = ({
     }
   }, [title]);
 
-  const handleClose = () => {
+  const handleClose = React.useCallback(() => {
     if (focusedWindow === title) {
       switch (title) {
         case 'About': {
@@ -113,7 +102,13 @@ const WindowTopbar: React.FC<WindowTopbarProps> = ({
           break;
       }
     }
-  };
+  }, [
+    focusedWindow,
+    title,
+    toggleAboutOpen,
+    toggleProjectsOpen,
+    toggleSkillsOpen,
+  ]);
 
   const handleMinimized = React.useCallback(() => {
     if (focusedWindow === title) {
