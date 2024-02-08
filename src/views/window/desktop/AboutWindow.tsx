@@ -24,9 +24,7 @@ import Education from '../../../components/about/Education';
 
 const AboutWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
-
-  const focusedWindow = useWindowsStore((state) => state.focusedWindow);
-  const setFocusedWindow = useWindowsStore((state) => state.setFocusedWindow);
+  const { focusedWindow, setFocusedWindow } = useWindowsStore((state) => state);
 
   const aboutRef = React.useRef<any>();
 

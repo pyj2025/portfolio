@@ -22,9 +22,7 @@ import useWindowsStore from '../../../utils/useWindowsStore';
 
 const ProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
-
-  const focusedWindow = useWindowsStore((state) => state.focusedWindow);
-  const setFocusedWindow = useWindowsStore((state) => state.setFocusedWindow);
+  const { focusedWindow, setFocusedWindow } = useWindowsStore((state) => state);
 
   const projectsRef = React.useRef<any>();
 

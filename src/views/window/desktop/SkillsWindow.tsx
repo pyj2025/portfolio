@@ -33,8 +33,7 @@ export const SkillsContentContainer = styled.div`
 
 const SkillsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
-  const focusedWindow = useWindowsStore((state) => state.focusedWindow);
-  const setFocusedWindow = useWindowsStore((state) => state.setFocusedWindow);
+  const { focusedWindow, setFocusedWindow } = useWindowsStore((state) => state);
 
   const skillsRef = React.useRef<any>();
 
