@@ -12,7 +12,7 @@ import TerminalFirstLine from '../../../components/welcome/TerminalFirstLine';
 import TerminalSecondLine from '../../../components/welcome/TerminalSecondLine';
 import TerminalThirdLine from '../../../components/welcome/TerminalThirdLine';
 
-const Window = styled(Rnd)`
+const WelcomeWindowContainer = styled(Rnd)`
   width: 100%;
   display: grid;
   align-items: center;
@@ -22,7 +22,7 @@ const Window = styled(Rnd)`
   box-shadow: 0px 0px 8px black;
 `;
 
-const WindowBody = styled.div`
+const WelcomeWindowBody = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -70,7 +70,7 @@ const MobileWelcomeWindow: React.FC = () => {
   }, [width, height]);
 
   return (
-    <Window
+    <WelcomeWindowContainer
       id="Welcome"
       ref={welcomeRef}
       size={{ width: windowSize.width, height: windowSize.height }}
@@ -82,7 +82,7 @@ const MobileWelcomeWindow: React.FC = () => {
       enableResizing={false}
     >
       <WelcomeTopbar />
-      <WindowBody>
+      <WelcomeWindowBody>
         <Loaded setFirstLine={setFirstLine} />
         {firstLine ? (
           <TerminalFirstLine directory="~/" setSecondLine={setSecondLine} />
@@ -102,8 +102,8 @@ const MobileWelcomeWindow: React.FC = () => {
           />
         ) : null}
         {thirdContent ? <Contact /> : null}
-      </WindowBody>
-    </Window>
+      </WelcomeWindowBody>
+    </WelcomeWindowContainer>
   );
 };
 
