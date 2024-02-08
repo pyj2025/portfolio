@@ -144,9 +144,8 @@ const TerminalLine = styled.div`
 
 const WelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
-  const focusedWindow = useWindowsStore((state) => state.focusedWindow);
-  const closeWelcomeWindow = useWindowsStore(
-    (state) => state.closeWelcomeWindow
+  const { focusedWindow, closeWelcomeWindow } = useWindowsStore(
+    (state) => state
   );
 
   const welcomeRef = React.useRef<any>();
@@ -281,7 +280,6 @@ const WelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
                 }}
                 onTypingDone={() => {
                   setThirdContent(true);
-                  // window.localStorage.setItem("welcomeWindowRendered", "true");
                 }}
               >
                 cat contact.md

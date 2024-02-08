@@ -133,10 +133,8 @@ const TerminalLine = styled.div`
 
 const MobileWelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
-
-  const focusedWindow = useWindowsStore((state) => state.focusedWindow);
-  const closeWelcomeWindow = useWindowsStore(
-    (state) => state.closeWelcomeWindow
+  const { focusedWindow, closeWelcomeWindow } = useWindowsStore(
+    (state) => state
   );
 
   const welcomeRef = React.useRef<any>();
