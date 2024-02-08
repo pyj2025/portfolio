@@ -3,13 +3,13 @@ import styled from 'styled-components';
 import { Rnd } from 'react-rnd';
 import Typist from 'react-typist';
 import useScreenSize, { TABLET_MAX_WIDTH } from '../../../utils/useScreenSize';
-import { useWindows } from '../../../utils/context/context';
 import { WindowProps } from '../../../components/BodyContent';
 import { WindowPositionSetting, WindowSizeSetting } from '../../../types';
 import Loaded from '../../../components/welcome/Loaded';
 import Intro from '../../../components/welcome/Intro';
 import Contact from '../../../components/welcome/Contact';
 import { SMALL_ICON_SIZE, getIcon } from '../../../components/getIcon';
+import useWindowsStore from '../../../utils/useWindowsStore';
 
 const Window = styled(Rnd)`
   width: 100%;
@@ -133,7 +133,11 @@ const TerminalLine = styled.div`
 
 const MobileWelcomeWindow: React.FC<WindowProps> = ({ handleFocus }) => {
   const { width, height } = useScreenSize();
-  const { focusedWindow, closeWelcomeWindow } = useWindows();
+
+  const focusedWindow = useWindowsStore((state) => state.focusedWindow);
+  const closeWelcomeWindow = useWindowsStore(
+    (state) => state.closeWelcomeWindow
+  );
 
   const welcomeRef = React.useRef<any>();
 

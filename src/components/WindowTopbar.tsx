@@ -8,7 +8,6 @@ import {
   WindowTopbarContainer,
 } from '../GlobalStyle';
 import { WindowPositionSetting, WindowSizeSetting } from '../types';
-import { useWindows } from '../utils/context/context';
 import useScreenSize from '../utils/useScreenSize';
 import { IconType, SMALL_ICON_SIZE, getIcon } from './getIcon';
 import useWindowsStore from '../utils/useWindowsStore';
@@ -37,25 +36,16 @@ const WindowTopbar: React.FC<WindowTopbarProps> = ({
   isMobileWindow,
 }) => {
   const { width, height } = useScreenSize();
-  const {
-    // focusedWindow,
-    isAboutExpanded,
-    isSkillsExpanded,
-    isProjectsExpanded,
-    // toggleAboutOpen,
-    // toggleSkillsOpen,
-    // toggleProjectsOpen,
-    setAboutMinimized,
-    setSkillsMinimized,
-    setProjectsMinimized,
-    toggleAboutExpanded,
-    toggleSkillsExpanded,
-    toggleProjectsExpanded,
-  } = useWindows();
-
-  const [image, setImage] = React.useState<IconType>('');
 
   const focusedWindow = useWindowsStore((state) => state.focusedWindow);
+
+  const isAboutExpanded = useWindowsStore((state) => state.isAboutExpanded);
+
+  const isSkillsExpanded = useWindowsStore((state) => state.isSkillsExpanded);
+
+  const isProjectsExpanded = useWindowsStore(
+    (state) => state.isProjectsExpanded
+  );
 
   const toggleAboutOpen = useWindowsStore((state) => state.toggleAboutOpen);
 
@@ -64,6 +54,26 @@ const WindowTopbar: React.FC<WindowTopbarProps> = ({
   const toggleProjectsOpen = useWindowsStore(
     (state) => state.toggleProjectsOpen
   );
+
+  const toggleAboutExpanded = useWindowsStore(
+    (state) => state.toggleAboutExpanded
+  );
+  const toggleSkillsExpanded = useWindowsStore(
+    (state) => state.toggleSkillsExpanded
+  );
+  const toggleProjectsExpanded = useWindowsStore(
+    (state) => state.toggleProjectsExpanded
+  );
+
+  const setAboutMinimized = useWindowsStore((state) => state.setAboutMinimized);
+  const setSkillsMinimized = useWindowsStore(
+    (state) => state.setSkillsMinimized
+  );
+  const setProjectsMinimized = useWindowsStore(
+    (state) => state.setProjectsMinimized
+  );
+
+  const [image, setImage] = React.useState<IconType>('');
 
   React.useEffect(() => {
     switch (title) {

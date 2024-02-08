@@ -2,7 +2,6 @@ import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import styled from 'styled-components';
-import { useWindows } from '../utils/context/context';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { getIcon } from './getIcon';
 import useWindowsStore from '../utils/useWindowsStore';
@@ -55,14 +54,13 @@ const MinimizedIcon = styled(FontAwesomeIcon)`
 `;
 
 const Menu: React.FC = () => {
-  const {
-    isAboutMinimized,
-    isSkillsMinimized,
-    isProjectsMinimized,
-    // openAbout,
-    // openSkills,
-    // openProjects,
-  } = useWindows();
+  const isAboutMinimized = useWindowsStore((state) => state.isAboutMinimized);
+
+  const isSkillsMinimized = useWindowsStore((state) => state.isSkillsMinimized);
+
+  const isProjectsMinimized = useWindowsStore(
+    (state) => state.isProjectsMinimized
+  );
 
   const openAbout = useWindowsStore((state) => state.openAbout);
 

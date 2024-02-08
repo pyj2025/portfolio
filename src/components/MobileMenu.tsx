@@ -2,9 +2,9 @@ import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import styled from 'styled-components';
-import { useWindows } from '../utils/context/context';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { getIcon } from './getIcon';
+import useWindowsStore from '../utils/useWindowsStore';
 
 const Container = styled.div`
   display: flex;
@@ -49,22 +49,41 @@ const MinimizedIcon = styled(FontAwesomeIcon)`
 `;
 
 const MobileMenu: React.FC = () => {
-  const {
-    isAboutOpen,
-    isSkillsOpen,
-    isProjectsOpen,
-    isWelcomeWindowOpen,
-    isAboutMinimized,
-    isSkillsMinimized,
-    isProjectsMinimized,
-    toggleAboutOpen,
-    toggleSkillsOpen,
-    toggleProjectsOpen,
-    closeAbout,
-    closeSkills,
-    closeProjects,
-    closeWelcomeWindow,
-  } = useWindows();
+  const isAboutOpen = useWindowsStore((state) => state.isAboutOpen);
+
+  const isSkillsOpen = useWindowsStore((state) => state.isSkillsOpen);
+
+  const isProjectsOpen = useWindowsStore((state) => state.isProjectsOpen);
+
+  const isWelcomeWindowOpen = useWindowsStore(
+    (state) => state.isWelcomeWindowOpen
+  );
+
+  const isAboutMinimized = useWindowsStore((state) => state.isAboutMinimized);
+
+  const isSkillsMinimized = useWindowsStore((state) => state.isSkillsMinimized);
+
+  const isProjectsMinimized = useWindowsStore(
+    (state) => state.isProjectsMinimized
+  );
+
+  const toggleAboutOpen = useWindowsStore((state) => state.toggleAboutOpen);
+
+  const toggleSkillsOpen = useWindowsStore((state) => state.toggleSkillsOpen);
+
+  const toggleProjectsOpen = useWindowsStore(
+    (state) => state.toggleProjectsOpen
+  );
+
+  const closeAbout = useWindowsStore((state) => state.closeAbout);
+
+  const closeSkills = useWindowsStore((state) => state.closeSkills);
+
+  const closeProjects = useWindowsStore((state) => state.closeProjects);
+
+  const closeWelcomeWindow = useWindowsStore(
+    (state) => state.closeWelcomeWindow
+  );
 
   const handleAboutClick = () => {
     if (isWelcomeWindowOpen) {
