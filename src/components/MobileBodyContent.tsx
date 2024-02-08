@@ -1,11 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { DraggableData } from 'react-rnd';
 
 import { Slide, toast, ToastContainer } from 'react-toastify';
 import { browserName, isBrowser, isMobile } from 'react-device-detect';
 import 'react-toastify/dist/ReactToastify.css';
-import { FocusedWindowType } from '../types';
 import useScreenSize, { MOBILE_MAX_WIDTH } from '../utils/useScreenSize';
 import MobileApp from './MobileApp';
 import MobileWelcomeWindow from '../views/window/mobile/MobileWelcomeWindow';
@@ -13,6 +11,9 @@ import MobileAboutWindow from '../views/window/mobile/MobileAboutWindow';
 import MobileSkillsWindow from '../views/window/mobile/MobileSkillsWindow';
 import MobileProjectsWindow from '../views/window/mobile/MobileProjectsWindow';
 import useWindowsStore from '../utils/useWindowsStore';
+import useAboutStore from '../utils/useAboutStore';
+import useSkillsStore from '../utils/useSkillsStore';
+import useProjectsStore from '../utils/useProjectsStore';
 
 const Container = styled.div`
   width: 100%;
@@ -21,22 +22,16 @@ const Container = styled.div`
   color: white;
 `;
 
-export type WindowProps = {
-  handleFocus: (_e: any, data: DraggableData) => void;
-};
-
 const MobileBodyContent: React.FC = () => {
   const isWelcomeWindowOpen = useWindowsStore(
     (state) => state.isWelcomeWindowOpen
   );
 
-  const isAboutOpen = useWindowsStore((state) => state.isAboutOpen);
+  const isAboutOpen = useAboutStore((state) => state.isAboutOpen);
 
-  const isSkillsOpen = useWindowsStore((state) => state.isSkillsOpen);
+  const isSkillsOpen = useSkillsStore((state) => state.isSkillsOpen);
 
-  const isProjectsOpen = useWindowsStore((state) => state.isProjectsOpen);
-
-  const setFocusedWindow = useWindowsStore((state) => state.setFocusedWindow);
+  const isProjectsOpen = useProjectsStore((state) => state.isProjectsOpen);
 
   const { width } = useScreenSize();
   const [checkMobile, setCheckMobile] = React.useState(false);
@@ -57,9 +52,6 @@ const MobileBodyContent: React.FC = () => {
       setCheckMobile(true);
     }
   }, [width]);
-  const handleFocus = (_e: any, data: DraggableData) => {
-    setFocusedWindow(data.node.id as FocusedWindowType);
-  };
 
   return (
     <Container>
@@ -76,10 +68,10 @@ const MobileBodyContent: React.FC = () => {
         draggablePercent={60}
       />
       <MobileApp />
-      {isWelcomeWindowOpen && <MobileWelcomeWindow handleFocus={handleFocus} />}
-      {isAboutOpen && <MobileAboutWindow handleFocus={handleFocus} />}
-      {isSkillsOpen && <MobileSkillsWindow handleFocus={handleFocus} />}
-      {isProjectsOpen && <MobileProjectsWindow handleFocus={handleFocus} />}
+      {isWelcomeWindowOpen && <MobileWelcomeWindow />}
+      {isAboutOpen && <MobileAboutWindow />}
+      {isSkillsOpen && <MobileSkillsWindow />}
+      {isProjectsOpen && <MobileProjectsWindow />}
     </Container>
   );
 };

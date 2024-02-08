@@ -5,6 +5,9 @@ import styled from 'styled-components';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { getIcon } from './getIcon';
 import useWindowsStore from '../utils/useWindowsStore';
+import useAboutStore from '../utils/useAboutStore';
+import useSkillsStore from '../utils/useSkillsStore';
+import useProjectsStore from '../utils/useProjectsStore';
 
 const Container = styled.div`
   display: flex;
@@ -49,40 +52,21 @@ const MinimizedIcon = styled(FontAwesomeIcon)`
 `;
 
 const MobileMenu: React.FC = () => {
-  const isAboutOpen = useWindowsStore((state) => state.isAboutOpen);
+  const { isAboutOpen, isAboutMinimized, toggleAboutOpen, closeAbout } =
+    useAboutStore((state) => state);
 
-  const isSkillsOpen = useWindowsStore((state) => state.isSkillsOpen);
+  const { isSkillsOpen, isSkillsMinimized, toggleSkillsOpen, closeSkills } =
+    useSkillsStore((state) => state);
 
-  const isProjectsOpen = useWindowsStore((state) => state.isProjectsOpen);
+  const {
+    isProjectsOpen,
+    isProjectsMinimized,
+    toggleProjectsOpen,
+    closeProjects,
+  } = useProjectsStore((state) => state);
 
-  const isWelcomeWindowOpen = useWindowsStore(
-    (state) => state.isWelcomeWindowOpen
-  );
-
-  const isAboutMinimized = useWindowsStore((state) => state.isAboutMinimized);
-
-  const isSkillsMinimized = useWindowsStore((state) => state.isSkillsMinimized);
-
-  const isProjectsMinimized = useWindowsStore(
-    (state) => state.isProjectsMinimized
-  );
-
-  const toggleAboutOpen = useWindowsStore((state) => state.toggleAboutOpen);
-
-  const toggleSkillsOpen = useWindowsStore((state) => state.toggleSkillsOpen);
-
-  const toggleProjectsOpen = useWindowsStore(
-    (state) => state.toggleProjectsOpen
-  );
-
-  const closeAbout = useWindowsStore((state) => state.closeAbout);
-
-  const closeSkills = useWindowsStore((state) => state.closeSkills);
-
-  const closeProjects = useWindowsStore((state) => state.closeProjects);
-
-  const closeWelcomeWindow = useWindowsStore(
-    (state) => state.closeWelcomeWindow
+  const { isWelcomeWindowOpen, closeWelcomeWindow } = useWindowsStore(
+    (state) => state
   );
 
   const handleAboutClick = React.useCallback(() => {

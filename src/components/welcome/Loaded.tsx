@@ -1,14 +1,7 @@
 import React from 'react';
 import Typist from 'react-typist';
 import styled from 'styled-components';
-
-const TerminalRow = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  margin: 4px 8px;
-`;
+import { TerminalRow } from '../../GlobalStyle';
 
 const LoadedCommandLine = styled(Typist)`
   margin-top: 8px;

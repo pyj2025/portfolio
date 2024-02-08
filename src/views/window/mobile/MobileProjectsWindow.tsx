@@ -1,17 +1,13 @@
 import React, { ReactNode } from 'react';
 import { DraggableData, Position, ResizableDelta } from 'react-rnd';
-import { WindowProps } from '../../../components/BodyContent';
 import WindowTopbar from '../../../components/WindowTopbar';
 import {
   MobileBackButton,
   MobileBackButtonContainer,
   MobileBodyContent,
   MobilePanel,
-  MobileNavbar,
   MobileWindowBody,
-  MobileNavbarItem,
   Window,
-  MobileNavbarMenuLabel,
 } from '../../../GlobalStyle';
 import {
   ProjectIndexType,
@@ -22,9 +18,9 @@ import useScreenSize, { TABLET_MAX_WIDTH } from '../../../utils/useScreenSize';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { getMobileNavbarMenuIcon } from '../../../components/getIcon';
 import { getProject } from '../../../components/projects/getProject';
 import useWindowsStore from '../../../utils/useWindowsStore';
+import MobileProjectsNavbar from '../../../components/projects/MobileProjectsNavbar';
 
 type MobilePanelWrapperProps = {
   backIndex: string;
@@ -47,9 +43,9 @@ const MobilePanelWrapper: React.FC<MobilePanelWrapperProps> = React.memo(
   }
 );
 
-const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
+const MobileProjectsWindow: React.FC = () => {
   const { width, height } = useScreenSize();
-  const focusedWindow = useWindowsStore((state) => state.focusedWindow);
+  const { focusedWindow, setFocusedWindow } = useWindowsStore((state) => state);
 
   const projectsRef = React.useRef<any>();
 
@@ -103,7 +99,9 @@ const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
       minWidth={isMobileWindow ? width : 525}
       minHeight={300}
       style={{ zIndex: focusedWindow === 'Projects' ? 10 : undefined }}
-      onDragStart={handleFocus}
+      onDragStart={(_e: any, _data: DraggableData) => {
+        setFocusedWindow('Projects');
+      }}
       onDragStop={(_e: any, data: DraggableData) => {
         setProjectsPosition({ x: data.x, y: data.y });
       }}
@@ -133,43 +131,7 @@ const MobileProjectsWindow: React.FC<WindowProps> = ({ handleFocus }) => {
         isMobileWindow={isMobileWindow}
       />
       <MobileWindowBody>
-        <MobileNavbar>
-          <MobileNavbarItem
-            title="Projects"
-            onClick={() => handleClick('Projects')}
-            focus
-          >
-            {getMobileNavbarMenuIcon('Folder')}
-            <MobileNavbarMenuLabel>Projects</MobileNavbarMenuLabel>
-          </MobileNavbarItem>
-          <MobileNavbarItem
-            title="Web"
-            onClick={() => handleClick('WebProjects')}
-            focus={['WebProjects', 'DatApex', 'Portfolio'].includes(index)}
-            isChild
-          >
-            {getMobileNavbarMenuIcon('Folder')}
-            <MobileNavbarMenuLabel>Web</MobileNavbarMenuLabel>
-          </MobileNavbarItem>
-          <MobileNavbarItem
-            title="Mobile"
-            onClick={() => handleClick('MobileProjects')}
-            focus={[
-              'MobileProjects',
-              'Foodie',
-              'WebGame',
-              'Tippy',
-              'Flix',
-              'Twitter',
-              'Parstagram',
-              'ToonFlix',
-            ].includes(index)}
-            isChild
-          >
-            {getMobileNavbarMenuIcon('Folder')}
-            <MobileNavbarMenuLabel>Mobile</MobileNavbarMenuLabel>
-          </MobileNavbarItem>
-        </MobileNavbar>
+        <MobileProjectsNavbar index={index} onClick={handleClick} />
         <MobileBodyContent>
           {['Projects', 'WebProjects', 'MobileProjects'].includes(index) ? (
             getProject(index, handleClick)

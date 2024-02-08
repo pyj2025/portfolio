@@ -65,9 +65,9 @@ const MobileApp: React.FC = () => {
     }
   }, [width]);
 
-  const handleEmailClick = () => {
+  const handleEmailClick = React.useCallback(() => {
     window.open('mailto:pyj2025@gmail.com');
-  };
+  }, []);
 
   return (
     <Container>

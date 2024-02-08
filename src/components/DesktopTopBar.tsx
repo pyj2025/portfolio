@@ -11,6 +11,7 @@ import useScreenSize from '../utils/useScreenSize';
 import useClickOutside from '../utils/useClickOutside';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import useWindowsStore from '../utils/useWindowsStore';
+import useAboutStore from '../utils/useAboutStore';
 
 const Container = styled.div<{ width: number }>`
   display: flex;
@@ -70,9 +71,8 @@ const TopbarAppIcon = styled(FontAwesomeIcon)`
 const DesktopTopBar: React.FC = () => {
   const { width } = useScreenSize();
 
-  const openAbout = useWindowsStore((state) => state.openAbout);
-
-  const unfocusWindows = useWindowsStore((state) => state.unfocusWindows);
+  const openAbout = useAboutStore((state) => state.openAbout);
+  const clearFocusWindows = useWindowsStore((state) => state.clearFocusWindows);
 
   const mainMenuRef = React.useRef<HTMLDivElement | null>(null);
 
@@ -82,15 +82,15 @@ const DesktopTopBar: React.FC = () => {
     setMenuOpen(false);
   });
 
-  const handleClick = () => {
+  const handleClick = React.useCallback(() => {
     setMenuOpen(!menuOpen);
-    unfocusWindows();
-  };
+    clearFocusWindows();
+  }, [menuOpen, clearFocusWindows]);
 
-  const handleAbout = () => {
+  const handleAbout = React.useCallback(() => {
     openAbout();
     setMenuOpen(false);
-  };
+  }, [openAbout]);
 
   return (
     <Container width={width}>
