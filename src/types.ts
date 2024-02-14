@@ -23,6 +23,7 @@ export type ProjectIndexType =
   | 'WebProjects'
   | 'MobileProjects'
   | 'DatApex'
+  | "MovieNext"
   | 'Foodie'
   | "WebGame"
   | 'Tippy'

@@ -9,6 +9,7 @@ import ToonFlix from './ToonFlix';
 import { MobileProjects, Projects, WebProjects } from './Projects';
 import { ProjectIndexType } from '../../types';
 import WebGame from './WebGame';
+import MovieNext from './MovieNext';
 
 export const getProject = (
   index: ProjectIndexType,
@@ -23,6 +24,8 @@ export const getProject = (
       return <MobileProjects click={onClick!} />;
     case 'DatApex':
       return <DatApex />;
+    case 'MovieNext':
+      return <MovieNext />;
     case 'Portfolio':
       return <Portfolio />;
     case 'Foodie':

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import FoodieLogo from '../../image/projects/Foodie.png';
 import DatApexLogo from '../../image/projects/DatApex.png';
+import MovieLogo from '../../image/projects/Movie.png';
 import { getIcon } from '../getIcon';
 import { ProjectIndexType } from '../../types';
 import ParstagramLogo from '../../image/projects/Parstagram.png';
@@ -63,6 +64,10 @@ export const WebProjects: React.FC<ProjectsProps> = ({ click }) => {
         <IconContainer onClick={() => click('DatApex')}>
           <IconLogoImage src={DatApexLogo} alt="DatApex" />
           <IconLabel>DatApex</IconLabel>
+        </IconContainer>
+        <IconContainer onClick={() => click('MovieNext')}>
+          <IconLogoImage src={MovieLogo} alt="MovieNext" />
+          <IconLabel>MovieNext</IconLabel>
         </IconContainer>
         <IconContainer onClick={() => click('Portfolio')}>
           {getIcon('CodeFile')}
