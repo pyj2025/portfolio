@@ -29,7 +29,9 @@ const MobileProjectsNavbar: React.FC<MobileProjectsNavbarProps> = ({
       <MobileNavbarItem
         title="Web"
         onClick={() => onClick('WebProjects')}
-        focus={['WebProjects', 'DatApex', 'Portfolio'].includes(index)}
+        focus={['WebProjects', 'DatApex', 'MovieNext', 'Portfolio'].includes(
+          index
+        )}
         isChild
       >
         {getMobileNavbarMenuIcon('Folder')}

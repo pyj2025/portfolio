@@ -139,13 +139,13 @@ const MobileProjectsWindow: React.FC = () => {
             <MobilePanelWrapper
               key={index}
               backIndex={
-                index === 'DatApex' || index === 'Portfolio'
+                ['DatApex', 'MovieNext', 'Portfolio'].includes(index)
                   ? 'WebProjects'
                   : 'MobileProjects'
               }
               onClick={() =>
                 handleClick(
-                  index === 'DatApex' || index === 'Portfolio'
+                  ['DatApex', 'MovieNext', 'Portfolio'].includes(index)
                     ? 'WebProjects'
                     : 'MobileProjects'
                 )

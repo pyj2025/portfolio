@@ -70,13 +70,19 @@
         "name": "DatApex",
         "link": "https://github.com/SeoHyunAhn/DatApex",
         "stack": ["React", "Django", "Bootstrap"],
-        "details": "A web application that provides different preprocessing algorithms which the users can run to modify their datasets and allow users to run different machine learning algorithms on datasets uploaded by them, and present accuracy plots/visualizations in a clean UI"
+        "details": "DatApex is a web application tailored for users seeking efficient preprocessing solutions for their datasets and seamless execution of various machine learning algorithms. The platform empowers users to upload their datasets and apply a diverse range of preprocessing algorithms to enhance data quality and structure. With DatApex, users can effortlessly run different machine learning algorithms on their modified datasets, allowing for comprehensive analysis and model training. The interface offers clear and intuitive navigation, ensuring a user-friendly experience throughout. Additionally, DatApex presents accuracy plots and visualizations in a clean and accessible UI, facilitating insightful data interpretation and decision-making."
+      },
+      "MovieNext": {
+        "name": "MovieNext",
+        "link": "https://github.com/pyj2025/movie-next14",
+        "stack": ["Next.js 14"],
+        "details": "The MovieNext is a Next.js-based project designed to provide users with an intuitive platform to browse a curated list of movies, offering comprehensive details such as titles, descriptions, release years, and more. Leveraging React and Next.js, the application ensures seamless navigation and responsive design across various devices, allowing users to effortlessly explore movie information, including credits, similar movies, and available providers."
       },
       "Foodie": {
         "name": "Foodie",
         "link": "https://github.com/axer0310/Foodie",
         "stack": ["Swift", "Firebase", "Yelp API", "Google API"],
-        "details": "An application that recommends the dining places based on users’ preferences and connects users with QR code."
+        "details": "Foodie is a dynamic application designed to streamline dining experiences by recommending personalized dining establishments based on users' preferences. With its intuitive interface, users can effortlessly explore and discover new dining options tailored to their tastes and dietary preferences. Additionally, Foodie simplifies the process of connecting users with restaurants through QR code technology, offering convenience and efficiency in accessing menus, reservations, and other restaurant services."
       },
       "WebGame": {
         "name": "WebGame",

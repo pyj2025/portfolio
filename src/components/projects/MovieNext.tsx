@@ -1,7 +1,8 @@
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import info from '../../info.json';
-import FoodieLogo from '../../image/projects/Foodie.png';
-
+import MovieNextLogo from '../../image/projects/Movie.png';
 import {
   PanelContainer,
   PanelDescriptionContainer,
@@ -12,26 +13,24 @@ import {
   PanelDescriptionLabel,
   PanelDescriptionText,
 } from '../../GlobalStyle';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 
-const Foodie: React.FC = () => {
+const MovieNext: React.FC = () => {
   return (
     <PanelContainer>
       <PanelLogoContainer>
-        <PanelLogoImage src={FoodieLogo} alt="Foodie" />
+        <PanelLogoImage src={MovieNextLogo} alt="MovieNext" />
       </PanelLogoContainer>
       <PanelDescriptionContainer>
         <PanelDescriptionRow>
           <PanelDescriptionLabel>Name</PanelDescriptionLabel>
           <PanelDescriptionText>
-            {info.project.Foodie.name}
+            {info.project.MovieNext.name}
           </PanelDescriptionText>
         </PanelDescriptionRow>
         <PanelDescriptionRow>
           <PanelDescriptionLabel>Link</PanelDescriptionLabel>
-          <LinkLabel href={info.project.Foodie.link}>
+          <LinkLabel href={info.project.MovieNext.link}>
             <span>
               Link <FontAwesomeIcon icon={faExternalLinkAlt as IconProp} />
             </span>
@@ -40,17 +39,17 @@ const Foodie: React.FC = () => {
         <PanelDescriptionRow>
           <PanelDescriptionLabel>Stack</PanelDescriptionLabel>
           <PanelDescriptionText>
-            {info.project.Foodie.stack.map((value, idx) =>
-              idx === info.project.Foodie.stack.length - 1
+            {info.project.MovieNext.stack.map((value, idx) =>
+              idx === info.project.MovieNext.stack.length - 1
                 ? value
                 : value + ', '
             )}
           </PanelDescriptionText>
         </PanelDescriptionRow>
         <PanelDescriptionRow>
-          <PanelDescriptionLabel>Detail</PanelDescriptionLabel>
+          <PanelDescriptionLabel>Details</PanelDescriptionLabel>
           <PanelDescriptionText>
-            {info.project.Foodie.details}
+            {info.project.MovieNext.details}
           </PanelDescriptionText>
         </PanelDescriptionRow>
       </PanelDescriptionContainer>
@@ -58,4 +57,4 @@ const Foodie: React.FC = () => {
   );
 };
 
-export default React.memo(Foodie);
+export default React.memo(MovieNext);
