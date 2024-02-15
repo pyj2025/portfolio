@@ -88,43 +88,43 @@
         "name": "WebGame",
         "link": "https://github.com/pyj2025/native-webgame",
         "stack": ["React Native"],
-        "details": "This application is a haven for game lovers, featuring a variety of engaging games. With our Multi-Game App, you can enjoy a medley of different games all in one place."
+        "details": "Webgame is the ultimate destination for game enthusiasts, offering a diverse selection of engaging games within a single application. With our app, users can immerse themselves in a variety of captivating gaming experiences, all conveniently accessible from one centralized platform."
       },
       "Tippy": {
         "name": "Tippy",
         "link": "https://github.com/park612/TipCalculator",
         "stack": ["Swift"],
-        "details": "Tippy is a tip calculator application for iOS."
+        "details": "Tippy is a convenient and user-friendly tip calculator application tailored for iOS devices. With its intuitive interface and straightforward functionality, Tippy simplifies the process of calculating tips and splitting bills among friends or colleagues. Users can input the total amount of their bill, select their desired tip percentage, and instantly see the calculated tip amount and total bill including tip."
       },
       "Flix": {
         "name": "Flix",
         "link": "https://github.com/park612/Flix",
         "stack": ["Swift"],
-        "details": "Flix is an app that allows users to browse movies from the The Movie Database API."
+        "details": "Flix is a Swift application designed to empower users to browse a vast collection of movies sourced from The Movie Database (TMDb) API. This intuitive app provides users with a seamless platform to explore an extensive library of films, encompassing various genres, ratings, and release dates."
       },
       "Twitter": {
         "name": "Twitter",
         "link": "https://github.com/pyj2025/Twitter",
         "stack": ["Swift"],
-        "details": "Twitter is a basic twitter app to read your tweets."
+        "details": "Twitter is a straightforward iOS application that replicates the core functionality of Twitter, allowing users to read their tweets within a familiar interface. With a minimalist design and intuitive navigation, this app provides users with a seamless experience to stay connected with their Twitter feed. Users can effortlessly scroll through their timelines, view tweets from accounts they follow, and engage with content through likes and retweets. Built with simplicity in mind, Twitter offers a streamlined platform for users to consume and interact with tweets, keeping them informed and engaged with the latest updates from their network."
       },
       "Parstagram": {
         "name": "Parstagram",
         "link": "https://github.com/park612/Parstagram",
         "stack": ["Swift"],
-        "details": "This is an Instagram clone with a custom Parse backend that allows a user to post photos and view a global photos feed."
+        "details": "Parstagram is a dynamic Instagram clone featuring a custom Parse backend, tailored to offer users a seamless experience in photo sharing and exploration. With Parstagram, users can effortlessly upload and share their favourite photos, as well as explore a global feed curated with captivating images from across the platform. This innovative application not only replicates the core functionalities of Instagram but also introduces a custom Parse backend, enhancing scalability, customization, and performance. Whether users are posting cherished memories or discovering inspiring content, Parstagram provides a vibrant platform for fostering creativity, connection, and community through the art of visual storytelling."
       },
       "ToonFlix": {
         "name": "ToonFlix",
         "link": "https://github.com/pyj2025/toonflix",
         "stack": ["Flutter"],
-        "details": "ToonFlix is a Flutter app that allows users to dive into Naver's awesome webtoon collection."
+        "details": "ToonFlix is an innovative Flutter application designed to provide users with seamless access to Naver's extensive collection of captivating webtoons. Offering a user-friendly interface and smooth navigation, the app enables users to immerse themselves in Naver's diverse range of webtoon content effortlessly. With ToonFlix, users can explore and discover their favourite webtoons, access the latest updates, and enjoy an immersive reading experience right at their fingertips."
       },
       "Portfolio": {
         "name": "Joon's Portfolio",
         "link": "https://pyj2025.github.io/portfolio/",
         "stack": ["React", "Typescript", "Styled-components"],
-        "details": "Joon's portfolio aka this site. It presents who am I, what skills I have, and what kind of work experience I have. Also, it provides my contact methods."
+        "details": "Joon's Portfolio Website is a concise yet comprehensive online platform designed to showcase Joon's professional profile, skills, work experience, and contact information. With a clean and intuitive design, the website features sections providing an overview of Joon's background and interests, a Skills Showcase highlighting key competencies, and a detailed Work Experience section outlining past roles and achievements. Additionally, the site includes contact information for easy communication."
       }
     },
     "skills": {
