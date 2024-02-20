@@ -70,7 +70,7 @@ export const WebProjects: React.FC<ProjectsProps> = ({ click }) => {
           <IconLabel>MovieNext</IconLabel>
         </IconContainer>
         <IconContainer onClick={() => click('Portfolio')}>
-          {getIcon('CodeFile')}
+          {getIcon('CodeFile', 53)}
           <IconLabel>Portfolio</IconLabel>
         </IconContainer>
       </IconListContainer>
@@ -87,19 +87,19 @@ export const MobileProjects: React.FC<ProjectsProps> = ({ click }) => {
           <IconLabel>Foodie</IconLabel>
         </IconContainer>
         <IconContainer onClick={() => click('WebGame')}>
-          {getIcon('CodeFile')}
+          {getIcon('CodeFile', 53)}
           <IconLabel>WebGame</IconLabel>
         </IconContainer>
         <IconContainer onClick={() => click('ToonFlix')}>
-          {getIcon('CodeFile')}
+          {getIcon('CodeFile', 53)}
           <IconLabel>ToonFlix</IconLabel>
         </IconContainer>
         <IconContainer onClick={() => click('Tippy')}>
-          {getIcon('CodeFile')}
+          {getIcon('CodeFile', 53)}
           <IconLabel>Tippy</IconLabel>
         </IconContainer>
         <IconContainer onClick={() => click('Flix')}>
-          {getIcon('CodeFile')}
+          {getIcon('CodeFile', 53)}
           <IconLabel>Flix</IconLabel>
         </IconContainer>
         <IconContainer onClick={() => click('Twitter')}>

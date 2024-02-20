@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import react from '../../image/skills/react-native.png';
+import react from '../../image/skills/react.png';
 import vue from '../../image/skills/vue.png';
 import angular from '../../image/skills/angular.png';
 import nextjs from '../../image/skills/nextjs.png';
@@ -48,7 +48,8 @@ const IconImageContainer = styled.div`
 export const getSkillIcon = (name: string) => {
   switch (name) {
     case 'React':
-      return <img src={react} alt={name} />;
+    case 'React Native':
+      return <img src={react} alt={name} style={{ width: 48, height: 48 }} />;
     case 'Vue':
       return <img src={vue} alt={name} />;
     case 'Angular':
@@ -103,8 +104,6 @@ export const getSkillIcon = (name: string) => {
           />
         </IconImageContainer>
       );
-    case 'React Native':
-      return <img src={react} alt={name} />;
     case 'Flutter':
       return <img src={flutter} alt={name} />;
     case 'Swift':
@@ -140,7 +139,9 @@ export const getSkillIcon = (name: string) => {
     case 'Dart':
       return <img src={dart} alt={name} />;
     case 'PL/SQL':
-      return <img src={codeFile} alt={name} />;
+      return (
+        <img src={codeFile} alt={name} style={{ width: 48, height: 48 }} />
+      );
     case 'R':
       return (
         <IconImageContainer>
