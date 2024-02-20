@@ -34,6 +34,9 @@ import expressjs from '../../image/skills/expressjs.png';
 import jquery from '../../image/skills/jquery.png';
 import codeFile from '../../image/icons/codeFile.png';
 
+const NO_BACKGROUND_ICON_SIZE = 48;
+const BACKGROUND_ICON_SIZE = 40;
+
 const IconImageContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -49,7 +52,16 @@ export const getSkillIcon = (name: string) => {
   switch (name) {
     case 'React':
     case 'React Native':
-      return <img src={react} alt={name} style={{ width: 48, height: 48 }} />;
+      return (
+        <img
+          src={react}
+          alt={name}
+          style={{
+            width: NO_BACKGROUND_ICON_SIZE,
+            height: NO_BACKGROUND_ICON_SIZE,
+          }}
+        />
+      );
     case 'Vue':
       return <img src={vue} alt={name} />;
     case 'Angular':
@@ -63,7 +75,16 @@ export const getSkillIcon = (name: string) => {
     case 'Redux':
       return <img src={redux} alt={name} />;
     case 'jQuery':
-      return <img src={jquery} alt={name} style={{ width: 48, height: 48 }} />;
+      return (
+        <img
+          src={jquery}
+          alt={name}
+          style={{
+            width: NO_BACKGROUND_ICON_SIZE,
+            height: NO_BACKGROUND_ICON_SIZE,
+          }}
+        />
+      );
     case 'Bootstrap':
       return <img src={bootstrap} alt={name} />;
     case 'Tailwind':
@@ -77,7 +98,14 @@ export const getSkillIcon = (name: string) => {
     case 'Express':
       return (
         <IconImageContainer>
-          <img src={expressjs} alt={name} style={{ width: 40, height: 40 }} />
+          <img
+            src={expressjs}
+            alt={name}
+            style={{
+              width: BACKGROUND_ICON_SIZE,
+              height: BACKGROUND_ICON_SIZE,
+            }}
+          />
         </IconImageContainer>
       );
     case 'NestJS':
@@ -85,13 +113,29 @@ export const getSkillIcon = (name: string) => {
     case 'AWS':
       return (
         <IconImageContainer>
-          <img src={aws} alt={name} style={{ width: 40, height: 40 }} />
+          <img
+            src={aws}
+            alt={name}
+            style={{
+              width: BACKGROUND_ICON_SIZE,
+              height: BACKGROUND_ICON_SIZE,
+            }}
+          />
         </IconImageContainer>
       );
     case 'Spring':
       return <img src={spring} alt={name} />;
     case 'Laravel':
-      return <img src={laravel} alt={name} style={{ width: 48, height: 48 }} />;
+      return (
+        <img
+          src={laravel}
+          alt={name}
+          style={{
+            width: NO_BACKGROUND_ICON_SIZE,
+            height: NO_BACKGROUND_ICON_SIZE,
+          }}
+        />
+      );
     case 'MongoDB':
       return <img src={mongoDB} alt={name} />;
     case 'ASP.Net Core':
@@ -100,7 +144,7 @@ export const getSkillIcon = (name: string) => {
           <img
             src={dotNetCore}
             alt={name}
-            style={{ width: 40, height: 35.75 }}
+            style={{ width: BACKGROUND_ICON_SIZE, height: 35.75 }}
           />
         </IconImageContainer>
       );
@@ -117,7 +161,14 @@ export const getSkillIcon = (name: string) => {
     case 'Java':
       return (
         <IconImageContainer>
-          <img src={java} alt={name} style={{ width: 40, height: 40 }} />
+          <img
+            src={java}
+            alt={name}
+            style={{
+              width: BACKGROUND_ICON_SIZE,
+              height: BACKGROUND_ICON_SIZE,
+            }}
+          />
         </IconImageContainer>
       );
     case 'HTML5':
@@ -131,21 +182,51 @@ export const getSkillIcon = (name: string) => {
     case 'MySQL':
       return (
         <IconImageContainer>
-          <img src={mySQL} alt={name} style={{ width: 40, height: 40 }} />
+          <img
+            src={mySQL}
+            alt={name}
+            style={{
+              width: BACKGROUND_ICON_SIZE,
+              height: BACKGROUND_ICON_SIZE,
+            }}
+          />
         </IconImageContainer>
       );
     case 'PHP':
-      return <img src={php} alt={name} style={{ width: 48, height: 48 }} />;
+      return (
+        <img
+          src={php}
+          alt={name}
+          style={{
+            width: NO_BACKGROUND_ICON_SIZE,
+            height: NO_BACKGROUND_ICON_SIZE,
+          }}
+        />
+      );
     case 'Dart':
       return <img src={dart} alt={name} />;
     case 'PL/SQL':
       return (
-        <img src={codeFile} alt={name} style={{ width: 48, height: 48 }} />
+        <img
+          src={codeFile}
+          alt={name}
+          style={{
+            width: NO_BACKGROUND_ICON_SIZE,
+            height: NO_BACKGROUND_ICON_SIZE,
+          }}
+        />
       );
     case 'R':
       return (
         <IconImageContainer>
-          <img src={rProject} alt={name} style={{ width: 40, height: 40 }} />
+          <img
+            src={rProject}
+            alt={name}
+            style={{
+              width: BACKGROUND_ICON_SIZE,
+              height: BACKGROUND_ICON_SIZE,
+            }}
+          />
         </IconImageContainer>
       );
     default:
