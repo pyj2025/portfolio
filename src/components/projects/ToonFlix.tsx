@@ -18,7 +18,7 @@ import { getIcon } from '../getIcon';
 const ToonFlix: React.FC = () => {
   return (
     <PanelContainer>
-      <PanelLogoContainer>{getIcon('CodeFile', 150)}</PanelLogoContainer>
+      <PanelLogoContainer>{getIcon('CodeFile')}</PanelLogoContainer>
       <PanelDescriptionContainer>
         <PanelDescriptionRow>
           <PanelDescriptionLabel>Name</PanelDescriptionLabel>
