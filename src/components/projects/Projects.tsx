@@ -8,9 +8,7 @@ import { ProjectIndexType } from '../../types';
 import ParstagramLogo from '../../image/projects/Parstagram.png';
 import TwitterLogo from '../../image/projects/Twitter.png';
 
-type ProjectsProps = {
-  click: (name: ProjectIndexType) => void;
-};
+const ICON_SIZE = 53;
 
 const IconListContainer = styled.div`
   display: flex;
@@ -39,6 +37,10 @@ const IconLogoImage = styled.img`
 const IconLabel = styled.div`
   font-size: 0.75rem;
 `;
+
+type ProjectsProps = {
+  click: (name: ProjectIndexType) => void;
+};
 
 export const Projects: React.FC<ProjectsProps> = ({ click }) => {
   return (
@@ -70,7 +72,7 @@ export const WebProjects: React.FC<ProjectsProps> = ({ click }) => {
           <IconLabel>MovieNext</IconLabel>
         </IconContainer>
         <IconContainer onClick={() => click('Portfolio')}>
-          {getIcon('CodeFile', 53)}
+          {getIcon('CodeFile', ICON_SIZE)}
           <IconLabel>Portfolio</IconLabel>
         </IconContainer>
       </IconListContainer>
@@ -87,19 +89,19 @@ export const MobileProjects: React.FC<ProjectsProps> = ({ click }) => {
           <IconLabel>Foodie</IconLabel>
         </IconContainer>
         <IconContainer onClick={() => click('WebGame')}>
-          {getIcon('CodeFile', 53)}
+          {getIcon('CodeFile', ICON_SIZE)}
           <IconLabel>WebGame</IconLabel>
         </IconContainer>
         <IconContainer onClick={() => click('ToonFlix')}>
-          {getIcon('CodeFile', 53)}
+          {getIcon('CodeFile', ICON_SIZE)}
           <IconLabel>ToonFlix</IconLabel>
         </IconContainer>
         <IconContainer onClick={() => click('Tippy')}>
-          {getIcon('CodeFile', 53)}
+          {getIcon('CodeFile', ICON_SIZE)}
           <IconLabel>Tippy</IconLabel>
         </IconContainer>
         <IconContainer onClick={() => click('Flix')}>
-          {getIcon('CodeFile', 53)}
+          {getIcon('CodeFile', ICON_SIZE)}
           <IconLabel>Flix</IconLabel>
         </IconContainer>
         <IconContainer onClick={() => click('Twitter')}>

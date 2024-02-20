@@ -49,7 +49,7 @@ const MobileSkillsWindowMenu: React.FC<MobileWindowMenuProps> = React.memo(
           <MobileMenuItemLabel>Mobile</MobileMenuItemLabel>
         </MobileWindowMenuItem>
         <MobileWindowMenuItem onClick={() => onClick('Programming')} isEven>
-          {getIcon('CodeFile')}
+          {getIcon('CodeFile', 48)}
           <MobileMenuItemLabel>Programming Language</MobileMenuItemLabel>
         </MobileWindowMenuItem>
       </>
