@@ -42,24 +42,26 @@ type ProjectsProps = {
   click: (name: ProjectIndexType) => void;
 };
 
-export const Projects: React.FC<ProjectsProps> = ({ click }) => {
+export const Projects: React.FC<ProjectsProps> = React.memo(({ click }) => {
+  const projectCategories = ['Web', 'Mobile'];
   return (
-    <>
-      <IconListContainer>
-        <IconContainer title="Web" onClick={() => click('WebProjects')}>
+    <IconListContainer>
+      {projectCategories.map((category) => (
+        <IconContainer
+          title={category}
+          onClick={() =>
+            click(category === 'Web' ? 'WebProjects' : 'MobileProjects')
+          }
+        >
           {getIcon('Folder')}
-          <IconLabel>Web</IconLabel>
+          <IconLabel>{category}</IconLabel>
         </IconContainer>
-        <IconContainer title="Mobile" onClick={() => click('MobileProjects')}>
-          {getIcon('Folder')}
-          <IconLabel>Mobile</IconLabel>
-        </IconContainer>
-      </IconListContainer>
-    </>
+      ))}
+    </IconListContainer>
   );
-};
+});
 
-export const WebProjects: React.FC<ProjectsProps> = ({ click }) => {
+export const WebProjects: React.FC<ProjectsProps> = React.memo(({ click }) => {
   return (
     <>
       <IconListContainer>
@@ -78,41 +80,43 @@ export const WebProjects: React.FC<ProjectsProps> = ({ click }) => {
       </IconListContainer>
     </>
   );
-};
+});
 
-export const MobileProjects: React.FC<ProjectsProps> = ({ click }) => {
-  return (
-    <>
-      <IconListContainer>
-        <IconContainer onClick={() => click('Foodie')}>
-          <IconLogoImage src={FoodieLogo} alt="Foodie" />
-          <IconLabel>Foodie</IconLabel>
-        </IconContainer>
-        <IconContainer onClick={() => click('WebGame')}>
-          {getIcon('CodeFile', ICON_SIZE)}
-          <IconLabel>WebGame</IconLabel>
-        </IconContainer>
-        <IconContainer onClick={() => click('ToonFlix')}>
-          {getIcon('CodeFile', ICON_SIZE)}
-          <IconLabel>ToonFlix</IconLabel>
-        </IconContainer>
-        <IconContainer onClick={() => click('Tippy')}>
-          {getIcon('CodeFile', ICON_SIZE)}
-          <IconLabel>Tippy</IconLabel>
-        </IconContainer>
-        <IconContainer onClick={() => click('Flix')}>
-          {getIcon('CodeFile', ICON_SIZE)}
-          <IconLabel>Flix</IconLabel>
-        </IconContainer>
-        <IconContainer onClick={() => click('Twitter')}>
-          <IconLogoImage src={TwitterLogo} alt="Twitter" />
-          <IconLabel>Twitter</IconLabel>
-        </IconContainer>
-        <IconContainer onClick={() => click('Parstagram')}>
-          <IconLogoImage src={ParstagramLogo} alt="Parstagram" />
-          <IconLabel>Parstagram</IconLabel>
-        </IconContainer>
-      </IconListContainer>
-    </>
-  );
-};
+export const MobileProjects: React.FC<ProjectsProps> = React.memo(
+  ({ click }) => {
+    return (
+      <>
+        <IconListContainer>
+          <IconContainer onClick={() => click('Foodie')}>
+            <IconLogoImage src={FoodieLogo} alt="Foodie" />
+            <IconLabel>Foodie</IconLabel>
+          </IconContainer>
+          <IconContainer onClick={() => click('WebGame')}>
+            {getIcon('CodeFile', ICON_SIZE)}
+            <IconLabel>WebGame</IconLabel>
+          </IconContainer>
+          <IconContainer onClick={() => click('ToonFlix')}>
+            {getIcon('CodeFile', ICON_SIZE)}
+            <IconLabel>ToonFlix</IconLabel>
+          </IconContainer>
+          <IconContainer onClick={() => click('Tippy')}>
+            {getIcon('CodeFile', ICON_SIZE)}
+            <IconLabel>Tippy</IconLabel>
+          </IconContainer>
+          <IconContainer onClick={() => click('Flix')}>
+            {getIcon('CodeFile', ICON_SIZE)}
+            <IconLabel>Flix</IconLabel>
+          </IconContainer>
+          <IconContainer onClick={() => click('Twitter')}>
+            <IconLogoImage src={TwitterLogo} alt="Twitter" />
+            <IconLabel>Twitter</IconLabel>
+          </IconContainer>
+          <IconContainer onClick={() => click('Parstagram')}>
+            <IconLogoImage src={ParstagramLogo} alt="Parstagram" />
+            <IconLabel>Parstagram</IconLabel>
+          </IconContainer>
+        </IconListContainer>
+      </>
+    );
+  }
+);
