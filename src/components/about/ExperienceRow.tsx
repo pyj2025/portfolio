@@ -9,6 +9,7 @@ import styled from 'styled-components';
 import { BoldText, MutedText } from '../../GlobalStyle';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { getIcon } from '../getIcon';
+import ExperienceTable from './ExperienceTable';
 
 export const DataRow = styled.div<{
   isEven?: boolean;
@@ -31,29 +32,18 @@ export const PositionContainer = styled.div<{ isEven?: boolean }>`
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  gap: 0.25rem;
 `;
 
-const DateLabel = styled(MutedText)`
+const DataLabel = styled(MutedText)`
   justify-items: flex-end;
   align-self: center;
 `;
 
-const DataContent = styled.div`
+const DescriptionContainer = styled.div`
   width: 100%;
   height: 100%;
-  margin-left: 1.5rem;
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
-`;
-
-const RowContainer = styled.div`
-  display: grid;
-  grid-template-columns: 80px auto;
-  justify-content: flex-start;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  margin-bottom: 4px;
+  padding: 0.5rem;
 `;
 
 export type ExperienceType = {
@@ -83,8 +73,7 @@ const ExperienceRow: React.FC<ExperienceRowProps> = ({
 
   const toggleOpen = React.useCallback(() => {
     setOpen((state) => !state);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen]);
+  }, [setOpen]);
 
   return (
     <div>
@@ -105,31 +94,12 @@ const ExperienceRow: React.FC<ExperienceRowProps> = ({
           {getIcon('File', isMobile ? 40 : 20)}
           <BoldText>{experience.title}</BoldText>
         </PositionContainer>
-        {showDate ? <DateLabel>{experience.date}</DateLabel> : null}
+        {showDate ? <DataLabel>{experience.date}</DataLabel> : null}
       </DataRow>
       {isOpen ? (
-        <DataContent>
-          <RowContainer>
-            <MutedText>Name</MutedText>
-            <div>{experience.company}</div>
-          </RowContainer>
-          <RowContainer>
-            <MutedText>Location</MutedText>
-            <div>{experience.location}</div>
-          </RowContainer>
-          <RowContainer>
-            <MutedText>Date</MutedText>
-            <div>{experience.date}</div>
-          </RowContainer>
-          <RowContainer>
-            <MutedText>Tech</MutedText>
-            <div>{experience.tech}</div>
-          </RowContainer>
-          <RowContainer>
-            <MutedText>Role</MutedText>
-            <div>{experience.description}</div>
-          </RowContainer>
-        </DataContent>
+        <DescriptionContainer>
+          <ExperienceTable experience={experience} />
+        </DescriptionContainer>
       ) : null}
     </div>
   );
