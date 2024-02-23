@@ -213,13 +213,20 @@ export const WindowBodyContent = styled.div`
 `;
 
 //Panel
-export const PanelContainer = styled.div`
+export const Panel = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
   min-width: 20rem;
   margin: 10px;
+`;
+
+export const PanelContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5rem;
 `;
 
 export const PanelLogoContainer = styled.div`
@@ -232,6 +239,14 @@ export const PanelLogoContainer = styled.div`
 export const PanelLogoImage = styled.img`
   width: 150px;
   height: 150px;
+`;
+
+export const PanelTableContainer = styled.table`
+  border-spacing: 0.25rem;
+`;
+
+export const PanelTableLabel = styled.td`
+  display: flex;
 `;
 
 export const PanelDescriptionContainer = styled.div`

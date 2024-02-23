@@ -4,7 +4,7 @@ import React from 'react';
 import info from '../../info.json';
 
 import {
-  PanelContainer,
+  Panel,
   PanelDescriptionContainer,
   PanelDescriptionRow,
   LinkLabel,
@@ -18,7 +18,7 @@ import ParstagramLogo from '../../image/projects/Parstagram.png';
 
 const Parstagram: React.FC = () => {
   return (
-    <PanelContainer>
+    <Panel>
       <PanelLogoContainer>
         <PanelLogoImage src={ParstagramLogo} alt="Parstagram" />
       </PanelLogoContainer>
@@ -54,7 +54,7 @@ const Parstagram: React.FC = () => {
           </PanelDescriptionText>
         </PanelDescriptionRow>
       </PanelDescriptionContainer>
-    </PanelContainer>
+    </Panel>
   );
 };
 

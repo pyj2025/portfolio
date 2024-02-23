@@ -4,7 +4,7 @@ import React from 'react';
 import info from '../../info.json';
 
 import {
-  PanelContainer,
+  Panel,
   PanelDescriptionContainer,
   PanelDescriptionRow,
   LinkLabel,
@@ -18,7 +18,7 @@ import TwitterLogo from '../../image/projects/Twitter.png';
 
 const Twitter: React.FC = () => {
   return (
-    <PanelContainer>
+    <Panel>
       <PanelLogoContainer>
         <PanelLogoImage src={TwitterLogo} alt="Twitter" />
       </PanelLogoContainer>
@@ -52,7 +52,7 @@ const Twitter: React.FC = () => {
           </PanelDescriptionText>
         </PanelDescriptionRow>
       </PanelDescriptionContainer>
-    </PanelContainer>
+    </Panel>
   );
 };
 

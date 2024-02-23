@@ -3,7 +3,7 @@ import info from '../../info.json';
 import FoodieLogo from '../../image/projects/Foodie.png';
 
 import {
-  PanelContainer,
+  Panel,
   PanelDescriptionContainer,
   PanelDescriptionRow,
   LinkLabel,
@@ -18,7 +18,7 @@ import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 
 const Foodie: React.FC = () => {
   return (
-    <PanelContainer>
+    <Panel>
       <PanelLogoContainer>
         <PanelLogoImage src={FoodieLogo} alt="Foodie" />
       </PanelLogoContainer>
@@ -54,7 +54,7 @@ const Foodie: React.FC = () => {
           </PanelDescriptionText>
         </PanelDescriptionRow>
       </PanelDescriptionContainer>
-    </PanelContainer>
+    </Panel>
   );
 };
 

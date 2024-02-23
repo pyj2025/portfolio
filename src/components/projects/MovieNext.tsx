@@ -4,7 +4,7 @@ import React from 'react';
 import info from '../../info.json';
 import MovieNextLogo from '../../image/projects/Movie.png';
 import {
-  PanelContainer,
+  Panel,
   PanelDescriptionContainer,
   PanelDescriptionRow,
   LinkLabel,
@@ -17,7 +17,7 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 const MovieNext: React.FC = () => {
   return (
-    <PanelContainer>
+    <Panel>
       <PanelLogoContainer>
         <PanelLogoImage src={MovieNextLogo} alt="MovieNext" />
       </PanelLogoContainer>
@@ -53,7 +53,7 @@ const MovieNext: React.FC = () => {
           </PanelDescriptionText>
         </PanelDescriptionRow>
       </PanelDescriptionContainer>
-    </PanelContainer>
+    </Panel>
   );
 };
 
