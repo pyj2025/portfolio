@@ -48,7 +48,7 @@ const IconLabel = styled.div`
   margin-top: 0.2rem;
 `;
 
-const MobileApp: React.FC = () => {
+const MobileAppMenu: React.FC = () => {
   const { width } = useScreenSize();
   const [numOfCols, setNumOfCols] = React.useState(5);
 
@@ -103,4 +103,4 @@ const MobileApp: React.FC = () => {
   );
 };
 
-export default MobileApp;
+export default React.memo(MobileAppMenu);

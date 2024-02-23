@@ -3,15 +3,15 @@ import 'rc-menu/assets/index.css';
 import React from 'react';
 import styled from 'styled-components';
 import Menu, { Divider, MenuItem } from 'rc-menu';
-import Clock from './Clock';
+import Clock from '../Clock';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
-import { BoldText, MutedText } from '../GlobalStyle';
-import useScreenSize from '../utils/useScreenSize';
-import useClickOutside from '../utils/useClickOutside';
+import { BoldText, MutedText } from '../../GlobalStyle';
+import useScreenSize from '../../utils/useScreenSize';
+import useClickOutside from '../../utils/useClickOutside';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import useWindowsStore from '../utils/useWindowsStore';
-import useAboutStore from '../utils/useAboutStore';
+import useWindowsStore from '../../utils/useWindowsStore';
+import useAboutStore from '../../utils/useAboutStore';
 
 const Container = styled.div<{ width: number }>`
   display: flex;

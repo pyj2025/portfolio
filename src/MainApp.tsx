@@ -2,12 +2,12 @@ import React from 'react';
 
 import { isMobile, isTablet } from 'react-device-detect';
 import BodyContent from './components/BodyContent';
-import DesktopTopBar from './components/DesktopTopBar';
-import Menu from './components/Menu';
-import MobileTopBar from './components/MobileTopBar';
+import DesktopTopBar from './components/topbar/DesktopTopBar';
+import Menu from './components/dock/Menu';
+import MobileTopBar from './components/topbar/MobileTopBar';
 import useScreenSize, { TABLET_MAX_WIDTH } from './utils/useScreenSize';
 import styled from 'styled-components';
-import MobileMenu from './components/MobileMenu';
+import MobileMenu from './components/dock/MobileMenu';
 import MobileBodyContent from './components/MobileBodyContent';
 
 const Container = styled.div<{ width: number; height: number }>`
@@ -17,12 +17,12 @@ const Container = styled.div<{ width: number; height: number }>`
   height: ${({ height }) => `calc(${height}px)`};
 `;
 
-type AppProps = {
+type ScreenProps = {
   width: number;
   height: number;
 };
 
-const DesktopApp: React.FC<AppProps> = ({ width, height }) => {
+const Desktop: React.FC<ScreenProps> = ({ width, height }) => {
   return (
     <Container width={width} height={height}>
       <DesktopTopBar />
@@ -32,7 +32,7 @@ const DesktopApp: React.FC<AppProps> = ({ width, height }) => {
   );
 };
 
-const MobileApp: React.FC<AppProps> = ({ width, height }) => {
+const Mobile: React.FC<ScreenProps> = ({ width, height }) => {
   return (
     <Container width={width} height={height}>
       <MobileTopBar />
@@ -46,9 +46,9 @@ const MainApp: React.FC = () => {
   const { width, height } = useScreenSize();
 
   if (isMobile || isTablet || width < TABLET_MAX_WIDTH) {
-    return <MobileApp width={width} height={height} />;
+    return <Mobile width={width} height={height} />;
   } else {
-    return <DesktopApp width={width} height={height} />;
+    return <Desktop width={width} height={height} />;
   }
 };
 

@@ -1,14 +1,6 @@
 import { Rnd } from 'react-rnd';
 import styled from 'styled-components';
 
-//Layout
-export const TwoColumnsGrid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-content: center;
-  align-items: center;
-`;
-
 //text
 export const BoldText = styled.span`
   font-weight: bold;
@@ -62,7 +54,7 @@ export const SecondBadgeArrow = styled(BadgeArrow)`
 `;
 
 export const TerminalLine = styled.div`
-  margin-left: 8px;
+  margin-left: 0.25rem;
 `;
 
 //window
@@ -130,11 +122,6 @@ export const TopbarBtn = styled.div<{ color: string; disabled: boolean }>`
     disabled ? undefined : 'pointer'};
 `;
 
-export const TopbarTitleImage = styled.img`
-  width: 16px;
-  height: 16px;
-`;
-
 export const TopbarTitle = styled.div`
   display: flex;
   justify-content: center;
@@ -150,16 +137,8 @@ export const TopbarTitleText = styled.span`
 
 export const WindowBody = styled.div<{ isMobile?: boolean }>`
   display: grid;
-
   grid-template-columns: ${({ isMobile }) =>
     isMobile ? '50px auto' : '150px auto'};
-  width: 100%;
-  height: calc(100% - 28px);
-`;
-
-export const NewWindowBody = styled.div<{ navbarWidth: number }>`
-  display: grid;
-  grid-template-columns: ${({ navbarWidth }) => `${navbarWidth}px auto`};
   width: 100%;
   height: calc(100% - 28px);
 `;
@@ -334,7 +313,7 @@ export const MobileMenuItemLabel = styled.div`
 `;
 
 // mobile panel
-export const MobilePanel = styled.div`
+export const MobilePanelContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;

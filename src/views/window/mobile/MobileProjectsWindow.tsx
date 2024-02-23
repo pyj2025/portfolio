@@ -1,11 +1,8 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { DraggableData, Position, ResizableDelta } from 'react-rnd';
 import WindowTopbar from '../../../components/WindowTopbar';
 import {
-  MobileBackButton,
-  MobileBackButtonContainer,
   MobileBodyContent,
-  MobilePanel,
   MobileWindowBody,
   Window,
 } from '../../../GlobalStyle';
@@ -15,33 +12,10 @@ import {
   WindowSizeSetting,
 } from '../../../types';
 import useScreenSize, { TABLET_MAX_WIDTH } from '../../../utils/useScreenSize';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { getProject } from '../../../components/projects/getProject';
 import useWindowsStore from '../../../utils/useWindowsStore';
 import MobileProjectsNavbar from '../../../components/projects/MobileProjectsNavbar';
-
-type MobilePanelWrapperProps = {
-  backIndex: string;
-  onClick: (index: string) => void;
-  children?: ReactNode;
-};
-
-const MobilePanelWrapper: React.FC<MobilePanelWrapperProps> = React.memo(
-  ({ backIndex, onClick, children }) => {
-    return (
-      <MobilePanel>
-        <MobileBackButtonContainer>
-          <MobileBackButton onClick={() => onClick(backIndex)}>
-            <FontAwesomeIcon icon={faArrowLeft as IconProp} />
-          </MobileBackButton>
-        </MobileBackButtonContainer>
-        {children}
-      </MobilePanel>
-    );
-  }
-);
+import MobilePanel from '../../../components/MobilePanel';
 
 const MobileProjectsWindow: React.FC = () => {
   const { width, height } = useScreenSize();
@@ -136,13 +110,7 @@ const MobileProjectsWindow: React.FC = () => {
           {['Projects', 'WebProjects', 'MobileProjects'].includes(index) ? (
             getProject(index, handleClick)
           ) : (
-            <MobilePanelWrapper
-              key={index}
-              backIndex={
-                ['DatApex', 'MovieNext', 'Portfolio'].includes(index)
-                  ? 'WebProjects'
-                  : 'MobileProjects'
-              }
+            <MobilePanel
               onClick={() =>
                 handleClick(
                   ['DatApex', 'MovieNext', 'Portfolio'].includes(index)
@@ -152,7 +120,7 @@ const MobileProjectsWindow: React.FC = () => {
               }
             >
               {getProject(index, handleClick)}
-            </MobilePanelWrapper>
+            </MobilePanel>
           )}
         </MobileBodyContent>
       </MobileWindowBody>

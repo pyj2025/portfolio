@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import useWindowsStore from '../utils/useWindowsStore';
-import { SMALL_ICON_SIZE, getIcon } from './getIcon';
+import useWindowsStore from '../../utils/useWindowsStore';
+import { SMALL_ICON_SIZE, getIcon } from '../getIcon';
 
 const WindowTopbar = styled.div`
   width: 100%;
