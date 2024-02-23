@@ -1,7 +1,6 @@
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import info from '../../info.json';
 import {
   LinkLabel,
   PanelTableContainer,
@@ -52,9 +51,7 @@ const ProjectDescriptionTable: React.FC<ProjectDescriptionTableProps> = ({
             </PanelTableLabel>
             <td>
               {stack.map((value, idx) =>
-                idx === info.project.DatApex.stack.length - 1
-                  ? value
-                  : value + ', '
+                idx === stack.length - 1 ? value : value + ', '
               )}
             </td>
           </tr>
