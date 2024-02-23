@@ -249,31 +249,6 @@ export const PanelTableLabel = styled.td`
   display: flex;
 `;
 
-export const PanelDescriptionContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  align-items: center;
-`;
-
-export const PanelDescriptionRow = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  width: 100%;
-  height: 100%;
-  margin-bottom: 4px;
-`;
-
-export const PanelDescriptionLabel = styled(MutedText)`
-  min-width: 120px;
-`;
-
-export const PanelDescriptionText = styled.div<{ bold?: boolean }>`
-  width: 100%;
-  font-weight: ${({ bold }) => (bold ? 'bold' : undefined)};
-`;
-
 export const LinkLabel = styled.a`
   color: white;
   text-decoration: none;
