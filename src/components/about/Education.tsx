@@ -1,11 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import {
+  MutedText,
   PanelContainer,
-  PanelDescriptionContainer,
-  PanelDescriptionLabel,
-  PanelDescriptionRow,
-  PanelDescriptionText,
   PanelLogoContainer,
 } from '../../GlobalStyle';
 import PurdueLogo from '../../image/PurdueLogo.png';
@@ -16,38 +13,52 @@ const PurdueLogoImage = styled.img`
   height: 150px;
 `;
 
+const TableContainer = styled.table`
+  border-spacing: 0.25rem;
+`;
+
 const Education: React.FC = () => {
   return (
     <PanelContainer>
       <PanelLogoContainer>
         <PurdueLogoImage src={PurdueLogo} alt="Purdue" />
       </PanelLogoContainer>
-      <PanelDescriptionContainer>
-        <PanelDescriptionRow>
-          <PanelDescriptionLabel>Name</PanelDescriptionLabel>
-          <PanelDescriptionText bold>
-            {info.about.education.university.name}
-          </PanelDescriptionText>
-        </PanelDescriptionRow>
-        <PanelDescriptionRow>
-          <PanelDescriptionLabel>Graduated</PanelDescriptionLabel>
-          <PanelDescriptionText>
-            {`${info.about.education.university.graduateYear.month} ${info.about.education.university.graduateYear.year}`}
-          </PanelDescriptionText>
-        </PanelDescriptionRow>
-        <PanelDescriptionRow>
-          <PanelDescriptionLabel>Details</PanelDescriptionLabel>
-          <PanelDescriptionText>
-            {info.about.education.university.details}
-          </PanelDescriptionText>
-        </PanelDescriptionRow>
-        <PanelDescriptionRow>
-          <PanelDescriptionLabel>Concentration</PanelDescriptionLabel>
-          <PanelDescriptionText>
-            {info.about.education.university.concentration}
-          </PanelDescriptionText>
-        </PanelDescriptionRow>
-      </PanelDescriptionContainer>
+      <PanelLogoContainer>
+        <TableContainer>
+          <tr>
+            <td>
+              <MutedText>Name</MutedText>
+            </td>
+            <td>{info.about.education.university.name}</td>
+          </tr>
+          <tr>
+            <td>
+              <MutedText>Graduated</MutedText>
+            </td>
+            <td>
+              {`${info.about.education.university.graduateYear.month} ${info.about.education.university.graduateYear.year}`}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <MutedText>Degree</MutedText>
+            </td>
+            <td>{info.about.education.university.degree}</td>
+          </tr>
+          <tr>
+            <td>
+              <MutedText>Major</MutedText>
+            </td>
+            <td>{info.about.education.university.major}</td>
+          </tr>
+          <tr>
+            <td>
+              <MutedText>Concentration</MutedText>
+            </td>
+            <td>{info.about.education.university.concentration}</td>
+          </tr>
+        </TableContainer>
+      </PanelLogoContainer>
     </PanelContainer>
   );
 };

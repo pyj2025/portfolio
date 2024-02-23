@@ -1,6 +1,6 @@
 import React from 'react';
 import { DraggableData, Position, ResizableDelta } from 'react-rnd';
-import About from '../../../components/about/About';
+import Info from '../../../components/about/Info';
 import Education from '../../../components/about/Education';
 import Experience from '../../../components/about/Experience';
 import WindowTopbar from '../../../components/WindowTopbar';
@@ -36,7 +36,7 @@ const MobileAboutWindowMenu: React.FC<MobileAboutWindowMenuProps> = React.memo(
   ({ onClick }) => {
     return (
       <>
-        <MobileWindowMenuItem onClick={() => onClick('About')}>
+        <MobileWindowMenuItem onClick={() => onClick('Info')}>
           {getIcon('File')}
           <MobileMenuItemLabel>About</MobileMenuItemLabel>
         </MobileWindowMenuItem>
@@ -169,7 +169,7 @@ const MobileAboutWindow: React.FC = () => {
                   <FontAwesomeIcon icon={faArrowLeft as IconProp} />
                 </MobileBackButton>
               </MobileBackButtonContainer>
-              {index === 'About' && <About />}
+              {index === 'Info' && <Info />}
               {index === 'Experience' && (
                 <Experience isMobile={isMobileWindow} showDate={showDate} />
               )}

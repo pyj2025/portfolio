@@ -20,8 +20,8 @@ const MobileAboutNavbar: React.FC<MobileAboutNavbarProps> = ({
     <MobileNavbar>
       <MobileNavbarItem
         title="About"
-        onClick={() => onClick('About')}
-        focus={index === 'About'}
+        onClick={() => onClick('Info')}
+        focus={index === 'Info'}
       >
         {getMobileNavbarMenuIcon('File')}
         <MobileNavbarMenuLabel>About</MobileNavbarMenuLabel>
