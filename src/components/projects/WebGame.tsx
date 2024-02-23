@@ -4,7 +4,7 @@ import React from 'react';
 import info from '../../info.json';
 
 import {
-  PanelContainer,
+  Panel,
   PanelDescriptionContainer,
   PanelDescriptionRow,
   LinkLabel,
@@ -17,7 +17,7 @@ import { getIcon } from '../getIcon';
 
 const WebGame: React.FC = () => {
   return (
-    <PanelContainer>
+    <Panel>
       <PanelLogoContainer>{getIcon('CodeFile')}</PanelLogoContainer>
       <PanelDescriptionContainer>
         <PanelDescriptionRow>
@@ -51,7 +51,7 @@ const WebGame: React.FC = () => {
           </PanelDescriptionText>
         </PanelDescriptionRow>
       </PanelDescriptionContainer>
-    </PanelContainer>
+    </Panel>
   );
 };
 

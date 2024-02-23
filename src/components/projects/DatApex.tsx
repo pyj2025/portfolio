@@ -4,7 +4,7 @@ import React from 'react';
 import info from '../../info.json';
 import DatApexLogo from '../../image/projects/DatApex.png';
 import {
-  PanelContainer,
+  Panel,
   PanelDescriptionContainer,
   PanelDescriptionRow,
   LinkLabel,
@@ -17,7 +17,7 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 const DatApex: React.FC = () => {
   return (
-    <PanelContainer>
+    <Panel>
       <PanelLogoContainer>
         <PanelLogoImage src={DatApexLogo} alt="DatApex" />
       </PanelLogoContainer>
@@ -53,7 +53,7 @@ const DatApex: React.FC = () => {
           </PanelDescriptionText>
         </PanelDescriptionRow>
       </PanelDescriptionContainer>
-    </PanelContainer>
+    </Panel>
   );
 };
 

@@ -2,8 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import {
   MutedText,
+  Panel,
   PanelContainer,
-  PanelLogoContainer,
+  PanelTableContainer,
+  PanelTableLabel,
 } from '../../GlobalStyle';
 import PurdueLogo from '../../image/PurdueLogo.png';
 import info from '../../info.json';
@@ -13,53 +15,49 @@ const PurdueLogoImage = styled.img`
   height: 150px;
 `;
 
-const TableContainer = styled.table`
-  border-spacing: 0.25rem;
-`;
-
 const Education: React.FC = () => {
   return (
-    <PanelContainer>
-      <PanelLogoContainer>
+    <Panel>
+      <PanelContainer>
         <PurdueLogoImage src={PurdueLogo} alt="Purdue" />
-      </PanelLogoContainer>
-      <PanelLogoContainer>
-        <TableContainer>
+      </PanelContainer>
+      <PanelContainer>
+        <PanelTableContainer>
           <tr>
-            <td>
+            <PanelTableLabel>
               <MutedText>Name</MutedText>
-            </td>
+            </PanelTableLabel>
             <td>{info.about.education.university.name}</td>
           </tr>
           <tr>
-            <td>
+            <PanelTableLabel>
               <MutedText>Graduated</MutedText>
-            </td>
+            </PanelTableLabel>
             <td>
               {`${info.about.education.university.graduateYear.month} ${info.about.education.university.graduateYear.year}`}
             </td>
           </tr>
           <tr>
-            <td>
+            <PanelTableLabel>
               <MutedText>Degree</MutedText>
-            </td>
+            </PanelTableLabel>
             <td>{info.about.education.university.degree}</td>
           </tr>
           <tr>
-            <td>
+            <PanelTableLabel>
               <MutedText>Major</MutedText>
-            </td>
+            </PanelTableLabel>
             <td>{info.about.education.university.major}</td>
           </tr>
           <tr>
-            <td>
+            <PanelTableLabel>
               <MutedText>Concentration</MutedText>
-            </td>
+            </PanelTableLabel>
             <td>{info.about.education.university.concentration}</td>
           </tr>
-        </TableContainer>
-      </PanelLogoContainer>
-    </PanelContainer>
+        </PanelTableContainer>
+      </PanelContainer>
+    </Panel>
   );
 };
 

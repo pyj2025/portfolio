@@ -1,15 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
 import { ExperienceType } from './ExperienceRow';
-import { MutedText } from '../../GlobalStyle';
-
-const TableLabel = styled.td`
-  display: flex;
-`;
-
-const TableContainer = styled.table`
-  border-spacing: 0.25rem;
-`;
+import {
+  MutedText,
+  PanelTableContainer,
+  PanelTableLabel,
+} from '../../GlobalStyle';
 
 type ExperienceTableProps = {
   experience: ExperienceType;
@@ -17,40 +12,40 @@ type ExperienceTableProps = {
 
 const ExperienceTable: React.FC<ExperienceTableProps> = ({ experience }) => {
   return (
-    <TableContainer>
+    <PanelTableContainer>
       <tbody>
         <tr>
-          <TableLabel>
+          <PanelTableLabel>
             <MutedText>Name</MutedText>
-          </TableLabel>
+          </PanelTableLabel>
           <td>{experience.company}</td>
         </tr>
         <tr>
-          <TableLabel>
+          <PanelTableLabel>
             <MutedText>Location</MutedText>
-          </TableLabel>
+          </PanelTableLabel>
           <td>{experience.location}</td>
         </tr>
         <tr>
-          <TableLabel>
+          <PanelTableLabel>
             <MutedText>Date</MutedText>
-          </TableLabel>
+          </PanelTableLabel>
           <td>{experience.date}</td>
         </tr>
         <tr>
-          <TableLabel>
+          <PanelTableLabel>
             <MutedText>Tech</MutedText>
-          </TableLabel>
+          </PanelTableLabel>
           <td>{experience.tech}</td>
         </tr>
         <tr>
-          <TableLabel>
+          <PanelTableLabel>
             <MutedText>Role</MutedText>
-          </TableLabel>
+          </PanelTableLabel>
           <td>{experience.description}</td>
         </tr>
       </tbody>
-    </TableContainer>
+    </PanelTableContainer>
   );
 };
 
