@@ -10,23 +10,17 @@ import {
   WindowSizeSetting,
 } from '../../../types';
 import useScreenSize, { TABLET_MAX_WIDTH } from '../../../utils/useScreenSize';
-
 import {
-  MobileBackButton,
-  MobileBackButtonContainer,
   MobileBodyContent,
-  MobilePanel,
   MobileMenuItemLabel,
   MobileWindowBody,
   MobileWindowMenuItem,
   Window,
 } from '../../../GlobalStyle';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { getIcon } from '../../../components/getIcon';
 import useWindowsStore from '../../../utils/useWindowsStore';
 import MobileAboutNavbar from '../../../components/about/MobileAboutNavbar';
+import MobilePanel from '../../../components/MobilePanel';
 
 type MobileAboutWindowMenuProps = {
   onClick: (index: AboutIndexType) => void;
@@ -163,12 +157,7 @@ const MobileAboutWindow: React.FC = () => {
           {index === 'Menu' ? (
             <MobileAboutWindowMenu onClick={handleClick} />
           ) : (
-            <MobilePanel>
-              <MobileBackButtonContainer>
-                <MobileBackButton onClick={() => handleClick('Menu')}>
-                  <FontAwesomeIcon icon={faArrowLeft as IconProp} />
-                </MobileBackButton>
-              </MobileBackButtonContainer>
+            <MobilePanel onClick={() => handleClick('Menu')}>
               {index === 'Info' && <Info />}
               {index === 'Experience' && (
                 <Experience isMobile={isMobileWindow} showDate={showDate} />

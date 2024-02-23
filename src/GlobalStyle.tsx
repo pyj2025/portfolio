@@ -313,7 +313,7 @@ export const MobileMenuItemLabel = styled.div`
 `;
 
 // mobile panel
-export const MobilePanel = styled.div`
+export const MobilePanelContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;

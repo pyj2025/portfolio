@@ -6,10 +6,7 @@ import {
   WindowSizeSetting,
 } from '../../../types';
 import {
-  MobileBackButton,
-  MobileBackButtonContainer,
   MobileBodyContent,
-  MobilePanel,
   MobileMenuItemLabel,
   MobileWindowBody,
   MobileWindowMenuItem,
@@ -21,12 +18,10 @@ import FrontEnd from '../../../components/skills/FrontEnd';
 import BackEnd from '../../../components/skills/BackEnd';
 import Mobile from '../../../components/skills/Mobile';
 import ProgrammingLanguage from '../../../components/skills/ProgrammingLanguage';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { getIcon } from '../../../components/getIcon';
 import useWindowsStore from '../../../utils/useWindowsStore';
 import MobileSkillsNavbar from '../../../components/skills/MobileSkillsNavbar';
+import MobilePanel from '../../../components/MobilePanel';
 
 type MobileWindowMenuProps = {
   onClick: (index: SkillsIndexType) => void;
@@ -149,12 +144,7 @@ const MobileSkillsWindow: React.FC = () => {
           {index === 'Menu' ? (
             <MobileSkillsWindowMenu onClick={handleClick} />
           ) : (
-            <MobilePanel>
-              <MobileBackButtonContainer>
-                <MobileBackButton onClick={() => handleClick('Menu')}>
-                  <FontAwesomeIcon icon={faArrowLeft as IconProp} />
-                </MobileBackButton>
-              </MobileBackButtonContainer>
+            <MobilePanel onClick={() => handleClick('Menu')}>
               {index === 'Front' && <FrontEnd />}
               {index === 'Back' && <BackEnd />}
               {index === 'Mobile' && <Mobile />}
