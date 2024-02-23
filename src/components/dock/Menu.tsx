@@ -3,17 +3,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import styled from 'styled-components';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { getIcon } from './getIcon';
-import useWindowsStore from '../utils/useWindowsStore';
-import useAboutStore from '../utils/useAboutStore';
-import useSkillsStore from '../utils/useSkillsStore';
-import useProjectsStore from '../utils/useProjectsStore';
+import { getIcon } from '../getIcon';
+import useAboutStore from '../../utils/useAboutStore';
+import useSkillsStore from '../../utils/useSkillsStore';
+import useProjectsStore from '../../utils/useProjectsStore';
 
 const Container = styled.div`
   display: flex;
   justify-content: center;
+  align-items: flex-end;
   width: 100%;
-  height: 80px;
+  height: 100%;
 `;
 
 const MenuWrapper = styled.div`
@@ -21,11 +21,10 @@ const MenuWrapper = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  border-radius: 1.2rem;
+  border-radius: 6px;
   box-shadow: 2px 7px 15px 8px rgba(0, 0, 0, 0.4);
   background-color: rgba(255, 255, 192, 0.1);
   backdrop-filter: blur(10px);
-  /* height: 80px; */
 `;
 
 const MenuItem = styled.a`
@@ -34,6 +33,7 @@ const MenuItem = styled.a`
   justify-content: center;
   align-items: center;
   text-align: center;
+  color: white;
   margin: 0 auto;
   box-sizing: border-box;
   transition: background-color 0.2s;
@@ -41,6 +41,10 @@ const MenuItem = styled.a`
   padding: 1rem;
   text-decoration: none;
   cursor: pointer;
+
+  :hover {
+    background-color: rgba(255, 255, 192, 0.1);
+  }
 `;
 
 const MinimizedIcon = styled(FontAwesomeIcon)`
@@ -51,89 +55,28 @@ const MinimizedIcon = styled(FontAwesomeIcon)`
   color: #aaaaaa;
 `;
 
-const MobileMenu: React.FC = () => {
-  const { isAboutOpen, isAboutMinimized, toggleAboutOpen, closeAbout } =
-    useAboutStore((state) => state);
-
-  const { isSkillsOpen, isSkillsMinimized, toggleSkillsOpen, closeSkills } =
-    useSkillsStore((state) => state);
-
-  const {
-    isProjectsOpen,
-    isProjectsMinimized,
-    toggleProjectsOpen,
-    closeProjects,
-  } = useProjectsStore((state) => state);
-
-  const { isWelcomeWindowOpen, closeWelcomeWindow } = useWindowsStore(
+const Menu: React.FC = () => {
+  const { isAboutMinimized, openAbout } = useAboutStore((state) => state);
+  const { isSkillsMinimized, openSkills } = useSkillsStore((state) => state);
+  const { isProjectsMinimized, openProjects } = useProjectsStore(
     (state) => state
   );
 
   const handleAboutClick = React.useCallback(() => {
-    if (isWelcomeWindowOpen) {
-      closeWelcomeWindow();
-    }
-    if (isSkillsOpen) {
-      closeSkills();
-    }
-    if (isProjectsOpen) {
-      closeProjects();
-    }
-
-    toggleAboutOpen();
-  }, [
-    closeProjects,
-    closeSkills,
-    closeWelcomeWindow,
-    isProjectsOpen,
-    isSkillsOpen,
-    isWelcomeWindowOpen,
-    toggleAboutOpen,
-  ]);
+    openAbout();
+  }, [openAbout]);
 
   const handleSkillsClick = React.useCallback(() => {
-    if (isWelcomeWindowOpen) {
-      closeWelcomeWindow();
-    }
-    if (isAboutOpen) {
-      closeAbout();
-    }
-    if (isProjectsOpen) {
-      closeProjects();
-    }
-
-    toggleSkillsOpen();
-  }, [
-    closeAbout,
-    closeProjects,
-    closeWelcomeWindow,
-    isAboutOpen,
-    isProjectsOpen,
-    isWelcomeWindowOpen,
-    toggleSkillsOpen,
-  ]);
+    openSkills();
+  }, [openSkills]);
 
   const handleProjectsClick = React.useCallback(() => {
-    if (isWelcomeWindowOpen) {
-      closeWelcomeWindow();
-    }
-    if (isAboutOpen) {
-      closeAbout();
-    }
-    if (isSkillsOpen) {
-      closeSkills();
-    }
+    openProjects();
+  }, [openProjects]);
 
-    toggleProjectsOpen();
-  }, [
-    closeAbout,
-    closeSkills,
-    closeWelcomeWindow,
-    isAboutOpen,
-    isSkillsOpen,
-    isWelcomeWindowOpen,
-    toggleProjectsOpen,
-  ]);
+  const handleEmailClick = React.useCallback(() => {
+    window.open('mailto:pyj2025@gmail.com');
+  }, []);
 
   return (
     <Container>
@@ -156,9 +99,30 @@ const MobileMenu: React.FC = () => {
             <MinimizedIcon icon={faCircle as IconProp} />
           ) : null}
         </MenuItem>
+        <MenuItem
+          title="Resume"
+          href="https://drive.google.com/file/d/1eKA2yZLv_271nj6TJD316C5zGx-NPiMH/view?usp=sharing"
+        >
+          {getIcon('Resume')}
+        </MenuItem>
+        <MenuItem title="Github" href="https://github.com/pyj2025">
+          {getIcon('Github')}
+        </MenuItem>
+        <MenuItem title="Linkedin" href="https://www.linkedin.com/in/devjoon/">
+          {getIcon('Linkedin')}
+        </MenuItem>
+        <MenuItem
+          title="Facebook"
+          href="https://www.facebook.com/youngjoon.park.71"
+        >
+          {getIcon('Facebook')}
+        </MenuItem>
+        <MenuItem title="Email" onClick={handleEmailClick}>
+          {getIcon('Email')}
+        </MenuItem>
       </MenuWrapper>
     </Container>
   );
 };
 
-export default MobileMenu;
+export default Menu;

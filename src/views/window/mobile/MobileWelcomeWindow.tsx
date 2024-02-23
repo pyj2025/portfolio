@@ -7,7 +7,7 @@ import Loaded from '../../../components/welcome/Loaded';
 import Intro from '../../../components/welcome/Intro';
 import Contact from '../../../components/welcome/Contact';
 import useWindowsStore from '../../../utils/useWindowsStore';
-import WelcomeTopbar from '../../../components/WelcomeTopbar';
+import WelcomeTopbar from '../../../components/welcome/WelcomeTopbar';
 import TerminalFirstLine from '../../../components/welcome/TerminalFirstLine';
 import TerminalSecondLine from '../../../components/welcome/TerminalSecondLine';
 import TerminalThirdLine from '../../../components/welcome/TerminalThirdLine';

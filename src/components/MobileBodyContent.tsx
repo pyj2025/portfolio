@@ -5,7 +5,7 @@ import { Slide, toast, ToastContainer } from 'react-toastify';
 import { browserName, isBrowser, isMobile } from 'react-device-detect';
 import 'react-toastify/dist/ReactToastify.css';
 import useScreenSize, { MOBILE_MAX_WIDTH } from '../utils/useScreenSize';
-import MobileApp from './MobileApp';
+import MobileAppMenu from './MobileAppMenu';
 import MobileWelcomeWindow from '../views/window/mobile/MobileWelcomeWindow';
 import MobileAboutWindow from '../views/window/mobile/MobileAboutWindow';
 import MobileSkillsWindow from '../views/window/mobile/MobileSkillsWindow';
@@ -67,7 +67,7 @@ const MobileBodyContent: React.FC = () => {
         limit={1}
         draggablePercent={60}
       />
-      <MobileApp />
+      <MobileAppMenu />
       {isWelcomeWindowOpen && <MobileWelcomeWindow />}
       {isAboutOpen && <MobileAboutWindow />}
       {isSkillsOpen && <MobileSkillsWindow />}
