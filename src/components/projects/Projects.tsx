@@ -43,80 +43,72 @@ type ProjectsProps = {
 };
 
 export const Projects: React.FC<ProjectsProps> = React.memo(({ click }) => {
-  const projectCategories = ['Web', 'Mobile'];
   return (
     <IconListContainer>
-      {projectCategories.map((category) => (
-        <IconContainer
-          title={category}
-          onClick={() =>
-            click(category === 'Web' ? 'WebProjects' : 'MobileProjects')
-          }
-        >
-          {getIcon('Folder')}
-          <IconLabel>{category}</IconLabel>
-        </IconContainer>
-      ))}
+      <IconContainer title="Web" onClick={() => click('WebProjects')}>
+        {getIcon('Folder')}
+        <IconLabel>Web</IconLabel>
+      </IconContainer>
+      <IconContainer title="Mobile" onClick={() => click('MobileProjects')}>
+        {getIcon('Folder')}
+        <IconLabel>Mobile</IconLabel>
+      </IconContainer>
     </IconListContainer>
   );
 });
 
 export const WebProjects: React.FC<ProjectsProps> = React.memo(({ click }) => {
   return (
-    <>
-      <IconListContainer>
-        <IconContainer onClick={() => click('DatApex')}>
-          <IconLogoImage src={DatApexLogo} alt="DatApex" />
-          <IconLabel>DatApex</IconLabel>
-        </IconContainer>
-        <IconContainer onClick={() => click('MovieNext')}>
-          <IconLogoImage src={MovieLogo} alt="MovieNext" />
-          <IconLabel>MovieNext</IconLabel>
-        </IconContainer>
-        <IconContainer onClick={() => click('Portfolio')}>
-          {getIcon('CodeFile', ICON_SIZE)}
-          <IconLabel>Portfolio</IconLabel>
-        </IconContainer>
-      </IconListContainer>
-    </>
+    <IconListContainer>
+      <IconContainer title="DatApex" onClick={() => click('DatApex')}>
+        <IconLogoImage src={DatApexLogo} alt="DatApex" />
+        <IconLabel>DatApex</IconLabel>
+      </IconContainer>
+      <IconContainer title="MovieNext" onClick={() => click('MovieNext')}>
+        <IconLogoImage src={MovieLogo} alt="MovieNext" />
+        <IconLabel>MovieNext</IconLabel>
+      </IconContainer>
+      <IconContainer title="Portfolio" onClick={() => click('Portfolio')}>
+        {getIcon('CodeFile', ICON_SIZE)}
+        <IconLabel>Portfolio</IconLabel>
+      </IconContainer>
+    </IconListContainer>
   );
 });
 
 export const MobileProjects: React.FC<ProjectsProps> = React.memo(
   ({ click }) => {
     return (
-      <>
-        <IconListContainer>
-          <IconContainer onClick={() => click('Foodie')}>
-            <IconLogoImage src={FoodieLogo} alt="Foodie" />
-            <IconLabel>Foodie</IconLabel>
-          </IconContainer>
-          <IconContainer onClick={() => click('WebGame')}>
-            {getIcon('CodeFile', ICON_SIZE)}
-            <IconLabel>WebGame</IconLabel>
-          </IconContainer>
-          <IconContainer onClick={() => click('ToonFlix')}>
-            {getIcon('CodeFile', ICON_SIZE)}
-            <IconLabel>ToonFlix</IconLabel>
-          </IconContainer>
-          <IconContainer onClick={() => click('Tippy')}>
-            {getIcon('CodeFile', ICON_SIZE)}
-            <IconLabel>Tippy</IconLabel>
-          </IconContainer>
-          <IconContainer onClick={() => click('Flix')}>
-            {getIcon('CodeFile', ICON_SIZE)}
-            <IconLabel>Flix</IconLabel>
-          </IconContainer>
-          <IconContainer onClick={() => click('Twitter')}>
-            <IconLogoImage src={TwitterLogo} alt="Twitter" />
-            <IconLabel>Twitter</IconLabel>
-          </IconContainer>
-          <IconContainer onClick={() => click('Parstagram')}>
-            <IconLogoImage src={ParstagramLogo} alt="Parstagram" />
-            <IconLabel>Parstagram</IconLabel>
-          </IconContainer>
-        </IconListContainer>
-      </>
+      <IconListContainer>
+        <IconContainer title="Foodie" onClick={() => click('Foodie')}>
+          <IconLogoImage src={FoodieLogo} alt="Foodie" />
+          <IconLabel>Foodie</IconLabel>
+        </IconContainer>
+        <IconContainer title="WebGame" onClick={() => click('WebGame')}>
+          {getIcon('CodeFile', ICON_SIZE)}
+          <IconLabel>WebGame</IconLabel>
+        </IconContainer>
+        <IconContainer title="ToonFlix" onClick={() => click('ToonFlix')}>
+          {getIcon('CodeFile', ICON_SIZE)}
+          <IconLabel>ToonFlix</IconLabel>
+        </IconContainer>
+        <IconContainer title="Tippy" onClick={() => click('Tippy')}>
+          {getIcon('CodeFile', ICON_SIZE)}
+          <IconLabel>Tippy</IconLabel>
+        </IconContainer>
+        <IconContainer title="Flix" onClick={() => click('Flix')}>
+          {getIcon('CodeFile', ICON_SIZE)}
+          <IconLabel>Flix</IconLabel>
+        </IconContainer>
+        <IconContainer title="Twitter" onClick={() => click('Twitter')}>
+          <IconLogoImage src={TwitterLogo} alt="Twitter" />
+          <IconLabel>Twitter</IconLabel>
+        </IconContainer>
+        <IconContainer title="Parstagram" onClick={() => click('Parstagram')}>
+          <IconLogoImage src={ParstagramLogo} alt="Parstagram" />
+          <IconLabel>Parstagram</IconLabel>
+        </IconContainer>
+      </IconListContainer>
     );
   }
 );
