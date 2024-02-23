@@ -26,7 +26,8 @@
             "year": 2019,
             "month": "Dec"
           },
-          "details": "Bachelor of Science in Computer Science",
+          "degree": "Bachelor of Science",
+          "major": "Computer Science",
           "concentration": "Software Engineering"
         }
       },

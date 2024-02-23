@@ -24,7 +24,7 @@ const Profile = styled.img`
   height: auto;
 `;
 
-const About: React.FC = () => {
+const Info: React.FC = () => {
   return (
     <PanelContainer>
       <PanelLogoContainer>
@@ -59,4 +59,4 @@ const About: React.FC = () => {
   );
 };
 
-export default React.memo(About);
+export default React.memo(Info);

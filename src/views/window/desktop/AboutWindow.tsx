@@ -9,7 +9,7 @@ import {
 import useScreenSize, { TABLET_MAX_WIDTH } from '../../../utils/useScreenSize';
 import WindowTopbar from '../../../components/WindowTopbar';
 import useWindowsStore from '../../../utils/useWindowsStore';
-import About from '../../../components/about/About';
+import Info from '../../../components/about/Info';
 import Experience from '../../../components/about/Experience';
 import Education from '../../../components/about/Education';
 import AboutNavbar from '../../../components/about/AboutNavbar';
@@ -34,7 +34,7 @@ const AboutWindow: React.FC = () => {
     (WindowSizeSetting & WindowPositionSetting) | null
   >(null);
 
-  const [index, setIndex] = React.useState<AboutIndexType>('About');
+  const [index, setIndex] = React.useState<AboutIndexType>('Info');
   const [isMobileWindow, setIsMobileWindow] = React.useState<boolean>(false);
   const [showDate, setShowDate] = React.useState<boolean>(false);
 
@@ -125,7 +125,7 @@ const AboutWindow: React.FC = () => {
       <WindowBody onClick={focusAboutWindow}>
         <AboutNavbar index={index} onClick={handleClick} />
         <WindowBodyContent>
-          {index === 'About' ? <About /> : null}
+          {index === 'Info' ? <Info /> : null}
           {index === 'Experience' ? <Experience showDate={showDate} /> : null}
           {index === 'Education' ? <Education /> : null}
         </WindowBodyContent>

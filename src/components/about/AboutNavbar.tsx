@@ -17,8 +17,8 @@ const AboutNavbar: React.FC<AboutNavbarProps> = ({ index, onClick }) => {
     <WindowBodyNavbar>
       <WindowBodyNavItm
         first
-        onClick={() => onClick('About')}
-        focus={index === 'About'}
+        onClick={() => onClick('Info')}
+        focus={index === 'Info'}
       >
         {getIcon('File', SMALL_ICON_SIZE)}
         <NavItmLabel>Personal Info</NavItmLabel>
