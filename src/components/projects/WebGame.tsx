@@ -1,56 +1,22 @@
-import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import info from '../../info.json';
 
-import {
-  Panel,
-  PanelDescriptionContainer,
-  PanelDescriptionRow,
-  LinkLabel,
-  PanelLogoContainer,
-  PanelDescriptionLabel,
-  PanelDescriptionText,
-} from '../../GlobalStyle';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { Panel, PanelContainer } from '../../GlobalStyle';
 import { getIcon } from '../getIcon';
+import ProjectDescriptionTable from './ProjectDescriptionTable';
 
 const WebGame: React.FC = () => {
   return (
     <Panel>
-      <PanelLogoContainer>{getIcon('CodeFile')}</PanelLogoContainer>
-      <PanelDescriptionContainer>
-        <PanelDescriptionRow>
-          <PanelDescriptionLabel>Name</PanelDescriptionLabel>
-          <PanelDescriptionText>
-            {info.project.WebGame.name}
-          </PanelDescriptionText>
-        </PanelDescriptionRow>
-        <PanelDescriptionRow>
-          <PanelDescriptionLabel>Link</PanelDescriptionLabel>
-          <LinkLabel href={info.project.WebGame.link}>
-            <span>
-              Link <FontAwesomeIcon icon={faExternalLinkAlt as IconProp} />
-            </span>
-          </LinkLabel>
-        </PanelDescriptionRow>
-        <PanelDescriptionRow>
-          <PanelDescriptionLabel>Stack</PanelDescriptionLabel>
-          <PanelDescriptionText>
-            {info.project.WebGame.stack.map((value, idx) =>
-              idx === info.project.WebGame.stack.length - 1
-                ? value
-                : value + ', '
-            )}
-          </PanelDescriptionText>
-        </PanelDescriptionRow>
-        <PanelDescriptionRow>
-          <PanelDescriptionLabel>Detail</PanelDescriptionLabel>
-          <PanelDescriptionText>
-            {info.project.WebGame.details}
-          </PanelDescriptionText>
-        </PanelDescriptionRow>
-      </PanelDescriptionContainer>
+      <PanelContainer>{getIcon('CodeFile')}</PanelContainer>
+      <PanelContainer>
+        <ProjectDescriptionTable
+          name={info.project.WebGame.name}
+          link={info.project.WebGame.link}
+          stack={info.project.WebGame.stack}
+          details={info.project.WebGame.details}
+        />
+      </PanelContainer>
     </Panel>
   );
 };
