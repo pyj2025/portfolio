@@ -7,7 +7,7 @@ import {
   MobileBackButtonContainer,
   MobilePanelContainer,
 } from '../GlobalStyle';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 type MobilePanelProps = {
   onClick: () => void;
@@ -19,7 +19,7 @@ const MobilePanel: React.FC<MobilePanelProps> = ({ onClick, children }) => {
     <MobilePanelContainer>
       <MobileBackButtonContainer>
         <MobileBackButton onClick={onClick}>
-          <FontAwesomeIcon icon={faArrowLeft as IconProp} />
+          <FontAwesomeIcon icon={faChevronLeft as IconProp} />
         </MobileBackButton>
       </MobileBackButtonContainer>
       {children}
