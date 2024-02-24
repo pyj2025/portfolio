@@ -326,11 +326,11 @@ export const MobileBackButtonContainer = styled.div`
   justify-content: flex-start;
   align-items: center;
   height: 1.5rem;
-  padding-right: 0.5rem;
-  margin-bottom: 0.75rem;
+  padding: 0.5rem;
 `;
 
 export const MobileBackButton = styled.div`
+  position: fixed;
   margin-top: 0.75rem;
   padding: 0.5rem;
 `;
