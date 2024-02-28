@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { ProjectsState } from './type';
+import { ProjectsState } from './types';
 import useWindowsStore from './useWindowsStore';
 
 const useProjectsStore = create<ProjectsState>(set => ({
