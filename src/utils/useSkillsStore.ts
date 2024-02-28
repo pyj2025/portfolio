@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { SkillsState } from './type';
+import { SkillsState } from './types';
 import useWindowsStore from './useWindowsStore';
 
 const useSkillsStore = create<SkillsState>(set => ({

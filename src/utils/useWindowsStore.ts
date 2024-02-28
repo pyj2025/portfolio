@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { WindowsState } from './type';
+import { WindowsState } from './types';
 import { FocusedWindowType } from '../types';
 
 const useWindowsStore = create<WindowsState>(set => ({
