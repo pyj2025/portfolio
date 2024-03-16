@@ -101,7 +101,8 @@ const Menu: React.FC = () => {
         </MenuItem>
         <MenuItem
           title="Resume"
-          href="https://drive.google.com/file/d/1eKA2yZLv_271nj6TJD316C5zGx-NPiMH/view?usp=sharing"
+          href="https://drive.google.com/file/d/14bb5ogfmAumTw7cMA_0PEUVwsPE_mOd-/view?usp=sharing"
+          target="_blank"
         >
           {getIcon('Resume')}
         </MenuItem>
