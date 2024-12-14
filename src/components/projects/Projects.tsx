@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import FoodieLogo from '../../image/projects/Foodie.png';
+import GitCardLogo from '../../image/projects/GitCard.png';
 import DatApexLogo from '../../image/projects/DatApex.png';
 import MovieLogo from '../../image/projects/Movie.png';
 import { getIcon } from '../getIcon';
@@ -60,6 +61,10 @@ export const Projects: React.FC<ProjectsProps> = React.memo(({ click }) => {
 export const WebProjects: React.FC<ProjectsProps> = React.memo(({ click }) => {
   return (
     <IconListContainer>
+      <IconContainer title="GitCard" onClick={() => click('GitCard')}>
+        <IconLogoImage src={GitCardLogo} alt="DatApex" />
+        <IconLabel>GitCard</IconLabel>
+      </IconContainer>
       <IconContainer title="DatApex" onClick={() => click('DatApex')}>
         <IconLogoImage src={DatApexLogo} alt="DatApex" />
         <IconLabel>DatApex</IconLabel>

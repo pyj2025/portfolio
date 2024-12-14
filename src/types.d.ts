@@ -22,6 +22,7 @@ export type ProjectIndexType =
   | 'Projects'
   | 'WebProjects'
   | 'MobileProjects'
+  | 'GitCard'
   | 'DatApex'
   | "MovieNext"
   | 'Foodie'

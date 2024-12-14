@@ -1,3 +1,4 @@
+import GitCard from './GitCard';
 import DatApex from './DatApex';
 import Portfolio from './Portfolio';
 import Foodie from './Foodie';
@@ -22,6 +23,8 @@ export const getProject = (
       return <WebProjects click={onClick!} />;
     case 'MobileProjects':
       return <MobileProjects click={onClick!} />;
+    case 'GitCard':
+      return <GitCard />;
     case 'DatApex':
       return <DatApex />;
     case 'MovieNext':
