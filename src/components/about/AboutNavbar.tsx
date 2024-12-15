@@ -37,6 +37,13 @@ const AboutNavbar: React.FC<AboutNavbarProps> = ({ index, onClick }) => {
         {getIcon('File', SMALL_ICON_SIZE)}
         <NavItmLabel>Education</NavItmLabel>
       </WindowBodyNavItm>
+      <WindowBodyNavItm
+        onClick={() => onClick('Certifications')}
+        focus={index === 'Certifications'}
+      >
+        {getIcon('Folder', SMALL_ICON_SIZE)}
+        <NavItmLabel>Certifications</NavItmLabel>
+      </WindowBodyNavItm>
     </WindowBodyNavbar>
   );
 };
