@@ -31,6 +31,10 @@
         "concentration": "Software Engineering"
       }
     },
+    "certifications": {
+      "name": "Certifications",
+      "link": "https://www.credly.com/users/joon-park/badges"
+    },
     "experience": [
       {
         "title": "Junior Frontend Developer",

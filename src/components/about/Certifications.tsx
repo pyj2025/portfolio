@@ -7,7 +7,6 @@ import {
   PanelTableContainer,
   PanelTableLabel,
 } from '../../GlobalStyle';
-import PurdueLogo from '../../image/PurdueLogo.png';
 import info from '../../info.json';
 
 const Certifications: React.FC = () => {
@@ -20,33 +19,13 @@ const Certifications: React.FC = () => {
             <PanelTableLabel>
               <MutedText>Name</MutedText>
             </PanelTableLabel>
-            <td>{info.about.education.university.name}</td>
+            <td>{info.about.certifications.name}</td>
           </tr>
           <tr>
             <PanelTableLabel>
-              <MutedText>Graduated</MutedText>
+              <MutedText>Link</MutedText>
             </PanelTableLabel>
-            <td>
-              {`${info.about.education.university.graduateYear.month} ${info.about.education.university.graduateYear.year}`}
-            </td>
-          </tr>
-          <tr>
-            <PanelTableLabel>
-              <MutedText>Degree</MutedText>
-            </PanelTableLabel>
-            <td>{info.about.education.university.degree}</td>
-          </tr>
-          <tr>
-            <PanelTableLabel>
-              <MutedText>Major</MutedText>
-            </PanelTableLabel>
-            <td>{info.about.education.university.major}</td>
-          </tr>
-          <tr>
-            <PanelTableLabel>
-              <MutedText>Concentration</MutedText>
-            </PanelTableLabel>
-            <td>{info.about.education.university.concentration}</td>
+            <td>{info.about.certifications.link}</td>
           </tr>
         </PanelTableContainer>
       </PanelContainer>
