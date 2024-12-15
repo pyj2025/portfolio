@@ -62,7 +62,7 @@ export const WebProjects: React.FC<ProjectsProps> = React.memo(({ click }) => {
   return (
     <IconListContainer>
       <IconContainer title="GitCard" onClick={() => click('GitCard')}>
-        <IconLogoImage src={GitCardLogo} alt="DatApex" />
+        <IconLogoImage src={GitCardLogo} alt="GitCard" />
         <IconLabel>GitCard</IconLabel>
       </IconContainer>
       <IconContainer title="DatApex" onClick={() => click('DatApex')}>

@@ -113,7 +113,9 @@ const MobileProjectsWindow: React.FC = () => {
             <MobilePanel
               onClick={() =>
                 handleClick(
-                  ['DatApex', 'MovieNext', 'Portfolio'].includes(index)
+                  ['GitCard', 'DatApex', 'MovieNext', 'Portfolio'].includes(
+                    index
+                  )
                     ? 'WebProjects'
                     : 'MobileProjects'
                 )
