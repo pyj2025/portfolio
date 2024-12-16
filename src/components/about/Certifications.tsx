@@ -23,6 +23,18 @@ const Certifications: React.FC = () => {
           </tr>
           <tr>
             <PanelTableLabel>
+              <MutedText>Issued On</MutedText>
+            </PanelTableLabel>
+            <td>{info.about.certifications.issuedDate}</td>
+          </tr>
+          <tr>
+            <PanelTableLabel>
+              <MutedText>Expires On</MutedText>
+            </PanelTableLabel>
+            <td>{info.about.certifications.expiresDate}</td>
+          </tr>
+          <tr>
+            <PanelTableLabel>
               <MutedText>Link</MutedText>
             </PanelTableLabel>
             <td>{info.about.certifications.link}</td>

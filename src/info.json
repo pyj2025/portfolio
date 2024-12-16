@@ -32,8 +32,10 @@
       }
     },
     "certifications": {
-      "name": "Certifications",
-      "link": "https://www.credly.com/users/joon-park/badges"
+      "name": "Academy Accreditation - Generative AI Fundamentals",
+      "issuedDate": "2024-10-22",
+      "expiresDate": "2026-10-22",
+      "link": "https://credentials.databricks.com/42e2cc6a-7684-4b3f-a5c1-25c7b3644070#acc.PK0tNZsz"
     },
     "experience": [
       {
