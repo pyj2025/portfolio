@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
+  LinkLabel,
   MutedText,
   Panel,
   PanelContainer,
@@ -8,11 +12,14 @@ import {
   PanelTableLabel,
 } from '../../GlobalStyle';
 import info from '../../info.json';
+import GenerativeAIFundamentals from '../../image/certifications/GenerativeAIFundamentals';
 
 const Certifications: React.FC = () => {
   return (
     <Panel>
-      <PanelContainer></PanelContainer>
+      <PanelContainer>
+        <GenerativeAIFundamentals />
+      </PanelContainer>
       <PanelContainer>
         <PanelTableContainer>
           <tr>
@@ -37,7 +44,13 @@ const Certifications: React.FC = () => {
             <PanelTableLabel>
               <MutedText>Link</MutedText>
             </PanelTableLabel>
-            <td>{info.about.certifications.link}</td>
+            <td>
+              <LinkLabel href={info.about.certifications.link}>
+                <span>
+                  Link <FontAwesomeIcon icon={faExternalLinkAlt as IconProp} />
+                </span>
+              </LinkLabel>
+            </td>
           </tr>
         </PanelTableContainer>
       </PanelContainer>
