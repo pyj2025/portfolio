@@ -13,6 +13,7 @@ import Info from '../../../components/about/Info';
 import Experience from '../../../components/about/Experience';
 import Education from '../../../components/about/Education';
 import AboutNavbar from '../../../components/about/AboutNavbar';
+import Certifications from '../../../components/about/Certifications';
 
 const AboutWindow: React.FC = () => {
   const { width, height } = useScreenSize();
@@ -128,6 +129,7 @@ const AboutWindow: React.FC = () => {
           {index === 'Info' ? <Info /> : null}
           {index === 'Experience' ? <Experience showDate={showDate} /> : null}
           {index === 'Education' ? <Education /> : null}
+          {index === 'Certifications' ? <Certifications /> : null}
         </WindowBodyContent>
       </WindowBody>
     </Window>

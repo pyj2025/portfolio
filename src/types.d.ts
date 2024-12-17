@@ -16,12 +16,13 @@ export type WindowPositionSetting = {
   y: number;
 };
 
-export type AboutIndexType = 'Menu' | 'Info' | 'Experience' | 'Education';
+export type AboutIndexType = 'Menu' | 'Info' | 'Experience' | 'Education' | 'Certifications';
 
 export type ProjectIndexType =
   | 'Projects'
   | 'WebProjects'
   | 'MobileProjects'
+  | 'GitCard'
   | 'DatApex'
   | "MovieNext"
   | 'Foodie'

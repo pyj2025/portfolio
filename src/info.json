@@ -1,250 +1,261 @@
 {
-    "about": {
-      "info": {
-        "name": {
-          "firstName": "Youngjoon",
-          "lastName": "Park"
-        },
-        "dateOfBirth": {
-          "year": 1994,
-          "month": "Jan",
-          "day": 17
-        },
-        "phoneNumber": "(+1) 778-847-4625",
-        "address": {
-          "address": "1211-89 Nelson St",
-          "city": "Vancouver",
-          "state": "BC",
-          "postalCode": "V6Z 0E7"
-        },
-        "email": "pyj2025@gmail.com"
+  "about": {
+    "info": {
+      "name": {
+        "firstName": "Youngjoon",
+        "lastName": "Park"
       },
-      "education": {
-        "university": {
-          "name": "Purdue University",
-          "graduateYear": {
-            "year": 2019,
-            "month": "Dec"
-          },
-          "degree": "Bachelor of Science",
-          "major": "Computer Science",
-          "concentration": "Software Engineering"
-        }
+      "dateOfBirth": {
+        "year": 1994,
+        "month": "Jan",
+        "day": 17
       },
-      "experience": [
-        {
-          "title": "Junior Frontend Developer",
-          "company": "Enfusion",
-          "location": "Chicago, IL, USA",
-          "date": "Jan 2020 - Jul 2023",
-          "tech": "React, TypeScript, React Native, Jest, React Testing Library, Puppeteer, Storybook, Figma, Jira",
-          "description": "In this role, I enhanced our company's web application UI using React and TypeScript, integrating key features from our desktop app such as the Order Execution Management System (OEMS), Reports, and Services, and introducing new features like Dashboard and Portfolio to improve the online user experience. I also expanded our offerings to mobile platforms using React Native, ensuring seamless user transitions between web and mobile. Additionally, I developed a secure authentication UI for both web and mobile applications to prevent duplicate logins across devices. I optimized performance and enabled real-time data updates using web sockets and web workers. Integration with Google Analytics provided in-depth user engagement insights, while Sentry facilitated efficient error tracking and resolution. To maintain product quality, I implemented unit tests with Jest and React Testing Library for web and mobile applications, and conducted end-to-end tests with Puppeteer.",
-          "dateRank": 1
-        },
-        {
-          "title": "Undergraduate Teaching Assistant",
-          "company": "Purdue University",
-          "location": "West Lafayette, IN, USA",
-          "date": "Aug 2018 - Dec 2019",
-          "tech": "React, Redux, Node.js, Express.js, MongoDB,Angular, Selenium, Jest, Mocha, Cypress, Puppeteer, C, C++, Lex, Yacc",
-          "description": "In this role, I led four student teams in software development, provided assistance in Software Testing (CS40800), and supported course labs for Systems Programming (CS25200) and Computer Architecture (CS25000).",
-          "dateRank": 2
-        },
-        {
-          "title": "Technical Intern",
-          "company": "Dotis",
-          "location": "Seoul, South Korea",
-          "date": "Jun 2017 - Jul 2017",
-          "tech": "MongoDB, Express, React, Node.js, Mocha, C++",
-          "description": "In this role, I developed and modified clients' web applications using MERN stacks, wrote test cases with Mocha, and addressed defects. I also refactored and maintained C++ code collaboratively. Additionally, I provided technical support for data restoration from Ransomware attacks and contributed to enhancing the security program.",
-          "dateRank": 3
-        },
-        {
-          "title": "Software Engineering Intern",
-          "company": "Hyop Woon International Co .,Ltd",
-          "location": "Seoul, South Korea",
-          "date": "Jul 2015 - Aug 2015",
-          "tech": "Python, Java, MySQL",
-          "description": "In this role, I developed new features for our data automation program in Python, implemented Java unit tests for management applications, and optimized MySQL database performance for efficient data handling.",
-          "dateRank": 4
-        }
-      ]
+      "phoneNumber": "(+1) 778-847-4625",
+      "address": {
+        "address": "1211-89 Nelson St",
+        "city": "Vancouver",
+        "state": "BC",
+        "postalCode": "V6Z 0E7"
+      },
+      "email": "pyj2025@gmail.com"
     },
-    "project": {
-      "DatApex": {
-        "name": "DatApex",
-        "link": "https://github.com/SeoHyunAhn/DatApex",
-        "stack": ["React", "Django", "Bootstrap"],
-        "details": "DatApex is a web application tailored for users seeking efficient preprocessing solutions for their datasets and seamless execution of various machine learning algorithms. The platform empowers users to upload their datasets and apply a diverse range of preprocessing algorithms to enhance data quality and structure. With DatApex, users can effortlessly run different machine learning algorithms on their modified datasets, allowing for comprehensive analysis and model training. The interface offers clear and intuitive navigation, ensuring a user-friendly experience throughout. Additionally, DatApex presents accuracy plots and visualizations in a clean and accessible UI, facilitating insightful data interpretation and decision-making."
-      },
-      "MovieNext": {
-        "name": "MovieNext",
-        "link": "https://github.com/pyj2025/movie-next14",
-        "stack": ["Next.js 14"],
-        "details": "The MovieNext is a Next.js-based project designed to provide users with an intuitive platform to browse a curated list of movies, offering comprehensive details such as titles, descriptions, release years, and more. Leveraging React and Next.js, the application ensures seamless navigation and responsive design across various devices, allowing users to effortlessly explore movie information, including credits, similar movies, and available providers."
-      },
-      "Foodie": {
-        "name": "Foodie",
-        "link": "https://github.com/axer0310/Foodie",
-        "stack": ["Swift", "Firebase", "Yelp API", "Google API"],
-        "details": "Foodie is a dynamic application designed to streamline dining experiences by recommending personalized dining establishments based on users' preferences. With its intuitive interface, users can effortlessly explore and discover new dining options tailored to their tastes and dietary preferences. Additionally, Foodie simplifies the process of connecting users with restaurants through QR code technology, offering convenience and efficiency in accessing menus, reservations, and other restaurant services."
-      },
-      "WebGame": {
-        "name": "WebGame",
-        "link": "https://github.com/pyj2025/native-webgame",
-        "stack": ["React Native"],
-        "details": "Webgame is the ultimate destination for game enthusiasts, offering a diverse selection of engaging games within a single application. With our app, users can immerse themselves in a variety of captivating gaming experiences, all conveniently accessible from one centralized platform."
-      },
-      "Tippy": {
-        "name": "Tippy",
-        "link": "https://github.com/park612/TipCalculator",
-        "stack": ["Swift"],
-        "details": "Tippy is a convenient and user-friendly tip calculator application tailored for iOS devices. With its intuitive interface and straightforward functionality, Tippy simplifies the process of calculating tips and splitting bills among friends or colleagues. Users can input the total amount of their bill, select their desired tip percentage, and instantly see the calculated tip amount and total bill including tip."
-      },
-      "Flix": {
-        "name": "Flix",
-        "link": "https://github.com/park612/Flix",
-        "stack": ["Swift"],
-        "details": "Flix is a Swift application designed to empower users to browse a vast collection of movies sourced from The Movie Database (TMDb) API. This intuitive app provides users with a seamless platform to explore an extensive library of films, encompassing various genres, ratings, and release dates."
-      },
-      "Twitter": {
-        "name": "Twitter",
-        "link": "https://github.com/pyj2025/Twitter",
-        "stack": ["Swift"],
-        "details": "Twitter is a straightforward iOS application that replicates the core functionality of Twitter, allowing users to read their tweets within a familiar interface. With a minimalist design and intuitive navigation, this app provides users with a seamless experience to stay connected with their Twitter feed. Users can effortlessly scroll through their timelines, view tweets from accounts they follow, and engage with content through likes and retweets. Built with simplicity in mind, Twitter offers a streamlined platform for users to consume and interact with tweets, keeping them informed and engaged with the latest updates from their network."
-      },
-      "Parstagram": {
-        "name": "Parstagram",
-        "link": "https://github.com/park612/Parstagram",
-        "stack": ["Swift"],
-        "details": "Parstagram is a dynamic Instagram clone featuring a custom Parse backend, tailored to offer users a seamless experience in photo sharing and exploration. With Parstagram, users can effortlessly upload and share their favourite photos, as well as explore a global feed curated with captivating images from across the platform. This innovative application not only replicates the core functionalities of Instagram but also introduces a custom Parse backend, enhancing scalability, customization, and performance. Whether users are posting cherished memories or discovering inspiring content, Parstagram provides a vibrant platform for fostering creativity, connection, and community through the art of visual storytelling."
-      },
-      "ToonFlix": {
-        "name": "ToonFlix",
-        "link": "https://github.com/pyj2025/toonflix",
-        "stack": ["Flutter"],
-        "details": "ToonFlix is an innovative Flutter application designed to provide users with seamless access to Naver's extensive collection of captivating webtoons. Offering a user-friendly interface and smooth navigation, the app enables users to immerse themselves in Naver's diverse range of webtoon content effortlessly. With ToonFlix, users can explore and discover their favourite webtoons, access the latest updates, and enjoy an immersive reading experience right at their fingertips."
-      },
-      "Portfolio": {
-        "name": "Joon's Portfolio",
-        "link": "https://pyj2025.github.io/portfolio/",
-        "stack": ["React", "Typescript", "Styled-components"],
-        "details": "Joon's Portfolio Website is a concise yet comprehensive online platform designed to showcase Joon's professional profile, skills, work experience, and contact information. With a clean and intuitive design, the website features sections providing an overview of Joon's background and interests, a Skills Showcase highlighting key competencies, and a detailed Work Experience section outlining past roles and achievements. Additionally, the site includes contact information for easy communication."
+    "education": {
+      "university": {
+        "name": "Purdue University",
+        "graduateYear": {
+          "year": 2019,
+          "month": "Dec"
+        },
+        "degree": "Bachelor of Science",
+        "major": "Computer Science",
+        "concentration": "Software Engineering"
       }
     },
-    "skills": {
-      "front": [
-        {
-          "name": "React"
-        },
-        {
-          "name": "Vue"
-        },
-        {
-          "name": "Angular"
-        },
-        {
-          "name": "Nextjs"
-        },
-        {
-          "name": "Redux"
-        },
-        {
-          "name": "jQuery"
-        },
-        {
-          "name": "Bootstrap"
-        },
-        {
-          "name": "SASS"
-        },
-        {
-          "name": "Tailwind"
-        },
-        {
-          "name": "styled-components"
-        }
-      ],
-      "back": [
-        {
-          "name": "Node.js"
-        },
-        {
-          "name": "Express"
-        },
-        {
-          "name": "NestJS"
-        },
-        {
-          "name": "AWS"
-        },
-        {
-          "name": "Spring"
-        },
-        {
-          "name": "Laravel"
-        },
-        {
-          "name": "MongoDB"
-        },
-        {
-          "name": "ASP.Net Core"
-        }
-      ],
-      "mobile": [
-        {
-          "name": "React Native",
-          "noWidth": true
-        },
-        {
-          "name": "Flutter"
-        },
-        {
-          "name": "Swift"
-        }
-      ],
-      "languages": [
-        {
-          "name": "TypeScript"
-        },
-        {
-          "name": "JavaScript"
-        },
-        {
-          "name": "Python"
-        },
-        {
-          "name": "Java"
-        },
-        
-        {
-          "name": "C#"
-        },
-        {
-          "name": "Dart"
-        },
-        {
-          "name": "C/C++"
-        },
-        {
-          "name": "PHP"
-        },
-        {
-          "name": "HTML5"
-        },
-        {
-          "name": "CSS3"
-        },
-        {
-          "name": "MySQL"
-        },
-        {
-          "name": "PL/SQL"
-        },
-        {
-          "name": "R"
-        }
-      ]
+    "certifications": {
+      "name": "Academy Accreditation - Generative AI Fundamentals",
+      "issuedDate": "2024-10-22",
+      "expiresDate": "2026-10-22",
+      "link": "https://credentials.databricks.com/42e2cc6a-7684-4b3f-a5c1-25c7b3644070#acc.PK0tNZsz"
+    },
+    "experience": [
+      {
+        "title": "Junior Frontend Developer",
+        "company": "Enfusion",
+        "location": "Chicago, IL, USA",
+        "date": "Jan 2020 - Jul 2023",
+        "tech": "React, TypeScript, React Native, Jest, React Testing Library, Puppeteer, Storybook, Figma, Jira",
+        "description": "In this role, I enhanced our company's web application UI using React and TypeScript, integrating key features from our desktop app such as the Order Execution Management System (OEMS), Reports, and Services, and introducing new features like Dashboard and Portfolio to improve the online user experience. I also expanded our offerings to mobile platforms using React Native, ensuring seamless user transitions between web and mobile. Additionally, I developed a secure authentication UI for both web and mobile applications to prevent duplicate logins across devices. I optimized performance and enabled real-time data updates using web sockets and web workers. Integration with Google Analytics provided in-depth user engagement insights, while Sentry facilitated efficient error tracking and resolution. To maintain product quality, I implemented unit tests with Jest and React Testing Library for web and mobile applications, and conducted end-to-end tests with Puppeteer.",
+        "dateRank": 1
+      },
+      {
+        "title": "Undergraduate Teaching Assistant",
+        "company": "Purdue University",
+        "location": "West Lafayette, IN, USA",
+        "date": "Aug 2018 - Dec 2019",
+        "tech": "React, Redux, Node.js, Express.js, MongoDB,Angular, Selenium, Jest, Mocha, Cypress, Puppeteer, C, C++, Lex, Yacc",
+        "description": "In this role, I led four student teams in software development, provided assistance in Software Testing (CS40800), and supported course labs for Systems Programming (CS25200) and Computer Architecture (CS25000).",
+        "dateRank": 2
+      },
+      {
+        "title": "Technical Intern",
+        "company": "Dotis",
+        "location": "Seoul, South Korea",
+        "date": "Jun 2017 - Jul 2017",
+        "tech": "MongoDB, Express, React, Node.js, Mocha, C++",
+        "description": "In this role, I developed and modified clients' web applications using MERN stacks, wrote test cases with Mocha, and addressed defects. I also refactored and maintained C++ code collaboratively. Additionally, I provided technical support for data restoration from Ransomware attacks and contributed to enhancing the security program.",
+        "dateRank": 3
+      },
+      {
+        "title": "Software Engineering Intern",
+        "company": "Hyop Woon International Co .,Ltd",
+        "location": "Seoul, South Korea",
+        "date": "Jul 2015 - Aug 2015",
+        "tech": "Python, Java, MySQL",
+        "description": "In this role, I developed new features for our data automation program in Python, implemented Java unit tests for management applications, and optimized MySQL database performance for efficient data handling.",
+        "dateRank": 4
+      }
+    ]
+  },
+  "project": {
+    "GitCard": {
+      "name": "GitCard",
+      "link": "https://github-name-card.vercel.app",
+      "stack": ["Next.js", "React", "Typescript", "FastAPI", "Tailwind CSS"],
+      "details": "GitCard is a user-friendly application that allows users to generate personalized profile cards using their GitHub account. Built with Next.js and TypeScript on the frontend, FastAPI on the backend, and styled with Tailwind CSS, the app provides a seamless experience. Each card includes user information, a QR code linking directly to their GitHub profile, and the option to download the card as an image, making it easy to share and connect professionally."
+    },
+    "DatApex": {
+      "name": "DatApex",
+      "link": "https://github.com/SeoHyunAhn/DatApex",
+      "stack": ["React", "Django", "Bootstrap"],
+      "details": "DatApex is a web application tailored for users seeking efficient preprocessing solutions for their datasets and seamless execution of various machine learning algorithms. The platform empowers users to upload their datasets and apply a diverse range of preprocessing algorithms to enhance data quality and structure. With DatApex, users can effortlessly run different machine learning algorithms on their modified datasets, allowing for comprehensive analysis and model training. The interface offers clear and intuitive navigation, ensuring a user-friendly experience throughout. Additionally, DatApex presents accuracy plots and visualizations in a clean and accessible UI, facilitating insightful data interpretation and decision-making."
+    },
+    "MovieNext": {
+      "name": "MovieNext",
+      "link": "https://github.com/pyj2025/movie-next14",
+      "stack": ["Next.js 14"],
+      "details": "The MovieNext is a Next.js-based project designed to provide users with an intuitive platform to browse a curated list of movies, offering comprehensive details such as titles, descriptions, release years, and more. Leveraging React and Next.js, the application ensures seamless navigation and responsive design across various devices, allowing users to effortlessly explore movie information, including credits, similar movies, and available providers."
+    },
+    "Foodie": {
+      "name": "Foodie",
+      "link": "https://github.com/axer0310/Foodie",
+      "stack": ["Swift", "Firebase", "Yelp API", "Google API"],
+      "details": "Foodie is a dynamic application designed to streamline dining experiences by recommending personalized dining establishments based on users' preferences. With its intuitive interface, users can effortlessly explore and discover new dining options tailored to their tastes and dietary preferences. Additionally, Foodie simplifies the process of connecting users with restaurants through QR code technology, offering convenience and efficiency in accessing menus, reservations, and other restaurant services."
+    },
+    "WebGame": {
+      "name": "WebGame",
+      "link": "https://github.com/pyj2025/native-webgame",
+      "stack": ["React Native"],
+      "details": "Webgame is the ultimate destination for game enthusiasts, offering a diverse selection of engaging games within a single application. With our app, users can immerse themselves in a variety of captivating gaming experiences, all conveniently accessible from one centralized platform."
+    },
+    "Tippy": {
+      "name": "Tippy",
+      "link": "https://github.com/park612/TipCalculator",
+      "stack": ["Swift"],
+      "details": "Tippy is a convenient and user-friendly tip calculator application tailored for iOS devices. With its intuitive interface and straightforward functionality, Tippy simplifies the process of calculating tips and splitting bills among friends or colleagues. Users can input the total amount of their bill, select their desired tip percentage, and instantly see the calculated tip amount and total bill including tip."
+    },
+    "Flix": {
+      "name": "Flix",
+      "link": "https://github.com/park612/Flix",
+      "stack": ["Swift"],
+      "details": "Flix is a Swift application designed to empower users to browse a vast collection of movies sourced from The Movie Database (TMDb) API. This intuitive app provides users with a seamless platform to explore an extensive library of films, encompassing various genres, ratings, and release dates."
+    },
+    "Twitter": {
+      "name": "Twitter",
+      "link": "https://github.com/pyj2025/Twitter",
+      "stack": ["Swift"],
+      "details": "Twitter is a straightforward iOS application that replicates the core functionality of Twitter, allowing users to read their tweets within a familiar interface. With a minimalist design and intuitive navigation, this app provides users with a seamless experience to stay connected with their Twitter feed. Users can effortlessly scroll through their timelines, view tweets from accounts they follow, and engage with content through likes and retweets. Built with simplicity in mind, Twitter offers a streamlined platform for users to consume and interact with tweets, keeping them informed and engaged with the latest updates from their network."
+    },
+    "Parstagram": {
+      "name": "Parstagram",
+      "link": "https://github.com/park612/Parstagram",
+      "stack": ["Swift"],
+      "details": "Parstagram is a dynamic Instagram clone featuring a custom Parse backend, tailored to offer users a seamless experience in photo sharing and exploration. With Parstagram, users can effortlessly upload and share their favourite photos, as well as explore a global feed curated with captivating images from across the platform. This innovative application not only replicates the core functionalities of Instagram but also introduces a custom Parse backend, enhancing scalability, customization, and performance. Whether users are posting cherished memories or discovering inspiring content, Parstagram provides a vibrant platform for fostering creativity, connection, and community through the art of visual storytelling."
+    },
+    "ToonFlix": {
+      "name": "ToonFlix",
+      "link": "https://github.com/pyj2025/toonflix",
+      "stack": ["Flutter"],
+      "details": "ToonFlix is an innovative Flutter application designed to provide users with seamless access to Naver's extensive collection of captivating webtoons. Offering a user-friendly interface and smooth navigation, the app enables users to immerse themselves in Naver's diverse range of webtoon content effortlessly. With ToonFlix, users can explore and discover their favourite webtoons, access the latest updates, and enjoy an immersive reading experience right at their fingertips."
+    },
+    "Portfolio": {
+      "name": "Joon's Portfolio",
+      "link": "https://pyj2025.github.io/portfolio/",
+      "stack": ["React", "Typescript", "Styled-components"],
+      "details": "Joon's Portfolio Website is a concise yet comprehensive online platform designed to showcase Joon's professional profile, skills, work experience, and contact information. With a clean and intuitive design, the website features sections providing an overview of Joon's background and interests, a Skills Showcase highlighting key competencies, and a detailed Work Experience section outlining past roles and achievements. Additionally, the site includes contact information for easy communication."
     }
+  },
+  "skills": {
+    "front": [
+      {
+        "name": "React"
+      },
+      {
+        "name": "Vue"
+      },
+      {
+        "name": "Angular"
+      },
+      {
+        "name": "Nextjs"
+      },
+      {
+        "name": "Redux"
+      },
+      {
+        "name": "jQuery"
+      },
+      {
+        "name": "Bootstrap"
+      },
+      {
+        "name": "SASS"
+      },
+      {
+        "name": "Tailwind"
+      },
+      {
+        "name": "styled-components"
+      }
+    ],
+    "back": [
+      {
+        "name": "Node.js"
+      },
+      {
+        "name": "Express"
+      },
+      {
+        "name": "NestJS"
+      },
+      {
+        "name": "AWS"
+      },
+      {
+        "name": "Spring"
+      },
+      {
+        "name": "Laravel"
+      },
+      {
+        "name": "MongoDB"
+      },
+      {
+        "name": "ASP.Net Core"
+      }
+    ],
+    "mobile": [
+      {
+        "name": "React Native",
+        "noWidth": true
+      },
+      {
+        "name": "Flutter"
+      },
+      {
+        "name": "Swift"
+      }
+    ],
+    "languages": [
+      {
+        "name": "TypeScript"
+      },
+      {
+        "name": "JavaScript"
+      },
+      {
+        "name": "Python"
+      },
+      {
+        "name": "Java"
+      },
+
+      {
+        "name": "C#"
+      },
+      {
+        "name": "Dart"
+      },
+      {
+        "name": "C/C++"
+      },
+      {
+        "name": "PHP"
+      },
+      {
+        "name": "HTML5"
+      },
+      {
+        "name": "CSS3"
+      },
+      {
+        "name": "MySQL"
+      },
+      {
+        "name": "PL/SQL"
+      },
+      {
+        "name": "R"
+      }
+    ]
   }
-  
+}

@@ -21,9 +21,13 @@ const ProjectsNavbar: React.FC<ProjectsNavbarProps> = ({ index, onClick }) => {
       </WindowBodyNavItm>
       <WindowBodyNavItm
         onClick={() => onClick('WebProjects')}
-        focus={['WebProjects', 'DatApex', 'MovieNext', 'Portfolio'].includes(
-          index
-        )}
+        focus={[
+          'WebProjects',
+          'GitCard',
+          'DatApex',
+          'MovieNext',
+          'Portfolio',
+        ].includes(index)}
         isChild
       >
         {getIcon('Folder', SMALL_ICON_SIZE)}
