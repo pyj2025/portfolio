@@ -13,6 +13,7 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 type ProjectDescriptionTableProps = {
   name: string;
   link: string;
+  url?: string;
   stack: Array<string>;
   details: string;
 };
@@ -20,6 +21,7 @@ type ProjectDescriptionTableProps = {
 const ProjectDescriptionTable: React.FC<ProjectDescriptionTableProps> = ({
   name,
   link,
+  url,
   stack,
   details,
 }) => {
@@ -33,9 +35,24 @@ const ProjectDescriptionTable: React.FC<ProjectDescriptionTableProps> = ({
             </PanelTableLabel>
             <td>{name}</td>
           </tr>
+          {url && (
+            <tr>
+              <PanelTableLabel>
+                <MutedText>Link</MutedText>
+              </PanelTableLabel>
+              <td>
+                <LinkLabel href={url}>
+                  <span>
+                    URL&nbsp;
+                    <FontAwesomeIcon icon={faExternalLinkAlt as IconProp} />
+                  </span>
+                </LinkLabel>
+              </td>
+            </tr>
+          )}
           <tr>
             <PanelTableLabel>
-              <MutedText>Link</MutedText>
+              <MutedText>Github Link</MutedText>
             </PanelTableLabel>
             <td>
               <LinkLabel href={link}>
