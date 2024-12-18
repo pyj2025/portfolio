@@ -79,7 +79,8 @@
   "project": {
     "GitCard": {
       "name": "GitCard",
-      "link": "https://github-name-card.vercel.app",
+      "link": "https://github.com/pyj2025/git-name-card-frontend",
+      "url": "https://github-name-card.vercel.app",
       "stack": ["Next.js", "React", "Typescript", "FastAPI", "Tailwind CSS"],
       "details": "GitCard is a user-friendly application that allows users to generate personalized profile cards using their GitHub account. Built with Next.js and TypeScript on the frontend, FastAPI on the backend, and styled with Tailwind CSS, the app provides a seamless experience. Each card includes user information, a QR code linking directly to their GitHub profile, and the option to download the card as an image, making it easy to share and connect professionally."
     },

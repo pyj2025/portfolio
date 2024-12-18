@@ -13,6 +13,7 @@ const GitCard: React.FC = () => {
       <ProjectDescriptionTable
         name={info.project.GitCard.name}
         link={info.project.GitCard.link}
+        url={info.project.GitCard.url}
         stack={info.project.GitCard.stack}
         details={info.project.GitCard.details}
       />
