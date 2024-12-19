@@ -21,6 +21,7 @@ import { getIcon } from '../../../components/getIcon';
 import useWindowsStore from '../../../utils/useWindowsStore';
 import MobileAboutNavbar from '../../../components/about/MobileAboutNavbar';
 import MobilePanel from '../../../components/MobilePanel';
+import Certifications from '../../../components/about/Certifications';
 
 type MobileAboutWindowMenuProps = {
   onClick: (index: AboutIndexType) => void;
@@ -41,6 +42,10 @@ const MobileAboutWindowMenu: React.FC<MobileAboutWindowMenuProps> = React.memo(
         <MobileWindowMenuItem onClick={() => onClick('Education')}>
           {getIcon('File')}
           <MobileMenuItemLabel>Education</MobileMenuItemLabel>
+        </MobileWindowMenuItem>
+        <MobileWindowMenuItem onClick={() => onClick('Certifications')} isEven>
+          {getIcon('Folder')}
+          <MobileMenuItemLabel>Certifications</MobileMenuItemLabel>
         </MobileWindowMenuItem>
       </>
     );
@@ -163,6 +168,7 @@ const MobileAboutWindow: React.FC = () => {
                 <Experience isMobile={isMobileWindow} showDate={showDate} />
               )}
               {index === 'Education' && <Education />}
+              {index === 'Certifications' && <Certifications />}
             </MobilePanel>
           )}
         </MobileBodyContent>

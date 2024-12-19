@@ -42,11 +42,15 @@ type CertificationsType = 'Icons' | 'GenAIFundamentals';
 const Certifications: React.FC = () => {
   const [index, setIndex] = React.useState<CertificationsType>('Icons');
 
-  const renderContent = () => {
+  const toggleIndex = (index: CertificationsType) => {
+    setIndex(index);
+  };
+
+  const renderContent = React.useCallback(() => {
     if (index === 'GenAIFundamentals') {
       return (
         <>
-          <BackBtnContainer onClick={() => setIndex('Icons')}>
+          <BackBtnContainer onClick={() => toggleIndex('Icons')}>
             <FontAwesomeIcon icon={faChevronLeft as IconProp} />
           </BackBtnContainer>
           <GenAIFundamentals />
@@ -58,13 +62,13 @@ const Certifications: React.FC = () => {
       <IconListContainer>
         <IconContainer
           title="GenAIFundamentals"
-          onClick={() => setIndex('GenAIFundamentals')}
+          onClick={() => toggleIndex('GenAIFundamentals')}
         >
           <DatabrickGenAIFundamentalsIcon />
         </IconContainer>
       </IconListContainer>
     );
-  };
+  }, [index]);
 
   return <>{renderContent()}</>;
 };
