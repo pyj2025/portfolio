@@ -1,61 +1,72 @@
 import React from 'react';
 import styled from 'styled-components';
-import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { DatabrickGenAIFundamentalsIcon } from '../../image/certifications/DatabrickGenAIFundamentals';
+import GenAIFundamentals from './certification/GenAIFundamentals';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  LinkLabel,
-  MutedText,
-  Panel,
-  PanelContainer,
-  PanelTableContainer,
-  PanelTableLabel,
-} from '../../GlobalStyle';
-import info from '../../info.json';
-import GenerativeAIFundamentals from '../../image/certifications/GenerativeAIFundamentals';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+
+const IconListContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 10px;
+`;
+
+const IconContainer = styled.div<{ noWidth?: boolean }>`
+  display: flex;
+  flex-direction: column;
+  width: ${({ noWidth }) => (noWidth ? undefined : '60px')};
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+  cursor: pointer;
+`;
+
+const BackBtnContainer = styled.div<{ noWidth?: boolean }>`
+  display: flex;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0.25rem;
+  cursor: pointer;
+  margin-left: 8px;
+  margin-top: 8px;
+`;
+
+type CertificationsType = 'Icons' | 'GenAIFundamentals';
 
 const Certifications: React.FC = () => {
-  return (
-    <Panel>
-      <PanelContainer>
-        <GenerativeAIFundamentals />
-      </PanelContainer>
-      <PanelContainer>
-        <PanelTableContainer>
-          <tr>
-            <PanelTableLabel>
-              <MutedText>Name</MutedText>
-            </PanelTableLabel>
-            <td>{info.about.certifications.name}</td>
-          </tr>
-          <tr>
-            <PanelTableLabel>
-              <MutedText>Issued On</MutedText>
-            </PanelTableLabel>
-            <td>{info.about.certifications.issuedDate}</td>
-          </tr>
-          <tr>
-            <PanelTableLabel>
-              <MutedText>Expires On</MutedText>
-            </PanelTableLabel>
-            <td>{info.about.certifications.expiresDate}</td>
-          </tr>
-          <tr>
-            <PanelTableLabel>
-              <MutedText>Link</MutedText>
-            </PanelTableLabel>
-            <td>
-              <LinkLabel href={info.about.certifications.link}>
-                <span>
-                  Link <FontAwesomeIcon icon={faExternalLinkAlt as IconProp} />
-                </span>
-              </LinkLabel>
-            </td>
-          </tr>
-        </PanelTableContainer>
-      </PanelContainer>
-    </Panel>
-  );
+  const [index, setIndex] = React.useState<CertificationsType>('Icons');
+
+  const renderContent = () => {
+    if (index === 'GenAIFundamentals') {
+      return (
+        <>
+          <BackBtnContainer onClick={() => setIndex('Icons')}>
+            <FontAwesomeIcon icon={faChevronLeft as IconProp} />
+          </BackBtnContainer>
+          <GenAIFundamentals />
+        </>
+      );
+    }
+
+    return (
+      <IconListContainer>
+        <IconContainer
+          title="GenAIFundamentals"
+          onClick={() => setIndex('GenAIFundamentals')}
+        >
+          <DatabrickGenAIFundamentalsIcon />
+        </IconContainer>
+      </IconListContainer>
+    );
+  };
+
+  return <>{renderContent()}</>;
 };
 
 export default React.memo(Certifications);
