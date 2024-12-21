@@ -168,7 +168,7 @@ const MobileAboutWindow: React.FC = () => {
                 <Experience isMobile={isMobileWindow} showDate={showDate} />
               )}
               {index === 'Education' && <Education />}
-              {index === 'Certifications' && <Certifications />}
+              {index === 'Certifications' && <Certifications isMobile />}
             </MobilePanel>
           )}
         </MobileBodyContent>
