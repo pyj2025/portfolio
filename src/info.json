@@ -39,13 +39,22 @@
     },
     "experience": [
       {
-        "title": "Junior Frontend Developer",
+        "title": "Full Stack Software Developer",
+        "company": "AllTrue.ai",
+        "location": "Vancouver, BC, Canada",
+        "date": "Jan 2020 - Jul 2023",
+        "tech": "Next.js, TypeScript, FastAPI, Python, Storybook, Figma, Jira",
+        "description": "AllTrue ai role description",
+        "dateRank": 1
+      },
+      {
+        "title": "Associate Web and Mobile Developer",
         "company": "Enfusion",
         "location": "Chicago, IL, USA",
         "date": "Jan 2020 - Jul 2023",
         "tech": "React, TypeScript, React Native, Jest, React Testing Library, Puppeteer, Storybook, Figma, Jira",
         "description": "In this role, I enhanced our company's web application UI using React and TypeScript, integrating key features from our desktop app such as the Order Execution Management System (OEMS), Reports, and Services, and introducing new features like Dashboard and Portfolio to improve the online user experience. I also expanded our offerings to mobile platforms using React Native, ensuring seamless user transitions between web and mobile. Additionally, I developed a secure authentication UI for both web and mobile applications to prevent duplicate logins across devices. I optimized performance and enabled real-time data updates using web sockets and web workers. Integration with Google Analytics provided in-depth user engagement insights, while Sentry facilitated efficient error tracking and resolution. To maintain product quality, I implemented unit tests with Jest and React Testing Library for web and mobile applications, and conducted end-to-end tests with Puppeteer.",
-        "dateRank": 1
+        "dateRank": 2
       },
       {
         "title": "Undergraduate Teaching Assistant",
@@ -54,7 +63,7 @@
         "date": "Aug 2018 - Dec 2019",
         "tech": "React, Redux, Node.js, Express.js, MongoDB,Angular, Selenium, Jest, Mocha, Cypress, Puppeteer, C, C++, Lex, Yacc",
         "description": "In this role, I led four student teams in software development, provided assistance in Software Testing (CS40800), and supported course labs for Systems Programming (CS25200) and Computer Architecture (CS25000).",
-        "dateRank": 2
+        "dateRank": 3
       },
       {
         "title": "Technical Intern",
@@ -63,7 +72,7 @@
         "date": "Jun 2017 - Jul 2017",
         "tech": "MongoDB, Express, React, Node.js, Mocha, C++",
         "description": "In this role, I developed and modified clients' web applications using MERN stacks, wrote test cases with Mocha, and addressed defects. I also refactored and maintained C++ code collaboratively. Additionally, I provided technical support for data restoration from Ransomware attacks and contributed to enhancing the security program.",
-        "dateRank": 3
+        "dateRank": 4
       },
       {
         "title": "Software Engineering Intern",
@@ -72,7 +81,7 @@
         "date": "Jul 2015 - Aug 2015",
         "tech": "Python, Java, MySQL",
         "description": "In this role, I developed new features for our data automation program in Python, implemented Java unit tests for management applications, and optimized MySQL database performance for efficient data handling.",
-        "dateRank": 4
+        "dateRank": 5
       }
     ]
   },
