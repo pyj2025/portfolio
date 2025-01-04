@@ -36,7 +36,16 @@ const Intro: React.FC = () => {
         <ContentLine># Hi, I'm Youngjoon.</ContentLine>
         <ContentLine>
           <ContentLineArrow icon={faAngleRight as IconProp} />
-          <div>I'm a Full Stack developer.</div>
+          <div>
+            I'm a Full Stack Software developer who transforms digital dreams
+            into reality.
+          </div>
+        </ContentLine>
+        <ContentLine>
+          <ContentLineArrow icon={faAngleRight as IconProp} />
+          <div>
+            I am passionate about developing both web and mobile applications.
+          </div>
         </ContentLine>
         <ContentLine>
           <ContentLineArrow icon={faAngleRight as IconProp} />
@@ -48,12 +57,9 @@ const Intro: React.FC = () => {
         <ContentLine>
           <ContentLineArrow icon={faAngleRight as IconProp} />
           <div>
-            I am passionate about developing both web and mobile applications.
+            Feel free to explore my portfolio and discover how I bring
+            innovative ideas to life.
           </div>
-        </ContentLine>
-        <ContentLine>
-          <ContentLineArrow icon={faAngleRight as IconProp} />
-          <div>Feel free to explore, and I hope you enjoy my website.</div>
         </ContentLine>
       </TerminalLine>
     </TerminalRow>
