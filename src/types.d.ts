@@ -16,7 +16,7 @@ export type WindowPositionSetting = {
   y: number;
 };
 
-export type AboutIndexType = 'Menu' | 'Info' | 'Experience' | 'Education' | 'Certifications';
+export type AboutIndexType = 'Menu' | 'Info' | 'Experience' | 'Education' | 'Certifications' | 'GenAI';
 
 export type ProjectIndexType =
   | 'Projects'
