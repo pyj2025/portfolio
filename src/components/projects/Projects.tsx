@@ -39,81 +39,89 @@ const IconLabel = styled.div`
   font-size: 0.75rem;
 `;
 
-type ProjectsProps = {
+interface ProjectsProps {
   click: (name: ProjectIndexType) => void;
-};
+}
 
 export const Projects: React.FC<ProjectsProps> = React.memo(({ click }) => {
-  return (
-    <IconListContainer>
-      <IconContainer title="Web" onClick={() => click('WebProjects')}>
+  const projectList = [
+    { title: 'Web', id: 'WebProjects' },
+    { title: 'Mobile', id: 'MobileProjects' },
+  ];
+
+  const renderFolders = () => {
+    return projectList.map((e) => (
+      <IconContainer
+        key={e.id}
+        title={e.title}
+        onClick={() => click(e.id as unknown as ProjectIndexType)}
+      >
         {getIcon('Folder')}
-        <IconLabel>Web</IconLabel>
+        <IconLabel>{e.title}</IconLabel>
       </IconContainer>
-      <IconContainer title="Mobile" onClick={() => click('MobileProjects')}>
-        {getIcon('Folder')}
-        <IconLabel>Mobile</IconLabel>
-      </IconContainer>
-    </IconListContainer>
-  );
+    ));
+  };
+
+  return <IconListContainer>{renderFolders()}</IconListContainer>;
 });
 
 export const WebProjects: React.FC<ProjectsProps> = React.memo(({ click }) => {
-  return (
-    <IconListContainer>
-      <IconContainer title="GitCard" onClick={() => click('GitCard')}>
-        <IconLogoImage src={GitCardLogo} alt="GitCard" />
-        <IconLabel>GitCard</IconLabel>
+  const projectList = [
+    { title: 'GitCard', id: 'GitCard', logo: GitCardLogo },
+    { title: 'DatApex', id: 'DatApex', logo: DatApexLogo },
+    { title: 'MovieNext', id: 'MovieNext', logo: MovieLogo },
+    { title: 'Portfolio', id: 'Portfolio', useIcon: true },
+  ];
+
+  const renderProjects = () => {
+    return projectList.map((e) => (
+      <IconContainer
+        key={e.id}
+        title={e.title}
+        onClick={() => click(e.id as unknown as ProjectIndexType)}
+      >
+        {e.useIcon ? (
+          getIcon('CodeFile', ICON_SIZE)
+        ) : (
+          <IconLogoImage src={e.logo} alt={e.title} />
+        )}
+        <IconLabel>{e.title}</IconLabel>
       </IconContainer>
-      <IconContainer title="DatApex" onClick={() => click('DatApex')}>
-        <IconLogoImage src={DatApexLogo} alt="DatApex" />
-        <IconLabel>DatApex</IconLabel>
-      </IconContainer>
-      <IconContainer title="MovieNext" onClick={() => click('MovieNext')}>
-        <IconLogoImage src={MovieLogo} alt="MovieNext" />
-        <IconLabel>MovieNext</IconLabel>
-      </IconContainer>
-      <IconContainer title="Portfolio" onClick={() => click('Portfolio')}>
-        {getIcon('CodeFile', ICON_SIZE)}
-        <IconLabel>Portfolio</IconLabel>
-      </IconContainer>
-    </IconListContainer>
-  );
+    ));
+  };
+
+  return <IconListContainer>{renderProjects()}</IconListContainer>;
 });
 
 export const MobileProjects: React.FC<ProjectsProps> = React.memo(
   ({ click }) => {
-    return (
-      <IconListContainer>
-        <IconContainer title="Foodie" onClick={() => click('Foodie')}>
-          <IconLogoImage src={FoodieLogo} alt="Foodie" />
-          <IconLabel>Foodie</IconLabel>
+    const projectList = [
+      { title: 'Foodie', id: 'Foodie', logo: FoodieLogo },
+      { title: 'WebGame', id: 'WebGame', useIcon: true },
+      { title: 'ToonFlix', id: 'ToonFlix', useIcon: true },
+      { title: 'Tippy', id: 'Tippy', useIcon: true },
+      { title: 'Flix', id: 'Flix', useIcon: true },
+      { title: 'Twitter', id: 'Twitter', logo: TwitterLogo },
+      { title: 'Parstagram', id: 'Parstagram', logo: ParstagramLogo },
+    ];
+
+    const renderProjects = () => {
+      return projectList.map((e) => (
+        <IconContainer
+          key={e.id}
+          title={e.title}
+          onClick={() => click(e.id as unknown as ProjectIndexType)}
+        >
+          {e.useIcon ? (
+            getIcon('CodeFile', ICON_SIZE)
+          ) : (
+            <IconLogoImage src={e.logo} alt={e.title} />
+          )}
+          <IconLabel>{e.title}</IconLabel>
         </IconContainer>
-        <IconContainer title="WebGame" onClick={() => click('WebGame')}>
-          {getIcon('CodeFile', ICON_SIZE)}
-          <IconLabel>WebGame</IconLabel>
-        </IconContainer>
-        <IconContainer title="ToonFlix" onClick={() => click('ToonFlix')}>
-          {getIcon('CodeFile', ICON_SIZE)}
-          <IconLabel>ToonFlix</IconLabel>
-        </IconContainer>
-        <IconContainer title="Tippy" onClick={() => click('Tippy')}>
-          {getIcon('CodeFile', ICON_SIZE)}
-          <IconLabel>Tippy</IconLabel>
-        </IconContainer>
-        <IconContainer title="Flix" onClick={() => click('Flix')}>
-          {getIcon('CodeFile', ICON_SIZE)}
-          <IconLabel>Flix</IconLabel>
-        </IconContainer>
-        <IconContainer title="Twitter" onClick={() => click('Twitter')}>
-          <IconLogoImage src={TwitterLogo} alt="Twitter" />
-          <IconLabel>Twitter</IconLabel>
-        </IconContainer>
-        <IconContainer title="Parstagram" onClick={() => click('Parstagram')}>
-          <IconLogoImage src={ParstagramLogo} alt="Parstagram" />
-          <IconLabel>Parstagram</IconLabel>
-        </IconContainer>
-      </IconListContainer>
-    );
+      ));
+    };
+
+    return <IconListContainer>{renderProjects()}</IconListContainer>;
   }
 );

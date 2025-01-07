@@ -43,12 +43,12 @@ const MobileAboutNavbar: React.FC<MobileAboutNavbarProps> = ({
         <MobileNavbarMenuLabel>Education</MobileNavbarMenuLabel>
       </MobileNavbarItem>
       <MobileNavbarItem
-        title="Certifications"
+        title="Certification"
         onClick={() => onClick('Certifications')}
         focus={index === 'Certifications'}
       >
         {getMobileNavbarMenuIcon('Folder')}
-        <MobileNavbarMenuLabel>Certifications</MobileNavbarMenuLabel>
+        <MobileNavbarMenuLabel>Certification</MobileNavbarMenuLabel>
       </MobileNavbarItem>
     </MobileNavbar>
   );
