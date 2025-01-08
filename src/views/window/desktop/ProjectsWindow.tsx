@@ -1,13 +1,13 @@
 import React from 'react';
 import { DraggableData, Position, ResizableDelta } from 'react-rnd';
-import { Window, WindowBody, WindowBodyContent } from '../../../GlobalStyle';
+import { Window, WindowBody } from '../../../GlobalStyle';
 import {
   ProjectIndexType,
   WindowPositionSetting,
   WindowSizeSetting,
 } from '../../../types';
 import useScreenSize, { TABLET_MAX_WIDTH } from '../../../utils/useScreenSize';
-import { getProject } from '../../../components/projects/getProject';
+import ProjectsContent from '../../../components/projects/ProjectsContent';
 import WindowTopbar from '../../../components/WindowTopbar';
 import useWindowsStore from '../../../utils/useWindowsStore';
 import ProjectsNavbar from '../../../components/projects/ProjectsNavbar';
@@ -105,7 +105,7 @@ const ProjectsWindow: React.FC = () => {
       />
       <WindowBody onClick={focusProjectsWindow}>
         <ProjectsNavbar index={index} onClick={handleClick} />
-        <WindowBodyContent>{getProject(index, handleClick)}</WindowBodyContent>
+        <ProjectsContent index={index} onClick={handleClick} />
       </WindowBody>
     </Window>
   );

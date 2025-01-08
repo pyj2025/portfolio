@@ -2,9 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { DatabrickGenAIFundamentalsIcon } from '../../image/certifications/DatabrickGenAIFundamentals';
 import GenAIFundamentals from './certification/GenAIFundamentals';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 const IconListContainer = styled.div`
   display: flex;
@@ -23,19 +20,6 @@ const IconContainer = styled.div`
   margin: 0.25rem;
   cursor: pointer;
 `;
-
-// const BackBtnContainer = styled.div<{ noWidth?: boolean }>`
-//   display: flex;
-//   color: white;
-//   justify-content: center;
-//   align-items: center;
-//   width: 1.5rem;
-//   height: 1.5rem;
-//   padding: 0.25rem;
-//   cursor: pointer;
-//   margin-left: 8px;
-//   margin-top: 8px;
-// `;
 
 type CertificationsType = 'Icons' | 'GenAIFundamentals';
 

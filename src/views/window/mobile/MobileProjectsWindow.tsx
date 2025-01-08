@@ -12,10 +12,50 @@ import {
   WindowSizeSetting,
 } from '../../../types';
 import useScreenSize, { TABLET_MAX_WIDTH } from '../../../utils/useScreenSize';
-import { getProject } from '../../../components/projects/getProject';
+import ProjectsContent from '../../../components/projects/ProjectsContent';
 import useWindowsStore from '../../../utils/useWindowsStore';
 import MobileProjectsNavbar from '../../../components/projects/MobileProjectsNavbar';
 import MobilePanel from '../../../components/MobilePanel';
+
+const MAIN_PROJECT_VIEWS = [
+  'Projects',
+  'WebProjects',
+  'MobileProjects',
+] as const;
+const WEB_PROJECTS = ['GitCard', 'DatApex', 'MovieNext', 'Portfolio'] as const;
+
+interface MobileProjectsContentProps {
+  index: ProjectIndexType;
+  onClick: (name: ProjectIndexType) => void;
+}
+
+const MobileProjectsContent: React.FC<MobileProjectsContentProps> = ({
+  index,
+  onClick,
+}) => {
+  const isMainView = MAIN_PROJECT_VIEWS.includes(
+    index as (typeof MAIN_PROJECT_VIEWS)[number]
+  );
+
+  const handleBackClick = () => {
+    const isWebProject = WEB_PROJECTS.includes(
+      index as (typeof WEB_PROJECTS)[number]
+    );
+    onClick(isWebProject ? 'WebProjects' : 'MobileProjects');
+  };
+
+  return (
+    <MobileBodyContent>
+      {isMainView ? (
+        <ProjectsContent index={index} onClick={onClick} />
+      ) : (
+        <MobilePanel onClick={handleBackClick}>
+          <ProjectsContent index={index} onClick={onClick} />
+        </MobilePanel>
+      )}
+    </MobileBodyContent>
+  );
+};
 
 const MobileProjectsWindow: React.FC = () => {
   const { width, height } = useScreenSize();
@@ -106,25 +146,7 @@ const MobileProjectsWindow: React.FC = () => {
       />
       <MobileWindowBody>
         <MobileProjectsNavbar index={index} onClick={handleClick} />
-        <MobileBodyContent>
-          {['Projects', 'WebProjects', 'MobileProjects'].includes(index) ? (
-            getProject(index, handleClick)
-          ) : (
-            <MobilePanel
-              onClick={() =>
-                handleClick(
-                  ['GitCard', 'DatApex', 'MovieNext', 'Portfolio'].includes(
-                    index
-                  )
-                    ? 'WebProjects'
-                    : 'MobileProjects'
-                )
-              }
-            >
-              {getProject(index, handleClick)}
-            </MobilePanel>
-          )}
-        </MobileBodyContent>
+        <MobileProjectsContent index={index} onClick={handleClick} />
       </MobileWindowBody>
     </Window>
   );
