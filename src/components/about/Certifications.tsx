@@ -10,78 +10,60 @@ const IconListContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 10px;
-  margin: 10px;
+  margin-top: 10px;
 `;
 
-const IconContainer = styled.div<{ noWidth?: boolean }>`
+const IconContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: ${({ noWidth }) => (noWidth ? undefined : '60px')};
+  width: 4rem;
+  height: 4rem;
   justify-content: center;
   align-items: center;
-  padding: 2px;
+  margin: 0.25rem;
   cursor: pointer;
 `;
 
-const BackBtnContainer = styled.div<{ noWidth?: boolean }>`
-  display: flex;
-  color: white;
-  justify-content: center;
-  align-items: center;
-  width: 1.5rem;
-  height: 1.5rem;
-  padding: 0.25rem;
-  cursor: pointer;
-  margin-left: 8px;
-  margin-top: 8px;
-`;
+// const BackBtnContainer = styled.div<{ noWidth?: boolean }>`
+//   display: flex;
+//   color: white;
+//   justify-content: center;
+//   align-items: center;
+//   width: 1.5rem;
+//   height: 1.5rem;
+//   padding: 0.25rem;
+//   cursor: pointer;
+//   margin-left: 8px;
+//   margin-top: 8px;
+// `;
 
 type CertificationsType = 'Icons' | 'GenAIFundamentals';
 
-type CertificationsProps = {
-  isMobile?: boolean;
-};
-
-const Certifications: React.FC<CertificationsProps> = ({
-  isMobile = false,
-}: CertificationsProps) => {
+const Certifications: React.FC = () => {
   const [index, setIndex] = React.useState<CertificationsType>('Icons');
 
   const toggleIndex = (index: CertificationsType) => {
     setIndex(index);
   };
 
-  const renderContent = React.useCallback(
-    (isMobile: boolean) => {
-      if (index === 'GenAIFundamentals') {
-        return (
-          <>
-            {!isMobile && (
-              <BackBtnContainer onClick={() => toggleIndex('Icons')}>
-                <FontAwesomeIcon icon={faChevronLeft as IconProp} />
-              </BackBtnContainer>
-            )}
-            <GenAIFundamentals />
-          </>
-        );
-      }
+  const renderContent = React.useCallback(() => {
+    if (index === 'GenAIFundamentals') {
+      return <GenAIFundamentals />;
+    }
 
-      return (
-        <IconListContainer>
-          <IconContainer
-            title="GenAIFundamentals"
-            onClick={() => toggleIndex('GenAIFundamentals')}
-          >
-            <DatabrickGenAIFundamentalsIcon />
-          </IconContainer>
-        </IconListContainer>
-      );
-    },
-    [index]
-  );
+    return (
+      <IconListContainer>
+        <IconContainer
+          title="GenAIFundamentals"
+          onClick={() => toggleIndex('GenAIFundamentals')}
+        >
+          <DatabrickGenAIFundamentalsIcon />
+        </IconContainer>
+      </IconListContainer>
+    );
+  }, [index]);
 
-  return <>{renderContent(isMobile)}</>;
+  return <>{renderContent()}</>;
 };
 
 export default React.memo(Certifications);

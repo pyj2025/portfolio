@@ -22,6 +22,27 @@ export const SkillsContentContainer = styled.div`
   flex-wrap: wrap;
   margin-top: 10px;
 `;
+const SKILLS_COMPONENTS: Record<SkillsIndexType, React.ComponentType> = {
+  Menu: () => <></>,
+  Front: FrontEnd,
+  Back: BackEnd,
+  Mobile: Mobile,
+  Programming: ProgrammingLanguage,
+};
+
+interface SkillsContentProps {
+  index: SkillsIndexType;
+}
+
+const SkillsContent: React.FC<SkillsContentProps> = ({ index }) => {
+  const Component = SKILLS_COMPONENTS[index];
+
+  return (
+    <WindowBodyContent>
+      <Component />
+    </WindowBodyContent>
+  );
+};
 
 const SkillsWindow: React.FC = () => {
   const { width, height } = useScreenSize();
@@ -115,12 +136,7 @@ const SkillsWindow: React.FC = () => {
       />
       <WindowBody onClick={focusSkillsWindow}>
         <SkillsNavbar index={index} onClick={handleClick} />
-        <WindowBodyContent>
-          {index === 'Front' ? <FrontEnd /> : null}
-          {index === 'Back' ? <BackEnd /> : null}
-          {index === 'Mobile' ? <Mobile /> : null}
-          {index === 'Programming' ? <ProgrammingLanguage /> : null}
-        </WindowBodyContent>
+        <SkillsContent index={index} />
       </WindowBody>
     </Window>
   );
