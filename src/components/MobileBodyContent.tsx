@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import { Slide, toast, ToastContainer } from 'react-toastify';
 import { browserName, isBrowser, isMobile } from 'react-device-detect';
-import 'react-toastify/dist/ReactToastify.css';
 import useScreenSize, { MOBILE_MAX_WIDTH } from '../utils/useScreenSize';
 import MobileAppMenu from './MobileAppMenu';
 import MobileWelcomeWindow from '../views/window/mobile/MobileWelcomeWindow';
@@ -14,6 +13,8 @@ import useWindowsStore from '../utils/useWindowsStore';
 import useAboutStore from '../utils/useAboutStore';
 import useSkillsStore from '../utils/useSkillsStore';
 import useProjectsStore from '../utils/useProjectsStore';
+import WindowsContent from './WindowsContent';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Container = styled.div`
   width: 100%;
@@ -53,6 +54,17 @@ const MobileBodyContent: React.FC = () => {
     }
   }, [width]);
 
+  const renderContent = () => {
+    const windows = [
+      { Component: MobileWelcomeWindow, isOpen: isWelcomeWindowOpen },
+      { Component: MobileAboutWindow, isOpen: isAboutOpen },
+      { Component: MobileSkillsWindow, isOpen: isSkillsOpen },
+      { Component: MobileProjectsWindow, isOpen: isProjectsOpen },
+    ];
+
+    return <WindowsContent windows={windows} />;
+  };
+
   return (
     <Container>
       <ToastContainer
@@ -68,10 +80,7 @@ const MobileBodyContent: React.FC = () => {
         draggablePercent={60}
       />
       <MobileAppMenu />
-      {isWelcomeWindowOpen && <MobileWelcomeWindow />}
-      {isAboutOpen && <MobileAboutWindow />}
-      {isSkillsOpen && <MobileSkillsWindow />}
-      {isProjectsOpen && <MobileProjectsWindow />}
+      {renderContent()}
     </Container>
   );
 };

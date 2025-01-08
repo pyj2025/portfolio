@@ -39,7 +39,7 @@ const AboutNavbar: React.FC<AboutNavbarProps> = ({ index, onClick }) => {
       </WindowBodyNavItm>
       <WindowBodyNavItm
         onClick={() => onClick('Certifications')}
-        focus={['Certifications', 'GenAI'].includes(index)}
+        focus={['Certifications'].includes(index)}
       >
         {getIcon('Folder', SMALL_ICON_SIZE)}
         <NavItmLabel>Certifications</NavItmLabel>

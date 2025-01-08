@@ -7,10 +7,11 @@ import AboutWindow from '../views/window/desktop/AboutWindow';
 import WelcomeWindow from '../views/window/desktop/WelcomeWindow';
 import SkillsWindow from '../views/window/desktop/SkillsWindow';
 import useWindowsStore from '../utils/useWindowsStore';
-import 'react-toastify/dist/ReactToastify.css';
 import useAboutStore from '../utils/useAboutStore';
 import useSkillsStore from '../utils/useSkillsStore';
 import useProjectsStore from '../utils/useProjectsStore';
+import WindowsContent from './WindowsContent';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Container = styled.div`
   width: 100%;
@@ -38,6 +39,17 @@ const BodyContent: React.FC = () => {
     });
   }, []);
 
+  const renderContent = () => {
+    const windows = [
+      { Component: WelcomeWindow, isOpen: isWelcomeWindowOpen },
+      { Component: AboutWindow, isOpen: isAboutOpen },
+      { Component: SkillsWindow, isOpen: isSkillsOpen },
+      { Component: ProjectsWindow, isOpen: isProjectsOpen },
+    ];
+
+    return <WindowsContent windows={windows} />;
+  };
+
   return (
     <Container>
       <ToastContainer
@@ -52,10 +64,7 @@ const BodyContent: React.FC = () => {
         limit={1}
         draggablePercent={60}
       />
-      {isWelcomeWindowOpen && <WelcomeWindow />}
-      {isAboutOpen && <AboutWindow />}
-      {isSkillsOpen && <SkillsWindow />}
-      {isProjectsOpen && <ProjectsWindow />}
+      {renderContent()}
     </Container>
   );
 };
