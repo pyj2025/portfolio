@@ -10,23 +10,55 @@ import useScreenSize, { TABLET_MAX_WIDTH } from '../../../utils/useScreenSize';
 import WindowTopbar from '../../../components/WindowTopbar';
 import useWindowsStore from '../../../utils/useWindowsStore';
 import Info from '../../../components/about/Info';
-import Experience, {
-  ExperienceProps,
-} from '../../../components/about/Experience';
+import Experience from '../../../components/about/Experience';
 import Education from '../../../components/about/Education';
 import AboutNavbar from '../../../components/about/AboutNavbar';
 import Certifications from '../../../components/about/Certifications';
 import GenAIFundamentals from '../../../components/about/certification/GenAIFundamentals';
 
-const CONTENT_MAP = {
-  Menu: null,
-  Info: <Info />,
-  Experience: ({ showDate }: ExperienceProps) => (
-    <Experience showDate={showDate} />
-  ),
-  Education: <Education />,
-  Certifications: <Certifications />,
-  GenAI: <GenAIFundamentals />,
+const BASIC_COMPONENTS: Record<string, React.ComponentType> = {
+  Info: Info,
+  Education: Education,
+  Certifications: Certifications,
+  GenAI: GenAIFundamentals,
+};
+
+interface ExperienceWrapperProps {
+  showDate: boolean;
+}
+
+const ExperienceWrapper: React.FC<ExperienceWrapperProps> = ({ showDate }) => (
+  <Experience showDate={showDate} />
+);
+
+interface AboutContentProps {
+  index: AboutIndexType;
+  showDate: boolean;
+}
+
+const AboutContent: React.FC<AboutContentProps> = ({ index, showDate }) => {
+  if (index === 'Menu') {
+    return null;
+  }
+
+  if (index === 'Experience') {
+    return (
+      <WindowBodyContent>
+        <ExperienceWrapper showDate={showDate} />
+      </WindowBodyContent>
+    );
+  }
+
+  const Component = BASIC_COMPONENTS[index];
+  if (Component) {
+    return (
+      <WindowBodyContent>
+        <Component />
+      </WindowBodyContent>
+    );
+  }
+
+  return null;
 };
 
 const AboutWindow: React.FC = () => {
@@ -89,15 +121,6 @@ const AboutWindow: React.FC = () => {
     [setIndex]
   );
 
-  const renderContent = () => {
-    const Component = CONTENT_MAP[index];
-    return typeof Component === 'function' ? (
-      <Component showDate={showDate} />
-    ) : (
-      Component
-    );
-  };
-
   return (
     <Window
       id="About"
@@ -148,7 +171,7 @@ const AboutWindow: React.FC = () => {
       />
       <WindowBody onClick={focusAboutWindow}>
         <AboutNavbar index={index} onClick={handleClick} />
-        <WindowBodyContent>{renderContent()}</WindowBodyContent>
+        <AboutContent index={index} showDate={showDate} />
       </WindowBody>
     </Window>
   );

@@ -36,7 +36,7 @@ export const SortButtonText = styled(BoldText)`
 
 type SortType = 'asc' | 'dec';
 
-export type ExperienceProps = { showDate: boolean; isMobile?: boolean };
+type ExperienceProps = { showDate: boolean; isMobile?: boolean };
 
 const Experience: React.FC<ExperienceProps> = ({
   isMobile = false,
