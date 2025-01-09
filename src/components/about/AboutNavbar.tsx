@@ -7,51 +7,72 @@ import {
 } from '../../GlobalStyle';
 import { SMALL_ICON_SIZE, getIcon } from '../getIcon';
 
+type NavItem = {
+  id: AboutIndexType;
+  label: string;
+  icon: 'File' | 'Folder';
+  isChild?: boolean;
+  focusConditions?: AboutIndexType[];
+};
+
+const NAV_ITEMS: NavItem[] = [
+  {
+    id: 'Info',
+    label: 'Personal Info',
+    icon: 'File',
+    focusConditions: ['Info'],
+  },
+  {
+    id: 'Experience',
+    label: 'Experience',
+    icon: 'Folder',
+    focusConditions: ['Experience'],
+  },
+  {
+    id: 'Education',
+    label: 'Education',
+    icon: 'File',
+    focusConditions: ['Education'],
+  },
+  {
+    id: 'Certifications',
+    label: 'Certifications',
+    icon: 'Folder',
+    focusConditions: ['Certifications'],
+  },
+  {
+    id: 'GenAI',
+    label: 'GenAI',
+    icon: 'File',
+    isChild: true,
+    focusConditions: ['GenAI'],
+  },
+];
+
 type AboutNavbarProps = {
   index: AboutIndexType;
   onClick: (name: AboutIndexType) => void;
 };
 
 const AboutNavbar: React.FC<AboutNavbarProps> = ({ index, onClick }) => {
+  const isFocused = (item: NavItem): boolean => {
+    return item.focusConditions?.includes(index) ?? false;
+  };
+
   return (
     <WindowBodyNavbar>
-      <WindowBodyNavItm
-        first
-        onClick={() => onClick('Info')}
-        focus={index === 'Info'}
-      >
-        {getIcon('File', SMALL_ICON_SIZE)}
-        <NavItmLabel>Personal Info</NavItmLabel>
-      </WindowBodyNavItm>
-      <WindowBodyNavItm
-        onClick={() => onClick('Experience')}
-        focus={index === 'Experience'}
-      >
-        {getIcon('Folder', SMALL_ICON_SIZE)}
-        <NavItmLabel>Experience</NavItmLabel>
-      </WindowBodyNavItm>
-      <WindowBodyNavItm
-        onClick={() => onClick('Education')}
-        focus={index === 'Education'}
-      >
-        {getIcon('File', SMALL_ICON_SIZE)}
-        <NavItmLabel>Education</NavItmLabel>
-      </WindowBodyNavItm>
-      <WindowBodyNavItm
-        onClick={() => onClick('Certifications')}
-        focus={['Certifications'].includes(index)}
-      >
-        {getIcon('Folder', SMALL_ICON_SIZE)}
-        <NavItmLabel>Certifications</NavItmLabel>
-      </WindowBodyNavItm>
-      <WindowBodyNavItm
-        onClick={() => onClick('GenAI')}
-        focus={index === 'GenAI'}
-        isChild
-      >
-        {getIcon('File', SMALL_ICON_SIZE)}
-        <NavItmLabel>GenAI</NavItmLabel>
-      </WindowBodyNavItm>
+      {NAV_ITEMS.map((item, idx) => (
+        <WindowBodyNavItm
+          key={item.id}
+          first={idx === 0}
+          onClick={() => onClick(item.id)}
+          focus={isFocused(item)}
+          isChild={item.isChild}
+        >
+          {getIcon(item.icon, SMALL_ICON_SIZE)}
+          <NavItmLabel>{item.label}</NavItmLabel>
+        </WindowBodyNavItm>
+      ))}
     </WindowBodyNavbar>
   );
 };
