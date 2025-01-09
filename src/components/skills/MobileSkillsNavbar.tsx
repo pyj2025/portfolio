@@ -7,6 +7,40 @@ import {
 } from '../../GlobalStyle';
 import { getMobileNavbarMenuIcon } from '../getIcon';
 
+type NavItem = {
+  id: SkillsIndexType;
+  label: string;
+  title: string;
+  icon: 'Folder' | 'CodeFile';
+};
+
+const NAV_ITEMS: NavItem[] = [
+  {
+    id: 'Front',
+    label: 'Front',
+    title: 'Front-End',
+    icon: 'Folder',
+  },
+  {
+    id: 'Back',
+    label: 'Back',
+    title: 'Back-End',
+    icon: 'Folder',
+  },
+  {
+    id: 'Mobile',
+    label: 'Mobile',
+    title: 'Mobile',
+    icon: 'Folder',
+  },
+  {
+    id: 'Programming',
+    label: 'Language',
+    title: 'Programming Language',
+    icon: 'CodeFile',
+  },
+];
+
 type MobileSkillsNavbarProps = {
   index: SkillsIndexType;
   onClick: (index: SkillsIndexType) => void;
@@ -18,38 +52,17 @@ const MobileSkillsNavbar: React.FC<MobileSkillsNavbarProps> = ({
 }) => {
   return (
     <MobileNavbar>
-      <MobileNavbarItem
-        title="Front-End"
-        onClick={() => onClick('Front')}
-        focus={index === 'Front'}
-      >
-        {getMobileNavbarMenuIcon('Folder')}
-        <MobileNavbarMenuLabel>Front</MobileNavbarMenuLabel>
-      </MobileNavbarItem>
-      <MobileNavbarItem
-        title="Back-End"
-        onClick={() => onClick('Back')}
-        focus={index === 'Back'}
-      >
-        {getMobileNavbarMenuIcon('Folder')}
-        <MobileNavbarMenuLabel>Back</MobileNavbarMenuLabel>
-      </MobileNavbarItem>
-      <MobileNavbarItem
-        title="Mobile"
-        onClick={() => onClick('Mobile')}
-        focus={index === 'Mobile'}
-      >
-        {getMobileNavbarMenuIcon('Folder')}
-        <MobileNavbarMenuLabel>Mobile</MobileNavbarMenuLabel>
-      </MobileNavbarItem>
-      <MobileNavbarItem
-        title="Programming Language"
-        onClick={() => onClick('Programming')}
-        focus={index === 'Programming'}
-      >
-        {getMobileNavbarMenuIcon('CodeFile')}
-        <MobileNavbarMenuLabel>Language</MobileNavbarMenuLabel>
-      </MobileNavbarItem>
+      {NAV_ITEMS.map((item) => (
+        <MobileNavbarItem
+          key={item.id}
+          title={item.title}
+          onClick={() => onClick(item.id)}
+          focus={index === item.id}
+        >
+          {getMobileNavbarMenuIcon(item.icon)}
+          <MobileNavbarMenuLabel>{item.label}</MobileNavbarMenuLabel>
+        </MobileNavbarItem>
+      ))}
     </MobileNavbar>
   );
 };
