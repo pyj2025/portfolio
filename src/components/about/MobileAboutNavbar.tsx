@@ -12,6 +12,7 @@ type NavItem = {
   label: string;
   title: string;
   icon: 'File' | 'Folder';
+  focusOn?: AboutIndexType[];
 };
 
 const NAV_ITEMS: NavItem[] = [
@@ -38,6 +39,7 @@ const NAV_ITEMS: NavItem[] = [
     label: 'Certification',
     title: 'Certification',
     icon: 'Folder',
+    focusOn: ['Certifications', 'GenAI'],
   },
 ];
 
@@ -50,6 +52,13 @@ const MobileAboutNavbar: React.FC<MobileAboutNavbarProps> = ({
   index,
   onClick,
 }) => {
+  const shouldFocus = (item: NavItem) => {
+    if (item.focusOn) {
+      return item.focusOn.includes(index);
+    }
+    return index === item.id;
+  };
+
   return (
     <MobileNavbar>
       {NAV_ITEMS.map((item) => (
@@ -57,7 +66,7 @@ const MobileAboutNavbar: React.FC<MobileAboutNavbarProps> = ({
           key={item.id}
           title={item.title}
           onClick={() => onClick(item.id)}
-          focus={index === item.id}
+          focus={shouldFocus(item)}
         >
           {getMobileNavbarMenuIcon(item.icon)}
           <MobileNavbarMenuLabel>{item.label}</MobileNavbarMenuLabel>
