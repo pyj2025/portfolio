@@ -22,6 +22,7 @@ import useWindowsStore from '../../../utils/useWindowsStore';
 import MobileAboutNavbar from '../../../components/about/MobileAboutNavbar';
 import MobilePanel from '../../../components/MobilePanel';
 import Certifications from '../../../components/about/Certifications';
+import GenAIFundamentals from '../../../components/about/certification/GenAIFundamentals';
 
 type MobileAboutWindowMenuProps = {
   onClick: (index: AboutIndexType) => void;
@@ -168,7 +169,10 @@ const MobileAboutWindow: React.FC = () => {
                 <Experience isMobile={isMobileWindow} showDate={showDate} />
               )}
               {index === 'Education' && <Education />}
-              {index === 'Certifications' && <Certifications />}
+              {index === 'Certifications' && (
+                <Certifications toggleIndex={setIndex} />
+              )}
+              {index === 'GenAI' && <GenAIFundamentals />}
             </MobilePanel>
           )}
         </MobileBodyContent>
