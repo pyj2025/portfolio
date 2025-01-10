@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { DatabrickGenAIFundamentalsIcon } from '../../image/certifications/DatabrickGenAIFundamentals';
-import GenAIFundamentals from './certification/GenAIFundamentals';
+import { AboutIndexType } from '../../types';
 
 const IconListContainer = styled.div`
   display: flex;
@@ -21,33 +21,21 @@ const IconContainer = styled.div`
   cursor: pointer;
 `;
 
-type CertificationsType = 'Icons' | 'GenAIFundamentals';
+interface CertificationsProps {
+  toggleIndex: (index: AboutIndexType) => void;
+}
 
-const Certifications: React.FC = () => {
-  const [index, setIndex] = React.useState<CertificationsType>('Icons');
-
-  const toggleIndex = (index: CertificationsType) => {
-    setIndex(index);
-  };
-
-  const renderContent = React.useCallback(() => {
-    if (index === 'GenAIFundamentals') {
-      return <GenAIFundamentals />;
-    }
-
-    return (
-      <IconListContainer>
-        <IconContainer
-          title="GenAIFundamentals"
-          onClick={() => toggleIndex('GenAIFundamentals')}
-        >
-          <DatabrickGenAIFundamentalsIcon />
-        </IconContainer>
-      </IconListContainer>
-    );
-  }, [index]);
-
-  return <>{renderContent()}</>;
+const Certifications: React.FC<CertificationsProps> = ({ toggleIndex }) => {
+  return (
+    <IconListContainer>
+      <IconContainer
+        title="GenAIFundamentals"
+        onClick={() => toggleIndex('GenAI')}
+      >
+        <DatabrickGenAIFundamentalsIcon />
+      </IconContainer>
+    </IconListContainer>
+  );
 };
 
 export default React.memo(Certifications);

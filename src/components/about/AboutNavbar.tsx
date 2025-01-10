@@ -38,7 +38,7 @@ const NAV_ITEMS: NavItem[] = [
     id: 'Certifications',
     label: 'Certifications',
     icon: 'Folder',
-    focusConditions: ['Certifications'],
+    focusConditions: ['Certifications', 'GenAI'],
   },
   {
     id: 'GenAI',

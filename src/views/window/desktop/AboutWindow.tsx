@@ -19,7 +19,6 @@ import GenAIFundamentals from '../../../components/about/certification/GenAIFund
 const BASIC_COMPONENTS: Record<string, React.ComponentType> = {
   Info: Info,
   Education: Education,
-  Certifications: Certifications,
   GenAI: GenAIFundamentals,
 };
 
@@ -31,12 +30,25 @@ const ExperienceWrapper: React.FC<ExperienceWrapperProps> = ({ showDate }) => (
   <Experience showDate={showDate} />
 );
 
+interface CertificationsWrapperProps {
+  setIndex: (index: AboutIndexType) => void;
+}
+
+const CertificationsWrapper: React.FC<CertificationsWrapperProps> = ({
+  setIndex,
+}) => <Certifications toggleIndex={setIndex} />;
+
 interface AboutContentProps {
   index: AboutIndexType;
+  setIndex: (index: AboutIndexType) => void;
   showDate: boolean;
 }
 
-const AboutContent: React.FC<AboutContentProps> = ({ index, showDate }) => {
+const AboutContent: React.FC<AboutContentProps> = ({
+  index,
+  setIndex,
+  showDate,
+}) => {
   if (index === 'Menu') {
     return null;
   }
@@ -45,6 +57,14 @@ const AboutContent: React.FC<AboutContentProps> = ({ index, showDate }) => {
     return (
       <WindowBodyContent>
         <ExperienceWrapper showDate={showDate} />
+      </WindowBodyContent>
+    );
+  }
+
+  if (index === 'Certifications') {
+    return (
+      <WindowBodyContent>
+        <CertificationsWrapper setIndex={setIndex} />
       </WindowBodyContent>
     );
   }
@@ -171,7 +191,7 @@ const AboutWindow: React.FC = () => {
       />
       <WindowBody onClick={focusAboutWindow}>
         <AboutNavbar index={index} onClick={handleClick} />
-        <AboutContent index={index} showDate={showDate} />
+        <AboutContent index={index} setIndex={setIndex} showDate={showDate} />
       </WindowBody>
     </Window>
   );
