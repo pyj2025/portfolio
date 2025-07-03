@@ -1,21 +1,12 @@
-import React from 'react';
-
-import { isMobile, isTablet } from 'react-device-detect';
-import BodyContent from './components/BodyContent';
-import DesktopTopBar from './components/topbar/DesktopTopBar';
-import Menu from './components/dock/Menu';
-import MobileTopBar from './components/topbar/MobileTopBar';
-import useScreenSize, { TABLET_MAX_WIDTH } from './utils/useScreenSize';
-import styled from 'styled-components';
-import MobileMenu from './components/dock/MobileMenu';
-import MobileBodyContent from './components/MobileBodyContent';
-
-const Container = styled.div<{ width: number; height: number }>`
-  display: flex;
-  flex-direction: column;
-  width: ${({ width }) => `calc(${width}px)`};
-  height: ${({ height }) => `calc(${height}px)`};
-`;
+import React from "react";
+import { isMobile, isTablet } from "react-device-detect";
+import BodyContent from "./components/BodyContent";
+import DesktopTopBar from "./components/topbar/DesktopTopBar";
+import Menu from "./components/dock/Menu";
+import MobileTopBar from "./components/topbar/MobileTopBar";
+import useScreenSize, { TABLET_MAX_WIDTH } from "./utils/useScreenSize";
+import MobileMenu from "./components/dock/MobileMenu";
+import MobileBodyContent from "./components/MobileBodyContent";
 
 type ScreenProps = {
   width: number;
@@ -24,21 +15,21 @@ type ScreenProps = {
 
 const Desktop: React.FC<ScreenProps> = ({ width, height }) => {
   return (
-    <Container width={width} height={height}>
+    <div className="flex flex-col" style={{ width: `${width}px`, height: `${height}px` }}>
       <DesktopTopBar />
       <BodyContent />
       <Menu />
-    </Container>
+    </div>
   );
 };
 
 const Mobile: React.FC<ScreenProps> = ({ width, height }) => {
   return (
-    <Container width={width} height={height}>
+    <div className="flex flex-col" style={{ width: `${width}px`, height: `${height}px` }}>
       <MobileTopBar />
       <MobileBodyContent />
       <MobileMenu />
-    </Container>
+    </div>
   );
 };
 
