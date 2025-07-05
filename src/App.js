@@ -6,9 +6,15 @@ import MainApp from "./MainApp";
 const inMaintenance = false;
 
 function App() {
-  const component = inMaintenance ? <Maintenance /> : isIE ? <NotSupport /> : <MainApp />;
+  if (inMaintenance) {
+    return <Maintenance />;
+  }
 
-  return <>{component}</>;
+  if (isIE) {
+    return <NotSupport />;
+  }
+
+  return <MainApp />;
 }
 
 export default App;
