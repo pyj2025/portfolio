@@ -5,12 +5,17 @@ import DesktopLayout from "./components/layout/DesktopLayout";
 import MobileLayout from "./components/layout/MobileLayout";
 
 const MainApp: React.FC = () => {
-  const { width, height } = useScreenSize();
+  const { width } = useScreenSize();
 
-  if (isMobile || isTablet || width < TABLET_MAX_WIDTH) {
-    return <MobileLayout width={width} height={height} />;
+  const isMobileDevice = React.useMemo(
+    () => isMobile || isTablet || width < TABLET_MAX_WIDTH,
+    [width, isMobile, isTablet],
+  );
+
+  if (isMobileDevice) {
+    return <MobileLayout />;
   } else {
-    return <DesktopLayout width={width} height={height} />;
+    return <DesktopLayout />;
   }
 };
 
