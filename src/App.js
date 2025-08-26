@@ -3,10 +3,10 @@ import Maintenance from "./components/Maintenance";
 import NotSupport from "./components/NotSupport";
 import MainApp from "./MainApp";
 
-const inMaintenance = false;
+const IN_MAINTENANCE = false;
 
 function App() {
-  if (inMaintenance) {
+  if (IN_MAINTENANCE) {
     return <Maintenance />;
   }
 
