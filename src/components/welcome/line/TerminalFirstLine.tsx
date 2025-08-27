@@ -1,7 +1,7 @@
-import React from 'react';
-import { TerminalRow } from '../../GlobalStyle';
-import FirstBadge from './FirstBadge';
-import TypeCommand from './TypeCommand';
+import React from "react";
+import { TerminalRow } from "../../../GlobalStyle";
+import FirstBadge from "../FirstBadge";
+import TypeCommand from "../TypeCommand";
 
 type TerminalFirstLineProps = {
   directory?: string;
@@ -9,7 +9,7 @@ type TerminalFirstLineProps = {
 };
 
 const TerminalFirstLine: React.FC<TerminalFirstLineProps> = ({
-  directory = 'joon@MacBook-Air',
+  directory = "joon@MacBook-Air",
   setSecondLine,
 }) => {
   const handleDone = React.useCallback(() => {
@@ -19,7 +19,7 @@ const TerminalFirstLine: React.FC<TerminalFirstLineProps> = ({
   return (
     <TerminalRow>
       <FirstBadge directory={directory} />
-      <TypeCommand command={'cd portfolio'} typeDone={handleDone} />
+      <TypeCommand command={"cd portfolio"} typeDone={handleDone} />
     </TerminalRow>
   );
 };
