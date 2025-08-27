@@ -1,16 +1,16 @@
-import React from 'react';
-import styled from 'styled-components';
-import { DraggableData, Rnd } from 'react-rnd';
-import useScreenSize, { TABLET_MAX_WIDTH } from '../../../utils/useScreenSize';
-import { WindowPositionSetting, WindowSizeSetting } from '../../../types';
-import Loaded from '../../../components/welcome/Loaded';
-import Intro from '../../../components/welcome/Intro';
-import Contact from '../../../components/welcome/Contact';
-import useWindowsStore from '../../../utils/useWindowsStore';
-import WelcomeTopbar from '../../../components/welcome/WelcomeTopbar';
-import TerminalFirstLine from '../../../components/welcome/TerminalFirstLine';
-import TerminalSecondLine from '../../../components/welcome/TerminalSecondLine';
-import TerminalThirdLine from '../../../components/welcome/TerminalThirdLine';
+import React from "react";
+import styled from "styled-components";
+import { DraggableData, Rnd } from "react-rnd";
+import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
+import { WindowPositionSetting, WindowSizeSetting } from "../../../types";
+import Loaded from "../../../components/welcome/line/Loaded";
+import Intro from "../../../components/welcome/Intro";
+import Contact from "../../../components/welcome/Contact";
+import useWindowsStore from "../../../utils/useWindowsStore";
+import WelcomeTopbar from "../../../components/welcome/WelcomeTopbar";
+import TerminalFirstLine from "../../../components/welcome/TerminalFirstLine";
+import TerminalSecondLine from "../../../components/welcome/TerminalSecondLine";
+import TerminalThirdLine from "../../../components/welcome/TerminalThirdLine";
 
 const WelcomeWindowContainer = styled(Rnd)`
   width: 100%;
@@ -36,15 +36,14 @@ const WelcomeWindowBody = styled.div`
 
 const MobileWelcomeWindow: React.FC = () => {
   const { width, height } = useScreenSize();
-  const setFocusedWindow = useWindowsStore((state) => state.setFocusedWindow);
+  const setFocusedWindow = useWindowsStore(state => state.setFocusedWindow);
 
   const welcomeRef = React.useRef<any>();
 
-  const [windowPosition, setWindowPosition] =
-    React.useState<WindowPositionSetting>({
-      x: Math.round(Math.max((width - 700) / 2, 0)),
-      y: 0,
-    });
+  const [windowPosition, setWindowPosition] = React.useState<WindowPositionSetting>({
+    x: Math.round(Math.max((width - 700) / 2, 0)),
+    y: 0,
+  });
   const [windowSize, setWindowSize] = React.useState<WindowSizeSetting>({
     width: 700,
     height: 450,
@@ -77,16 +76,14 @@ const MobileWelcomeWindow: React.FC = () => {
       position={{ x: windowPosition.x, y: windowPosition.y }}
       dragHandleClassName="topbar"
       onDragStart={(_e: any, _data: DraggableData) => {
-        setFocusedWindow('Welcome');
+        setFocusedWindow("Welcome");
       }}
       enableResizing={false}
     >
       <WelcomeTopbar />
       <WelcomeWindowBody>
         <Loaded setFirstLine={setFirstLine} />
-        {firstLine ? (
-          <TerminalFirstLine directory="~/" setSecondLine={setSecondLine} />
-        ) : null}
+        {firstLine ? <TerminalFirstLine directory="~/" setSecondLine={setSecondLine} /> : null}
         {secondLine ? (
           <TerminalSecondLine
             directory="~/portfolio/"
@@ -96,10 +93,7 @@ const MobileWelcomeWindow: React.FC = () => {
         ) : null}
         {secondContent ? <Intro /> : null}
         {thirdLine ? (
-          <TerminalThirdLine
-            directory="~/portfolio/"
-            setThirdContent={setThirdContent}
-          />
+          <TerminalThirdLine directory="~/portfolio/" setThirdContent={setThirdContent} />
         ) : null}
         {thirdContent ? <Contact /> : null}
       </WelcomeWindowBody>
