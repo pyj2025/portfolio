@@ -5,12 +5,12 @@ import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
 import useWindowsStore from "../../../utils/useWindowsStore";
 import { WindowPositionSetting, WindowSizeSetting } from "../../../types";
 import Loaded from "../../../components/welcome/line/Loaded";
-import Intro from "../../../components/welcome/Intro";
-import Contact from "../../../components/welcome/Contact";
+import Intro from "../../../components/welcome/line/Intro";
+import Contact from "../../../components/welcome/line/Contact";
 import WelcomeTopbar from "../../../components/welcome/WelcomeTopbar";
-import TerminalFirstLine from "../../../components/welcome/TerminalFirstLine";
-import TerminalSecondLine from "../../../components/welcome/TerminalSecondLine";
-import TerminalThirdLine from "../../../components/welcome/TerminalThirdLine";
+import TerminalFirstLine from "../../../components/welcome/line/TerminalFirstLine";
+import TerminalSecondLine from "../../../components/welcome/line/TerminalSecondLine";
+import TerminalThirdLine from "../../../components/welcome/line/TerminalThirdLine";
 
 const WelcomeWindowContainer = styled(Rnd)`
   width: 100%;
