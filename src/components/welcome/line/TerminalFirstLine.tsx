@@ -19,7 +19,7 @@ const TerminalFirstLine: React.FC<TerminalFirstLineProps> = ({
   return (
     <TerminalRow>
       <FirstBadge directory={directory} />
-      <TypeCommand command={"cd portfolio"} typeDone={handleDone} />
+      <TypeCommand command="cd portfolio" typeDone={handleDone} />
     </TerminalRow>
   );
 };

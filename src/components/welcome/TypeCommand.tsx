@@ -1,6 +1,14 @@
-import React from 'react';
-import Typist from 'react-typist';
-import { TerminalLine } from '../../GlobalStyle';
+import React from "react";
+import Typist from "react-typist";
+import { TerminalLine } from "../../GlobalStyle";
+
+const DEFAULT_CURSOR = {
+  show: true,
+  blink: true,
+  element: "|",
+  hideWhenDone: true,
+  hideWhenDoneDelay: 100,
+};
 
 type TypeCommandProps = {
   command: string;
@@ -9,20 +17,11 @@ type TypeCommandProps = {
 
 const TypeCommand: React.FC<TypeCommandProps> = ({ command, typeDone }) => {
   return (
-    <TerminalLine>
-      <Typist
-        cursor={{
-          show: true,
-          blink: true,
-          element: '|',
-          hideWhenDone: true,
-          hideWhenDoneDelay: 100,
-        }}
-        onTypingDone={typeDone}
-      >
+    <div className="ml-2">
+      <Typist cursor={DEFAULT_CURSOR} onTypingDone={typeDone}>
         {command}
       </Typist>
-    </TerminalLine>
+    </div>
   );
 };
 
