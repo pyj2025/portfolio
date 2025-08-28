@@ -1,6 +1,5 @@
 import React from "react";
 import Typist from "react-typist";
-import { TerminalLine } from "../../GlobalStyle";
 
 const DEFAULT_CURSOR = {
   show: true,

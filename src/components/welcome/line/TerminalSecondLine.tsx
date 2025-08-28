@@ -1,8 +1,8 @@
 import React from "react";
 import { TerminalRow } from "../../../GlobalStyle";
-import TwoBadges from "../TwoBadges";
+import TwoBadge from "../TwoBadge";
 import TypeCommand from "../TypeCommand";
-import FirstBadge from "../FirstBadge";
+import OneBadge from "../OneBadge";
 
 type TerminalSecondLineProps = {
   directory?: string;
@@ -22,8 +22,8 @@ const TerminalSecondLine: React.FC<TerminalSecondLineProps> = ({
 
   return (
     <TerminalRow>
-      {directory ? <FirstBadge directory={directory} /> : <TwoBadges />}
-      <TypeCommand command={"cat intro.md"} typeDone={handleDone} />
+      {directory ? <OneBadge directory={directory} /> : <TwoBadge directory="~/portfolio/" />}
+      <TypeCommand command="cat intro.md" typeDone={handleDone} />
     </TerminalRow>
   );
 };

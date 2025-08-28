@@ -1,6 +1,6 @@
 import React from "react";
 import { TerminalRow } from "../../../GlobalStyle";
-import FirstBadge from "../FirstBadge";
+import OneBadge from "../OneBadge";
 import TypeCommand from "../TypeCommand";
 
 type TerminalFirstLineProps = {
@@ -18,7 +18,7 @@ const TerminalFirstLine: React.FC<TerminalFirstLineProps> = ({
 
   return (
     <TerminalRow>
-      <FirstBadge directory={directory} />
+      <OneBadge directory={directory} />
       <TypeCommand command="cd portfolio" typeDone={handleDone} />
     </TerminalRow>
   );
