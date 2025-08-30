@@ -1,5 +1,5 @@
-import { Rnd } from 'react-rnd';
-import styled from 'styled-components';
+import { Rnd } from "react-rnd";
+import styled from "styled-components";
 
 //text
 export const BoldText = styled.span`
@@ -26,14 +26,8 @@ export const TerminalBadge = styled.div`
   align-items: center;
 `;
 
-export const FirstBadgeText = styled.div`
-  background-color: #000000;
-  padding: 4px 10px;
-  border: none;
-`;
-
 export const BadgeArrow = styled.div<{ first?: boolean }>`
-  background-color: ${({ first }) => (first ? 'transparent' : '#caa9fa')};
+  background-color: ${({ first }) => (first ? "transparent" : "#caa9fa")};
   width: 0;
   height: 0;
   border-top: 13px solid transparent;
@@ -99,27 +93,19 @@ export const TopbarBtn = styled.div<{ color: string; disabled: boolean }>`
   height: 12px;
   color: #62574c;
   display: inline-block;
-  margin-left: ${({ color }: { color: string }) =>
-    color === 'close' ? '0px' : '8px'};
+  margin-left: ${({ color }: { color: string }) => (color === "close" ? "0px" : "8px")};
   border-radius: 8px;
   align-items: center;
   vertical-align: middle;
-  background-color: ${({
-    color,
-    disabled,
-  }: {
-    color: string;
-    disabled: boolean;
-  }) =>
+  background-color: ${({ color, disabled }: { color: string; disabled: boolean }) =>
     disabled
-      ? '#686B6D'
-      : color === 'minimize'
-      ? '#F7BD45'
-      : color === 'expand'
-      ? '#5FCB43'
-      : '#ee514a'};
-  cursor: ${({ disabled }: { disabled: boolean }) =>
-    disabled ? undefined : 'pointer'};
+      ? "#686B6D"
+      : color === "minimize"
+      ? "#F7BD45"
+      : color === "expand"
+      ? "#5FCB43"
+      : "#ee514a"};
+  cursor: ${({ disabled }: { disabled: boolean }) => (disabled ? undefined : "pointer")};
 `;
 
 export const TopbarTitle = styled.div`
@@ -137,8 +123,7 @@ export const TopbarTitleText = styled.span`
 
 export const WindowBody = styled.div<{ isMobile?: boolean }>`
   display: grid;
-  grid-template-columns: ${({ isMobile }) =>
-    isMobile ? '50px auto' : '150px auto'};
+  grid-template-columns: ${({ isMobile }) => (isMobile ? "50px auto" : "150px auto")};
   width: 100%;
   height: calc(100% - 28px);
 `;
@@ -162,14 +147,12 @@ export const WindowBodyNavItm = styled.div<{
   grid-template-columns: 20px auto;
   justify-content: flex-start;
   align-items: center;
-  background-color: ${({ focus }) =>
-    focus ? 'rgba(120, 120, 120, 0.5)' : 'transparent'};
+  background-color: ${({ focus }) => (focus ? "rgba(120, 120, 120, 0.5)" : "transparent")};
   color: white;
-  margin-top: ${({ first, isChild }) =>
-    first ? '4px' : isChild ? '1px' : undefined};
+  margin-top: ${({ first, isChild }) => (first ? "4px" : isChild ? "1px" : undefined)};
   padding-top: 2px;
   padding-bottom: 2px;
-  padding-left: ${({ isChild }) => (isChild ? '24px' : '8px')};
+  padding-left: ${({ isChild }) => (isChild ? "24px" : "8px")};
   cursor: pointer;
 `;
 
@@ -259,10 +242,9 @@ export const MobileNavbarItem = styled.div<{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: ${({ focus }) =>
-    focus ? 'rgba(120, 120, 120, 0.5)' : 'transparent'};
+  background-color: ${({ focus }) => (focus ? "rgba(120, 120, 120, 0.5)" : "transparent")};
   color: white;
-  margin-top: ${({ isChild }) => (isChild ? '1px' : undefined)};
+  margin-top: ${({ isChild }) => (isChild ? "1px" : undefined)};
   width: 100%;
   height: 3rem;
   cursor: pointer;
@@ -299,7 +281,7 @@ export const MobileWindowMenuItem = styled.div<{
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  background-color: ${({ isEven }) => (isEven ? 'transparent' : '#28292a')};
+  background-color: ${({ isEven }) => (isEven ? "transparent" : "#28292a")};
   color: white;
   padding: 0.25rem 0.5rem;
   width: 100%;
