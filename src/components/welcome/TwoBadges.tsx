@@ -1,20 +1,15 @@
-import React from 'react';
-import {
-  BadgeArrow,
-  FirstBadgeText,
-  SecondBadge,
-  SecondBadgeArrow,
-  TerminalBadge,
-} from '../../GlobalStyle';
+import React from "react";
+import ArrowBadge from "./ArrowBadge";
 
-const TwoBadges: React.FC = () => {
+type TwoBadgesProps = {
+  directory: string;
+};
+
+const TwoBadges: React.FC<TwoBadgesProps> = ({ directory }) => {
   return (
-    <TerminalBadge>
-      <FirstBadgeText>joon@MacBook-Air</FirstBadgeText>
-      <BadgeArrow />
-      <SecondBadge>~/portfolio/</SecondBadge>
-      <SecondBadgeArrow />
-    </TerminalBadge>
+    <div className="flex items-center">
+      <ArrowBadge leftText="joon@MacBook-Air" rightText={directory} />
+    </div>
   );
 };
 

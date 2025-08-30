@@ -2,7 +2,7 @@ import React from "react";
 import { TerminalRow } from "../../../GlobalStyle";
 import TwoBadges from "../TwoBadges";
 import TypeCommand from "../TypeCommand";
-import FirstBadge from "../FirstBadge";
+import OneBadge from "../OneBadge";
 
 type TerminalThirdLineProps = {
   directory?: string;
@@ -16,8 +16,8 @@ const TerminalThirdLine: React.FC<TerminalThirdLineProps> = ({ directory, setThi
 
   return (
     <TerminalRow>
-      {directory ? <FirstBadge directory={directory} /> : <TwoBadges />}
-      <TypeCommand command={"cat contact.md"} typeDone={handleDone} />
+      {directory ? <OneBadge directory={directory} /> : <TwoBadges directory="~/portfolio/" />}
+      <TypeCommand command="cat contact.md" typeDone={handleDone} />
     </TerminalRow>
   );
 };
