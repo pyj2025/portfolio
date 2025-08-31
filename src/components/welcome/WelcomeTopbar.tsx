@@ -1,92 +1,76 @@
-import React from 'react';
-import styled from 'styled-components';
-import useWindowsStore from '../../utils/useWindowsStore';
-import { SMALL_ICON_SIZE, getIcon } from '../getIcon';
+import React from "react";
+import useWindowsStore from "../../utils/useWindowsStore";
+import { SMALL_ICON_SIZE, getIcon } from "../getIcon";
 
-const WindowTopbar = styled.div`
-  width: 100%;
-  height: 28px;
-  background-color: rgb(51, 52, 54);
-  border-bottom: 1px rgb(70, 75, 80) solid;
-  padding: 0px 10px;
-  cursor: default;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  margin: 0 auto;
-  align-items: center;
-  box-sizing: border-box;
-`;
+interface TopbarBtnProps {
+  color: string;
+  disabled: boolean;
+  title?: string;
+  onClick?: () => void;
+  onTouchStart?: () => void;
+}
 
-const TopbarBtnContainer = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-`;
+const TopbarBtn: React.FC<TopbarBtnProps> = ({ color, disabled, title, onClick, onTouchStart }) => {
+  const getBackgroundColor = () => {
+    if (disabled) return "bg-[#686B6D]";
+    switch (color) {
+      case "minimize":
+        return "bg-[#F7BD45]";
+      case "expand":
+        return "bg-[#5FCB43]";
+      case "close":
+        return "bg-[#ee514a]";
+      default:
+        return "bg-[#686B6D]";
+    }
+  };
 
-const TopbarBtn = styled.div<{ color: string; disabled: boolean }>`
-  width: 12px;
-  height: 12px;
-  color: #62574c;
-  display: inline-block;
-  margin-left: ${({ color }: { color: string }) =>
-    color === 'close' ? '0px' : '8px'};
-  border-radius: 8px;
-  align-items: center;
-  vertical-align: middle;
-  background-color: ${({
-    color,
-    disabled,
-  }: {
-    color: string;
-    disabled: boolean;
-  }) =>
-    disabled
-      ? '#686B6D'
-      : color === 'minimize'
-      ? '#F7BD45'
-      : color === 'expand'
-      ? '#5FCB43'
-      : '#ee514a'};
-  cursor: ${({ disabled }: { disabled: boolean }) =>
-    disabled ? undefined : 'pointer'};
-`;
-
-const TopbarTitle = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-size: 14px;
-`;
-
-const TopbarTitleText = styled.span`
-  margin-left: 6px;
-  pointer-events: none;
-`;
-
-const WelcomeTopbar: React.FC = () => {
-  const { focusedWindow, closeWelcomeWindow } = useWindowsStore(
-    (state) => state
-  );
+  const getMarginLeft = () => {
+    return color === "close" ? "ml-0" : "ml-2";
+  };
 
   return (
-    <WindowTopbar className="topbar">
-      <TopbarBtnContainer>
+    <div
+      className={`
+        w-3 h-3 
+        text-[#62574c] 
+        inline-block 
+        ${getMarginLeft()} 
+        rounded-lg 
+        items-center 
+        align-middle 
+        ${getBackgroundColor()} 
+        ${disabled ? "cursor-default" : "cursor-pointer"}
+      `}
+      title={title}
+      onClick={onClick}
+      onTouchStart={onTouchStart}
+    />
+  );
+};
+
+const WelcomeTopbar: React.FC = () => {
+  const { focusedWindow, closeWelcomeWindow } = useWindowsStore(state => state);
+
+  return (
+    <div className="topbar w-full h-7 bg-[rgb(51,52,54)] border-b border-[rgb(70,75,80)] px-2.5 py-0 cursor-default grid grid-cols-3 mx-auto items-center box-border">
+      <div className="flex justify-start items-center">
         <TopbarBtn
           color="close"
-          title={focusedWindow === 'Welcome' ? 'Close' : undefined}
+          title={focusedWindow === "Welcome" ? "Close" : undefined}
           onClick={closeWelcomeWindow}
           onTouchStart={closeWelcomeWindow}
-          disabled={focusedWindow !== 'Welcome'}
+          disabled={focusedWindow !== "Welcome"}
         />
         <TopbarBtn color="disabled" disabled={true} />
         <TopbarBtn color="disabled" disabled={true} />
-      </TopbarBtnContainer>
-      <TopbarTitle>
-        {getIcon('Terminal', SMALL_ICON_SIZE)}
-        <TopbarTitleText>Welcome</TopbarTitleText>
-      </TopbarTitle>
-    </WindowTopbar>
+      </div>
+      <div className="flex justify-center items-center text-center text-sm">
+        {getIcon("Terminal", SMALL_ICON_SIZE)}
+        <span className="ml-1.5 pointer-events-none">Welcome</span>
+      </div>
+      <div></div>
+    </div>
   );
 };
 
