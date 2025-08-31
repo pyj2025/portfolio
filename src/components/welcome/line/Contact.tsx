@@ -1,57 +1,35 @@
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import styled from "styled-components";
 import info from "../../../info.json";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
-const TerminalRow = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  margin: 4px 8px;
-`;
-
-const TerminalLine = styled.div`
-  margin-left: 8px;
-`;
-
-const ContentLine = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  margin-top: 2px;
-`;
-
-const ContentLineArrow = styled(FontAwesomeIcon)`
-  font-size: 18px;
-  margin-right: 8px;
-`;
+const LineWrapperStyle = "flex flex-row justify-start items-center gap-2";
 
 const Contact: React.FC = () => {
   return (
-    <TerminalRow>
-      <TerminalLine>
-        <ContentLine># Info</ContentLine>
-        <ContentLine>## Email</ContentLine>
-        <ContentLine>
-          <ContentLineArrow icon={faAngleRight as IconProp} />
-          <div>{info.about.info.email}</div>
-        </ContentLine>
-        <ContentLine>## Phone Number</ContentLine>
-        <ContentLine>
-          <ContentLineArrow icon={faAngleRight as IconProp} />
-          <div>{info.about.info.phoneNumber}</div>
-        </ContentLine>
-        <ContentLine>## Linked In</ContentLine>
-        <ContentLine>
-          <ContentLineArrow icon={faAngleRight as IconProp} />
-          <div>devjoon</div>
-        </ContentLine>
-      </TerminalLine>
-    </TerminalRow>
+    <div className="flex flex-col justify-start items-start mx-2 px-2">
+      <div className={LineWrapperStyle}>
+        <div>#</div>
+        <div>Info</div>
+      </div>
+      <div className={LineWrapperStyle}>
+        <div>##</div>
+        <div>Email</div>
+      </div>
+      <div className={LineWrapperStyle}>
+        <FontAwesomeIcon icon={faAngleRight as IconProp} />
+        <div>{info.about.info.email}</div>
+      </div>
+      <div className={LineWrapperStyle}>
+        <div>##</div>
+        <div>Phone Number</div>
+      </div>
+      <div className={LineWrapperStyle}>
+        <FontAwesomeIcon icon={faAngleRight as IconProp} />
+        <div>{info.about.info.phoneNumber}</div>
+      </div>
+    </div>
   );
 };
 
