@@ -1,64 +1,57 @@
-import React from 'react';
-import styled from 'styled-components';
-import {
-  MutedText,
-  Panel,
-  PanelContainer,
-  PanelTableContainer,
-  PanelTableLabel,
-} from '../../GlobalStyle';
-import info from '../../info.json';
-import profileImage from '../../image/Profile.png';
+import React from "react";
+import info from "../../info.json";
+import profileImage from "../../image/Profile.png";
 
-const ProfileContainer = styled.div`
-  position: relative;
-  width: 150px;
-  height: 150px;
-  overflow: hidden;
-  border-radius: 50%;
-`;
-
-const Profile = styled.img`
-  width: 100%;
-  height: auto;
-`;
+const LabelContainerStyle = "flex w-32";
+const LabelTextStyle = "text-gray-500";
+const ValueTextStyle = "break-words";
 
 const Info: React.FC = () => {
   return (
-    <Panel>
-      <PanelContainer>
-        <ProfileContainer>
-          <Profile src={profileImage} alt="Profile" />
-        </ProfileContainer>
-      </PanelContainer>
-      <PanelContainer>
-        <PanelTableContainer>
+    <div className="flex flex-col flex-wrap justify-start min-w-80 m-2.5">
+      <div className="flex justify-start items-center m-2 px-20">
+        <div className="relative w-[120px] h-[120px] overflow-hidden rounded-full">
+          <img src={profileImage} alt="Profile" className="w-full h-auto" />
+        </div>
+      </div>
+
+      <div className="flex justify-start items-center m-2 px-4">
+        <table className="border-spacing-1 w-full table-fixed">
+          <colgroup>
+            <col className="w-32" />
+            <col />
+          </colgroup>
           <tbody>
             <tr>
-              <PanelTableLabel>
-                <MutedText>Name</MutedText>
-              </PanelTableLabel>
-              <td>{`${info.about.info.name.firstName} ${info.about.info.name.lastName}`}</td>
+              <td className={LabelContainerStyle}>
+                <span className={LabelTextStyle}>Name</span>
+              </td>
+              <td
+                className={ValueTextStyle}
+              >{`${info.about.info.name.firstName} ${info.about.info.name.lastName}`}</td>
             </tr>
+
             <tr>
-              <PanelTableLabel>
-                <MutedText>Date of Birth</MutedText>
-              </PanelTableLabel>
-              <td>
+              <td className={LabelContainerStyle}>
+                <span className={LabelTextStyle}>Date of Birth</span>
+              </td>
+              <td className={ValueTextStyle}>
                 {`${info.about.info.dateOfBirth.month} ${info.about.info.dateOfBirth.day} ${info.about.info.dateOfBirth.year}`}
               </td>
             </tr>
+
             <tr>
-              <PanelTableLabel>
-                <MutedText>Phone</MutedText>
-              </PanelTableLabel>
-              <td>{info.about.info.phoneNumber}</td>
+              <td className={LabelContainerStyle}>
+                <span className={LabelTextStyle}>Phone</span>
+              </td>
+              <td className={ValueTextStyle}>{info.about.info.phoneNumber}</td>
             </tr>
+
             <tr>
-              <PanelTableLabel>
-                <MutedText>Address</MutedText>
-              </PanelTableLabel>
-              <td>
+              <td className={LabelContainerStyle}>
+                <span className={LabelTextStyle}>Address</span>
+              </td>
+              <td className={ValueTextStyle}>
                 <div>
                   <div>{info.about.info.address.address}</div>
                   <div>{`${info.about.info.address.city}, ${info.about.info.address.state}, ${info.about.info.address.postalCode}`}</div>
@@ -66,9 +59,9 @@ const Info: React.FC = () => {
               </td>
             </tr>
           </tbody>
-        </PanelTableContainer>
-      </PanelContainer>
-    </Panel>
+        </table>
+      </div>
+    </div>
   );
 };
 
