@@ -43,7 +43,7 @@
         "company": "AllTrue.ai",
         "location": "Vancouver, BC, Canada",
         "date": "Apr 2024 - Present",
-        "tech": "Next.js, TypeScript, FastAPI, Python, Storybook, Figma, Jira",
+        "tech": "Next.js, React, TypeScript, FastAPI, Python, Redux, TailwindCSS, Docker, AWS, Storybook, Figma",
         "description": "AllTrue ai role description",
         "dateRank": 1
       },
