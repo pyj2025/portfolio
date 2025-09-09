@@ -1,14 +1,7 @@
-import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
-import {
-  LinkLabel,
-  PanelTableContainer,
-  PanelTableLabel,
-  MutedText,
-  PanelContainer,
-} from '../../GlobalStyle';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from "react";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 type ProjectDescriptionTableProps = {
   name: string;
@@ -26,61 +19,57 @@ const ProjectDescriptionTable: React.FC<ProjectDescriptionTableProps> = ({
   details,
 }) => {
   return (
-    <PanelContainer>
-      <PanelTableContainer>
+    <div className="flex justify-center items-center m-2">
+      <table className="border-separate border-spacing-1">
         <tbody>
           <tr>
-            <PanelTableLabel>
-              <MutedText>Name</MutedText>
-            </PanelTableLabel>
+            <td className="flex">
+              <span className="text-gray-500">Name</span>
+            </td>
             <td>{name}</td>
           </tr>
           {url && (
             <tr>
-              <PanelTableLabel>
-                <MutedText>Link</MutedText>
-              </PanelTableLabel>
+              <td className="flex">
+                <span className="text-gray-500">Link</span>
+              </td>
               <td>
-                <LinkLabel href={url}>
+                <a href={url} className="text-white no-underline">
                   <span>
                     URL&nbsp;
                     <FontAwesomeIcon icon={faExternalLinkAlt as IconProp} />
                   </span>
-                </LinkLabel>
+                </a>
               </td>
             </tr>
           )}
           <tr>
-            <PanelTableLabel>
-              <MutedText>Github Link</MutedText>
-            </PanelTableLabel>
+            <td className="flex">
+              <span className="text-gray-500">Github Link</span>
+            </td>
             <td>
-              <LinkLabel href={link}>
+              <a href={link} className="text-white no-underline">
                 <span>
                   Link <FontAwesomeIcon icon={faExternalLinkAlt as IconProp} />
                 </span>
-              </LinkLabel>
+              </a>
             </td>
           </tr>
           <tr>
-            <PanelTableLabel>
-              <MutedText>Stack</MutedText>
-            </PanelTableLabel>
-            <td>
-              {stack.map((value, idx) =>
-                idx === stack.length - 1 ? value : value + ', '
-              )}
+            <td className="flex">
+              <span className="text-gray-500">Stack</span>
             </td>
+            <td>{stack.map((value, idx) => (idx === stack.length - 1 ? value : value + ", "))}</td>
           </tr>
           <tr>
-            <PanelTableLabel>
-              <MutedText>Details</MutedText>
-            </PanelTableLabel>
+            <td className="flex">
+              <span className="text-gray-500">Details</span>
+            </td>
             <td>{details}</td>
           </tr>
         </tbody>
-      </PanelTableContainer>
-    </PanelContainer>
+      </table>
+    </div>
   );
 };
 

@@ -1,15 +1,14 @@
-import React from 'react';
-import info from '../../info.json';
-import GitCardLogo from '../../image/projects/GitCard.png';
-import { Panel, PanelLogoImage, PanelContainer } from '../../GlobalStyle';
-import ProjectDescriptionTable from './ProjectDescriptionTable';
+import React from "react";
+import info from "../../info.json";
+import GitCardLogo from "../../image/projects/GitCard.png";
+import ProjectDescriptionTable from "./ProjectDescriptionTable";
 
 const GitCard: React.FC = () => {
   return (
-    <Panel>
-      <PanelContainer>
-        <PanelLogoImage src={GitCardLogo} alt="GitCard" />
-      </PanelContainer>
+    <div className="flex flex-col flex-wrap justify-center min-w-80 m-2.5">
+      <div className="flex justify-center items-center m-2">
+        <img src={GitCardLogo} alt="GitCard" className="w-36 h-36" />
+      </div>
       <ProjectDescriptionTable
         name={info.project.GitCard.name}
         link={info.project.GitCard.link}
@@ -17,7 +16,7 @@ const GitCard: React.FC = () => {
         stack={info.project.GitCard.stack}
         details={info.project.GitCard.details}
       />
-    </Panel>
+    </div>
   );
 };
 
