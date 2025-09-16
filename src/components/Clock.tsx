@@ -1,12 +1,11 @@
-import * as React from 'react';
-import { MutedText } from '../GlobalStyle';
+import * as React from "react";
 
 const Clock: React.FC = () => {
   const [currentTime, setCurrentTime] = React.useState(new Date());
-  const time = currentTime.toLocaleTimeString('en', {
-    hour: 'numeric',
+  const time = currentTime.toLocaleTimeString("en", {
+    hour: "numeric",
     hour12: true,
-    minute: 'numeric',
+    minute: "numeric",
   });
 
   React.useEffect(() => {
@@ -17,7 +16,7 @@ const Clock: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-  return <MutedText>{time}</MutedText>;
+  return <span className="opacity-50">{time}</span>;
 };
 
 export default Clock;
