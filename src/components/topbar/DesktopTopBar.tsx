@@ -1,78 +1,22 @@
-import 'rc-menu/assets/index.css';
+import "rc-menu/assets/index.css";
 
-import React from 'react';
-import styled from 'styled-components';
-import Menu, { Divider, MenuItem } from 'rc-menu';
-import Clock from '../Clock';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
-import { BoldText, MutedText } from '../../GlobalStyle';
-import useScreenSize from '../../utils/useScreenSize';
-import useClickOutside from '../../utils/useClickOutside';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import useWindowsStore from '../../utils/useWindowsStore';
-import useAboutStore from '../../utils/useAboutStore';
-
-const Container = styled.div<{ width: number }>`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.4);
-  color: rgb(255, 255, 255);
-  width: ${({ width }) => width}px;
-  height: 3.125rem;
-`;
-
-const MenuContainer = styled(Menu)`
-  position: absolute;
-  margin: 2px;
-`;
-
-const MainMenuBtnContainer = styled.div`
-  padding-left: 4px;
-`;
-
-const MainMenuBtn = styled.button`
-  background-color: transparent;
-  border: 0;
-  color: white;
-  // z-index: -150;
-`;
-
-const MenuItemTitle = styled.div`
-  color: white;
-`;
-
-const MenuDivider = styled(Divider)`
-  width: 92%;
-  margin-left: 8px;
-  margin-top: 4px;
-  margin-bottom: 4px;
-  opacity: 0.7;
-`;
-
-const TopbarAppContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-left: auto;
-`;
-
-const TopbarAppItemContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-right: 10px;
-`;
-
-const TopbarAppIcon = styled(FontAwesomeIcon)`
-  margin-right: 6px;
-  opacity: 0.5;
-`;
+import React from "react";
+import Menu, { Divider, MenuItem } from "rc-menu";
+import Clock from "../Clock";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import { BoldText, MutedText } from "../../GlobalStyle";
+import useScreenSize from "../../utils/useScreenSize";
+import useClickOutside from "../../utils/useClickOutside";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import useWindowsStore from "../../utils/useWindowsStore";
+import useAboutStore from "../../utils/useAboutStore";
 
 const DesktopTopBar: React.FC = () => {
   const { width } = useScreenSize();
 
-  const openAbout = useAboutStore((state) => state.openAbout);
-  const clearFocusWindows = useWindowsStore((state) => state.clearFocusWindows);
+  const openAbout = useAboutStore(state => state.openAbout);
+  const clearFocusWindows = useWindowsStore(state => state.clearFocusWindows);
 
   const mainMenuRef = React.useRef<HTMLDivElement | null>(null);
 
@@ -93,48 +37,52 @@ const DesktopTopBar: React.FC = () => {
   }, [openAbout]);
 
   return (
-    <Container width={width}>
-      <MainMenuBtnContainer ref={mainMenuRef}>
-        <MainMenuBtn onClick={handleClick}>
+    <div
+      className="flex justify-start items-center bg-black bg-opacity-40 text-white h-12"
+      style={{ width: `${width}px` }}
+    >
+      <div ref={mainMenuRef} className="pl-1">
+        <button onClick={handleClick} className="bg-transparent border-0 text-white">
           <BoldText>Joon</BoldText>
-        </MainMenuBtn>
-        {menuOpen ? (
-          <MenuContainer
+        </button>
+        {menuOpen && (
+          <Menu
+            className="absolute m-0.5"
             style={{
               padding: 0,
               border: 0,
             }}
           >
             <MenuItem key="about" onClick={handleAbout}>
-              <MenuItemTitle>About Joon</MenuItemTitle>
+              <div className="text-white">About Joon</div>
             </MenuItem>
-            <MenuDivider />
+            <Divider className="w-11/12 ml-2 mt-1 mb-1 opacity-70" />
             <MenuItem key="restart" onClick={() => window.location.reload()}>
-              <MenuItemTitle>Restart</MenuItemTitle>
+              <div className="text-white">Restart</div>
             </MenuItem>
-            <MenuDivider />
+            <Divider className="w-11/12 ml-2 mt-1 mb-1 opacity-70" />
             <MenuItem
               key="close"
               onClick={() => {
-                window.open('', '_self');
+                window.open("", "_self");
                 window.close();
               }}
             >
-              <MenuItemTitle>Close</MenuItemTitle>
+              <div className="text-white">Close</div>
             </MenuItem>
-          </MenuContainer>
-        ) : null}
-      </MainMenuBtnContainer>
-      <TopbarAppContainer>
-        <TopbarAppItemContainer>
-          <TopbarAppIcon icon={faMapMarkerAlt as IconProp} />
+          </Menu>
+        )}
+      </div>
+      <div className="flex flex-row ml-auto">
+        <div className="flex flex-row mr-2.5">
+          <FontAwesomeIcon icon={faMapMarkerAlt as IconProp} className="pt-1 mr-1.5 opacity-50" />
           <MutedText>British Columbia, Canada</MutedText>
-        </TopbarAppItemContainer>
-        <TopbarAppItemContainer>
+        </div>
+        <div className="flex flex-row mr-2.5">
           <Clock />
-        </TopbarAppItemContainer>
-      </TopbarAppContainer>
-    </Container>
+        </div>
+      </div>
+    </div>
   );
 };
 
