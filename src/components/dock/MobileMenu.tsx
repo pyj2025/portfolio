@@ -1,73 +1,29 @@
-import { faCircle } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
-import styled from 'styled-components';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { getIcon } from '../getIcon';
-import useWindowsStore from '../../utils/useWindowsStore';
-import useAboutStore from '../../utils/useAboutStore';
-import useSkillsStore from '../../utils/useSkillsStore';
-import useProjectsStore from '../../utils/useProjectsStore';
+import { faCircle } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from "react";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { getIcon } from "../getIcon";
+import useWindowsStore from "../../utils/useWindowsStore";
+import useAboutStore from "../../utils/useAboutStore";
+import useSkillsStore from "../../utils/useSkillsStore";
+import useProjectsStore from "../../utils/useProjectsStore";
 
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: 80px;
-`;
-
-const MenuWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  border-radius: 1.2rem;
-  box-shadow: 2px 7px 15px 8px rgba(0, 0, 0, 0.4);
-  background-color: rgba(255, 255, 192, 0.1);
-  backdrop-filter: blur(10px);
-  /* height: 80px; */
-`;
-
-const MenuItem = styled.a`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  margin: 0 auto;
-  box-sizing: border-box;
-  transition: background-color 0.2s;
-  border-radius: 0.2rem;
-  padding: 1rem;
-  text-decoration: none;
-  cursor: pointer;
-`;
-
-const MinimizedIcon = styled(FontAwesomeIcon)`
-  position: absolute;
-  height: 4px;
-  width: 4px;
-  padding-top: 3.5rem;
-  color: #aaaaaa;
-`;
+const WindowMenuItemStyle =
+  "flex flex-col justify-center items-center text-center mx-auto box-border transition-colors duration-200 rounded-sm p-4 no-underline cursor-pointer relative";
 
 const MobileMenu: React.FC = () => {
-  const { isAboutOpen, isAboutMinimized, toggleAboutOpen, closeAbout } =
-    useAboutStore((state) => state);
-
-  const { isSkillsOpen, isSkillsMinimized, toggleSkillsOpen, closeSkills } =
-    useSkillsStore((state) => state);
-
-  const {
-    isProjectsOpen,
-    isProjectsMinimized,
-    toggleProjectsOpen,
-    closeProjects,
-  } = useProjectsStore((state) => state);
-
-  const { isWelcomeWindowOpen, closeWelcomeWindow } = useWindowsStore(
-    (state) => state
+  const { isAboutOpen, isAboutMinimized, toggleAboutOpen, closeAbout } = useAboutStore(
+    state => state,
   );
+
+  const { isSkillsOpen, isSkillsMinimized, toggleSkillsOpen, closeSkills } = useSkillsStore(
+    state => state,
+  );
+
+  const { isProjectsOpen, isProjectsMinimized, toggleProjectsOpen, closeProjects } =
+    useProjectsStore(state => state);
+
+  const { isWelcomeWindowOpen, closeWelcomeWindow } = useWindowsStore(state => state);
 
   const handleAboutClick = React.useCallback(() => {
     if (isWelcomeWindowOpen) {
@@ -136,28 +92,37 @@ const MobileMenu: React.FC = () => {
   ]);
 
   return (
-    <Container>
-      <MenuWrapper>
-        <MenuItem title="About" onClick={handleAboutClick}>
-          {getIcon('About')}
-          {isAboutMinimized ? (
-            <MinimizedIcon icon={faCircle as IconProp} />
-          ) : null}
-        </MenuItem>
-        <MenuItem title="Skills" onClick={handleSkillsClick}>
-          {getIcon('Skills')}
-          {isSkillsMinimized ? (
-            <MinimizedIcon icon={faCircle as IconProp} />
-          ) : null}
-        </MenuItem>
-        <MenuItem title="Projects" onClick={handleProjectsClick}>
-          {getIcon('Projects')}
-          {isProjectsMinimized ? (
-            <MinimizedIcon icon={faCircle as IconProp} />
-          ) : null}
-        </MenuItem>
-      </MenuWrapper>
-    </Container>
+    <div className="flex justify-center w-full h-20">
+      <div className="flex flex-row justify-center items-center rounded-2xl shadow-2xl bg-yellow-50 bg-opacity-10 backdrop-blur-sm">
+        <button title="About" onClick={handleAboutClick} className={WindowMenuItemStyle}>
+          {getIcon("About")}
+          {isAboutMinimized && (
+            <FontAwesomeIcon
+              icon={faCircle as IconProp}
+              className="absolute h-1 w-1 pt-14 text-gray-400"
+            />
+          )}
+        </button>
+        <button title="Skills" onClick={handleSkillsClick} className={WindowMenuItemStyle}>
+          {getIcon("Skills")}
+          {isSkillsMinimized && (
+            <FontAwesomeIcon
+              icon={faCircle as IconProp}
+              className="absolute h-1 w-1 pt-14 text-gray-400"
+            />
+          )}
+        </button>
+        <button title="Projects" onClick={handleProjectsClick} className={WindowMenuItemStyle}>
+          {getIcon("Projects")}
+          {isProjectsMinimized && (
+            <FontAwesomeIcon
+              icon={faCircle as IconProp}
+              className="absolute h-1 w-1 pt-14 text-gray-400"
+            />
+          )}
+        </button>
+      </div>
+    </div>
   );
 };
 
