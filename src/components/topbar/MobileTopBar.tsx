@@ -1,25 +1,16 @@
-import React from 'react';
-import styled from 'styled-components';
-import { BoldText } from '../../GlobalStyle';
-import useScreenSize from '../../utils/useScreenSize';
-
-const Container = styled.div<{ width: number }>`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.4);
-  color: rgb(255, 255, 255);
-  width: ${({ width }) => width}px;
-  height: 25px;
-`;
+import React from "react";
+import useScreenSize from "../../utils/useScreenSize";
 
 const MobileTopBar: React.FC = () => {
   const { width } = useScreenSize();
 
   return (
-    <Container width={width}>
-      <BoldText>Youngjoon Park</BoldText>
-    </Container>
+    <div
+      className="flex justify-center items-center bg-black bg-opacity-40 text-white h-6"
+      style={{ width: `${width}px` }}
+    >
+      <span className="font-bold">Youngjoon Park</span>
+    </div>
   );
 };
 
