@@ -1,52 +1,16 @@
-import React from 'react';
-import { isMobile, isTablet } from 'react-device-detect';
-import styled from 'styled-components';
-import useScreenSize, {
-  MOBILE_MAX_WIDTH,
-  TABLET_MAX_WIDTH,
-} from '../utils/useScreenSize';
-import { getIcon } from './getIcon';
+import React from "react";
+import { isMobile, isTablet } from "react-device-detect";
+import useScreenSize, { MOBILE_MAX_WIDTH, TABLET_MAX_WIDTH } from "../utils/useScreenSize";
+import { getIcon } from "./getIcon";
+import info from "../info.json";
+import { cn } from "../utils/cn";
 
-const Container = styled.div`
-  display: flex;
-  align-items: flex-start;
-  width: 100%;
-`;
+const IconContainerStyle =
+  "flex flex-col justify-center items-center text-center text-white mx-auto p-2 no-underline cursor-pointer";
 
-const MenuWrapper = styled.div<{ numOfCols: number }>`
-  display: grid;
-  grid-template-columns: ${({ numOfCols }) => `repeat(${numOfCols}, 1fr)`};
-  grid-gap: 8px;
-  width: 100%;
-`;
+const IconStyle = "flex flex-col w-12 h-12 bg-white rounded-lg justify-center items-center";
 
-const MenuItem = styled.a`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: white;
-  margin: 0 auto;
-  padding: 0.5rem;
-  text-decoration: none;
-  cursor: pointer;
-`;
-
-const IconImageContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 50px;
-  height: 50px;
-  background-color: white;
-  border-radius: 0.5rem;
-  justify-content: center;
-  align-items: center;
-`;
-
-const IconLabel = styled.div`
-  margin-top: 0.2rem;
-`;
+const IconLabelStyle = "mt-1";
 
 const MobileAppMenu: React.FC = () => {
   const { width } = useScreenSize();
@@ -55,10 +19,7 @@ const MobileAppMenu: React.FC = () => {
   React.useEffect(() => {
     if (isMobile || width <= MOBILE_MAX_WIDTH) {
       setNumOfCols(4);
-    } else if (
-      isTablet ||
-      (width > MOBILE_MAX_WIDTH && width <= TABLET_MAX_WIDTH)
-    ) {
+    } else if (isTablet || (width > MOBILE_MAX_WIDTH && width <= TABLET_MAX_WIDTH)) {
       setNumOfCols(5);
     } else {
       setNumOfCols(5);
@@ -66,41 +27,77 @@ const MobileAppMenu: React.FC = () => {
   }, [width]);
 
   const handleEmailClick = React.useCallback(() => {
-    window.open('mailto:pyj2025@gmail.com');
+    window.open(`mailto:${info.about.info.email}`);
   }, []);
 
+  const getGridCols = (cols: number) => {
+    switch (cols) {
+      case 4:
+        return "grid-cols-4";
+      case 5:
+        return "grid-cols-5";
+      default:
+        return "grid-cols-5";
+    }
+  };
+
   return (
-    <Container>
-      <MenuWrapper numOfCols={numOfCols}>
-        <MenuItem
+    <div className="flex items-start w-full">
+      <div className={`grid ${getGridCols(numOfCols)} gap-2 w-full`}>
+        <a
           title="Resume"
           href="https://drive.google.com/file/d/14bb5ogfmAumTw7cMA_0PEUVwsPE_mOd-/view?usp=sharing"
           target="_blank"
+          rel="noopener noreferrer"
+          className={IconContainerStyle}
         >
-          <IconImageContainer>{getIcon('Resume')}</IconImageContainer>
-          <IconLabel>Resume</IconLabel>
-        </MenuItem>
-        <MenuItem title="Github" href="https://github.com/pyj2025">
-          <IconImageContainer>{getIcon('Github')}</IconImageContainer>
-          <IconLabel>Github</IconLabel>
-        </MenuItem>
-        <MenuItem title="Linkedin" href="https://www.linkedin.com/in/devjoon/">
-          <IconImageContainer>{getIcon('Linkedin')}</IconImageContainer>
-          <IconLabel>Linkedin</IconLabel>
-        </MenuItem>
-        <MenuItem
+          <div className={IconStyle}>{getIcon("Resume")}</div>
+          <div className={IconLabelStyle}>Resume</div>
+        </a>
+
+        <a
+          title="Github"
+          href="https://github.com/pyj2025"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={IconContainerStyle}
+        >
+          <div className={IconStyle}>{getIcon("Github")}</div>
+          <div className={IconLabelStyle}>Github</div>
+        </a>
+
+        <a
+          title="Linkedin"
+          href="https://www.linkedin.com/in/devjoon/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={IconContainerStyle}
+        >
+          <div className={IconStyle}>{getIcon("Linkedin")}</div>
+          <div className={IconLabelStyle}>Linkedin</div>
+        </a>
+
+        <a
           title="Facebook"
           href="https://www.facebook.com/youngjoon.park.71"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={IconContainerStyle}
         >
-          <IconImageContainer>{getIcon('Facebook')}</IconImageContainer>
-          <IconLabel>Facebook</IconLabel>
-        </MenuItem>
-        <MenuItem title="Email" onClick={handleEmailClick}>
-          <IconImageContainer>{getIcon('Email')}</IconImageContainer>
-          <IconLabel>Email</IconLabel>
-        </MenuItem>
-      </MenuWrapper>
-    </Container>
+          <div className={IconStyle}>{getIcon("Facebook")}</div>
+          <div className={IconLabelStyle}>Facebook</div>
+        </a>
+
+        <button
+          title="Email"
+          onClick={handleEmailClick}
+          className={cn(IconContainerStyle, "bg-transparent border-none")}
+        >
+          <div className={IconStyle}>{getIcon("Email")}</div>
+          <div className={IconLabelStyle}>Email</div>
+        </button>
+      </div>
+    </div>
   );
 };
 
