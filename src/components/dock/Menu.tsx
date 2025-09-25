@@ -6,12 +6,15 @@ import { getIcon } from "../getIcon";
 import useAboutStore from "../../utils/useAboutStore";
 import useSkillsStore from "../../utils/useSkillsStore";
 import useProjectsStore from "../../utils/useProjectsStore";
+import info from "../../info.json";
 
 const WindowMenuItemStyle =
   "relative flex flex-col justify-center items-center text-center text-white mx-auto box-border transition-colors duration-200 rounded-sm p-4 cursor-pointer hover:bg-yellow-50/10";
 
 const ExternalLinkMenuItemStyle =
   "flex flex-col justify-center items-center text-center text-white mx-auto box-border transition-colors duration-200 rounded-sm p-4 no-underline cursor-pointer hover:bg-yellow-50/10";
+
+const IconStyle = "absolute h-1 w-1 pt-14 text-gray-400";
 
 const Menu: React.FC = () => {
   const { isAboutMinimized, openAbout } = useAboutStore(state => state);
@@ -31,7 +34,7 @@ const Menu: React.FC = () => {
   }, [openProjects]);
 
   const handleEmailClick = React.useCallback(() => {
-    window.open("mailto:pyj2025@gmail.com");
+    window.open(`mailto:${info.about.info.email}`);
   }, []);
 
   return (
@@ -39,30 +42,21 @@ const Menu: React.FC = () => {
       <div className="flex flex-row justify-center items-center rounded-md shadow-2xl bg-yellow-50/10 backdrop-blur-md">
         <button title="About" onClick={handleAboutClick} className={WindowMenuItemStyle}>
           {getIcon("About")}
-          {isAboutMinimized ? (
-            <FontAwesomeIcon
-              icon={faCircle as IconProp}
-              className="absolute h-1 w-1 pt-14 text-gray-400"
-            />
-          ) : null}
+          {isAboutMinimized && (
+            <FontAwesomeIcon icon={faCircle as IconProp} className={IconStyle} />
+          )}
         </button>
         <button title="Skills" onClick={handleSkillsClick} className={WindowMenuItemStyle}>
           {getIcon("Skills")}
-          {isSkillsMinimized ? (
-            <FontAwesomeIcon
-              icon={faCircle as IconProp}
-              className="absolute h-1 w-1 pt-14 text-gray-400"
-            />
-          ) : null}
+          {isSkillsMinimized && (
+            <FontAwesomeIcon icon={faCircle as IconProp} className={IconStyle} />
+          )}
         </button>
         <button title="Projects" onClick={handleProjectsClick} className={WindowMenuItemStyle}>
           {getIcon("Projects")}
-          {isProjectsMinimized ? (
-            <FontAwesomeIcon
-              icon={faCircle as IconProp}
-              className="absolute h-1 w-1 pt-14 text-gray-400"
-            />
-          ) : null}
+          {isProjectsMinimized && (
+            <FontAwesomeIcon icon={faCircle as IconProp} className={IconStyle} />
+          )}
         </button>
         <a
           title="Resume"
