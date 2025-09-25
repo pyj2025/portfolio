@@ -11,6 +11,8 @@ import useProjectsStore from "../../utils/useProjectsStore";
 const WindowMenuItemStyle =
   "flex flex-col justify-center items-center text-center mx-auto box-border transition-colors duration-200 rounded-sm p-4 no-underline cursor-pointer relative";
 
+const IconStyle = "absolute h-1 w-1 pt-14 text-gray-400";
+
 const MobileMenu: React.FC = () => {
   const { isAboutOpen, isAboutMinimized, toggleAboutOpen, closeAbout } = useAboutStore(
     state => state,
@@ -97,28 +99,19 @@ const MobileMenu: React.FC = () => {
         <button title="About" onClick={handleAboutClick} className={WindowMenuItemStyle}>
           {getIcon("About")}
           {isAboutMinimized && (
-            <FontAwesomeIcon
-              icon={faCircle as IconProp}
-              className="absolute h-1 w-1 pt-14 text-gray-400"
-            />
+            <FontAwesomeIcon icon={faCircle as IconProp} className={IconStyle} />
           )}
         </button>
         <button title="Skills" onClick={handleSkillsClick} className={WindowMenuItemStyle}>
           {getIcon("Skills")}
           {isSkillsMinimized && (
-            <FontAwesomeIcon
-              icon={faCircle as IconProp}
-              className="absolute h-1 w-1 pt-14 text-gray-400"
-            />
+            <FontAwesomeIcon icon={faCircle as IconProp} className={IconStyle} />
           )}
         </button>
         <button title="Projects" onClick={handleProjectsClick} className={WindowMenuItemStyle}>
           {getIcon("Projects")}
           {isProjectsMinimized && (
-            <FontAwesomeIcon
-              icon={faCircle as IconProp}
-              className="absolute h-1 w-1 pt-14 text-gray-400"
-            />
+            <FontAwesomeIcon icon={faCircle as IconProp} className={IconStyle} />
           )}
         </button>
       </div>
