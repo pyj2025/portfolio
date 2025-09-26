@@ -1,25 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import { DatabrickGenAIFundamentalsIcon } from '../../image/certifications/DatabrickGenAIFundamentals';
-import { AboutIndexType } from '../../types';
-
-const IconListContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-top: 10px;
-`;
-
-const IconContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 4rem;
-  height: 4rem;
-  justify-content: center;
-  align-items: center;
-  margin: 0.25rem;
-  cursor: pointer;
-`;
+import React from "react";
+import { DatabrickGenAIFundamentalsIcon } from "../../image/certifications/DatabrickGenAIFundamentals";
+import { AboutIndexType } from "../../types";
 
 interface CertificationsProps {
   toggleIndex: (index: AboutIndexType) => void;
@@ -27,14 +8,15 @@ interface CertificationsProps {
 
 const Certifications: React.FC<CertificationsProps> = ({ toggleIndex }) => {
   return (
-    <IconListContainer>
-      <IconContainer
+    <div className="flex flex-row flex-wrap mt-2.5">
+      <div
+        className="flex flex-col w-16 h-16 justify-center items-center m-1 cursor-pointer"
         title="GenAIFundamentals"
-        onClick={() => toggleIndex('GenAI')}
+        onClick={() => toggleIndex("GenAI")}
       >
         <DatabrickGenAIFundamentalsIcon />
-      </IconContainer>
-    </IconListContainer>
+      </div>
+    </div>
   );
 };
 
