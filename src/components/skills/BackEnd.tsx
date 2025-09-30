@@ -1,15 +1,16 @@
-import React from 'react';
-import info from '../../info.json';
-import SkillIcon from './SkillIcon';
-import { SkillsContentContainer } from '../../views/window/desktop/SkillsWindow';
+import React from "react";
+import info from "../../info.json";
+import SkillIcon from "./SkillIcon";
+
+const SkillsContentContainerStyle = "flex flex-row flex-wrap mt-2.5";
 
 const BackEnd: React.FC = () => {
   return (
-    <SkillsContentContainer>
-      {info.skills.back.map((skill) => {
+    <div className={SkillsContentContainerStyle}>
+      {info.skills.back.map(skill => {
         return <SkillIcon name={skill.name} />;
       })}
-    </SkillsContentContainer>
+    </div>
   );
 };
 
