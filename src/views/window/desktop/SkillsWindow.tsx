@@ -1,27 +1,16 @@
-import React from 'react';
-import styled from 'styled-components';
-import { DraggableData, Position, ResizableDelta } from 'react-rnd';
-import {
-  SkillsIndexType,
-  WindowPositionSetting,
-  WindowSizeSetting,
-} from '../../../types';
-import { Window, WindowBody, WindowBodyContent } from '../../../GlobalStyle';
-import useScreenSize, { TABLET_MAX_WIDTH } from '../../../utils/useScreenSize';
-import WindowTopbar from '../../../components/WindowTopbar';
-import useWindowsStore from '../../../utils/useWindowsStore';
-import FrontEnd from '../../../components/skills/FrontEnd';
-import BackEnd from '../../../components/skills/BackEnd';
-import Mobile from '../../../components/skills/Mobile';
-import ProgrammingLanguage from '../../../components/skills/ProgrammingLanguage';
-import SkillsNavbar from '../../../components/skills/SkillsNavbar';
+import React from "react";
+import { DraggableData, Position, ResizableDelta } from "react-rnd";
+import { SkillsIndexType, WindowPositionSetting, WindowSizeSetting } from "../../../types";
+import { Window, WindowBody, WindowBodyContent } from "../../../GlobalStyle";
+import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
+import WindowTopbar from "../../../components/WindowTopbar";
+import useWindowsStore from "../../../utils/useWindowsStore";
+import FrontEnd from "../../../components/skills/FrontEnd";
+import BackEnd from "../../../components/skills/BackEnd";
+import Mobile from "../../../components/skills/Mobile";
+import ProgrammingLanguage from "../../../components/skills/ProgrammingLanguage";
+import SkillsNavbar from "../../../components/skills/SkillsNavbar";
 
-export const SkillsContentContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-top: 10px;
-`;
 const SKILLS_COMPONENTS: Record<SkillsIndexType, React.ComponentType> = {
   Menu: () => <></>,
   Front: FrontEnd,
@@ -46,7 +35,7 @@ const SkillsContent: React.FC<SkillsContentProps> = ({ index }) => {
 
 const SkillsWindow: React.FC = () => {
   const { width, height } = useScreenSize();
-  const { focusedWindow, setFocusedWindow } = useWindowsStore((state) => state);
+  const { focusedWindow, setFocusedWindow } = useWindowsStore(state => state);
 
   const skillsRef = React.useRef<any>();
 
@@ -54,15 +43,14 @@ const SkillsWindow: React.FC = () => {
     width: 500,
     height: 300,
   });
-  const [skillsPosition, setSkillsPosition] =
-    React.useState<WindowPositionSetting>({
-      x: 60,
-      y: 60,
-    });
+  const [skillsPosition, setSkillsPosition] = React.useState<WindowPositionSetting>({
+    x: 60,
+    y: 60,
+  });
   const [skillsPrevSetting, setSkillsPrevSetting] = React.useState<
     (WindowSizeSetting & WindowPositionSetting) | null
   >(null);
-  const [index, setIndex] = React.useState<SkillsIndexType>('Front');
+  const [index, setIndex] = React.useState<SkillsIndexType>("Front");
   const [isMobileWindow, setIsMobileWindow] = React.useState(false);
 
   React.useEffect(() => {
@@ -83,14 +71,14 @@ const SkillsWindow: React.FC = () => {
   }, [width]);
 
   const focusSkillsWindow = React.useCallback(() => {
-    setFocusedWindow('Skills');
+    setFocusedWindow("Skills");
   }, [setFocusedWindow]);
 
   const handleClick = React.useCallback(
     (name: SkillsIndexType) => {
       setIndex(name);
     },
-    [setIndex]
+    [setIndex],
   );
 
   return (
@@ -102,7 +90,7 @@ const SkillsWindow: React.FC = () => {
       dragHandleClassName="topbar"
       minWidth={isMobileWindow ? width : 525}
       minHeight={300}
-      style={{ zIndex: focusedWindow === 'Skills' ? 10 : undefined }}
+      style={{ zIndex: focusedWindow === "Skills" ? 10 : undefined }}
       onDragStart={(_e: any, _data: DraggableData) => {
         focusSkillsWindow();
       }}
@@ -114,7 +102,7 @@ const SkillsWindow: React.FC = () => {
         _dir: any,
         ref: any,
         _delta: ResizableDelta,
-        position: Position
+        position: Position,
       ) => {
         setSkillsSize({
           width: ref.style.width,
