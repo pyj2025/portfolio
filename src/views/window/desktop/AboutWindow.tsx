@@ -1,20 +1,18 @@
-import React from 'react';
-import { DraggableData, Position, ResizableDelta } from 'react-rnd';
-import { Window, WindowBody, WindowBodyContent } from '../../../GlobalStyle';
+import React from "react";
+import { DraggableData, Position, ResizableDelta } from "react-rnd";
+import { Window, WindowBody, WindowBodyContent } from "../../../GlobalStyle";
+import { AboutIndexType, WindowPositionSetting, WindowSizeSetting } from "../../../types";
+import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
+import WindowTopbar from "../../../components/WindowTopbar";
+import useWindowsStore from "../../../utils/useWindowsStore";
 import {
-  AboutIndexType,
-  WindowPositionSetting,
-  WindowSizeSetting,
-} from '../../../types';
-import useScreenSize, { TABLET_MAX_WIDTH } from '../../../utils/useScreenSize';
-import WindowTopbar from '../../../components/WindowTopbar';
-import useWindowsStore from '../../../utils/useWindowsStore';
-import Info from '../../../components/about/Info';
-import Experience from '../../../components/about/Experience';
-import Education from '../../../components/about/Education';
-import AboutNavbar from '../../../components/about/AboutNavbar';
-import Certifications from '../../../components/about/Certifications';
-import GenAIFundamentals from '../../../components/about/certification/GenAIFundamentals';
+  Certifications,
+  Education,
+  Experience,
+  GenAIFundamentals,
+  Info,
+} from "../../../components/about";
+import AboutNavbar from "../../../components/about/AboutNavbar";
 
 const BASIC_COMPONENTS: Record<string, React.ComponentType> = {
   Info: Info,
@@ -34,9 +32,9 @@ interface CertificationsWrapperProps {
   setIndex: (index: AboutIndexType) => void;
 }
 
-const CertificationsWrapper: React.FC<CertificationsWrapperProps> = ({
-  setIndex,
-}) => <Certifications toggleIndex={setIndex} />;
+const CertificationsWrapper: React.FC<CertificationsWrapperProps> = ({ setIndex }) => (
+  <Certifications toggleIndex={setIndex} />
+);
 
 interface AboutContentProps {
   index: AboutIndexType;
@@ -44,16 +42,12 @@ interface AboutContentProps {
   showDate: boolean;
 }
 
-const AboutContent: React.FC<AboutContentProps> = ({
-  index,
-  setIndex,
-  showDate,
-}) => {
-  if (index === 'Menu') {
+const AboutContent: React.FC<AboutContentProps> = ({ index, setIndex, showDate }) => {
+  if (index === "Menu") {
     return null;
   }
 
-  if (index === 'Experience') {
+  if (index === "Experience") {
     return (
       <WindowBodyContent>
         <ExperienceWrapper showDate={showDate} />
@@ -61,7 +55,7 @@ const AboutContent: React.FC<AboutContentProps> = ({
     );
   }
 
-  if (index === 'Certifications') {
+  if (index === "Certifications") {
     return (
       <WindowBodyContent>
         <CertificationsWrapper setIndex={setIndex} />
@@ -83,7 +77,7 @@ const AboutContent: React.FC<AboutContentProps> = ({
 
 const AboutWindow: React.FC = () => {
   const { width, height } = useScreenSize();
-  const { focusedWindow, setFocusedWindow } = useWindowsStore((state) => state);
+  const { focusedWindow, setFocusedWindow } = useWindowsStore(state => state);
 
   const aboutRef = React.useRef<any>();
 
@@ -91,17 +85,16 @@ const AboutWindow: React.FC = () => {
     width: 500,
     height: 300,
   });
-  const [aboutPosition, setAboutPosition] =
-    React.useState<WindowPositionSetting>({
-      x: 20,
-      y: 20,
-    });
+  const [aboutPosition, setAboutPosition] = React.useState<WindowPositionSetting>({
+    x: 20,
+    y: 20,
+  });
 
   const [aboutPrevSetting, setAboutPrevSetting] = React.useState<
     (WindowSizeSetting & WindowPositionSetting) | null
   >(null);
 
-  const [index, setIndex] = React.useState<AboutIndexType>('Info');
+  const [index, setIndex] = React.useState<AboutIndexType>("Info");
   const [isMobileWindow, setIsMobileWindow] = React.useState<boolean>(false);
   const [showDate, setShowDate] = React.useState<boolean>(false);
 
@@ -131,14 +124,14 @@ const AboutWindow: React.FC = () => {
   }, [aboutSize.width, showDate]);
 
   const focusAboutWindow = React.useCallback(() => {
-    setFocusedWindow('About');
+    setFocusedWindow("About");
   }, [setFocusedWindow]);
 
   const handleClick = React.useCallback(
     (name: AboutIndexType) => {
       setIndex(name);
     },
-    [setIndex]
+    [setIndex],
   );
 
   return (
@@ -150,7 +143,7 @@ const AboutWindow: React.FC = () => {
       dragHandleClassName="topbar"
       minWidth={isMobileWindow ? width : 500}
       minHeight={300}
-      style={{ zIndex: focusedWindow === 'About' ? 10 : undefined }}
+      style={{ zIndex: focusedWindow === "About" ? 10 : undefined }}
       onDragStart={(_e: any, _data: DraggableData) => {
         focusAboutWindow();
       }}
@@ -162,14 +155,10 @@ const AboutWindow: React.FC = () => {
         _dir: any,
         ref: any,
         _delta: ResizableDelta,
-        position: Position
+        position: Position,
       ) => {
-        const newWidth = Number(
-          ref.style.width.substring(0, ref.style.width.indexOf('p'))
-        );
-        const newHeight = Number(
-          ref.style.height.substring(0, ref.style.height.indexOf('p'))
-        );
+        const newWidth = Number(ref.style.width.substring(0, ref.style.width.indexOf("p")));
+        const newHeight = Number(ref.style.height.substring(0, ref.style.height.indexOf("p")));
 
         setAboutSize({
           width: newWidth,
