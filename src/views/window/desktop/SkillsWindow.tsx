@@ -5,10 +5,7 @@ import { Window, WindowBody, WindowBodyContent } from "../../../GlobalStyle";
 import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
 import WindowTopbar from "../../../components/WindowTopbar";
 import useWindowsStore from "../../../utils/useWindowsStore";
-import FrontEnd from "../../../components/skills/FrontEnd";
-import BackEnd from "../../../components/skills/BackEnd";
-import Mobile from "../../../components/skills/Mobile";
-import ProgrammingLanguage from "../../../components/skills/ProgrammingLanguage";
+import { BackEnd, FrontEnd, Mobile, ProgrammingLanguage } from "../../../components/skills";
 import SkillsNavbar from "../../../components/skills/SkillsNavbar";
 
 const SKILLS_COMPONENTS: Record<SkillsIndexType, React.ComponentType> = {
