@@ -1,60 +1,51 @@
-import React from 'react';
-import { DraggableData, Position, ResizableDelta } from 'react-rnd';
-import {
-  SkillsIndexType,
-  WindowPositionSetting,
-  WindowSizeSetting,
-} from '../../../types';
+import React from "react";
+import { DraggableData, Position, ResizableDelta } from "react-rnd";
+import { SkillsIndexType, WindowPositionSetting, WindowSizeSetting } from "../../../types";
 import {
   MobileBodyContent,
   MobileMenuItemLabel,
   MobileWindowBody,
   MobileWindowMenuItem,
   Window,
-} from '../../../GlobalStyle';
-import useScreenSize, { TABLET_MAX_WIDTH } from '../../../utils/useScreenSize';
-import WindowTopbar from '../../../components/WindowTopbar';
-import FrontEnd from '../../../components/skills/FrontEnd';
-import BackEnd from '../../../components/skills/BackEnd';
-import Mobile from '../../../components/skills/Mobile';
-import ProgrammingLanguage from '../../../components/skills/ProgrammingLanguage';
-import { getIcon } from '../../../components/getIcon';
-import useWindowsStore from '../../../utils/useWindowsStore';
-import MobileSkillsNavbar from '../../../components/skills/MobileSkillsNavbar';
-import MobilePanel from '../../../components/MobilePanel';
+} from "../../../GlobalStyle";
+import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
+import WindowTopbar from "../../../components/WindowTopbar";
+import { BackEnd, FrontEnd, Mobile, ProgrammingLanguage } from "../../../components/skills";
+import { getIcon } from "../../../components/getIcon";
+import useWindowsStore from "../../../utils/useWindowsStore";
+import MobileSkillsNavbar from "../../../components/skills/MobileSkillsNavbar";
+import MobilePanel from "../../../components/MobilePanel";
 
 type MobileWindowMenuProps = {
   onClick: (index: SkillsIndexType) => void;
 };
 
-const MobileSkillsWindowMenu: React.FC<MobileWindowMenuProps> = React.memo(
-  ({ onClick }) => {
-    return (
-      <>
-        <MobileWindowMenuItem onClick={() => onClick('Front')}>
-          {getIcon('Folder')}
-          <MobileMenuItemLabel>Front-End</MobileMenuItemLabel>
-        </MobileWindowMenuItem>
-        <MobileWindowMenuItem onClick={() => onClick('Back')} isEven>
-          {getIcon('Folder')}
-          <MobileMenuItemLabel>Back-End</MobileMenuItemLabel>
-        </MobileWindowMenuItem>
-        <MobileWindowMenuItem onClick={() => onClick('Mobile')}>
-          {getIcon('Folder')}
-          <MobileMenuItemLabel>Mobile</MobileMenuItemLabel>
-        </MobileWindowMenuItem>
-        <MobileWindowMenuItem onClick={() => onClick('Programming')} isEven>
-          {getIcon('CodeFile', 48)}
-          <MobileMenuItemLabel>Programming Language</MobileMenuItemLabel>
-        </MobileWindowMenuItem>
-      </>
-    );
-  }
-);
+const MobileSkillsWindowMenu: React.FC<MobileWindowMenuProps> = React.memo(({ onClick }) => {
+  return (
+    <>
+      <MobileWindowMenuItem onClick={() => onClick("Front")}>
+        {getIcon("Folder")}
+        <MobileMenuItemLabel>Front-End</MobileMenuItemLabel>
+      </MobileWindowMenuItem>
+      <MobileWindowMenuItem onClick={() => onClick("Back")} isEven>
+        {getIcon("Folder")}
+        <MobileMenuItemLabel>Back-End</MobileMenuItemLabel>
+      </MobileWindowMenuItem>
+      <MobileWindowMenuItem onClick={() => onClick("Mobile")}>
+        {getIcon("Folder")}
+        <MobileMenuItemLabel>Mobile</MobileMenuItemLabel>
+      </MobileWindowMenuItem>
+      <MobileWindowMenuItem onClick={() => onClick("Programming")} isEven>
+        {getIcon("CodeFile", 48)}
+        <MobileMenuItemLabel>Programming Language</MobileMenuItemLabel>
+      </MobileWindowMenuItem>
+    </>
+  );
+});
 
 const MobileSkillsWindow: React.FC = () => {
   const { width, height } = useScreenSize();
-  const { focusedWindow, setFocusedWindow } = useWindowsStore((state) => state);
+  const { focusedWindow, setFocusedWindow } = useWindowsStore(state => state);
 
   const skillsRef = React.useRef<any>();
 
@@ -62,15 +53,14 @@ const MobileSkillsWindow: React.FC = () => {
     width: 500,
     height: 300,
   });
-  const [skillsPosition, setSkillsPosition] =
-    React.useState<WindowPositionSetting>({
-      x: 60,
-      y: 60,
-    });
+  const [skillsPosition, setSkillsPosition] = React.useState<WindowPositionSetting>({
+    x: 60,
+    y: 60,
+  });
   const [skillsPrevSetting, setSkillsPrevSetting] = React.useState<
     (WindowSizeSetting & WindowPositionSetting) | null
   >(null);
-  const [index, setIndex] = React.useState<SkillsIndexType>('Menu');
+  const [index, setIndex] = React.useState<SkillsIndexType>("Menu");
   const [isMobileWindow, setIsMobileWindow] = React.useState(false);
 
   React.useEffect(() => {
@@ -94,7 +84,7 @@ const MobileSkillsWindow: React.FC = () => {
     (name: SkillsIndexType) => {
       setIndex(name);
     },
-    [setIndex]
+    [setIndex],
   );
 
   return (
@@ -106,9 +96,9 @@ const MobileSkillsWindow: React.FC = () => {
       dragHandleClassName="topbar"
       minWidth={isMobileWindow ? width : 525}
       minHeight={300}
-      style={{ zIndex: focusedWindow === 'Skills' ? 10 : undefined }}
+      style={{ zIndex: focusedWindow === "Skills" ? 10 : undefined }}
       onDragStart={(_e: any, _data: DraggableData) => {
-        setFocusedWindow('Skills');
+        setFocusedWindow("Skills");
       }}
       onDragStop={(_e: any, data: DraggableData) => {
         setSkillsPosition({ x: data.x, y: data.y });
@@ -118,7 +108,7 @@ const MobileSkillsWindow: React.FC = () => {
         _dir: any,
         ref: any,
         _delta: ResizableDelta,
-        position: Position
+        position: Position,
       ) => {
         setSkillsSize({
           width: ref.style.width,
@@ -141,14 +131,14 @@ const MobileSkillsWindow: React.FC = () => {
       <MobileWindowBody>
         <MobileSkillsNavbar index={index} onClick={handleClick} />
         <MobileBodyContent>
-          {index === 'Menu' ? (
+          {index === "Menu" ? (
             <MobileSkillsWindowMenu onClick={handleClick} />
           ) : (
-            <MobilePanel onClick={() => handleClick('Menu')}>
-              {index === 'Front' && <FrontEnd />}
-              {index === 'Back' && <BackEnd />}
-              {index === 'Mobile' && <Mobile />}
-              {index === 'Programming' && <ProgrammingLanguage />}
+            <MobilePanel onClick={() => handleClick("Menu")}>
+              {index === "Front" && <FrontEnd />}
+              {index === "Back" && <BackEnd />}
+              {index === "Mobile" && <Mobile />}
+              {index === "Programming" && <ProgrammingLanguage />}
             </MobilePanel>
           )}
         </MobileBodyContent>
