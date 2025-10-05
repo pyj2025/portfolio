@@ -1,61 +1,57 @@
-import React from 'react';
-import { DraggableData, Position, ResizableDelta } from 'react-rnd';
-import Info from '../../../components/about/Info';
-import Education from '../../../components/about/Education';
-import Experience from '../../../components/about/Experience';
-import WindowTopbar from '../../../components/WindowTopbar';
+import React from "react";
+import { DraggableData, Position, ResizableDelta } from "react-rnd";
 import {
-  AboutIndexType,
-  WindowPositionSetting,
-  WindowSizeSetting,
-} from '../../../types';
-import useScreenSize, { TABLET_MAX_WIDTH } from '../../../utils/useScreenSize';
+  Certifications,
+  Education,
+  Experience,
+  GenAIFundamentals,
+  Info,
+} from "../../../components/about";
+import WindowTopbar from "../../../components/WindowTopbar";
+import { AboutIndexType, WindowPositionSetting, WindowSizeSetting } from "../../../types";
+import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
 import {
   MobileBodyContent,
   MobileMenuItemLabel,
   MobileWindowBody,
   MobileWindowMenuItem,
   Window,
-} from '../../../GlobalStyle';
-import { getIcon } from '../../../components/getIcon';
-import useWindowsStore from '../../../utils/useWindowsStore';
-import MobileAboutNavbar from '../../../components/about/MobileAboutNavbar';
-import MobilePanel from '../../../components/MobilePanel';
-import Certifications from '../../../components/about/Certifications';
-import GenAIFundamentals from '../../../components/about/certification/GenAIFundamentals';
+} from "../../../GlobalStyle";
+import { getIcon } from "../../../components/getIcon";
+import useWindowsStore from "../../../utils/useWindowsStore";
+import MobileAboutNavbar from "../../../components/about/MobileAboutNavbar";
+import MobilePanel from "../../../components/MobilePanel";
 
 type MobileAboutWindowMenuProps = {
   onClick: (index: AboutIndexType) => void;
 };
 
-const MobileAboutWindowMenu: React.FC<MobileAboutWindowMenuProps> = React.memo(
-  ({ onClick }) => {
-    return (
-      <>
-        <MobileWindowMenuItem onClick={() => onClick('Info')}>
-          {getIcon('File')}
-          <MobileMenuItemLabel>About</MobileMenuItemLabel>
-        </MobileWindowMenuItem>
-        <MobileWindowMenuItem onClick={() => onClick('Experience')} isEven>
-          {getIcon('Folder')}
-          <MobileMenuItemLabel>Experience</MobileMenuItemLabel>
-        </MobileWindowMenuItem>
-        <MobileWindowMenuItem onClick={() => onClick('Education')}>
-          {getIcon('File')}
-          <MobileMenuItemLabel>Education</MobileMenuItemLabel>
-        </MobileWindowMenuItem>
-        <MobileWindowMenuItem onClick={() => onClick('Certifications')} isEven>
-          {getIcon('Folder')}
-          <MobileMenuItemLabel>Certifications</MobileMenuItemLabel>
-        </MobileWindowMenuItem>
-      </>
-    );
-  }
-);
+const MobileAboutWindowMenu: React.FC<MobileAboutWindowMenuProps> = React.memo(({ onClick }) => {
+  return (
+    <>
+      <MobileWindowMenuItem onClick={() => onClick("Info")}>
+        {getIcon("File")}
+        <MobileMenuItemLabel>About</MobileMenuItemLabel>
+      </MobileWindowMenuItem>
+      <MobileWindowMenuItem onClick={() => onClick("Experience")} isEven>
+        {getIcon("Folder")}
+        <MobileMenuItemLabel>Experience</MobileMenuItemLabel>
+      </MobileWindowMenuItem>
+      <MobileWindowMenuItem onClick={() => onClick("Education")}>
+        {getIcon("File")}
+        <MobileMenuItemLabel>Education</MobileMenuItemLabel>
+      </MobileWindowMenuItem>
+      <MobileWindowMenuItem onClick={() => onClick("Certifications")} isEven>
+        {getIcon("Folder")}
+        <MobileMenuItemLabel>Certifications</MobileMenuItemLabel>
+      </MobileWindowMenuItem>
+    </>
+  );
+});
 
 const MobileAboutWindow: React.FC = () => {
   const { width, height } = useScreenSize();
-  const { focusedWindow, setFocusedWindow } = useWindowsStore((state) => state);
+  const { focusedWindow, setFocusedWindow } = useWindowsStore(state => state);
 
   const aboutRef = React.useRef<any>();
 
@@ -63,17 +59,16 @@ const MobileAboutWindow: React.FC = () => {
     width: 500,
     height: 300,
   });
-  const [aboutPosition, setAboutPosition] =
-    React.useState<WindowPositionSetting>({
-      x: 20,
-      y: 20,
-    });
+  const [aboutPosition, setAboutPosition] = React.useState<WindowPositionSetting>({
+    x: 20,
+    y: 20,
+  });
 
   const [aboutPrevSetting, setAboutPrevSetting] = React.useState<
     (WindowSizeSetting & WindowPositionSetting) | null
   >(null);
 
-  const [index, setIndex] = React.useState<AboutIndexType>('Menu');
+  const [index, setIndex] = React.useState<AboutIndexType>("Menu");
   const [isMobileWindow, setIsMobileWindow] = React.useState<boolean>(false);
   const [showDate, setShowDate] = React.useState<boolean>(false);
 
@@ -107,7 +102,7 @@ const MobileAboutWindow: React.FC = () => {
     (name: AboutIndexType) => {
       setIndex(name);
     },
-    [setIndex]
+    [setIndex],
   );
 
   return (
@@ -119,9 +114,9 @@ const MobileAboutWindow: React.FC = () => {
       dragHandleClassName="topbar"
       minWidth={isMobileWindow ? width : 500}
       minHeight={300}
-      style={{ zIndex: focusedWindow === 'About' ? 10 : undefined }}
+      style={{ zIndex: focusedWindow === "About" ? 10 : undefined }}
       onDragStart={(_e: any, _data: DraggableData) => {
-        setFocusedWindow('About');
+        setFocusedWindow("About");
       }}
       onDragStop={(_e: any, data: DraggableData) => {
         setAboutPosition({ x: data.x, y: data.y });
@@ -131,14 +126,10 @@ const MobileAboutWindow: React.FC = () => {
         _dir: any,
         ref: any,
         _delta: ResizableDelta,
-        position: Position
+        position: Position,
       ) => {
-        const newWidth = Number(
-          ref.style.width.substring(0, ref.style.width.indexOf('p'))
-        );
-        const newHeight = Number(
-          ref.style.height.substring(0, ref.style.height.indexOf('p'))
-        );
+        const newWidth = Number(ref.style.width.substring(0, ref.style.width.indexOf("p")));
+        const newHeight = Number(ref.style.height.substring(0, ref.style.height.indexOf("p")));
         setAboutSize({
           width: newWidth,
           height: newHeight,
@@ -160,19 +151,17 @@ const MobileAboutWindow: React.FC = () => {
       <MobileWindowBody>
         <MobileAboutNavbar index={index} onClick={handleClick} />
         <MobileBodyContent>
-          {index === 'Menu' ? (
+          {index === "Menu" ? (
             <MobileAboutWindowMenu onClick={handleClick} />
           ) : (
-            <MobilePanel onClick={() => handleClick('Menu')}>
-              {index === 'Info' && <Info />}
-              {index === 'Experience' && (
+            <MobilePanel onClick={() => handleClick("Menu")}>
+              {index === "Info" && <Info />}
+              {index === "Experience" && (
                 <Experience isMobile={isMobileWindow} showDate={showDate} />
               )}
-              {index === 'Education' && <Education />}
-              {index === 'Certifications' && (
-                <Certifications toggleIndex={setIndex} />
-              )}
-              {index === 'GenAI' && <GenAIFundamentals />}
+              {index === "Education" && <Education />}
+              {index === "Certifications" && <Certifications toggleIndex={setIndex} />}
+              {index === "GenAI" && <GenAIFundamentals />}
             </MobilePanel>
           )}
         </MobileBodyContent>
