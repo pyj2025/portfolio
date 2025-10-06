@@ -1,7 +1,7 @@
 import React from "react";
-import info from "../../info.json";
+import info from "../../../info.json";
 import MovieNextLogo from "../../image/projects/Movie.png";
-import ProjectDescriptionTable from "./ProjectDescriptionTable";
+import ProjectDescriptionTable from "../ProjectDescriptionTable";
 
 const MovieNext: React.FC = () => {
   return (

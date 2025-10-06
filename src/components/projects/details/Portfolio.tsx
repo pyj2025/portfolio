@@ -1,7 +1,7 @@
 import React from "react";
-import info from "../../info.json";
-import { getIcon } from "../getIcon";
-import ProjectDescriptionTable from "./ProjectDescriptionTable";
+import info from "../../../info.json";
+import { getIcon } from "../../getIcon";
+import ProjectDescriptionTable from "../ProjectDescriptionTable";
 
 const Portfolio: React.FC = () => {
   return (
