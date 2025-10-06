@@ -1,0 +1,11 @@
+export { default as DatApex } from "./details/DatApex";
+export { default as Flix } from "./details/Flix";
+export { default as Foodie } from "./details/Foodie";
+export { default as GitCard } from "./details/GitCard";
+export { default as MovieNext } from "./details/MovieNext";
+export { default as Parstagram } from "./details/Parstagram";
+export { default as Portfolio } from "./details/Portfolio";
+export { default as Tippy } from "./details/Tippy";
+export { default as ToonFlix } from "./details/ToonFlix";
+export { default as Twitter } from "./details/Twitter";
+export { default as WebGame } from "./details/WebGame";

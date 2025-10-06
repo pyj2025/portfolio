@@ -1,17 +1,19 @@
-import GitCard from './GitCard';
-import DatApex from './DatApex';
-import Portfolio from './Portfolio';
-import Foodie from './Foodie';
-import Tippy from './Tippy';
-import Flix from './Flix';
-import Twitter from './Twitter';
-import Parstagram from './Parstagram';
-import ToonFlix from './ToonFlix';
-import { MobileProjects, Projects, WebProjects } from './Projects';
-import { ProjectIndexType } from '../../types';
-import WebGame from './WebGame';
-import MovieNext from './MovieNext';
-import { WindowBodyContent } from '../../GlobalStyle';
+import {
+  DatApex,
+  Flix,
+  Foodie,
+  GitCard,
+  MovieNext,
+  Parstagram,
+  Portfolio,
+  Tippy,
+  ToonFlix,
+  Twitter,
+  WebGame,
+} from ".";
+import { MobileProjects, Projects, WebProjects } from "./Projects";
+import { ProjectIndexType } from "../../types";
+import { WindowBodyContent } from "../../GlobalStyle";
 
 type WithClickComponent = React.ComponentType<{
   click: (name: ProjectIndexType) => void;
@@ -43,10 +45,7 @@ interface ProjectsContentProps {
   onClick: (name: ProjectIndexType) => void;
 }
 
-const ProjectsContent: React.FC<ProjectsContentProps> = ({
-  index,
-  onClick,
-}) => {
+const ProjectsContent: React.FC<ProjectsContentProps> = ({ index, onClick }) => {
   if (index in PROJECTS_WITH_CLICK) {
     const Component = PROJECTS_WITH_CLICK[index];
     return (

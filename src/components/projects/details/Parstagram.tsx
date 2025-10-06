@@ -1,7 +1,7 @@
 import React from "react";
-import info from "../../info.json";
+import info from "../../../info.json";
 import ParstagramLogo from "../../image/projects/Parstagram.png";
-import ProjectDescriptionTable from "./ProjectDescriptionTable";
+import ProjectDescriptionTable from "../ProjectDescriptionTable";
 
 const Parstagram: React.FC = () => {
   return (
