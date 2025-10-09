@@ -1,6 +1,6 @@
 import React from "react";
 import useScreenSize from "../../utils/useScreenSize";
-import MobileTopBar from "../topbar/MobileTopBar";
+import { MobileTopBar } from "../topbar";
 import MobileBodyContent from "../MobileBodyContent";
 import MobileMenu from "../dock/MobileMenu";
 
