@@ -2,7 +2,7 @@ import React from "react";
 import useScreenSize from "../../utils/useScreenSize";
 import { MobileTopBar } from "../topbar";
 import MobileBodyContent from "../MobileBodyContent";
-import MobileMenu from "../dock/MobileMenu";
+import { MobileDockMenu } from "../dock";
 
 const MobileLayout: React.FC = () => {
   const { width, height } = useScreenSize();
@@ -11,7 +11,7 @@ const MobileLayout: React.FC = () => {
     <div className="flex flex-col" style={{ width: `${width}px`, height: `${height}px` }}>
       <MobileTopBar />
       <MobileBodyContent />
-      <MobileMenu />
+      <MobileDockMenu />
     </div>
   );
 };

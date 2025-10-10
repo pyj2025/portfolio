@@ -16,7 +16,7 @@ const ExternalLinkMenuItemStyle =
 
 const IconStyle = "absolute h-1 w-1 pt-14 text-gray-400";
 
-const Menu: React.FC = () => {
+const DockMenu: React.FC = () => {
   const { isAboutMinimized, openAbout } = useAboutStore(state => state);
   const { isSkillsMinimized, openSkills } = useSkillsStore(state => state);
   const { isProjectsMinimized, openProjects } = useProjectsStore(state => state);
@@ -102,4 +102,4 @@ const Menu: React.FC = () => {
   );
 };
 
-export default Menu;
+export default DockMenu;
