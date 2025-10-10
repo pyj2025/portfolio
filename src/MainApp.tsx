@@ -1,8 +1,7 @@
 import React from "react";
 import { isMobile, isTablet } from "react-device-detect";
 import useScreenSize, { TABLET_MAX_WIDTH } from "./utils/useScreenSize";
-import DesktopLayout from "./components/layout/DesktopLayout";
-import MobileLayout from "./components/layout/MobileLayout";
+import { DesktopLayout, MobileLayout } from "./components/layout";
 
 const MainApp: React.FC = () => {
   const { width } = useScreenSize();

@@ -2,7 +2,7 @@ import React from "react";
 import useScreenSize from "../../utils/useScreenSize";
 import { DesktopTopBar } from "../topbar";
 import BodyContent from "../BodyContent";
-import Menu from "../dock/Menu";
+import { DockMenu } from "../dock";
 
 const DesktopLayout: React.FC = () => {
   const { width, height } = useScreenSize();
@@ -17,7 +17,7 @@ const DesktopLayout: React.FC = () => {
     >
       <DesktopTopBar />
       <BodyContent />
-      <Menu />
+      <DockMenu />
     </div>
   );
 };
