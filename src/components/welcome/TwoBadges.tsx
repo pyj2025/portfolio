@@ -1,5 +1,5 @@
 import React from "react";
-import ArrowBadge from "./ArrowBadge";
+import { ArrowBadge } from ".";
 
 type TwoBadgesProps = {
   directory: string;
