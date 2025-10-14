@@ -1,47 +1,27 @@
-import React from 'react';
-import { DraggableData, Position, ResizableDelta } from 'react-rnd';
-import WindowTopbar from '../../../components/WindowTopbar';
-import {
-  MobileBodyContent,
-  MobileWindowBody,
-  Window,
-} from '../../../GlobalStyle';
-import {
-  ProjectIndexType,
-  WindowPositionSetting,
-  WindowSizeSetting,
-} from '../../../types';
-import useScreenSize, { TABLET_MAX_WIDTH } from '../../../utils/useScreenSize';
-import ProjectsContent from '../../../components/projects/ProjectsContent';
-import useWindowsStore from '../../../utils/useWindowsStore';
-import MobileProjectsNavbar from '../../../components/projects/MobileProjectsNavbar';
-import MobilePanel from '../../../components/MobilePanel';
+import React from "react";
+import { DraggableData, Position, ResizableDelta } from "react-rnd";
+import { MobileBodyContent, MobileWindowBody, Window } from "../../../GlobalStyle";
+import { ProjectIndexType, WindowPositionSetting, WindowSizeSetting } from "../../../types";
+import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
+import ProjectsContent from "../../../components/projects/ProjectsContent";
+import useWindowsStore from "../../../utils/useWindowsStore";
+import MobileProjectsNavbar from "../../../components/projects/MobileProjectsNavbar";
+import { MobilePanel, WindowTopbar } from "../../../components";
 
-const MAIN_PROJECT_VIEWS = [
-  'Projects',
-  'WebProjects',
-  'MobileProjects',
-] as const;
-const WEB_PROJECTS = ['GitCard', 'DatApex', 'MovieNext', 'Portfolio'] as const;
+const MAIN_PROJECT_VIEWS = ["Projects", "WebProjects", "MobileProjects"] as const;
+const WEB_PROJECTS = ["GitCard", "DatApex", "MovieNext", "Portfolio"] as const;
 
 interface MobileProjectsContentProps {
   index: ProjectIndexType;
   onClick: (name: ProjectIndexType) => void;
 }
 
-const MobileProjectsContent: React.FC<MobileProjectsContentProps> = ({
-  index,
-  onClick,
-}) => {
-  const isMainView = MAIN_PROJECT_VIEWS.includes(
-    index as (typeof MAIN_PROJECT_VIEWS)[number]
-  );
+const MobileProjectsContent: React.FC<MobileProjectsContentProps> = ({ index, onClick }) => {
+  const isMainView = MAIN_PROJECT_VIEWS.includes(index as (typeof MAIN_PROJECT_VIEWS)[number]);
 
   const handleBackClick = () => {
-    const isWebProject = WEB_PROJECTS.includes(
-      index as (typeof WEB_PROJECTS)[number]
-    );
-    onClick(isWebProject ? 'WebProjects' : 'MobileProjects');
+    const isWebProject = WEB_PROJECTS.includes(index as (typeof WEB_PROJECTS)[number]);
+    onClick(isWebProject ? "WebProjects" : "MobileProjects");
   };
 
   return (
@@ -59,7 +39,7 @@ const MobileProjectsContent: React.FC<MobileProjectsContentProps> = ({
 
 const MobileProjectsWindow: React.FC = () => {
   const { width, height } = useScreenSize();
-  const { focusedWindow, setFocusedWindow } = useWindowsStore((state) => state);
+  const { focusedWindow, setFocusedWindow } = useWindowsStore(state => state);
 
   const projectsRef = React.useRef<any>();
 
@@ -67,16 +47,15 @@ const MobileProjectsWindow: React.FC = () => {
     width: 500,
     height: 300,
   });
-  const [projectsPosition, setProjectsPosition] =
-    React.useState<WindowPositionSetting>({
-      x: 100,
-      y: 100,
-    });
+  const [projectsPosition, setProjectsPosition] = React.useState<WindowPositionSetting>({
+    x: 100,
+    y: 100,
+  });
 
   const [projectsPrevSetting, setProjectsPrevSetting] = React.useState<
     (WindowSizeSetting & WindowPositionSetting) | null
   >(null);
-  const [index, setIndex] = React.useState<ProjectIndexType>('Projects');
+  const [index, setIndex] = React.useState<ProjectIndexType>("Projects");
   const [isMobileWindow, setIsMobileWindow] = React.useState(false);
 
   React.useEffect(() => {
@@ -100,7 +79,7 @@ const MobileProjectsWindow: React.FC = () => {
     (name: ProjectIndexType) => {
       setIndex(name);
     },
-    [setIndex]
+    [setIndex],
   );
 
   return (
@@ -112,9 +91,9 @@ const MobileProjectsWindow: React.FC = () => {
       dragHandleClassName="topbar"
       minWidth={isMobileWindow ? width : 525}
       minHeight={300}
-      style={{ zIndex: focusedWindow === 'Projects' ? 10 : undefined }}
+      style={{ zIndex: focusedWindow === "Projects" ? 10 : undefined }}
       onDragStart={(_e: any, _data: DraggableData) => {
-        setFocusedWindow('Projects');
+        setFocusedWindow("Projects");
       }}
       onDragStop={(_e: any, data: DraggableData) => {
         setProjectsPosition({ x: data.x, y: data.y });
@@ -124,7 +103,7 @@ const MobileProjectsWindow: React.FC = () => {
         _dir: any,
         ref: any,
         _delta: ResizableDelta,
-        position: Position
+        position: Position,
       ) => {
         setProjectsSize({
           width: ref.style.width,

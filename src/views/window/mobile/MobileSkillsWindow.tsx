@@ -9,12 +9,11 @@ import {
   Window,
 } from "../../../GlobalStyle";
 import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
-import WindowTopbar from "../../../components/WindowTopbar";
 import { BackEnd, FrontEnd, Mobile, ProgrammingLanguage } from "../../../components/skills";
 import { getIcon } from "../../../components/getIcon";
 import useWindowsStore from "../../../utils/useWindowsStore";
 import MobileSkillsNavbar from "../../../components/skills/MobileSkillsNavbar";
-import MobilePanel from "../../../components/MobilePanel";
+import { MobilePanel, WindowTopbar } from "../../../components";
 
 type MobileWindowMenuProps = {
   onClick: (index: SkillsIndexType) => void;

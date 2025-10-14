@@ -1,20 +1,16 @@
-import React from 'react';
-import { DraggableData, Position, ResizableDelta } from 'react-rnd';
-import { Window, WindowBody } from '../../../GlobalStyle';
-import {
-  ProjectIndexType,
-  WindowPositionSetting,
-  WindowSizeSetting,
-} from '../../../types';
-import useScreenSize, { TABLET_MAX_WIDTH } from '../../../utils/useScreenSize';
-import ProjectsContent from '../../../components/projects/ProjectsContent';
-import WindowTopbar from '../../../components/WindowTopbar';
-import useWindowsStore from '../../../utils/useWindowsStore';
-import ProjectsNavbar from '../../../components/projects/ProjectsNavbar';
+import React from "react";
+import { DraggableData, Position, ResizableDelta } from "react-rnd";
+import { Window, WindowBody } from "../../../GlobalStyle";
+import { ProjectIndexType, WindowPositionSetting, WindowSizeSetting } from "../../../types";
+import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
+import ProjectsContent from "../../../components/projects/ProjectsContent";
+import { WindowTopbar } from "../../../components";
+import useWindowsStore from "../../../utils/useWindowsStore";
+import ProjectsNavbar from "../../../components/projects/ProjectsNavbar";
 
 const ProjectsWindow: React.FC = () => {
   const { width, height } = useScreenSize();
-  const { focusedWindow, setFocusedWindow } = useWindowsStore((state) => state);
+  const { focusedWindow, setFocusedWindow } = useWindowsStore(state => state);
 
   const projectsRef = React.useRef<any>();
 
@@ -22,16 +18,15 @@ const ProjectsWindow: React.FC = () => {
     width: 500,
     height: 300,
   });
-  const [projectsPosition, setProjectsPosition] =
-    React.useState<WindowPositionSetting>({
-      x: 100,
-      y: 100,
-    });
+  const [projectsPosition, setProjectsPosition] = React.useState<WindowPositionSetting>({
+    x: 100,
+    y: 100,
+  });
 
   const [projectsPrevSetting, setProjectsPrevSetting] = React.useState<
     (WindowSizeSetting & WindowPositionSetting) | null
   >(null);
-  const [index, setIndex] = React.useState<ProjectIndexType>('Projects');
+  const [index, setIndex] = React.useState<ProjectIndexType>("Projects");
   const [isMobileWindow, setIsMobileWindow] = React.useState(false);
 
   React.useEffect(() => {
@@ -52,14 +47,14 @@ const ProjectsWindow: React.FC = () => {
   }, [width]);
 
   const focusProjectsWindow = React.useCallback(() => {
-    setFocusedWindow('Projects');
+    setFocusedWindow("Projects");
   }, [setFocusedWindow]);
 
   const handleClick = React.useCallback(
     (name: ProjectIndexType) => {
       setIndex(name);
     },
-    [setIndex]
+    [setIndex],
   );
 
   return (
@@ -71,7 +66,7 @@ const ProjectsWindow: React.FC = () => {
       dragHandleClassName="topbar"
       minWidth={isMobileWindow ? width : 525}
       minHeight={300}
-      style={{ zIndex: focusedWindow === 'Projects' ? 10 : undefined }}
+      style={{ zIndex: focusedWindow === "Projects" ? 10 : undefined }}
       onDragStart={(_e: any, _data: DraggableData) => {
         focusProjectsWindow();
       }}
@@ -83,7 +78,7 @@ const ProjectsWindow: React.FC = () => {
         _dir: any,
         ref: any,
         _delta: ResizableDelta,
-        position: Position
+        position: Position,
       ) => {
         setProjectsSize({
           width: ref.style.width,

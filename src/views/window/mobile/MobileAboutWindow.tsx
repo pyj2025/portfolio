@@ -7,7 +7,6 @@ import {
   GenAIFundamentals,
   Info,
 } from "../../../components/about";
-import WindowTopbar from "../../../components/WindowTopbar";
 import { AboutIndexType, WindowPositionSetting, WindowSizeSetting } from "../../../types";
 import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
 import {
@@ -20,7 +19,7 @@ import {
 import { getIcon } from "../../../components/getIcon";
 import useWindowsStore from "../../../utils/useWindowsStore";
 import MobileAboutNavbar from "../../../components/about/MobileAboutNavbar";
-import MobilePanel from "../../../components/MobilePanel";
+import { MobilePanel, WindowTopbar } from "../../../components";
 
 type MobileAboutWindowMenuProps = {
   onClick: (index: AboutIndexType) => void;

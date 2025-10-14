@@ -3,7 +3,7 @@ import { DraggableData, Position, ResizableDelta } from "react-rnd";
 import { SkillsIndexType, WindowPositionSetting, WindowSizeSetting } from "../../../types";
 import { Window, WindowBody, WindowBodyContent } from "../../../GlobalStyle";
 import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
-import WindowTopbar from "../../../components/WindowTopbar";
+import { WindowTopbar } from "../../../components";
 import useWindowsStore from "../../../utils/useWindowsStore";
 import { BackEnd, FrontEnd, Mobile, ProgrammingLanguage } from "../../../components/skills";
 import SkillsNavbar from "../../../components/skills/SkillsNavbar";
