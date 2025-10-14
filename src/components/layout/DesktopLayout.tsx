@@ -1,7 +1,7 @@
 import React from "react";
 import useScreenSize from "../../utils/useScreenSize";
+import { BodyContent } from "..";
 import { DesktopTopBar } from "../topbar";
-import BodyContent from "../BodyContent";
 import { DockMenu } from "../dock";
 
 const DesktopLayout: React.FC = () => {

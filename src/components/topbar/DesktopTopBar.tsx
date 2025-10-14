@@ -2,7 +2,7 @@ import "rc-menu/assets/index.css";
 
 import React from "react";
 import Menu, { Divider, MenuItem } from "rc-menu";
-import Clock from "../Clock";
+import { Clock } from "..";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { BoldText, MutedText } from "../../GlobalStyle";
