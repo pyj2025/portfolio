@@ -1,6 +1,6 @@
 import React from "react";
 import info from "../../../info.json";
-import TwitterLogo from "../../image/projects/Twitter.png";
+import TwitterLogo from "../../../image/projects/Twitter.png";
 import ProjectDescriptionTable from "../ProjectDescriptionTable";
 
 const Twitter: React.FC = () => {

@@ -1,6 +1,6 @@
 import React from "react";
 import info from "../../../info.json";
-import GitCardLogo from "../../image/projects/GitCard.png";
+import GitCardLogo from "../../../image/projects/GitCard.png";
 import ProjectDescriptionTable from "../ProjectDescriptionTable";
 
 const GitCard: React.FC = () => {

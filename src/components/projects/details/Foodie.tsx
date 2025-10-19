@@ -1,6 +1,6 @@
 import React from "react";
 import info from "../../../info.json";
-import FoodieLogo from "../../image/projects/Foodie.png";
+import FoodieLogo from "../../../image/projects/Foodie.png";
 import ProjectDescriptionTable from "../ProjectDescriptionTable";
 
 const Foodie: React.FC = () => {

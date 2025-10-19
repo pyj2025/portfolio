@@ -1,6 +1,6 @@
 import React from "react";
 import info from "../../../info.json";
-import DatApexLogo from "../../image/projects/DatApex.png";
+import DatApexLogo from "../../../image/projects/DatApex.png";
 import ProjectDescriptionTable from "../ProjectDescriptionTable";
 
 const DatApex: React.FC = () => {
