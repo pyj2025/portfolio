@@ -9,9 +9,32 @@ import gmail from '../image/icons/gmail.png';
 import file from '../image/icons/file.png';
 import codeFile from '../image/icons/codeFile.png';
 import terminal from '../image/icons/terminal.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import {
+  faFolder,
+  faFileAlt,
+  faFileCode,
+} from '@fortawesome/free-solid-svg-icons';
 import { MobileNavbarMenu } from '../GlobalStyle';
 
 export const SMALL_ICON_SIZE = 16;
+
+type NavIconType = 'File' | 'Folder' | 'CodeFile';
+
+const NAV_ICON_MAP: Record<NavIconType, IconProp> = {
+  File: faFileAlt as IconProp,
+  Folder: faFolder as IconProp,
+  CodeFile: faFileCode as IconProp,
+};
+
+export const getNavIcon = (icon: NavIconType, focused: boolean) => (
+  <FontAwesomeIcon
+    icon={NAV_ICON_MAP[icon]}
+    className={focused ? 'text-white' : 'text-[#0a84ff]'}
+    style={{ fontSize: 14 }}
+  />
+);
 
 export type IconType =
   | 'About'

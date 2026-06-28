@@ -2,10 +2,11 @@ import React from 'react';
 import { ProjectIndexType } from '../../types';
 import {
   NavItmLabel,
+  NavSectionLabel,
   WindowBodyNavItm,
   WindowBodyNavbar,
 } from '../../GlobalStyle';
-import { SMALL_ICON_SIZE, getIcon } from '../getIcon';
+import { getNavIcon } from '../getIcon';
 
 type ProjectCategory = {
   id: ProjectIndexType;
@@ -62,6 +63,7 @@ const ProjectsNavbar: React.FC<ProjectsNavbarProps> = ({ index, onClick }) => {
 
   return (
     <WindowBodyNavbar>
+      <NavSectionLabel>Favorites</NavSectionLabel>
       {PROJECT_CATEGORIES.map((category, idx) => (
         <WindowBodyNavItm
           key={category.id}
@@ -70,7 +72,7 @@ const ProjectsNavbar: React.FC<ProjectsNavbarProps> = ({ index, onClick }) => {
           focus={isFocused(category)}
           isChild={category.isChild}
         >
-          {getIcon('Folder', SMALL_ICON_SIZE)}
+          {getNavIcon('Folder', isFocused(category))}
           <NavItmLabel>{category.label}</NavItmLabel>
         </WindowBodyNavItm>
       ))}

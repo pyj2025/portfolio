@@ -2,10 +2,11 @@ import React from 'react';
 import { SkillsIndexType } from '../../types';
 import {
   NavItmLabel,
+  NavSectionLabel,
   WindowBodyNavItm,
   WindowBodyNavbar,
 } from '../../GlobalStyle';
-import { SMALL_ICON_SIZE, getIcon } from '../getIcon';
+import { getNavIcon } from '../getIcon';
 
 type NavItem = {
   id: SkillsIndexType;
@@ -49,6 +50,7 @@ type SkillsNavbarProps = {
 const SkillsNavbar: React.FC<SkillsNavbarProps> = ({ index, onClick }) => {
   return (
     <WindowBodyNavbar>
+      <NavSectionLabel>Favorites</NavSectionLabel>
       {NAV_ITEMS.map((item, idx) => (
         <WindowBodyNavItm
           key={item.id}
@@ -57,7 +59,7 @@ const SkillsNavbar: React.FC<SkillsNavbarProps> = ({ index, onClick }) => {
           focus={index === item.id}
           title={item.title}
         >
-          {getIcon(item.icon, SMALL_ICON_SIZE)}
+          {getNavIcon(item.icon, index === item.id)}
           <NavItmLabel>{item.label}</NavItmLabel>
         </WindowBodyNavItm>
       ))}
