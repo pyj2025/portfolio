@@ -1,10 +1,10 @@
 import React from "react";
-import styled from "styled-components";
 
 import { Slide, toast, ToastContainer } from "react-toastify";
 import { browserName, isBrowser, isMobile } from "react-device-detect";
 import useScreenSize, { MOBILE_MAX_WIDTH } from "../utils/useScreenSize";
-import { MobileAppMenu, WindowsContent } from ".";
+import MobileAppMenu from "./MobileAppMenu";
+import WindowsContent from "./WindowsContent";
 import MobileWelcomeWindow from "../views/window/mobile/MobileWelcomeWindow";
 import MobileAboutWindow from "../views/window/mobile/MobileAboutWindow";
 import MobileSkillsWindow from "../views/window/mobile/MobileSkillsWindow";
@@ -14,13 +14,6 @@ import useAboutStore from "../utils/useAboutStore";
 import useSkillsStore from "../utils/useSkillsStore";
 import useProjectsStore from "../utils/useProjectsStore";
 import "react-toastify/dist/ReactToastify.css";
-
-const Container = styled.div`
-  width: 100%;
-  height: calc(100vh - 25px - 80px);
-  background-color: transparent;
-  color: white;
-`;
 
 const MobileBodyContent: React.FC = () => {
   const isWelcomeWindowOpen = useWindowsStore(state => state.isWelcomeWindowOpen);
@@ -63,7 +56,7 @@ const MobileBodyContent: React.FC = () => {
   };
 
   return (
-    <Container>
+    <div className="w-full h-[calc(100vh-25px-80px)] bg-transparent text-white">
       <ToastContainer
         position={checkMobile ? "top-center" : "top-right"}
         autoClose={5000}
@@ -78,7 +71,7 @@ const MobileBodyContent: React.FC = () => {
       />
       <MobileAppMenu />
       {renderContent()}
-    </Container>
+    </div>
   );
 };
 

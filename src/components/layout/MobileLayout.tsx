@@ -1,9 +1,8 @@
 import React from "react";
 import useScreenSize from "../../utils/useScreenSize";
 import { MobileTopBar } from "../topbar";
-// import MobileBodyContent from "../MobileBodyContent";
 import { MobileDockMenu } from "../dock";
-import { MobileBodyContent } from "..";
+import MobileBodyContent from "../MobileBodyContent";
 
 const MobileLayout: React.FC = () => {
   const { width, height } = useScreenSize();

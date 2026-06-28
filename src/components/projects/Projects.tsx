@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import FoodieLogo from '../../image/projects/Foodie.png';
 import GitCardLogo from '../../image/projects/GitCard.png';
 import DatApexLogo from '../../image/projects/DatApex.png';
@@ -11,33 +10,39 @@ import TwitterLogo from '../../image/projects/Twitter.png';
 
 const ICON_SIZE = 53;
 
-const IconListContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin: 10px;
-`;
+const IconListContainer: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => (
+  <div className="flex flex-row flex-wrap gap-2.5 m-2.5">{children}</div>
+);
 
-const IconContainer = styled.div<{ noWidth?: boolean }>`
-  display: flex;
-  flex-direction: column;
-  width: ${({ noWidth }) => (noWidth ? undefined : '60px')};
-  justify-content: center;
-  align-items: center;
-  padding: 2px;
-  cursor: pointer;
-`;
+interface IconContainerProps {
+  title: string;
+  onClick: () => void;
+  children: React.ReactNode;
+}
 
-const IconLogoImage = styled.img`
-  width: 3rem;
-  height: 3rem;
-  margin-bottom: 4px;
-`;
+const IconContainer: React.FC<IconContainerProps> = ({
+  title,
+  onClick,
+  children,
+}) => (
+  <div
+    title={title}
+    onClick={onClick}
+    className="flex flex-col w-[60px] justify-center items-center p-0.5 cursor-pointer"
+  >
+    {children}
+  </div>
+);
 
-const IconLabel = styled.div`
-  font-size: 0.75rem;
-`;
+const IconLogoImage: React.FC<{ src: string; alt: string }> = ({ src, alt }) => (
+  <img src={src} alt={alt} className="w-12 h-12 mb-1" />
+);
+
+const IconLabel: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <div className="text-xs">{children}</div>
+);
 
 interface ProjectsProps {
   click: (name: ProjectIndexType) => void;
@@ -83,7 +88,7 @@ export const WebProjects: React.FC<ProjectsProps> = React.memo(({ click }) => {
         {e.useIcon ? (
           getIcon('CodeFile', ICON_SIZE)
         ) : (
-          <IconLogoImage src={e.logo} alt={e.title} />
+          <IconLogoImage src={e.logo as string} alt={e.title} />
         )}
         <IconLabel>{e.title}</IconLabel>
       </IconContainer>
@@ -115,7 +120,7 @@ export const MobileProjects: React.FC<ProjectsProps> = React.memo(
           {e.useIcon ? (
             getIcon('CodeFile', ICON_SIZE)
           ) : (
-            <IconLogoImage src={e.logo} alt={e.title} />
+            <IconLogoImage src={e.logo as string} alt={e.title} />
           )}
           <IconLabel>{e.title}</IconLabel>
         </IconContainer>

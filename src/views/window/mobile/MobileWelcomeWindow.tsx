@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import { DraggableData, Rnd } from "react-rnd";
 import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
 import { WindowPositionSetting, WindowSizeSetting } from "../../../types";
@@ -11,28 +10,6 @@ import WelcomeTopbar from "../../../components/welcome/WelcomeTopbar";
 import TerminalFirstLine from "../../../components/welcome/line/TerminalFirstLine";
 import TerminalSecondLine from "../../../components/welcome/line/TerminalSecondLine";
 import TerminalThirdLine from "../../../components/welcome/line/TerminalThirdLine";
-
-const WelcomeWindowContainer = styled(Rnd)`
-  width: 100%;
-  display: grid;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
-  /* border-radius: 6px; */
-  box-shadow: 0px 0px 8px black;
-`;
-
-const WelcomeWindowBody = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  width: 100%;
-  height: calc(100% - 28px);
-  background-color: #282a36;
-  color: #ffffff;
-  /* border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px; */
-`;
 
 const MobileWelcomeWindow: React.FC = () => {
   const { width, height } = useScreenSize();
@@ -69,7 +46,8 @@ const MobileWelcomeWindow: React.FC = () => {
   }, [width, height]);
 
   return (
-    <WelcomeWindowContainer
+    <Rnd
+      className="w-full grid items-center justify-center bg-white shadow-[0px_0px_8px_black]"
       id="Welcome"
       ref={welcomeRef}
       size={{ width: windowSize.width, height: windowSize.height }}
@@ -81,7 +59,7 @@ const MobileWelcomeWindow: React.FC = () => {
       enableResizing={false}
     >
       <WelcomeTopbar />
-      <WelcomeWindowBody>
+      <div className="flex flex-col justify-start w-full h-[calc(100%-28px)] bg-[#282a36] text-white">
         <Loaded setFirstLine={setFirstLine} />
         {firstLine ? <TerminalFirstLine directory="~/" setSecondLine={setSecondLine} /> : null}
         {secondLine ? (
@@ -96,8 +74,8 @@ const MobileWelcomeWindow: React.FC = () => {
           <TerminalThirdLine directory="~/portfolio/" setThirdContent={setThirdContent} />
         ) : null}
         {thirdContent ? <Contact /> : null}
-      </WelcomeWindowBody>
-    </WelcomeWindowContainer>
+      </div>
+    </Rnd>
   );
 };
 

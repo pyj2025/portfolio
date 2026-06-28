@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import { Slide, toast, ToastContainer } from "react-toastify";
 import { browserName, isBrowser, isMobile } from "react-device-detect";
 import { WelcomeWindow, AboutWindow, SkillsWindow, ProjectsWindow } from "../views/window/desktop";
@@ -7,15 +6,8 @@ import useWindowsStore from "../utils/useWindowsStore";
 import useAboutStore from "../utils/useAboutStore";
 import useSkillsStore from "../utils/useSkillsStore";
 import useProjectsStore from "../utils/useProjectsStore";
-import { WindowsContent } from ".";
+import WindowsContent from "./WindowsContent";
 import "react-toastify/dist/ReactToastify.css";
-
-const Container = styled.div`
-  width: 100%;
-  height: calc(100% - 50px);
-  background-color: transparent;
-  color: white;
-`;
 
 const BodyContent: React.FC = () => {
   const isWelcomeWindowOpen = useWindowsStore(state => state.isWelcomeWindowOpen);
@@ -46,7 +38,7 @@ const BodyContent: React.FC = () => {
   };
 
   return (
-    <Container>
+    <div className="w-full h-[calc(100%-50px)] bg-transparent text-white">
       <ToastContainer
         position="top-right"
         autoClose={5000}
@@ -60,7 +52,7 @@ const BodyContent: React.FC = () => {
         draggablePercent={60}
       />
       {renderContent()}
-    </Container>
+    </div>
   );
 };
 

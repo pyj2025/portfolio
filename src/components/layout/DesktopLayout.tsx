@@ -1,6 +1,6 @@
 import React from "react";
 import useScreenSize from "../../utils/useScreenSize";
-import { BodyContent } from "..";
+import BodyContent from "../BodyContent";
 import { DesktopTopBar } from "../topbar";
 import { DockMenu } from "../dock";
 

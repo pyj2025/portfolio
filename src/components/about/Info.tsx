@@ -42,21 +42,9 @@ const Info: React.FC = () => {
 
             <tr>
               <td className={LabelContainerStyle}>
-                <span className={LabelTextStyle}>Phone</span>
+                <span className={LabelTextStyle}>Email</span>
               </td>
-              <td className={ValueTextStyle}>{info.about.info.phoneNumber}</td>
-            </tr>
-
-            <tr>
-              <td className={LabelContainerStyle}>
-                <span className={LabelTextStyle}>Address</span>
-              </td>
-              <td className={ValueTextStyle}>
-                <div>
-                  <div>{info.about.info.address.address}</div>
-                  <div>{`${info.about.info.address.city}, ${info.about.info.address.state}, ${info.about.info.address.postalCode}`}</div>
-                </div>
-              </td>
+              <td className={ValueTextStyle}>{info.about.info.email}</td>
             </tr>
           </tbody>
         </table>

@@ -5,46 +5,11 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import React from 'react';
-import styled from 'styled-components';
 import { BoldText, MutedText } from '../../GlobalStyle';
+import { cn } from '../../utils/cn';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { getIcon } from '../getIcon';
 import ExperienceTable from './ExperienceTable';
-
-export const DataRow = styled.div<{
-  isEven?: boolean;
-  isMobile?: boolean;
-  showDate: boolean;
-}>`
-  display: grid;
-  grid-template-columns: ${({ showDate }) =>
-    showDate ? '6.5fr 3.5fr' : 'auto'};
-  width: 100%;
-  height: ${({ isMobile }) => (isMobile ? '3rem' : '100%')};
-  background-color: ${({ isEven }) => (isEven ? '#28292a' : 'transparent')};
-  padding-left: 0.5rem;
-
-  cursor: pointer;
-`;
-
-export const PositionContainer = styled.div<{ isEven?: boolean }>`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 0.25rem;
-`;
-
-const DataLabel = styled(MutedText)`
-  justify-items: flex-end;
-  align-self: center;
-`;
-
-const DescriptionContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  padding: 0.5rem;
-`;
 
 export type ExperienceType = {
   title: string;
@@ -77,13 +42,16 @@ const ExperienceRow: React.FC<ExperienceRowProps> = ({
 
   return (
     <div>
-      <DataRow
-        isEven={isEven}
-        isMobile={isMobile}
-        showDate={showDate}
+      <div
+        className={cn(
+          'grid w-full pl-2 cursor-pointer',
+          showDate ? 'grid-cols-[6.5fr_3.5fr]' : 'grid-cols-[auto]',
+          isMobile ? 'h-12' : 'h-full',
+          isEven ? 'bg-[#28292a]' : 'bg-transparent'
+        )}
         onClick={toggleOpen}
       >
-        <PositionContainer>
+        <div className="flex flex-row justify-start items-center gap-1">
           <FontAwesomeIcon
             icon={
               isOpen
@@ -93,13 +61,17 @@ const ExperienceRow: React.FC<ExperienceRowProps> = ({
           />
           {getIcon('File', isMobile ? 40 : 20)}
           <BoldText>{experience.title}</BoldText>
-        </PositionContainer>
-        {showDate ? <DataLabel>{experience.date}</DataLabel> : null}
-      </DataRow>
+        </div>
+        {showDate ? (
+          <MutedText className="justify-items-end self-center">
+            {experience.date}
+          </MutedText>
+        ) : null}
+      </div>
       {isOpen ? (
-        <DescriptionContainer>
+        <div className="w-full h-full p-2">
           <ExperienceTable experience={experience} />
-        </DescriptionContainer>
+        </div>
       ) : null}
     </div>
   );

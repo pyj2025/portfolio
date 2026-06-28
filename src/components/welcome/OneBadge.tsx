@@ -1,5 +1,5 @@
 import React from "react";
-import { SimpleBadge } from ".";
+import SimpleBadge from "./SimpleBadge";
 
 type OneBadgeProps = {
   directory: string;

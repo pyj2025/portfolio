@@ -1,6 +1,7 @@
 import React from "react";
 import { TerminalRow } from "../../../GlobalStyle";
-import { OneBadge, TypeCommand } from "..";
+import OneBadge from "../OneBadge";
+import TypeCommand from "../TypeCommand";
 
 type TerminalFirstLineProps = {
   directory?: string;

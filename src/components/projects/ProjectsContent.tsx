@@ -1,24 +1,13 @@
-import {
-  DatApex,
-  Flix,
-  Foodie,
-  GitCard,
-  MovieNext,
-  Parstagram,
-  Portfolio,
-  Tippy,
-  ToonFlix,
-  Twitter,
-  WebGame,
-} from ".";
+import React from "react";
+import info from "../../info.json";
 import { MobileProjects, Projects, WebProjects } from "./Projects";
+import ProjectDetail, { ProjectKey } from "./ProjectDetail";
 import { ProjectIndexType } from "../../types";
 import { WindowBodyContent } from "../../GlobalStyle";
 
 type WithClickComponent = React.ComponentType<{
   click: (name: ProjectIndexType) => void;
 }>;
-type WithoutClickComponent = React.ComponentType;
 
 const PROJECTS_WITH_CLICK: Record<string, WithClickComponent> = {
   Projects: Projects,
@@ -26,19 +15,8 @@ const PROJECTS_WITH_CLICK: Record<string, WithClickComponent> = {
   MobileProjects: MobileProjects,
 };
 
-const PROJECTS_WITHOUT_CLICK: Record<string, WithoutClickComponent> = {
-  GitCard: GitCard,
-  DatApex: DatApex,
-  MovieNext: MovieNext,
-  Portfolio: Portfolio,
-  Foodie: Foodie,
-  WebGame: WebGame,
-  Tippy: Tippy,
-  Flix: Flix,
-  Twitter: Twitter,
-  Parstagram: Parstagram,
-  ToonFlix: ToonFlix,
-};
+const isProjectKey = (index: ProjectIndexType): index is ProjectKey =>
+  index in info.project;
 
 interface ProjectsContentProps {
   index: ProjectIndexType;
@@ -55,11 +33,10 @@ const ProjectsContent: React.FC<ProjectsContentProps> = ({ index, onClick }) => 
     );
   }
 
-  if (index in PROJECTS_WITHOUT_CLICK) {
-    const Component = PROJECTS_WITHOUT_CLICK[index];
+  if (isProjectKey(index)) {
     return (
       <WindowBodyContent>
-        <Component />
+        <ProjectDetail name={index} />
       </WindowBodyContent>
     );
   }

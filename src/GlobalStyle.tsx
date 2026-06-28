@@ -1,318 +1,247 @@
+import React from "react";
 import { Rnd } from "react-rnd";
-import styled from "styled-components";
+import { cn } from "./utils/cn";
 
-//text
-export const BoldText = styled.span`
-  font-weight: bold;
-`;
+type DivProps = React.HTMLAttributes<HTMLDivElement>;
+type SpanProps = React.HTMLAttributes<HTMLSpanElement>;
+type ImgProps = React.ImgHTMLAttributes<HTMLImageElement>;
 
-export const MutedText = styled.span`
-  opacity: 0.5;
-`;
+// text
+export const BoldText: React.FC<SpanProps> = ({ className, ...props }) => (
+  <span className={cn("font-bold", className)} {...props} />
+);
 
-//Terminal
-export const TerminalRow = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  margin: 4px 8px;
-`;
+export const MutedText: React.FC<SpanProps> = ({ className, ...props }) => (
+  <span className={cn("opacity-50", className)} {...props} />
+);
 
-export const TerminalBadge = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-`;
+// terminal
+export const TerminalRow: React.FC<DivProps> = ({ className, ...props }) => (
+  <div
+    className={cn("flex flex-row justify-start items-center mx-2 my-1", className)}
+    {...props}
+  />
+);
 
-export const BadgeArrow = styled.div<{ first?: boolean }>`
-  background-color: ${({ first }) => (first ? "transparent" : "#caa9fa")};
-  width: 0;
-  height: 0;
-  border-top: 13px solid transparent;
-  border-bottom: 13px solid transparent;
-  border-left: 13px solid #000000;
-`;
+// window
+export const Window = React.forwardRef<
+  Rnd,
+  React.ComponentProps<typeof Rnd> & { children?: React.ReactNode }
+>(({ className, ...props }, ref) => (
+  <Rnd
+    ref={ref}
+    className={cn(
+      "flex flex-row w-full justify-center items-center bg-white rounded-md overflow-hidden shadow-[0px_0px_8px_black]",
+      className,
+    )}
+    {...props}
+  />
+));
+Window.displayName = "Window";
 
-export const SecondBadge = styled.div`
-  background-color: #caa9fa;
-  color: #000000;
-  padding: 4px 10px;
-  border: none;
-`;
+export const WindowTopbarContainer: React.FC<DivProps> = ({ className, ...props }) => (
+  <div
+    className={cn(
+      "w-full h-7 bg-[rgb(51,52,54)] border-t border-t-[rgb(70,75,80)] px-2.5 cursor-default grid grid-cols-3 mx-auto items-center box-border border-b-[0.2px] border-b-[#141516]",
+      className,
+    )}
+    {...props}
+  />
+);
 
-export const SecondBadgeArrow = styled(BadgeArrow)`
-  background-color: transparent;
-  border-left: 13px solid #caa9fa;
-`;
+export const TopbarBtnContainer: React.FC<DivProps> = ({ className, ...props }) => (
+  <div className={cn("flex justify-start items-center", className)} {...props} />
+);
 
-export const TerminalLine = styled.div`
-  margin-left: 0.25rem;
-`;
+type TopbarBtnProps = DivProps & { color: string; disabled: boolean };
 
-//window
-export const Window = styled(Rnd)`
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-  border-radius: 0.375rem;
-  -webkit-border-radius: 0.375rem;
-  -moz-border-radius: 0.375rem;
-  -khtml-border-radius: 0.375rem;
-  overflow: hidden;
-  box-shadow: 0px 0px 8px black;
-`;
+export const TopbarBtn: React.FC<TopbarBtnProps> = ({
+  className,
+  color,
+  disabled,
+  ...props
+}) => (
+  <div
+    className={cn(
+      "w-3 h-3 inline-block rounded-lg items-center align-middle text-[#62574c]",
+      color === "close" ? "ml-0" : "ml-2",
+      disabled
+        ? "bg-[#686B6D]"
+        : color === "minimize"
+        ? "bg-[#F7BD45]"
+        : color === "expand"
+        ? "bg-[#5FCB43]"
+        : "bg-[#ee514a]",
+      disabled ? "cursor-default" : "cursor-pointer",
+      className,
+    )}
+    {...props}
+  />
+);
 
-export const WindowTopbarContainer = styled.div`
-  width: 100%;
-  height: 28px;
-  background-color: rgb(51, 52, 54);
-  border-top: 1px solid rgb(70, 75, 80);
-  padding: 0px 10px;
-  cursor: default;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  margin: 0 auto;
-  align-items: center;
-  box-sizing: border-box;
-  border-bottom: 0.2px solid #141516;
-`;
+export const TopbarTitle: React.FC<DivProps> = ({ className, ...props }) => (
+  <div
+    className={cn("flex justify-center items-center text-center text-sm", className)}
+    {...props}
+  />
+);
 
-export const TopbarBtnContainer = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-`;
+export const TopbarTitleText: React.FC<SpanProps> = ({ className, ...props }) => (
+  <span className={cn("ml-1.5 pointer-events-none", className)} {...props} />
+);
 
-export const TopbarBtn = styled.div<{ color: string; disabled: boolean }>`
-  width: 12px;
-  height: 12px;
-  color: #62574c;
-  display: inline-block;
-  margin-left: ${({ color }: { color: string }) => (color === "close" ? "0px" : "8px")};
-  border-radius: 8px;
-  align-items: center;
-  vertical-align: middle;
-  background-color: ${({ color, disabled }: { color: string; disabled: boolean }) =>
-    disabled
-      ? "#686B6D"
-      : color === "minimize"
-      ? "#F7BD45"
-      : color === "expand"
-      ? "#5FCB43"
-      : "#ee514a"};
-  cursor: ${({ disabled }: { disabled: boolean }) => (disabled ? undefined : "pointer")};
-`;
+type WindowBodyProps = DivProps & { isMobile?: boolean };
 
-export const TopbarTitle = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-size: 14px;
-`;
+export const WindowBody: React.FC<WindowBodyProps> = ({
+  className,
+  isMobile,
+  ...props
+}) => (
+  <div
+    className={cn(
+      "grid w-full h-[calc(100%-28px)]",
+      isMobile ? "grid-cols-[50px_auto]" : "grid-cols-[150px_auto]",
+      className,
+    )}
+    {...props}
+  />
+);
 
-export const TopbarTitleText = styled.span`
-  margin-left: 0.375rem;
-  pointer-events: none;
-`;
+export const WindowBodyNavbar: React.FC<DivProps> = ({ className, ...props }) => (
+  <div
+    className={cn(
+      "flex flex-col justify-start h-full bg-[rgba(51,49,51,0.9)] text-white border-r-[0.2px] border-r-[#141516]",
+      className,
+    )}
+    {...props}
+  />
+);
 
-export const WindowBody = styled.div<{ isMobile?: boolean }>`
-  display: grid;
-  grid-template-columns: ${({ isMobile }) => (isMobile ? "50px auto" : "150px auto")};
-  width: 100%;
-  height: calc(100% - 28px);
-`;
-
-export const WindowBodyNavbar = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  height: 100%;
-  background-color: rgba(51, 49, 51, 0.9);
-  color: white;
-  border-right: 0.2px solid #141516;
-`;
-
-export const WindowBodyNavItm = styled.div<{
+type WindowBodyNavItmProps = DivProps & {
   focus: boolean;
   first?: boolean;
   isChild?: boolean;
-}>`
-  display: grid;
-  grid-template-columns: 20px auto;
-  justify-content: flex-start;
-  align-items: center;
-  background-color: ${({ focus }) => (focus ? "rgba(120, 120, 120, 0.5)" : "transparent")};
-  color: white;
-  margin-top: ${({ first, isChild }) => (first ? "4px" : isChild ? "1px" : undefined)};
-  padding-top: 2px;
-  padding-bottom: 2px;
-  padding-left: ${({ isChild }) => (isChild ? "24px" : "8px")};
-  cursor: pointer;
-`;
+};
 
-export const NavItmLabel = styled.span`
-  font-weight: bold;
-  justify-content: center;
-  margin-left: 4px;
-`;
+export const WindowBodyNavItm: React.FC<WindowBodyNavItmProps> = ({
+  className,
+  focus,
+  first,
+  isChild,
+  ...props
+}) => (
+  <div
+    className={cn(
+      "grid grid-cols-[20px_auto] justify-start items-center text-white py-0.5 cursor-pointer",
+      focus ? "bg-[rgba(120,120,120,0.5)]" : "bg-transparent",
+      first ? "mt-1" : isChild ? "mt-px" : "",
+      isChild ? "pl-6" : "pl-2",
+      className,
+    )}
+    {...props}
+  />
+);
 
-export const WindowBodyContent = styled.div`
-  height: 100%;
-  background-color: #1d1f21;
-  color: white;
-  overflow-x: hidden;
-  overflow-y: hidden;
+export const NavItmLabel: React.FC<SpanProps> = ({ className, ...props }) => (
+  <span className={cn("font-bold justify-center ml-1", className)} {...props} />
+);
 
-  :hover {
-    overflow-y: auto;
-  }
-`;
+export const WindowBodyContent: React.FC<DivProps> = ({ className, ...props }) => (
+  <div
+    className={cn(
+      "h-full bg-[#1d1f21] text-white overflow-x-hidden overflow-y-hidden hover:overflow-y-auto",
+      className,
+    )}
+    {...props}
+  />
+);
 
-//Panel
-export const Panel = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  min-width: 20rem;
-  margin: 10px;
-`;
+// mobile window
+export const MobileWindowBody: React.FC<DivProps> = ({ className, ...props }) => (
+  <div className={cn("flex flex-row w-full h-[calc(100%-28px)]", className)} {...props} />
+);
 
-export const PanelContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0.5rem;
-`;
+export const MobileNavbar: React.FC<DivProps> = ({ className, ...props }) => (
+  <div
+    className={cn(
+      "flex flex-col justify-start w-12 bg-[rgba(51,49,51,0.9)] text-white border-r-[0.2px] border-r-[#141516]",
+      className,
+    )}
+    {...props}
+  />
+);
 
-export const PanelLogoContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 10px;
-`;
+type MobileNavbarItemProps = DivProps & { focus: boolean; isChild?: boolean };
 
-export const PanelLogoImage = styled.img`
-  width: 150px;
-  height: 150px;
-`;
+export const MobileNavbarItem: React.FC<MobileNavbarItemProps> = ({
+  className,
+  focus,
+  isChild,
+  ...props
+}) => (
+  <div
+    className={cn(
+      "flex flex-col justify-center items-center text-white w-full h-12 cursor-pointer",
+      focus ? "bg-[rgba(120,120,120,0.5)]" : "bg-transparent",
+      isChild ? "mt-px" : "",
+      className,
+    )}
+    {...props}
+  />
+);
 
-export const PanelTableContainer = styled.table`
-  border-spacing: 0.25rem;
-`;
+export const MobileNavbarMenu: React.FC<ImgProps> = ({ className, alt, ...props }) => (
+  <img className={cn("h-6 w-6", className)} alt={alt ?? ""} {...props} />
+);
 
-export const PanelTableLabel = styled.td`
-  display: flex;
-`;
+export const MobileNavbarMenuLabel: React.FC<DivProps> = ({ className, ...props }) => (
+  <div className={cn("text-base scale-50", className)} {...props} />
+);
 
-export const LinkLabel = styled.a`
-  color: white;
-  text-decoration: none;
-`;
+export const MobileBodyContent: React.FC<DivProps> = ({ className, ...props }) => (
+  <div
+    className={cn(
+      "w-full h-full bg-[#1d1f21] text-white overflow-x-hidden overflow-y-hidden hover:overflow-y-auto",
+      className,
+    )}
+    {...props}
+  />
+);
 
-//mobile window
-export const MobileWindowBody = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: calc(100% - 28px);
-`;
+// mobile menu screen
+type MobileWindowMenuItemProps = DivProps & { isEven?: boolean };
 
-export const MobileNavbar = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  width: 3rem;
-  background-color: rgba(51, 49, 51, 0.9);
-  color: white;
-  border-right: 0.2px solid #141516;
-`;
+export const MobileWindowMenuItem: React.FC<MobileWindowMenuItemProps> = ({
+  className,
+  isEven,
+  ...props
+}) => (
+  <div
+    className={cn(
+      "flex flex-row justify-start items-center text-white px-2 py-1 w-full h-12 cursor-pointer",
+      isEven ? "bg-transparent" : "bg-[#28292a]",
+      className,
+    )}
+    {...props}
+  />
+);
 
-export const MobileNavbarItem = styled.div<{
-  focus: boolean;
-  isChild?: boolean;
-}>`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: ${({ focus }) => (focus ? "rgba(120, 120, 120, 0.5)" : "transparent")};
-  color: white;
-  margin-top: ${({ isChild }) => (isChild ? "1px" : undefined)};
-  width: 100%;
-  height: 3rem;
-  cursor: pointer;
-`;
-
-export const MobileNavbarMenu = styled.img`
-  height: 1.5rem;
-  width: 1.5rem;
-`;
-
-export const MobileNavbarMenuLabel = styled.div`
-  font-size: 1rem;
-  transform: scale(0.5);
-`;
-
-export const MobileBodyContent = styled.div`
-  width: 100%;
-  height: 100%;
-  background-color: #1d1f21;
-  color: white;
-  overflow-x: hidden;
-  overflow-y: hidden;
-
-  :hover {
-    overflow-y: auto;
-  }
-`;
-
-//mobile menu screen
-export const MobileWindowMenuItem = styled.div<{
-  isEven?: boolean;
-}>`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  background-color: ${({ isEven }) => (isEven ? "transparent" : "#28292a")};
-  color: white;
-  padding: 0.25rem 0.5rem;
-  width: 100%;
-  height: 3rem;
-  cursor: pointer;
-`;
-
-export const MobileMenuItemLabel = styled.div`
-  font-weight: bold;
-  margin-left: 1rem;
-`;
+export const MobileMenuItemLabel: React.FC<DivProps> = ({ className, ...props }) => (
+  <div className={cn("font-bold ml-4", className)} {...props} />
+);
 
 // mobile panel
-export const MobilePanelContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  color: white;
-`;
+export const MobilePanelContainer: React.FC<DivProps> = ({ className, ...props }) => (
+  <div className={cn("flex flex-col w-full text-white", className)} {...props} />
+);
 
-export const MobileBackButtonContainer = styled.div`
-  display: flex;
-  color: white;
-  justify-content: flex-start;
-  align-items: center;
-  height: 1.5rem;
-  padding: 0.5rem;
-`;
+export const MobileBackButtonContainer: React.FC<DivProps> = ({ className, ...props }) => (
+  <div
+    className={cn("flex text-white justify-start items-center h-6 p-2", className)}
+    {...props}
+  />
+);
 
-export const MobileBackButton = styled.div`
-  position: fixed;
-  margin-top: 0.75rem;
-  padding: 0.5rem;
-`;
+export const MobileBackButton: React.FC<DivProps> = ({ className, ...props }) => (
+  <div className={cn("fixed mt-3 p-2", className)} {...props} />
+);

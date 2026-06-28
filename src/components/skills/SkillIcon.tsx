@@ -1,23 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
+import { cn } from '../../utils/cn';
 import { getSkillIcon } from './getSkillIcon';
-
-const SkillsIconContainer = styled.div<{ noWidth?: boolean }>`
-  display: flex;
-  flex-direction: column;
-  width: ${({ noWidth }) => (noWidth ? undefined : '4rem')};
-  height: 4rem;
-  justify-content: center;
-  align-items: center;
-  margin: 0.25rem;
-`;
-
-const IconLabel = styled.div`
-  font-size: 0.75rem;
-  text-align: center;
-  height: 1em;
-  margin-top: 0.25rem;
-`;
 
 export type SkillIconProps = {
   name: string;
@@ -26,10 +9,16 @@ export type SkillIconProps = {
 
 const SkillIcon: React.FC<SkillIconProps> = ({ name, noWidth }) => {
   return (
-    <SkillsIconContainer title={name} noWidth={noWidth}>
+    <div
+      title={name}
+      className={cn(
+        'flex flex-col h-16 justify-center items-center m-1',
+        noWidth ? '' : 'w-16'
+      )}
+    >
       {getSkillIcon(name)}
-      <IconLabel>{name}</IconLabel>
-    </SkillsIconContainer>
+      <div className="text-xs text-center h-[1em] mt-1">{name}</div>
+    </div>
   );
 };
 
