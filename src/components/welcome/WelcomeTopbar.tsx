@@ -53,7 +53,7 @@ const WelcomeTopbar: React.FC = () => {
   const { focusedWindow, closeWelcomeWindow } = useWindowsStore(state => state);
 
   return (
-    <div className="topbar w-full h-7 bg-[rgb(51,52,54)] border-b border-[rgb(70,75,80)] px-2.5 py-0 cursor-default grid grid-cols-3 mx-auto items-center box-border">
+    <div className="topbar w-full h-9 bg-[#2c2c2f]/95 backdrop-blur border-b border-[rgb(70,75,80)] px-2.5 py-0 cursor-default grid grid-cols-3 mx-auto items-center box-border">
       <div className="flex justify-start items-center">
         <TopbarBtn
           color="close"

@@ -115,8 +115,8 @@ const AboutWindow: React.FC = () => {
   }, [height, width]);
 
   React.useEffect(() => {
-    // 150 is menu
-    if (aboutSize.width - 150 >= 470) {
+    // 168 is menu
+    if (aboutSize.width - 168 >= 470) {
       setShowDate(true);
     } else {
       setShowDate(false);

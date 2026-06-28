@@ -31,7 +31,7 @@ export const Window = React.forwardRef<
   <Rnd
     ref={ref}
     className={cn(
-      "flex flex-row w-full justify-center items-center bg-white rounded-md overflow-hidden shadow-[0px_0px_8px_black]",
+      "flex flex-row w-full justify-center items-center bg-white rounded-xl overflow-hidden shadow-[0_22px_70px_rgba(0,0,0,0.55)]",
       className,
     )}
     {...props}
@@ -42,7 +42,7 @@ Window.displayName = "Window";
 export const WindowTopbarContainer: React.FC<DivProps> = ({ className, ...props }) => (
   <div
     className={cn(
-      "w-full h-7 bg-[rgb(51,52,54)] border-t border-t-[rgb(70,75,80)] px-2.5 cursor-default grid grid-cols-3 mx-auto items-center box-border border-b-[0.2px] border-b-[#141516]",
+      "w-full h-9 bg-[#2c2c2f]/95 backdrop-blur border-t border-t-white/5 px-2.5 cursor-default grid grid-cols-3 mx-auto items-center box-border border-b-[0.2px] border-b-[#141516]",
       className,
     )}
     {...props}
@@ -63,7 +63,7 @@ export const TopbarBtn: React.FC<TopbarBtnProps> = ({
 }) => (
   <div
     className={cn(
-      "w-3 h-3 inline-block rounded-lg items-center align-middle text-[#62574c]",
+      "w-3 h-3 inline-block rounded-lg items-center align-middle text-[#62574c] shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.25)]",
       color === "close" ? "ml-0" : "ml-2",
       disabled
         ? "bg-[#686B6D]"
@@ -99,8 +99,8 @@ export const WindowBody: React.FC<WindowBodyProps> = ({
 }) => (
   <div
     className={cn(
-      "grid w-full h-[calc(100%-28px)]",
-      isMobile ? "grid-cols-[50px_auto]" : "grid-cols-[150px_auto]",
+      "grid w-full h-[calc(100%-36px)]",
+      isMobile ? "grid-cols-[50px_auto]" : "grid-cols-[168px_auto]",
       className,
     )}
     {...props}
@@ -110,7 +110,17 @@ export const WindowBody: React.FC<WindowBodyProps> = ({
 export const WindowBodyNavbar: React.FC<DivProps> = ({ className, ...props }) => (
   <div
     className={cn(
-      "flex flex-col justify-start h-full bg-[rgba(51,49,51,0.9)] text-white border-r-[0.2px] border-r-[#141516]",
+      "flex flex-col justify-start h-full bg-[#39393d]/75 backdrop-blur-xl text-white border-r border-r-black/30 pt-1",
+      className,
+    )}
+    {...props}
+  />
+);
+
+export const NavSectionLabel: React.FC<DivProps> = ({ className, ...props }) => (
+  <div
+    className={cn(
+      "px-3 pt-2 pb-1 text-[11px] font-medium uppercase tracking-wide text-white/40",
       className,
     )}
     {...props}
@@ -132,10 +142,10 @@ export const WindowBodyNavItm: React.FC<WindowBodyNavItmProps> = ({
 }) => (
   <div
     className={cn(
-      "grid grid-cols-[20px_auto] justify-start items-center text-white py-0.5 cursor-pointer",
-      focus ? "bg-[rgba(120,120,120,0.5)]" : "bg-transparent",
+      "grid grid-cols-[20px_auto] items-center mx-2 pr-1.5 py-1 rounded-md cursor-pointer transition-colors",
+      focus ? "bg-[#0a84ff] text-white" : "text-white/85 hover:bg-white/10",
       first ? "mt-1" : isChild ? "mt-px" : "",
-      isChild ? "pl-6" : "pl-2",
+      isChild ? "pl-6" : "pl-1.5",
       className,
     )}
     {...props}
@@ -143,7 +153,10 @@ export const WindowBodyNavItm: React.FC<WindowBodyNavItmProps> = ({
 );
 
 export const NavItmLabel: React.FC<SpanProps> = ({ className, ...props }) => (
-  <span className={cn("font-bold justify-center ml-1", className)} {...props} />
+  <span
+    className={cn("block min-w-0 truncate font-medium text-[13px] ml-1", className)}
+    {...props}
+  />
 );
 
 export const WindowBodyContent: React.FC<DivProps> = ({ className, ...props }) => (
@@ -158,7 +171,7 @@ export const WindowBodyContent: React.FC<DivProps> = ({ className, ...props }) =
 
 // mobile window
 export const MobileWindowBody: React.FC<DivProps> = ({ className, ...props }) => (
-  <div className={cn("flex flex-row w-full h-[calc(100%-28px)]", className)} {...props} />
+  <div className={cn("flex flex-row w-full h-[calc(100%-36px)]", className)} {...props} />
 );
 
 export const MobileNavbar: React.FC<DivProps> = ({ className, ...props }) => (

@@ -2,10 +2,11 @@ import React from 'react';
 import { AboutIndexType } from '../../types';
 import {
   NavItmLabel,
+  NavSectionLabel,
   WindowBodyNavItm,
   WindowBodyNavbar,
 } from '../../GlobalStyle';
-import { SMALL_ICON_SIZE, getIcon } from '../getIcon';
+import { getNavIcon } from '../getIcon';
 
 type NavItem = {
   id: AboutIndexType;
@@ -61,6 +62,7 @@ const AboutNavbar: React.FC<AboutNavbarProps> = ({ index, onClick }) => {
 
   return (
     <WindowBodyNavbar>
+      <NavSectionLabel>Favorites</NavSectionLabel>
       {NAV_ITEMS.map((item, idx) => (
         <WindowBodyNavItm
           key={item.id}
@@ -69,7 +71,7 @@ const AboutNavbar: React.FC<AboutNavbarProps> = ({ index, onClick }) => {
           focus={isFocused(item)}
           isChild={item.isChild}
         >
-          {getIcon(item.icon, SMALL_ICON_SIZE)}
+          {getNavIcon(item.icon, isFocused(item))}
           <NavItmLabel>{item.label}</NavItmLabel>
         </WindowBodyNavItm>
       ))}

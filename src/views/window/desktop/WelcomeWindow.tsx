@@ -62,7 +62,7 @@ const WelcomeWindow: React.FC = () => {
       enableResizing={false}
     >
       <WelcomeTopbar />
-      <div className="flex flex-col justify-start w-full h-[calc(100%-28px)] bg-[#282a36] text-white">
+      <div className="flex flex-col justify-start w-full h-[calc(100%-36px)] bg-[#282a36] text-white">
         <Loaded setFirstLine={setFirstLine} />
         {firstLine ? <TerminalFirstLine setSecondLine={setSecondLine} /> : null}
         {secondLine ? (
