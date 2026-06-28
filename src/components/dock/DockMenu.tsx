@@ -6,6 +6,7 @@ import { getIcon } from "../getIcon";
 import useAboutStore from "../../utils/useAboutStore";
 import useSkillsStore from "../../utils/useSkillsStore";
 import useProjectsStore from "../../utils/useProjectsStore";
+import useCalculatorStore from "../../utils/useCalculatorStore";
 import info from "../../info.json";
 
 const WindowMenuItemStyle =
@@ -20,6 +21,7 @@ const DockMenu: React.FC = () => {
   const { isAboutMinimized, openAbout } = useAboutStore(state => state);
   const { isSkillsMinimized, openSkills } = useSkillsStore(state => state);
   const { isProjectsMinimized, openProjects } = useProjectsStore(state => state);
+  const { isCalculatorMinimized, openCalculator } = useCalculatorStore(state => state);
 
   const handleAboutClick = React.useCallback(() => {
     openAbout();
@@ -32,6 +34,10 @@ const DockMenu: React.FC = () => {
   const handleProjectsClick = React.useCallback(() => {
     openProjects();
   }, [openProjects]);
+
+  const handleCalculatorClick = React.useCallback(() => {
+    openCalculator();
+  }, [openCalculator]);
 
   const handleEmailClick = React.useCallback(() => {
     window.open(`mailto:${info.about.info.email}`);
@@ -55,6 +61,12 @@ const DockMenu: React.FC = () => {
         <button title="Projects" onClick={handleProjectsClick} className={WindowMenuItemStyle}>
           {getIcon("Projects")}
           {isProjectsMinimized && (
+            <FontAwesomeIcon icon={faCircle as IconProp} className={IconStyle} />
+          )}
+        </button>
+        <button title="Calculator" onClick={handleCalculatorClick} className={WindowMenuItemStyle}>
+          {getIcon("Calculator")}
+          {isCalculatorMinimized && (
             <FontAwesomeIcon icon={faCircle as IconProp} className={IconStyle} />
           )}
         </button>

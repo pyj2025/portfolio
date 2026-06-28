@@ -1,11 +1,18 @@
 import React from "react";
 import { Slide, toast, ToastContainer } from "react-toastify";
 import { browserName, isBrowser, isMobile } from "react-device-detect";
-import { WelcomeWindow, AboutWindow, SkillsWindow, ProjectsWindow } from "../views/window/desktop";
+import {
+  WelcomeWindow,
+  AboutWindow,
+  SkillsWindow,
+  ProjectsWindow,
+  CalculatorWindow,
+} from "../views/window/desktop";
 import useWindowsStore from "../utils/useWindowsStore";
 import useAboutStore from "../utils/useAboutStore";
 import useSkillsStore from "../utils/useSkillsStore";
 import useProjectsStore from "../utils/useProjectsStore";
+import useCalculatorStore from "../utils/useCalculatorStore";
 import WindowsContent from "./WindowsContent";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -14,6 +21,7 @@ const BodyContent: React.FC = () => {
   const isAboutOpen = useAboutStore(state => state.isAboutOpen);
   const isSkillsOpen = useSkillsStore(state => state.isSkillsOpen);
   const isProjectsOpen = useProjectsStore(state => state.isProjectsOpen);
+  const isCalculatorOpen = useCalculatorStore(state => state.isCalculatorOpen);
 
   React.useEffect(() => {
     const message =
@@ -32,6 +40,7 @@ const BodyContent: React.FC = () => {
       { Component: AboutWindow, isOpen: isAboutOpen },
       { Component: SkillsWindow, isOpen: isSkillsOpen },
       { Component: ProjectsWindow, isOpen: isProjectsOpen },
+      { Component: CalculatorWindow, isOpen: isCalculatorOpen },
     ];
 
     return <WindowsContent windows={windows} />;
