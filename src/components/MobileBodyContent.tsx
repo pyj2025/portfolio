@@ -9,10 +9,12 @@ import MobileWelcomeWindow from "../views/window/mobile/MobileWelcomeWindow";
 import MobileAboutWindow from "../views/window/mobile/MobileAboutWindow";
 import MobileSkillsWindow from "../views/window/mobile/MobileSkillsWindow";
 import MobileProjectsWindow from "../views/window/mobile/MobileProjectsWindow";
+import MobileCalculatorWindow from "../views/window/mobile/MobileCalculatorWindow";
 import useWindowsStore from "../utils/useWindowsStore";
 import useAboutStore from "../utils/useAboutStore";
 import useSkillsStore from "../utils/useSkillsStore";
 import useProjectsStore from "../utils/useProjectsStore";
+import useCalculatorStore from "../utils/useCalculatorStore";
 import "react-toastify/dist/ReactToastify.css";
 
 const MobileBodyContent: React.FC = () => {
@@ -23,6 +25,8 @@ const MobileBodyContent: React.FC = () => {
   const isSkillsOpen = useSkillsStore(state => state.isSkillsOpen);
 
   const isProjectsOpen = useProjectsStore(state => state.isProjectsOpen);
+
+  const isCalculatorOpen = useCalculatorStore(state => state.isCalculatorOpen);
 
   const { width } = useScreenSize();
   const [checkMobile, setCheckMobile] = React.useState(false);
@@ -50,6 +54,7 @@ const MobileBodyContent: React.FC = () => {
       { Component: MobileAboutWindow, isOpen: isAboutOpen },
       { Component: MobileSkillsWindow, isOpen: isSkillsOpen },
       { Component: MobileProjectsWindow, isOpen: isProjectsOpen },
+      { Component: MobileCalculatorWindow, isOpen: isCalculatorOpen },
     ];
 
     return <WindowsContent windows={windows} />;

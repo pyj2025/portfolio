@@ -14,6 +14,7 @@ import useWindowsStore from '../utils/useWindowsStore';
 import useAboutStore from '../utils/useAboutStore';
 import useSkillsStore from '../utils/useSkillsStore';
 import useProjectsStore from '../utils/useProjectsStore';
+import useCalculatorStore from '../utils/useCalculatorStore';
 
 export type WindowTopbarProps = {
   title: string;
@@ -62,6 +63,10 @@ const WindowTopbar: React.FC<WindowTopbarProps> = ({
     setProjectsMinimized,
   } = useProjectsStore((state) => state);
 
+  const { toggleCalculatorOpen, setCalculatorMinimized } = useCalculatorStore(
+    (state) => state,
+  );
+
   const [image, setImage] = React.useState<IconType>('');
 
   React.useEffect(() => {
@@ -76,6 +81,10 @@ const WindowTopbar: React.FC<WindowTopbarProps> = ({
       }
       case 'Projects': {
         setImage('Projects');
+        break;
+      }
+      case 'Calculator': {
+        setImage('Calculator');
         break;
       }
       default:
@@ -98,6 +107,10 @@ const WindowTopbar: React.FC<WindowTopbarProps> = ({
           toggleProjectsOpen();
           break;
         }
+        case 'Calculator': {
+          toggleCalculatorOpen();
+          break;
+        }
         default:
           break;
       }
@@ -108,6 +121,7 @@ const WindowTopbar: React.FC<WindowTopbarProps> = ({
     toggleAboutOpen,
     toggleProjectsOpen,
     toggleSkillsOpen,
+    toggleCalculatorOpen,
   ]);
 
   const handleMinimized = React.useCallback(() => {
@@ -128,6 +142,11 @@ const WindowTopbar: React.FC<WindowTopbarProps> = ({
           toggleProjectsOpen();
           break;
         }
+        case 'Calculator': {
+          setCalculatorMinimized(true);
+          toggleCalculatorOpen();
+          break;
+        }
         default:
           break;
       }
@@ -137,10 +156,12 @@ const WindowTopbar: React.FC<WindowTopbarProps> = ({
     setAboutMinimized,
     setProjectsMinimized,
     setSkillsMinimized,
+    setCalculatorMinimized,
     title,
     toggleAboutOpen,
     toggleProjectsOpen,
     toggleSkillsOpen,
+    toggleCalculatorOpen,
   ]);
 
   const expand = React.useCallback(

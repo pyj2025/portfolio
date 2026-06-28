@@ -4,6 +4,7 @@ export type FocusedWindowType =
   | "About"
   | "Skills"
   | "Projects"
+  | "Calculator"
   | "None";
 
 export type WindowSizeSetting = {

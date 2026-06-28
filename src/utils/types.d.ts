@@ -47,3 +47,16 @@ export type ProjectsState = {
     toggleAboutMinimized: () => void;
     setProjectsMinimized: (flag: boolean) => void;
 };
+
+export type CalculatorState = {
+    isCalculatorOpen: boolean;
+    isCalculatorMinimized: boolean;
+    isCalculatorExpanded: boolean;
+    toggleCalculatorOpen: () => void;
+    openCalculator: () => void;
+    closeCalculator: () => void;
+    toggleCalculatorExpanded: () => void;
+    setCalculatorExpanded: (flag: boolean) => void;
+    toggleCalculatorMinimized: () => void;
+    setCalculatorMinimized: (flag: boolean) => void;
+};

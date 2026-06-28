@@ -49,10 +49,25 @@ export type IconType =
   | 'Folder'
   | 'CodeFile'
   | 'Terminal'
+  | 'Calculator'
   | '';
 
 export const getIcon = (name: string, size?: number) => {
   switch (name) {
+    case 'Calculator':
+      return (
+        <svg
+          width={size ?? 50}
+          height={size ?? 50}
+          viewBox="0 0 100 100"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect x="3" y="3" width="94" height="94" rx="22" fill="#1c1c1e" />
+          <rect x="15" y="13" width="70" height="15" rx="4" fill="#0a0a0a" />
+          <rect x="15" y="34" width="48" height="52" rx="6" fill="#3a3a3c" />
+          <rect x="67" y="34" width="18" height="52" rx="6" fill="#ff9f0a" />
+        </svg>
+      );
     case 'About':
       return <img src={finder} alt={name} width={size} height={size} />;
     case 'Skills':
