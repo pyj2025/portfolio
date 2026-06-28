@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import React from 'react';
 
 import react from '../../image/skills/react.png';
 import vue from '../../image/skills/vue.png';
@@ -37,16 +37,13 @@ import codeFile from '../../image/icons/codeFile.png';
 const NO_BACKGROUND_ICON_SIZE = 48;
 const BACKGROUND_ICON_SIZE = 40;
 
-const IconImageContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 3rem;
-  height: 3rem;
-  background-color: white;
-  border-radius: 0.5rem;
-  justify-content: center;
-  align-items: center;
-`;
+const IconImageContainer: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => (
+  <div className="flex flex-col w-12 h-12 bg-white rounded-lg justify-center items-center">
+    {children}
+  </div>
+);
 
 export const getSkillIcon = (name: string) => {
   switch (name) {

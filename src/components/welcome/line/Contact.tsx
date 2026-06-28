@@ -21,14 +21,6 @@ const Contact: React.FC = () => {
         <FontAwesomeIcon icon={faAngleRight as IconProp} />
         <div>{info.about.info.email}</div>
       </div>
-      <div className={LineWrapperStyle}>
-        <div>##</div>
-        <div>Phone Number</div>
-      </div>
-      <div className={LineWrapperStyle}>
-        <FontAwesomeIcon icon={faAngleRight as IconProp} />
-        <div>{info.about.info.phoneNumber}</div>
-      </div>
     </div>
   );
 };

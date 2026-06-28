@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import { DraggableData, Rnd } from "react-rnd";
 import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
 import useWindowsStore from "../../../utils/useWindowsStore";
@@ -11,30 +10,6 @@ import WelcomeTopbar from "../../../components/welcome/WelcomeTopbar";
 import TerminalFirstLine from "../../../components/welcome/line/TerminalFirstLine";
 import TerminalSecondLine from "../../../components/welcome/line/TerminalSecondLine";
 import TerminalThirdLine from "../../../components/welcome/line/TerminalThirdLine";
-
-const WelcomeWindowContainer = styled(Rnd)`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: transparent;
-  border-radius: 0.375rem;
-  -webkit-border-radius: 0.375rem;
-  -moz-border-radius: 0.375rem;
-  -khtml-border-radius: 0.375rem;
-  overflow: hidden;
-  box-shadow: 0px 0px 8px black;
-`;
-
-const WelcomeWindowBody = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  width: 100%;
-  height: calc(100% - 28px);
-  background-color: #282a36;
-  color: #ffffff;
-`;
 
 const WelcomeWindow: React.FC = () => {
   const { width, height } = useScreenSize();
@@ -71,7 +46,8 @@ const WelcomeWindow: React.FC = () => {
   }, [width, height]);
 
   return (
-    <WelcomeWindowContainer
+    <Rnd
+      className="w-full flex items-center justify-center bg-transparent rounded-md overflow-hidden shadow-[0px_0px_8px_black]"
       id="Welcome"
       ref={welcomeRef}
       size={{ width: welcomeSize.width, height: welcomeSize.height }}
@@ -86,7 +62,7 @@ const WelcomeWindow: React.FC = () => {
       enableResizing={false}
     >
       <WelcomeTopbar />
-      <WelcomeWindowBody>
+      <div className="flex flex-col justify-start w-full h-[calc(100%-28px)] bg-[#282a36] text-white">
         <Loaded setFirstLine={setFirstLine} />
         {firstLine ? <TerminalFirstLine setSecondLine={setSecondLine} /> : null}
         {secondLine ? (
@@ -95,8 +71,8 @@ const WelcomeWindow: React.FC = () => {
         {secondContent ? <Intro /> : null}
         {thirdLine ? <TerminalThirdLine setThirdContent={setThirdContent} /> : null}
         {thirdContent ? <Contact /> : null}
-      </WelcomeWindowBody>
-    </WelcomeWindowContainer>
+      </div>
+    </Rnd>
   );
 };
 

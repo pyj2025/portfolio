@@ -1,38 +1,11 @@
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import styled from 'styled-components';
 import { BoldText } from '../../GlobalStyle';
+import { cn } from '../../utils/cn';
 import ExperienceRow, { ExperienceType } from './ExperienceRow';
 import info from '../../info.json';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-export const DataRow = styled.div<{ showDate?: boolean; isMobile?: boolean }>`
-  display: grid;
-  grid-template-columns: ${({ showDate }) =>
-    showDate ? '6.5fr 3.5fr' : 'auto'};
-  width: 100%;
-  height: ${({ isMobile }) => (isMobile ? '2rem' : '1.25rem')};
-  background-color: rgb(51, 52, 54);
-  border-bottom: 1px solid black;
-  padding-left: 0.5rem;
-`;
-
-export const SortButton = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  cursor: pointer;
-`;
-
-export const SortButtonText = styled(BoldText)`
-  margin-right: 0.5rem;
-`;
 
 type SortType = 'asc' | 'dec';
 
@@ -104,10 +77,19 @@ const Experience: React.FC<ExperienceProps> = ({
   }, [dateSortType]);
 
   return (
-    <Container>
-      <DataRow showDate={showDate} isMobile={isMobile}>
-        <SortButton onClick={sortByPosition}>
-          <SortButtonText>Position</SortButtonText>
+    <div className="flex flex-col">
+      <div
+        className={cn(
+          'grid w-full bg-[rgb(51,52,54)] border-b border-b-black pl-2',
+          showDate ? 'grid-cols-[6.5fr_3.5fr]' : 'grid-cols-[auto]',
+          isMobile ? 'h-8' : 'h-5'
+        )}
+      >
+        <div
+          className="flex justify-start items-center cursor-pointer"
+          onClick={sortByPosition}
+        >
+          <BoldText className="mr-2">Position</BoldText>
           {positionSortType ? (
             <FontAwesomeIcon
               icon={
@@ -117,10 +99,13 @@ const Experience: React.FC<ExperienceProps> = ({
               }
             />
           ) : null}
-        </SortButton>
+        </div>
         {showDate ? (
-          <SortButton onClick={sortByDate}>
-            <SortButtonText>Date</SortButtonText>
+          <div
+            className="flex justify-start items-center cursor-pointer"
+            onClick={sortByDate}
+          >
+            <BoldText className="mr-2">Date</BoldText>
             {dateSortType ? (
               <FontAwesomeIcon
                 icon={
@@ -130,9 +115,9 @@ const Experience: React.FC<ExperienceProps> = ({
                 }
               />
             ) : null}
-          </SortButton>
+          </div>
         ) : null}
-      </DataRow>
+      </div>
       {experiences.map((experience: ExperienceType, idx: number) => (
         <ExperienceRow
           key={experience.title}
@@ -142,7 +127,7 @@ const Experience: React.FC<ExperienceProps> = ({
           isMobile={isMobile}
         />
       ))}
-    </Container>
+    </div>
   );
 };
 
