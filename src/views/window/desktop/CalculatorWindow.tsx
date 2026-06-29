@@ -17,10 +17,10 @@ const CalculatorWindow: React.FC = () => {
     width: 240,
     height: 400,
   });
-  const [position, setPosition] = React.useState<WindowPositionSetting>({
-    x: 120,
+  const [position, setPosition] = React.useState<WindowPositionSetting>(() => ({
+    x: Math.max(width - 240 - 40, 20),
     y: 80,
-  });
+  }));
   const [prevSetting, setPrevSetting] = React.useState<
     (WindowSizeSetting & WindowPositionSetting) | null
   >(null);
