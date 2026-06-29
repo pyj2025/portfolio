@@ -30,7 +30,7 @@ const IconContainer: React.FC<IconContainerProps> = ({
   <div
     title={title}
     onClick={onClick}
-    className="flex flex-col w-[60px] justify-center items-center p-0.5 cursor-pointer"
+    className="flex flex-col w-[60px] justify-center items-center p-0.5 rounded-lg cursor-pointer hover:bg-white/10 transition-colors"
   >
     {children}
   </div>

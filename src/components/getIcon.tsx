@@ -50,10 +50,29 @@ export type IconType =
   | 'CodeFile'
   | 'Terminal'
   | 'Calculator'
+  | 'FolderColor'
   | '';
 
 export const getIcon = (name: string, size?: number) => {
   switch (name) {
+    case 'FolderColor':
+      return (
+        <svg
+          width={size ?? 56}
+          height={size ?? 56}
+          viewBox="0 0 100 80"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M6 22 q0-7 7-7 h26 q3 0 5 2 l6 6 h37 q7 0 7 7 v36 q0 7-7 7 H13 q-7 0-7-7 Z"
+            fill="#3B8FE6"
+          />
+          <path
+            d="M6 30 h88 v36 q0 7-7 7 H13 q-7 0-7-7 Z"
+            fill="#5AA8F2"
+          />
+        </svg>
+      );
     case 'Calculator':
       return (
         <svg
@@ -62,10 +81,26 @@ export const getIcon = (name: string, size?: number) => {
           viewBox="0 0 100 100"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <rect x="3" y="3" width="94" height="94" rx="22" fill="#1c1c1e" />
-          <rect x="15" y="13" width="70" height="15" rx="4" fill="#0a0a0a" />
-          <rect x="15" y="34" width="48" height="52" rx="6" fill="#3a3a3c" />
-          <rect x="67" y="34" width="18" height="52" rx="6" fill="#ff9f0a" />
+          <rect x="0" y="0" width="100" height="100" rx="22" fill="#1c1c1e" />
+          <circle cx="20" cy="20" r="7" fill="#d4d4d2" />
+          <circle cx="40" cy="20" r="7" fill="#d4d4d2" />
+          <circle cx="60" cy="20" r="7" fill="#d4d4d2" />
+          <circle cx="80" cy="20" r="7" fill="#ff9f0a" />
+          <circle cx="20" cy="37" r="7" fill="#505050" />
+          <circle cx="40" cy="37" r="7" fill="#505050" />
+          <circle cx="60" cy="37" r="7" fill="#505050" />
+          <circle cx="80" cy="37" r="7" fill="#ff9f0a" />
+          <circle cx="20" cy="54" r="7" fill="#505050" />
+          <circle cx="40" cy="54" r="7" fill="#505050" />
+          <circle cx="60" cy="54" r="7" fill="#505050" />
+          <circle cx="80" cy="54" r="7" fill="#ff9f0a" />
+          <circle cx="20" cy="71" r="7" fill="#505050" />
+          <circle cx="40" cy="71" r="7" fill="#505050" />
+          <circle cx="60" cy="71" r="7" fill="#505050" />
+          <circle cx="80" cy="71" r="7" fill="#ff9f0a" />
+          <rect x="13" y="81" width="34" height="14" rx="7" fill="#505050" />
+          <circle cx="60" cy="88" r="7" fill="#505050" />
+          <circle cx="80" cy="88" r="7" fill="#ff9f0a" />
         </svg>
       );
     case 'About':
