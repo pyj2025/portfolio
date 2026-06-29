@@ -48,6 +48,19 @@ export type ProjectsState = {
     setProjectsMinimized: (flag: boolean) => void;
 };
 
+export type UtilState = {
+    isUtilOpen: boolean;
+    isUtilMinimized: boolean;
+    isUtilExpanded: boolean;
+    toggleUtilOpen: () => void;
+    openUtil: () => void;
+    closeUtil: () => void;
+    toggleUtilExpanded: () => void;
+    setUtilExpanded: (flag: boolean) => void;
+    toggleUtilMinimized: () => void;
+    setUtilMinimized: (flag: boolean) => void;
+};
+
 export type CalculatorState = {
     isCalculatorOpen: boolean;
     isCalculatorMinimized: boolean;

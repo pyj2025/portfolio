@@ -12,7 +12,7 @@ const SkillIcon: React.FC<SkillIconProps> = ({ name, noWidth }) => {
     <div
       title={name}
       className={cn(
-        'flex flex-col h-16 justify-center items-center m-1',
+        'flex flex-col h-16 justify-center items-center m-1 rounded-lg hover:bg-white/10 transition-colors',
         noWidth ? '' : 'w-16'
       )}
     >

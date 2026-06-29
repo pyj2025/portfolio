@@ -7,7 +7,6 @@ import useWindowsStore from "../../utils/useWindowsStore";
 import useAboutStore from "../../utils/useAboutStore";
 import useSkillsStore from "../../utils/useSkillsStore";
 import useProjectsStore from "../../utils/useProjectsStore";
-import useCalculatorStore from "../../utils/useCalculatorStore";
 
 const WindowMenuItemStyle =
   "flex flex-col justify-center items-center text-center mx-auto box-border transition-colors duration-200 rounded-sm p-4 no-underline cursor-pointer relative";
@@ -26,9 +25,6 @@ const MobileMenu: React.FC = () => {
   const { isProjectsOpen, isProjectsMinimized, toggleProjectsOpen, closeProjects } =
     useProjectsStore(state => state);
 
-  const { isCalculatorOpen, isCalculatorMinimized, toggleCalculatorOpen, closeCalculator } =
-    useCalculatorStore(state => state);
-
   const { isWelcomeWindowOpen, closeWelcomeWindow } = useWindowsStore(state => state);
 
   const handleAboutClick = React.useCallback(() => {
@@ -41,19 +37,14 @@ const MobileMenu: React.FC = () => {
     if (isProjectsOpen) {
       closeProjects();
     }
-    if (isCalculatorOpen) {
-      closeCalculator();
-    }
 
     toggleAboutOpen();
   }, [
     closeProjects,
     closeSkills,
-    closeCalculator,
     closeWelcomeWindow,
     isProjectsOpen,
     isSkillsOpen,
-    isCalculatorOpen,
     isWelcomeWindowOpen,
     toggleAboutOpen,
   ]);
@@ -68,19 +59,14 @@ const MobileMenu: React.FC = () => {
     if (isProjectsOpen) {
       closeProjects();
     }
-    if (isCalculatorOpen) {
-      closeCalculator();
-    }
 
     toggleSkillsOpen();
   }, [
     closeAbout,
     closeProjects,
-    closeCalculator,
     closeWelcomeWindow,
     isAboutOpen,
     isProjectsOpen,
-    isCalculatorOpen,
     isWelcomeWindowOpen,
     toggleSkillsOpen,
   ]);
@@ -95,48 +81,16 @@ const MobileMenu: React.FC = () => {
     if (isSkillsOpen) {
       closeSkills();
     }
-    if (isCalculatorOpen) {
-      closeCalculator();
-    }
 
     toggleProjectsOpen();
   }, [
     closeAbout,
     closeSkills,
-    closeCalculator,
     closeWelcomeWindow,
     isAboutOpen,
     isSkillsOpen,
-    isCalculatorOpen,
     isWelcomeWindowOpen,
     toggleProjectsOpen,
-  ]);
-
-  const handleCalculatorClick = React.useCallback(() => {
-    if (isWelcomeWindowOpen) {
-      closeWelcomeWindow();
-    }
-    if (isAboutOpen) {
-      closeAbout();
-    }
-    if (isSkillsOpen) {
-      closeSkills();
-    }
-    if (isProjectsOpen) {
-      closeProjects();
-    }
-
-    toggleCalculatorOpen();
-  }, [
-    closeAbout,
-    closeSkills,
-    closeProjects,
-    closeWelcomeWindow,
-    isAboutOpen,
-    isSkillsOpen,
-    isProjectsOpen,
-    isWelcomeWindowOpen,
-    toggleCalculatorOpen,
   ]);
 
   return (
@@ -157,12 +111,6 @@ const MobileMenu: React.FC = () => {
         <button title="Projects" onClick={handleProjectsClick} className={WindowMenuItemStyle}>
           {getIcon("Projects")}
           {isProjectsMinimized && (
-            <FontAwesomeIcon icon={faCircle as IconProp} className={IconStyle} />
-          )}
-        </button>
-        <button title="Calculator" onClick={handleCalculatorClick} className={WindowMenuItemStyle}>
-          {getIcon("Calculator")}
-          {isCalculatorMinimized && (
             <FontAwesomeIcon icon={faCircle as IconProp} className={IconStyle} />
           )}
         </button>
