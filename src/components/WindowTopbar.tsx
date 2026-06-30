@@ -16,6 +16,7 @@ import useSkillsStore from '../utils/useSkillsStore';
 import useProjectsStore from '../utils/useProjectsStore';
 import useCalculatorStore from '../utils/useCalculatorStore';
 import useUtilStore from '../utils/useUtilStore';
+import useResumeStore from '../utils/useResumeStore';
 
 export type WindowTopbarProps = {
   title: string;
@@ -75,6 +76,13 @@ const WindowTopbar: React.FC<WindowTopbarProps> = ({
     setUtilMinimized,
   } = useUtilStore((state) => state);
 
+  const {
+    isResumeExpanded,
+    toggleResumeOpen,
+    toggleResumeExpanded,
+    setResumeMinimized,
+  } = useResumeStore((state) => state);
+
   const [image, setImage] = React.useState<IconType>('');
 
   React.useEffect(() => {
@@ -97,6 +105,10 @@ const WindowTopbar: React.FC<WindowTopbarProps> = ({
       }
       case 'Utils': {
         setImage('Folder');
+        break;
+      }
+      case 'Resume': {
+        setImage('Resume');
         break;
       }
       default:
@@ -127,6 +139,10 @@ const WindowTopbar: React.FC<WindowTopbarProps> = ({
           toggleUtilOpen();
           break;
         }
+        case 'Resume': {
+          toggleResumeOpen();
+          break;
+        }
         default:
           break;
       }
@@ -139,6 +155,7 @@ const WindowTopbar: React.FC<WindowTopbarProps> = ({
     toggleSkillsOpen,
     toggleCalculatorOpen,
     toggleUtilOpen,
+    toggleResumeOpen,
   ]);
 
   const handleMinimized = React.useCallback(() => {
@@ -169,6 +186,11 @@ const WindowTopbar: React.FC<WindowTopbarProps> = ({
           toggleUtilOpen();
           break;
         }
+        case 'Resume': {
+          setResumeMinimized(true);
+          toggleResumeOpen();
+          break;
+        }
         default:
           break;
       }
@@ -180,12 +202,14 @@ const WindowTopbar: React.FC<WindowTopbarProps> = ({
     setSkillsMinimized,
     setCalculatorMinimized,
     setUtilMinimized,
+    setResumeMinimized,
     title,
     toggleAboutOpen,
     toggleProjectsOpen,
     toggleSkillsOpen,
     toggleCalculatorOpen,
     toggleUtilOpen,
+    toggleResumeOpen,
   ]);
 
   const expand = React.useCallback(
@@ -267,6 +291,11 @@ const WindowTopbar: React.FC<WindowTopbarProps> = ({
           toggleUtilExpanded();
           break;
         }
+        case 'Resume': {
+          expand(isResumeExpanded);
+          toggleResumeExpanded();
+          break;
+        }
         default:
           break;
       }
@@ -278,11 +307,13 @@ const WindowTopbar: React.FC<WindowTopbarProps> = ({
     isProjectsExpanded,
     isSkillsExpanded,
     isUtilExpanded,
+    isResumeExpanded,
     title,
     toggleAboutExpanded,
     toggleProjectsExpanded,
     toggleSkillsExpanded,
     toggleUtilExpanded,
+    toggleResumeExpanded,
   ]);
 
   return (

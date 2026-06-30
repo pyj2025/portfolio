@@ -4,9 +4,11 @@ import { MobileProjects, Projects, WebProjects } from "./Projects";
 import ProjectDetail, { ProjectKey } from "./ProjectDetail";
 import { ProjectIndexType } from "../../types";
 import { WindowBodyContent } from "../../GlobalStyle";
+import { ViewMode } from "../WindowToolbar";
 
 type WithClickComponent = React.ComponentType<{
   click: (name: ProjectIndexType) => void;
+  view?: ViewMode;
 }>;
 
 const PROJECTS_WITH_CLICK: Record<string, WithClickComponent> = {
@@ -21,14 +23,19 @@ const isProjectKey = (index: ProjectIndexType): index is ProjectKey =>
 interface ProjectsContentProps {
   index: ProjectIndexType;
   onClick: (name: ProjectIndexType) => void;
+  view?: ViewMode;
 }
 
-const ProjectsContent: React.FC<ProjectsContentProps> = ({ index, onClick }) => {
+const ProjectsContent: React.FC<ProjectsContentProps> = ({
+  index,
+  onClick,
+  view = "icon",
+}) => {
   if (index in PROJECTS_WITH_CLICK) {
     const Component = PROJECTS_WITH_CLICK[index];
     return (
       <WindowBodyContent>
-        <Component click={onClick} />
+        <Component click={onClick} view={view} />
       </WindowBodyContent>
     );
   }

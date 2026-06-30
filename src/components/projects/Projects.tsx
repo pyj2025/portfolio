@@ -5,128 +5,130 @@ import DatApexLogo from '../../image/projects/DatApex.png';
 import MovieLogo from '../../image/projects/Movie.png';
 import { getIcon } from '../getIcon';
 import { ProjectIndexType } from '../../types';
+import { ViewMode } from '../WindowToolbar';
 import ParstagramLogo from '../../image/projects/Parstagram.png';
 import TwitterLogo from '../../image/projects/Twitter.png';
 
 const ICON_SIZE = 53;
 
-const IconListContainer: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => (
-  <div className="flex flex-row flex-wrap gap-2.5 m-2.5">{children}</div>
-);
-
-interface IconContainerProps {
+type ProjectItem = {
+  id: string;
   title: string;
-  onClick: () => void;
-  children: React.ReactNode;
-}
+  icon: 'Folder' | 'CodeFile';
+  logo?: string;
+};
 
-const IconContainer: React.FC<IconContainerProps> = ({
-  title,
+const renderIcon = (item: ProjectItem, size: number) =>
+  item.logo ? (
+    <img src={item.logo} alt={item.title} style={{ width: size, height: size }} />
+  ) : (
+    getIcon(item.icon, size)
+  );
+
+const GridItem: React.FC<{ item: ProjectItem; onClick: () => void }> = ({
+  item,
   onClick,
-  children,
 }) => (
-  <div
-    title={title}
+  <button
+    aria-label={item.title}
     onClick={onClick}
-    className="flex flex-col w-[60px] justify-center items-center p-0.5 rounded-lg cursor-pointer hover:bg-white/10 transition-colors"
+    className="group flex flex-col items-center w-16 cursor-pointer select-none bg-transparent"
   >
-    {children}
-  </div>
+    <div className="flex items-center justify-center rounded-lg p-1 transition-colors group-hover:bg-white/15">
+      {renderIcon(item, ICON_SIZE)}
+    </div>
+    <div className="mt-1 max-w-full px-1.5 py-px rounded text-xs leading-tight text-center text-white transition-colors group-hover:bg-white/20">
+      {item.title}
+    </div>
+  </button>
 );
 
-const IconLogoImage: React.FC<{ src: string; alt: string }> = ({ src, alt }) => (
-  <img src={src} alt={alt} className="w-12 h-12 mb-1" />
+const ListItem: React.FC<{ item: ProjectItem; onClick: () => void }> = ({
+  item,
+  onClick,
+}) => (
+  <button
+    aria-label={item.title}
+    onClick={onClick}
+    className="flex flex-row items-center gap-2.5 w-full px-3 py-1.5 rounded-md cursor-pointer hover:bg-white/10 transition-colors text-left"
+  >
+    <span className="flex items-center justify-center w-6 h-6 shrink-0">
+      {renderIcon(item, 22)}
+    </span>
+    <span className="text-sm text-white">{item.title}</span>
+  </button>
 );
 
-const IconLabel: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <div className="text-xs">{children}</div>
-);
+const ItemsView: React.FC<{
+  items: ProjectItem[];
+  view: ViewMode;
+  click: (id: ProjectIndexType) => void;
+}> = ({ items, view, click }) =>
+  view === 'list' ? (
+    <div className="flex flex-col gap-0.5 p-2">
+      {items.map((it) => (
+        <ListItem
+          key={it.id}
+          item={it}
+          onClick={() => click(it.id as unknown as ProjectIndexType)}
+        />
+      ))}
+    </div>
+  ) : (
+    <div className="flex flex-row flex-wrap gap-2 m-2.5">
+      {items.map((it) => (
+        <GridItem
+          key={it.id}
+          item={it}
+          onClick={() => click(it.id as unknown as ProjectIndexType)}
+        />
+      ))}
+    </div>
+  );
 
 interface ProjectsProps {
   click: (name: ProjectIndexType) => void;
+  view?: ViewMode;
 }
 
-export const Projects: React.FC<ProjectsProps> = React.memo(({ click }) => {
-  const projectList = [
-    { title: 'Web', id: 'WebProjects' },
-    { title: 'Mobile', id: 'MobileProjects' },
-  ];
+export const Projects: React.FC<ProjectsProps> = React.memo(
+  ({ click, view = 'icon' }) => {
+    const items: ProjectItem[] = [
+      { id: 'WebProjects', title: 'Web', icon: 'Folder' },
+      { id: 'MobileProjects', title: 'Mobile', icon: 'Folder' },
+    ];
+    return <ItemsView items={items} view={view} click={click} />;
+  }
+);
 
-  const renderFolders = () => {
-    return projectList.map((e) => (
-      <IconContainer
-        key={e.id}
-        title={e.title}
-        onClick={() => click(e.id as unknown as ProjectIndexType)}
-      >
-        {getIcon('Folder')}
-        <IconLabel>{e.title}</IconLabel>
-      </IconContainer>
-    ));
-  };
-
-  return <IconListContainer>{renderFolders()}</IconListContainer>;
-});
-
-export const WebProjects: React.FC<ProjectsProps> = React.memo(({ click }) => {
-  const projectList = [
-    { title: 'GitCard', id: 'GitCard', logo: GitCardLogo },
-    { title: 'DatApex', id: 'DatApex', logo: DatApexLogo },
-    { title: 'MovieNext', id: 'MovieNext', logo: MovieLogo },
-    { title: 'Portfolio', id: 'Portfolio', useIcon: true },
-  ];
-
-  const renderProjects = () => {
-    return projectList.map((e) => (
-      <IconContainer
-        key={e.id}
-        title={e.title}
-        onClick={() => click(e.id as unknown as ProjectIndexType)}
-      >
-        {e.useIcon ? (
-          getIcon('CodeFile', ICON_SIZE)
-        ) : (
-          <IconLogoImage src={e.logo as string} alt={e.title} />
-        )}
-        <IconLabel>{e.title}</IconLabel>
-      </IconContainer>
-    ));
-  };
-
-  return <IconListContainer>{renderProjects()}</IconListContainer>;
-});
+export const WebProjects: React.FC<ProjectsProps> = React.memo(
+  ({ click, view = 'icon' }) => {
+    const items: ProjectItem[] = [
+      { id: 'GitCard', title: 'GitCard', icon: 'CodeFile', logo: GitCardLogo },
+      { id: 'DatApex', title: 'DatApex', icon: 'CodeFile', logo: DatApexLogo },
+      { id: 'MovieNext', title: 'MovieNext', icon: 'CodeFile', logo: MovieLogo },
+      { id: 'Portfolio', title: 'Portfolio', icon: 'CodeFile' },
+    ];
+    return <ItemsView items={items} view={view} click={click} />;
+  }
+);
 
 export const MobileProjects: React.FC<ProjectsProps> = React.memo(
-  ({ click }) => {
-    const projectList = [
-      { title: 'Foodie', id: 'Foodie', logo: FoodieLogo },
-      { title: 'WebGame', id: 'WebGame', useIcon: true },
-      { title: 'ToonFlix', id: 'ToonFlix', useIcon: true },
-      { title: 'Tippy', id: 'Tippy', useIcon: true },
-      { title: 'Flix', id: 'Flix', useIcon: true },
-      { title: 'Twitter', id: 'Twitter', logo: TwitterLogo },
-      { title: 'Parstagram', id: 'Parstagram', logo: ParstagramLogo },
+  ({ click, view = 'icon' }) => {
+    const items: ProjectItem[] = [
+      { id: 'Foodie', title: 'Foodie', icon: 'CodeFile', logo: FoodieLogo },
+      { id: 'WebGame', title: 'WebGame', icon: 'CodeFile' },
+      { id: 'ToonFlix', title: 'ToonFlix', icon: 'CodeFile' },
+      { id: 'Tippy', title: 'Tippy', icon: 'CodeFile' },
+      { id: 'Flix', title: 'Flix', icon: 'CodeFile' },
+      { id: 'Twitter', title: 'Twitter', icon: 'CodeFile', logo: TwitterLogo },
+      {
+        id: 'Parstagram',
+        title: 'Parstagram',
+        icon: 'CodeFile',
+        logo: ParstagramLogo,
+      },
     ];
-
-    const renderProjects = () => {
-      return projectList.map((e) => (
-        <IconContainer
-          key={e.id}
-          title={e.title}
-          onClick={() => click(e.id as unknown as ProjectIndexType)}
-        >
-          {e.useIcon ? (
-            getIcon('CodeFile', ICON_SIZE)
-          ) : (
-            <IconLogoImage src={e.logo as string} alt={e.title} />
-          )}
-          <IconLabel>{e.title}</IconLabel>
-        </IconContainer>
-      ));
-    };
-
-    return <IconListContainer>{renderProjects()}</IconListContainer>;
+    return <ItemsView items={items} view={view} click={click} />;
   }
 );

@@ -4,3 +4,4 @@ export { default as SkillsWindow } from "./SkillsWindow";
 export { default as ProjectsWindow } from "./ProjectsWindow";
 export { default as CalculatorWindow } from "./CalculatorWindow";
 export { default as UtilWindow } from "./UtilWindow";
+export { default as ResumeWindow } from "./ResumeWindow";

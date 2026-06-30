@@ -6,6 +6,7 @@ export type FocusedWindowType =
   | "Projects"
   | "Calculator"
   | "Utils"
+  | "Resume"
   | "None";
 
 export type WindowSizeSetting = {

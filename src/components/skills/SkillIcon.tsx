@@ -1,5 +1,4 @@
 import React from 'react';
-import { cn } from '../../utils/cn';
 import { getSkillIcon } from './getSkillIcon';
 
 export type SkillIconProps = {
@@ -7,17 +6,15 @@ export type SkillIconProps = {
   noWidth?: boolean;
 };
 
-const SkillIcon: React.FC<SkillIconProps> = ({ name, noWidth }) => {
+const SkillIcon: React.FC<SkillIconProps> = ({ name }) => {
   return (
-    <div
-      title={name}
-      className={cn(
-        'flex flex-col h-16 justify-center items-center m-1 rounded-lg hover:bg-white/10 transition-colors',
-        noWidth ? '' : 'w-16'
-      )}
-    >
-      {getSkillIcon(name)}
-      <div className="text-xs text-center h-[1em] mt-1">{name}</div>
+    <div className="group flex flex-col items-center justify-start w-16 m-1 select-none">
+      <div className="flex items-center justify-center rounded-lg p-1 transition-colors group-hover:bg-white/15">
+        {getSkillIcon(name)}
+      </div>
+      <div className="mt-1 max-w-full px-1.5 py-px rounded text-xs leading-tight text-center text-white break-words transition-colors group-hover:bg-white/20">
+        {name}
+      </div>
     </div>
   );
 };

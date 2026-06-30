@@ -61,6 +61,19 @@ export type UtilState = {
     setUtilMinimized: (flag: boolean) => void;
 };
 
+export type ResumeState = {
+    isResumeOpen: boolean;
+    isResumeMinimized: boolean;
+    isResumeExpanded: boolean;
+    toggleResumeOpen: () => void;
+    openResume: () => void;
+    closeResume: () => void;
+    toggleResumeExpanded: () => void;
+    setResumeExpanded: (flag: boolean) => void;
+    toggleResumeMinimized: () => void;
+    setResumeMinimized: (flag: boolean) => void;
+};
+
 export type CalculatorState = {
     isCalculatorOpen: boolean;
     isCalculatorMinimized: boolean;

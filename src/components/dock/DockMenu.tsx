@@ -6,6 +6,7 @@ import { getIcon } from "../getIcon";
 import useAboutStore from "../../utils/useAboutStore";
 import useSkillsStore from "../../utils/useSkillsStore";
 import useProjectsStore from "../../utils/useProjectsStore";
+import useResumeStore from "../../utils/useResumeStore";
 import info from "../../info.json";
 
 const WindowMenuItemStyle =
@@ -20,6 +21,7 @@ const DockMenu: React.FC = () => {
   const { isAboutMinimized, openAbout } = useAboutStore(state => state);
   const { isSkillsMinimized, openSkills } = useSkillsStore(state => state);
   const { isProjectsMinimized, openProjects } = useProjectsStore(state => state);
+  const { isResumeMinimized, openResume } = useResumeStore(state => state);
 
   const handleAboutClick = React.useCallback(() => {
     openAbout();
@@ -32,6 +34,10 @@ const DockMenu: React.FC = () => {
   const handleProjectsClick = React.useCallback(() => {
     openProjects();
   }, [openProjects]);
+
+  const handleResumeClick = React.useCallback(() => {
+    openResume();
+  }, [openResume]);
 
   const handleEmailClick = React.useCallback(() => {
     window.open(`mailto:${info.about.info.email}`);
@@ -58,15 +64,12 @@ const DockMenu: React.FC = () => {
             <FontAwesomeIcon icon={faCircle as IconProp} className={IconStyle} />
           )}
         </button>
-        <a
-          title="Resume"
-          href="https://drive.google.com/file/d/14bb5ogfmAumTw7cMA_0PEUVwsPE_mOd-/view?usp=sharing"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={ExternalLinkMenuItemStyle}
-        >
+        <button title="Resume" onClick={handleResumeClick} className={WindowMenuItemStyle}>
           {getIcon("Resume")}
-        </a>
+          {isResumeMinimized && (
+            <FontAwesomeIcon icon={faCircle as IconProp} className={IconStyle} />
+          )}
+        </button>
         <a
           title="Github"
           href="https://github.com/pyj2025"
