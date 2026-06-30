@@ -8,6 +8,7 @@ import {
   ProjectsWindow,
   CalculatorWindow,
   UtilWindow,
+  ResumeWindow,
 } from "../views/window/desktop";
 import useWindowsStore from "../utils/useWindowsStore";
 import useAboutStore from "../utils/useAboutStore";
@@ -15,6 +16,7 @@ import useSkillsStore from "../utils/useSkillsStore";
 import useProjectsStore from "../utils/useProjectsStore";
 import useCalculatorStore from "../utils/useCalculatorStore";
 import useUtilStore from "../utils/useUtilStore";
+import useResumeStore from "../utils/useResumeStore";
 import WindowsContent from "./WindowsContent";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -25,6 +27,7 @@ const BodyContent: React.FC = () => {
   const isProjectsOpen = useProjectsStore(state => state.isProjectsOpen);
   const isCalculatorOpen = useCalculatorStore(state => state.isCalculatorOpen);
   const isUtilOpen = useUtilStore(state => state.isUtilOpen);
+  const isResumeOpen = useResumeStore(state => state.isResumeOpen);
 
   React.useEffect(() => {
     const message =
@@ -45,6 +48,7 @@ const BodyContent: React.FC = () => {
       { Component: ProjectsWindow, isOpen: isProjectsOpen },
       { Component: UtilWindow, isOpen: isUtilOpen },
       { Component: CalculatorWindow, isOpen: isCalculatorOpen },
+      { Component: ResumeWindow, isOpen: isResumeOpen },
     ];
 
     return <WindowsContent windows={windows} />;

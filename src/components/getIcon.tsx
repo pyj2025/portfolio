@@ -111,7 +111,7 @@ export const getIcon = (name: string, size?: number) => {
     case 'Projects':
       return <img src={folder} alt={name} width={size} height={size} />;
     case 'Resume':
-      return <img src={googleDocs} alt={name} />;
+      return <img src={googleDocs} alt={name} width={size} height={size} />;
     case 'Github':
       return <img src={github} alt={name} />;
     case 'Linkedin':

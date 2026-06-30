@@ -108,15 +108,19 @@ const UtilWindow: React.FC = () => {
             {apps.map(app => (
               <button
                 key={app.label}
-                title={app.label}
+                aria-label={app.label}
                 onClick={e => {
                   e.stopPropagation();
                   app.onOpen();
                 }}
-                className="flex flex-col w-[60px] justify-center items-center p-0.5 rounded-lg cursor-pointer hover:bg-white/10 transition-colors"
+                className="group flex flex-col items-center w-16 cursor-pointer select-none bg-transparent"
               >
-                <div className="mb-1">{getIcon(app.icon, 48)}</div>
-                <div className="text-xs text-white text-center">{app.label}</div>
+                <div className="flex items-center justify-center rounded-lg p-1 transition-colors group-hover:bg-white/15">
+                  {getIcon(app.icon, 48)}
+                </div>
+                <div className="mt-1 max-w-full px-1.5 py-px rounded text-xs leading-tight text-center text-white transition-colors group-hover:bg-white/20">
+                  {app.label}
+                </div>
               </button>
             ))}
           </div>

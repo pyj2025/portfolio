@@ -5,7 +5,9 @@ import { ProjectIndexType, WindowPositionSetting, WindowSizeSetting } from "../.
 import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
 import ProjectsContent from "../../../components/projects/ProjectsContent";
 import { WindowTopbar } from "../../../components";
+import WindowToolbar, { ViewMode } from "../../../components/WindowToolbar";
 import useWindowsStore from "../../../utils/useWindowsStore";
+import useNavHistory from "../../../utils/useNavHistory";
 import ProjectsNavbar from "../../../components/projects/ProjectsNavbar";
 
 const ProjectsWindow: React.FC = () => {
@@ -26,7 +28,15 @@ const ProjectsWindow: React.FC = () => {
   const [projectsPrevSetting, setProjectsPrevSetting] = React.useState<
     (WindowSizeSetting & WindowPositionSetting) | null
   >(null);
-  const [index, setIndex] = React.useState<ProjectIndexType>("Projects");
+  const {
+    current: index,
+    navigate,
+    back,
+    forward,
+    canBack,
+    canForward,
+  } = useNavHistory<ProjectIndexType>("Projects");
+  const [view, setView] = React.useState<ViewMode>("icon");
   const [isMobileWindow, setIsMobileWindow] = React.useState(false);
 
   React.useEffect(() => {
@@ -52,9 +62,9 @@ const ProjectsWindow: React.FC = () => {
 
   const handleClick = React.useCallback(
     (name: ProjectIndexType) => {
-      setIndex(name);
+      navigate(name);
     },
-    [setIndex],
+    [navigate],
   );
 
   return (
@@ -98,9 +108,17 @@ const ProjectsWindow: React.FC = () => {
         setPrevSetting={setProjectsPrevSetting}
         isMobileWindow={isMobileWindow}
       />
-      <WindowBody onClick={focusProjectsWindow}>
+      <WindowToolbar
+        onBack={back}
+        onForward={forward}
+        canBack={canBack}
+        canForward={canForward}
+        view={view}
+        onViewChange={setView}
+      />
+      <WindowBody className="h-[calc(100%-72px)]" onClick={focusProjectsWindow}>
         <ProjectsNavbar index={index} onClick={handleClick} />
-        <ProjectsContent index={index} onClick={handleClick} />
+        <ProjectsContent index={index} onClick={handleClick} view={view} />
       </WindowBody>
     </Window>
   );
