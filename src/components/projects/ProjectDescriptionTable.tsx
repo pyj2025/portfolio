@@ -1,9 +1,8 @@
 import React from "react";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-
-const TabelLabelStyle = "flex min-w-[120px]";
 
 type ProjectDescriptionTableProps = {
   name: string;
@@ -13,6 +12,22 @@ type ProjectDescriptionTableProps = {
   details: string;
 };
 
+const LinkButton: React.FC<{
+  href: string;
+  icon: IconProp;
+  label: string;
+}> = ({ href, icon, label }) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[var(--hover-overlay)] hover:bg-[var(--hover-overlay-strong)] text-[color:var(--wc-text)] text-xs no-underline transition-colors"
+  >
+    <FontAwesomeIcon icon={icon} />
+    {label}
+  </a>
+);
+
 const ProjectDescriptionTable: React.FC<ProjectDescriptionTableProps> = ({
   name,
   link,
@@ -21,57 +36,33 @@ const ProjectDescriptionTable: React.FC<ProjectDescriptionTableProps> = ({
   details,
 }) => {
   return (
-    <div className="flex justify-center items-center m-2">
-      <table className="border-separate border-spacing-1">
-        <tbody>
-          <tr>
-            <td className={TabelLabelStyle}>
-              <span className="text-gray-500">Name</span>
-            </td>
-            <td>{name}</td>
-          </tr>
+    <div className="flex flex-col max-w-xl mx-auto px-5 pb-5 gap-3">
+      <div className="flex flex-wrap items-center justify-center gap-2.5">
+        <span className="text-lg font-semibold">{name}</span>
+        <div className="flex gap-1.5">
+          <LinkButton href={link} icon={faGithub as IconProp} label="GitHub" />
           {url && (
-            <tr>
-              <td className={TabelLabelStyle}>
-                <span className="text-gray-500">Link</span>
-              </td>
-              <td>
-                <a href={url} className="text-white no-underline">
-                  <span>
-                    URL&nbsp;&nbsp;
-                    <FontAwesomeIcon icon={faExternalLinkAlt as IconProp} />
-                  </span>
-                </a>
-              </td>
-            </tr>
+            <LinkButton
+              href={url}
+              icon={faExternalLinkAlt as IconProp}
+              label="Live"
+            />
           )}
-          <tr>
-            <td className={TabelLabelStyle}>
-              <span className="text-gray-500">Github Link</span>
-            </td>
-            <td>
-              <a href={link} className="text-white no-underline">
-                <span>
-                  Link&nbsp;&nbsp;
-                  <FontAwesomeIcon icon={faExternalLinkAlt as IconProp} />
-                </span>
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td className={TabelLabelStyle}>
-              <span className="text-gray-500">Stack</span>
-            </td>
-            <td>{stack.map((value, idx) => (idx === stack.length - 1 ? value : value + ", "))}</td>
-          </tr>
-          <tr>
-            <td className={TabelLabelStyle}>
-              <span className="text-gray-500">Details</span>
-            </td>
-            <td>{details}</td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+      </div>
+
+      <div className="flex flex-wrap justify-center gap-1.5">
+        {stack.map(tech => (
+          <span
+            key={tech}
+            className="px-2 py-0.5 rounded-full bg-[var(--chip-bg)] text-[11px] font-medium"
+          >
+            {tech}
+          </span>
+        ))}
+      </div>
+
+      <p className="m-0 text-[13px] leading-relaxed opacity-85">{details}</p>
     </div>
   );
 };

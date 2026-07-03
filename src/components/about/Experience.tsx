@@ -80,7 +80,7 @@ const Experience: React.FC<ExperienceProps> = ({
     <div className="flex flex-col">
       <div
         className={cn(
-          'grid w-full bg-[rgb(51,52,54)] border-b border-b-black pl-2',
+          'grid w-full bg-[var(--table-head)] border-b border-b-[color:var(--win-border)] pl-2',
           showDate ? 'grid-cols-[6.5fr_3.5fr]' : 'grid-cols-[auto]',
           isMobile ? 'h-8' : 'h-5'
         )}

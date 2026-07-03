@@ -5,7 +5,7 @@ import DatApexLogo from '../../image/projects/DatApex.png';
 import MovieLogo from '../../image/projects/Movie.png';
 import { getIcon } from '../getIcon';
 import { ProjectIndexType } from '../../types';
-import { ViewMode } from '../WindowToolbar';
+import { ViewMode } from '../../types';
 import ParstagramLogo from '../../image/projects/Parstagram.png';
 import TwitterLogo from '../../image/projects/Twitter.png';
 
@@ -34,10 +34,10 @@ const GridItem: React.FC<{ item: ProjectItem; onClick: () => void }> = ({
     onClick={onClick}
     className="group flex flex-col items-center w-16 cursor-pointer select-none bg-transparent"
   >
-    <div className="flex items-center justify-center rounded-lg p-1 transition-colors group-hover:bg-white/15">
+    <div className="flex items-center justify-center rounded-lg p-1 transition-colors group-hover:bg-[var(--hover-overlay)]">
       {renderIcon(item, ICON_SIZE)}
     </div>
-    <div className="mt-1 max-w-full px-1.5 py-px rounded text-xs leading-tight text-center text-white transition-colors group-hover:bg-white/20">
+    <div className="mt-1 max-w-full px-1.5 py-px rounded text-xs leading-tight text-center text-[color:var(--wc-text)] transition-colors group-hover:bg-[var(--hover-overlay-strong)]">
       {item.title}
     </div>
   </button>
@@ -50,12 +50,12 @@ const ListItem: React.FC<{ item: ProjectItem; onClick: () => void }> = ({
   <button
     aria-label={item.title}
     onClick={onClick}
-    className="flex flex-row items-center gap-2.5 w-full px-3 py-1.5 rounded-md cursor-pointer hover:bg-white/10 transition-colors text-left"
+    className="flex flex-row items-center gap-2.5 w-full px-3 py-1.5 rounded-md cursor-pointer hover:bg-[var(--hover-overlay)] transition-colors text-left"
   >
     <span className="flex items-center justify-center w-6 h-6 shrink-0">
       {renderIcon(item, 22)}
     </span>
-    <span className="text-sm text-white">{item.title}</span>
+    <span className="text-sm text-[color:var(--wc-text)]">{item.title}</span>
   </button>
 );
 

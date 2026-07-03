@@ -2,6 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Theme tokens — light is default, .dark on <html> overrides */
+:root {
+  --wc-bg: #ffffff;
+  --wc-text: #1d1d1f;
+  --wc-muted: #6e6e73;
+  --titlebar-bg: rgba(240, 240, 242, 0.88);
+  --titlebar-highlight: rgba(255, 255, 255, 0.7);
+  --sidebar-bg: rgba(236, 236, 238, 0.8);
+  --nav-text: rgba(29, 29, 31, 0.85);
+  --row-alt: #f2f2f7;
+  --table-head: #e8e8ed;
+  --win-border: rgba(0, 0, 0, 0.12);
+  --hover-overlay: rgba(0, 0, 0, 0.07);
+  --hover-overlay-strong: rgba(0, 0, 0, 0.12);
+  --chip-bg: rgba(0, 0, 0, 0.07);
+  --accent: #0a84ff;
+}
+
+.dark {
+  --wc-bg: #1d1f21;
+  --wc-text: #ffffff;
+  --wc-muted: #98989d;
+  --titlebar-bg: rgba(44, 44, 47, 0.95);
+  --titlebar-highlight: rgba(255, 255, 255, 0.05);
+  --sidebar-bg: rgba(57, 57, 61, 0.75);
+  --nav-text: rgba(255, 255, 255, 0.85);
+  --row-alt: #28292a;
+  --table-head: rgb(51, 52, 54);
+  --win-border: rgba(20, 21, 22, 1);
+  --hover-overlay: rgba(255, 255, 255, 0.1);
+  --hover-overlay-strong: rgba(255, 255, 255, 0.2);
+  --chip-bg: rgba(255, 255, 255, 0.12);
+  --accent: #0a84ff;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",

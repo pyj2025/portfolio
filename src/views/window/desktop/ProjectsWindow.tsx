@@ -5,7 +5,7 @@ import { ProjectIndexType, WindowPositionSetting, WindowSizeSetting } from "../.
 import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
 import ProjectsContent from "../../../components/projects/ProjectsContent";
 import { WindowTopbar } from "../../../components";
-import WindowToolbar, { ViewMode } from "../../../components/WindowToolbar";
+import { ViewMode } from "../../../types";
 import useWindowsStore from "../../../utils/useWindowsStore";
 import useNavHistory from "../../../utils/useNavHistory";
 import ProjectsNavbar from "../../../components/projects/ProjectsNavbar";
@@ -107,16 +107,11 @@ const ProjectsWindow: React.FC = () => {
         prevSetting={projectsPrevSetting}
         setPrevSetting={setProjectsPrevSetting}
         isMobileWindow={isMobileWindow}
-      />
-      <WindowToolbar
-        onBack={back}
-        onForward={forward}
-        canBack={canBack}
-        canForward={canForward}
+        nav={{ onBack: back, onForward: forward, canBack, canForward }}
         view={view}
         onViewChange={setView}
       />
-      <WindowBody className="h-[calc(100%-72px)]" onClick={focusProjectsWindow}>
+      <WindowBody onClick={focusProjectsWindow}>
         <ProjectsNavbar index={index} onClick={handleClick} />
         <ProjectsContent index={index} onClick={handleClick} view={view} />
       </WindowBody>
