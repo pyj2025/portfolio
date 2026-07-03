@@ -15,6 +15,7 @@ import {
   faFolder,
   faFileAlt,
   faFileCode,
+  faCog,
 } from '@fortawesome/free-solid-svg-icons';
 import { MobileNavbarMenu } from '../GlobalStyle';
 
@@ -51,10 +52,23 @@ export type IconType =
   | 'Terminal'
   | 'Calculator'
   | 'FolderColor'
+  | 'Settings'
   | '';
 
 export const getIcon = (name: string, size?: number) => {
   switch (name) {
+    case 'Settings':
+      return (
+        <div
+          style={{ width: size ?? 48, height: size ?? 48 }}
+          className="flex items-center justify-center rounded-[22%] bg-gradient-to-b from-[#8e8e93] to-[#66666b]"
+        >
+          <FontAwesomeIcon
+            icon={faCog as IconProp}
+            style={{ fontSize: (size ?? 48) * 0.6, color: '#f2f2f4' }}
+          />
+        </div>
+      );
     case 'FolderColor':
       return (
         <svg

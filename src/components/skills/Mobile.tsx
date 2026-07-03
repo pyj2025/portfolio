@@ -1,17 +1,10 @@
 import React from "react";
 import info from "../../info.json";
-import SkillIcon from "./SkillIcon";
+import { ViewMode } from "../../types";
+import SkillsGroup from "./SkillsGroup";
 
-const SkillsContentContainerStyle = "flex flex-row flex-wrap mt-2.5";
-
-const Mobile: React.FC = () => {
-  return (
-    <div className={SkillsContentContainerStyle}>
-      {info.skills.mobile.map(skill => {
-        return <SkillIcon name={skill.name} noWidth={skill.noWidth} />;
-      })}
-    </div>
-  );
-};
+const Mobile: React.FC<{ view?: ViewMode }> = ({ view }) => (
+  <SkillsGroup skills={info.skills.mobile} view={view} />
+);
 
 export default React.memo(Mobile);

@@ -7,6 +7,8 @@ export type FocusedWindowType =
   | "Calculator"
   | "Utils"
   | "Resume"
+  | "Terminal"
+  | "Settings"
   | "None";
 
 export type WindowSizeSetting = {
@@ -38,3 +40,5 @@ export type ProjectIndexType =
   | 'Portfolio';
 
 export type SkillsIndexType = 'Menu' | 'Front' | 'Back' | 'Mobile' | 'Programming';
+
+export type ViewMode = 'icon' | 'list';

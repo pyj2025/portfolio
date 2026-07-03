@@ -38,7 +38,7 @@ const DesktopTopBar: React.FC = () => {
 
   return (
     <div
-      className="flex justify-start items-center bg-black bg-opacity-40 text-white h-12"
+      className="flex justify-start items-center bg-black/25 backdrop-blur-2xl text-white h-12"
       style={{ width: `${width}px` }}
     >
       <div ref={mainMenuRef} className="pl-1">

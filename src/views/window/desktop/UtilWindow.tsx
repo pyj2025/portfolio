@@ -15,6 +15,8 @@ import { WindowTopbar } from "../../../components";
 import { getIcon, getNavIcon } from "../../../components/getIcon";
 import useWindowsStore from "../../../utils/useWindowsStore";
 import useCalculatorStore from "../../../utils/useCalculatorStore";
+import useTerminalStore from "../../../utils/useTerminalStore";
+import useSettingsStore from "../../../utils/useSettingsStore";
 
 type UtilApp = {
   label: string;
@@ -26,6 +28,8 @@ const UtilWindow: React.FC = () => {
   const { width, height } = useScreenSize();
   const { focusedWindow, setFocusedWindow } = useWindowsStore(state => state);
   const openCalculator = useCalculatorStore(state => state.openCalculator);
+  const openTerminal = useTerminalStore(state => state.openTerminal);
+  const openSettings = useSettingsStore(state => state.openSettings);
 
   const utilRef = React.useRef<any>();
 
@@ -59,6 +63,8 @@ const UtilWindow: React.FC = () => {
 
   const apps: UtilApp[] = [
     { label: "Calculator", icon: "Calculator", onOpen: openCalculator },
+    { label: "Terminal", icon: "Terminal", onOpen: openTerminal },
+    { label: "Settings", icon: "Settings", onOpen: openSettings },
   ];
 
   return (
@@ -115,10 +121,10 @@ const UtilWindow: React.FC = () => {
                 }}
                 className="group flex flex-col items-center w-16 cursor-pointer select-none bg-transparent"
               >
-                <div className="flex items-center justify-center rounded-lg p-1 transition-colors group-hover:bg-white/15">
+                <div className="flex items-center justify-center rounded-lg p-1 transition-colors group-hover:bg-[var(--hover-overlay)]">
                   {getIcon(app.icon, 48)}
                 </div>
-                <div className="mt-1 max-w-full px-1.5 py-px rounded text-xs leading-tight text-center text-white transition-colors group-hover:bg-white/20">
+                <div className="mt-1 max-w-full px-1.5 py-px rounded text-xs leading-tight text-center text-[color:var(--wc-text)] transition-colors group-hover:bg-[var(--hover-overlay-strong)]">
                   {app.label}
                 </div>
               </button>

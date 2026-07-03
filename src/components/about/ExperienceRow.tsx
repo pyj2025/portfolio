@@ -47,7 +47,7 @@ const ExperienceRow: React.FC<ExperienceRowProps> = ({
           'grid w-full pl-2 cursor-pointer',
           showDate ? 'grid-cols-[6.5fr_3.5fr]' : 'grid-cols-[auto]',
           isMobile ? 'h-12' : 'h-full',
-          isEven ? 'bg-[#28292a]' : 'bg-transparent'
+          isEven ? 'bg-[var(--row-alt)]' : 'bg-transparent'
         )}
         onClick={toggleOpen}
       >

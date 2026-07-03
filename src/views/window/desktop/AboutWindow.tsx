@@ -1,10 +1,16 @@
 import React from "react";
 import { DraggableData, Position, ResizableDelta } from "react-rnd";
 import { Window, WindowBody, WindowBodyContent } from "../../../GlobalStyle";
-import { AboutIndexType, WindowPositionSetting, WindowSizeSetting } from "../../../types";
+import {
+  AboutIndexType,
+  ViewMode,
+  WindowPositionSetting,
+  WindowSizeSetting,
+} from "../../../types";
 import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
 import { WindowTopbar } from "../../../components";
 import useWindowsStore from "../../../utils/useWindowsStore";
+import useNavHistory from "../../../utils/useNavHistory";
 import {
   Certifications,
   Education,
@@ -28,21 +34,19 @@ const ExperienceWrapper: React.FC<ExperienceWrapperProps> = ({ showDate }) => (
   <Experience showDate={showDate} />
 );
 
-interface CertificationsWrapperProps {
-  setIndex: (index: AboutIndexType) => void;
-}
-
-const CertificationsWrapper: React.FC<CertificationsWrapperProps> = ({ setIndex }) => (
-  <Certifications toggleIndex={setIndex} />
-);
-
 interface AboutContentProps {
   index: AboutIndexType;
   setIndex: (index: AboutIndexType) => void;
   showDate: boolean;
+  view: ViewMode;
 }
 
-const AboutContent: React.FC<AboutContentProps> = ({ index, setIndex, showDate }) => {
+const AboutContent: React.FC<AboutContentProps> = ({
+  index,
+  setIndex,
+  showDate,
+  view,
+}) => {
   if (index === "Menu") {
     return null;
   }
@@ -58,7 +62,7 @@ const AboutContent: React.FC<AboutContentProps> = ({ index, setIndex, showDate }
   if (index === "Certifications") {
     return (
       <WindowBodyContent>
-        <CertificationsWrapper setIndex={setIndex} />
+        <Certifications toggleIndex={setIndex} view={view} />
       </WindowBodyContent>
     );
   }
@@ -94,7 +98,15 @@ const AboutWindow: React.FC = () => {
     (WindowSizeSetting & WindowPositionSetting) | null
   >(null);
 
-  const [index, setIndex] = React.useState<AboutIndexType>("Info");
+  const {
+    current: index,
+    navigate,
+    back,
+    forward,
+    canBack,
+    canForward,
+  } = useNavHistory<AboutIndexType>("Info");
+  const [view, setView] = React.useState<ViewMode>("icon");
   const [isMobileWindow, setIsMobileWindow] = React.useState<boolean>(false);
   const [showDate, setShowDate] = React.useState<boolean>(false);
 
@@ -129,9 +141,9 @@ const AboutWindow: React.FC = () => {
 
   const handleClick = React.useCallback(
     (name: AboutIndexType) => {
-      setIndex(name);
+      navigate(name);
     },
-    [setIndex],
+    [navigate],
   );
 
   return (
@@ -177,10 +189,18 @@ const AboutWindow: React.FC = () => {
         prevSetting={aboutPrevSetting}
         setPrevSetting={setAboutPrevSetting}
         isMobileWindow={isMobileWindow}
+        nav={{ onBack: back, onForward: forward, canBack, canForward }}
+        view={view}
+        onViewChange={setView}
       />
       <WindowBody onClick={focusAboutWindow}>
         <AboutNavbar index={index} onClick={handleClick} />
-        <AboutContent index={index} setIndex={setIndex} showDate={showDate} />
+        <AboutContent
+          index={index}
+          setIndex={handleClick}
+          showDate={showDate}
+          view={view}
+        />
       </WindowBody>
     </Window>
   );

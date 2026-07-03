@@ -61,6 +61,32 @@ export type UtilState = {
     setUtilMinimized: (flag: boolean) => void;
 };
 
+export type TerminalState = {
+    isTerminalOpen: boolean;
+    isTerminalMinimized: boolean;
+    isTerminalExpanded: boolean;
+    toggleTerminalOpen: () => void;
+    openTerminal: () => void;
+    closeTerminal: () => void;
+    toggleTerminalExpanded: () => void;
+    setTerminalExpanded: (flag: boolean) => void;
+    toggleTerminalMinimized: () => void;
+    setTerminalMinimized: (flag: boolean) => void;
+};
+
+export type SettingsState = {
+    isSettingsOpen: boolean;
+    isSettingsMinimized: boolean;
+    isSettingsExpanded: boolean;
+    toggleSettingsOpen: () => void;
+    openSettings: () => void;
+    closeSettings: () => void;
+    toggleSettingsExpanded: () => void;
+    setSettingsExpanded: (flag: boolean) => void;
+    toggleSettingsMinimized: () => void;
+    setSettingsMinimized: (flag: boolean) => void;
+};
+
 export type ResumeState = {
     isResumeOpen: boolean;
     isResumeMinimized: boolean;

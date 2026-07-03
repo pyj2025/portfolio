@@ -1,14 +1,20 @@
 import React from "react";
 import { DraggableData, Position, ResizableDelta } from "react-rnd";
-import { SkillsIndexType, WindowPositionSetting, WindowSizeSetting } from "../../../types";
+import {
+  SkillsIndexType,
+  ViewMode,
+  WindowPositionSetting,
+  WindowSizeSetting,
+} from "../../../types";
 import { Window, WindowBody, WindowBodyContent } from "../../../GlobalStyle";
 import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
 import { WindowTopbar } from "../../../components";
 import useWindowsStore from "../../../utils/useWindowsStore";
+import useNavHistory from "../../../utils/useNavHistory";
 import { BackEnd, FrontEnd, Mobile, ProgrammingLanguage } from "../../../components/skills";
 import SkillsNavbar from "../../../components/skills/SkillsNavbar";
 
-const SKILLS_COMPONENTS: Record<SkillsIndexType, React.ComponentType> = {
+const SKILLS_COMPONENTS: Record<SkillsIndexType, React.ComponentType<{ view?: ViewMode }>> = {
   Menu: () => <></>,
   Front: FrontEnd,
   Back: BackEnd,
@@ -18,14 +24,15 @@ const SKILLS_COMPONENTS: Record<SkillsIndexType, React.ComponentType> = {
 
 interface SkillsContentProps {
   index: SkillsIndexType;
+  view: ViewMode;
 }
 
-const SkillsContent: React.FC<SkillsContentProps> = ({ index }) => {
+const SkillsContent: React.FC<SkillsContentProps> = ({ index, view }) => {
   const Component = SKILLS_COMPONENTS[index];
 
   return (
     <WindowBodyContent>
-      <Component />
+      <Component view={view} />
     </WindowBodyContent>
   );
 };
@@ -47,7 +54,15 @@ const SkillsWindow: React.FC = () => {
   const [skillsPrevSetting, setSkillsPrevSetting] = React.useState<
     (WindowSizeSetting & WindowPositionSetting) | null
   >(null);
-  const [index, setIndex] = React.useState<SkillsIndexType>("Front");
+  const {
+    current: index,
+    navigate,
+    back,
+    forward,
+    canBack,
+    canForward,
+  } = useNavHistory<SkillsIndexType>("Front");
+  const [view, setView] = React.useState<ViewMode>("icon");
   const [isMobileWindow, setIsMobileWindow] = React.useState(false);
 
   React.useEffect(() => {
@@ -73,9 +88,9 @@ const SkillsWindow: React.FC = () => {
 
   const handleClick = React.useCallback(
     (name: SkillsIndexType) => {
-      setIndex(name);
+      navigate(name);
     },
-    [setIndex],
+    [navigate],
   );
 
   return (
@@ -118,10 +133,13 @@ const SkillsWindow: React.FC = () => {
         prevSetting={skillsPrevSetting}
         setPrevSetting={setSkillsPrevSetting}
         isMobileWindow={isMobileWindow}
+        nav={{ onBack: back, onForward: forward, canBack, canForward }}
+        view={view}
+        onViewChange={setView}
       />
       <WindowBody onClick={focusSkillsWindow}>
         <SkillsNavbar index={index} onClick={handleClick} />
-        <SkillsContent index={index} />
+        <SkillsContent index={index} view={view} />
       </WindowBody>
     </Window>
   );

@@ -9,6 +9,8 @@ import {
   CalculatorWindow,
   UtilWindow,
   ResumeWindow,
+  TerminalWindow,
+  SettingsWindow,
 } from "../views/window/desktop";
 import useWindowsStore from "../utils/useWindowsStore";
 import useAboutStore from "../utils/useAboutStore";
@@ -17,6 +19,8 @@ import useProjectsStore from "../utils/useProjectsStore";
 import useCalculatorStore from "../utils/useCalculatorStore";
 import useUtilStore from "../utils/useUtilStore";
 import useResumeStore from "../utils/useResumeStore";
+import useTerminalStore from "../utils/useTerminalStore";
+import useSettingsStore from "../utils/useSettingsStore";
 import WindowsContent from "./WindowsContent";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -28,6 +32,8 @@ const BodyContent: React.FC = () => {
   const isCalculatorOpen = useCalculatorStore(state => state.isCalculatorOpen);
   const isUtilOpen = useUtilStore(state => state.isUtilOpen);
   const isResumeOpen = useResumeStore(state => state.isResumeOpen);
+  const isTerminalOpen = useTerminalStore(state => state.isTerminalOpen);
+  const isSettingsOpen = useSettingsStore(state => state.isSettingsOpen);
 
   React.useEffect(() => {
     const message =
@@ -49,6 +55,8 @@ const BodyContent: React.FC = () => {
       { Component: UtilWindow, isOpen: isUtilOpen },
       { Component: CalculatorWindow, isOpen: isCalculatorOpen },
       { Component: ResumeWindow, isOpen: isResumeOpen },
+      { Component: TerminalWindow, isOpen: isTerminalOpen },
+      { Component: SettingsWindow, isOpen: isSettingsOpen },
     ];
 
     return <WindowsContent windows={windows} />;
