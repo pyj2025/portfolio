@@ -1,8 +1,6 @@
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import { BoldText } from '../../GlobalStyle';
-import { cn } from '../../utils/cn';
 import { ViewMode } from '../../types';
 import { getIcon } from '../getIcon';
 import ExperienceRow, { ExperienceType } from './ExperienceRow';
@@ -108,19 +106,13 @@ const Experience: React.FC<ExperienceProps> = ({
   }
 
   return (
-    <div className="flex flex-col">
-      <div
-        className={cn(
-          'grid w-full bg-[var(--table-head)] border-b border-b-[color:var(--win-border)] pl-2',
-          showDate ? 'grid-cols-[6.5fr_3.5fr]' : 'grid-cols-[auto]',
-          isMobile ? 'h-8' : 'h-5'
-        )}
-      >
-        <div
-          className="flex justify-start items-center cursor-pointer"
+    <div className="flex flex-col p-2">
+      <div className="flex items-center px-3 py-1 text-xs font-medium text-[color:var(--wc-muted)] select-none">
+        <button
           onClick={sortByPosition}
+          className="flex items-center gap-1 cursor-pointer bg-transparent text-inherit"
         >
-          <BoldText className="mr-2">Position</BoldText>
+          Position
           {positionSortType ? (
             <FontAwesomeIcon
               icon={
@@ -128,15 +120,16 @@ const Experience: React.FC<ExperienceProps> = ({
                   ? (faChevronUp as IconProp)
                   : (faChevronDown as IconProp)
               }
+              style={{ fontSize: 10 }}
             />
           ) : null}
-        </div>
+        </button>
         {showDate ? (
-          <div
-            className="flex justify-start items-center cursor-pointer"
+          <button
             onClick={sortByDate}
+            className="flex items-center gap-1 ml-auto cursor-pointer bg-transparent text-inherit"
           >
-            <BoldText className="mr-2">Date</BoldText>
+            Date
             {dateSortType ? (
               <FontAwesomeIcon
                 icon={
@@ -144,21 +137,23 @@ const Experience: React.FC<ExperienceProps> = ({
                     ? (faChevronUp as IconProp)
                     : (faChevronDown as IconProp)
                 }
+                style={{ fontSize: 10 }}
               />
             ) : null}
-          </div>
+          </button>
         ) : null}
       </div>
-      {experiences.map((experience: ExperienceType, idx: number) => (
-        <ExperienceRow
-          key={experience.title}
-          experience={experience}
-          isEven={idx % 2 === 0}
-          showDate={showDate}
-          isMobile={isMobile}
-          onOpen={onOpen}
-        />
-      ))}
+      <div className="flex flex-col gap-0.5">
+        {experiences.map((experience: ExperienceType) => (
+          <ExperienceRow
+            key={experience.title}
+            experience={experience}
+            showDate={showDate}
+            isMobile={isMobile}
+            onOpen={onOpen}
+          />
+        ))}
+      </div>
     </div>
   );
 };
