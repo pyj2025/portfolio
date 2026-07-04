@@ -1,10 +1,16 @@
 import React from "react";
 import { DraggableData, Position, ResizableDelta } from "react-rnd";
 import { MobileBodyContent, MobileWindowBody, Window } from "../../../GlobalStyle";
-import { ProjectIndexType, WindowPositionSetting, WindowSizeSetting } from "../../../types";
+import {
+  ProjectIndexType,
+  ViewMode,
+  WindowPositionSetting,
+  WindowSizeSetting,
+} from "../../../types";
 import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
 import ProjectsContent from "../../../components/projects/ProjectsContent";
 import useWindowsStore from "../../../utils/useWindowsStore";
+import useNavHistory from "../../../utils/useNavHistory";
 import MobileProjectsNavbar from "../../../components/projects/MobileProjectsNavbar";
 import { MobilePanel, WindowTopbar } from "../../../components";
 
@@ -14,9 +20,14 @@ const WEB_PROJECTS = ["GitCard", "DatApex", "MovieNext", "Portfolio"] as const;
 interface MobileProjectsContentProps {
   index: ProjectIndexType;
   onClick: (name: ProjectIndexType) => void;
+  view: ViewMode;
 }
 
-const MobileProjectsContent: React.FC<MobileProjectsContentProps> = ({ index, onClick }) => {
+const MobileProjectsContent: React.FC<MobileProjectsContentProps> = ({
+  index,
+  onClick,
+  view,
+}) => {
   const isMainView = MAIN_PROJECT_VIEWS.includes(index as (typeof MAIN_PROJECT_VIEWS)[number]);
 
   const handleBackClick = () => {
@@ -27,10 +38,10 @@ const MobileProjectsContent: React.FC<MobileProjectsContentProps> = ({ index, on
   return (
     <MobileBodyContent>
       {isMainView ? (
-        <ProjectsContent index={index} onClick={onClick} />
+        <ProjectsContent index={index} onClick={onClick} view={view} />
       ) : (
         <MobilePanel onClick={handleBackClick}>
-          <ProjectsContent index={index} onClick={onClick} />
+          <ProjectsContent index={index} onClick={onClick} view={view} />
         </MobilePanel>
       )}
     </MobileBodyContent>
@@ -55,7 +66,15 @@ const MobileProjectsWindow: React.FC = () => {
   const [projectsPrevSetting, setProjectsPrevSetting] = React.useState<
     (WindowSizeSetting & WindowPositionSetting) | null
   >(null);
-  const [index, setIndex] = React.useState<ProjectIndexType>("Projects");
+  const {
+    current: index,
+    navigate,
+    back,
+    forward,
+    canBack,
+    canForward,
+  } = useNavHistory<ProjectIndexType>("Projects");
+  const [view, setView] = React.useState<ViewMode>("icon");
   const [isMobileWindow, setIsMobileWindow] = React.useState(false);
 
   React.useEffect(() => {
@@ -77,9 +96,9 @@ const MobileProjectsWindow: React.FC = () => {
 
   const handleClick = React.useCallback(
     (name: ProjectIndexType) => {
-      setIndex(name);
+      navigate(name);
     },
-    [setIndex],
+    [navigate],
   );
 
   return (
@@ -122,10 +141,13 @@ const MobileProjectsWindow: React.FC = () => {
         prevSetting={projectsPrevSetting}
         setPrevSetting={setProjectsPrevSetting}
         isMobileWindow={isMobileWindow}
+        nav={{ onBack: back, onForward: forward, canBack, canForward }}
+        view={view}
+        onViewChange={setView}
       />
       <MobileWindowBody>
         <MobileProjectsNavbar index={index} onClick={handleClick} />
-        <MobileProjectsContent index={index} onClick={handleClick} />
+        <MobileProjectsContent index={index} onClick={handleClick} view={view} />
       </MobileWindowBody>
     </Window>
   );
