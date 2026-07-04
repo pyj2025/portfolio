@@ -7,6 +7,8 @@ import {
   GenAIFundamentals,
   Info,
 } from "../../../components/about";
+import ExperienceDetail from "../../../components/about/ExperienceDetail";
+import info from "../../../info.json";
 import { AboutIndexType, WindowPositionSetting, WindowSizeSetting } from "../../../types";
 import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
 import {
@@ -156,8 +158,22 @@ const MobileAboutWindow: React.FC = () => {
             <MobilePanel onClick={() => handleClick("Menu")}>
               {index === "Info" && <Info />}
               {index === "Experience" && (
-                <Experience isMobile={isMobileWindow} showDate={showDate} />
+                <Experience
+                  isMobile={isMobileWindow}
+                  showDate={showDate}
+                  onOpen={exp => setIndex(`Experience:${exp.title}`)}
+                />
               )}
+              {index.startsWith("Experience:") &&
+                (() => {
+                  const title = index.slice("Experience:".length);
+                  const experience = info.about.experience.find(
+                    exp => exp.title === title,
+                  );
+                  return experience ? (
+                    <ExperienceDetail experience={experience} />
+                  ) : null;
+                })()}
               {index === "Education" && <Education />}
               {index === "Certifications" && <Certifications toggleIndex={setIndex} />}
               {index === "GenAI" && <GenAIFundamentals />}
