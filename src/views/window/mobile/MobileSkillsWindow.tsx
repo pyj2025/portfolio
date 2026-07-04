@@ -1,6 +1,11 @@
 import React from "react";
 import { DraggableData, Position, ResizableDelta } from "react-rnd";
-import { SkillsIndexType, WindowPositionSetting, WindowSizeSetting } from "../../../types";
+import {
+  SkillsIndexType,
+  ViewMode,
+  WindowPositionSetting,
+  WindowSizeSetting,
+} from "../../../types";
 import {
   MobileBodyContent,
   MobileMenuItemLabel,
@@ -12,6 +17,7 @@ import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
 import { BackEnd, FrontEnd, Mobile, ProgrammingLanguage } from "../../../components/skills";
 import { getIcon } from "../../../components/getIcon";
 import useWindowsStore from "../../../utils/useWindowsStore";
+import useNavHistory from "../../../utils/useNavHistory";
 import MobileSkillsNavbar from "../../../components/skills/MobileSkillsNavbar";
 import { MobilePanel, WindowTopbar } from "../../../components";
 
@@ -59,7 +65,15 @@ const MobileSkillsWindow: React.FC = () => {
   const [skillsPrevSetting, setSkillsPrevSetting] = React.useState<
     (WindowSizeSetting & WindowPositionSetting) | null
   >(null);
-  const [index, setIndex] = React.useState<SkillsIndexType>("Menu");
+  const {
+    current: index,
+    navigate,
+    back,
+    forward,
+    canBack,
+    canForward,
+  } = useNavHistory<SkillsIndexType>("Menu");
+  const [view, setView] = React.useState<ViewMode>("icon");
   const [isMobileWindow, setIsMobileWindow] = React.useState(false);
 
   React.useEffect(() => {
@@ -81,9 +95,9 @@ const MobileSkillsWindow: React.FC = () => {
 
   const handleClick = React.useCallback(
     (name: SkillsIndexType) => {
-      setIndex(name);
+      navigate(name);
     },
-    [setIndex],
+    [navigate],
   );
 
   return (
@@ -126,6 +140,9 @@ const MobileSkillsWindow: React.FC = () => {
         prevSetting={skillsPrevSetting}
         setPrevSetting={setSkillsPrevSetting}
         isMobileWindow={isMobileWindow}
+        nav={{ onBack: back, onForward: forward, canBack, canForward }}
+        view={view}
+        onViewChange={setView}
       />
       <MobileWindowBody>
         <MobileSkillsNavbar index={index} onClick={handleClick} />
@@ -134,10 +151,10 @@ const MobileSkillsWindow: React.FC = () => {
             <MobileSkillsWindowMenu onClick={handleClick} />
           ) : (
             <MobilePanel onClick={() => handleClick("Menu")}>
-              {index === "Front" && <FrontEnd />}
-              {index === "Back" && <BackEnd />}
-              {index === "Mobile" && <Mobile />}
-              {index === "Programming" && <ProgrammingLanguage />}
+              {index === "Front" && <FrontEnd view={view} />}
+              {index === "Back" && <BackEnd view={view} />}
+              {index === "Mobile" && <Mobile view={view} />}
+              {index === "Programming" && <ProgrammingLanguage view={view} />}
             </MobilePanel>
           )}
         </MobileBodyContent>

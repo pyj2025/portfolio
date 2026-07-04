@@ -9,7 +9,12 @@ import {
 } from "../../../components/about";
 import ExperienceDetail from "../../../components/about/ExperienceDetail";
 import info from "../../../info.json";
-import { AboutIndexType, WindowPositionSetting, WindowSizeSetting } from "../../../types";
+import {
+  AboutIndexType,
+  ViewMode,
+  WindowPositionSetting,
+  WindowSizeSetting,
+} from "../../../types";
 import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
 import {
   MobileBodyContent,
@@ -20,6 +25,7 @@ import {
 } from "../../../GlobalStyle";
 import { getIcon } from "../../../components/getIcon";
 import useWindowsStore from "../../../utils/useWindowsStore";
+import useNavHistory from "../../../utils/useNavHistory";
 import MobileAboutNavbar from "../../../components/about/MobileAboutNavbar";
 import { MobilePanel, WindowTopbar } from "../../../components";
 
@@ -69,7 +75,15 @@ const MobileAboutWindow: React.FC = () => {
     (WindowSizeSetting & WindowPositionSetting) | null
   >(null);
 
-  const [index, setIndex] = React.useState<AboutIndexType>("Menu");
+  const {
+    current: index,
+    navigate: setIndex,
+    back,
+    forward,
+    canBack,
+    canForward,
+  } = useNavHistory<AboutIndexType>("Menu");
+  const [view, setView] = React.useState<ViewMode>("icon");
   const [isMobileWindow, setIsMobileWindow] = React.useState<boolean>(false);
   const [showDate, setShowDate] = React.useState<boolean>(false);
 
@@ -148,6 +162,9 @@ const MobileAboutWindow: React.FC = () => {
         prevSetting={aboutPrevSetting}
         setPrevSetting={setAboutPrevSetting}
         isMobileWindow={isMobileWindow}
+        nav={{ onBack: back, onForward: forward, canBack, canForward }}
+        view={view}
+        onViewChange={setView}
       />
       <MobileWindowBody>
         <MobileAboutNavbar index={index} onClick={handleClick} />
@@ -161,6 +178,7 @@ const MobileAboutWindow: React.FC = () => {
                 <Experience
                   isMobile={isMobileWindow}
                   showDate={showDate}
+                  view={view}
                   onOpen={exp => setIndex(`Experience:${exp.title}`)}
                 />
               )}
@@ -175,7 +193,9 @@ const MobileAboutWindow: React.FC = () => {
                   ) : null;
                 })()}
               {index === "Education" && <Education />}
-              {index === "Certifications" && <Certifications toggleIndex={setIndex} />}
+              {index === "Certifications" && (
+                <Certifications toggleIndex={setIndex} view={view} />
+              )}
               {index === "GenAI" && <GenAIFundamentals />}
             </MobilePanel>
           )}

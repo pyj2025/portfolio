@@ -148,7 +148,7 @@ const SettingsWindow: React.FC = () => {
             <div className="text-xs text-[color:var(--wc-muted)] mb-4">
               Customize how the desktop looks.
             </div>
-            <div className="flex gap-4">
+            <div className="flex flex-wrap gap-4">
               <ThemeCard
                 mode="light"
                 label="Light"
