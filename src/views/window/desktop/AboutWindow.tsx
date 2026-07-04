@@ -18,7 +18,9 @@ import {
   GenAIFundamentals,
   Info,
 } from "../../../components/about";
+import ExperienceDetail from "../../../components/about/ExperienceDetail";
 import AboutNavbar from "../../../components/about/AboutNavbar";
+import info from "../../../info.json";
 
 const BASIC_COMPONENTS: Record<string, React.ComponentType> = {
   Info: Info,
@@ -28,10 +30,20 @@ const BASIC_COMPONENTS: Record<string, React.ComponentType> = {
 
 interface ExperienceWrapperProps {
   showDate: boolean;
+  view: ViewMode;
+  onOpen: (title: string) => void;
 }
 
-const ExperienceWrapper: React.FC<ExperienceWrapperProps> = ({ showDate }) => (
-  <Experience showDate={showDate} />
+const ExperienceWrapper: React.FC<ExperienceWrapperProps> = ({
+  showDate,
+  view,
+  onOpen,
+}) => (
+  <Experience
+    showDate={showDate}
+    view={view}
+    onOpen={exp => onOpen(exp.title)}
+  />
 );
 
 interface AboutContentProps {
@@ -54,9 +66,23 @@ const AboutContent: React.FC<AboutContentProps> = ({
   if (index === "Experience") {
     return (
       <WindowBodyContent>
-        <ExperienceWrapper showDate={showDate} />
+        <ExperienceWrapper
+          showDate={showDate}
+          view={view}
+          onOpen={title => setIndex(`Experience:${title}`)}
+        />
       </WindowBodyContent>
     );
+  }
+
+  if (index.startsWith("Experience:")) {
+    const title = index.slice("Experience:".length);
+    const experience = info.about.experience.find(exp => exp.title === title);
+    return experience ? (
+      <WindowBodyContent>
+        <ExperienceDetail experience={experience} />
+      </WindowBodyContent>
+    ) : null;
   }
 
   if (index === "Certifications") {

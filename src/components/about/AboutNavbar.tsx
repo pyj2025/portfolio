@@ -7,6 +7,7 @@ import {
   WindowBodyNavbar,
 } from '../../GlobalStyle';
 import { getNavIcon } from '../getIcon';
+import info from '../../info.json';
 
 type NavItem = {
   id: AboutIndexType;
@@ -29,6 +30,15 @@ const NAV_ITEMS: NavItem[] = [
     icon: 'Folder',
     focusConditions: ['Experience'],
   },
+  ...info.about.experience.map(
+    (exp): NavItem => ({
+      id: `Experience:${exp.title}`,
+      label: exp.company,
+      icon: 'File',
+      isChild: true,
+      focusConditions: [`Experience:${exp.title}`],
+    })
+  ),
   {
     id: 'Education',
     label: 'Education',
@@ -57,6 +67,9 @@ type AboutNavbarProps = {
 
 const AboutNavbar: React.FC<AboutNavbarProps> = ({ index, onClick }) => {
   const isFocused = (item: NavItem): boolean => {
+    if (item.id === 'Experience' && index.startsWith('Experience:')) {
+      return true;
+    }
     return item.focusConditions?.includes(index) ?? false;
   };
 

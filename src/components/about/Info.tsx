@@ -10,7 +10,7 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import info from "../../info.json";
 import profileImage from "../../image/Profile.png";
 
-const InfoRow: React.FC<{
+export const InfoRow: React.FC<{
   icon: IconProp;
   label: string;
   children: React.ReactNode;
