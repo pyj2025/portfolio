@@ -110,7 +110,7 @@ export const WindowBody: React.FC<WindowBodyProps> = ({
 export const WindowBodyNavbar: React.FC<DivProps> = ({ className, ...props }) => (
   <div
     className={cn(
-      "flex flex-col justify-start h-full bg-[var(--sidebar-bg)] backdrop-blur-xl text-[color:var(--nav-text)] border-r border-r-[color:var(--win-border)] pt-1",
+      "flex flex-col justify-start h-full bg-[var(--sidebar-bg)] backdrop-blur-xl text-[color:var(--nav-text)] border-r border-r-[color:var(--win-border)] pt-1 pb-2 overflow-x-hidden overflow-y-hidden hover:overflow-y-auto",
       className,
     )}
     {...props}
@@ -120,7 +120,7 @@ export const WindowBodyNavbar: React.FC<DivProps> = ({ className, ...props }) =>
 export const NavSectionLabel: React.FC<DivProps> = ({ className, ...props }) => (
   <div
     className={cn(
-      "px-3 pt-2 pb-1 text-[11px] font-medium uppercase tracking-wide text-[color:var(--wc-muted)]",
+      "shrink-0 px-3 pt-2 pb-1 text-[11px] font-medium uppercase tracking-wide text-[color:var(--wc-muted)]",
       className,
     )}
     {...props}
@@ -142,7 +142,7 @@ export const WindowBodyNavItm: React.FC<WindowBodyNavItmProps> = ({
 }) => (
   <div
     className={cn(
-      "grid grid-cols-[20px_auto] items-center mx-2 pr-1.5 py-1 rounded-md cursor-pointer transition-colors",
+      "grid grid-cols-[20px_auto] shrink-0 items-center mx-2 pr-1.5 py-1 rounded-md cursor-pointer transition-colors",
       focus
         ? "bg-[var(--accent)] text-white"
         : "text-[color:var(--nav-text)] hover:bg-[var(--hover-overlay)]",
@@ -179,7 +179,7 @@ export const MobileWindowBody: React.FC<DivProps> = ({ className, ...props }) =>
 export const MobileNavbar: React.FC<DivProps> = ({ className, ...props }) => (
   <div
     className={cn(
-      "flex flex-col justify-start w-12 bg-[var(--sidebar-bg)] backdrop-blur-xl text-[color:var(--nav-text)] border-r border-r-[color:var(--win-border)]",
+      "flex flex-col justify-start w-12 bg-[var(--sidebar-bg)] backdrop-blur-xl text-[color:var(--nav-text)] border-r border-r-[color:var(--win-border)] overflow-x-hidden overflow-y-auto",
       className,
     )}
     {...props}
@@ -196,7 +196,7 @@ export const MobileNavbarItem: React.FC<MobileNavbarItemProps> = ({
 }) => (
   <div
     className={cn(
-      "flex flex-col justify-center items-center w-full h-12 cursor-pointer",
+      "flex flex-col justify-center items-center w-full h-12 shrink-0 cursor-pointer",
       focus
         ? "bg-[var(--accent)] text-white"
         : "bg-transparent text-[color:var(--nav-text)]",
