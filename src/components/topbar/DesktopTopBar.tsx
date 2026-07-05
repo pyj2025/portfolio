@@ -5,7 +5,7 @@ import Menu, { Divider, MenuItem } from "rc-menu";
 import Clock from "../Clock";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
-import { BoldText, MutedText } from "../../GlobalStyle";
+import { BoldText, MutedText } from "../WindowChrome";
 import useScreenSize from "../../utils/useScreenSize";
 import useClickOutside from "../../utils/useClickOutside";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";

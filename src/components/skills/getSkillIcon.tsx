@@ -37,6 +37,51 @@ import codeFile from '../../image/icons/codeFile.png';
 const NO_BACKGROUND_ICON_SIZE = 48;
 const BACKGROUND_ICON_SIZE = 40;
 
+type SkillIconConfig = {
+  src: string;
+  // white rounded container behind the logo (for dark/transparent logos)
+  bg?: boolean;
+  size?: number;
+  height?: number;
+};
+
+const SKILL_ICONS: Record<string, SkillIconConfig> = {
+  'React': { src: react, size: NO_BACKGROUND_ICON_SIZE },
+  'React Native': { src: react, size: NO_BACKGROUND_ICON_SIZE },
+  'Vue': { src: vue },
+  'Angular': { src: angular },
+  'Nextjs': { src: nextjs, bg: true },
+  'Redux': { src: redux },
+  'jQuery': { src: jquery, size: NO_BACKGROUND_ICON_SIZE },
+  'Bootstrap': { src: bootstrap },
+  'Tailwind': { src: tailwindCss },
+  'SASS': { src: sass },
+  'styled-components': { src: styledComponents },
+  'Node.js': { src: nodejs },
+  'Express': { src: expressjs, bg: true, size: BACKGROUND_ICON_SIZE },
+  'NestJS': { src: nestjs },
+  'AWS': { src: aws, bg: true, size: BACKGROUND_ICON_SIZE },
+  'Spring': { src: spring },
+  'Laravel': { src: laravel, size: NO_BACKGROUND_ICON_SIZE },
+  'MongoDB': { src: mongoDB },
+  'ASP.Net Core': { src: dotNetCore, bg: true, size: BACKGROUND_ICON_SIZE, height: 35.75 },
+  'Flutter': { src: flutter },
+  'Swift': { src: swift },
+  'TypeScript': { src: typescript },
+  'JavaScript': { src: javascript },
+  'Python': { src: python },
+  'Java': { src: java, bg: true, size: BACKGROUND_ICON_SIZE },
+  'HTML5': { src: html },
+  'CSS3': { src: css },
+  'C#': { src: cSharp },
+  'C/C++': { src: cPlusPlus },
+  'MySQL': { src: mySQL, bg: true, size: BACKGROUND_ICON_SIZE },
+  'PHP': { src: php, size: NO_BACKGROUND_ICON_SIZE },
+  'Dart': { src: dart },
+  'PL/SQL': { src: codeFile, size: NO_BACKGROUND_ICON_SIZE },
+  'R': { src: rProject, bg: true, size: BACKGROUND_ICON_SIZE },
+};
+
 const IconImageContainer: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => (
@@ -46,187 +91,12 @@ const IconImageContainer: React.FC<{ children: React.ReactNode }> = ({
 );
 
 export const getSkillIcon = (name: string) => {
-  switch (name) {
-    case 'React':
-    case 'React Native':
-      return (
-        <img
-          src={react}
-          alt={name}
-          style={{
-            width: NO_BACKGROUND_ICON_SIZE,
-            height: NO_BACKGROUND_ICON_SIZE,
-          }}
-        />
-      );
-    case 'Vue':
-      return <img src={vue} alt={name} />;
-    case 'Angular':
-      return <img src={angular} alt={name} />;
-    case 'Nextjs':
-      return (
-        <IconImageContainer>
-          <img src={nextjs} alt={name} />
-        </IconImageContainer>
-      );
-    case 'Redux':
-      return <img src={redux} alt={name} />;
-    case 'jQuery':
-      return (
-        <img
-          src={jquery}
-          alt={name}
-          style={{
-            width: NO_BACKGROUND_ICON_SIZE,
-            height: NO_BACKGROUND_ICON_SIZE,
-          }}
-        />
-      );
-    case 'Bootstrap':
-      return <img src={bootstrap} alt={name} />;
-    case 'Tailwind':
-      return <img src={tailwindCss} alt={name} />;
-    case 'SASS':
-      return <img src={sass} alt={name} />;
-    case 'styled-components':
-      return <img src={styledComponents} alt={name} />;
-    case 'Node.js':
-      return <img src={nodejs} alt={name} />;
-    case 'Express':
-      return (
-        <IconImageContainer>
-          <img
-            src={expressjs}
-            alt={name}
-            style={{
-              width: BACKGROUND_ICON_SIZE,
-              height: BACKGROUND_ICON_SIZE,
-            }}
-          />
-        </IconImageContainer>
-      );
-    case 'NestJS':
-      return <img src={nestjs} alt={name} />;
-    case 'AWS':
-      return (
-        <IconImageContainer>
-          <img
-            src={aws}
-            alt={name}
-            style={{
-              width: BACKGROUND_ICON_SIZE,
-              height: BACKGROUND_ICON_SIZE,
-            }}
-          />
-        </IconImageContainer>
-      );
-    case 'Spring':
-      return <img src={spring} alt={name} />;
-    case 'Laravel':
-      return (
-        <img
-          src={laravel}
-          alt={name}
-          style={{
-            width: NO_BACKGROUND_ICON_SIZE,
-            height: NO_BACKGROUND_ICON_SIZE,
-          }}
-        />
-      );
-    case 'MongoDB':
-      return <img src={mongoDB} alt={name} />;
-    case 'ASP.Net Core':
-      return (
-        <IconImageContainer>
-          <img
-            src={dotNetCore}
-            alt={name}
-            style={{ width: BACKGROUND_ICON_SIZE, height: 35.75 }}
-          />
-        </IconImageContainer>
-      );
-    case 'Flutter':
-      return <img src={flutter} alt={name} />;
-    case 'Swift':
-      return <img src={swift} alt={name} />;
-    case 'TypeScript':
-      return <img src={typescript} alt={name} />;
-    case 'JavaScript':
-      return <img src={javascript} alt={name} />;
-    case 'Python':
-      return <img src={python} alt={name} />;
-    case 'Java':
-      return (
-        <IconImageContainer>
-          <img
-            src={java}
-            alt={name}
-            style={{
-              width: BACKGROUND_ICON_SIZE,
-              height: BACKGROUND_ICON_SIZE,
-            }}
-          />
-        </IconImageContainer>
-      );
-    case 'HTML5':
-      return <img src={html} alt={name} />;
-    case 'CSS3':
-      return <img src={css} alt={name} />;
-    case 'C#':
-      return <img src={cSharp} alt={name} />;
-    case 'C/C++':
-      return <img src={cPlusPlus} alt={name} />;
-    case 'MySQL':
-      return (
-        <IconImageContainer>
-          <img
-            src={mySQL}
-            alt={name}
-            style={{
-              width: BACKGROUND_ICON_SIZE,
-              height: BACKGROUND_ICON_SIZE,
-            }}
-          />
-        </IconImageContainer>
-      );
-    case 'PHP':
-      return (
-        <img
-          src={php}
-          alt={name}
-          style={{
-            width: NO_BACKGROUND_ICON_SIZE,
-            height: NO_BACKGROUND_ICON_SIZE,
-          }}
-        />
-      );
-    case 'Dart':
-      return <img src={dart} alt={name} />;
-    case 'PL/SQL':
-      return (
-        <img
-          src={codeFile}
-          alt={name}
-          style={{
-            width: NO_BACKGROUND_ICON_SIZE,
-            height: NO_BACKGROUND_ICON_SIZE,
-          }}
-        />
-      );
-    case 'R':
-      return (
-        <IconImageContainer>
-          <img
-            src={rProject}
-            alt={name}
-            style={{
-              width: BACKGROUND_ICON_SIZE,
-              height: BACKGROUND_ICON_SIZE,
-            }}
-          />
-        </IconImageContainer>
-      );
-    default:
-      return <img src={codeFile} alt={name} />;
-  }
+  const config = SKILL_ICONS[name] ?? { src: codeFile };
+  const style =
+    config.size !== undefined
+      ? { width: config.size, height: config.height ?? config.size }
+      : undefined;
+  const image = <img src={config.src} alt={name} style={style} />;
+
+  return config.bg ? <IconImageContainer>{image}</IconImageContainer> : image;
 };

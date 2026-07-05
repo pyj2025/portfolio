@@ -1,6 +1,6 @@
 import React from "react";
 import AppWindow from "../../../components/AppWindow";
-import { WindowBody } from "../../../GlobalStyle";
+import { WindowBody } from "../../../components/WindowChrome";
 import { ProjectIndexType, ViewMode } from "../../../types";
 import ProjectsContent from "../../../components/projects/ProjectsContent";
 import useNavHistory from "../../../utils/useNavHistory";

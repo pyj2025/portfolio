@@ -1,8 +1,5 @@
 import React from 'react';
-import FoodieLogo from '../../image/projects/Foodie.png';
-import GitCardLogo from '../../image/projects/GitCard.png';
-import DatApexLogo from '../../image/projects/DatApex.png';
-import MovieLogo from '../../image/projects/Movie.png';
+import info from '../../info.json';
 import { getIcon } from '../getIcon';
 import { ProjectIndexType, ViewMode } from '../../types';
 import {
@@ -11,8 +8,7 @@ import {
   FinderList,
   FinderListRow,
 } from '../FinderItems';
-import ParstagramLogo from '../../image/projects/Parstagram.png';
-import TwitterLogo from '../../image/projects/Twitter.png';
+import { PROJECT_LOGOS, ProjectKey } from './ProjectDetail';
 
 const ICON_SIZE = 53;
 
@@ -22,6 +18,16 @@ type ProjectItem = {
   icon: 'Folder' | 'CodeFile';
   logo?: string;
 };
+
+const projectsByCategory = (category: 'web' | 'mobile'): ProjectItem[] =>
+  (Object.keys(info.project) as ProjectKey[])
+    .filter(key => info.project[key].category === category)
+    .map(key => ({
+      id: key,
+      title: key,
+      icon: 'CodeFile' as const,
+      logo: PROJECT_LOGOS[key],
+    }));
 
 const renderIcon = (item: ProjectItem, size: number) =>
   item.logo ? (
@@ -75,33 +81,13 @@ export const Projects: React.FC<ProjectsProps> = React.memo(
 );
 
 export const WebProjects: React.FC<ProjectsProps> = React.memo(
-  ({ click, view = 'icon' }) => {
-    const items: ProjectItem[] = [
-      { id: 'GitCard', title: 'GitCard', icon: 'CodeFile', logo: GitCardLogo },
-      { id: 'DatApex', title: 'DatApex', icon: 'CodeFile', logo: DatApexLogo },
-      { id: 'MovieNext', title: 'MovieNext', icon: 'CodeFile', logo: MovieLogo },
-      { id: 'Portfolio', title: 'Portfolio', icon: 'CodeFile' },
-    ];
-    return <ItemsView items={items} view={view} click={click} />;
-  }
+  ({ click, view = 'icon' }) => (
+    <ItemsView items={projectsByCategory('web')} view={view} click={click} />
+  )
 );
 
 export const MobileProjects: React.FC<ProjectsProps> = React.memo(
-  ({ click, view = 'icon' }) => {
-    const items: ProjectItem[] = [
-      { id: 'Foodie', title: 'Foodie', icon: 'CodeFile', logo: FoodieLogo },
-      { id: 'WebGame', title: 'WebGame', icon: 'CodeFile' },
-      { id: 'ToonFlix', title: 'ToonFlix', icon: 'CodeFile' },
-      { id: 'Tippy', title: 'Tippy', icon: 'CodeFile' },
-      { id: 'Flix', title: 'Flix', icon: 'CodeFile' },
-      { id: 'Twitter', title: 'Twitter', icon: 'CodeFile', logo: TwitterLogo },
-      {
-        id: 'Parstagram',
-        title: 'Parstagram',
-        icon: 'CodeFile',
-        logo: ParstagramLogo,
-      },
-    ];
-    return <ItemsView items={items} view={view} click={click} />;
-  }
+  ({ click, view = 'icon' }) => (
+    <ItemsView items={projectsByCategory('mobile')} view={view} click={click} />
+  )
 );

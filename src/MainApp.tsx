@@ -8,7 +8,7 @@ const MainApp: React.FC = () => {
 
   const isMobileDevice = React.useMemo(
     () => isMobile || isTablet || width < TABLET_MAX_WIDTH,
-    [width, isMobile, isTablet],
+    [width],
   );
 
   if (isMobileDevice) {

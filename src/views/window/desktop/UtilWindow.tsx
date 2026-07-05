@@ -7,7 +7,7 @@ import {
   WindowBodyContent,
   WindowBodyNavbar,
   WindowBodyNavItm,
-} from "../../../GlobalStyle";
+} from "../../../components/WindowChrome";
 import { getIcon, getNavIcon } from "../../../components/getIcon";
 import { FinderGrid, FinderGridItem } from "../../../components/FinderItems";
 import {

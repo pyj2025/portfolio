@@ -81,69 +81,113 @@
   "project": {
     "GitCard": {
       "name": "GitCard",
+      "category": "web",
       "link": "https://github.com/pyj2025/git-name-card-frontend",
       "url": "https://github-name-card.vercel.app",
-      "stack": ["Next.js", "React", "Typescript", "FastAPI", "Tailwind CSS"],
+      "stack": [
+        "Next.js",
+        "React",
+        "Typescript",
+        "FastAPI",
+        "Tailwind CSS"
+      ],
       "details": "GitCard is a user-friendly application that allows users to generate personalized profile cards using their GitHub account. Built with Next.js and TypeScript on the frontend, FastAPI on the backend, and styled with Tailwind CSS, the app provides a seamless experience. Each card includes user information, a QR code linking directly to their GitHub profile, and the option to download the card as an image, making it easy to share and connect professionally."
     },
     "DatApex": {
       "name": "DatApex",
+      "category": "web",
       "link": "https://github.com/SeoHyunAhn/DatApex",
-      "stack": ["React", "Django", "Bootstrap"],
+      "stack": [
+        "React",
+        "Django",
+        "Bootstrap"
+      ],
       "details": "DatApex is a web application tailored for users seeking efficient preprocessing solutions for their datasets and seamless execution of various machine learning algorithms. The platform empowers users to upload their datasets and apply a diverse range of preprocessing algorithms to enhance data quality and structure. With DatApex, users can effortlessly run different machine learning algorithms on their modified datasets, allowing for comprehensive analysis and model training. The interface offers clear and intuitive navigation, ensuring a user-friendly experience throughout. Additionally, DatApex presents accuracy plots and visualizations in a clean and accessible UI, facilitating insightful data interpretation and decision-making."
     },
     "MovieNext": {
       "name": "MovieNext",
+      "category": "web",
       "link": "https://github.com/pyj2025/movie-next14",
-      "stack": ["Next.js 14"],
+      "stack": [
+        "Next.js 14"
+      ],
       "details": "The MovieNext is a Next.js-based project designed to provide users with an intuitive platform to browse a curated list of movies, offering comprehensive details such as titles, descriptions, release years, and more. Leveraging React and Next.js, the application ensures seamless navigation and responsive design across various devices, allowing users to effortlessly explore movie information, including credits, similar movies, and available providers."
     },
     "Foodie": {
       "name": "Foodie",
+      "category": "mobile",
       "link": "https://github.com/axer0310/Foodie",
-      "stack": ["Swift", "Firebase", "Yelp API", "Google API"],
+      "stack": [
+        "Swift",
+        "Firebase",
+        "Yelp API",
+        "Google API"
+      ],
       "details": "Foodie is a dynamic application designed to streamline dining experiences by recommending personalized dining establishments based on users' preferences. With its intuitive interface, users can effortlessly explore and discover new dining options tailored to their tastes and dietary preferences. Additionally, Foodie simplifies the process of connecting users with restaurants through QR code technology, offering convenience and efficiency in accessing menus, reservations, and other restaurant services."
     },
     "WebGame": {
       "name": "WebGame",
+      "category": "mobile",
       "link": "https://github.com/pyj2025/native-webgame",
-      "stack": ["React Native"],
+      "stack": [
+        "React Native"
+      ],
       "details": "Webgame is the ultimate destination for game enthusiasts, offering a diverse selection of engaging games within a single application. With our app, users can immerse themselves in a variety of captivating gaming experiences, all conveniently accessible from one centralized platform."
     },
     "Tippy": {
       "name": "Tippy",
+      "category": "mobile",
       "link": "https://github.com/park612/TipCalculator",
-      "stack": ["Swift"],
+      "stack": [
+        "Swift"
+      ],
       "details": "Tippy is a convenient and user-friendly tip calculator application tailored for iOS devices. With its intuitive interface and straightforward functionality, Tippy simplifies the process of calculating tips and splitting bills among friends or colleagues. Users can input the total amount of their bill, select their desired tip percentage, and instantly see the calculated tip amount and total bill including tip."
     },
     "Flix": {
       "name": "Flix",
+      "category": "mobile",
       "link": "https://github.com/park612/Flix",
-      "stack": ["Swift"],
+      "stack": [
+        "Swift"
+      ],
       "details": "Flix is a Swift application designed to empower users to browse a vast collection of movies sourced from The Movie Database (TMDb) API. This intuitive app provides users with a seamless platform to explore an extensive library of films, encompassing various genres, ratings, and release dates."
     },
     "Twitter": {
       "name": "Twitter",
+      "category": "mobile",
       "link": "https://github.com/pyj2025/Twitter",
-      "stack": ["Swift"],
+      "stack": [
+        "Swift"
+      ],
       "details": "Twitter is a straightforward iOS application that replicates the core functionality of Twitter, allowing users to read their tweets within a familiar interface. With a minimalist design and intuitive navigation, this app provides users with a seamless experience to stay connected with their Twitter feed. Users can effortlessly scroll through their timelines, view tweets from accounts they follow, and engage with content through likes and retweets. Built with simplicity in mind, Twitter offers a streamlined platform for users to consume and interact with tweets, keeping them informed and engaged with the latest updates from their network."
     },
     "Parstagram": {
       "name": "Parstagram",
+      "category": "mobile",
       "link": "https://github.com/park612/Parstagram",
-      "stack": ["Swift"],
+      "stack": [
+        "Swift"
+      ],
       "details": "Parstagram is a dynamic Instagram clone featuring a custom Parse backend, tailored to offer users a seamless experience in photo sharing and exploration. With Parstagram, users can effortlessly upload and share their favourite photos, as well as explore a global feed curated with captivating images from across the platform. This innovative application not only replicates the core functionalities of Instagram but also introduces a custom Parse backend, enhancing scalability, customization, and performance. Whether users are posting cherished memories or discovering inspiring content, Parstagram provides a vibrant platform for fostering creativity, connection, and community through the art of visual storytelling."
     },
     "ToonFlix": {
       "name": "ToonFlix",
+      "category": "mobile",
       "link": "https://github.com/pyj2025/toonflix",
-      "stack": ["Flutter"],
+      "stack": [
+        "Flutter"
+      ],
       "details": "ToonFlix is an innovative Flutter application designed to provide users with seamless access to Naver's extensive collection of captivating webtoons. Offering a user-friendly interface and smooth navigation, the app enables users to immerse themselves in Naver's diverse range of webtoon content effortlessly. With ToonFlix, users can explore and discover their favourite webtoons, access the latest updates, and enjoy an immersive reading experience right at their fingertips."
     },
     "Portfolio": {
       "name": "Joon's Portfolio",
+      "category": "web",
       "link": "https://pyj2025.github.io/portfolio/",
-      "stack": ["React", "Typescript", "Styled-components"],
+      "stack": [
+        "React",
+        "Typescript",
+        "Styled-components"
+      ],
       "details": "Joon's Portfolio Website is a concise yet comprehensive online platform designed to showcase Joon's professional profile, skills, work experience, and contact information. With a clean and intuitive design, the website features sections providing an overview of Joon's background and interests, a Skills Showcase highlighting key competencies, and a detailed Work Experience section outlining past roles and achievements. Additionally, the site includes contact information for easy communication."
     }
   },
@@ -231,7 +275,6 @@
       {
         "name": "Java"
       },
-
       {
         "name": "C#"
       },

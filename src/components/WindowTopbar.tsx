@@ -14,7 +14,7 @@ import {
   TopbarTitle,
   TopbarTitleText,
   WindowTopbarContainer,
-} from '../GlobalStyle';
+} from './WindowChrome';
 import { cn } from '../utils/cn';
 import {
   AppId,

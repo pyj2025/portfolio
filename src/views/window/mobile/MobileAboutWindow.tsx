@@ -15,7 +15,7 @@ import {
   MobileMenuItemLabel,
   MobileWindowBody,
   MobileWindowMenuItem,
-} from "../../../GlobalStyle";
+} from "../../../components/WindowChrome";
 import { getIcon } from "../../../components/getIcon";
 import useNavHistory from "../../../utils/useNavHistory";
 import MobileAboutNavbar from "../../../components/about/MobileAboutNavbar";

@@ -17,7 +17,7 @@ import {
   faFileCode,
   faCog,
 } from '@fortawesome/free-solid-svg-icons';
-import { MobileNavbarMenu } from '../GlobalStyle';
+import { MobileNavbarMenu } from './WindowChrome';
 
 export const SMALL_ICON_SIZE = 16;
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { DraggableData, Position, ResizableDelta } from "react-rnd";
-import { Window } from "../GlobalStyle";
+import { Window } from "./WindowChrome";
 import {
   AppId,
   ViewMode,

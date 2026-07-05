@@ -6,7 +6,7 @@ import {
   MobileMenuItemLabel,
   MobileWindowBody,
   MobileWindowMenuItem,
-} from "../../../GlobalStyle";
+} from "../../../components/WindowChrome";
 import { BackEnd, FrontEnd, Mobile, ProgrammingLanguage } from "../../../components/skills";
 import { getIcon } from "../../../components/getIcon";
 import useNavHistory from "../../../utils/useNavHistory";

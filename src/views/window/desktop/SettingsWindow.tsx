@@ -10,7 +10,7 @@ import {
   WindowBodyContent,
   WindowBodyNavbar,
   WindowBodyNavItm,
-} from "../../../GlobalStyle";
+} from "../../../components/WindowChrome";
 import useThemeStore, { ThemeMode } from "../../../utils/useThemeStore";
 import { cn } from "../../../utils/cn";
 

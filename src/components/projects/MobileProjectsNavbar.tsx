@@ -4,7 +4,7 @@ import {
   MobileNavbar,
   MobileNavbarItem,
   MobileNavbarMenuLabel,
-} from '../../GlobalStyle';
+} from '../WindowChrome';
 import { getMobileNavbarMenuIcon } from '../getIcon';
 
 type NavItem = {
