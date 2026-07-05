@@ -9,8 +9,8 @@ import MobileWelcomeWindow from "../views/window/mobile/MobileWelcomeWindow";
 import MobileAboutWindow from "../views/window/mobile/MobileAboutWindow";
 import MobileSkillsWindow from "../views/window/mobile/MobileSkillsWindow";
 import MobileProjectsWindow from "../views/window/mobile/MobileProjectsWindow";
-import MobileCalculatorWindow from "../views/window/mobile/MobileCalculatorWindow";
 import {
+  CalculatorWindow,
   UtilWindow,
   TerminalWindow,
   SettingsWindow,
@@ -70,7 +70,7 @@ const MobileBodyContent: React.FC = () => {
       { Component: MobileAboutWindow, isOpen: isAboutOpen },
       { Component: MobileSkillsWindow, isOpen: isSkillsOpen },
       { Component: MobileProjectsWindow, isOpen: isProjectsOpen },
-      { Component: MobileCalculatorWindow, isOpen: isCalculatorOpen },
+      { Component: CalculatorWindow, isOpen: isCalculatorOpen },
       { Component: UtilWindow, isOpen: isUtilOpen },
       { Component: TerminalWindow, isOpen: isTerminalOpen },
       { Component: SettingsWindow, isOpen: isSettingsOpen },

@@ -1,19 +1,14 @@
 import React from "react";
-import { DraggableData, Position, ResizableDelta } from "react-rnd";
-import { WindowPositionSetting, WindowSizeSetting } from "../../../types";
+import AppWindow from "../../../components/AppWindow";
 import {
   NavItmLabel,
   NavSectionLabel,
-  Window,
   WindowBody,
   WindowBodyContent,
   WindowBodyNavbar,
   WindowBodyNavItm,
 } from "../../../GlobalStyle";
-import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
-import { WindowTopbar } from "../../../components";
 import { getIcon, getNavIcon } from "../../../components/getIcon";
-import useWindowsStore from "../../../utils/useWindowsStore";
 import {
   useCalculatorWindow,
   useTerminalWindow,
@@ -27,41 +22,9 @@ type UtilApp = {
 };
 
 const UtilWindow: React.FC = () => {
-  const { width, height } = useScreenSize();
-  const { focusedWindow, setFocusedWindow } = useWindowsStore(state => state);
   const openCalculator = useCalculatorWindow(state => state.open);
   const openTerminal = useTerminalWindow(state => state.open);
   const openSettings = useSettingsWindow(state => state.open);
-
-  const utilRef = React.useRef<any>();
-
-  const [size, setSize] = React.useState<WindowSizeSetting>({
-    width: 500,
-    height: 320,
-  });
-  const [position, setPosition] = React.useState<WindowPositionSetting>({
-    x: 200,
-    y: 90,
-  });
-  const [prevSetting, setPrevSetting] = React.useState<
-    (WindowSizeSetting & WindowPositionSetting) | null
-  >(null);
-  const [isMobileWindow, setIsMobileWindow] = React.useState(false);
-
-  React.useEffect(() => {
-    if (width < TABLET_MAX_WIDTH) {
-      setSize({ width, height: height - 80 - 25 });
-      setPosition({ x: 0, y: 0 });
-      setIsMobileWindow(true);
-    } else {
-      setIsMobileWindow(false);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [width]);
-
-  const focusUtilWindow = React.useCallback(() => {
-    setFocusedWindow("Utils");
-  }, [setFocusedWindow]);
 
   const apps: UtilApp[] = [
     { label: "Calculator", icon: "Calculator", onOpen: openCalculator },
@@ -70,40 +33,14 @@ const UtilWindow: React.FC = () => {
   ];
 
   return (
-    <Window
+    <AppWindow
       id="Utils"
-      ref={utilRef}
-      size={{ width: size.width, height: size.height }}
-      position={{ x: position.x, y: position.y }}
-      dragHandleClassName="topbar"
-      minWidth={isMobileWindow ? width : 420}
+      defaultSize={{ width: 500, height: 320 }}
+      defaultPosition={{ x: 200, y: 90 }}
+      minWidth={420}
       minHeight={280}
-      style={{ zIndex: focusedWindow === "Utils" ? 10 : undefined }}
-      onDragStart={() => focusUtilWindow()}
-      onDragStop={(_e: any, data: DraggableData) => setPosition({ x: data.x, y: data.y })}
-      onResizeStop={(
-        _e: MouseEvent | TouchEvent,
-        _dir: any,
-        ref: any,
-        _delta: ResizableDelta,
-        pos: Position,
-      ) => {
-        setSize({ width: ref.style.width, height: ref.style.height });
-        setPosition({ x: pos.x, y: pos.y });
-      }}
     >
-      <WindowTopbar
-        title="Utils"
-        windowRef={utilRef}
-        size={size}
-        setSize={setSize}
-        position={position}
-        setPosition={setPosition}
-        prevSetting={prevSetting}
-        setPrevSetting={setPrevSetting}
-        isMobileWindow={isMobileWindow}
-      />
-      <WindowBody onClick={focusUtilWindow}>
+      <WindowBody className="h-full">
         <WindowBodyNavbar>
           <NavSectionLabel>Favorites</NavSectionLabel>
           <WindowBodyNavItm focus first>
@@ -134,7 +71,7 @@ const UtilWindow: React.FC = () => {
           </div>
         </WindowBodyContent>
       </WindowBody>
-    </Window>
+    </AppWindow>
   );
 };
 
