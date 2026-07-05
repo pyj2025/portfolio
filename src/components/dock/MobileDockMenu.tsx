@@ -39,7 +39,7 @@ const MobileMenu: React.FC = () => {
 
   return (
     <div className="flex justify-center w-full h-20">
-      <div className="flex flex-row justify-center items-center rounded-2xl shadow-2xl bg-yellow-50 bg-opacity-10 backdrop-blur-sm">
+      <div className="flex flex-row justify-center items-center rounded-2xl shadow-2xl bg-yellow-50/10 backdrop-blur-sm">
         <button
           title="About"
           onClick={() => openExclusively("About")}
