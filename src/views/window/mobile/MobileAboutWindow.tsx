@@ -1,5 +1,5 @@
 import React from "react";
-import { DraggableData, Position, ResizableDelta } from "react-rnd";
+import AppWindow from "../../../components/AppWindow";
 import {
   Certifications,
   Education,
@@ -9,25 +9,17 @@ import {
 } from "../../../components/about";
 import ExperienceDetail from "../../../components/about/ExperienceDetail";
 import info from "../../../info.json";
-import {
-  AboutIndexType,
-  ViewMode,
-  WindowPositionSetting,
-  WindowSizeSetting,
-} from "../../../types";
-import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
+import { AboutIndexType, ViewMode } from "../../../types";
 import {
   MobileBodyContent,
   MobileMenuItemLabel,
   MobileWindowBody,
   MobileWindowMenuItem,
-  Window,
-} from "../../../GlobalStyle";
+} from "../../../components/WindowChrome";
 import { getIcon } from "../../../components/getIcon";
-import useWindowsStore from "../../../utils/useWindowsStore";
 import useNavHistory from "../../../utils/useNavHistory";
 import MobileAboutNavbar from "../../../components/about/MobileAboutNavbar";
-import { MobilePanel, WindowTopbar } from "../../../components";
+import { MobilePanel } from "../../../components";
 
 type MobileAboutWindowMenuProps = {
   onClick: (index: AboutIndexType) => void;
@@ -57,24 +49,6 @@ const MobileAboutWindowMenu: React.FC<MobileAboutWindowMenuProps> = React.memo((
 });
 
 const MobileAboutWindow: React.FC = () => {
-  const { width, height } = useScreenSize();
-  const { focusedWindow, setFocusedWindow } = useWindowsStore(state => state);
-
-  const aboutRef = React.useRef<any>();
-
-  const [aboutSize, setAboutSize] = React.useState<WindowSizeSetting>({
-    width: 500,
-    height: 300,
-  });
-  const [aboutPosition, setAboutPosition] = React.useState<WindowPositionSetting>({
-    x: 20,
-    y: 20,
-  });
-
-  const [aboutPrevSetting, setAboutPrevSetting] = React.useState<
-    (WindowSizeSetting & WindowPositionSetting) | null
-  >(null);
-
   const {
     current: index,
     navigate: setIndex,
@@ -84,34 +58,6 @@ const MobileAboutWindow: React.FC = () => {
     canForward,
   } = useNavHistory<AboutIndexType>("Menu");
   const [view, setView] = React.useState<ViewMode>("icon");
-  const [isMobileWindow, setIsMobileWindow] = React.useState<boolean>(false);
-  const [showDate, setShowDate] = React.useState<boolean>(false);
-
-  React.useEffect(() => {
-    if (width < TABLET_MAX_WIDTH) {
-      setAboutSize({
-        width,
-        height: height - 80 - 25,
-      });
-      setAboutPosition({
-        x: 0,
-        y: 0,
-      });
-      setIsMobileWindow(true);
-    } else {
-      setIsMobileWindow(false);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [width]);
-
-  React.useEffect(() => {
-    // 150 is menu
-    if (aboutSize.width - 150 >= 470) {
-      setShowDate(true);
-    } else {
-      setShowDate(false);
-    }
-  }, [aboutSize.width, showDate]);
 
   const handleClick = React.useCallback(
     (name: AboutIndexType) => {
@@ -121,87 +67,58 @@ const MobileAboutWindow: React.FC = () => {
   );
 
   return (
-    <Window
+    <AppWindow
       id="About"
-      ref={aboutRef}
-      size={{ width: aboutSize.width, height: aboutSize.height }}
-      position={{ x: aboutPosition.x, y: aboutPosition.y }}
-      dragHandleClassName="topbar"
-      minWidth={isMobileWindow ? width : 500}
+      defaultSize={{ width: 500, height: 300 }}
+      defaultPosition={{ x: 20, y: 20 }}
+      minWidth={500}
       minHeight={300}
-      style={{ zIndex: focusedWindow === "About" ? 10 : undefined }}
-      onDragStart={(_e: any, _data: DraggableData) => {
-        setFocusedWindow("About");
-      }}
-      onDragStop={(_e: any, data: DraggableData) => {
-        setAboutPosition({ x: data.x, y: data.y });
-      }}
-      onResizeStop={(
-        _e: MouseEvent | TouchEvent,
-        _dir: any,
-        ref: any,
-        _delta: ResizableDelta,
-        position: Position,
-      ) => {
-        const newWidth = Number(ref.style.width.substring(0, ref.style.width.indexOf("p")));
-        const newHeight = Number(ref.style.height.substring(0, ref.style.height.indexOf("p")));
-        setAboutSize({
-          width: newWidth,
-          height: newHeight,
-        });
-        setAboutPosition({ x: position.x, y: position.y });
-      }}
+      nav={{ onBack: back, onForward: forward, canBack, canForward }}
+      view={view}
+      onViewChange={setView}
     >
-      <WindowTopbar
-        title="About"
-        windowRef={aboutRef}
-        size={aboutSize}
-        setSize={setAboutSize}
-        position={aboutPosition}
-        setPosition={setAboutPosition}
-        prevSetting={aboutPrevSetting}
-        setPrevSetting={setAboutPrevSetting}
-        isMobileWindow={isMobileWindow}
-        nav={{ onBack: back, onForward: forward, canBack, canForward }}
-        view={view}
-        onViewChange={setView}
-      />
-      <MobileWindowBody>
-        <MobileAboutNavbar index={index} onClick={handleClick} />
-        <MobileBodyContent>
-          {index === "Menu" ? (
-            <MobileAboutWindowMenu onClick={handleClick} />
-          ) : (
-            <MobilePanel onClick={() => handleClick("Menu")}>
-              {index === "Info" && <Info />}
-              {index === "Experience" && (
-                <Experience
-                  isMobile={isMobileWindow}
-                  showDate={showDate}
-                  view={view}
-                  onOpen={exp => setIndex(`Experience:${exp.title}`)}
-                />
+      {({ isMobileWindow, size }) => {
+        // 150 is menu
+        const showDate = size.width - 150 >= 470;
+        return (
+          <MobileWindowBody className="h-full">
+            <MobileAboutNavbar index={index} onClick={handleClick} />
+            <MobileBodyContent>
+              {index === "Menu" ? (
+                <MobileAboutWindowMenu onClick={handleClick} />
+              ) : (
+                <MobilePanel onClick={() => handleClick("Menu")}>
+                  {index === "Info" && <Info />}
+                  {index === "Experience" && (
+                    <Experience
+                      isMobile={isMobileWindow}
+                      showDate={showDate}
+                      view={view}
+                      onOpen={exp => setIndex(`Experience:${exp.title}`)}
+                    />
+                  )}
+                  {index.startsWith("Experience:") &&
+                    (() => {
+                      const title = index.slice("Experience:".length);
+                      const experience = info.about.experience.find(
+                        exp => exp.title === title,
+                      );
+                      return experience ? (
+                        <ExperienceDetail experience={experience} />
+                      ) : null;
+                    })()}
+                  {index === "Education" && <Education />}
+                  {index === "Certifications" && (
+                    <Certifications toggleIndex={setIndex} view={view} />
+                  )}
+                  {index === "GenAI" && <GenAIFundamentals />}
+                </MobilePanel>
               )}
-              {index.startsWith("Experience:") &&
-                (() => {
-                  const title = index.slice("Experience:".length);
-                  const experience = info.about.experience.find(
-                    exp => exp.title === title,
-                  );
-                  return experience ? (
-                    <ExperienceDetail experience={experience} />
-                  ) : null;
-                })()}
-              {index === "Education" && <Education />}
-              {index === "Certifications" && (
-                <Certifications toggleIndex={setIndex} view={view} />
-              )}
-              {index === "GenAI" && <GenAIFundamentals />}
-            </MobilePanel>
-          )}
-        </MobileBodyContent>
-      </MobileWindowBody>
-    </Window>
+            </MobileBodyContent>
+          </MobileWindowBody>
+        );
+      }}
+    </AppWindow>
   );
 };
 

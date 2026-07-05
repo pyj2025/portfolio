@@ -1,5 +1,5 @@
 import React from "react";
-import { TerminalRow } from "../../../GlobalStyle";
+import { TerminalRow } from "../../WindowChrome";
 import OneBadge from "../OneBadge";
 import TwoBadges from "../TwoBadges";
 import TypeCommand from "../TypeCommand";

@@ -1,22 +1,20 @@
 import React from "react";
-import { DraggableData, Position, ResizableDelta } from "react-rnd";
-import { WindowPositionSetting, WindowSizeSetting } from "../../../types";
+import AppWindow from "../../../components/AppWindow";
 import {
   NavItmLabel,
   NavSectionLabel,
-  Window,
   WindowBody,
   WindowBodyContent,
   WindowBodyNavbar,
   WindowBodyNavItm,
-} from "../../../GlobalStyle";
-import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
-import { WindowTopbar } from "../../../components";
+} from "../../../components/WindowChrome";
 import { getIcon, getNavIcon } from "../../../components/getIcon";
-import useWindowsStore from "../../../utils/useWindowsStore";
-import useCalculatorStore from "../../../utils/useCalculatorStore";
-import useTerminalStore from "../../../utils/useTerminalStore";
-import useSettingsStore from "../../../utils/useSettingsStore";
+import { FinderGrid, FinderGridItem } from "../../../components/FinderItems";
+import {
+  useCalculatorWindow,
+  useTerminalWindow,
+  useSettingsWindow,
+} from "../../../utils/appRegistry";
 
 type UtilApp = {
   label: string;
@@ -25,41 +23,9 @@ type UtilApp = {
 };
 
 const UtilWindow: React.FC = () => {
-  const { width, height } = useScreenSize();
-  const { focusedWindow, setFocusedWindow } = useWindowsStore(state => state);
-  const openCalculator = useCalculatorStore(state => state.openCalculator);
-  const openTerminal = useTerminalStore(state => state.openTerminal);
-  const openSettings = useSettingsStore(state => state.openSettings);
-
-  const utilRef = React.useRef<any>();
-
-  const [size, setSize] = React.useState<WindowSizeSetting>({
-    width: 500,
-    height: 320,
-  });
-  const [position, setPosition] = React.useState<WindowPositionSetting>({
-    x: 200,
-    y: 90,
-  });
-  const [prevSetting, setPrevSetting] = React.useState<
-    (WindowSizeSetting & WindowPositionSetting) | null
-  >(null);
-  const [isMobileWindow, setIsMobileWindow] = React.useState(false);
-
-  React.useEffect(() => {
-    if (width < TABLET_MAX_WIDTH) {
-      setSize({ width, height: height - 80 - 25 });
-      setPosition({ x: 0, y: 0 });
-      setIsMobileWindow(true);
-    } else {
-      setIsMobileWindow(false);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [width]);
-
-  const focusUtilWindow = React.useCallback(() => {
-    setFocusedWindow("Utils");
-  }, [setFocusedWindow]);
+  const openCalculator = useCalculatorWindow(state => state.open);
+  const openTerminal = useTerminalWindow(state => state.open);
+  const openSettings = useSettingsWindow(state => state.open);
 
   const apps: UtilApp[] = [
     { label: "Calculator", icon: "Calculator", onOpen: openCalculator },
@@ -68,40 +34,14 @@ const UtilWindow: React.FC = () => {
   ];
 
   return (
-    <Window
+    <AppWindow
       id="Utils"
-      ref={utilRef}
-      size={{ width: size.width, height: size.height }}
-      position={{ x: position.x, y: position.y }}
-      dragHandleClassName="topbar"
-      minWidth={isMobileWindow ? width : 420}
+      defaultSize={{ width: 500, height: 320 }}
+      defaultPosition={{ x: 200, y: 90 }}
+      minWidth={420}
       minHeight={280}
-      style={{ zIndex: focusedWindow === "Utils" ? 10 : undefined }}
-      onDragStart={() => focusUtilWindow()}
-      onDragStop={(_e: any, data: DraggableData) => setPosition({ x: data.x, y: data.y })}
-      onResizeStop={(
-        _e: MouseEvent | TouchEvent,
-        _dir: any,
-        ref: any,
-        _delta: ResizableDelta,
-        pos: Position,
-      ) => {
-        setSize({ width: ref.style.width, height: ref.style.height });
-        setPosition({ x: pos.x, y: pos.y });
-      }}
     >
-      <WindowTopbar
-        title="Utils"
-        windowRef={utilRef}
-        size={size}
-        setSize={setSize}
-        position={position}
-        setPosition={setPosition}
-        prevSetting={prevSetting}
-        setPrevSetting={setPrevSetting}
-        isMobileWindow={isMobileWindow}
-      />
-      <WindowBody onClick={focusUtilWindow}>
+      <WindowBody className="h-full">
         <WindowBodyNavbar>
           <NavSectionLabel>Favorites</NavSectionLabel>
           <WindowBodyNavItm focus first>
@@ -110,29 +50,22 @@ const UtilWindow: React.FC = () => {
           </WindowBodyNavItm>
         </WindowBodyNavbar>
         <WindowBodyContent>
-          <div className="flex flex-row flex-wrap gap-2.5 m-2.5">
+          <FinderGrid>
             {apps.map(app => (
-              <button
+              <FinderGridItem
                 key={app.label}
-                aria-label={app.label}
-                onClick={e => {
+                label={app.label}
+                icon={getIcon(app.icon, 48)}
+                onClick={(e: React.MouseEvent) => {
                   e.stopPropagation();
                   app.onOpen();
                 }}
-                className="group flex flex-col items-center w-16 cursor-pointer select-none bg-transparent"
-              >
-                <div className="flex items-center justify-center rounded-lg p-1 transition-colors group-hover:bg-[var(--hover-overlay)]">
-                  {getIcon(app.icon, 48)}
-                </div>
-                <div className="mt-1 max-w-full px-1.5 py-px rounded text-xs leading-tight text-center text-[color:var(--wc-text)] transition-colors group-hover:bg-[var(--hover-overlay-strong)]">
-                  {app.label}
-                </div>
-              </button>
+              />
             ))}
-          </div>
+          </FinderGrid>
         </WindowBodyContent>
       </WindowBody>
-    </Window>
+    </AppWindow>
   );
 };
 

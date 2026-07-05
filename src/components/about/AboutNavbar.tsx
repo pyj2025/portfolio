@@ -5,7 +5,7 @@ import {
   NavSectionLabel,
   WindowBodyNavItm,
   WindowBodyNavbar,
-} from '../../GlobalStyle';
+} from '../WindowChrome';
 import { getNavIcon } from '../getIcon';
 import info from '../../info.json';
 

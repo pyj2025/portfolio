@@ -1,5 +1,6 @@
 import React from 'react';
 import { ViewMode } from '../../types';
+import { FinderList, FinderListRow } from '../FinderItems';
 import SkillIcon from './SkillIcon';
 import { getSkillIcon } from './getSkillIcon';
 
@@ -12,21 +13,19 @@ type SkillsGroupProps = {
 
 const SkillsGroup: React.FC<SkillsGroupProps> = ({ skills, view = 'icon' }) =>
   view === 'list' ? (
-    <div className="flex flex-col gap-0.5 p-2">
+    <FinderList>
       {skills.map(skill => (
-        <div
+        <FinderListRow
           key={skill.name}
-          className="flex flex-row items-center gap-2.5 w-full px-3 py-1 rounded-md hover:bg-[var(--hover-overlay)] transition-colors"
-        >
-          <span className="flex items-center justify-center w-6 h-6 shrink-0">
+          label={skill.name}
+          icon={
             <span className="scale-[0.45] flex items-center justify-center">
               {getSkillIcon(skill.name)}
             </span>
-          </span>
-          <span className="text-sm text-[color:var(--wc-text)]">{skill.name}</span>
-        </div>
+          }
+        />
       ))}
-    </div>
+    </FinderList>
   ) : (
     <div className="flex flex-row flex-wrap mt-2.5">
       {skills.map(skill => (

@@ -13,27 +13,29 @@ import {
   SettingsWindow,
 } from "../views/window/desktop";
 import useWindowsStore from "../utils/useWindowsStore";
-import useAboutStore from "../utils/useAboutStore";
-import useSkillsStore from "../utils/useSkillsStore";
-import useProjectsStore from "../utils/useProjectsStore";
-import useCalculatorStore from "../utils/useCalculatorStore";
-import useUtilStore from "../utils/useUtilStore";
-import useResumeStore from "../utils/useResumeStore";
-import useTerminalStore from "../utils/useTerminalStore";
-import useSettingsStore from "../utils/useSettingsStore";
+import {
+  useAboutWindow,
+  useSkillsWindow,
+  useProjectsWindow,
+  useCalculatorWindow,
+  useUtilsWindow,
+  useResumeWindow,
+  useTerminalWindow,
+  useSettingsWindow,
+} from "../utils/appRegistry";
 import WindowsContent from "./WindowsContent";
 import "react-toastify/dist/ReactToastify.css";
 
 const BodyContent: React.FC = () => {
   const isWelcomeWindowOpen = useWindowsStore(state => state.isWelcomeWindowOpen);
-  const isAboutOpen = useAboutStore(state => state.isAboutOpen);
-  const isSkillsOpen = useSkillsStore(state => state.isSkillsOpen);
-  const isProjectsOpen = useProjectsStore(state => state.isProjectsOpen);
-  const isCalculatorOpen = useCalculatorStore(state => state.isCalculatorOpen);
-  const isUtilOpen = useUtilStore(state => state.isUtilOpen);
-  const isResumeOpen = useResumeStore(state => state.isResumeOpen);
-  const isTerminalOpen = useTerminalStore(state => state.isTerminalOpen);
-  const isSettingsOpen = useSettingsStore(state => state.isSettingsOpen);
+  const isAboutOpen = useAboutWindow(state => state.isOpen);
+  const isSkillsOpen = useSkillsWindow(state => state.isOpen);
+  const isProjectsOpen = useProjectsWindow(state => state.isOpen);
+  const isCalculatorOpen = useCalculatorWindow(state => state.isOpen);
+  const isUtilOpen = useUtilsWindow(state => state.isOpen);
+  const isResumeOpen = useResumeWindow(state => state.isOpen);
+  const isTerminalOpen = useTerminalWindow(state => state.isOpen);
+  const isSettingsOpen = useSettingsWindow(state => state.isOpen);
 
   React.useEffect(() => {
     const message =

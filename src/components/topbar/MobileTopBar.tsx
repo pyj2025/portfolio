@@ -6,7 +6,7 @@ const MobileTopBar: React.FC = () => {
 
   return (
     <div
-      className="flex justify-center items-center bg-black bg-opacity-40 text-white h-6"
+      className="flex justify-center items-center bg-black/40 text-white h-6"
       style={{ width: `${width}px` }}
     >
       <span className="font-bold">Youngjoon Park</span>

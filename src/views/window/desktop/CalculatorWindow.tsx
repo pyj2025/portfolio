@@ -1,76 +1,18 @@
 import React from "react";
-import { DraggableData } from "react-rnd";
-import { WindowPositionSetting, WindowSizeSetting } from "../../../types";
-import { Window } from "../../../GlobalStyle";
-import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
-import { WindowTopbar } from "../../../components";
-import useWindowsStore from "../../../utils/useWindowsStore";
+import AppWindow from "../../../components/AppWindow";
 import { Calculator } from "../../../components/calculator";
 
-const CalculatorWindow: React.FC = () => {
-  const { width, height } = useScreenSize();
-  const { focusedWindow, setFocusedWindow } = useWindowsStore(state => state);
-
-  const calcRef = React.useRef<any>();
-
-  const [size, setSize] = React.useState<WindowSizeSetting>({
-    width: 240,
-    height: 400,
-  });
-  const [position, setPosition] = React.useState<WindowPositionSetting>(() => ({
-    x: Math.max(width - 240 - 40, 20),
-    y: 80,
-  }));
-  const [prevSetting, setPrevSetting] = React.useState<
-    (WindowSizeSetting & WindowPositionSetting) | null
-  >(null);
-  const [isMobileWindow, setIsMobileWindow] = React.useState(false);
-
-  React.useEffect(() => {
-    if (width < TABLET_MAX_WIDTH) {
-      setSize({ width, height: height - 80 - 25 });
-      setPosition({ x: 0, y: 0 });
-      setIsMobileWindow(true);
-    } else {
-      setIsMobileWindow(false);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [width]);
-
-  const focusWindow = React.useCallback(() => {
-    setFocusedWindow("Calculator");
-  }, [setFocusedWindow]);
-
-  return (
-    <Window
-      id="Calculator"
-      ref={calcRef}
-      size={{ width: size.width, height: size.height }}
-      position={{ x: position.x, y: position.y }}
-      dragHandleClassName="topbar"
-      enableResizing={false}
-      minWidth={isMobileWindow ? width : 240}
-      minHeight={400}
-      style={{ zIndex: focusedWindow === "Calculator" ? 10 : undefined }}
-      onDragStart={() => focusWindow()}
-      onDragStop={(_e: any, data: DraggableData) => setPosition({ x: data.x, y: data.y })}
-    >
-      <WindowTopbar
-        title="Calculator"
-        windowRef={calcRef}
-        size={size}
-        setSize={setSize}
-        position={position}
-        setPosition={setPosition}
-        prevSetting={prevSetting}
-        setPrevSetting={setPrevSetting}
-        isMobileWindow={isMobileWindow}
-      />
-      <div className="w-full h-[calc(100%-36px)]" onClick={focusWindow}>
-        <Calculator />
-      </div>
-    </Window>
-  );
-};
+const CalculatorWindow: React.FC = () => (
+  <AppWindow
+    id="Calculator"
+    defaultSize={{ width: 240, height: 400 }}
+    defaultPosition={({ width }) => ({ x: Math.max(width - 240 - 40, 20), y: 80 })}
+    minWidth={240}
+    minHeight={400}
+    resizable={false}
+  >
+    <Calculator />
+  </AppWindow>
+);
 
 export default CalculatorWindow;

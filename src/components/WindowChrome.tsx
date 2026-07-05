@@ -1,6 +1,6 @@
 import React from "react";
 import { Rnd } from "react-rnd";
-import { cn } from "./utils/cn";
+import { cn } from "../utils/cn";
 
 type DivProps = React.HTMLAttributes<HTMLDivElement>;
 type SpanProps = React.HTMLAttributes<HTMLSpanElement>;

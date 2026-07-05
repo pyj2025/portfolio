@@ -1,9 +1,9 @@
 import React from "react";
 import { getIcon } from "./getIcon";
-import useUtilStore from "../utils/useUtilStore";
+import { useUtilsWindow } from "../utils/appRegistry";
 
 const DesktopIcons: React.FC = () => {
-  const openUtil = useUtilStore(state => state.openUtil);
+  const openUtil = useUtilsWindow(state => state.open);
 
   return (
     <div className="absolute top-8 right-6 z-0 flex flex-col items-center gap-4">

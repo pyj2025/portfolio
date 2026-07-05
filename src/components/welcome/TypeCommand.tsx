@@ -1,13 +1,5 @@
 import React from "react";
-import Typist from "react-typist";
-
-const DEFAULT_CURSOR = {
-  show: true,
-  blink: true,
-  element: "|",
-  hideWhenDone: true,
-  hideWhenDoneDelay: 100,
-};
+import Typewriter from "./Typewriter";
 
 type TypeCommandProps = {
   command: string;
@@ -17,9 +9,7 @@ type TypeCommandProps = {
 const TypeCommand: React.FC<TypeCommandProps> = ({ command, typeDone }) => {
   return (
     <div className="ml-2">
-      <Typist cursor={DEFAULT_CURSOR} onTypingDone={typeDone}>
-        {command}
-      </Typist>
+      <Typewriter text={command} onDone={typeDone} />
     </div>
   );
 };

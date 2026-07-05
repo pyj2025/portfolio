@@ -11,7 +11,7 @@ import TwitterLogo from "../../image/projects/Twitter.png";
 
 export type ProjectKey = keyof typeof info.project;
 
-const PROJECT_LOGOS: Partial<Record<ProjectKey, string>> = {
+export const PROJECT_LOGOS: Partial<Record<ProjectKey, string>> = {
   DatApex: DatApexLogo,
   Foodie: FoodieLogo,
   GitCard: GitCardLogo,

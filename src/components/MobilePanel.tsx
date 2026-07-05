@@ -6,7 +6,7 @@ import {
   MobileBackButton,
   MobileBackButtonContainer,
   MobilePanelContainer,
-} from '../GlobalStyle';
+} from './WindowChrome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 type MobilePanelProps = {

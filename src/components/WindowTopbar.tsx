@@ -14,20 +14,18 @@ import {
   TopbarTitle,
   TopbarTitleText,
   WindowTopbarContainer,
-} from '../GlobalStyle';
+} from './WindowChrome';
 import { cn } from '../utils/cn';
-import { ViewMode, WindowPositionSetting, WindowSizeSetting } from '../types';
+import {
+  AppId,
+  ViewMode,
+  WindowPositionSetting,
+  WindowSizeSetting,
+} from '../types';
 import useScreenSize from '../utils/useScreenSize';
-import { IconType, SMALL_ICON_SIZE, getIcon } from './getIcon';
+import { SMALL_ICON_SIZE, getIcon } from './getIcon';
 import useWindowsStore from '../utils/useWindowsStore';
-import useAboutStore from '../utils/useAboutStore';
-import useSkillsStore from '../utils/useSkillsStore';
-import useProjectsStore from '../utils/useProjectsStore';
-import useCalculatorStore from '../utils/useCalculatorStore';
-import useUtilStore from '../utils/useUtilStore';
-import useResumeStore from '../utils/useResumeStore';
-import useTerminalStore from '../utils/useTerminalStore';
-import useSettingsStore from '../utils/useSettingsStore';
+import { getApp } from '../utils/appRegistry';
 
 export type TopbarNav = {
   onBack: () => void;
@@ -37,7 +35,7 @@ export type TopbarNav = {
 };
 
 export type WindowTopbarProps = {
-  title: string;
+  title: AppId;
   windowRef: any;
   size: WindowSizeSetting;
   setSize: (size: WindowSizeSetting) => void;
@@ -53,15 +51,6 @@ export type WindowTopbarProps = {
 
 const topbarCtrlBtn =
   'w-6 h-6 flex items-center justify-center rounded-md text-[color:var(--wc-text)] text-[13px] transition-colors bg-transparent border-0';
-
-type WindowControls = {
-  icon: IconType;
-  toggleOpen: () => void;
-  setMinimized: (flag: boolean) => void;
-  // omit both to make the expand (green) button a no-op for this window
-  isExpanded?: boolean;
-  toggleExpanded?: () => void;
-};
 
 const WindowTopbar: React.FC<WindowTopbarProps> = ({
   title,
@@ -80,80 +69,18 @@ const WindowTopbar: React.FC<WindowTopbarProps> = ({
   const { width, height } = useScreenSize();
   const focusedWindow = useWindowsStore((state) => state.focusedWindow);
 
-  const about = useAboutStore((state) => state);
-  const skills = useSkillsStore((state) => state);
-  const projects = useProjectsStore((state) => state);
-  const calculator = useCalculatorStore((state) => state);
-  const util = useUtilStore((state) => state);
-  const resume = useResumeStore((state) => state);
-  const terminal = useTerminalStore((state) => state);
-  const settings = useSettingsStore((state) => state);
-
-  const controls: Record<string, WindowControls> = {
-    About: {
-      icon: 'About',
-      toggleOpen: about.toggleAboutOpen,
-      setMinimized: about.setAboutMinimized,
-      isExpanded: about.isAboutExpanded,
-      toggleExpanded: about.toggleAboutExpanded,
-    },
-    Skills: {
-      icon: 'Skills',
-      toggleOpen: skills.toggleSkillsOpen,
-      setMinimized: skills.setSkillsMinimized,
-      isExpanded: skills.isSkillsExpanded,
-      toggleExpanded: skills.toggleSkillsExpanded,
-    },
-    Projects: {
-      icon: 'Projects',
-      toggleOpen: projects.toggleProjectsOpen,
-      setMinimized: projects.setProjectsMinimized,
-      isExpanded: projects.isProjectsExpanded,
-      toggleExpanded: projects.toggleProjectsExpanded,
-    },
-    Calculator: {
-      icon: 'Calculator',
-      toggleOpen: calculator.toggleCalculatorOpen,
-      setMinimized: calculator.setCalculatorMinimized,
-    },
-    Utils: {
-      icon: 'Folder',
-      toggleOpen: util.toggleUtilOpen,
-      setMinimized: util.setUtilMinimized,
-      isExpanded: util.isUtilExpanded,
-      toggleExpanded: util.toggleUtilExpanded,
-    },
-    Resume: {
-      icon: 'Resume',
-      toggleOpen: resume.toggleResumeOpen,
-      setMinimized: resume.setResumeMinimized,
-      isExpanded: resume.isResumeExpanded,
-      toggleExpanded: resume.toggleResumeExpanded,
-    },
-    Terminal: {
-      icon: 'Terminal',
-      toggleOpen: terminal.toggleTerminalOpen,
-      setMinimized: terminal.setTerminalMinimized,
-      isExpanded: terminal.isTerminalExpanded,
-      toggleExpanded: terminal.toggleTerminalExpanded,
-    },
-    Settings: {
-      icon: 'Settings',
-      toggleOpen: settings.toggleSettingsOpen,
-      setMinimized: settings.setSettingsMinimized,
-    },
-  };
-
-  const control: WindowControls | undefined = controls[title];
+  const app = getApp(title);
+  // `title` is stable for a given window instance, so this hook is consistent
+  const control = app.store();
 
   const handleClose = () => {
-    if (focusedWindow === title && control) {
+    if (focusedWindow === title) {
       control.toggleOpen();
     }
   };
 
   const handleMinimized = () => {
-    if (focusedWindow === title && control) {
+    if (focusedWindow === title) {
       control.setMinimized(true);
       control.toggleOpen();
     }
@@ -216,8 +143,8 @@ const WindowTopbar: React.FC<WindowTopbarProps> = ({
   );
 
   const handleExpand = () => {
-    if (focusedWindow === title && control?.toggleExpanded) {
-      expand(control.isExpanded ?? false);
+    if (focusedWindow === title && app.canExpand) {
+      expand(control.isExpanded);
       control.toggleExpanded();
     }
   };
@@ -280,7 +207,7 @@ const WindowTopbar: React.FC<WindowTopbarProps> = ({
         )}
       </TopbarBtnContainer>
       <TopbarTitle>
-        {getIcon(control?.icon ?? '', SMALL_ICON_SIZE)}
+        {getIcon(app.icon, SMALL_ICON_SIZE)}
         <TopbarTitleText>{title}</TopbarTitleText>
       </TopbarTitle>
       <div className="flex justify-end items-center">

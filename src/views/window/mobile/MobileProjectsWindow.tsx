@@ -1,18 +1,11 @@
 import React from "react";
-import { DraggableData, Position, ResizableDelta } from "react-rnd";
-import { MobileBodyContent, MobileWindowBody, Window } from "../../../GlobalStyle";
-import {
-  ProjectIndexType,
-  ViewMode,
-  WindowPositionSetting,
-  WindowSizeSetting,
-} from "../../../types";
-import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
+import AppWindow from "../../../components/AppWindow";
+import { MobileBodyContent, MobileWindowBody } from "../../../components/WindowChrome";
+import { ProjectIndexType, ViewMode } from "../../../types";
 import ProjectsContent from "../../../components/projects/ProjectsContent";
-import useWindowsStore from "../../../utils/useWindowsStore";
 import useNavHistory from "../../../utils/useNavHistory";
 import MobileProjectsNavbar from "../../../components/projects/MobileProjectsNavbar";
-import { MobilePanel, WindowTopbar } from "../../../components";
+import { MobilePanel } from "../../../components";
 
 const MAIN_PROJECT_VIEWS = ["Projects", "WebProjects", "MobileProjects"] as const;
 const WEB_PROJECTS = ["GitCard", "DatApex", "MovieNext", "Portfolio"] as const;
@@ -49,23 +42,6 @@ const MobileProjectsContent: React.FC<MobileProjectsContentProps> = ({
 };
 
 const MobileProjectsWindow: React.FC = () => {
-  const { width, height } = useScreenSize();
-  const { focusedWindow, setFocusedWindow } = useWindowsStore(state => state);
-
-  const projectsRef = React.useRef<any>();
-
-  const [projectsSize, setProjectsSize] = React.useState<WindowSizeSetting>({
-    width: 500,
-    height: 300,
-  });
-  const [projectsPosition, setProjectsPosition] = React.useState<WindowPositionSetting>({
-    x: 100,
-    y: 100,
-  });
-
-  const [projectsPrevSetting, setProjectsPrevSetting] = React.useState<
-    (WindowSizeSetting & WindowPositionSetting) | null
-  >(null);
   const {
     current: index,
     navigate,
@@ -75,24 +51,6 @@ const MobileProjectsWindow: React.FC = () => {
     canForward,
   } = useNavHistory<ProjectIndexType>("Projects");
   const [view, setView] = React.useState<ViewMode>("icon");
-  const [isMobileWindow, setIsMobileWindow] = React.useState(false);
-
-  React.useEffect(() => {
-    if (width < TABLET_MAX_WIDTH) {
-      setProjectsSize({
-        width,
-        height: height - 80 - 25,
-      });
-      setProjectsPosition({
-        x: 0,
-        y: 0,
-      });
-      setIsMobileWindow(true);
-    } else {
-      setIsMobileWindow(false);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [width]);
 
   const handleClick = React.useCallback(
     (name: ProjectIndexType) => {
@@ -102,54 +60,21 @@ const MobileProjectsWindow: React.FC = () => {
   );
 
   return (
-    <Window
+    <AppWindow
       id="Projects"
-      ref={projectsRef}
-      size={{ width: projectsSize.width, height: projectsSize.height }}
-      position={{ x: projectsPosition.x, y: projectsPosition.y }}
-      dragHandleClassName="topbar"
-      minWidth={isMobileWindow ? width : 525}
+      defaultSize={{ width: 500, height: 300 }}
+      defaultPosition={{ x: 100, y: 100 }}
+      minWidth={525}
       minHeight={300}
-      style={{ zIndex: focusedWindow === "Projects" ? 10 : undefined }}
-      onDragStart={(_e: any, _data: DraggableData) => {
-        setFocusedWindow("Projects");
-      }}
-      onDragStop={(_e: any, data: DraggableData) => {
-        setProjectsPosition({ x: data.x, y: data.y });
-      }}
-      onResizeStop={(
-        _e: MouseEvent | TouchEvent,
-        _dir: any,
-        ref: any,
-        _delta: ResizableDelta,
-        position: Position,
-      ) => {
-        setProjectsSize({
-          width: ref.style.width,
-          height: ref.style.height,
-        });
-        setProjectsPosition({ x: position.x, y: position.y });
-      }}
+      nav={{ onBack: back, onForward: forward, canBack, canForward }}
+      view={view}
+      onViewChange={setView}
     >
-      <WindowTopbar
-        title="Projects"
-        windowRef={projectsRef}
-        size={projectsSize}
-        setSize={setProjectsSize}
-        position={projectsPosition}
-        setPosition={setProjectsPosition}
-        prevSetting={projectsPrevSetting}
-        setPrevSetting={setProjectsPrevSetting}
-        isMobileWindow={isMobileWindow}
-        nav={{ onBack: back, onForward: forward, canBack, canForward }}
-        view={view}
-        onViewChange={setView}
-      />
-      <MobileWindowBody>
+      <MobileWindowBody className="h-full">
         <MobileProjectsNavbar index={index} onClick={handleClick} />
         <MobileProjectsContent index={index} onClick={handleClick} view={view} />
       </MobileWindowBody>
-    </Window>
+    </AppWindow>
   );
 };
 

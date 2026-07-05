@@ -1,21 +1,16 @@
 import React from "react";
-import { DraggableData, Position, ResizableDelta } from "react-rnd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle, faPalette } from "@fortawesome/free-solid-svg-icons";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { WindowPositionSetting, WindowSizeSetting } from "../../../types";
+import AppWindow from "../../../components/AppWindow";
 import {
   NavItmLabel,
   NavSectionLabel,
-  Window,
   WindowBody,
   WindowBodyContent,
   WindowBodyNavbar,
   WindowBodyNavItm,
-} from "../../../GlobalStyle";
-import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
-import { WindowTopbar } from "../../../components";
-import useWindowsStore from "../../../utils/useWindowsStore";
+} from "../../../components/WindowChrome";
 import useThemeStore, { ThemeMode } from "../../../utils/useThemeStore";
 import { cn } from "../../../utils/cn";
 
@@ -62,75 +57,17 @@ const ThemeCard: React.FC<ThemeCardProps> = ({ mode, label, active, onSelect }) 
 );
 
 const SettingsWindow: React.FC = () => {
-  const { width, height } = useScreenSize();
-  const { focusedWindow, setFocusedWindow } = useWindowsStore(state => state);
   const { theme, setTheme } = useThemeStore(state => state);
 
-  const settingsRef = React.useRef<any>();
-
-  const [size, setSize] = React.useState<WindowSizeSetting>({
-    width: 560,
-    height: 360,
-  });
-  const [position, setPosition] = React.useState<WindowPositionSetting>({
-    x: 180,
-    y: 100,
-  });
-  const [prevSetting, setPrevSetting] = React.useState<
-    (WindowSizeSetting & WindowPositionSetting) | null
-  >(null);
-  const [isMobileWindow, setIsMobileWindow] = React.useState(false);
-
-  React.useEffect(() => {
-    if (width < TABLET_MAX_WIDTH) {
-      setSize({ width, height: height - 80 - 25 });
-      setPosition({ x: 0, y: 0 });
-      setIsMobileWindow(true);
-    } else {
-      setIsMobileWindow(false);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [width]);
-
-  const focusWindow = React.useCallback(() => {
-    setFocusedWindow("Settings");
-  }, [setFocusedWindow]);
-
   return (
-    <Window
+    <AppWindow
       id="Settings"
-      ref={settingsRef}
-      size={{ width: size.width, height: size.height }}
-      position={{ x: position.x, y: position.y }}
-      dragHandleClassName="topbar"
-      minWidth={isMobileWindow ? width : 480}
+      defaultSize={{ width: 560, height: 360 }}
+      defaultPosition={{ x: 180, y: 100 }}
+      minWidth={480}
       minHeight={320}
-      style={{ zIndex: focusedWindow === "Settings" ? 10 : undefined }}
-      onDragStart={() => focusWindow()}
-      onDragStop={(_e: any, data: DraggableData) => setPosition({ x: data.x, y: data.y })}
-      onResizeStop={(
-        _e: MouseEvent | TouchEvent,
-        _dir: any,
-        ref: any,
-        _delta: ResizableDelta,
-        pos: Position,
-      ) => {
-        setSize({ width: ref.style.width, height: ref.style.height });
-        setPosition({ x: pos.x, y: pos.y });
-      }}
     >
-      <WindowTopbar
-        title="Settings"
-        windowRef={settingsRef}
-        size={size}
-        setSize={setSize}
-        position={position}
-        setPosition={setPosition}
-        prevSetting={prevSetting}
-        setPrevSetting={setPrevSetting}
-        isMobileWindow={isMobileWindow}
-      />
-      <WindowBody onClick={focusWindow}>
+      <WindowBody className="h-full">
         <WindowBodyNavbar>
           <NavSectionLabel>Settings</NavSectionLabel>
           <WindowBodyNavItm focus first>
@@ -165,7 +102,7 @@ const SettingsWindow: React.FC = () => {
           </div>
         </WindowBodyContent>
       </WindowBody>
-    </Window>
+    </AppWindow>
   );
 };
 

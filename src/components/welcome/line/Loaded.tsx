@@ -1,13 +1,5 @@
 import React from "react";
-import Typist from "react-typist";
-
-const DEFAULT_CURSOR = {
-  show: true,
-  blink: true,
-  element: "|",
-  hideWhenDone: true,
-  hideWhenDoneDelay: 100,
-};
+import Typewriter from "../Typewriter";
 
 type LoadedProps = {
   setFirstLine: (flag: boolean) => void;
@@ -15,9 +7,9 @@ type LoadedProps = {
 
 const Loaded: React.FC<LoadedProps> = ({ setFirstLine }) => {
   return (
-    <Typist className="mt-2 ml-4" cursor={DEFAULT_CURSOR} onTypingDone={() => setFirstLine(true)}>
-      Loaded...
-    </Typist>
+    <div className="mt-2 ml-4">
+      <Typewriter text="Loaded..." onDone={() => setFirstLine(true)} />
+    </div>
   );
 };
 
