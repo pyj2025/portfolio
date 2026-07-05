@@ -9,6 +9,7 @@ import {
   WindowBodyNavItm,
 } from "../../../GlobalStyle";
 import { getIcon, getNavIcon } from "../../../components/getIcon";
+import { FinderGrid, FinderGridItem } from "../../../components/FinderItems";
 import {
   useCalculatorWindow,
   useTerminalWindow,
@@ -49,26 +50,19 @@ const UtilWindow: React.FC = () => {
           </WindowBodyNavItm>
         </WindowBodyNavbar>
         <WindowBodyContent>
-          <div className="flex flex-row flex-wrap gap-2.5 m-2.5">
+          <FinderGrid>
             {apps.map(app => (
-              <button
+              <FinderGridItem
                 key={app.label}
-                aria-label={app.label}
-                onClick={e => {
+                label={app.label}
+                icon={getIcon(app.icon, 48)}
+                onClick={(e: React.MouseEvent) => {
                   e.stopPropagation();
                   app.onOpen();
                 }}
-                className="group flex flex-col items-center w-16 cursor-pointer select-none bg-transparent"
-              >
-                <div className="flex items-center justify-center rounded-lg p-1 transition-colors group-hover:bg-[var(--hover-overlay)]">
-                  {getIcon(app.icon, 48)}
-                </div>
-                <div className="mt-1 max-w-full px-1.5 py-px rounded text-xs leading-tight text-center text-[color:var(--wc-text)] transition-colors group-hover:bg-[var(--hover-overlay-strong)]">
-                  {app.label}
-                </div>
-              </button>
+              />
             ))}
-          </div>
+          </FinderGrid>
         </WindowBodyContent>
       </WindowBody>
     </AppWindow>
