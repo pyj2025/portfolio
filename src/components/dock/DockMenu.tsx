@@ -3,10 +3,12 @@ import { faCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { getIcon } from "../getIcon";
-import useAboutStore from "../../utils/useAboutStore";
-import useSkillsStore from "../../utils/useSkillsStore";
-import useProjectsStore from "../../utils/useProjectsStore";
-import useResumeStore from "../../utils/useResumeStore";
+import {
+  useAboutWindow,
+  useSkillsWindow,
+  useProjectsWindow,
+  useResumeWindow,
+} from "../../utils/appRegistry";
 import info from "../../info.json";
 
 const WindowMenuItemStyle =
@@ -18,26 +20,14 @@ const ExternalLinkMenuItemStyle =
 const IconStyle = "absolute h-1 w-1 pt-14 text-gray-400";
 
 const DockMenu: React.FC = () => {
-  const { isAboutMinimized, openAbout } = useAboutStore(state => state);
-  const { isSkillsMinimized, openSkills } = useSkillsStore(state => state);
-  const { isProjectsMinimized, openProjects } = useProjectsStore(state => state);
-  const { isResumeMinimized, openResume } = useResumeStore(state => state);
-
-  const handleAboutClick = React.useCallback(() => {
-    openAbout();
-  }, [openAbout]);
-
-  const handleSkillsClick = React.useCallback(() => {
-    openSkills();
-  }, [openSkills]);
-
-  const handleProjectsClick = React.useCallback(() => {
-    openProjects();
-  }, [openProjects]);
-
-  const handleResumeClick = React.useCallback(() => {
-    openResume();
-  }, [openResume]);
+  const { isMinimized: isAboutMinimized, open: handleAboutClick } =
+    useAboutWindow(state => state);
+  const { isMinimized: isSkillsMinimized, open: handleSkillsClick } =
+    useSkillsWindow(state => state);
+  const { isMinimized: isProjectsMinimized, open: handleProjectsClick } =
+    useProjectsWindow(state => state);
+  const { isMinimized: isResumeMinimized, open: handleResumeClick } =
+    useResumeWindow(state => state);
 
   const handleEmailClick = React.useCallback(() => {
     window.open(`mailto:${info.about.info.email}`);

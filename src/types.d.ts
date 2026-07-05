@@ -1,6 +1,4 @@
-export type FocusedWindowType =
-  | "Welcome"
-  | "DesktopAbout"
+export type AppId =
   | "About"
   | "Skills"
   | "Projects"
@@ -8,8 +6,9 @@ export type FocusedWindowType =
   | "Utils"
   | "Resume"
   | "Terminal"
-  | "Settings"
-  | "None";
+  | "Settings";
+
+export type FocusedWindowType = AppId | "Welcome" | "DesktopAbout" | "None";
 
 export type WindowSizeSetting = {
   width: number;

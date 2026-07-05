@@ -14,9 +14,11 @@ import useScreenSize, { TABLET_MAX_WIDTH } from "../../../utils/useScreenSize";
 import { WindowTopbar } from "../../../components";
 import { getIcon, getNavIcon } from "../../../components/getIcon";
 import useWindowsStore from "../../../utils/useWindowsStore";
-import useCalculatorStore from "../../../utils/useCalculatorStore";
-import useTerminalStore from "../../../utils/useTerminalStore";
-import useSettingsStore from "../../../utils/useSettingsStore";
+import {
+  useCalculatorWindow,
+  useTerminalWindow,
+  useSettingsWindow,
+} from "../../../utils/appRegistry";
 
 type UtilApp = {
   label: string;
@@ -27,9 +29,9 @@ type UtilApp = {
 const UtilWindow: React.FC = () => {
   const { width, height } = useScreenSize();
   const { focusedWindow, setFocusedWindow } = useWindowsStore(state => state);
-  const openCalculator = useCalculatorStore(state => state.openCalculator);
-  const openTerminal = useTerminalStore(state => state.openTerminal);
-  const openSettings = useSettingsStore(state => state.openSettings);
+  const openCalculator = useCalculatorWindow(state => state.open);
+  const openTerminal = useTerminalWindow(state => state.open);
+  const openSettings = useSettingsWindow(state => state.open);
 
   const utilRef = React.useRef<any>();
 

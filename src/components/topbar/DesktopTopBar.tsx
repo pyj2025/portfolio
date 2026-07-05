@@ -10,12 +10,12 @@ import useScreenSize from "../../utils/useScreenSize";
 import useClickOutside from "../../utils/useClickOutside";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import useWindowsStore from "../../utils/useWindowsStore";
-import useAboutStore from "../../utils/useAboutStore";
+import { useAboutWindow } from "../../utils/appRegistry";
 
 const DesktopTopBar: React.FC = () => {
   const { width } = useScreenSize();
 
-  const openAbout = useAboutStore(state => state.openAbout);
+  const openAbout = useAboutWindow(state => state.open);
   const clearFocusWindows = useWindowsStore(state => state.clearFocusWindows);
 
   const mainMenuRef = React.useRef<HTMLDivElement | null>(null);
