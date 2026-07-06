@@ -40,10 +40,10 @@ const runCommand = (raw: string): string[] | "clear" => {
       ];
     case "skills":
       return [
-        `Front-End : ${info.skills.front.map(s => s.name).join(", ")}`,
-        `Back-End  : ${info.skills.back.map(s => s.name).join(", ")}`,
-        `Mobile    : ${info.skills.mobile.map(s => s.name).join(", ")}`,
-        `Languages : ${info.skills.languages.map(s => s.name).join(", ")}`,
+        `Front-End : ${info.skills.front.join(", ")}`,
+        `Back-End  : ${info.skills.back.join(", ")}`,
+        `Mobile    : ${info.skills.mobile.join(", ")}`,
+        `Languages : ${info.skills.languages.join(", ")}`,
       ];
     case "contact":
       return [

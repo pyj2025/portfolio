@@ -3,7 +3,6 @@ import { getSkillIcon } from './getSkillIcon';
 
 export type SkillIconProps = {
   name: string;
-  noWidth?: boolean;
 };
 
 const SkillIcon: React.FC<SkillIconProps> = ({ name }) => {

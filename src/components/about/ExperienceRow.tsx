@@ -8,7 +8,7 @@ export type ExperienceType = {
   location: string;
   date: string;
   dateRank: number;
-  tech: string;
+  tech: string[];
   description: string;
 };
 

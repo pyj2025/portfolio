@@ -9,7 +9,7 @@ type ExperienceDetailProps = {
 };
 
 const ExperienceDetail: React.FC<ExperienceDetailProps> = ({ experience }) => {
-  const techs = experience.tech.split(",").map(t => t.trim()).filter(Boolean);
+  const techs = experience.tech.map(t => t.trim()).filter(Boolean);
 
   return (
     <div className="flex flex-col max-w-xl mx-auto px-5 py-5 gap-3">
