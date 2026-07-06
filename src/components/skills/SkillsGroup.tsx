@@ -4,23 +4,21 @@ import { FinderList, FinderListRow } from '../FinderItems';
 import SkillIcon from './SkillIcon';
 import { getSkillIcon } from './getSkillIcon';
 
-type Skill = { name: string };
-
 type SkillsGroupProps = {
-  skills: Skill[];
+  skills: string[];
   view?: ViewMode;
 };
 
 const SkillsGroup: React.FC<SkillsGroupProps> = ({ skills, view = 'icon' }) =>
   view === 'list' ? (
     <FinderList>
-      {skills.map(skill => (
+      {skills.map(skillName => (
         <FinderListRow
-          key={skill.name}
-          label={skill.name}
+          key={skillName}
+          label={skillName}
           icon={
             <span className="scale-[0.45] flex items-center justify-center">
-              {getSkillIcon(skill.name)}
+              {getSkillIcon(skillName)}
             </span>
           }
         />
@@ -28,8 +26,8 @@ const SkillsGroup: React.FC<SkillsGroupProps> = ({ skills, view = 'icon' }) =>
     </FinderList>
   ) : (
     <div className="flex flex-row flex-wrap mt-2.5">
-      {skills.map(skill => (
-        <SkillIcon key={skill.name} name={skill.name} />
+      {skills.map(skillName => (
+        <SkillIcon key={skillName} name={skillName} />
       ))}
     </div>
   );

@@ -36,7 +36,21 @@
         "company": "Global Relay",
         "location": "Vancouver, BC, Canada",
         "date": "Nov 2025 - Present",
-        "tech": "React, FastAPI, TypeScript, Python, SCSS, Codex, Figma, Docker, Kubernetes, Postgres, Ceph, Pulsar, Kafka",
+        "tech": [
+          "React",
+          "FastAPI",
+          "TypeScript",
+          "Python",
+          "SCSS",
+          "Codex",
+          "Figma",
+          "Docker",
+          "Kubernetes",
+          "Postgres",
+          "Ceph",
+          "Pulsar",
+          "Kafka"
+        ],
         "description": "AI pod in Global Relay",
         "dateRank": 1
       },
@@ -45,7 +59,20 @@
         "company": "AllTrue.ai",
         "location": "Vancouver, BC, Canada",
         "date": "Apr 2024 - Nov 2025",
-        "tech": "Next.js, FastAPI, React, TypeScript, Python, Redux, TailwindCSS, Claude, Docker, AWS, Storybook, Figma",
+        "tech": [
+          "Next.js",
+          "FastAPI",
+          "React",
+          "TypeScript",
+          "Python",
+          "Redux",
+          "TailwindCSS",
+          "Claude",
+          "Docker",
+          "AWS",
+          "Storybook",
+          "Figma"
+        ],
         "description": "As a full-stack engineer, I developed core product features for the company's platform using Next.js, React, TypeScript, Redux, and Tailwind, contributing to over 70% of key functionality including Security Posture Management (SPM), Usage, Inventory, Gateway, and Governance modules, along with IBM WatsonX and Netskope integrations. I built a comprehensive RESTful API suite with FastAPI and Python to handle CRUD operations for daily ETL scans, delivering real-time vulnerability assessments, resource instance statuses, and AI service updates that improved data accuracy by over 40%. I also implemented a full dashboard ecosystem with dynamic routing and data visualization components, enabling seamless one-click workflows across multi-cloud accounts, AI services, and resource instances through interactive charts and tables, which reduced user workflow complexity by 30%. In addition, I mentored and led junior developers by introducing structured problem-solving methodologies, cutting average issue resolution time by 33% and significantly boosting team productivity and code quality.",
         "dateRank": 2
       },
@@ -54,8 +81,18 @@
         "company": "Enfusion",
         "location": "Chicago, IL, USA",
         "date": "Jan 2020 - Jul 2023",
-        "tech": "React, TypeScript, React Native, Jest, React Testing Library, Puppeteer, Storybook, Figma, Jira",
-        "description": "In this role, I enhanced our company's web application UI using React and TypeScript, integrating key features from our desktop app such as the Order Execution Management System (OEMS), Reports, and Services, and introducing new features like Dashboard and Portfolio to improve the online user experience. I also expanded our offerings to mobile platforms using React Native, ensuring seamless user transitions between web and mobile. Additionally, I developed a secure authentication UI for both web and mobile applications to prevent duplicate logins across devices. I optimized performance and enabled real-time data updates using web sockets and web workers. Integration with Google Analytics provided in-depth user engagement insights, while Sentry facilitated efficient error tracking and resolution. To maintain product quality, I implemented unit tests with Jest and React Testing Library for web and mobile applications, and conducted end-to-end tests with Puppeteer.",
+        "tech": [
+          "React",
+          "TypeScript",
+          "React Native",
+          "Jest",
+          "React Testing Library",
+          "Puppeteer",
+          "Storybook",
+          "Figma",
+          "Jira"
+        ],
+        "description": "In this role, I enhanced our company's web application UI using React and TypeScript, integrating key features from our desktop app such as the Order Execution Management System (OOEM), Reports, and Services, and introducing new features like Dashboard and Portfolio to improve the online user experience. I also expanded our offerings to mobile platforms using React Native, ensuring seamless user transitions between web and mobile. Additionally, I developed a secure authentication UI for both web and mobile applications to prevent duplicate logins across devices. I optimized performance and enabled real-time data updates using web sockets and web workers. Integration with Google Analytics provided in-depth user engagement insights, while Sentry facilitated efficient error tracking and resolution. To maintain product quality, I implemented unit tests with Jest and React Testing Library for web and mobile applications, and conducted end-to-end tests with Puppeteer.",
         "dateRank": 3
       },
       {
@@ -63,7 +100,23 @@
         "company": "Purdue University",
         "location": "West Lafayette, IN, USA",
         "date": "Aug 2018 - Dec 2019",
-        "tech": "React, Redux, Node.js, Express.js, MongoDB,Angular, Selenium, Jest, Mocha, Cypress, Puppeteer, C, C++, Lex, Yacc",
+        "tech": [
+          "React",
+          "Redux",
+          "Node.js",
+          "Express.js",
+          "MongoDB",
+          "Angular",
+          "Selenium",
+          "Jest",
+          "Mocha",
+          "Cypress",
+          "Puppeteer",
+          "C",
+          "C++",
+          "Lex",
+          "Yacc"
+        ],
         "description": "In this role, I led four student teams in software development, provided assistance in Software Testing (CS40800), and supported course labs for Systems Programming (CS25200) and Computer Architecture (CS25000).",
         "dateRank": 4
       },
@@ -72,7 +125,14 @@
         "company": "Dotis",
         "location": "Seoul, South Korea",
         "date": "Jun 2017 - Jul 2017",
-        "tech": "MongoDB, Express, React, Node.js, Mocha, C++",
+        "tech": [
+          "MongoDB",
+          "Express",
+          "React",
+          "Node.js",
+          "Mocha",
+          "C++"
+        ],
         "description": "In this role, I developed and modified clients' web applications using MERN stacks, wrote test cases with Mocha, and addressed defects. I also refactored and maintained C++ code collaboratively. Additionally, I provided technical support for data restoration from Ransomware attacks and contributed to enhancing the security program.",
         "dateRank": 5
       },
@@ -81,7 +141,11 @@
         "company": "Hyop Woon International Co .,Ltd",
         "location": "Seoul, South Korea",
         "date": "Jul 2015 - Aug 2015",
-        "tech": "Python, Java, MySQL",
+        "tech": [
+          "Python",
+          "Java",
+          "MySQL"
+        ],
         "description": "In this role, I developed new features for our data automation program in Python, implemented Java unit tests for management applications, and optimized MySQL database performance for efficient data handling.",
         "dateRank": 6
       }
@@ -202,115 +266,46 @@
   },
   "skills": {
     "front": [
-      {
-        "name": "React"
-      },
-      {
-        "name": "Vue"
-      },
-      {
-        "name": "Angular"
-      },
-      {
-        "name": "Nextjs"
-      },
-      {
-        "name": "Redux"
-      },
-      {
-        "name": "jQuery"
-      },
-      {
-        "name": "Bootstrap"
-      },
-      {
-        "name": "SASS"
-      },
-      {
-        "name": "Tailwind"
-      },
-      {
-        "name": "styled-components"
-      }
+      "React",
+      "Vue",
+      "Angular",
+      "Nextjs",
+      "Redux",
+      "jQuery",
+      "Bootstrap",
+      "SASS",
+      "Tailwind",
+      "styled-components"
     ],
     "back": [
-      {
-        "name": "Node.js"
-      },
-      {
-        "name": "Express"
-      },
-      {
-        "name": "NestJS"
-      },
-      {
-        "name": "AWS"
-      },
-      {
-        "name": "Spring"
-      },
-      {
-        "name": "Laravel"
-      },
-      {
-        "name": "MongoDB"
-      },
-      {
-        "name": "ASP.Net Core"
-      }
+      "Node.js",
+      "Express",
+      "NestJS",
+      "AWS",
+      "Spring",
+      "Laravel",
+      "MongoDB",
+      "ASP.Net Core"
     ],
     "mobile": [
-      {
-        "name": "React Native",
-        "noWidth": true
-      },
-      {
-        "name": "Flutter"
-      },
-      {
-        "name": "Swift"
-      }
+      "React Native",
+      "Flutter",
+      "Swift"
     ],
     "languages": [
-      {
-        "name": "TypeScript"
-      },
-      {
-        "name": "JavaScript"
-      },
-      {
-        "name": "Python"
-      },
-      {
-        "name": "Java"
-      },
-      {
-        "name": "C#"
-      },
-      {
-        "name": "Dart"
-      },
-      {
-        "name": "C/C++"
-      },
-      {
-        "name": "PHP"
-      },
-      {
-        "name": "HTML5"
-      },
-      {
-        "name": "CSS3"
-      },
-      {
-        "name": "MySQL"
-      },
-      {
-        "name": "PL/SQL"
-      },
-      {
-        "name": "R"
-      }
+      "TypeScript",
+      "JavaScript",
+      "Python",
+      "Java",
+      "C#",
+      "Dart",
+      "C/C++",
+      "PHP",
+      "HTML5",
+      "CSS3",
+      "MySQL",
+      "PL/SQL",
+      "R"
     ]
   },
   "resume": {
