@@ -4,6 +4,7 @@ import useScreenSize, { MOBILE_MAX_WIDTH, TABLET_MAX_WIDTH } from "../utils/useS
 import { getIcon } from "./getIcon";
 import info from "../info.json";
 import { cn } from "../utils/cn";
+import { useUtilsWindow } from "../utils/appRegistry";
 
 const IconContainerStyle =
   "flex flex-col justify-center items-center text-center text-white mx-auto p-2 no-underline cursor-pointer";
@@ -25,6 +26,8 @@ const MobileAppMenu: React.FC = () => {
       setNumOfCols(5);
     }
   }, [width]);
+
+  const openUtils = useUtilsWindow(state => state.open);
 
   const handleEmailClick = React.useCallback(() => {
     window.open(`mailto:${info.about.info.email}`);
@@ -95,6 +98,15 @@ const MobileAppMenu: React.FC = () => {
         >
           <div className={IconStyle}>{getIcon("Email")}</div>
           <div className={IconLabelStyle}>Email</div>
+        </button>
+
+        <button
+          title="Utils"
+          onClick={openUtils}
+          className={cn(IconContainerStyle, "bg-transparent border-none")}
+        >
+          <div className={IconStyle}>{getIcon("FolderColor", 38)}</div>
+          <div className={IconLabelStyle}>Utils</div>
         </button>
       </div>
     </div>
