@@ -46,7 +46,7 @@ const MobileAppMenu: React.FC = () => {
       <div className={`grid ${getGridCols(numOfCols)} gap-2 w-full`}>
         <a
           title="Resume"
-          href="https://drive.google.com/file/d/14bb5ogfmAumTw7cMA_0PEUVwsPE_mOd-/view?usp=sharing"
+          href={info.resume.url}
           target="_blank"
           rel="noopener noreferrer"
           className={IconContainerStyle}

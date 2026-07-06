@@ -1,8 +1,6 @@
 import React from "react";
 import AppWindow from "../../../components/AppWindow";
-
-const RESUME_URL =
-  "https://drive.google.com/file/d/14bb5ogfmAumTw7cMA_0PEUVwsPE_mOd-/preview";
+import info from "../../../info.json";
 
 const ResumeWindow: React.FC = () => (
   <AppWindow
@@ -14,7 +12,7 @@ const ResumeWindow: React.FC = () => (
   >
     <div className="w-full h-full bg-white">
       <iframe
-        src={RESUME_URL}
+        src={info.resume.url}
         title="Resume"
         className="w-full h-full border-0"
         allow="autoplay"
