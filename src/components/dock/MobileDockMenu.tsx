@@ -14,7 +14,7 @@ import {
 } from "../../utils/appRegistry";
 
 const WindowMenuItemStyle =
-  "flex flex-col justify-center items-center text-center box-border transition-all duration-200 rounded-2xl p-3 cursor-pointer relative origin-bottom hover:bg-white/15 hover:scale-110 active:scale-95";
+  "flex flex-col justify-center items-center text-center box-border transition-transform duration-200 p-3 cursor-pointer relative origin-bottom hover:scale-125 active:scale-95";
 
 const IconStyle = "absolute h-1 w-1 pt-14 text-gray-400";
 

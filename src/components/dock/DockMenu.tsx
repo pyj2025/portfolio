@@ -12,10 +12,10 @@ import {
 import info from "../../info.json";
 
 const WindowMenuItemStyle =
-  "relative flex flex-col justify-center items-center text-center text-white box-border transition-all duration-200 rounded-xl p-2 cursor-pointer origin-bottom hover:bg-white/15 hover:scale-110 active:scale-95";
+  "relative flex flex-col justify-center items-center text-center text-white box-border transition-transform duration-200 p-2 cursor-pointer origin-bottom hover:scale-125 active:scale-95";
 
 const ExternalLinkMenuItemStyle =
-  "flex flex-col justify-center items-center text-center text-white box-border transition-all duration-200 rounded-xl p-2 no-underline cursor-pointer origin-bottom hover:bg-white/15 hover:scale-110 active:scale-95";
+  "flex flex-col justify-center items-center text-center text-white box-border transition-transform duration-200 p-2 no-underline cursor-pointer origin-bottom hover:scale-125 active:scale-95";
 
 const IconStyle = "absolute h-1 w-1 pt-14 text-gray-400";
 
