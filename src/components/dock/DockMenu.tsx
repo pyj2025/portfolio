@@ -12,10 +12,10 @@ import {
 import info from "../../info.json";
 
 const WindowMenuItemStyle =
-  "relative flex flex-col justify-center items-center text-center text-white mx-auto box-border transition-all duration-200 rounded-2xl p-3 cursor-pointer hover:bg-white/20 hover:scale-105 active:scale-95";
+  "relative flex flex-col justify-center items-center text-center text-white box-border transition-transform duration-200 p-2 cursor-pointer origin-bottom hover:scale-125 active:scale-95";
 
 const ExternalLinkMenuItemStyle =
-  "flex flex-col justify-center items-center text-center text-white mx-auto box-border transition-all duration-200 rounded-2xl p-3 no-underline cursor-pointer hover:bg-white/20 hover:scale-105 active:scale-95";
+  "flex flex-col justify-center items-center text-center text-white box-border transition-transform duration-200 p-2 no-underline cursor-pointer origin-bottom hover:scale-125 active:scale-95";
 
 const IconStyle = "absolute h-1 w-1 pt-14 text-gray-400";
 
@@ -35,7 +35,7 @@ const DockMenu: React.FC = () => {
 
   return (
     <div className="flex justify-center items-end w-full h-full">
-      <div className="flex flex-row justify-center items-center gap-0.5 px-1.5 py-0.5 mb-2 rounded-[26px] border border-white/25 bg-white/15 backdrop-blur-2xl shadow-[0_12px_40px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.3)]">
+      <div className="flex flex-row justify-center items-end gap-1 px-2.5 py-1 mb-2 rounded-[26px] border border-white/25 bg-white/15 backdrop-blur-2xl shadow-[0_12px_40px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.3)]">
         <button title="About" onClick={handleAboutClick} className={WindowMenuItemStyle}>
           {getIcon("About")}
           {isAboutMinimized && (
