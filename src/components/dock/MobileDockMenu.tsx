@@ -14,7 +14,7 @@ import {
 } from "../../utils/appRegistry";
 
 const WindowMenuItemStyle =
-  "flex flex-col justify-center items-center text-center mx-auto box-border transition-colors duration-200 rounded-sm p-4 no-underline cursor-pointer relative";
+  "flex flex-col justify-center items-center text-center box-border transition-all duration-200 rounded-2xl p-3 cursor-pointer relative origin-bottom hover:bg-white/15 hover:scale-110 active:scale-95";
 
 const IconStyle = "absolute h-1 w-1 pt-14 text-gray-400";
 
@@ -39,7 +39,7 @@ const MobileMenu: React.FC = () => {
 
   return (
     <div className="flex justify-center w-full h-20">
-      <div className="flex flex-row justify-center items-center rounded-2xl shadow-2xl bg-yellow-50/10 backdrop-blur-sm">
+      <div className="flex flex-row justify-center items-end gap-1 px-2.5 py-1 rounded-[26px] shadow-2xl bg-yellow-50/10 backdrop-blur-sm">
         <button
           title="About"
           onClick={() => openExclusively("About")}
