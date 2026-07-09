@@ -14,6 +14,7 @@ import {
   UtilWindow,
   TerminalWindow,
   SettingsWindow,
+  CalendarWindow,
 } from "../views/window/desktop";
 import useWindowsStore from "../utils/useWindowsStore";
 import {
@@ -24,6 +25,7 @@ import {
   useUtilsWindow,
   useTerminalWindow,
   useSettingsWindow,
+  useCalendarWindow,
 } from "../utils/appRegistry";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -43,6 +45,8 @@ const MobileBodyContent: React.FC = () => {
   const isTerminalOpen = useTerminalWindow(state => state.isOpen);
 
   const isSettingsOpen = useSettingsWindow(state => state.isOpen);
+
+  const isCalendarOpen = useCalendarWindow(state => state.isOpen);
 
   const { width } = useScreenSize();
   const [checkMobile, setCheckMobile] = React.useState(false);
@@ -74,6 +78,7 @@ const MobileBodyContent: React.FC = () => {
       { Component: UtilWindow, isOpen: isUtilOpen },
       { Component: TerminalWindow, isOpen: isTerminalOpen },
       { Component: SettingsWindow, isOpen: isSettingsOpen },
+      { Component: CalendarWindow, isOpen: isCalendarOpen },
     ];
 
     return <WindowsContent windows={windows} />;

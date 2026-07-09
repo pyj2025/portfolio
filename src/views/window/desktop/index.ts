@@ -7,3 +7,4 @@ export { default as UtilWindow } from "./UtilWindow";
 export { default as ResumeWindow } from "./ResumeWindow";
 export { default as TerminalWindow } from "./TerminalWindow";
 export { default as SettingsWindow } from "./SettingsWindow";
+export { default as CalendarWindow } from "./CalendarWindow";

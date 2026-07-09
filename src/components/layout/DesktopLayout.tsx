@@ -2,6 +2,7 @@ import React from "react";
 import useScreenSize from "../../utils/useScreenSize";
 import BodyContent from "../BodyContent";
 import DesktopIcons from "../DesktopIcons";
+import DesktopWidgets from "../DesktopWidgets";
 import { DesktopTopBar } from "../topbar";
 import { DockMenu } from "../dock";
 
@@ -18,6 +19,7 @@ const DesktopLayout: React.FC = () => {
     >
       <DesktopTopBar />
       <DesktopIcons />
+      <DesktopWidgets />
       <BodyContent />
       <DockMenu />
     </div>
