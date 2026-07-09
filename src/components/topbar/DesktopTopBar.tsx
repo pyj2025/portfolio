@@ -38,7 +38,7 @@ const DesktopTopBar: React.FC = () => {
 
   return (
     <div
-      className="flex shrink-0 justify-start items-center bg-black/25 backdrop-blur-2xl text-white h-[42px] text-[15px]"
+      className="flex shrink-0 justify-start items-center bg-black/25 backdrop-blur-2xl text-white h-[32px] text-[15px]"
       style={{ width: `${width}px` }}
     >
       <div ref={mainMenuRef} className="pl-1">
