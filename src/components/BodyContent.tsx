@@ -11,6 +11,7 @@ import {
   ResumeWindow,
   TerminalWindow,
   SettingsWindow,
+  CalendarWindow,
 } from "../views/window/desktop";
 import useWindowsStore from "../utils/useWindowsStore";
 import {
@@ -22,6 +23,7 @@ import {
   useResumeWindow,
   useTerminalWindow,
   useSettingsWindow,
+  useCalendarWindow,
 } from "../utils/appRegistry";
 import WindowsContent from "./WindowsContent";
 import "react-toastify/dist/ReactToastify.css";
@@ -36,6 +38,7 @@ const BodyContent: React.FC = () => {
   const isResumeOpen = useResumeWindow(state => state.isOpen);
   const isTerminalOpen = useTerminalWindow(state => state.isOpen);
   const isSettingsOpen = useSettingsWindow(state => state.isOpen);
+  const isCalendarOpen = useCalendarWindow(state => state.isOpen);
 
   React.useEffect(() => {
     const message =
@@ -59,6 +62,7 @@ const BodyContent: React.FC = () => {
       { Component: ResumeWindow, isOpen: isResumeOpen },
       { Component: TerminalWindow, isOpen: isTerminalOpen },
       { Component: SettingsWindow, isOpen: isSettingsOpen },
+      { Component: CalendarWindow, isOpen: isCalendarOpen },
     ];
 
     return <WindowsContent windows={windows} />;

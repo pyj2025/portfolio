@@ -20,6 +20,7 @@ import {
   useCalculatorWindow,
   useTerminalWindow,
   useSettingsWindow,
+  useCalendarWindow,
 } from "../../../utils/appRegistry";
 
 type UtilApp = {
@@ -32,12 +33,14 @@ const UtilWindow: React.FC = () => {
   const openCalculator = useCalculatorWindow(state => state.open);
   const openTerminal = useTerminalWindow(state => state.open);
   const openSettings = useSettingsWindow(state => state.open);
+  const openCalendar = useCalendarWindow(state => state.open);
   const [view, setView] = React.useState<ViewMode>("icon");
 
   const apps: UtilApp[] = [
     { label: "Calculator", icon: "Calculator", onOpen: openCalculator },
     { label: "Terminal", icon: "Terminal", onOpen: openTerminal },
     { label: "Settings", icon: "Settings", onOpen: openSettings },
+    { label: "Calendar", icon: "Calendar", onOpen: openCalendar },
   ];
 
   const openApp = (app: UtilApp) => (e: React.MouseEvent) => {

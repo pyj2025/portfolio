@@ -53,10 +53,37 @@ export type IconType =
   | 'Calculator'
   | 'FolderColor'
   | 'Settings'
+  | 'Calendar'
   | '';
 
 export const getIcon = (name: string, size?: number) => {
   switch (name) {
+    case 'Calendar': {
+      const s = size ?? 48;
+      const today = new Date();
+      const weekday = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'][
+        today.getDay()
+      ];
+      return (
+        <div
+          style={{ width: s, height: s }}
+          className="flex flex-col rounded-[22%] overflow-hidden bg-white shadow"
+        >
+          <div
+            className="flex items-center justify-center bg-[#ff3b30] font-bold text-white"
+            style={{ height: Math.round(s * 0.3), fontSize: Math.max(s * 0.19, 5) }}
+          >
+            {weekday}
+          </div>
+          <div
+            className="flex-1 flex items-center justify-center font-semibold text-[#1d1d1f]"
+            style={{ fontSize: s * 0.5 }}
+          >
+            {today.getDate()}
+          </div>
+        </div>
+      );
+    }
     case 'Settings':
       return (
         <div

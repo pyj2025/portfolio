@@ -6,7 +6,8 @@ export type AppId =
   | "Utils"
   | "Resume"
   | "Terminal"
-  | "Settings";
+  | "Settings"
+  | "Calendar";
 
 export type FocusedWindowType = AppId | "Welcome" | "DesktopAbout" | "None";
 
