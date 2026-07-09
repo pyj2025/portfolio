@@ -85,7 +85,7 @@ const MobileBodyContent: React.FC = () => {
   };
 
   return (
-    <div className="w-full h-[calc(100vh-25px-80px)] bg-transparent text-white">
+    <div className="w-full h-[calc(100vh-32px-80px)] bg-transparent text-white">
       <ToastContainer
         position={checkMobile ? "top-center" : "top-right"}
         autoClose={5000}
