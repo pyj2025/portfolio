@@ -38,9 +38,9 @@ const UtilWindow: React.FC = () => {
 
   const apps: UtilApp[] = [
     { label: "Calculator", icon: "Calculator", onOpen: openCalculator },
+    { label: "Calendar", icon: "Calendar", onOpen: openCalendar },
     { label: "Terminal", icon: "Terminal", onOpen: openTerminal },
     { label: "Settings", icon: "Settings", onOpen: openSettings },
-    { label: "Calendar", icon: "Calendar", onOpen: openCalendar },
   ];
 
   const openApp = (app: UtilApp) => (e: React.MouseEvent) => {
@@ -57,7 +57,7 @@ const UtilWindow: React.FC = () => {
       minHeight={280}
       // Utils is a single folder view with no sub-navigation, so back/forward
       // stay disabled — matching a fresh Finder folder window.
-      nav={{ onBack: () => {}, onForward: () => {}, canBack: false, canForward: false }}
+      nav={{ onBack: () => { }, onForward: () => { }, canBack: false, canForward: false }}
       view={view}
       onViewChange={setView}
     >

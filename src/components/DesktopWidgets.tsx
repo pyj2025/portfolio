@@ -6,7 +6,7 @@ const DesktopWidgets: React.FC = () => {
   const openCalendar = useCalendarWindow(state => state.open);
 
   return (
-    <div className="absolute top-14 left-6 z-0 flex flex-col items-start gap-4">
+    <div className="absolute top-12 left-3 z-0 flex flex-col items-start gap-4">
       <button
         aria-label="Calendar"
         onClick={openCalendar}
