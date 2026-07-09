@@ -24,18 +24,18 @@ const CalendarWidget: React.FC = () => {
   );
 
   return (
-    <div className="w-[340px] rounded-[26px] bg-white text-[#1d1d1f] shadow-[0_10px_30px_rgba(0,0,0,0.25)] p-4 flex flex-row gap-4 select-none">
+    <div className="w-[340px] rounded-[24px] bg-white text-[#1d1d1f] shadow-[0_10px_30px_rgba(0,0,0,0.25)] px-4 py-3 flex flex-row gap-4 select-none">
       {/* left summary */}
-      <div className="flex flex-col justify-between shrink-0 w-[120px]">
-        <div className="text-lg font-semibold tracking-tight">
+      <div className="flex flex-col justify-between shrink-0 w-[118px]">
+        <div className="text-base font-semibold tracking-tight leading-none">
           {year}.{pad2(month + 1)}
         </div>
-        <div className="text-[64px] leading-none font-bold -mt-1">{day}</div>
+        <div className="text-[46px] leading-none font-bold">{day}</div>
         <div>
-          <div className="text-sm font-semibold">
+          <div className="text-[13px] font-semibold leading-tight">
             {MONTH_NAMES[month]} {pad2(day)} {WEEKDAY_NAMES[today.getDay()]}
           </div>
-          <div className="text-sm text-gray-400">
+          <div className="text-xs text-gray-400 leading-tight">
             {getDayOfYear(today)}/{daysInYear(year)}
           </div>
         </div>
@@ -43,7 +43,7 @@ const CalendarWidget: React.FC = () => {
 
       {/* right mini month */}
       <div className="flex-1">
-        <div className="grid grid-cols-7 gap-y-1.5 text-center text-[13px]">
+        <div className="grid grid-cols-7 gap-y-0.5 text-center text-[12px]">
           {WEEKDAY_LETTERS.map((d, i) => (
             <div key={i} className="text-gray-400 font-medium">
               {d}
@@ -54,7 +54,7 @@ const CalendarWidget: React.FC = () => {
               {cell.inMonth ? (
                 <span
                   className={cn(
-                    "flex items-center justify-center w-6 h-6 rounded-full",
+                    "flex items-center justify-center w-5 h-5 rounded-full",
                     cell.isToday
                       ? "bg-[#ff3b30] text-white font-semibold"
                       : cell.isWeekend
