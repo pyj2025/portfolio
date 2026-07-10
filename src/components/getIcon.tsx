@@ -16,6 +16,7 @@ import {
   faFileAlt,
   faFileCode,
   faCog,
+  faCloudSun,
 } from '@fortawesome/free-solid-svg-icons';
 import { MobileNavbarMenu } from './WindowChrome';
 
@@ -54,10 +55,25 @@ export type IconType =
   | 'FolderColor'
   | 'Settings'
   | 'Calendar'
+  | 'Weather'
   | '';
 
 export const getIcon = (name: string, size?: number) => {
   switch (name) {
+    case 'Weather': {
+      const s = size ?? 48;
+      return (
+        <div
+          style={{ width: s, height: s }}
+          className="flex items-center justify-center rounded-[22%] bg-gradient-to-b from-[#3f8fd6] to-[#7cc0f5]"
+        >
+          <FontAwesomeIcon
+            icon={faCloudSun as IconProp}
+            style={{ fontSize: s * 0.55, color: '#ffffff' }}
+          />
+        </div>
+      );
+    }
     case 'Calendar': {
       const s = size ?? 48;
       const today = new Date();
