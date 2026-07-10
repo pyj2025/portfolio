@@ -21,6 +21,7 @@ import {
   useTerminalWindow,
   useSettingsWindow,
   useCalendarWindow,
+  useWeatherWindow,
 } from "../../../utils/appRegistry";
 
 type UtilApp = {
