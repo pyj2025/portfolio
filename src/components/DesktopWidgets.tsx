@@ -1,5 +1,6 @@
 import React from "react";
 import CalendarWidget from "./calendar/CalendarWidget";
+import WeatherWidget from "./weather/WeatherWidget";
 import { useCalendarWindow } from "../utils/appRegistry";
 
 const DesktopWidgets: React.FC = () => {
@@ -14,6 +15,7 @@ const DesktopWidgets: React.FC = () => {
       >
         <CalendarWidget />
       </button>
+      <WeatherWidget />
     </div>
   );
 };
