@@ -2,7 +2,7 @@ import React from "react";
 import CalendarWidget from "./calendar/CalendarWidget";
 import WeatherWidget from "./weather/WeatherWidget";
 import TodoWidget from "./todo/TodoWidget";
-import useScreenSize from "../utils/useScreenSize";
+import useScreenSize, { MOBILE_MAX_WIDTH } from "../utils/useScreenSize";
 import {
   useCalendarWindow,
   useWeatherWindow,
@@ -58,38 +58,65 @@ const MobileWidgets: React.FC = () => {
   const openWeather = useWeatherWindow(state => state.open);
   const openTodo = useTodoWindow(state => state.open);
 
-  // calendar : weather : todo = 2 : 1 : 1 across the screen width
-  const unit = (width - H_PADDING * 2 - GAP * 2) / 4;
+  const calendar = (targetWidth: number) => (
+    <ScaledWidget
+      naturalWidth={330}
+      targetWidth={targetWidth}
+      ariaLabel="Calendar"
+      onClick={openCalendar}
+    >
+      <CalendarWidget />
+    </ScaledWidget>
+  );
+  const weather = (targetWidth: number) => (
+    <ScaledWidget
+      naturalWidth={155}
+      targetWidth={targetWidth}
+      ariaLabel="Weather"
+      onClick={openWeather}
+    >
+      <WeatherWidget />
+    </ScaledWidget>
+  );
+  const todo = (targetWidth: number) => (
+    <ScaledWidget
+      naturalWidth={155}
+      targetWidth={targetWidth}
+      ariaLabel="Todo"
+      onClick={openTodo}
+    >
+      <TodoWidget />
+    </ScaledWidget>
+  );
 
+  // phone: calendar on its own row, weather + todo on the next row
+  if (width <= MOBILE_MAX_WIDTH) {
+    const full = width - H_PADDING * 2;
+    const half = (full - GAP) / 2;
+    return (
+      <div
+        className="flex flex-col items-start"
+        style={{ padding: `12px ${H_PADDING}px`, gap: GAP }}
+      >
+        {calendar(full)}
+        <div className="flex flex-row" style={{ gap: GAP }}>
+          {weather(half)}
+          {todo(half)}
+        </div>
+      </div>
+    );
+  }
+
+  // tablet / iPad: calendar : weather : todo = 2 : 1 : 1 in one row
+  const unit = (width - H_PADDING * 2 - GAP * 2) / 4;
   return (
     <div
       className="flex flex-row items-start"
       style={{ padding: `12px ${H_PADDING}px`, gap: GAP }}
     >
-      <ScaledWidget
-        naturalWidth={330}
-        targetWidth={unit * 2}
-        ariaLabel="Calendar"
-        onClick={openCalendar}
-      >
-        <CalendarWidget />
-      </ScaledWidget>
-      <ScaledWidget
-        naturalWidth={155}
-        targetWidth={unit}
-        ariaLabel="Weather"
-        onClick={openWeather}
-      >
-        <WeatherWidget />
-      </ScaledWidget>
-      <ScaledWidget
-        naturalWidth={155}
-        targetWidth={unit}
-        ariaLabel="Todo"
-        onClick={openTodo}
-      >
-        <TodoWidget />
-      </ScaledWidget>
+      {calendar(unit * 2)}
+      {weather(unit)}
+      {todo(unit)}
     </div>
   );
 };
