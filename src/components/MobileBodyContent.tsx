@@ -4,6 +4,7 @@ import { Slide, toast, ToastContainer } from "react-toastify";
 import { browserName, isBrowser, isMobile } from "react-device-detect";
 import useScreenSize, { MOBILE_MAX_WIDTH } from "../utils/useScreenSize";
 import MobileAppMenu from "./MobileAppMenu";
+import MobileWidgets from "./MobileWidgets";
 import WindowsContent from "./WindowsContent";
 import MobileWelcomeWindow from "../views/window/mobile/MobileWelcomeWindow";
 import MobileAboutWindow from "../views/window/mobile/MobileAboutWindow";
@@ -108,6 +109,7 @@ const MobileBodyContent: React.FC = () => {
         limit={1}
         draggablePercent={60}
       />
+      <MobileWidgets />
       <MobileAppMenu />
       {renderContent()}
     </div>
