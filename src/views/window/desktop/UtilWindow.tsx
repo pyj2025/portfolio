@@ -35,6 +35,7 @@ const UtilWindow: React.FC = () => {
   const openTerminal = useTerminalWindow(state => state.open);
   const openSettings = useSettingsWindow(state => state.open);
   const openCalendar = useCalendarWindow(state => state.open);
+  const openWeather = useWeatherWindow(state => state.open);
   const [view, setView] = React.useState<ViewMode>("icon");
 
   const apps: UtilApp[] = [
@@ -42,6 +43,7 @@ const UtilWindow: React.FC = () => {
     { label: "Calendar", icon: "Calendar", onOpen: openCalendar },
     { label: "Terminal", icon: "Terminal", onOpen: openTerminal },
     { label: "Settings", icon: "Settings", onOpen: openSettings },
+    { label: "Weather", icon: "Weather", onOpen: openWeather },
   ];
 
   const openApp = (app: UtilApp) => (e: React.MouseEvent) => {

@@ -1,8 +1,8 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faTemperatureHalf,
-  faDroplet,
+  faThermometerHalf,
+  faTint,
   faWind,
 } from "@fortawesome/free-solid-svg-icons";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
@@ -78,12 +78,12 @@ const Weather: React.FC = () => {
 
       <div className="flex gap-2 px-4">
         <Stat
-          icon={faTemperatureHalf as IconProp}
+          icon={faThermometerHalf as IconProp}
           label="Feels"
           value={`${data.feelsLike}°`}
         />
         <Stat
-          icon={faDroplet as IconProp}
+          icon={faTint as IconProp}
           label="Humidity"
           value={`${data.humidity}%`}
         />
