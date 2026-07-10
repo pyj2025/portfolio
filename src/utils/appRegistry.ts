@@ -54,6 +54,7 @@ export const useTerminalWindow = createWindowStore('Terminal');
 export const useSettingsWindow = createWindowStore('Settings');
 export const useCalendarWindow = createWindowStore('Calendar');
 export const useWeatherWindow = createWindowStore('Weather');
+export const useTodoWindow = createWindowStore('Todo');
 
 export type AppConfig = {
   id: AppId;
@@ -74,6 +75,7 @@ export const APPS: AppConfig[] = [
   { id: 'Settings', icon: 'Settings', canExpand: false, store: useSettingsWindow },
   { id: 'Calendar', icon: 'Calendar', canExpand: true, store: useCalendarWindow },
   { id: 'Weather', icon: 'Weather', canExpand: true, store: useWeatherWindow },
+  { id: 'Todo', icon: 'Todo', canExpand: true, store: useTodoWindow },
 ];
 
 const APP_BY_ID = Object.fromEntries(APPS.map(app => [app.id, app])) as Record<

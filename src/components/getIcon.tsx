@@ -56,10 +56,34 @@ export type IconType =
   | 'Settings'
   | 'Calendar'
   | 'Weather'
+  | 'Todo'
   | '';
 
 export const getIcon = (name: string, size?: number) => {
   switch (name) {
+    case 'Todo': {
+      const s = size ?? 48;
+      const rows = ['#ff9500', '#ff2d55', '#5ac8fa'];
+      return (
+        <div
+          style={{ width: s, height: s, gap: s * 0.09, paddingLeft: s * 0.16, paddingRight: s * 0.16 }}
+          className="flex flex-col justify-center rounded-[22%] bg-white"
+        >
+          {rows.map((color, i) => (
+            <div key={i} className="flex items-center" style={{ gap: s * 0.08 }}>
+              <span
+                className="rounded-full shrink-0"
+                style={{ width: s * 0.14, height: s * 0.14, backgroundColor: color }}
+              />
+              <span
+                className="flex-1 rounded-full"
+                style={{ height: s * 0.07, backgroundColor: '#d1d1d6' }}
+              />
+            </div>
+          ))}
+        </div>
+      );
+    }
     case 'Weather': {
       const s = size ?? 48;
       return (

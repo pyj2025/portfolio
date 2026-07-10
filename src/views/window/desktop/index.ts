@@ -9,3 +9,4 @@ export { default as TerminalWindow } from "./TerminalWindow";
 export { default as SettingsWindow } from "./SettingsWindow";
 export { default as CalendarWindow } from "./CalendarWindow";
 export { default as WeatherWindow } from "./WeatherWindow";
+export { default as TodoWindow } from "./TodoWindow";

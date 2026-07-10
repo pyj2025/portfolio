@@ -22,6 +22,7 @@ import {
   useSettingsWindow,
   useCalendarWindow,
   useWeatherWindow,
+  useTodoWindow,
 } from "../../../utils/appRegistry";
 
 type UtilApp = {
@@ -34,6 +35,7 @@ const UtilWindow: React.FC = () => {
   const openCalculator = useCalculatorWindow(state => state.open);
   const openCalendar = useCalendarWindow(state => state.open);
   const openWeather = useWeatherWindow(state => state.open);
+  const openTodo = useTodoWindow(state => state.open);
   const openTerminal = useTerminalWindow(state => state.open);
   const openSettings = useSettingsWindow(state => state.open);
 
@@ -43,6 +45,7 @@ const UtilWindow: React.FC = () => {
     { label: "Calculator", icon: "Calculator", onOpen: openCalculator },
     { label: "Calendar", icon: "Calendar", onOpen: openCalendar },
     { label: "Weather", icon: "Weather", onOpen: openWeather },
+    { label: "Todo", icon: "Todo", onOpen: openTodo },
     { label: "Terminal", icon: "Terminal", onOpen: openTerminal },
     { label: "Settings", icon: "Settings", onOpen: openSettings },
   ];
