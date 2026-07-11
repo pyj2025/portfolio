@@ -58,7 +58,13 @@ const ScaledWidget: React.FC<{
   );
 };
 
+// Natural widget footprints (must match the desktop CalendarWidget/WeatherWidget/
+// TodoWidget sizes). Calendar is a 330x155 landscape card; weather + todo are
+// 155x155 squares. Because every widget shares WIDGET_HEIGHT (155), scaling them
+// all by one factor keeps their on-screen heights identical.
 const WIDGET_HEIGHT = 155;
+const CAL_WIDTH = 330;
+const SQUARE_WIDTH = 155;
 
 const H_PADDING = 12;
 const GAP = 8;
@@ -103,34 +109,42 @@ const MobileWidgets: React.FC = () => {
     </ScaledWidget>
   );
 
-  // phone: calendar on its own row, weather + todo on the next row
+  // Every widget is scaled by the SAME factor `k` so their heights always
+  // match (calendar height == square side, exactly like the desktop layout
+  // where the calendar is 330x155 and the squares are 155x155). Scaling each
+  // widget independently is what previously made the calendar and the
+  // weather/todo squares end up different heights.
+  const avail = width - H_PADDING * 2;
+
+  // phone: calendar spans the row, weather + todo fill the row below it
   if (width <= MOBILE_MAX_WIDTH) {
-    const full = width - H_PADDING * 2;
-    const half = (full - GAP) / 2;
+    const k = avail / CAL_WIDTH; // calendar spans the full available width
+    const square = SQUARE_WIDTH * k; // == calendar height, keeps all three equal
+    const innerGap = avail - square * 2; // weather + todo align to the calendar edges
     return (
       <div
         className="flex flex-col items-start"
-        style={{ padding: `12px ${H_PADDING}px`, gap: GAP }}
+        style={{ padding: `12px ${H_PADDING}px 26px`, gap: 12 }}
       >
-        {calendar(full)}
-        <div className="flex flex-row" style={{ gap: GAP }}>
-          {weather(half)}
-          {todo(half)}
+        {calendar(avail)}
+        <div className="flex flex-row" style={{ gap: innerGap }}>
+          {weather(square)}
+          {todo(square)}
         </div>
       </div>
     );
   }
 
-  // tablet / iPad: calendar : weather : todo = 2 : 1 : 1 in one row
-  const unit = (width - H_PADDING * 2 - GAP * 2) / 4;
+  // tablet / iPad: calendar : weather : todo in one row, same uniform scale
+  const k = (avail - GAP * 2) / (CAL_WIDTH + SQUARE_WIDTH * 2);
   return (
     <div
       className="flex flex-row items-start"
       style={{ padding: `12px ${H_PADDING}px`, gap: GAP }}
     >
-      {calendar(unit * 2)}
-      {weather(unit)}
-      {todo(unit)}
+      {calendar(CAL_WIDTH * k)}
+      {weather(SQUARE_WIDTH * k)}
+      {todo(SQUARE_WIDTH * k)}
     </div>
   );
 };
