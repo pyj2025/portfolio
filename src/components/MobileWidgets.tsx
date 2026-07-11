@@ -111,22 +111,23 @@ const MobileWidgets: React.FC = () => {
 
   // Every widget is scaled by the SAME factor `k` so their heights always
   // match (calendar height == square side, exactly like the desktop layout
-  // where the calendar is 330x155 and the squares are 155x155). Scaling each
-  // widget independently is what previously made the calendar and the
-  // weather/todo squares end up different heights.
+  // where the calendar is 330x155 and the squares are 155x155). `k` is capped
+  // at 1 so the widgets never grow TALLER than their desktop size — they only
+  // shrink to fit a narrow screen, matching the desktop widget height at most.
   const avail = width - H_PADDING * 2;
 
   // phone: calendar spans the row, weather + todo fill the row below it
   if (width <= MOBILE_MAX_WIDTH) {
-    const k = avail / CAL_WIDTH; // calendar spans the full available width
+    const k = Math.min(avail / CAL_WIDTH, 1);
+    const calW = CAL_WIDTH * k;
     const square = SQUARE_WIDTH * k; // == calendar height, keeps all three equal
-    const innerGap = avail - square * 2; // weather + todo align to the calendar edges
+    const innerGap = calW - square * 2; // weather + todo align to the calendar edges
     return (
       <div
-        className="flex flex-col items-start"
-        style={{ padding: `12px ${H_PADDING}px 26px`, gap: 12 }}
+        className="flex flex-col items-center"
+        style={{ padding: `10px ${H_PADDING}px 24px`, gap: 10 }}
       >
-        {calendar(avail)}
+        {calendar(calW)}
         <div className="flex flex-row" style={{ gap: innerGap }}>
           {weather(square)}
           {todo(square)}
@@ -136,11 +137,11 @@ const MobileWidgets: React.FC = () => {
   }
 
   // tablet / iPad: calendar : weather : todo in one row, same uniform scale
-  const k = (avail - GAP * 2) / (CAL_WIDTH + SQUARE_WIDTH * 2);
+  const k = Math.min((avail - GAP * 2) / (CAL_WIDTH + SQUARE_WIDTH * 2), 1);
   return (
     <div
-      className="flex flex-row items-start"
-      style={{ padding: `12px ${H_PADDING}px`, gap: GAP }}
+      className="flex flex-row items-start justify-center"
+      style={{ padding: `10px ${H_PADDING}px 24px`, gap: GAP }}
     >
       {calendar(CAL_WIDTH * k)}
       {weather(SQUARE_WIDTH * k)}
