@@ -13,6 +13,7 @@ import {
   SettingsWindow,
   CalendarWindow,
   WeatherWindow,
+  TodoWindow,
 } from "../views/window/desktop";
 import useWindowsStore from "../utils/useWindowsStore";
 import {
@@ -26,6 +27,7 @@ import {
   useSettingsWindow,
   useCalendarWindow,
   useWeatherWindow,
+  useTodoWindow,
 } from "../utils/appRegistry";
 import WindowsContent from "./WindowsContent";
 import "react-toastify/dist/ReactToastify.css";
@@ -42,6 +44,7 @@ const BodyContent: React.FC = () => {
   const isSettingsOpen = useSettingsWindow(state => state.isOpen);
   const isCalendarOpen = useCalendarWindow(state => state.isOpen);
   const isWeatherOpen = useWeatherWindow(state => state.isOpen);
+  const isTodoOpen = useTodoWindow(state => state.isOpen);
 
   React.useEffect(() => {
     const message =
@@ -67,6 +70,7 @@ const BodyContent: React.FC = () => {
       { Component: SettingsWindow, isOpen: isSettingsOpen },
       { Component: CalendarWindow, isOpen: isCalendarOpen },
       { Component: WeatherWindow, isOpen: isWeatherOpen },
+      { Component: TodoWindow, isOpen: isTodoOpen },
     ];
 
     return <WindowsContent windows={windows} />;

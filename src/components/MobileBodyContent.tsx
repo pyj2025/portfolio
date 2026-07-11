@@ -4,6 +4,7 @@ import { Slide, toast, ToastContainer } from "react-toastify";
 import { browserName, isBrowser, isMobile } from "react-device-detect";
 import useScreenSize, { MOBILE_MAX_WIDTH } from "../utils/useScreenSize";
 import MobileAppMenu from "./MobileAppMenu";
+import MobileWidgets from "./MobileWidgets";
 import WindowsContent from "./WindowsContent";
 import MobileWelcomeWindow from "../views/window/mobile/MobileWelcomeWindow";
 import MobileAboutWindow from "../views/window/mobile/MobileAboutWindow";
@@ -16,6 +17,7 @@ import {
   SettingsWindow,
   CalendarWindow,
   WeatherWindow,
+  TodoWindow,
 } from "../views/window/desktop";
 import useWindowsStore from "../utils/useWindowsStore";
 import {
@@ -28,6 +30,7 @@ import {
   useSettingsWindow,
   useCalendarWindow,
   useWeatherWindow,
+  useTodoWindow,
 } from "../utils/appRegistry";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -51,6 +54,8 @@ const MobileBodyContent: React.FC = () => {
   const isCalendarOpen = useCalendarWindow(state => state.isOpen);
 
   const isWeatherOpen = useWeatherWindow(state => state.isOpen);
+
+  const isTodoOpen = useTodoWindow(state => state.isOpen);
 
   const { width } = useScreenSize();
   const [checkMobile, setCheckMobile] = React.useState(false);
@@ -84,6 +89,7 @@ const MobileBodyContent: React.FC = () => {
       { Component: SettingsWindow, isOpen: isSettingsOpen },
       { Component: CalendarWindow, isOpen: isCalendarOpen },
       { Component: WeatherWindow, isOpen: isWeatherOpen },
+      { Component: TodoWindow, isOpen: isTodoOpen },
     ];
 
     return <WindowsContent windows={windows} />;
@@ -103,6 +109,7 @@ const MobileBodyContent: React.FC = () => {
         limit={1}
         draggablePercent={60}
       />
+      <MobileWidgets />
       <MobileAppMenu />
       {renderContent()}
     </div>

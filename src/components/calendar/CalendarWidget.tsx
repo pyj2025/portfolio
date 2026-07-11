@@ -24,7 +24,7 @@ const CalendarWidget: React.FC = () => {
   );
 
   return (
-    <div className="w-[340px] rounded-[24px] bg-white text-[#1d1d1f] shadow-[0_10px_30px_rgba(0,0,0,0.25)] px-4 py-3 flex flex-row gap-4 select-none">
+    <div className="w-[330px] h-[155px] rounded-[24px] bg-white text-[#1d1d1f] shadow-[0_10px_30px_rgba(0,0,0,0.25)] px-4 py-3 flex flex-row gap-4 select-none">
       {/* left summary */}
       <div className="flex flex-col justify-between shrink-0 w-[118px]">
         <div className="text-base font-semibold tracking-tight leading-none">
@@ -54,12 +54,12 @@ const CalendarWidget: React.FC = () => {
               {cell.inMonth ? (
                 <span
                   className={cn(
-                    "flex items-center justify-center w-5 h-5 rounded-full",
+                    "flex items-center justify-center w-[18px] h-[18px] rounded-full",
                     cell.isToday
                       ? "bg-[#ff3b30] text-white font-semibold"
                       : cell.isWeekend
-                      ? "text-gray-400"
-                      : "text-[#1d1d1f]",
+                        ? "text-gray-400"
+                        : "text-[#1d1d1f]",
                   )}
                 >
                   {cell.day}
