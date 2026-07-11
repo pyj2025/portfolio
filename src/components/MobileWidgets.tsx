@@ -15,30 +15,36 @@ import {
  */
 const ScaledWidget: React.FC<{
   naturalWidth: number;
+  naturalHeight: number;
   targetWidth: number;
   ariaLabel: string;
   onClick: () => void;
   children: React.ReactNode;
-}> = ({ naturalWidth, targetWidth, ariaLabel, onClick, children }) => {
-  const ref = React.useRef<HTMLDivElement>(null);
-  const [height, setHeight] = React.useState<number>();
+}> = ({
+  naturalWidth,
+  naturalHeight,
+  targetWidth,
+  ariaLabel,
+  onClick,
+  children,
+}) => {
   const scale = targetWidth / naturalWidth;
 
-  React.useLayoutEffect(() => {
-    if (ref.current) setHeight(ref.current.offsetHeight * scale);
-  }, [scale]);
-
+  // Height is derived from the widget's known natural size, not measured from
+  // the DOM — measuring risked reading the height before the widget's content
+  // finished laying out, leaving the scaled button too short and clipping the
+  // bottom of the widget on real devices.
   return (
     <button
       aria-label={ariaLabel}
       onClick={onClick}
-      style={{ width: targetWidth, height }}
+      style={{ width: targetWidth, height: naturalHeight * scale }}
       className="relative overflow-hidden shrink-0 transition-transform active:scale-95"
     >
       <div
-        ref={ref}
         style={{
           width: naturalWidth,
+          height: naturalHeight,
           transform: `scale(${scale})`,
           transformOrigin: "top left",
         }}
@@ -48,6 +54,8 @@ const ScaledWidget: React.FC<{
     </button>
   );
 };
+
+const WIDGET_HEIGHT = 155;
 
 const H_PADDING = 12;
 const GAP = 8;
@@ -61,6 +69,7 @@ const MobileWidgets: React.FC = () => {
   const calendar = (targetWidth: number) => (
     <ScaledWidget
       naturalWidth={330}
+      naturalHeight={WIDGET_HEIGHT}
       targetWidth={targetWidth}
       ariaLabel="Calendar"
       onClick={openCalendar}
@@ -71,6 +80,7 @@ const MobileWidgets: React.FC = () => {
   const weather = (targetWidth: number) => (
     <ScaledWidget
       naturalWidth={155}
+      naturalHeight={WIDGET_HEIGHT}
       targetWidth={targetWidth}
       ariaLabel="Weather"
       onClick={openWeather}
@@ -81,6 +91,7 @@ const MobileWidgets: React.FC = () => {
   const todo = (targetWidth: number) => (
     <ScaledWidget
       naturalWidth={155}
+      naturalHeight={WIDGET_HEIGHT}
       targetWidth={targetWidth}
       ariaLabel="Todo"
       onClick={openTodo}
