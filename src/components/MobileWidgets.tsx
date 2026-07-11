@@ -34,11 +34,21 @@ const ScaledWidget: React.FC<{
   // the DOM — measuring risked reading the height before the widget's content
   // finished laying out, leaving the scaled button too short and clipping the
   // bottom of the widget on real devices.
+  //
+  // The button owns the rounded corners + drop shadow: `overflow-hidden` clips
+  // the scaled content to a crisp rounded rect, and the box-shadow lives on the
+  // button (which is NOT clipped by its own overflow) so the shadow renders
+  // cleanly around all four corners instead of being chopped at the bottom.
   return (
     <button
       aria-label={ariaLabel}
       onClick={onClick}
-      style={{ width: targetWidth, height: naturalHeight * scale }}
+      style={{
+        width: targetWidth,
+        height: naturalHeight * scale,
+        borderRadius: 24 * scale,
+        boxShadow: "0 10px 30px rgba(0,0,0,0.25)",
+      }}
       className="relative overflow-hidden shrink-0 transition-transform active:scale-95"
     >
       <div
