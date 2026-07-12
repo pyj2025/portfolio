@@ -4,6 +4,7 @@ export type Todo = {
 };
 
 export const TODOS: Todo[] = [
-  { id: "aws-saa", text: "AWS Cloud Solutions Architect 따기" },
-  { id: "aws-dev", text: "AWS Cloud Developer 따기" },
+  { id: "aws-ai-pro", text: "Study for AWS AI Practitioner exam" },
+  { id: "aws-saa", text: "Study for AWS Solutions Architect Professional exam" },
+  { id: "aws-dev", text: "Study for AWS Developer Professional exam" },
 ];
