@@ -1,3 +1,6 @@
+export const DATABRICKS_GENAI_BADGE_URL =
+  "https://templates.images.credential.net/16859822715825555912981627624259.png";
+
 export const DatabrickGenAIFundamentalsIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"

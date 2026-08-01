@@ -7,7 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import info from "../../../info.json";
-import { DatabrickGenAIFundamentalsIcon } from "../../../image/certifications/DatabrickGenAIFundamentals";
+import { DATABRICKS_GENAI_BADGE_URL } from "../../../image/certifications/DatabrickGenAIFundamentals";
 import { InfoRow } from "../Info";
 
 const GenAIFundamentals: React.FC = () => {
@@ -15,8 +15,12 @@ const GenAIFundamentals: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center max-w-md mx-auto px-5 py-6">
-      <div className="flex items-center justify-center w-[110px] h-[110px] rounded-2xl bg-white shadow-lg overflow-hidden p-2.5">
-        <DatabrickGenAIFundamentalsIcon />
+      <div className="flex items-center justify-center rounded-2xl bg-white shadow-lg px-6 py-4">
+        <img
+          src={DATABRICKS_GENAI_BADGE_URL}
+          alt="Databricks Generative AI Fundamentals badge"
+          className="h-40 w-auto"
+        />
       </div>
 
       <div className="mt-3 text-lg font-semibold">Generative AI Fundamentals</div>
