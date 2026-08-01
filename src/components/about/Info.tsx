@@ -38,25 +38,17 @@ const Info: React.FC = () => {
       <div className="mt-3 text-lg font-semibold">
         {`${info.about.info.name.firstName} ${info.about.info.name.lastName}`}
       </div>
-      <div className="text-[13px] text-[color:var(--wc-muted)]">
-        Full Stack Software Developer
-      </div>
+      <div className="text-[13px] text-[color:var(--wc-muted)]">Full Stack Software Developer</div>
 
       <div className="w-full mt-5 rounded-xl bg-[var(--hover-overlay)]/50 divide-y divide-[color:var(--win-border)]">
         <InfoRow icon={faBriefcase as IconProp} label="Role">
-          Full Stack Developer @ AllTrue.ai
+          Software Developer @ Global Relay
         </InfoRow>
         <InfoRow icon={faMapMarkerAlt as IconProp} label="Location">
           Vancouver, BC, Canada
         </InfoRow>
-        <InfoRow icon={faGraduationCap as IconProp} label="Education">
-          Purdue University — B.S. Computer Science
-        </InfoRow>
         <InfoRow icon={faEnvelope as IconProp} label="Email">
-          <a
-            href={`mailto:${info.about.info.email}`}
-            className="text-[var(--accent)] no-underline"
-          >
+          <a href={`mailto:${info.about.info.email}`} className="text-[var(--accent)] no-underline">
             {info.about.info.email}
           </a>
         </InfoRow>

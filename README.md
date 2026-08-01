@@ -11,7 +11,7 @@ mobile layout.
 | App            | What it does                                                                                |
 | -------------- | ------------------------------------------------------------------------------------------- |
 | **Welcome**    | Typewriter intro that plays on load — who I am and how to reach me                            |
-| **About**      | Personal info, work experience (per-company detail), education, certifications, GenAI         |
+| **About**      | Personal info, work experience (per-company detail), and education                            |
 | **Skills**     | Tech stack by category: Front-End, Back-End, Mobile, Programming Languages                    |
 | **Projects**   | Project list with stack, description, screenshots, and repo / live links                      |
 | **Resume**     | My resume, embedded                                                                           |
