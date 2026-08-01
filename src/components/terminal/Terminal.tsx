@@ -1,5 +1,10 @@
 import React from "react";
 import info from "../../info.json";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { TerminalRow } from "../WindowChrome";
+import TwoBadges from "../welcome/TwoBadges";
 
 type TerminalLine = {
   type: "cmd" | "out";
@@ -7,15 +12,15 @@ type TerminalLine = {
 };
 
 const HELP_TEXT = [
-  "Available commands:",
-  "  help       show this list",
-  "  whoami     who am I?",
-  "  projects   list my projects",
-  "  skills     list my tech skills",
-  "  contact    how to reach me",
-  "  date       current date/time",
-  "  echo ...   print text",
-  "  clear      clear the screen",
+  "# Available commands",
+  "> help — show this list",
+  "> whoami — who am I?",
+  "> projects — list my projects",
+  "> skills — list my tech skills",
+  "> contact — how to reach me",
+  "> date — current date/time",
+  "> echo ... — print text",
+  "> clear — clear the screen",
 ];
 
 const runCommand = (raw: string): string[] | "clear" => {
@@ -27,29 +32,32 @@ const runCommand = (raw: string): string[] | "clear" => {
       return HELP_TEXT;
     case "whoami":
       return [
-        `${info.about.info.name.firstName} ${info.about.info.name.lastName} — Full Stack Software Developer`,
-        "Based in Vancouver, BC. Purdue CS alum.",
+        `# ${info.about.info.name.firstName} ${info.about.info.name.lastName}`,
+        "> Full Stack Software Developer",
+        "> Based in Vancouver, BC. Purdue CS alum.",
       ];
     case "projects":
       return [
-        "My projects:",
+        "# My projects",
         ...Object.values(info.project).map(
-          p => `  ${p.name}  (${p.stack.join(", ")})`,
+          p => `> ${p.name} (${p.stack.join(", ")})`,
         ),
-        "Open the Projects window for details.",
+        "> Open the Projects window for details.",
       ];
     case "skills":
       return [
-        `Front-End : ${info.skills.front.join(", ")}`,
-        `Back-End  : ${info.skills.back.join(", ")}`,
-        `Mobile    : ${info.skills.mobile.join(", ")}`,
-        `Languages : ${info.skills.languages.join(", ")}`,
+        "# Skills",
+        `> Front-End: ${info.skills.front.join(", ")}`,
+        `> Back-End: ${info.skills.back.join(", ")}`,
+        `> Mobile: ${info.skills.mobile.join(", ")}`,
+        `> Languages: ${info.skills.languages.join(", ")}`,
       ];
     case "contact":
       return [
-        `Email    : ${info.about.info.email}`,
-        "GitHub   : https://github.com/pyj2025",
-        "LinkedIn : https://www.linkedin.com/in/devjoon/",
+        "# Info",
+        `> Email: ${info.about.info.email}`,
+        "> GitHub: https://github.com/pyj2025",
+        "> LinkedIn: https://www.linkedin.com/in/devjoon/",
       ];
     case "date":
       return [new Date().toString()];
@@ -64,11 +72,33 @@ const runCommand = (raw: string): string[] | "clear" => {
   }
 };
 
-const PROMPT = "joon@portfolio ~ %";
+const DIRECTORY = "~/portfolio/";
+
+const OutputLine: React.FC<{ text: string }> = ({ text }) => {
+  const [, marker, rest] = /^(#{1,2}|>)\s(.*)$/.exec(text) ?? [];
+
+  if (!marker) {
+    return <div className="mx-2 px-2 break-words">{text}</div>;
+  }
+
+  return (
+    <div className="flex flex-row justify-start items-center gap-2 mx-2 px-2">
+      {marker === ">" ? (
+        <FontAwesomeIcon icon={faAngleRight as IconProp} />
+      ) : (
+        <div>{marker}</div>
+      )}
+      <div className="break-words">{rest}</div>
+    </div>
+  );
+};
 
 const Terminal: React.FC = () => {
   const [lines, setLines] = React.useState<TerminalLine[]>([
-    { type: "out", text: "Welcome to Joon's terminal. Type 'help' to get started." },
+    {
+      type: "out",
+      text: "Welcome to Joon's terminal. Type 'help' to get started.",
+    },
   ]);
   const [value, setValue] = React.useState("");
   const [history, setHistory] = React.useState<string[]>([]);
@@ -101,7 +131,8 @@ const Terminal: React.FC = () => {
     } else if (e.key === "ArrowUp") {
       e.preventDefault();
       if (history.length === 0) return;
-      const idx = historyIdx === -1 ? history.length - 1 : Math.max(historyIdx - 1, 0);
+      const idx =
+        historyIdx === -1 ? history.length - 1 : Math.max(historyIdx - 1, 0);
       setHistoryIdx(idx);
       setValue(history[idx]);
     } else if (e.key === "ArrowDown") {
@@ -120,34 +151,36 @@ const Terminal: React.FC = () => {
 
   return (
     <div
-      className="w-full h-full bg-[#282a36] text-[#f8f8f2] font-mono text-[13px] leading-relaxed p-2.5 overflow-y-auto cursor-text"
+      className="w-full h-full bg-[#282a36] text-white py-2 overflow-y-auto cursor-text"
       onClick={() => inputRef.current?.focus()}
     >
       {lines.map((line, idx) =>
         line.type === "cmd" ? (
-          <div key={idx} className="flex gap-2">
-            <span className="text-[#50fa7b] shrink-0">{PROMPT}</span>
-            <span>{line.text}</span>
-          </div>
+          <TerminalRow key={idx}>
+            <div className="shrink-0">
+              <TwoBadges directory={DIRECTORY} />
+            </div>
+            <div className="ml-2">{line.text}</div>
+          </TerminalRow>
         ) : (
-          <div key={idx} className="whitespace-pre-wrap break-words">
-            {line.text}
-          </div>
+          <OutputLine key={idx} text={line.text} />
         ),
       )}
-      <div className="flex gap-2">
-        <span className="text-[#50fa7b] shrink-0">{PROMPT}</span>
+      <TerminalRow>
+        <div className="shrink-0">
+          <TwoBadges directory={DIRECTORY} />
+        </div>
         <input
           ref={inputRef}
           autoFocus
           value={value}
           onChange={e => setValue(e.target.value)}
           onKeyDown={handleKeyDown}
-          className="flex-1 bg-transparent border-0 outline-none text-[#f8f8f2] font-mono text-[13px] p-0 caret-[#f8f8f2]"
+          className="flex-1 min-w-0 ml-2 bg-transparent border-0 outline-none text-white p-0 caret-white"
           spellCheck={false}
           autoComplete="off"
         />
-      </div>
+      </TerminalRow>
       <div ref={bottomRef} />
     </div>
   );
