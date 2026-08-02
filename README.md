@@ -28,21 +28,21 @@ Calendar, Weather, and Todo also render as desktop widgets — clicking a widget
 ### Terminal
 
 The Terminal window is an interactive shell that shares the Welcome window's look — the same
-`joon@MacBook-Air ▸ ~/portfolio/` arrow badge prompt and line styling.
+`joon@MacBook-Air ▸ ~/portfolio/` arrow badge prompt and line styling — and the same markdown
+files the Welcome window reads.
 
 Available commands:
 
-| Command    | Description        |
-| ---------- | ------------------ |
-| `help`     | show the list      |
-| `whoami`   | who am I?          |
-| `projects` | list my projects   |
-| `skills`   | list my tech skills |
-| `contact`  | how to reach me    |
-| `date`     | current date/time  |
-| `echo ...` | print text         |
-| `clear`    | clear the screen   |
+| Command       | Description                     |
+| ------------- | ------------------------------- |
+| `ls`          | list the files in the directory |
+| `cat <file>`  | print a file                    |
+| `help`        | show the command list           |
+| `date`        | current date/time               |
+| `echo ...`    | print text                      |
+| `clear`       | clear the screen                |
 
+Readable files: `intro.md`, `contact.md`, `skills.md`, `experience.md`, `projects.md`.
 Arrow Up / Down cycles through command history.
 
 ## Tech Stack
