@@ -4,7 +4,6 @@ import folder from '../image/icons/folder.png';
 import googleDocs from '../image/icons/googleDocs.png';
 import github from '../image/icons/github.png';
 import linkedin from '../image/icons/linkedin.png';
-import facebook from '../image/icons/facebook.png';
 import gmail from '../image/icons/gmail.png';
 import file from '../image/icons/file.png';
 import codeFile from '../image/icons/codeFile.png';
@@ -45,7 +44,6 @@ export type IconType =
   | 'Resume'
   | 'Github'
   | 'Linkedin'
-  | 'Facebook'
   | 'Email'
   | 'File'
   | 'Folder'
@@ -197,8 +195,6 @@ export const getIcon = (name: string, size?: number) => {
       return <img src={github} alt={name} />;
     case 'Linkedin':
       return <img src={linkedin} alt={name} />;
-    case 'Facebook':
-      return <img src={facebook} alt={name} />;
     case 'Email':
       return <img src={gmail} alt={name} />;
     case 'File':

@@ -78,15 +78,6 @@ const DockMenu: React.FC = () => {
         >
           {getIcon("Linkedin")}
         </a>
-        <a
-          title="Facebook"
-          href="https://www.facebook.com/youngjoon.park.71"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={ExternalLinkMenuItemStyle}
-        >
-          {getIcon("Facebook")}
-        </a>
         <button title="Email" onClick={handleEmailClick} className={ExternalLinkMenuItemStyle}>
           {getIcon("Email")}
         </button>
