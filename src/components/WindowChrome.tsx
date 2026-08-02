@@ -110,7 +110,7 @@ export const WindowBody: React.FC<WindowBodyProps> = ({
 export const WindowBodyNavbar: React.FC<DivProps> = ({ className, ...props }) => (
   <div
     className={cn(
-      "flex flex-col justify-start h-full bg-[var(--sidebar-bg)] backdrop-blur-xl text-[color:var(--nav-text)] border-r border-r-[color:var(--win-border)] pt-1 pb-2 overflow-x-hidden overflow-y-hidden hover:overflow-y-auto",
+      "flex flex-col justify-start h-full bg-[var(--sidebar-bg)] backdrop-blur-xl text-[color:var(--nav-text)] border-r border-r-[color:var(--win-border)] pt-1 pb-2 overflow-x-hidden overflow-y-hidden hover:overflow-y-auto max-[899px]:overflow-y-auto",
       className,
     )}
     {...props}
@@ -164,7 +164,7 @@ export const NavItmLabel: React.FC<SpanProps> = ({ className, ...props }) => (
 export const WindowBodyContent: React.FC<DivProps> = ({ className, ...props }) => (
   <div
     className={cn(
-      "h-full bg-[var(--wc-bg)] text-[color:var(--wc-text)] overflow-x-hidden overflow-y-hidden hover:overflow-y-auto",
+      "h-full bg-[var(--wc-bg)] text-[color:var(--wc-text)] overflow-x-hidden overflow-y-hidden hover:overflow-y-auto max-[899px]:overflow-y-auto",
       className,
     )}
     {...props}

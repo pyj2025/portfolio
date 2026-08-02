@@ -91,6 +91,8 @@ const AppWindow: React.FC<AppWindowProps> = ({
       size={{ width: size.width, height: size.height }}
       position={{ x: position.x, y: position.y }}
       dragHandleClassName="topbar"
+      // mobile windows are full-screen; dragging only knocks them out of place
+      disableDragging={isMobileWindow}
       enableResizing={resizable}
       minWidth={isMobileWindow ? width : minWidth}
       minHeight={minHeight}
