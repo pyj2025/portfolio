@@ -17,7 +17,7 @@ const SkillsGroup: React.FC<SkillsGroupProps> = ({ skills, view = 'icon' }) =>
           key={skillName}
           label={skillName}
           icon={
-            <span className="scale-[0.45] flex items-center justify-center">
+            <span className="scale-[0.45] max-[899px]:scale-[0.6] flex items-center justify-center">
               {getSkillIcon(skillName)}
             </span>
           }

@@ -72,6 +72,8 @@ const AppWindow: React.FC<AppWindowProps> = ({
       setSize({ width, height: height - 80 - 25 });
       setPosition({ x: 0, y: 0 });
       setIsMobileWindow(true);
+      // no view toggle on mobile — list is the only useful layout there
+      onViewChange?.("list");
     } else {
       setIsMobileWindow(false);
     }

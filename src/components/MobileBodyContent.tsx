@@ -7,9 +7,6 @@ import MobileAppMenu from "./MobileAppMenu";
 import MobileWidgets from "./MobileWidgets";
 import WindowsContent from "./WindowsContent";
 import MobileWelcomeWindow from "../views/window/mobile/MobileWelcomeWindow";
-import MobileAboutWindow from "../views/window/mobile/MobileAboutWindow";
-import MobileSkillsWindow from "../views/window/mobile/MobileSkillsWindow";
-import MobileProjectsWindow from "../views/window/mobile/MobileProjectsWindow";
 import {
   CalculatorWindow,
   UtilWindow,
@@ -18,6 +15,10 @@ import {
   CalendarWindow,
   WeatherWindow,
   TodoWindow,
+  ResumeWindow,
+  AboutWindow,
+  SkillsWindow,
+  ProjectsWindow,
 } from "../views/window/desktop";
 import useWindowsStore from "../utils/useWindowsStore";
 import {
@@ -31,6 +32,7 @@ import {
   useCalendarWindow,
   useWeatherWindow,
   useTodoWindow,
+  useResumeWindow,
 } from "../utils/appRegistry";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -57,6 +59,8 @@ const MobileBodyContent: React.FC = () => {
 
   const isTodoOpen = useTodoWindow(state => state.isOpen);
 
+  const isResumeOpen = useResumeWindow(state => state.isOpen);
+
   const { width } = useScreenSize();
   const [checkMobile, setCheckMobile] = React.useState(false);
 
@@ -80,9 +84,9 @@ const MobileBodyContent: React.FC = () => {
   const renderContent = () => {
     const windows = [
       { Component: MobileWelcomeWindow, isOpen: isWelcomeWindowOpen },
-      { Component: MobileAboutWindow, isOpen: isAboutOpen },
-      { Component: MobileSkillsWindow, isOpen: isSkillsOpen },
-      { Component: MobileProjectsWindow, isOpen: isProjectsOpen },
+      { Component: AboutWindow, isOpen: isAboutOpen },
+      { Component: SkillsWindow, isOpen: isSkillsOpen },
+      { Component: ProjectsWindow, isOpen: isProjectsOpen },
       { Component: CalculatorWindow, isOpen: isCalculatorOpen },
       { Component: UtilWindow, isOpen: isUtilOpen },
       { Component: TerminalWindow, isOpen: isTerminalOpen },
@@ -90,6 +94,7 @@ const MobileBodyContent: React.FC = () => {
       { Component: CalendarWindow, isOpen: isCalendarOpen },
       { Component: WeatherWindow, isOpen: isWeatherOpen },
       { Component: TodoWindow, isOpen: isTodoOpen },
+      { Component: ResumeWindow, isOpen: isResumeOpen },
     ];
 
     return <WindowsContent windows={windows} />;
