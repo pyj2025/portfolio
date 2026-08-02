@@ -75,17 +75,6 @@ const MobileAppMenu: React.FC = () => {
           <div className={IconLabelStyle}>Linkedin</div>
         </a>
 
-        <a
-          title="Facebook"
-          href="https://www.facebook.com/youngjoon.park.71"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={IconContainerStyle}
-        >
-          <div className={IconStyle}>{getIcon("Facebook")}</div>
-          <div className={IconLabelStyle}>Facebook</div>
-        </a>
-
         <button
           title="Email"
           onClick={handleEmailClick}
