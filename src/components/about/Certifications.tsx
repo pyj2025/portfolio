@@ -22,7 +22,7 @@ const Certifications: React.FC<CertificationsProps> = ({
       <FinderListRow
         label="GenAI Fundamentals"
         icon={
-          <span className="scale-[0.4] flex items-center justify-center">
+          <span className="scale-[0.4] max-[899px]:scale-[0.55] flex items-center justify-center">
             <DatabrickGenAIFundamentalsIcon />
           </span>
         }

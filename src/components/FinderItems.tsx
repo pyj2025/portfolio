@@ -68,12 +68,18 @@ export const FinderListRow: React.FC<FinderListRowProps> = ({
     aria-label={label}
     onClick={onClick}
     className={cn(
-      "flex flex-row items-center gap-2.5 w-full px-3 rounded-md cursor-pointer hover:bg-[var(--hover-overlay)] transition-colors text-left bg-transparent",
+      // below the tablet breakpoint windows go full-screen, so rows match the
+      // mobile menu row size (h-12, bold label) instead of Finder's compact one
+      "flex flex-row items-center gap-2.5 w-full px-3 rounded-md cursor-pointer hover:bg-[var(--hover-overlay)] transition-colors text-left bg-transparent max-[899px]:h-12 max-[899px]:gap-4 max-[899px]:py-0",
       compact ? "py-1" : "py-2",
     )}
   >
-    <span className="flex items-center justify-center w-6 h-6 shrink-0">{icon}</span>
-    <span className="text-sm text-[color:var(--wc-text)] truncate">{label}</span>
+    <span className="flex items-center justify-center w-6 h-6 shrink-0 max-[899px]:w-8 max-[899px]:h-8">
+      {icon}
+    </span>
+    <span className="text-sm text-[color:var(--wc-text)] truncate max-[899px]:text-base max-[899px]:font-bold">
+      {label}
+    </span>
     {trailing ? (
       <span className="ml-auto text-xs text-[color:var(--wc-muted)] shrink-0">
         {trailing}

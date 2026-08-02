@@ -211,7 +211,7 @@ const WindowTopbar: React.FC<WindowTopbarProps> = ({
         <TopbarTitleText>{title}</TopbarTitleText>
       </TopbarTitle>
       <div className="flex justify-end items-center">
-        {view && onViewChange && (
+        {view && onViewChange && !isMobileWindow && (
           <div className="flex items-center gap-0.5 rounded-md bg-[var(--hover-overlay)] p-0.5">
             <button
               aria-label="Icon view"

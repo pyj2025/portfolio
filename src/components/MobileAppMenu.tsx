@@ -4,7 +4,7 @@ import useScreenSize, { MOBILE_MAX_WIDTH, TABLET_MAX_WIDTH } from "../utils/useS
 import { getIcon } from "./getIcon";
 import info from "../info.json";
 import { cn } from "../utils/cn";
-import { useUtilsWindow } from "../utils/appRegistry";
+import { useResumeWindow, useUtilsWindow } from "../utils/appRegistry";
 
 const IconContainerStyle =
   "flex flex-col justify-center items-center text-center text-white mx-auto p-2 no-underline cursor-pointer";
@@ -28,6 +28,7 @@ const MobileAppMenu: React.FC = () => {
   }, [width]);
 
   const openUtils = useUtilsWindow(state => state.open);
+  const openResume = useResumeWindow(state => state.open);
 
   const handleEmailClick = React.useCallback(() => {
     window.open(`mailto:${info.about.info.email}`);
@@ -47,16 +48,10 @@ const MobileAppMenu: React.FC = () => {
   return (
     <div className="flex items-start w-full">
       <div className={`grid ${getGridCols(numOfCols)} gap-2 w-full`}>
-        <a
-          title="Resume"
-          href={info.resume.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={IconContainerStyle}
-        >
+        <button title="Resume" onClick={openResume} className={IconContainerStyle}>
           <div className={IconStyle}>{getIcon("Resume")}</div>
           <div className={IconLabelStyle}>Resume</div>
-        </a>
+        </button>
 
         <a
           title="Github"
