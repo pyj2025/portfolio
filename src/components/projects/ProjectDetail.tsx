@@ -40,7 +40,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ name }) => {
       <ProjectDescriptionTable
         name={project.name}
         link={project.link}
-        url={"url" in project ? project.url : undefined}
+        url={"url" in project ? (project.url as string) : undefined}
         stack={project.stack}
         details={project.details}
       />

@@ -53,6 +53,7 @@ const MobileWelcomeWindow: React.FC = () => {
       size={{ width: windowSize.width, height: windowSize.height }}
       position={{ x: windowPosition.x, y: windowPosition.y }}
       dragHandleClassName="topbar"
+      disableDragging={width <= TABLET_MAX_WIDTH}
       onDragStart={(_e: any, _data: DraggableData) => {
         setFocusedWindow("Welcome");
       }}

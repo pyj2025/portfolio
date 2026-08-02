@@ -1,4 +1,5 @@
 import React from 'react';
+import info from '../../info.json';
 import { ProjectIndexType } from '../../types';
 import {
   NavItmLabel,
@@ -11,44 +12,20 @@ import { getNavIcon } from '../getIcon';
 type ProjectCategory = {
   id: ProjectIndexType;
   label: string;
-  isChild?: boolean;
-  focusConditions?: ProjectIndexType[];
+  category: string;
 };
 
-const PROJECT_CATEGORIES: ProjectCategory[] = [
-  {
-    id: 'Projects',
-    label: 'Projects',
-    focusConditions: ['Projects'],
-  },
-  {
-    id: 'WebProjects',
-    label: 'Web',
-    isChild: true,
-    focusConditions: [
-      'WebProjects',
-      'GitCard',
-      'DatApex',
-      'MovieNext',
-      'Portfolio',
-    ],
-  },
-  {
-    id: 'MobileProjects',
-    label: 'Mobile',
-    isChild: true,
-    focusConditions: [
-      'MobileProjects',
-      'Foodie',
-      'WebGame',
-      'Tippy',
-      'Flix',
-      'Twitter',
-      'Parstagram',
-      'ToonFlix',
-    ],
-  },
+const CATEGORIES: ProjectCategory[] = [
+  { id: 'WebProjects', label: 'Web', category: 'web' },
+  { id: 'MobileProjects', label: 'Mobile', category: 'mobile' },
 ];
+
+// the nav item's id is the info.json key, which is what ProjectsContent routes on —
+// the display name can differ (e.g. Portfolio -> "Joon's Portfolio")
+const projectsOf = (category: string) =>
+  Object.entries(info.project)
+    .filter(([, project]) => project.category === category)
+    .map(([key, project]) => ({ id: key as ProjectIndexType, name: project.name }));
 
 type ProjectsNavbarProps = {
   index: ProjectIndexType;
@@ -56,25 +33,39 @@ type ProjectsNavbarProps = {
 };
 
 const ProjectsNavbar: React.FC<ProjectsNavbarProps> = ({ index, onClick }) => {
-  const isFocused = (category: ProjectCategory): boolean => {
-    if (category.id === 'Projects') return true;
-    return category.focusConditions?.includes(index) ?? false;
-  };
+  const isCategoryFocused = (category: ProjectCategory): boolean =>
+    index === category.id ||
+    projectsOf(category.category).some(project => project.id === index);
 
   return (
     <WindowBodyNavbar>
       <NavSectionLabel>Favorites</NavSectionLabel>
-      {PROJECT_CATEGORIES.map((category, idx) => (
-        <WindowBodyNavItm
-          key={category.id}
-          first={idx === 0}
-          onClick={() => onClick(category.id)}
-          focus={isFocused(category)}
-          isChild={category.isChild}
-        >
-          {getNavIcon('Folder', isFocused(category))}
-          <NavItmLabel>{category.label}</NavItmLabel>
-        </WindowBodyNavItm>
+      <WindowBodyNavItm first onClick={() => onClick('Projects')} focus>
+        {getNavIcon('Folder', true)}
+        <NavItmLabel>Projects</NavItmLabel>
+      </WindowBodyNavItm>
+      {CATEGORIES.map(category => (
+        <React.Fragment key={category.id}>
+          <WindowBodyNavItm
+            onClick={() => onClick(category.id)}
+            focus={isCategoryFocused(category)}
+            isChild
+          >
+            {getNavIcon('Folder', isCategoryFocused(category))}
+            <NavItmLabel>{category.label}</NavItmLabel>
+          </WindowBodyNavItm>
+          {projectsOf(category.category).map(project => (
+            <WindowBodyNavItm
+              key={project.id}
+              className="pl-10"
+              onClick={() => onClick(project.id)}
+              focus={index === project.id}
+            >
+              {getNavIcon('File', index === project.id)}
+              <NavItmLabel>{project.name}</NavItmLabel>
+            </WindowBodyNavItm>
+          ))}
+        </React.Fragment>
       ))}
     </WindowBodyNavbar>
   );
