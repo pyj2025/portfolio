@@ -103,6 +103,7 @@ const AboutWindow: React.FC = () => {
       defaultSize={{ width: 500, height: 300 }}
       defaultPosition={{ x: 20, y: 20 }}
       minWidth={500}
+      sidebar
       minHeight={300}
       nav={{ onBack: back, onForward: forward, canBack, canForward }}
       view={view}
