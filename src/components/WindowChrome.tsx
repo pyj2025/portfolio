@@ -113,8 +113,8 @@ export const WindowBodyNavbar: React.FC<DivProps> = ({ className, ...props }) =>
   <div
     className={cn(
       "flex flex-col justify-start h-full bg-[var(--sidebar-bg)] backdrop-blur-xl text-[color:var(--nav-text)] border-r border-r-[color:var(--win-border)] pt-1 pb-2 overflow-x-hidden overflow-y-hidden hover:overflow-y-auto max-[899px]:overflow-y-auto",
-      // room for the mobile collapse toggle floating at the bottom-left
-      "max-[899px]:pb-12",
+      // clearance so the last item can scroll above the mobile collapse footer
+      "max-[899px]:pb-14",
       className,
     )}
     {...props}
