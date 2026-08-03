@@ -155,22 +155,33 @@ const AppWindow: React.FC<AppWindowProps> = ({
           ? children({ isMobileWindow, size })
           : children}
         {sidebar && isMobileWindow && (
-          <button
-            aria-label={sidebarOpen ? "Collapse sidebar" : "Expand sidebar"}
-            aria-expanded={sidebarOpen}
-            onClick={e => {
-              e.stopPropagation();
-              setSidebarOpen(prev => !prev);
-            }}
-            // expanded: right edge of the 168px sidebar with a 12px gutter.
-            // collapsed: centered in the 56px icon rail.
-            style={{ left: sidebarOpen ? 168 - 32 - 12 : (56 - 32) / 2 }}
-            className="absolute bottom-2 z-20 w-8 h-8 flex items-center justify-center rounded-md border-0 bg-[var(--hover-overlay)] text-[color:var(--wc-text)] text-[13px] backdrop-blur-xl cursor-pointer"
+          // opaque footer spanning the sidebar — the list scrolls behind it, not over it
+          <div
+            style={{ width: sidebarOpen ? 168 : 56 }}
+            className="absolute bottom-0 left-0 z-20 h-11 bg-[var(--wc-bg)]"
           >
-            <FontAwesomeIcon
-              icon={(sidebarOpen ? faAngleDoubleLeft : faAngleDoubleRight) as IconProp}
-            />
-          </button>
+            <div
+              className={cn(
+                "flex items-center w-full h-full bg-[var(--sidebar-bg)]",
+                // expanded: right edge with a gutter. collapsed: centered in the rail.
+                sidebarOpen ? "justify-end pr-3" : "justify-center",
+              )}
+            >
+              <button
+                aria-label={sidebarOpen ? "Collapse sidebar" : "Expand sidebar"}
+                aria-expanded={sidebarOpen}
+                onClick={e => {
+                  e.stopPropagation();
+                  setSidebarOpen(prev => !prev);
+                }}
+                className="w-8 h-8 flex items-center justify-center rounded-md border-0 bg-[var(--hover-overlay)] text-[color:var(--wc-text)] text-[13px] cursor-pointer"
+              >
+                <FontAwesomeIcon
+                  icon={(sidebarOpen ? faAngleDoubleLeft : faAngleDoubleRight) as IconProp}
+                />
+              </button>
+            </div>
+          </div>
         )}
       </div>
     </Window>
