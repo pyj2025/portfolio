@@ -65,6 +65,7 @@ const SettingsWindow: React.FC = () => {
       defaultSize={{ width: 560, height: 360 }}
       defaultPosition={{ x: 180, y: 100 }}
       minWidth={480}
+      sidebar
       minHeight={320}
     >
       <WindowBody className="h-full">

@@ -61,6 +61,7 @@ const UtilWindow: React.FC = () => {
       defaultSize={{ width: 500, height: 320 }}
       defaultPosition={{ x: 200, y: 90 }}
       minWidth={420}
+      sidebar
       minHeight={280}
       // Utils is a single folder view with no sub-navigation, so back/forward
       // stay disabled — matching a fresh Finder folder window.

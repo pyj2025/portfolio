@@ -9,6 +9,10 @@ import {
 } from "../types";
 import useScreenSize, { TABLET_MAX_WIDTH } from "../utils/useScreenSize";
 import useWindowsStore from "../utils/useWindowsStore";
+import { cn } from "../utils/cn";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleDoubleLeft, faAngleDoubleRight } from "@fortawesome/free-solid-svg-icons";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import WindowTopbar, { TopbarNav } from "./WindowTopbar";
 
 type ScreenSize = { width: number; height: number };
@@ -27,6 +31,8 @@ export type AppWindowProps = {
   minWidth?: number;
   minHeight?: number;
   resizable?: boolean;
+  /** Window has a sidebar — gets a collapse toggle in the mobile topbar. */
+  sidebar?: boolean;
   nav?: TopbarNav;
   view?: ViewMode;
   onViewChange?: (view: ViewMode) => void;
@@ -46,6 +52,7 @@ const AppWindow: React.FC<AppWindowProps> = ({
   minWidth = 500,
   minHeight = 300,
   resizable = true,
+  sidebar = false,
   nav,
   view,
   onViewChange,
@@ -66,6 +73,8 @@ const AppWindow: React.FC<AppWindowProps> = ({
     (WindowSizeSetting & WindowPositionSetting) | null
   >(null);
   const [isMobileWindow, setIsMobileWindow] = React.useState(false);
+  // mobile sidebars start collapsed — 168px of a phone screen is most of the content
+  const [sidebarOpen, setSidebarOpen] = React.useState(false);
 
   React.useEffect(() => {
     if (width < TABLET_MAX_WIDTH) {
@@ -91,9 +100,9 @@ const AppWindow: React.FC<AppWindowProps> = ({
       size={{ width: size.width, height: size.height }}
       position={{ x: position.x, y: position.y }}
       dragHandleClassName="topbar"
-      // mobile windows are full-screen; dragging only knocks them out of place
+      // mobile windows are full-screen; dragging or resizing only breaks the layout
       disableDragging={isMobileWindow}
-      enableResizing={resizable}
+      enableResizing={resizable && !isMobileWindow}
       minWidth={isMobileWindow ? width : minWidth}
       minHeight={minHeight}
       style={{ zIndex: focusedWindow === id ? 10 : undefined }}
@@ -131,10 +140,38 @@ const AppWindow: React.FC<AppWindowProps> = ({
         view={view}
         onViewChange={onViewChange}
       />
-      <div className="w-full h-[calc(100%-36px)]" onClick={focus}>
+      <div
+        className={cn(
+          "relative w-full h-[calc(100%-36px)] group",
+          isMobileWindow && !sidebarOpen && "nav-collapsed",
+        )}
+        onClick={() => {
+          focus();
+          // any tap dismisses the mobile sidebar, including picking an item in it
+          if (sidebarOpen) setSidebarOpen(false);
+        }}
+      >
         {typeof children === "function"
           ? children({ isMobileWindow, size })
           : children}
+        {sidebar && isMobileWindow && (
+          <button
+            aria-label={sidebarOpen ? "Collapse sidebar" : "Expand sidebar"}
+            aria-expanded={sidebarOpen}
+            onClick={e => {
+              e.stopPropagation();
+              setSidebarOpen(prev => !prev);
+            }}
+            // expanded: right edge of the 168px sidebar with a 12px gutter.
+            // collapsed: centered in the 56px icon rail.
+            style={{ left: sidebarOpen ? 168 - 32 - 12 : (56 - 32) / 2 }}
+            className="absolute bottom-2 z-20 w-8 h-8 flex items-center justify-center rounded-md border-0 bg-[var(--hover-overlay)] text-[color:var(--wc-text)] text-[13px] backdrop-blur-xl cursor-pointer"
+          >
+            <FontAwesomeIcon
+              icon={(sidebarOpen ? faAngleDoubleLeft : faAngleDoubleRight) as IconProp}
+            />
+          </button>
+        )}
       </div>
     </Window>
   );

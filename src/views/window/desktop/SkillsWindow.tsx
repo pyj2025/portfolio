@@ -53,6 +53,7 @@ const SkillsWindow: React.FC = () => {
       defaultSize={{ width: 500, height: 300 }}
       defaultPosition={{ x: 60, y: 60 }}
       minWidth={525}
+      sidebar
       minHeight={300}
       nav={{ onBack: back, onForward: forward, canBack, canForward }}
       view={view}

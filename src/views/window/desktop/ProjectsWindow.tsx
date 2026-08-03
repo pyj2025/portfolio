@@ -30,6 +30,7 @@ const ProjectsWindow: React.FC = () => {
       defaultSize={{ width: 500, height: 300 }}
       defaultPosition={{ x: 100, y: 100 }}
       minWidth={525}
+      sidebar
       minHeight={300}
       nav={{ onBack: back, onForward: forward, canBack, canForward }}
       view={view}
