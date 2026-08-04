@@ -102,7 +102,7 @@ export const WindowBody: React.FC<WindowBodyProps> = ({
       "grid w-full h-[calc(100%-36px)]",
       isMobile ? "grid-cols-[50px_auto]" : "grid-cols-[168px_auto]",
       // mobile collapsed state: sidebar shrinks to an icon rail
-      "group-[.nav-collapsed]:grid-cols-[56px_auto]",
+      "group-[.nav-collapsed]/window:grid-cols-[56px_auto]",
       className,
     )}
     {...props}
@@ -125,7 +125,7 @@ export const NavSectionLabel: React.FC<DivProps> = ({ className, ...props }) => 
   <div
     className={cn(
       "shrink-0 px-3 pt-2 pb-1 text-[11px] font-medium uppercase tracking-wide text-[color:var(--wc-muted)]",
-      "group-[.nav-collapsed]:hidden",
+      "group-[.nav-collapsed]/window:hidden",
       className,
     )}
     {...props}
@@ -149,7 +149,7 @@ export const WindowBodyNavItm: React.FC<WindowBodyNavItmProps> = ({
     className={cn(
       "grid grid-cols-[20px_auto] shrink-0 items-center mx-2 pr-1.5 py-1 rounded-md cursor-pointer transition-colors",
       // collapsed rail: icon stacked over a small label
-      "group-[.nav-collapsed]:flex group-[.nav-collapsed]:flex-col group-[.nav-collapsed]:items-center group-[.nav-collapsed]:gap-0.5 group-[.nav-collapsed]:pl-0 group-[.nav-collapsed]:pr-0 group-[.nav-collapsed]:py-1.5",
+      "group-[.nav-collapsed]/window:flex group-[.nav-collapsed]/window:flex-col group-[.nav-collapsed]/window:items-center group-[.nav-collapsed]/window:gap-0.5 group-[.nav-collapsed]/window:pl-0 group-[.nav-collapsed]/window:pr-0 group-[.nav-collapsed]/window:py-1.5",
       focus
         ? "bg-[var(--accent)] text-white"
         : "text-[color:var(--nav-text)] hover:bg-[var(--hover-overlay)]",
@@ -165,7 +165,7 @@ export const NavItmLabel: React.FC<SpanProps> = ({ className, ...props }) => (
   <span
     className={cn(
       "block min-w-0 truncate font-medium text-[13px] ml-1",
-      "group-[.nav-collapsed]:ml-0 group-[.nav-collapsed]:w-full group-[.nav-collapsed]:px-0.5 group-[.nav-collapsed]:text-[9px] group-[.nav-collapsed]:leading-tight group-[.nav-collapsed]:text-center",
+      "group-[.nav-collapsed]/window:ml-0 group-[.nav-collapsed]/window:w-full group-[.nav-collapsed]/window:px-0.5 group-[.nav-collapsed]/window:text-[9px] group-[.nav-collapsed]/window:leading-tight group-[.nav-collapsed]/window:text-center",
       className,
     )}
     {...props}

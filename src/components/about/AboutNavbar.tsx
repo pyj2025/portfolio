@@ -1,73 +1,18 @@
-import React from 'react';
-import { AboutIndexType } from '../../types';
-import {
-  NavItmLabel,
-  NavSectionLabel,
-  WindowBodyNavItm,
-  WindowBodyNavbar,
-} from '../WindowChrome';
-import { getNavIcon } from '../getIcon';
-import info from '../../info.json';
+import React from "react";
+import { AboutIndexType } from "../../types";
+import { NavItmLabel, NavSectionLabel, WindowBodyNavItm, WindowBodyNavbar } from "../WindowChrome";
+import { getNavIcon } from "../getIcon";
+import { NavItem } from "./types";
+import { ABOUT_NAV_ITEMS } from "./constants";
 
-type NavItem = {
-  id: AboutIndexType;
-  label: string;
-  icon: 'File' | 'Folder';
-  isChild?: boolean;
-  focusConditions?: AboutIndexType[];
-};
-
-const NAV_ITEMS: NavItem[] = [
-  {
-    id: 'Info',
-    label: 'Personal Info',
-    icon: 'File',
-    focusConditions: ['Info'],
-  },
-  {
-    id: 'Experience',
-    label: 'Experience',
-    icon: 'Folder',
-    focusConditions: ['Experience'],
-  },
-  ...info.about.experience.map(
-    (exp): NavItem => ({
-      id: `Experience:${exp.title}`,
-      label: exp.company,
-      icon: 'File',
-      isChild: true,
-      focusConditions: [`Experience:${exp.title}`],
-    })
-  ),
-  {
-    id: 'Education',
-    label: 'Education',
-    icon: 'File',
-    focusConditions: ['Education'],
-  },
-  {
-    id: 'Certifications',
-    label: 'Certifications',
-    icon: 'Folder',
-    focusConditions: ['Certifications', 'GenAI'],
-  },
-  {
-    id: 'GenAI',
-    label: 'GenAI',
-    icon: 'File',
-    isChild: true,
-    focusConditions: ['GenAI'],
-  },
-];
-
-type AboutNavbarProps = {
+interface AboutNavbarProps {
   index: AboutIndexType;
   onClick: (name: AboutIndexType) => void;
-};
+}
 
 const AboutNavbar: React.FC<AboutNavbarProps> = ({ index, onClick }) => {
   const isFocused = (item: NavItem): boolean => {
-    if (item.id === 'Experience' && index.startsWith('Experience:')) {
+    if (item.id === "Experience" && index.startsWith("Experience:")) {
       return true;
     }
     return item.focusConditions?.includes(index) ?? false;
@@ -76,7 +21,7 @@ const AboutNavbar: React.FC<AboutNavbarProps> = ({ index, onClick }) => {
   return (
     <WindowBodyNavbar>
       <NavSectionLabel>Favorites</NavSectionLabel>
-      {NAV_ITEMS.map((item, idx) => (
+      {ABOUT_NAV_ITEMS.map((item, idx) => (
         <WindowBodyNavItm
           key={item.id}
           first={idx === 0}

@@ -2,11 +2,11 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt, faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { ExperienceType } from "./ExperienceRow";
+import { ExperienceType } from "../types";
 
-type ExperienceDetailProps = {
+interface ExperienceDetailProps {
   experience: ExperienceType;
-};
+}
 
 const ExperienceDetail: React.FC<ExperienceDetailProps> = ({ experience }) => {
   const techs = experience.tech.map(t => t.trim()).filter(Boolean);
@@ -15,9 +15,7 @@ const ExperienceDetail: React.FC<ExperienceDetailProps> = ({ experience }) => {
     <div className="flex flex-col max-w-xl mx-auto px-5 py-5 gap-3">
       <div className="text-center">
         <div className="text-lg font-semibold">{experience.title}</div>
-        <div className="text-[13px] text-[color:var(--wc-muted)]">
-          {experience.company}
-        </div>
+        <div className="text-[13px] text-[color:var(--wc-muted)]">{experience.company}</div>
         <div className="flex justify-center gap-4 mt-1 text-xs text-[color:var(--wc-muted)]">
           <span>
             <FontAwesomeIcon icon={faMapMarkerAlt as IconProp} className="mr-1" />
@@ -41,9 +39,7 @@ const ExperienceDetail: React.FC<ExperienceDetailProps> = ({ experience }) => {
         ))}
       </div>
 
-      <p className="m-0 text-[13px] leading-relaxed opacity-85">
-        {experience.description}
-      </p>
+      <p className="m-0 text-[13px] leading-relaxed opacity-85">{experience.description}</p>
     </div>
   );
 };

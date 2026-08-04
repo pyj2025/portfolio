@@ -1,14 +1,9 @@
 import React from "react";
-import {
-  faGraduationCap,
-  faBook,
-  faCode,
-  faCalendarAlt,
-} from "@fortawesome/free-solid-svg-icons";
+import { faGraduationCap, faBook, faCode, faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import PurdueLogo from "../../image/PurdueLogo.png";
 import info from "../../info.json";
-import { InfoRow } from "./Info";
+import RowWrapper from "./RowWrapper";
 
 const Education: React.FC = () => {
   const university = info.about.education.university;
@@ -25,18 +20,18 @@ const Education: React.FC = () => {
       </div>
 
       <div className="w-full mt-5 rounded-xl bg-[var(--hover-overlay)]/50 divide-y divide-[color:var(--win-border)]">
-        <InfoRow icon={faGraduationCap as IconProp} label="Degree">
+        <RowWrapper icon={faGraduationCap as IconProp} label="Degree">
           {university.degree}
-        </InfoRow>
-        <InfoRow icon={faBook as IconProp} label="Major">
+        </RowWrapper>
+        <RowWrapper icon={faBook as IconProp} label="Major">
           {university.major}
-        </InfoRow>
-        <InfoRow icon={faCode as IconProp} label="Concentration">
+        </RowWrapper>
+        <RowWrapper icon={faCode as IconProp} label="Concentration">
           {university.concentration}
-        </InfoRow>
-        <InfoRow icon={faCalendarAlt as IconProp} label="Graduated">
+        </RowWrapper>
+        <RowWrapper icon={faCalendarAlt as IconProp} label="Graduated">
           {`${university.graduateYear.month} ${university.graduateYear.year}`}
-        </InfoRow>
+        </RowWrapper>
       </div>
     </div>
   );

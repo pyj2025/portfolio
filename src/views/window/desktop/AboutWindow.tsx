@@ -10,7 +10,7 @@ import {
   GenAIFundamentals,
   Info,
 } from "../../../components/about";
-import ExperienceDetail from "../../../components/about/ExperienceDetail";
+import ExperienceDetail from "../../../components/about/experience/ExperienceDetail";
 import AboutNavbar from "../../../components/about/AboutNavbar";
 import info from "../../../info.json";
 
@@ -27,12 +27,7 @@ interface AboutContentProps {
   view: ViewMode;
 }
 
-const AboutContent: React.FC<AboutContentProps> = ({
-  index,
-  setIndex,
-  showDate,
-  view,
-}) => {
+const AboutContent: React.FC<AboutContentProps> = ({ index, setIndex, showDate, view }) => {
   if (index === "Menu") {
     return null;
   }
@@ -115,12 +110,7 @@ const AboutWindow: React.FC = () => {
         return (
           <WindowBody className="h-full">
             <AboutNavbar index={index} onClick={handleClick} />
-            <AboutContent
-              index={index}
-              setIndex={handleClick}
-              showDate={showDate}
-              view={view}
-            />
+            <AboutContent index={index} setIndex={handleClick} showDate={showDate} view={view} />
           </WindowBody>
         );
       }}
