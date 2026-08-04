@@ -3,7 +3,11 @@ import info from "../../info.json";
 import { ViewMode } from "../../types";
 import SkillsGroup from "./SkillsGroup";
 
-const Mobile: React.FC<{ view?: ViewMode }> = ({ view }) => (
+interface MobileProps {
+  view?: ViewMode;
+}
+
+const Mobile: React.FC<MobileProps> = ({ view }) => (
   <SkillsGroup skills={info.skills.mobile} view={view} />
 );
 

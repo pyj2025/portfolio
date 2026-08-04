@@ -1,7 +1,7 @@
 import info from "../../info.json";
-import { NavItem } from "./types";
+import { AboutNavItemType } from "./types";
 
-export const ABOUT_NAV_ITEMS: NavItem[] = [
+export const ABOUT_NAV_ITEMS: AboutNavItemType[] = [
   {
     id: "Info",
     label: "Personal Info",
@@ -15,7 +15,7 @@ export const ABOUT_NAV_ITEMS: NavItem[] = [
     focusConditions: ["Experience"],
   },
   ...info.about.experience.map(
-    (exp): NavItem => ({
+    (exp): AboutNavItemType => ({
       id: `Experience:${exp.title}`,
       label: exp.company,
       icon: "File",

@@ -3,7 +3,11 @@ import info from "../../info.json";
 import { ViewMode } from "../../types";
 import SkillsGroup from "./SkillsGroup";
 
-const ProgrammingLanguage: React.FC<{ view?: ViewMode }> = ({ view }) => (
+interface ProgrammingLanguageProps {
+  view?: ViewMode;
+}
+
+const ProgrammingLanguage: React.FC<ProgrammingLanguageProps> = ({ view }) => (
   <SkillsGroup skills={info.skills.languages} view={view} />
 );
 

@@ -2,7 +2,7 @@ import React from "react";
 import { AboutIndexType } from "../../types";
 import { NavItmLabel, NavSectionLabel, WindowBodyNavItm, WindowBodyNavbar } from "../WindowChrome";
 import { getNavIcon } from "../getIcon";
-import { NavItem } from "./types";
+import { AboutNavItemType } from "./types";
 import { ABOUT_NAV_ITEMS } from "./constants";
 
 interface AboutNavbarProps {
@@ -11,7 +11,7 @@ interface AboutNavbarProps {
 }
 
 const AboutNavbar: React.FC<AboutNavbarProps> = ({ index, onClick }) => {
-  const isFocused = (item: NavItem): boolean => {
+  const isFocused = (item: AboutNavItemType): boolean => {
     if (item.id === "Experience" && index.startsWith("Experience:")) {
       return true;
     }

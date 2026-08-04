@@ -1,6 +1,6 @@
 import { AboutIndexType } from "../../types";
 
-export type NavItem = {
+export type AboutNavItemType = {
   id: AboutIndexType;
   label: string;
   icon: "File" | "Folder";
