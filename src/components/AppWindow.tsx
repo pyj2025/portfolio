@@ -142,7 +142,7 @@ const AppWindow: React.FC<AppWindowProps> = ({
       />
       <div
         className={cn(
-          "relative w-full h-[calc(100%-36px)] group",
+          "relative w-full h-[calc(100%-36px)] group/window",
           isMobileWindow && !sidebarOpen && "nav-collapsed",
         )}
         onClick={() => {

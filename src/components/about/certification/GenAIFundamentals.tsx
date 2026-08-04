@@ -8,7 +8,7 @@ import {
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import info from "../../../info.json";
 import { DATABRICKS_GENAI_BADGE_URL } from "../../../image/certifications/DatabrickGenAIFundamentals";
-import { InfoRow } from "../Info";
+import RowWrapper from "../RowWrapper";
 
 const GenAIFundamentals: React.FC = () => {
   const certification = info.about.certifications;
@@ -29,16 +29,16 @@ const GenAIFundamentals: React.FC = () => {
       </div>
 
       <div className="w-full mt-5 rounded-xl bg-[var(--hover-overlay)]/50 divide-y divide-[color:var(--win-border)]">
-        <InfoRow icon={faCertificate as IconProp} label="Certification">
+        <RowWrapper icon={faCertificate as IconProp} label="Certification">
           {certification.name}
-        </InfoRow>
-        <InfoRow icon={faCalendarAlt as IconProp} label="Issued">
+        </RowWrapper>
+        <RowWrapper icon={faCalendarAlt as IconProp} label="Issued">
           {certification.issuedDate}
-        </InfoRow>
-        <InfoRow icon={faCalendarTimes as IconProp} label="Expires">
+        </RowWrapper>
+        <RowWrapper icon={faCalendarTimes as IconProp} label="Expires">
           {certification.expiresDate}
-        </InfoRow>
-        <InfoRow icon={faExternalLinkAlt as IconProp} label="Credential">
+        </RowWrapper>
+        <RowWrapper icon={faExternalLinkAlt as IconProp} label="Credential">
           <a
             href={certification.link}
             target="_blank"
@@ -47,7 +47,7 @@ const GenAIFundamentals: React.FC = () => {
           >
             View credential
           </a>
-        </InfoRow>
+        </RowWrapper>
       </div>
     </div>
   );

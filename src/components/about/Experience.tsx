@@ -1,97 +1,91 @@
-import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
-import { ViewMode } from '../../types';
-import { FinderGrid, FinderGridItem } from '../FinderItems';
-import { getIcon } from '../getIcon';
-import ExperienceRow, { ExperienceType } from './ExperienceRow';
-import info from '../../info.json';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import React from "react";
+import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { ViewMode } from "../../types";
+import { FinderGrid, FinderGridItem } from "../FinderItems";
+import { getIcon } from "../getIcon";
+import ExperienceRow from "./experience/ExperienceRow";
+import info from "../../info.json";
+import { ExperienceType, ExperienceSortType } from "./types";
 
-type SortType = 'asc' | 'dec';
-
-type ExperienceProps = {
+interface ExperienceProps {
   showDate: boolean;
   isMobile?: boolean;
   view?: ViewMode;
   onOpen?: (experience: ExperienceType) => void;
-};
+}
 
 const Experience: React.FC<ExperienceProps> = ({
   isMobile = false,
   showDate,
-  view = 'list',
+  view = "list",
   onOpen,
 }) => {
   const [experiences, setExperiences] = React.useState<Array<ExperienceType>>(
-    info.about.experience
+    info.about.experience,
   );
-  const [positionSortType, setPositionSortType] =
-    React.useState<SortType | null>(null);
-  const [dateSortType, setDateSortType] = React.useState<SortType | null>(null);
+  const [positionSortType, setPositionSortType] = React.useState<ExperienceSortType | null>(null);
+  const [dateSortType, setDateSortType] = React.useState<ExperienceSortType | null>(null);
 
   const sortByPosition = React.useCallback(() => {
-    if (positionSortType === 'asc') {
+    if (positionSortType === "asc") {
       setPositionSortType(null);
       setDateSortType(null);
 
-      setExperiences((prev) => {
+      setExperiences(prev => {
         return [...prev.sort((a, b) => a.dateRank - b.dateRank)];
       });
-    } else if (positionSortType === 'dec') {
-      setPositionSortType('asc');
+    } else if (positionSortType === "dec") {
+      setPositionSortType("asc");
       setDateSortType(null);
 
-      setExperiences((prevExperiences) => {
-        return [
-          ...prevExperiences.sort((a, b) => (a.title > b.title ? 1 : -1)),
-        ];
+      setExperiences(prevExperiences => {
+        return [...prevExperiences.sort((a, b) => (a.title > b.title ? 1 : -1))];
       });
     } else {
-      setPositionSortType('dec');
+      setPositionSortType("dec");
       setDateSortType(null);
 
-      setExperiences((prevExperiences) => {
-        return [
-          ...prevExperiences.sort((a, b) => (b.title > a.title ? 1 : -1)),
-        ];
+      setExperiences(prevExperiences => {
+        return [...prevExperiences.sort((a, b) => (b.title > a.title ? 1 : -1))];
       });
     }
   }, [positionSortType]);
 
   const sortByDate = React.useCallback(() => {
-    if (dateSortType === 'asc') {
+    if (dateSortType === "asc") {
       setDateSortType(null);
       setPositionSortType(null);
 
-      setExperiences((prev) => {
+      setExperiences(prev => {
         return [...prev.sort((a, b) => a.dateRank - b.dateRank)];
       });
-    } else if (dateSortType === 'dec') {
-      setDateSortType('asc');
+    } else if (dateSortType === "dec") {
+      setDateSortType("asc");
       setPositionSortType(null);
 
-      setExperiences((prev) => {
+      setExperiences(prev => {
         return [...prev.sort((a, b) => b.dateRank - a.dateRank)];
       });
     } else {
-      setDateSortType('dec');
+      setDateSortType("dec");
       setPositionSortType(null);
 
-      setExperiences((prev) => {
+      setExperiences(prev => {
         return [...prev.sort((a, b) => a.dateRank - b.dateRank)];
       });
     }
   }, [dateSortType]);
 
-  if (view === 'icon') {
+  if (view === "icon") {
     return (
       <FinderGrid>
-        {experiences.map((exp) => (
+        {experiences.map(exp => (
           <FinderGridItem
             key={exp.title}
             label={exp.company}
-            icon={getIcon('File', 44)}
+            icon={getIcon("File", 44)}
             widthClass="w-24"
             onClick={() => onOpen?.(exp)}
           />
@@ -111,9 +105,7 @@ const Experience: React.FC<ExperienceProps> = ({
           {positionSortType ? (
             <FontAwesomeIcon
               icon={
-                positionSortType === 'asc'
-                  ? (faChevronUp as IconProp)
-                  : (faChevronDown as IconProp)
+                positionSortType === "asc" ? (faChevronUp as IconProp) : (faChevronDown as IconProp)
               }
               style={{ fontSize: 10 }}
             />
@@ -128,9 +120,7 @@ const Experience: React.FC<ExperienceProps> = ({
             {dateSortType ? (
               <FontAwesomeIcon
                 icon={
-                  dateSortType === 'asc'
-                    ? (faChevronUp as IconProp)
-                    : (faChevronDown as IconProp)
+                  dateSortType === "asc" ? (faChevronUp as IconProp) : (faChevronDown as IconProp)
                 }
                 style={{ fontSize: 10 }}
               />
