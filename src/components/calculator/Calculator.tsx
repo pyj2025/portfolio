@@ -1,7 +1,6 @@
 import React from "react";
-import { cn } from "../../utils/cn";
-
-type Op = "+" | "-" | "×" | "÷";
+import { Op } from "./types";
+import CalculatorButton from "./CalculatorButton";
 
 const formatResult = (n: number): string => {
   if (!isFinite(n)) return "Error";
@@ -31,36 +30,6 @@ const calculate = (a: number, b: number, op: Op): number => {
       return b === 0 ? NaN : a / b;
   }
 };
-
-type ButtonProps = {
-  label: string;
-  onClick: () => void;
-  variant?: "function" | "digit" | "operator";
-  active?: boolean;
-  wide?: boolean;
-};
-
-const CalcButton: React.FC<ButtonProps> = ({
-  label,
-  onClick,
-  variant = "digit",
-  active = false,
-  wide = false,
-}) => (
-  <button
-    onClick={onClick}
-    className={cn(
-      "h-11 rounded-full text-lg font-medium flex items-center justify-center select-none transition-colors active:brightness-125",
-      variant === "function" && "bg-[#a5a5a5] text-black",
-      variant === "digit" && "bg-[#333333] text-white",
-      variant === "operator" && "bg-[#ff9f0a] text-white text-2xl",
-      active && "bg-white text-[#ff9f0a]",
-      wide ? "col-span-2 justify-start pl-5" : "",
-    )}
-  >
-    {label}
-  </button>
-);
 
 const Calculator: React.FC = () => {
   const [display, setDisplay] = React.useState("0");
@@ -137,49 +106,49 @@ const Calculator: React.FC = () => {
         {formatDisplay(display)}
       </div>
       <div className="grid grid-cols-4 gap-2">
-        <CalcButton label="AC" variant="function" onClick={clearAll} />
-        <CalcButton label="+/−" variant="function" onClick={toggleSign} />
-        <CalcButton label="%" variant="function" onClick={percent} />
-        <CalcButton
+        <CalculatorButton label="AC" variant="function" onClick={clearAll} />
+        <CalculatorButton label="+/−" variant="function" onClick={toggleSign} />
+        <CalculatorButton label="%" variant="function" onClick={percent} />
+        <CalculatorButton
           label="÷"
           variant="operator"
           active={op === "÷" && waiting}
           onClick={() => performOp("÷")}
         />
 
-        <CalcButton label="7" onClick={() => inputDigit("7")} />
-        <CalcButton label="8" onClick={() => inputDigit("8")} />
-        <CalcButton label="9" onClick={() => inputDigit("9")} />
-        <CalcButton
+        <CalculatorButton label="7" onClick={() => inputDigit("7")} />
+        <CalculatorButton label="8" onClick={() => inputDigit("8")} />
+        <CalculatorButton label="9" onClick={() => inputDigit("9")} />
+        <CalculatorButton
           label="×"
           variant="operator"
           active={op === "×" && waiting}
           onClick={() => performOp("×")}
         />
 
-        <CalcButton label="4" onClick={() => inputDigit("4")} />
-        <CalcButton label="5" onClick={() => inputDigit("5")} />
-        <CalcButton label="6" onClick={() => inputDigit("6")} />
-        <CalcButton
+        <CalculatorButton label="4" onClick={() => inputDigit("4")} />
+        <CalculatorButton label="5" onClick={() => inputDigit("5")} />
+        <CalculatorButton label="6" onClick={() => inputDigit("6")} />
+        <CalculatorButton
           label="−"
           variant="operator"
           active={op === "-" && waiting}
           onClick={() => performOp("-")}
         />
 
-        <CalcButton label="1" onClick={() => inputDigit("1")} />
-        <CalcButton label="2" onClick={() => inputDigit("2")} />
-        <CalcButton label="3" onClick={() => inputDigit("3")} />
-        <CalcButton
+        <CalculatorButton label="1" onClick={() => inputDigit("1")} />
+        <CalculatorButton label="2" onClick={() => inputDigit("2")} />
+        <CalculatorButton label="3" onClick={() => inputDigit("3")} />
+        <CalculatorButton
           label="+"
           variant="operator"
           active={op === "+" && waiting}
           onClick={() => performOp("+")}
         />
 
-        <CalcButton label="0" wide onClick={() => inputDigit("0")} />
-        <CalcButton label="." onClick={inputDot} />
-        <CalcButton label="=" variant="operator" onClick={equals} />
+        <CalculatorButton label="0" wide onClick={() => inputDigit("0")} />
+        <CalculatorButton label="." onClick={inputDot} />
+        <CalculatorButton label="=" variant="operator" onClick={equals} />
       </div>
     </div>
   );
