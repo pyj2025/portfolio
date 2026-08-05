@@ -1,5 +1,5 @@
 import React from "react";
-import { TODOS } from "./todos";
+import { TODOS } from "./constants";
 
 const TodoWidget: React.FC = () => {
   return (
