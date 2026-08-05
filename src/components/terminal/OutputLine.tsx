@@ -3,7 +3,11 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const OutputLine: React.FC<{ text: string }> = ({ text }) => {
+interface OutputLineProps {
+  text: string;
+}
+
+const OutputLine: React.FC<OutputLineProps> = ({ text }) => {
   const [, marker, rest] = /^(#{1,2}|>)\s(.*)$/.exec(text) ?? [];
 
   if (!marker) {
