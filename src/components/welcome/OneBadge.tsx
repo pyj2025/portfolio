@@ -1,14 +1,14 @@
 import React from "react";
 import SimpleBadge from "./SimpleBadge";
 
-type OneBadgeProps = {
-  directory: string;
-};
+interface OneBadgeProps {
+  directory?: string;
+}
 
-const OneBadge: React.FC<OneBadgeProps> = () => {
+const OneBadge: React.FC<OneBadgeProps> = ({ directory = "joon@MacBook-Air" }) => {
   return (
     <div className="flex items-center">
-      <SimpleBadge text="joon@MacBook-Air" />
+      <SimpleBadge text={directory} />
     </div>
   );
 };

@@ -4,10 +4,10 @@ import OneBadge from "../OneBadge";
 import TwoBadges from "../TwoBadges";
 import TypeCommand from "../TypeCommand";
 
-type TerminalThirdLineProps = {
+interface TerminalThirdLineProps {
   directory?: string;
   setThirdContent: (flag: boolean) => void;
-};
+}
 
 const TerminalThirdLine: React.FC<TerminalThirdLineProps> = ({ directory, setThirdContent }) => {
   const handleDone = React.useCallback(() => {

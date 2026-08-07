@@ -1,20 +1,13 @@
 import React from "react";
 
-type TypewriterProps = {
+interface TypewriterProps {
   text: string;
-  // ms per character
   speed?: number;
   onDone?: () => void;
   className?: string;
-};
+}
 
-/** Minimal replacement for the abandoned react-typist package. */
-const Typewriter: React.FC<TypewriterProps> = ({
-  text,
-  speed = 45,
-  onDone,
-  className,
-}) => {
+const Typewriter: React.FC<TypewriterProps> = ({ text, speed = 45, onDone, className }) => {
   const [count, setCount] = React.useState(0);
   const [done, setDone] = React.useState(false);
   const onDoneRef = React.useRef(onDone);

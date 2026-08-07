@@ -1,9 +1,9 @@
 import React from "react";
 import ArrowBadge from "./ArrowBadge";
 
-type TwoBadgesProps = {
+interface TwoBadgesProps {
   directory: string;
-};
+}
 
 const TwoBadges: React.FC<TwoBadgesProps> = ({ directory }) => {
   return (

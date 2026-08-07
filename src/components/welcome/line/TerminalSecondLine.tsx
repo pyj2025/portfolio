@@ -4,11 +4,11 @@ import OneBadge from "../OneBadge";
 import TwoBadges from "../TwoBadges";
 import TypeCommand from "../TypeCommand";
 
-type TerminalSecondLineProps = {
+interface TerminalSecondLineProps {
   directory?: string;
   setSecondContent: (flag: boolean) => void;
   setThirdLine: (flag: boolean) => void;
-};
+}
 
 const TerminalSecondLine: React.FC<TerminalSecondLineProps> = ({
   directory,

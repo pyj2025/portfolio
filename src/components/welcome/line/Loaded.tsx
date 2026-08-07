@@ -1,9 +1,9 @@
 import React from "react";
 import Typewriter from "../Typewriter";
 
-type LoadedProps = {
+interface LoadedProps {
   setFirstLine: (flag: boolean) => void;
-};
+}
 
 const Loaded: React.FC<LoadedProps> = ({ setFirstLine }) => {
   return (
