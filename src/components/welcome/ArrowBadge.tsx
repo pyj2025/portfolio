@@ -1,37 +1,36 @@
 import React from "react";
+import { ARROW_WIDTH, BADGE_HEIGHT } from "./constants";
 
-type ArrowBadgeProps = {
+interface ArrowBadgeProps {
   leftText: string;
   rightText: string;
-};
+}
 
 const ArrowBadge: React.FC<ArrowBadgeProps> = ({ leftText, rightText }) => {
   const leftWidth = leftText.length * 8 + 16;
   const rightWidth = rightText.length * 8 + 16;
-  const arrowWidth = 13;
-  const totalWidth = leftWidth + rightWidth + arrowWidth * 2;
-  const height = 26;
+  const totalWidth = leftWidth + rightWidth + ARROW_WIDTH * 2;
 
   return (
-    <svg width={totalWidth} height={height} className="inline-block">
+    <svg width={totalWidth} height={BADGE_HEIGHT} className="inline-block">
       <path
         d={`M 4 0 
             L ${leftWidth} 0 
-            L ${leftWidth + arrowWidth} ${height / 2} 
-            L ${leftWidth} ${height} 
-            L 4 ${height} 
-            Q 0 ${height - 4} 0 ${height / 2} 
+            L ${leftWidth + ARROW_WIDTH} ${BADGE_HEIGHT / 2} 
+            L ${leftWidth} ${BADGE_HEIGHT} 
+            L 4 ${BADGE_HEIGHT} 
+            Q 0 ${BADGE_HEIGHT - 4} 0 ${BADGE_HEIGHT / 2} 
             Q 0 4 4 0 Z`}
         fill="#000000"
       />
 
       <path
         d={`M ${leftWidth} 0 
-            L ${leftWidth + arrowWidth + rightWidth} 0 
-            L ${totalWidth} ${height / 2} 
-            L ${leftWidth + arrowWidth + rightWidth} ${height} 
-            L ${leftWidth} ${height}
-            L ${leftWidth + arrowWidth} ${height / 2} Z`}
+            L ${leftWidth + ARROW_WIDTH + rightWidth} 0 
+            L ${totalWidth} ${BADGE_HEIGHT / 2} 
+            L ${leftWidth + ARROW_WIDTH + rightWidth} ${BADGE_HEIGHT} 
+            L ${leftWidth} ${BADGE_HEIGHT}
+            L ${leftWidth + ARROW_WIDTH} ${BADGE_HEIGHT / 2} Z`}
         fill="#caa9fa"
       />
 
@@ -40,7 +39,7 @@ const ArrowBadge: React.FC<ArrowBadgeProps> = ({ leftText, rightText }) => {
       </text>
 
       <text
-        x={leftWidth + arrowWidth + 8}
+        x={leftWidth + ARROW_WIDTH + 8}
         y="17"
         fill="black"
         fontSize="12"

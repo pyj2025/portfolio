@@ -3,10 +3,10 @@ import { TerminalRow } from "../../WindowChrome";
 import OneBadge from "../OneBadge";
 import TypeCommand from "../TypeCommand";
 
-type TerminalFirstLineProps = {
+interface TerminalFirstLineProps {
   directory?: string;
   setSecondLine: (flag: boolean) => void;
-};
+}
 
 const TerminalFirstLine: React.FC<TerminalFirstLineProps> = ({
   directory = "joon@MacBook-Air",

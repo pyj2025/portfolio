@@ -1,24 +1,23 @@
 import React from "react";
+import { ARROW_WIDTH, BADGE_HEIGHT } from "./constants";
 
-type SimpleBadgeProps = {
+interface SimpleBadgeProps {
   text: string;
-};
+}
 
 const SimpleBadge: React.FC<SimpleBadgeProps> = ({ text }) => {
   const textWidth = text.length * 8 + 16;
-  const arrowWidth = 13;
-  const totalWidth = textWidth + arrowWidth;
-  const height = 26;
+  const totalWidth = textWidth + ARROW_WIDTH;
 
   return (
-    <svg width={totalWidth} height={height} className="inline-block">
+    <svg width={totalWidth} height={BADGE_HEIGHT} className="inline-block">
       <path
         d={`M 4 0 
             L ${textWidth} 0 
-            L ${totalWidth} ${height / 2} 
-            L ${textWidth} ${height} 
-            L 4 ${height} 
-            Q 0 ${height - 4} 0 ${height / 2} 
+            L ${totalWidth} ${BADGE_HEIGHT / 2} 
+            L ${textWidth} ${BADGE_HEIGHT} 
+            L 4 ${BADGE_HEIGHT} 
+            Q 0 ${BADGE_HEIGHT - 4} 0 ${BADGE_HEIGHT / 2} 
             Q 0 4 4 0 Z`}
         fill="#000000"
       />
