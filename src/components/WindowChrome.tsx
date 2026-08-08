@@ -4,16 +4,22 @@ import { cn } from "../utils/cn";
 
 type DivProps = React.HTMLAttributes<HTMLDivElement>;
 type SpanProps = React.HTMLAttributes<HTMLSpanElement>;
-type ImgProps = React.ImgHTMLAttributes<HTMLImageElement>;
 
-// text
-export const BoldText: React.FC<SpanProps> = ({ className, ...props }) => (
-  <span className={cn("font-bold", className)} {...props} />
-);
-
-export const MutedText: React.FC<SpanProps> = ({ className, ...props }) => (
-  <span className={cn("opacity-50", className)} {...props} />
-);
+/**
+ * How the sidebar looks when collapsed to an icon rail on mobile.
+ *
+ * `AppWindow` puts `.nav-collapsed` on the window body (a `group/window`) and
+ * these variants react to it — that keeps the collapsed state described in one
+ * place instead of spread across four components.
+ */
+const RAIL = {
+  body: "group-[.nav-collapsed]/window:grid-cols-[56px_auto]",
+  hide: "group-[.nav-collapsed]/window:hidden",
+  // rows turn into an icon stacked over a small label
+  item: "group-[.nav-collapsed]/window:flex group-[.nav-collapsed]/window:flex-col group-[.nav-collapsed]/window:items-center group-[.nav-collapsed]/window:gap-0.5 group-[.nav-collapsed]/window:pl-0 group-[.nav-collapsed]/window:pr-0 group-[.nav-collapsed]/window:py-1.5",
+  label:
+    "group-[.nav-collapsed]/window:ml-0 group-[.nav-collapsed]/window:w-full group-[.nav-collapsed]/window:px-0.5 group-[.nav-collapsed]/window:text-[9px] group-[.nav-collapsed]/window:leading-tight group-[.nav-collapsed]/window:text-center",
+};
 
 // terminal
 export const TerminalRow: React.FC<DivProps> = ({ className, ...props }) => (
@@ -39,70 +45,11 @@ export const Window = React.forwardRef<
 ));
 Window.displayName = "Window";
 
-export const WindowTopbarContainer: React.FC<DivProps> = ({ className, ...props }) => (
+export const WindowBody: React.FC<DivProps> = ({ className, ...props }) => (
   <div
     className={cn(
-      "w-full h-9 bg-[var(--titlebar-bg)] backdrop-blur-xl text-[color:var(--wc-text)] border-t border-t-[color:var(--titlebar-highlight)] px-2.5 cursor-default grid grid-cols-3 mx-auto items-center box-border border-b-[0.2px] border-b-[color:var(--win-border)]",
-      className,
-    )}
-    {...props}
-  />
-);
-
-export const TopbarBtnContainer: React.FC<DivProps> = ({ className, ...props }) => (
-  <div className={cn("flex justify-start items-center", className)} {...props} />
-);
-
-type TopbarBtnProps = DivProps & { color: string; disabled: boolean };
-
-export const TopbarBtn: React.FC<TopbarBtnProps> = ({
-  className,
-  color,
-  disabled,
-  ...props
-}) => (
-  <div
-    className={cn(
-      "w-3 h-3 inline-block rounded-lg items-center align-middle text-[#62574c] shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.25)]",
-      color === "close" ? "ml-0" : "ml-2",
-      disabled
-        ? "bg-[#686B6D]"
-        : color === "minimize"
-        ? "bg-[#F7BD45]"
-        : color === "expand"
-        ? "bg-[#5FCB43]"
-        : "bg-[#ee514a]",
-      disabled ? "cursor-default" : "cursor-pointer",
-      className,
-    )}
-    {...props}
-  />
-);
-
-export const TopbarTitle: React.FC<DivProps> = ({ className, ...props }) => (
-  <div
-    className={cn("flex justify-center items-center text-center text-sm", className)}
-    {...props}
-  />
-);
-
-export const TopbarTitleText: React.FC<SpanProps> = ({ className, ...props }) => (
-  <span className={cn("ml-1.5 pointer-events-none", className)} {...props} />
-);
-
-type WindowBodyProps = DivProps & { isMobile?: boolean };
-
-export const WindowBody: React.FC<WindowBodyProps> = ({
-  className,
-  isMobile,
-  ...props
-}) => (
-  <div
-    className={cn(
-      "grid w-full h-[calc(100%-36px)]",
-      isMobile ? "grid-cols-[50px_auto]" : "grid-cols-[168px_auto]",
-      // mobile collapsed state: sidebar shrinks to an icon rail
-      "group-[.nav-collapsed]/window:grid-cols-[56px_auto]",
+      "grid w-full h-[calc(100%-36px)] grid-cols-[168px_auto]",
+      RAIL.body,
       className,
     )}
     {...props}
@@ -125,7 +72,7 @@ export const NavSectionLabel: React.FC<DivProps> = ({ className, ...props }) => 
   <div
     className={cn(
       "shrink-0 px-3 pt-2 pb-1 text-[11px] font-medium uppercase tracking-wide text-[color:var(--wc-muted)]",
-      "group-[.nav-collapsed]/window:hidden",
+      RAIL.hide,
       className,
     )}
     {...props}
@@ -148,8 +95,7 @@ export const WindowBodyNavItm: React.FC<WindowBodyNavItmProps> = ({
   <div
     className={cn(
       "grid grid-cols-[20px_auto] shrink-0 items-center mx-2 pr-1.5 py-1 rounded-md cursor-pointer transition-colors",
-      // collapsed rail: icon stacked over a small label
-      "group-[.nav-collapsed]/window:flex group-[.nav-collapsed]/window:flex-col group-[.nav-collapsed]/window:items-center group-[.nav-collapsed]/window:gap-0.5 group-[.nav-collapsed]/window:pl-0 group-[.nav-collapsed]/window:pr-0 group-[.nav-collapsed]/window:py-1.5",
+      RAIL.item,
       focus
         ? "bg-[var(--accent)] text-white"
         : "text-[color:var(--nav-text)] hover:bg-[var(--hover-overlay)]",
@@ -163,11 +109,7 @@ export const WindowBodyNavItm: React.FC<WindowBodyNavItmProps> = ({
 
 export const NavItmLabel: React.FC<SpanProps> = ({ className, ...props }) => (
   <span
-    className={cn(
-      "block min-w-0 truncate font-medium text-[13px] ml-1",
-      "group-[.nav-collapsed]/window:ml-0 group-[.nav-collapsed]/window:w-full group-[.nav-collapsed]/window:px-0.5 group-[.nav-collapsed]/window:text-[9px] group-[.nav-collapsed]/window:leading-tight group-[.nav-collapsed]/window:text-center",
-      className,
-    )}
+    className={cn("block min-w-0 truncate font-medium text-[13px] ml-1", RAIL.label, className)}
     {...props}
   />
 );
@@ -180,9 +122,4 @@ export const WindowBodyContent: React.FC<DivProps> = ({ className, ...props }) =
     )}
     {...props}
   />
-);
-
-// mobile
-export const MobileNavbarMenu: React.FC<ImgProps> = ({ className, alt, ...props }) => (
-  <img className={cn("h-6 w-6", className)} alt={alt ?? ""} {...props} />
 );

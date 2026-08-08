@@ -61,8 +61,6 @@ const AppWindow: React.FC<AppWindowProps> = ({
   const { width, height } = useScreenSize();
   const { focusedWindow, setFocusedWindow } = useWindowsStore(state => state);
 
-  const windowRef = React.useRef<any>();
-
   const [size, setSize] = React.useState<WindowSizeSetting>(defaultSize);
   const [position, setPosition] = React.useState<WindowPositionSetting>(() =>
     typeof defaultPosition === "function"
@@ -93,10 +91,30 @@ const AppWindow: React.FC<AppWindowProps> = ({
     setFocusedWindow(id);
   }, [setFocusedWindow, id]);
 
+  /**
+   * Full-screen toggle for the topbar's green light. Geometry state lives here,
+   * so the restore point is captured and applied in one place — the topbar only
+   * says which way to go.
+   */
+  const handleExpand = React.useCallback(
+    (isExpanded: boolean) => {
+      if (isExpanded) {
+        const restored = prevSetting ?? { width: 500, height: 300, x: 20, y: 20 };
+        setSize({ width: restored.width, height: restored.height });
+        setPosition({ x: restored.x, y: restored.y });
+        return;
+      }
+      setPrevSetting({ ...size, ...position });
+      // 36 is the topbar height
+      setSize({ width, height: height - 36 });
+      setPosition({ x: 0, y: 0 });
+    },
+    [prevSetting, size, position, width, height],
+  );
+
   return (
     <Window
       id={id}
-      ref={windowRef}
       size={{ width: size.width, height: size.height }}
       position={{ x: position.x, y: position.y }}
       dragHandleClassName="topbar"
@@ -128,14 +146,9 @@ const AppWindow: React.FC<AppWindowProps> = ({
     >
       <WindowTopbar
         title={id}
-        windowRef={windowRef}
-        size={size}
-        setSize={setSize}
-        position={position}
-        setPosition={setPosition}
-        prevSetting={prevSetting}
-        setPrevSetting={setPrevSetting}
         isMobileWindow={isMobileWindow}
+        onActivate={focus}
+        onExpand={handleExpand}
         nav={nav}
         view={view}
         onViewChange={onViewChange}
