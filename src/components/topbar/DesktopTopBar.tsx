@@ -5,7 +5,6 @@ import Menu, { Divider, MenuItem } from "rc-menu";
 import Clock from "../Clock";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
-import { BoldText, MutedText } from "../WindowChrome";
 import useScreenSize from "../../utils/useScreenSize";
 import useClickOutside from "../../utils/useClickOutside";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
@@ -43,7 +42,7 @@ const DesktopTopBar: React.FC = () => {
     >
       <div ref={mainMenuRef} className="pl-1">
         <button onClick={handleClick} className="bg-transparent border-0 text-white">
-          <BoldText>Joon</BoldText>
+          <span className="font-bold">Joon</span>
         </button>
         {menuOpen && (
           <Menu
@@ -76,7 +75,7 @@ const DesktopTopBar: React.FC = () => {
       <div className="flex flex-row ml-auto">
         <div className="flex flex-row mr-2.5">
           <FontAwesomeIcon icon={faMapMarkerAlt as IconProp} className="pt-1 mr-1.5 opacity-50" />
-          <MutedText>British Columbia, Canada</MutedText>
+          <span className="opacity-50">British Columbia, Canada</span>
         </div>
         <div className="flex flex-row mr-2.5">
           <Clock />

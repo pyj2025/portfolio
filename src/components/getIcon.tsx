@@ -17,7 +17,6 @@ import {
   faCog,
   faCloudSun,
 } from '@fortawesome/free-solid-svg-icons';
-import { MobileNavbarMenu } from './WindowChrome';
 
 export const SMALL_ICON_SIZE = 16;
 
@@ -203,19 +202,6 @@ export const getIcon = (name: string, size?: number) => {
       return <img src={codeFile} alt={name} width={size} height={size} />;
     case 'Terminal':
       return <img src={terminal} alt={name} width={size} height={size} />;
-    default:
-      return;
-  }
-};
-
-export const getMobileNavbarMenuIcon = (name: string) => {
-  switch (name) {
-    case 'Folder':
-      return <MobileNavbarMenu src={folder} alt={name} />;
-    case 'File':
-      return <MobileNavbarMenu src={file} alt={name} />;
-    case 'CodeFile':
-      return <MobileNavbarMenu src={codeFile} alt={name} />;
     default:
       return;
   }
