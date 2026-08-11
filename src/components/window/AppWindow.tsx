@@ -6,10 +6,10 @@ import {
   ViewMode,
   WindowPositionSetting,
   WindowSizeSetting,
-} from "../types";
-import useScreenSize, { TABLET_MAX_WIDTH } from "../utils/useScreenSize";
-import useWindowsStore from "../utils/useWindowsStore";
-import { cn } from "../utils/cn";
+} from "../../types";
+import useScreenSize, { TABLET_MAX_WIDTH } from "../../utils/useScreenSize";
+import useWindowsStore from "../../utils/useWindowsStore";
+import { cn } from "../../utils/cn";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDoubleLeft, faAngleDoubleRight } from "@fortawesome/free-solid-svg-icons";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";

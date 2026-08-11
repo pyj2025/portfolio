@@ -8,11 +8,11 @@ import {
   faList,
 } from '@fortawesome/free-solid-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { cn } from '../utils/cn';
-import { AppId, ViewMode } from '../types';
-import { SMALL_ICON_SIZE, getIcon } from './getIcon';
-import useWindowsStore from '../utils/useWindowsStore';
-import { getApp } from '../utils/appRegistry';
+import { cn } from '../../utils/cn';
+import { AppId, ViewMode } from '../../types';
+import { SMALL_ICON_SIZE, getIcon } from '../getIcon';
+import useWindowsStore from '../../utils/useWindowsStore';
+import { getApp } from '../../utils/appRegistry';
 
 type DivProps = React.HTMLAttributes<HTMLDivElement>;
 

@@ -3,7 +3,7 @@ import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { ViewMode } from "../../types";
-import { FinderGrid, FinderGridItem } from "../FinderItems";
+import { FinderGrid, FinderGridItem } from "../window/FinderItems";
 import { getIcon } from "../getIcon";
 import ExperienceRow from "./experience/ExperienceRow";
 import info from "../../info.json";

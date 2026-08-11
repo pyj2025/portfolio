@@ -1,6 +1,6 @@
 import React from "react";
 import { SkillsIndexType } from "../../types";
-import { NavItmLabel, NavSectionLabel, WindowBodyNavItm, WindowBodyNavbar } from "../WindowChrome";
+import { NavItmLabel, NavSectionLabel, WindowBodyNavItm, WindowBodyNavbar } from "../window/WindowChrome";
 import { getNavIcon } from "../getIcon";
 import { SKILLS_NAV_ITEMS } from "./constants";
 

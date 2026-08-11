@@ -1,5 +1,5 @@
 import React from "react";
-import { TerminalRow } from "../../WindowChrome";
+import { TerminalRow } from "../../window/WindowChrome";
 import OneBadge from "../OneBadge";
 import TwoBadges from "../TwoBadges";
 import TypeCommand from "../TypeCommand";

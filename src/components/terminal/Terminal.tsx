@@ -1,5 +1,5 @@
 import React from "react";
-import { TerminalRow } from "../WindowChrome";
+import { TerminalRow } from "../window/WindowChrome";
 import TwoBadges from "../welcome/TwoBadges";
 import OneBadge from "../welcome/OneBadge";
 import useScreenSize, { TABLET_MAX_WIDTH } from "../../utils/useScreenSize";

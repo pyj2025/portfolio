@@ -1,6 +1,6 @@
 import React from "react";
-import { getIcon } from "./getIcon";
-import { useUtilsWindow } from "../utils/appRegistry";
+import { getIcon } from "../getIcon";
+import { useUtilsWindow } from "../../utils/appRegistry";
 
 const DesktopIcons: React.FC = () => {
   const openUtil = useUtilsWindow(state => state.open);

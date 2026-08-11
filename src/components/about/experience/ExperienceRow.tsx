@@ -1,5 +1,5 @@
 import React from "react";
-import { FinderListRow } from "../../FinderItems";
+import { FinderListRow } from "../../window/FinderItems";
 import { getIcon } from "../../getIcon";
 import { ExperienceType } from "../types";
 

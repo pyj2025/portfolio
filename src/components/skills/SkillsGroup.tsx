@@ -1,6 +1,6 @@
 import React from "react";
 import { ViewMode } from "../../types";
-import { FinderList, FinderListRow } from "../FinderItems";
+import { FinderList, FinderListRow } from "../window/FinderItems";
 import SkillIcon from "./SkillIcon";
 import { getSkillIconImage } from "./getSkillIconImage";
 import { SKILL_LINKS } from "./constants";

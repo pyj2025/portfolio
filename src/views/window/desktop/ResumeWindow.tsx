@@ -1,5 +1,5 @@
 import React from "react";
-import AppWindow from "../../../components/AppWindow";
+import AppWindow from "../../../components/window/AppWindow";
 import info from "../../../info.json";
 
 const ResumeWindow: React.FC = () => (
