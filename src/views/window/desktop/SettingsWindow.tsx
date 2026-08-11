@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle, faPalette } from "@fortawesome/free-solid-svg-icons";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import AppWindow from "../../../components/AppWindow";
+import AppWindow from "../../../components/window/AppWindow";
 import {
   NavItmLabel,
   NavSectionLabel,
@@ -10,7 +10,7 @@ import {
   WindowBodyContent,
   WindowBodyNavbar,
   WindowBodyNavItm,
-} from "../../../components/WindowChrome";
+} from "../../../components/window/WindowChrome";
 import useThemeStore, { ThemeMode } from "../../../utils/useThemeStore";
 import { cn } from "../../../utils/cn";
 

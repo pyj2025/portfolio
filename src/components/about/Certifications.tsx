@@ -6,7 +6,7 @@ import {
   FinderGridItem,
   FinderList,
   FinderListRow,
-} from "../FinderItems";
+} from "../window/FinderItems";
 
 interface CertificationsProps {
   toggleIndex: (index: AboutIndexType) => void;

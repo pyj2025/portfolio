@@ -7,7 +7,7 @@ import {
   FinderGridItem,
   FinderList,
   FinderListRow,
-} from '../FinderItems';
+} from '../window/FinderItems';
 import { PROJECT_LOGOS, ProjectKey } from './ProjectDetail';
 
 const ICON_SIZE = 53;

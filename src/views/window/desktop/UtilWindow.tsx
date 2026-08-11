@@ -1,5 +1,5 @@
 import React from "react";
-import AppWindow from "../../../components/AppWindow";
+import AppWindow from "../../../components/window/AppWindow";
 import { ViewMode } from "../../../types";
 import {
   NavItmLabel,
@@ -8,14 +8,14 @@ import {
   WindowBodyContent,
   WindowBodyNavbar,
   WindowBodyNavItm,
-} from "../../../components/WindowChrome";
+} from "../../../components/window/WindowChrome";
 import { getIcon, getNavIcon } from "../../../components/getIcon";
 import {
   FinderGrid,
   FinderGridItem,
   FinderList,
   FinderListRow,
-} from "../../../components/FinderItems";
+} from "../../../components/window/FinderItems";
 import {
   useCalculatorWindow,
   useTerminalWindow,

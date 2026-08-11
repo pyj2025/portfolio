@@ -1,12 +1,12 @@
 import React from "react";
-import CalendarWidget from "./calendar/CalendarWidget";
-import WeatherWidget from "./weather/WeatherWidget";
-import TodoWidget from "./todo/TodoWidget";
+import CalendarWidget from "../calendar/CalendarWidget";
+import WeatherWidget from "../weather/WeatherWidget";
+import TodoWidget from "../todo/TodoWidget";
 import {
   useCalendarWindow,
   useWeatherWindow,
   useTodoWindow,
-} from "../utils/appRegistry";
+} from "../../utils/appRegistry";
 
 const widgetButton =
   "rounded-[26px] transition-transform duration-150 hover:scale-[1.02] active:scale-[0.99] cursor-pointer";

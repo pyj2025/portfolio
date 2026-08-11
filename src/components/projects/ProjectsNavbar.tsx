@@ -6,7 +6,7 @@ import {
   NavSectionLabel,
   WindowBodyNavItm,
   WindowBodyNavbar,
-} from '../WindowChrome';
+} from '../window/WindowChrome';
 import { getNavIcon } from '../getIcon';
 
 type ProjectCategory = {

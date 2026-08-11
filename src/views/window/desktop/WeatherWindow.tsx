@@ -1,5 +1,5 @@
 import React from "react";
-import AppWindow from "../../../components/AppWindow";
+import AppWindow from "../../../components/window/AppWindow";
 import Weather from "../../../components/weather/Weather";
 
 const WeatherWindow: React.FC = () => (

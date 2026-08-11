@@ -3,7 +3,7 @@ import info from "../../info.json";
 import { MobileProjects, Projects, WebProjects } from "./Projects";
 import ProjectDetail, { ProjectKey } from "./ProjectDetail";
 import { ProjectIndexType } from "../../types";
-import { WindowBodyContent } from "../WindowChrome";
+import { WindowBodyContent } from "../window/WindowChrome";
 import { ViewMode } from "../../types";
 
 type WithClickComponent = React.ComponentType<{

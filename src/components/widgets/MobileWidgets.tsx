@@ -1,13 +1,13 @@
 import React from "react";
-import CalendarWidget from "./calendar/CalendarWidget";
-import WeatherWidget from "./weather/WeatherWidget";
-import TodoWidget from "./todo/TodoWidget";
-import useScreenSize, { MOBILE_MAX_WIDTH } from "../utils/useScreenSize";
+import CalendarWidget from "../calendar/CalendarWidget";
+import WeatherWidget from "../weather/WeatherWidget";
+import TodoWidget from "../todo/TodoWidget";
+import useScreenSize, { MOBILE_MAX_WIDTH } from "../../utils/useScreenSize";
 import {
   useCalendarWindow,
   useWeatherWindow,
   useTodoWindow,
-} from "../utils/appRegistry";
+} from "../../utils/appRegistry";
 
 /**
  * Renders a fixed-size desktop widget scaled to fit `targetWidth`, keeping its

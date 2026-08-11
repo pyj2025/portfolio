@@ -1,10 +1,10 @@
 import React from "react";
 import { isMobile, isTablet } from "react-device-detect";
-import useScreenSize, { MOBILE_MAX_WIDTH, TABLET_MAX_WIDTH } from "../utils/useScreenSize";
-import { getIcon } from "./getIcon";
-import info from "../info.json";
-import { cn } from "../utils/cn";
-import { useResumeWindow, useUtilsWindow } from "../utils/appRegistry";
+import useScreenSize, { MOBILE_MAX_WIDTH, TABLET_MAX_WIDTH } from "../../utils/useScreenSize";
+import { getIcon } from "../getIcon";
+import info from "../../info.json";
+import { cn } from "../../utils/cn";
+import { useResumeWindow, useUtilsWindow } from "../../utils/appRegistry";
 
 const IconContainerStyle =
   "flex flex-col justify-center items-center text-center text-white mx-auto p-2 no-underline cursor-pointer";

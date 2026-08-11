@@ -1,6 +1,6 @@
 import React from "react";
 import { AboutIndexType } from "../../types";
-import { NavItmLabel, NavSectionLabel, WindowBodyNavItm, WindowBodyNavbar } from "../WindowChrome";
+import { NavItmLabel, NavSectionLabel, WindowBodyNavItm, WindowBodyNavbar } from "../window/WindowChrome";
 import { getNavIcon } from "../getIcon";
 import { AboutNavItemType } from "./types";
 import { ABOUT_NAV_ITEMS } from "./constants";

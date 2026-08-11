@@ -1,68 +1,50 @@
 import React from "react";
-
 import { Slide, toast, ToastContainer } from "react-toastify";
 import { browserName, isBrowser, isMobile } from "react-device-detect";
-import useScreenSize, { MOBILE_MAX_WIDTH } from "../utils/useScreenSize";
-import MobileAppMenu from "./MobileAppMenu";
-import MobileWidgets from "./MobileWidgets";
-import WindowsContent from "./WindowsContent";
-import MobileWelcomeWindow from "../views/window/mobile/MobileWelcomeWindow";
 import {
+  WelcomeWindow,
+  AboutWindow,
+  SkillsWindow,
+  ProjectsWindow,
   CalculatorWindow,
   UtilWindow,
+  ResumeWindow,
   TerminalWindow,
   SettingsWindow,
   CalendarWindow,
   WeatherWindow,
   TodoWindow,
-  ResumeWindow,
-  AboutWindow,
-  SkillsWindow,
-  ProjectsWindow,
-} from "../views/window/desktop";
-import useWindowsStore from "../utils/useWindowsStore";
+} from "../../views/window/desktop";
+import useWindowsStore from "../../utils/useWindowsStore";
 import {
   useAboutWindow,
   useSkillsWindow,
   useProjectsWindow,
   useCalculatorWindow,
   useUtilsWindow,
+  useResumeWindow,
   useTerminalWindow,
   useSettingsWindow,
   useCalendarWindow,
   useWeatherWindow,
   useTodoWindow,
-  useResumeWindow,
-} from "../utils/appRegistry";
+} from "../../utils/appRegistry";
+import WindowsContent from "../window/WindowsContent";
 import "react-toastify/dist/ReactToastify.css";
 
-const MobileBodyContent: React.FC = () => {
+const BodyContent: React.FC = () => {
   const isWelcomeWindowOpen = useWindowsStore(state => state.isWelcomeWindowOpen);
-
   const isAboutOpen = useAboutWindow(state => state.isOpen);
-
   const isSkillsOpen = useSkillsWindow(state => state.isOpen);
-
   const isProjectsOpen = useProjectsWindow(state => state.isOpen);
-
   const isCalculatorOpen = useCalculatorWindow(state => state.isOpen);
-
   const isUtilOpen = useUtilsWindow(state => state.isOpen);
-
-  const isTerminalOpen = useTerminalWindow(state => state.isOpen);
-
-  const isSettingsOpen = useSettingsWindow(state => state.isOpen);
-
-  const isCalendarOpen = useCalendarWindow(state => state.isOpen);
-
-  const isWeatherOpen = useWeatherWindow(state => state.isOpen);
-
-  const isTodoOpen = useTodoWindow(state => state.isOpen);
-
   const isResumeOpen = useResumeWindow(state => state.isOpen);
-
-  const { width } = useScreenSize();
-  const [checkMobile, setCheckMobile] = React.useState(false);
+  const isTerminalOpen = useTerminalWindow(state => state.isOpen);
+  const isSettingsOpen = useSettingsWindow(state => state.isOpen);
+  const isCalendarOpen = useCalendarWindow(state => state.isOpen);
+  const isWeatherOpen = useWeatherWindow(state => state.isOpen);
+  const isTodoOpen = useTodoWindow(state => state.isOpen);
 
   React.useEffect(() => {
     const message =
@@ -75,35 +57,29 @@ const MobileBodyContent: React.FC = () => {
     });
   }, []);
 
-  React.useEffect(() => {
-    if (isMobile || width <= MOBILE_MAX_WIDTH) {
-      setCheckMobile(true);
-    }
-  }, [width]);
-
   const renderContent = () => {
     const windows = [
-      { Component: MobileWelcomeWindow, isOpen: isWelcomeWindowOpen },
+      { Component: WelcomeWindow, isOpen: isWelcomeWindowOpen },
       { Component: AboutWindow, isOpen: isAboutOpen },
       { Component: SkillsWindow, isOpen: isSkillsOpen },
       { Component: ProjectsWindow, isOpen: isProjectsOpen },
-      { Component: CalculatorWindow, isOpen: isCalculatorOpen },
       { Component: UtilWindow, isOpen: isUtilOpen },
+      { Component: CalculatorWindow, isOpen: isCalculatorOpen },
+      { Component: ResumeWindow, isOpen: isResumeOpen },
       { Component: TerminalWindow, isOpen: isTerminalOpen },
       { Component: SettingsWindow, isOpen: isSettingsOpen },
       { Component: CalendarWindow, isOpen: isCalendarOpen },
       { Component: WeatherWindow, isOpen: isWeatherOpen },
       { Component: TodoWindow, isOpen: isTodoOpen },
-      { Component: ResumeWindow, isOpen: isResumeOpen },
     ];
 
     return <WindowsContent windows={windows} />;
   };
 
   return (
-    <div className="w-full h-[calc(100vh-32px-80px)] bg-transparent text-white">
+    <div className="w-full h-[calc(100%-50px)] bg-transparent text-white">
       <ToastContainer
-        position={checkMobile ? "top-center" : "top-right"}
+        position="top-right"
         autoClose={5000}
         newestOnTop
         hideProgressBar
@@ -114,11 +90,9 @@ const MobileBodyContent: React.FC = () => {
         limit={1}
         draggablePercent={60}
       />
-      <MobileWidgets />
-      <MobileAppMenu />
       {renderContent()}
     </div>
   );
 };
 
-export default MobileBodyContent;
+export default BodyContent;

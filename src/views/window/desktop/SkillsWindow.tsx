@@ -1,7 +1,7 @@
 import React from "react";
-import AppWindow from "../../../components/AppWindow";
+import AppWindow from "../../../components/window/AppWindow";
 import { SkillsIndexType, ViewMode } from "../../../types";
-import { WindowBody, WindowBodyContent } from "../../../components/WindowChrome";
+import { WindowBody, WindowBodyContent } from "../../../components/window/WindowChrome";
 import useNavHistory from "../../../utils/useNavHistory";
 import { BackEnd, FrontEnd, Mobile, ProgrammingLanguage } from "../../../components/skills";
 import SkillsNavbar from "../../../components/skills/SkillsNavbar";
