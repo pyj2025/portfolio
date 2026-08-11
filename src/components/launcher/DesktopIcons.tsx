@@ -6,7 +6,7 @@ const DesktopIcons: React.FC = () => {
   const openUtil = useUtilsWindow(state => state.open);
 
   return (
-    <div className="absolute top-8 right-6 z-0 flex flex-col items-center gap-4">
+    <div className="absolute top-12 right-6 z-0 flex flex-col items-center gap-4">
       <button
         title="Utils"
         onClick={openUtil}
